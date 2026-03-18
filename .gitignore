@@ -1,0 +1,13 @@
+reports/*.json
+reports/*.md
+samples/*
+!samples/.gitkeep
+
+target/
+bin/
+dist/
+
+*.log
+*.tmp
+Thumbs.db
+.DS_Store
