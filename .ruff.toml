@@ -1,0 +1,7 @@
+line-length = 100
+
+[lint]
+select = ["E", "F"]
+
+[lint.per-file-ignores]
+"ghidra_scripts/export_report.py" = ["F821"]

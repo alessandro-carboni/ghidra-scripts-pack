@@ -344,7 +344,7 @@ def get_strings():
                 continue
 
             value = data.getDefaultValueRepresentation()
-        except:
+        except Exception:
             continue
 
         if not value:
@@ -1428,7 +1428,7 @@ def safe_block_name(block):
         return "unknown"
     try:
         return block.getName()
-    except:
+    except Exception:
         return "unknown"
 
 
@@ -1447,7 +1447,7 @@ def collect_section_info():
             write = bool(block.isWrite())
             execute = bool(block.isExecute())
             initialized = bool(block.isInitialized())
-        except:
+        except Exception:
             continue
 
         suspicious = False
@@ -1501,21 +1501,21 @@ def get_program_entrypoint():
         for addr in entry_iter:
             if addr is not None:
                 return addr
-    except:
+    except Exception:
         pass
 
     try:
         image_base = currentProgram.getImageBase()
         if image_base is not None:
             return image_base
-    except:
+    except Exception:
         pass
 
     try:
         min_addr = currentProgram.getMinAddress()
         if min_addr is not None:
             return min_addr
-    except:
+    except Exception:
         pass
 
     return None
@@ -1607,7 +1607,7 @@ def find_oep_candidates(entrypoint_info):
         if mnemonic in ["JMP", "CALL"]:
             try:
                 flows = instr.getFlows()
-            except:
+            except Exception:
                 flows = []
 
             for target in flows:
