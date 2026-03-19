@@ -1212,7 +1212,6 @@ def build_behavior_story(functions, flow_hypotheses, three_hop_flows):
 
 def detect_benign_contexts(external_symbols, interesting_strings, functions):
     contexts = []
-    symbol_set = set(normalize_api_list(external_symbols))
     symbol_count = len(external_symbols)
 
     ui_hits = len([canonicalize_api_name(x) for x in external_symbols if x in BENIGN_UI_APIS])
