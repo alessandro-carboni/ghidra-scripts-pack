@@ -331,9 +331,7 @@ def load_external_rules(script_args):
 
         try:
             if not os.path.exists(path):
-                LOADED_RULES_METADATA["fallbacks_used"].append(
-                    {"rule": rule_key, "reason": "file_not_found", "path": path}
-                )
+                LOADED_RULES_METADATA["fallbacks_used"].append({"rule": rule_key, "reason": "file_not_found", "path": path})
                 continue
 
             loaded = _load_json_file(path)
@@ -346,21 +344,16 @@ def load_external_rules(script_args):
             elif target_name == "STRING_PATTERNS":
                 STRING_PATTERNS = loaded
 
-            LOADED_RULES_METADATA["loaded_files"].append(
-                {"rule": rule_key, "path": path}
-            )
+            LOADED_RULES_METADATA["loaded_files"].append({"rule": rule_key, "path": path})
 
         except Exception as e:
-            LOADED_RULES_METADATA["errors"].append(
-                {"rule": rule_key, "path": path, "error": str(e)}
-            )
-            LOADED_RULES_METADATA["fallbacks_used"].append(
-                {"rule": rule_key, "reason": "load_error", "path": path}
-            )
+            LOADED_RULES_METADATA["errors"].append({"rule": rule_key, "path": path, "error": str(e)})
+            LOADED_RULES_METADATA["fallbacks_used"].append({"rule": rule_key, "reason": "load_error", "path": path})
 
     NORMALIZED_CAPABILITY_RULES = build_capability_rule_index()
     LOADED_RULES_METADATA["rule_sources"] = _build_rule_sources_map()
     LOADED_RULES_METADATA["effective_rule_counts"] = _build_effective_rule_counts()
+
 
 def canonicalize_api_name(name):
     if not name:
