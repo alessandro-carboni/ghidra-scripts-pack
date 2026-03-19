@@ -11,7 +11,7 @@ import json
 
 MAX_STRINGS = 400
 MAX_STRING_LENGTH = 220
-MAX_INTERESTING_STRINGS = 80
+MAX_INTERESTING_STRINGS = 40
 MAX_REFERENCED_STRINGS_PER_FUNCTION = 12
 MAX_TOP_FUNCTIONS = 25
 MAX_FLOW_PATHS = 30
@@ -27,11 +27,11 @@ SUSPICIOUS_API_WEIGHTS = {
     "NtCreateThreadEx": 40,
     "SetWindowsHookExW": 20,
     "SetWindowsHookExA": 20,
-    "WinExec": 15,
-    "ShellExecuteW": 10,
-    "ShellExecuteA": 10,
-    "CreateProcessW": 15,
-    "CreateProcessA": 15,
+    "WinExec": 10,
+    "ShellExecuteW": 4,
+    "ShellExecuteA": 4,
+    "CreateProcessW": 8,
+    "CreateProcessA": 8,
     "URLDownloadToFileW": 20,
     "URLDownloadToFileA": 20,
     "InternetOpenUrlW": 15,
@@ -49,28 +49,28 @@ SUSPICIOUS_API_WEIGHTS = {
     "CryptDecrypt": 20,
     "BCryptEncrypt": 20,
     "BCryptDecrypt": 20,
-    "RegSetValueExW": 20,
-    "RegSetValueExA": 20,
-    "RegCreateKeyExW": 20,
-    "RegCreateKeyExA": 20,
+    "RegSetValueExW": 5,
+    "RegSetValueExA": 5,
+    "RegCreateKeyExW": 5,
+    "RegCreateKeyExA": 5,
     "CreateServiceW": 25,
     "CreateServiceA": 25,
     "StartServiceW": 20,
     "StartServiceA": 20,
     "OpenSCManagerW": 10,
     "OpenSCManagerA": 10,
-    "IsDebuggerPresent": 10,
-    "CheckRemoteDebuggerPresent": 15,
-    "OutputDebugStringW": 10,
-    "OutputDebugStringA": 10,
-    "TerminateProcess": 10,
-    "CreateFileW": 5,
-    "CreateFileA": 5,
-    "WriteFile": 5,
-    "ReadFile": 5,
-    "LoadLibraryW": 10,
-    "LoadLibraryA": 10,
-    "GetProcAddress": 15
+    "IsDebuggerPresent": 3,
+    "CheckRemoteDebuggerPresent": 8,
+    "OutputDebugStringW": 1,
+    "OutputDebugStringA": 1,
+    "TerminateProcess": 5,
+    "CreateFileW": 2,
+    "CreateFileA": 2,
+    "WriteFile": 2,
+    "ReadFile": 2,
+    "LoadLibraryW": 4,
+    "LoadLibraryA": 4,
+    "GetProcAddress": 3
 }
 
 CAPABILITY_RULES = {
@@ -90,19 +90,20 @@ CAPABILITY_RULES = {
         "score": 20
     },
     "persistence": {
-        "apis": ["RegSetValueExW", "RegSetValueExA", "RegCreateKeyExW", "RegCreateKeyExA", "CreateServiceW", "CreateServiceA", "StartServiceW", "StartServiceA", "OpenSCManagerW", "OpenSCManagerA"],
-        "min_matches": 1,
-        "score": 25
-    },
-    "anti_analysis": {
-        "apis": ["IsDebuggerPresent", "CheckRemoteDebuggerPresent", "OutputDebugStringW", "OutputDebugStringA"],
-        "min_matches": 1,
+        "apis": ["RegCreateKeyEx", "RegSetValueEx", "RegOpenKeyEx"],
+        "min_matches": 3,
         "score": 15
+    },
+
+    "anti_analysis": {
+        "apis": ["IsDebuggerPresent", "OutputDebugString", "CheckRemoteDebuggerPresent"],
+        "min_matches": 3,
+        "score": 8
     },
     "dynamic_loading": {
         "apis": ["LoadLibraryW", "LoadLibraryA", "GetProcAddress"],
-        "min_matches": 2,
-        "score": 20
+        "min_matches": 3,
+        "score": 10
     }
 }
 
@@ -124,7 +125,7 @@ STRING_PATTERNS = {
     },
     "crypto_ransom": {
         "keywords": ["aes", "rsa", "encrypt", "decrypt", "ransom", "bitcoin", "wallet"],
-        "score": 20,
+        "score": 12,
         "tag": "crypto"
     },
     "commands": {
@@ -178,6 +179,124 @@ PACKER_API_HINTS = set([
 CLASSIC_UNPACKING_MNEMONICS = set([
     "PUSHAD", "PUSHA", "POPAD", "POPA", "JMP", "CALL"
 ])
+
+SCHEMA_VERSION = "1.1.0"
+ANALYSIS_MODE = "static_headless"
+
+API_NORMALIZATION_MAP = {
+    "CreateProcessA": "CreateProcess",
+    "CreateProcessW": "CreateProcess",
+    "ShellExecuteA": "ShellExecute",
+    "ShellExecuteW": "ShellExecute",
+    "URLDownloadToFileA": "URLDownloadToFile",
+    "URLDownloadToFileW": "URLDownloadToFile",
+    "InternetOpenUrlA": "InternetOpenUrl",
+    "InternetOpenUrlW": "InternetOpenUrl",
+    "RegSetValueExA": "RegSetValueEx",
+    "RegSetValueExW": "RegSetValueEx",
+    "RegCreateKeyExA": "RegCreateKeyEx",
+    "RegCreateKeyExW": "RegCreateKeyEx",
+    "CreateServiceA": "CreateService",
+    "CreateServiceW": "CreateService",
+    "StartServiceA": "StartService",
+    "StartServiceW": "StartService",
+    "OpenSCManagerA": "OpenSCManager",
+    "OpenSCManagerW": "OpenSCManager",
+    "OutputDebugStringA": "OutputDebugString",
+    "OutputDebugStringW": "OutputDebugString",
+    "LoadLibraryA": "LoadLibrary",
+    "LoadLibraryW": "LoadLibrary",
+    "CreateFileA": "CreateFile",
+    "CreateFileW": "CreateFile"
+}
+
+BENIGN_STRING_KEYWORDS = [
+    "microsoft",
+    "notepad",
+    "richedit",
+    "comdlg",
+    "print",
+    "page setup",
+    "font",
+    "open file",
+    "save file"
+]
+
+
+def canonicalize_api_name(name):
+    if not name:
+        return name
+    return API_NORMALIZATION_MAP.get(name, name)
+
+
+def normalize_api_list(api_list):
+    normalized = set()
+    for api_name in api_list:
+        normalized.add(canonicalize_api_name(api_name))
+    return sorted(normalized)
+
+
+def build_capability_rule_index():
+    idx = {}
+    for capability_name, rule in CAPABILITY_RULES.items():
+        normalized = set()
+        for api_name in rule["apis"]:
+            normalized.add(canonicalize_api_name(api_name))
+        idx[capability_name] = {
+            "apis": sorted(normalized),
+            "min_matches": rule["min_matches"],
+            "score": rule["score"]
+        }
+    return idx
+
+
+NORMALIZED_CAPABILITY_RULES = build_capability_rule_index()
+
+
+def count_matching_apis(api_names, candidate_names):
+    api_set = set(normalize_api_list(api_names))
+    candidate_set = set(normalize_api_list(candidate_names))
+    return sorted(api_set & candidate_set)
+
+
+def get_capability_confidence(match_count, min_matches):
+    if match_count >= (min_matches + 2):
+        return "high"
+    if match_count >= (min_matches + 1):
+        return "medium"
+    return "low"
+
+
+def has_any_keyword(value, keywords):
+    lower_value = value.lower()
+    for keyword in keywords:
+        if keyword in lower_value:
+            return True
+    return False
+
+
+def build_analysis_metadata():
+    return {
+        "schema_version": SCHEMA_VERSION,
+        "analysis_mode": ANALYSIS_MODE
+    }
+    
+def safe_join(items, sep=", "):
+    if not items:
+        return ""
+    return sep.join([str(x) for x in items if x is not None and str(x).strip() != ""])
+
+
+def describe_function_brief(func):
+    roles = safe_join(func.get("roles", []))
+    structure_role = func.get("structure_role", "unknown")
+    score = func.get("score", 0)
+
+    parts = [f"{func['name']} (score={score}, structure={structure_role}"]
+    if roles:
+        parts.append(f", roles={roles}")
+    parts.append(")")
+    return "".join(parts)
 
 
 def clean_string_value(value):
@@ -276,31 +395,66 @@ def get_base_functions():
 
 
 def get_suspicious_apis(external_symbols):
-    results = []
+    aggregated = {}
+
     for api_name in external_symbols:
+        canonical = canonicalize_api_name(api_name)
         if api_name in SUSPICIOUS_API_WEIGHTS:
-            results.append({
-                "name": api_name,
-                "weight": SUSPICIOUS_API_WEIGHTS[api_name]
-            })
+            weight = SUSPICIOUS_API_WEIGHTS[api_name]
+        elif canonical in SUSPICIOUS_API_WEIGHTS:
+            weight = SUSPICIOUS_API_WEIGHTS[canonical]
+        else:
+            continue
+
+        if canonical not in aggregated or weight > aggregated[canonical]["weight"]:
+            aggregated[canonical] = {
+                "name": canonical,
+                "weight": weight,
+                "variants": set([api_name])
+            }
+        else:
+            aggregated[canonical]["variants"].add(api_name)
+
+    results = []
+    for item in aggregated.values():
+        results.append({
+            "name": item["name"],
+            "weight": item["weight"],
+            "variants": sorted(item["variants"])
+        })
+
     return sorted(results, key=lambda x: (-x["weight"], x["name"]))
 
 
 def detect_capabilities(external_symbols):
-    symbol_set = set(external_symbols)
+    normalized_symbols = normalize_api_list(external_symbols)
+    symbol_set = set(normalized_symbols)
     capabilities = []
 
-    for capability_name, rule in CAPABILITY_RULES.items():
+    for capability_name, rule in NORMALIZED_CAPABILITY_RULES.items():
         matched = []
+
         for api_name in rule["apis"]:
             if api_name in symbol_set:
                 matched.append(api_name)
 
         if len(matched) >= rule["min_matches"]:
+            confidence = get_capability_confidence(len(matched), rule["min_matches"])
+
+            score = rule["score"]
+            if confidence == "medium":
+                score += 5
+            elif confidence == "high":
+                score += 10
+
             capabilities.append({
                 "name": capability_name,
                 "matched_apis": sorted(matched),
-                "score": rule["score"]
+                "match_count": len(matched),
+                "min_matches": rule["min_matches"],
+                "confidence": confidence,
+                "score": score,
+                "source": "global_import_surface"
             })
 
     return sorted(capabilities, key=lambda x: (-x["score"], x["name"]))
@@ -316,9 +470,13 @@ def analyze_interesting_strings(strings):
         if is_probably_boring_library_name(value):
             continue
 
+        if len(value.strip()) < 5:
+            continue
+
         matched_tags = set()
         score = 0
         reasons = []
+        benign_hits = 0
 
         for rule_name, rule in STRING_PATTERNS.items():
             matched_keywords = []
@@ -328,13 +486,50 @@ def analyze_interesting_strings(strings):
                     matched_keywords.append(keyword)
 
             if matched_keywords:
+                rule_score = rule["score"]
+
+                # deboost di pattern troppo generici
+                if rule_name == "filesystem_path" and len(matched_keywords) == 1:
+                    rule_score = max(4, rule_score - 6)
+
+                if rule_name == "url_or_network":
+                    # domini e pattern generici spesso sono benigni
+                    generic_only = True
+                    for k in matched_keywords:
+                        if k in ["http://", "https://", "user-agent", "host:", "cookie"]:
+                            generic_only = False
+                            break
+                    if generic_only:
+                        rule_score = max(5, rule_score - 8)
+
                 matched_tags.add(rule["tag"])
-                score += rule["score"]
+                score += rule_score
                 reasons.append({
                     "rule": rule_name,
                     "keywords": sorted(set(matched_keywords)),
-                    "score": rule["score"]
+                    "score": rule_score
                 })
+
+        if has_any_keyword(value, BENIGN_STRING_KEYWORDS):
+            benign_hits += 1
+
+        if lower_value.startswith("prop:system."):
+            benign_hits += 1
+
+        if "windows.security." in lower_value:
+            benign_hits += 1
+
+        if "microsoft." in lower_value:
+            benign_hits += 1
+
+        if benign_hits > 0:
+            benign_penalty = min(18, benign_hits * 8)
+            score -= benign_penalty
+            reasons.append({
+                "rule": "benign_ui_or_vendor_hint",
+                "keywords": [],
+                "score": -benign_penalty
+            })
 
         if score > 0:
             interesting.append({
@@ -342,7 +537,8 @@ def analyze_interesting_strings(strings):
                 "value": value,
                 "tags": sorted(matched_tags),
                 "score": score,
-                "reasons": reasons
+                "reasons": reasons,
+                "benign_hint": benign_hits > 0
             })
 
     interesting = sorted(interesting, key=lambda x: (-x["score"], x["value"]))
@@ -350,11 +546,11 @@ def analyze_interesting_strings(strings):
 
 
 def get_function_risk_level(score):
-    if score >= 80:
+    if score >= 60:
         return "critical"
-    if score >= 45:
+    if score >= 35:
         return "high"
-    if score >= 20:
+    if score >= 15:
         return "medium"
     return "low"
 
@@ -412,6 +608,8 @@ def enrich_functions(base_functions, interesting_strings):
         local_capabilities = set()
         local_score = 0
         seen_string_addresses = set()
+        score_breakdown = []
+        local_api_hits = set()
 
         instructions = listing.getInstructions(func.getBody(), True)
 
@@ -431,43 +629,129 @@ def enrich_functions(base_functions, interesting_strings):
 
                 if target_func is not None:
                     target_name = target_func.getName()
+                    canonical_target = canonicalize_api_name(target_name)
 
                     if target_name in SUSPICIOUS_API_WEIGHTS:
-                        local_score += SUSPICIOUS_API_WEIGHTS[target_name]
+                        api_weight = SUSPICIOUS_API_WEIGHTS[target_name]
+                        local_score += api_weight
+                        score_breakdown.append({
+                            "type": "suspicious_api",
+                            "name": canonical_target,
+                            "delta": api_weight,
+                            "reason": "local reference to suspicious API"
+                        })
+                        local_api_hits.add(canonical_target)
+                    elif canonical_target in SUSPICIOUS_API_WEIGHTS:
+                        api_weight = SUSPICIOUS_API_WEIGHTS[canonical_target]
+                        local_score += api_weight
+                        score_breakdown.append({
+                            "type": "suspicious_api",
+                            "name": canonical_target,
+                            "delta": api_weight,
+                            "reason": "local reference to suspicious API variant"
+                        })
+                        local_api_hits.add(canonical_target)
 
-                    for capability_name, rule in CAPABILITY_RULES.items():
-                        if target_name in rule["apis"]:
+                    for capability_name, rule in NORMALIZED_CAPABILITY_RULES.items():
+                        if canonical_target in rule["apis"]:
                             local_capabilities.add(capability_name)
 
                     if target_func.isExternal() or target_func.isThunk():
-                        external_calls.add(target_name)
+                        external_calls.add(canonical_target)
                     else:
                         if target_name != func.getName():
                             internal_calls.add(target_name)
 
                 if to_addr_str in interesting_string_map and to_addr_str not in seen_string_addresses:
                     string_item = interesting_string_map[to_addr_str]
+                    string_score = min(string_item["score"], 15)
+
                     referenced_string_values.append({
                         "address": string_item["address"],
                         "value": string_item["value"],
                         "score": string_item["score"],
-                        "tags": string_item["tags"]
+                        "tags": string_item["tags"],
+                        "benign_hint": string_item.get("benign_hint", False)
                     })
                     seen_string_addresses.add(to_addr_str)
-                    local_score += min(string_item["score"], 20)
+
+                    if not string_item.get("benign_hint", False):
+                        local_score += string_score
+                        score_breakdown.append({
+                            "type": "interesting_string",
+                            "name": string_item["value"][:80],
+                            "delta": string_score,
+                            "reason": "function references interesting string"
+                        })
 
                     for tag in string_item["tags"]:
                         referenced_string_tags.add(tag)
 
-        local_score += min(len(local_capabilities) * 8, 24)
+        local_capability_bonus = 0
+        for capability_name in sorted(local_capabilities):
+            local_capability_bonus += 3
+
+        local_capability_bonus = min(local_capability_bonus, 9)
+        if local_capability_bonus > 0:
+            local_score += local_capability_bonus
+            score_breakdown.append({
+                "type": "local_capabilities",
+                "name": ",".join(sorted(local_capabilities)),
+                "delta": local_capability_bonus,
+                "reason": "multiple capability-related local signals"
+            })
 
         all_tags = set(local_capabilities) | set(referenced_string_tags)
         roles = detect_function_roles(external_calls, all_tags)
 
-        if len(internal_calls) >= 8:
-            local_score += 10
-        if len(external_calls) >= 15:
-            local_score += 10
+        connectivity_bonus = 0
+        if len(internal_calls) >= 15:
+            connectivity_bonus += 2
+        if len(external_calls) >= 30:
+            connectivity_bonus += 2
+        if connectivity_bonus > 0:
+            local_score += connectivity_bonus
+            score_breakdown.append({
+                "type": "connectivity",
+                "name": func.getName(),
+                "delta": connectivity_bonus,
+                "reason": "high local fan-out"
+            })
+
+        local_benign_adjustment = 0
+        if "persistence" in local_capabilities and len(local_api_hits) <= 2:
+            local_benign_adjustment -= 12
+
+        if "anti_analysis" in local_capabilities and len(local_api_hits) <= 2:
+            local_benign_adjustment -= 10
+
+        if "dynamic_loading" in local_capabilities and "loader" in roles and len(local_api_hits) <= 3:
+            local_benign_adjustment -= 10
+
+        # dispatcher molto ampi ma con pochi segnali reali spesso sono normali orchestratori GUI/app
+        if (
+            len(internal_calls) >= 20 and
+            len(external_calls) >= 20 and
+            len(local_api_hits) <= 2 and
+            len(local_capabilities) <= 1 and
+            len(referenced_string_values) == 0
+        ):
+            local_benign_adjustment -= 10
+
+        if local_benign_adjustment != 0:
+            local_score += local_benign_adjustment
+            score_breakdown.append({
+                "type": "benign_adjustment",
+                "name": func.getName(),
+                "delta": local_benign_adjustment,
+                "reason": "weak isolated signal adjusted downward"
+            })
+
+        if local_score < 0:
+            local_score = 0
+
+        if local_score > 45:
+            local_score = 45
 
         enriched.append({
             "name": func.getName(),
@@ -485,6 +769,8 @@ def enrich_functions(base_functions, interesting_strings):
             "roles": roles,
             "structure_role": "unknown",
             "tags": sorted(all_tags),
+            "local_api_hits": sorted(local_api_hits),
+            "score_breakdown": score_breakdown,
             "score": local_score,
             "risk_level": get_function_risk_level(local_score)
         })
@@ -635,17 +921,17 @@ def build_execution_flow_hypotheses(functions):
 
     seeds = []
     for func in functions:
-        if func["score"] >= 20 or len(func["roles"]) > 0:
+        if func["score"] >= 15 or len(func["roles"]) > 0:
             seeds.append(func)
 
-    seeds = seeds[:40]
+    seeds = seeds[:50]
     paths = []
 
     for func in seeds:
         if len(func["internal_calls"]) == 0:
             continue
 
-        for callee_name in func["internal_calls"][:8]:
+        for callee_name in func["internal_calls"][:10]:
             callee = function_index.get(callee_name)
             if callee is None:
                 continue
@@ -653,8 +939,18 @@ def build_execution_flow_hypotheses(functions):
             path_roles = list(dict.fromkeys(func["roles"] + callee["roles"]))
             path_score = func["score"] + callee["score"]
 
-            if path_score < 25 and len(path_roles) == 0:
+            if path_score < 20 and len(path_roles) == 0:
                 continue
+
+            description_parts = [
+                f"{func['name']} -> {callee['name']}",
+                f"combined_score={path_score}",
+                f"from_structure={func['structure_role']}",
+                f"to_structure={callee['structure_role']}"
+            ]
+
+            if path_roles:
+                description_parts.append(f"roles={safe_join(path_roles)}")
 
             paths.append({
                 "from": func["name"],
@@ -664,7 +960,8 @@ def build_execution_flow_hypotheses(functions):
                 "to_roles": callee["roles"],
                 "path_roles": path_roles,
                 "from_structure_role": func["structure_role"],
-                "to_structure_role": callee["structure_role"]
+                "to_structure_role": callee["structure_role"],
+                "description": "; ".join(description_parts)
             })
 
     paths = sorted(paths, key=lambda x: (-x["combined_score"], x["from"], x["to"]))
@@ -796,17 +1093,29 @@ def build_behavior_summary(functions, capabilities, flow_hypotheses, three_hop_f
     }
 
 
-def build_behavior_story(functions, three_hop_flows):
+def build_behavior_story(functions, flow_hypotheses, three_hop_flows):
     story = {
         "entry_candidates": [],
         "primary_dispatchers": [],
         "notable_workers": [],
-        "storyline": []
+        "storyline": [],
+        "story_summary": []
     }
 
-    dispatchers = [f for f in functions if f["structure_role"] == "dispatcher"]
-    initializers = [f for f in functions if f["structure_role"] == "initializer"]
-    workers = [f for f in functions if f["structure_role"] == "worker" and f["score"] >= 20]
+    initializers = sorted(
+        [f for f in functions if f["structure_role"] == "initializer"],
+        key=lambda x: (-x["score"], -len(x["internal_calls"]), x["name"])
+    )
+
+    dispatchers = sorted(
+        [f for f in functions if f["structure_role"] == "dispatcher"],
+        key=lambda x: (-(len(x["internal_calls"]) + len(x["external_calls"])), -x["score"], x["name"])
+    )
+
+    workers = sorted(
+        [f for f in functions if f["structure_role"] == "worker" and (f["score"] >= 10 or len(f["roles"]) > 0)],
+        key=lambda x: (-x["score"], -x["incoming_calls"], x["name"])
+    )
 
     story["entry_candidates"] = [
         {
@@ -814,7 +1123,8 @@ def build_behavior_story(functions, three_hop_flows):
             "score": f["score"],
             "roles": f["roles"],
             "structure_role": f["structure_role"],
-            "incoming_calls": f["incoming_calls"]
+            "incoming_calls": f["incoming_calls"],
+            "fan_out": len(f["internal_calls"]) + len(f["external_calls"])
         }
         for f in initializers[:8]
     ]
@@ -847,41 +1157,84 @@ def build_behavior_story(functions, three_hop_flows):
         roles = flow["roles"]
         structure_roles = flow["structure_roles"]
 
-        sentence = " -> ".join(path)
-        role_text = ", ".join(roles) if len(roles) > 0 else "no explicit behavioral roles"
+        role_text = safe_join(roles) if len(roles) > 0 else "no explicit behavioral roles"
         structure_text = " -> ".join(structure_roles)
 
         story["storyline"].append({
+            "type": "three_hop_flow",
             "path": path,
             "combined_score": flow["combined_score"],
-            "description": "{} | roles: {} | structure: {}".format(sentence, role_text, structure_text)
+            "description": f"{' -> '.join(path)} | roles: {role_text} | structure: {structure_text}"
         })
+
+    if len(story["storyline"]) == 0:
+        for flow in flow_hypotheses[:10]:
+            role_text = safe_join(flow["path_roles"]) if len(flow["path_roles"]) > 0 else "no explicit behavioral roles"
+            story["storyline"].append({
+                "type": "two_hop_flow",
+                "path": [flow["from"], flow["to"]],
+                "combined_score": flow["combined_score"],
+                "description": f"{flow['from']} -> {flow['to']} | roles: {role_text} | structure: {flow['from_structure_role']} -> {flow['to_structure_role']}"
+            })
+
+    if len(story["entry_candidates"]) > 0:
+        first_entry = story["entry_candidates"][0]
+        story["story_summary"].append(
+            f"Likely execution starts around {first_entry['name']} (score={first_entry['score']}, fan_out={first_entry['fan_out']})."
+        )
+
+    if len(story["primary_dispatchers"]) > 0:
+        first_dispatcher = story["primary_dispatchers"][0]
+        dispatcher_roles = safe_join(first_dispatcher["roles"])
+        if dispatcher_roles:
+            story["story_summary"].append(
+                f"Primary dispatcher candidate is {first_dispatcher['name']} with roles: {dispatcher_roles}."
+            )
+        else:
+            story["story_summary"].append(
+                f"Primary dispatcher candidate is {first_dispatcher['name']}."
+            )
+
+    if len(story["notable_workers"]) > 0:
+        top_workers = [w["name"] for w in story["notable_workers"][:3]]
+        story["story_summary"].append(
+            f"Most notable worker functions: {safe_join(top_workers)}."
+        )
+
+    if len(story["storyline"]) > 0:
+        first_line = story["storyline"][0]
+        story["story_summary"].append(
+            f"Best reconstructed flow: {first_line['description']}."
+        )
 
     return story
 
 
 def detect_benign_contexts(external_symbols, interesting_strings, functions):
     contexts = []
-    symbol_set = set(external_symbols)
+    symbol_set = set(normalize_api_list(external_symbols))
     symbol_count = len(external_symbols)
 
-    ui_hits = len([x for x in external_symbols if x in BENIGN_UI_APIS])
-    loader_hits = 0
-    for api_name in ["LoadLibraryW", "LoadLibraryA", "GetProcAddress"]:
-        if api_name in symbol_set:
-            loader_hits += 1
+    ui_hits = len([canonicalize_api_name(x) for x in external_symbols if x in BENIGN_UI_APIS])
+    loader_hits = len(count_matching_apis(external_symbols, ["LoadLibrary", "GetProcAddress"]))
+    create_file_hits = len(count_matching_apis(external_symbols, ["CreateFile", "ReadFile", "WriteFile"]))
 
     microsoft_urls = 0
+    benign_string_count = 0
     for item in interesting_strings:
         value = item["value"].lower()
         if "microsoft.com" in value or "go.microsoft.com" in value:
             microsoft_urls += 1
+        if item.get("benign_hint", False):
+            benign_string_count += 1
 
     high_risk_function_count = len([f for f in functions if f["risk_level"] in ["high", "critical"]])
+    medium_or_higher_count = len([f for f in functions if f["risk_level"] in ["medium", "high", "critical"]])
     persistence_functions = len([f for f in functions if "persistence" in f["roles"]])
     anti_analysis_functions = len([f for f in functions if "anti_analysis" in f["roles"]])
+    injection_functions = len([f for f in functions if "injection" in f["roles"]])
 
-    if ui_hits >= 8 and symbol_count > 150:
+    if ui_hits >= 8 and symbol_count > 120:
         contexts.append({
             "name": "rich_windows_gui_context",
             "score_adjustment": -35,
@@ -892,21 +1245,28 @@ def detect_benign_contexts(external_symbols, interesting_strings, functions):
         contexts.append({
             "name": "benign_dynamic_loading_context",
             "score_adjustment": -20,
-            "reason": "dynamic loading appears together with Microsoft documentation/update URLs"
+            "reason": "dynamic loading appears together with Microsoft-related strings"
         })
 
-    if persistence_functions > 0 and persistence_functions <= 4:
+    if create_file_hits >= 2 and ui_hits >= 5:
+        contexts.append({
+            "name": "desktop_app_file_io_context",
+            "score_adjustment": -12,
+            "reason": "file I/O appears together with a desktop GUI profile"
+        })
+
+    if persistence_functions > 0 and persistence_functions <= 3 and injection_functions == 0:
         contexts.append({
             "name": "weak_persistence_signal",
             "score_adjustment": -15,
-            "reason": "persistence-like APIs appear but only in a limited number of functions"
+            "reason": "persistence-like APIs appear but only in a limited and non-cohesive way"
         })
 
-    if anti_analysis_functions > 0 and anti_analysis_functions <= 4:
+    if anti_analysis_functions > 0 and anti_analysis_functions <= 3 and high_risk_function_count == 0:
         contexts.append({
             "name": "weak_anti_analysis_signal",
-            "score_adjustment": -10,
-            "reason": "debug-related APIs may reflect normal defensive or diagnostic logic"
+            "score_adjustment": -12,
+            "reason": "debug-related APIs may reflect diagnostics or normal defensive logic"
         })
 
     if high_risk_function_count == 0:
@@ -916,23 +1276,44 @@ def detect_benign_contexts(external_symbols, interesting_strings, functions):
             "reason": "no function reached a high local risk threshold"
         })
 
+    if medium_or_higher_count <= 2 and benign_string_count >= 2:
+        contexts.append({
+            "name": "benign_string_context",
+            "score_adjustment": -10,
+            "reason": "interesting strings contain multiple benign vendor/UI hints"
+        })
+        
+    if ui_hits >= 10 and symbol_count >= 150:
+        contexts.append({
+            "name": "microsoft_desktop_app_profile",
+            "score_adjustment": -20,
+            "reason": "strong desktop/UI profile consistent with benign Microsoft desktop software"
+        })
+
     return contexts
 
-
-def compute_raw_score(suspicious_apis, capabilities, interesting_strings, top_functions):
+def compute_raw_score(suspicious_apis, capabilities, interesting_strings, top_functions, packer_analysis):
     score = 0
 
-    for item in suspicious_apis:
-        score += item["weight"]
+    # import globali: contano, ma molto meno di prima
+    for item in suspicious_apis[:12]:
+        score += min(item["weight"], 12)
 
+    # capability globali: contano, ma non devono dominare da sole
     for capability in capabilities:
-        score += capability["score"]
+        score += min(capability["score"], 30)
 
-    for string_item in interesting_strings:
-        score += min(string_item["score"], 20)
+    # stringhe: cap limit più basso
+    for string_item in interesting_strings[:25]:
+        if not string_item.get("benign_hint", False):
+            score += min(string_item["score"], 12)
 
-    for func in top_functions[:10]:
-        score += min(func["score"], 25)
+    # funzioni locali: sono il segnale più affidabile
+    for func in top_functions[:6]:
+        score += min(func["score"], 14)
+
+    # packer: boost contenuto
+    score += min(packer_analysis.get("packed_likelihood_score", 0), 25)
 
     return score
 
@@ -956,11 +1337,11 @@ def apply_score_adjustments(raw_score, benign_contexts):
 
 
 def get_risk_level(score):
-    if score >= 180:
+    if score >= 120:
         return "critical"
-    if score >= 100:
+    if score >= 85:
         return "high"
-    if score >= 40:
+    if score >= 30:
         return "medium"
     return "low"
 
@@ -998,34 +1379,36 @@ def build_summary(sample_name, external_symbols, suspicious_apis, capabilities, 
         "string_count": len(strings),
         "interesting_string_count": len(interesting_strings),
         "top_function_count": len(top_functions),
-        "top_indicators": build_top_indicators(suspicious_apis, capabilities, interesting_strings, top_functions)
+        "top_indicators": build_top_indicators(suspicious_apis, capabilities, interesting_strings, top_functions),
+        "contract_version": SCHEMA_VERSION
     }
 
 def build_analyst_summary(summary, behavior_summary, capabilities, top_functions, score_adjustments):
     key_points = []
 
-    key_points.append("overall risk classified as '{}' with final score {}".format(
-        summary["risk_level"],
-        summary["overall_score"]
-    ))
+    key_points.append(
+        f"Overall risk classified as {summary['risk_level']} with final score {summary['overall_score']}."
+    )
 
     if len(capabilities) > 0:
         cap_names = [c["name"] for c in capabilities[:5]]
-        key_points.append("detected capabilities: {}".format(", ".join(cap_names)))
+        key_points.append(f"Detected capabilities: {safe_join(cap_names)}.")
 
     if len(behavior_summary["inferred_behaviors"]) > 0:
-        key_points.append("behavioral inference: {}".format("; ".join(behavior_summary["inferred_behaviors"][:4])))
+        key_points.append(
+            f"Behavioral inference: {'; '.join(behavior_summary['inferred_behaviors'][:4])}."
+        )
 
     if len(score_adjustments) > 0:
-        key_points.append("score adjusted by contextual benign indicators")
+        key_points.append("Score adjusted by contextual benign indicators.")
 
     if len(top_functions) > 0:
         names = [f["name"] for f in top_functions[:3]]
-        key_points.append("priority functions for review: {}".format(", ".join(names)))
+        key_points.append(f"Priority functions for review: {safe_join(names)}.")
 
     return {
         "key_points": key_points,
-        "primary_conclusion": key_points[0] if len(key_points) > 0 else "no conclusion"
+        "primary_conclusion": key_points[0] if len(key_points) > 0 else "No conclusion."
     }
 
 def safe_block_name(block):
@@ -1051,11 +1434,14 @@ def collect_section_info():
             read = bool(block.isRead())
             write = bool(block.isWrite())
             execute = bool(block.isExecute())
+            initialized = bool(block.isInitialized())
         except:
             continue
 
         suspicious = False
         reasons = []
+
+        lower_name = name.lower() if name else ""
 
         if name in SUSPICIOUS_SECTION_NAMES:
             suspicious = True
@@ -1068,6 +1454,17 @@ def collect_section_info():
         if size == 0:
             reasons.append("empty section")
 
+        if not initialized and execute:
+            suspicious = True
+            reasons.append("executable but uninitialized block")
+
+        if lower_name in [".text", ".rdata", ".data", ".rsrc", ".idata", ".reloc"]:
+            pass
+        else:
+            if execute and size < 1024:
+                suspicious = True
+                reasons.append("small executable non-standard section")
+
         results.append({
             "name": name,
             "start": start,
@@ -1076,6 +1473,7 @@ def collect_section_info():
             "read": read,
             "write": write,
             "execute": execute,
+            "initialized": initialized,
             "suspicious": suspicious,
             "reasons": reasons
         })
@@ -1294,60 +1692,87 @@ def build_packer_analysis(section_info, entrypoint_info, external_symbols, suspi
     score = 0
 
     suspicious_sections = [sec for sec in section_info if sec["suspicious"]]
+    executable_nonstandard = [
+        sec for sec in section_info
+        if sec["execute"] and sec["name"] not in [".text", "CODE", ".code"]
+    ]
+
     if len(suspicious_sections) > 0:
         indicators.append({
             "name": "suspicious_sections",
-            "score": 30,
+            "score": 20,
             "reason": "one or more sections look packer-like or executable+writable"
         })
-        score += 30
+        score += 20
 
     if entrypoint_info["section"] in SUSPICIOUS_SECTION_NAMES:
         indicators.append({
             "name": "entrypoint_in_suspicious_section",
-            "score": 30,
+            "score": 25,
             "reason": "entrypoint located inside suspicious section"
         })
-        score += 30
+        score += 25
 
     if entrypoint_info["section_is_writable"] and entrypoint_info["section_is_executable"]:
         indicators.append({
             "name": "entrypoint_in_rwx_section",
-            "score": 25,
-            "reason": "entrypoint section is writable and executable"
-        })
-        score += 25
-
-    if len(external_symbols) < 25:
-        indicators.append({
-            "name": "very_small_import_surface",
             "score": 20,
-            "reason": "few external symbols may indicate packing or stub behavior"
+            "reason": "entrypoint section is writable and executable"
         })
         score += 20
 
+    if len(external_symbols) < 20:
+        indicators.append({
+            "name": "very_small_import_surface",
+            "score": 15,
+            "reason": "few external symbols may indicate packing or stub behavior"
+        })
+        score += 15
+    elif len(external_symbols) < 40:
+        indicators.append({
+            "name": "small_import_surface",
+            "score": 8,
+            "reason": "reduced import surface may indicate loader/stub behavior"
+        })
+        score += 8
+
     packer_api_hits = []
-    for api_name in external_symbols:
-        if api_name in PACKER_API_HINTS:
+    for api_name in normalize_api_list(external_symbols):
+        if api_name in normalize_api_list(PACKER_API_HINTS):
             packer_api_hits.append(api_name)
 
-    # richiedi una combinazione più sensata
     if (
-        ("GetProcAddress" in packer_api_hits or "LoadLibraryW" in packer_api_hits or "LoadLibraryA" in packer_api_hits)
+        ("GetProcAddress" in packer_api_hits or "LoadLibrary" in packer_api_hits)
         and
         ("VirtualAlloc" in packer_api_hits or "VirtualAllocEx" in packer_api_hits or "VirtualProtect" in packer_api_hits or "VirtualProtectEx" in packer_api_hits)
     ):
         indicators.append({
             "name": "runtime_unpacking_apis",
-            "score": 25,
+            "score": 20,
             "reason": "memory allocation/protection plus dynamic resolver APIs detected",
             "matched_apis": sorted(packer_api_hits)
         })
-        score += 25
+        score += 20
+
+    if len(executable_nonstandard) > 0:
+        indicators.append({
+            "name": "nonstandard_executable_sections",
+            "score": 10,
+            "reason": "non-standard executable sections present",
+            "count": len(executable_nonstandard)
+        })
+        score += 10
+
+    confidence = "low"
+    if score >= 55:
+        confidence = "high"
+    elif score >= 30:
+        confidence = "medium"
 
     return {
         "packed_likelihood_score": score,
-        "likely_packed": score >= 40,
+        "likely_packed": score >= 45,
+        "confidence": confidence,
         "indicators": indicators,
         "suspicious_section_count": len(suspicious_sections)
     }
@@ -1376,7 +1801,7 @@ def enrich_packer_analysis_with_patterns(packer_analysis, classic_patterns, oep_
 
     likely_packed = score >= 40
 
-    status = "packer-like indicators detected" if likely_packed else "executable doesn't appear packed"
+    status = "packer-like indicators detected" if likely_packed else "executable does not appear packed"
 
     family = packer_family_hint
     if not likely_packed and family == "unknown":
@@ -1399,7 +1824,7 @@ def build_analyst_targets(top_functions):
         checks = []
 
         if len(func["roles"]) > 0:
-            reasons.append("behavior roles: {}".format(", ".join(func["roles"])))
+            reasons.append(f"behavior roles: {safe_join(func['roles'])}")
             checks.append("inspect role-related API usage")
 
         if func["structure_role"] == "dispatcher":
@@ -1408,11 +1833,11 @@ def build_analyst_targets(top_functions):
 
         if func["structure_role"] == "initializer":
             reasons.append("possible initialization entrypoint")
-            checks.append("inspect setup/config/bootstrap logic")
+            checks.append("inspect setup, configuration, and bootstrap logic")
 
         if func["referenced_string_count"] > 0:
             reasons.append("references interesting strings")
-            checks.append("inspect string xrefs and nearby callsites")
+            checks.append("inspect string xrefs and nearby call sites")
 
         if func["external_call_count"] > 5:
             reasons.append("many external calls")
@@ -1427,8 +1852,8 @@ def build_analyst_targets(top_functions):
             "entry": func["entry"],
             "score": func["score"],
             "risk_level": func["risk_level"],
-            "why": "; ".join(reasons),
-            "what_to_check": "; ".join(checks)
+            "why": "; ".join(reasons) + ".",
+            "what_to_check": "; ".join(checks) + "."
         })
 
     return targets
@@ -1439,30 +1864,49 @@ def build_analyst_playbook(behavior_story, top_functions):
 
     if len(behavior_story["entry_candidates"]) > 0:
         first_entry = behavior_story["entry_candidates"][0]
-        steps.append("start from entry candidate '{}' and inspect its outgoing internal calls".format(first_entry["name"]))
+        steps.append(
+            f"Start from entry candidate {first_entry['name']} and inspect its outgoing internal calls."
+        )
 
     if len(behavior_story["primary_dispatchers"]) > 0:
         first_dispatcher = behavior_story["primary_dispatchers"][0]
-        steps.append("open dispatcher '{}' and follow its highest-fan-out branches".format(first_dispatcher["name"]))
+        steps.append(
+            f"Open dispatcher {first_dispatcher['name']} and follow its highest fan-out branches."
+        )
 
     if len(top_functions) > 0:
         first_target = top_functions[0]
-        steps.append("review top scored function '{}' for suspicious API combinations".format(first_target["name"]))
+        steps.append(
+            f"Review top scored function {first_target['name']} for suspicious API combinations."
+        )
 
     if len(behavior_story["storyline"]) > 0:
         first_story = behavior_story["storyline"][0]["path"]
-        steps.append("trace storyline path: {}".format(" -> ".join(first_story)))
+        steps.append(
+            f"Trace storyline path: {' -> '.join(first_story)}."
+        )
 
-    steps.append("validate whether registry/debug/loading indicators are benign application logic or suspicious behavior")
-    steps.append("confirm suspicious findings in Ghidra GUI through xrefs, decompiler view, and call graph inspection")
+    steps.append(
+        "Validate whether registry, debugger, or dynamic loading indicators reflect benign application logic or suspicious behavior."
+    )
+    steps.append(
+        "Confirm suspicious findings in Ghidra GUI through xrefs, decompiler view, and call graph inspection."
+    )
 
     return {
         "steps": steps
     }
 
-
 def build_report():
+    analysis_metadata = build_analysis_metadata()
+
     sample_name = currentProgram.getName()
+    sample_info = {
+        "name": sample_name,
+        "path": currentProgram.getExecutablePath() or "",
+        "format": currentProgram.getExecutableFormat()
+    }
+
     external_symbols = get_external_symbols()
     section_info = collect_section_info()
     entrypoint_info = get_entrypoint_info()
@@ -1487,7 +1931,7 @@ def build_report():
     behavior_clusters = build_behavior_clusters(functions)
     function_role_summary = build_function_role_summary(functions)
     behavior_summary = build_behavior_summary(functions, capabilities, execution_flow_hypotheses, three_hop_flows)
-    behavior_story = build_behavior_story(functions, three_hop_flows)
+    behavior_story = build_behavior_story(functions, execution_flow_hypotheses, three_hop_flows)
 
     packer_base = build_packer_analysis(
         section_info,
@@ -1510,10 +1954,13 @@ def build_report():
         packer_family_hint
     )
 
-    raw_score = compute_raw_score(suspicious_apis, capabilities, interesting_strings, top_functions)
-
-    # piccolo boost malware-like se packed molto probabile
-    raw_score += min(packer_analysis["packed_likelihood_score"], 40)
+    raw_score = compute_raw_score(
+        suspicious_apis,
+        capabilities,
+        interesting_strings,
+        top_functions,
+        packer_analysis
+    )
 
     benign_contexts = detect_benign_contexts(external_symbols, interesting_strings, functions)
     adjusted_score, score_adjustments = apply_score_adjustments(raw_score, benign_contexts)
@@ -1533,7 +1980,7 @@ def build_report():
         risk_level,
         score_adjustments
     )
-    
+
     analyst_summary = build_analyst_summary(
         summary,
         behavior_summary,
@@ -1550,36 +1997,43 @@ def build_report():
     )
 
     return {
-        "sample": {
-            "name": sample_name,
-            "path": currentProgram.getExecutablePath() or "",
-            "format": currentProgram.getExecutableFormat()
-        },
+        "analysis_metadata": analysis_metadata,
+        "sample": sample_info,
         "summary": summary,
-        "external_symbols": external_symbols,
-        "suspicious_apis": suspicious_apis,
-        "capabilities": capabilities,
-        "interesting_strings": interesting_strings,
-        "functions": functions,
-        "top_functions": top_functions,
-        "callgraph": callgraph,
-        "behavior_clusters": behavior_clusters,
-        "function_role_summary": function_role_summary,
-        "execution_flow_hypotheses": execution_flow_hypotheses,
-        "three_hop_flows": three_hop_flows,
-        "behavior_summary": behavior_summary,
-        "behavior_story": behavior_story,
-        "benign_contexts": benign_contexts,
-        "score_adjustments": score_adjustments,
-        "analyst_summary": analyst_summary,
-        "analyst_targets": analyst_targets,
-        "analyst_playbook": analyst_playbook,
-        "packer_analysis": packer_analysis,
-        "entrypoint_info": entrypoint_info,
-        "entrypoint_window": entry_window,
-        "oep_candidates": oep_candidates,
-        "section_info": section_info,
-        "strings": strings
+        "global_analysis": {
+            "external_symbols": external_symbols,
+            "suspicious_apis": suspicious_apis,
+            "capabilities": capabilities,
+            "interesting_strings": interesting_strings,
+            "strings": strings,
+            "benign_contexts": benign_contexts,
+            "score_adjustments": score_adjustments
+        },
+        "function_analysis": {
+            "functions": functions,
+            "top_functions": top_functions,
+            "function_role_summary": function_role_summary
+        },
+        "behavior_analysis": {
+            "callgraph": callgraph,
+            "behavior_clusters": behavior_clusters,
+            "execution_flow_hypotheses": execution_flow_hypotheses,
+            "three_hop_flows": three_hop_flows,
+            "behavior_summary": behavior_summary,
+            "behavior_story": behavior_story
+        },
+        "binary_structure": {
+            "packer_analysis": packer_analysis,
+            "entrypoint_info": entrypoint_info,
+            "entrypoint_window": entry_window,
+            "oep_candidates": oep_candidates,
+            "section_info": section_info
+        },
+        "analyst_output": {
+            "analyst_summary": analyst_summary,
+            "analyst_targets": analyst_targets,
+            "analyst_playbook": analyst_playbook
+        }
     }
 
 

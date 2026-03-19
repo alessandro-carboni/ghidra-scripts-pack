@@ -32,13 +32,17 @@ function Show-Usage {
     Write-Host ""
     Write-Host "Usage examples:"
     Write-Host '  .\run.ps1 run -f ".\samples\sample.exe" -d "C:\path\ghidra_12.0.4_PUBLIC"'
-    Write-Host '  .\run.ps1 fast'
+    Write-Host '  .\run.ps1 fast -d "C:\path\ghidra_version.x.y.z_PUBLIC" (reccomended version: 12.0.4)'
     Write-Host '  .\run.ps1 report -Last'
     Write-Host '  .\run.ps1 report -Last -o summary'
+    Write-Host '  .\run.ps1 report -Last -o global_analysis'
+    Write-Host '  .\run.ps1 report -Last -o function_analysis'
+    Write-Host '  .\run.ps1 report -Last -o behavior_analysis'
+    Write-Host '  .\run.ps1 report -Last -o binary_structure'
+    Write-Host '  .\run.ps1 report -Last -o analyst_output'
+    Write-Host '  .\run.ps1 report -Last -o capabilities'
     Write-Host '  .\run.ps1 report -Last -o top_functions'
-    Write-Host '  .\run.ps1 report -Last -o analyst_summary'
-    Write-Host '  .\run.ps1 report -Last -o analyst_targets'
-    Write-Host '  .\run.ps1 report -Last -o analyst_playbook'
+    Write-Host '  .\run.ps1 report -Last -o packer_analysis'
     Write-Host '  .\run.ps1 reports'
     Write-Host '  .\run.ps1 markdown -Last'
     Write-Host '  .\run.ps1 open -Last'
@@ -246,7 +250,16 @@ function Run-Fast {
         exit 1
     }
 
-    $ResolvedGhidraDir = $state.ghidra_dir
+    if ($GhidraDir) {
+        $ResolvedGhidraDir = (Resolve-Path $GhidraDir -ErrorAction SilentlyContinue).Path
+        if (-not $ResolvedGhidraDir) {
+            Write-Error "Ghidra directory not found: $GhidraDir"
+            exit 1
+        }
+    } else {
+        $ResolvedGhidraDir = $state.ghidra_dir
+    }
+
     $SavedProjectDir   = $state.project_dir
     $SavedProjectName  = $state.project_name
     $SavedProgramName  = $state.last_program
@@ -254,9 +267,15 @@ function Run-Fast {
     $SavedPostScript   = $state.post_script
     $SavedScriptPath   = $state.script_path
 
+    if (-not $ResolvedGhidraDir) {
+        Write-Error "Missing Ghidra directory in saved state. Run a full analysis first or pass -d."
+        exit 1
+    }
+
     $PyGhidraRun = Join-Path $ResolvedGhidraDir "support\pyghidraRun.bat"
     if (-not (Test-Path $PyGhidraRun)) {
         Write-Error "pyghidraRun.bat not found at: $PyGhidraRun"
+        Write-Host "Tip: run a full analysis with -d or use: .\run.ps1 fast -d `"<ghidra_dir>`""
         exit 1
     }
 
@@ -294,6 +313,7 @@ function Run-Fast {
 
     $finalReportPath = Finalize-Report $SavedFilePath
 
+    $state.ghidra_dir = $ResolvedGhidraDir
     $state.last_report = $finalReportPath
     $state.updated_at = (Get-Date).ToString("o")
     Save-State $state
@@ -313,42 +333,55 @@ function Show-Report {
         return
     }
 
-    $allowedFields = @(
-        "sample",
-        "summary",
-        "external_symbols",
-        "suspicious_apis",
-        "capabilities",
-        "interesting_strings",
-        "strings",
-        "functions",
-        "top_functions",
-        "callgraph",
-        "behavior_clusters",
-        "function_role_summary",
-        "execution_flow_hypotheses",
-        "three_hop_flows",
-        "behavior_summary",
-        "behavior_story",
-        "benign_contexts",
-        "score_adjustments",
-        "analyst_summary",
-        "analyst_targets",
-        "analyst_playbook",
-        "packer_analysis",
-        "entrypoint_info",
-        "entrypoint_window",
-        "oep_candidates",
-        "section_info"                                      
-    )
+    $fieldMap = @{
+        "analysis_metadata"         = $report.analysis_metadata
+        "sample"                    = $report.sample
+        "summary"                   = $report.summary
 
-    if ($allowedFields -notcontains $OutputField) {
+        "global_analysis"           = $report.global_analysis
+        "external_symbols"          = $report.global_analysis.external_symbols
+        "suspicious_apis"           = $report.global_analysis.suspicious_apis
+        "capabilities"              = $report.global_analysis.capabilities
+        "interesting_strings"       = $report.global_analysis.interesting_strings
+        "strings"                   = $report.global_analysis.strings
+        "benign_contexts"           = $report.global_analysis.benign_contexts
+        "score_adjustments"         = $report.global_analysis.score_adjustments
+
+        "function_analysis"         = $report.function_analysis
+        "functions"                 = $report.function_analysis.functions
+        "top_functions"             = $report.function_analysis.top_functions
+        "function_role_summary"     = $report.function_analysis.function_role_summary
+
+        "behavior_analysis"         = $report.behavior_analysis
+        "callgraph"                 = $report.behavior_analysis.callgraph
+        "behavior_clusters"         = $report.behavior_analysis.behavior_clusters
+        "execution_flow_hypotheses" = $report.behavior_analysis.execution_flow_hypotheses
+        "three_hop_flows"           = $report.behavior_analysis.three_hop_flows
+        "behavior_summary"          = $report.behavior_analysis.behavior_summary
+        "behavior_story"            = $report.behavior_analysis.behavior_story
+
+        "binary_structure"          = $report.binary_structure
+        "packer_analysis"           = $report.binary_structure.packer_analysis
+        "entrypoint_info"           = $report.binary_structure.entrypoint_info
+        "entrypoint_window"         = $report.binary_structure.entrypoint_window
+        "oep_candidates"            = $report.binary_structure.oep_candidates
+        "section_info"              = $report.binary_structure.section_info
+
+        "analyst_output"            = $report.analyst_output
+        "analyst_summary"           = $report.analyst_output.analyst_summary
+        "analyst_targets"           = $report.analyst_output.analyst_targets
+        "analyst_playbook"          = $report.analyst_output.analyst_playbook
+    }
+
+    $allowedFields = $fieldMap.Keys | Sort-Object
+
+    if (-not $fieldMap.ContainsKey($OutputField)) {
         Write-Error "Unsupported output field: $OutputField"
         Write-Host "Allowed fields: $($allowedFields -join ', ')"
         exit 1
     }
 
-    $selected = $report.$OutputField
+    $selected = $fieldMap[$OutputField]
     Write-PrettyJson $selected
 }
 
@@ -420,11 +453,13 @@ function New-MarkdownReport {
     $samplePath = $report.sample.path
     $sampleFormat = $report.sample.format
     $summary = $report.summary
-    $capabilities = $report.capabilities
-    $suspiciousApis = $report.suspicious_apis
-    $interestingStrings = $report.interesting_strings
-    $analystSummary = $report.analyst_summary
-    $analystTargets = $report.analyst_targets
+
+    $capabilities = $report.global_analysis.capabilities
+    $suspiciousApis = $report.global_analysis.suspicious_apis
+    $interestingStrings = $report.global_analysis.interesting_strings
+
+    $analystSummary = $report.analyst_output.analyst_summary
+    $analystTargets = $report.analyst_output.analyst_targets
 
     $mdPath = [System.IO.Path]::ChangeExtension($reportPath, ".md")
 
@@ -438,20 +473,34 @@ function New-MarkdownReport {
     $lines.Add("- **Path:** $samplePath")
     $lines.Add("- **Format:** $sampleFormat")
     $lines.Add("")
+
+    if ($report.analysis_metadata) {
+        $lines.Add("## Analysis Metadata")
+        $lines.Add("")
+        $lines.Add("- **Schema version:** $($report.analysis_metadata.schema_version)")
+        $lines.Add("- **Analysis mode:** $($report.analysis_metadata.analysis_mode)")
+        $lines.Add("")
+    }
+
     $lines.Add("## Summary")
     $lines.Add("")
     $lines.Add("- **Risk level:** $($summary.risk_level)")
     $lines.Add("- **Overall score:** $($summary.overall_score)")
     $lines.Add("- **Raw score:** $($summary.raw_score)")
     $lines.Add("- **Adjustment total:** $($summary.score_adjustment_total)")
+    $lines.Add("- **Contract version:** $($summary.contract_version)")
     $lines.Add("")
 
     if ($analystSummary) {
         $lines.Add("## Analyst Summary")
         $lines.Add("")
-        foreach ($line in $analystSummary.key_points) {
-            $lines.Add("- $line")
+
+        if ($analystSummary.key_points) {
+            foreach ($line in $analystSummary.key_points) {
+                $lines.Add("- $line")
+            }
         }
+
         $lines.Add("")
     }
 
@@ -464,11 +513,12 @@ function New-MarkdownReport {
     $lines.Add("")
     $lines.Add("## Capabilities")
     $lines.Add("")
-    if ($capabilities.Count -eq 0) {
+    if (-not $capabilities -or $capabilities.Count -eq 0) {
         $lines.Add("- None detected")
     } else {
         foreach ($cap in $capabilities) {
             $lines.Add("- **$($cap.name)** (+$($cap.score))")
+            $lines.Add("  - Confidence: $($cap.confidence)")
             $lines.Add("  - Matched APIs: $($cap.matched_apis -join ', ')")
         }
     }
@@ -476,23 +526,29 @@ function New-MarkdownReport {
     $lines.Add("")
     $lines.Add("## Top Suspicious APIs")
     $lines.Add("")
-    if ($suspiciousApis.Count -eq 0) {
+    if (-not $suspiciousApis -or $suspiciousApis.Count -eq 0) {
         $lines.Add("- None detected")
     } else {
         foreach ($api in ($suspiciousApis | Select-Object -First 15)) {
             $lines.Add("- **$($api.name)** (+$($api.weight))")
+            if ($api.variants -and $api.variants.Count -gt 0) {
+                $lines.Add("  - Variants: $($api.variants -join ', ')")
+            }
         }
     }
 
     $lines.Add("")
     $lines.Add("## Top Interesting Strings")
     $lines.Add("")
-    if ($interestingStrings.Count -eq 0) {
+    if (-not $interestingStrings -or $interestingStrings.Count -eq 0) {
         $lines.Add("- None detected")
     } else {
         foreach ($item in ($interestingStrings | Select-Object -First 10)) {
             $lines.Add("- **$($item.value)** (+$($item.score))")
             $lines.Add("  - Tags: $($item.tags -join ', ')")
+            if ($item.benign_hint -eq $true) {
+                $lines.Add("  - Benign hint: true")
+            }
         }
     }
 
@@ -506,6 +562,17 @@ function New-MarkdownReport {
             $lines.Add("  - Why: $($target.why)")
             $lines.Add("  - What to check: $($target.what_to_check)")
         }
+    }
+
+    if ($report.binary_structure -and $report.binary_structure.packer_analysis) {
+        $packer = $report.binary_structure.packer_analysis
+
+        $lines.Add("")
+        $lines.Add("## Packer Analysis")
+        $lines.Add("")
+        $lines.Add("- **Likely packed:** $($packer.likely_packed)")
+        $lines.Add("- **Confidence:** $($packer.confidence)")
+        $lines.Add("- **Packed likelihood score:** $($packer.packed_likelihood_score)")
     }
 
     Set-Content -Path $mdPath -Value $lines -Encoding UTF8
