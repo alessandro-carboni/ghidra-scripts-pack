@@ -149,6 +149,65 @@ func WriteMarkdownFromRaw(reportPath string, raw map[string]any) (string, error)
 		if family := getString(packer["packer_family_hint"]); family != "" {
 			lines = append(lines, fmt.Sprintf("- **Family hint:** %s", family))
 		}
+	rustEnrichment := getMap(raw["rust_enrichment"])
+	if len(rustEnrichment) > 0 {
+		lines = append(lines, "", "## Rust Enrichment", "")
+
+		engineMetadata := getMap(rustEnrichment["engine_metadata"])
+		if len(engineMetadata) > 0 {
+			lines = append(lines, fmt.Sprintf("- **Engine:** %s", getString(engineMetadata["engine_name"])))
+			lines = append(lines, fmt.Sprintf("- **Version:** %s", getString(engineMetadata["engine_version"])))
+			lines = append(lines, fmt.Sprintf("- **Input contract version:** %s", getString(engineMetadata["input_contract_version"])))
+		}
+
+		scoreCalibration := getMap(rustEnrichment["score_calibration"])
+		if len(scoreCalibration) > 0 {
+			lines = append(lines, fmt.Sprintf("- **Calibrated score:** %d", getInt(scoreCalibration["calibrated_score"])))
+			lines = append(lines, fmt.Sprintf("- **Score delta:** %d", getInt(scoreCalibration["delta"])))
+		}
+
+		scoreBands := getMap(rustEnrichment["score_bands"])
+		if len(scoreBands) > 0 {
+			lines = append(lines, fmt.Sprintf("- **Original band:** %s", getString(scoreBands["original_band"])))
+			lines = append(lines, fmt.Sprintf("- **Calibrated band:** %s", getString(scoreBands["calibrated_band"])))
+		}
+
+		decisionSummary := getMap(rustEnrichment["decision_summary"])
+		if len(decisionSummary) > 0 {
+			lines = append(lines, fmt.Sprintf("- **Malicious signal strength:** %s", getString(decisionSummary["malicious_signal_strength"])))
+			lines = append(lines, fmt.Sprintf("- **Analysis confidence:** %s", getString(decisionSummary["analysis_confidence"])))
+			lines = append(lines, fmt.Sprintf("- **Needs manual review:** %v", getBool(decisionSummary["needs_manual_review"])))
+		}
+
+		derivedCapabilities := getSlice(rustEnrichment["derived_capabilities"])
+		if len(derivedCapabilities) > 0 {
+			lines = append(lines, "", "### Derived Capabilities", "")
+			for _, item := range derivedCapabilities {
+				m := getMap(item)
+				lines = append(lines, fmt.Sprintf("- **%s** (%s)", getString(m["name"]), getString(m["confidence"])))
+			}
+		}
+
+		confidenceNotes := getSlice(rustEnrichment["confidence_notes"])
+		if len(confidenceNotes) > 0 {
+			lines = append(lines, "", "### Confidence Notes", "")
+			for _, item := range confidenceNotes {
+				if s, ok := item.(string); ok {
+					lines = append(lines, "- "+s)
+				}
+			}
+		}
+
+		riskAnnotations := getSlice(rustEnrichment["risk_annotations"])
+		if len(riskAnnotations) > 0 {
+			lines = append(lines, "", "### Risk Annotations", "")
+			for _, item := range riskAnnotations {
+				if s, ok := item.(string); ok {
+					lines = append(lines, "- "+s)
+				}
+			}
+		}
+	}
 	}
 
 	content := strings.Join(lines, "\n")

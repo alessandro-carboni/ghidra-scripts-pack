@@ -6,8 +6,11 @@
   "script_path": "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\ghidra_scripts",
   "rule_dir": "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\rules",
   "output_dir": "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\reports",
+  "rust_engine_path": ".\\rust_engine\\target\\debug\\rust_engine.exe",
   "last_file_path": "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\samples\\prova.exe",
   "last_program": "prova.exe",
-  "last_report": "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\reports\\prova_20260319_123518.json",
-  "updated_at": "2026-03-19T12:35:18+01:00"
+  "last_report": "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\reports\\prova_20260319_132208.json",
+  "last_raw_report": "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\reports\\prova_20260319_132208_raw.json",
+  "last_enriched_report": "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\reports\\prova_20260319_132208.json",
+  "updated_at": "2026-03-19T13:22:10+01:00"
 }

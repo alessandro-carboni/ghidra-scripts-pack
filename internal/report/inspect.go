@@ -150,3 +150,15 @@ func contains(items []string, needle string) bool {
 	}
 	return false
 }
+
+func InspectRust(raw map[string]any) (map[string]any, error) {
+	rustBlock := getMap(raw["rust_enrichment"])
+	if len(rustBlock) == 0 {
+		return nil, fmt.Errorf("no rust enrichment found in report")
+	}
+
+	return map[string]any{
+		"inspect_type":    "rust_enrichment",
+		"rust_enrichment": rustBlock,
+	}, nil
+}

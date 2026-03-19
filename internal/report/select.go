@@ -5,6 +5,7 @@ import (
 	"os"
 	"path/filepath"
 	"sort"
+	"strings"
 	"time"
 )
 
@@ -113,6 +114,18 @@ func DeleteReportWithMarkdown(reportPath string) error {
 	mdPath := CompanionMarkdownPath(reportPath)
 	if _, err := os.Stat(mdPath); err == nil {
 		_ = os.Remove(mdPath)
+	}
+
+	if !strings.HasSuffix(reportPath, "_raw.json") && strings.HasSuffix(reportPath, ".json") {
+		rawSibling := strings.TrimSuffix(reportPath, ".json") + "_raw.json"
+		if _, err := os.Stat(rawSibling); err == nil {
+			_ = os.Remove(rawSibling)
+		}
+
+		rawSiblingMD := CompanionMarkdownPath(rawSibling)
+		if _, err := os.Stat(rawSiblingMD); err == nil {
+			_ = os.Remove(rawSiblingMD)
+		}
 	}
 
 	return nil

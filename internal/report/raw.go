@@ -106,8 +106,8 @@ func SelectOutputField(raw map[string]any, field string) (any, []string, error) 
 	fieldMap := map[string]string{
 		"analysis_metadata":         "analysis_metadata",
 		"rule_contract":             "rule_contract",
+		"rust_enrichment":           "rust_enrichment",
 		"sample":                    "sample",
-		"summary":                   "summary",
 
 		"global_analysis":           "global_analysis",
 		"external_symbols":          "global_analysis.external_symbols",

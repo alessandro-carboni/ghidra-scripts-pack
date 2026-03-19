@@ -51,23 +51,18 @@ func showUsage() {
 	fmt.Println("Usage examples:")
 	fmt.Println(`  triage scan -input .\samples\sample.exe -ghidra-dir C:\path\ghidra_12.0.4_PUBLIC`)
 	fmt.Println(`  triage scan -input .\samples\sample.exe -ghidra-dir C:\path\ghidra_12.0.4_PUBLIC -rule-dir .\rules`)
+	fmt.Println(`  triage scan -input .\samples\sample.exe -ghidra-dir C:\path\ghidra_12.0.4_PUBLIC -rust-engine .\rust_engine\target\debug\rust_engine.exe`)
 	fmt.Println(`  triage fast -ghidra-dir C:\path\ghidra_12.0.4_PUBLIC`)
 	fmt.Println(`  triage fast -rule-dir .\rules`)
 	fmt.Println(`  triage report -last`)
 	fmt.Println(`  triage report -last -o summary`)
-	fmt.Println(`  triage report -last -o global_analysis`)
-	fmt.Println(`  triage report -last -o function_analysis`)
-	fmt.Println(`  triage report -last -o behavior_analysis`)
-	fmt.Println(`  triage report -last -o binary_structure`)
-	fmt.Println(`  triage report -last -o analyst_output`)
-	fmt.Println(`  triage report -last -o capabilities`)
-	fmt.Println(`  triage report -last -o top_functions`)
-	fmt.Println(`  triage report -last -o packer_analysis`)
+	fmt.Println(`  triage report -last -o rust_enrichment`)
 	fmt.Println(`  triage reports`)
 	fmt.Println(`  triage inspect -last -function FUN_401000`)
 	fmt.Println(`  triage inspect -last -capability process_injection`)
 	fmt.Println(`  triage inspect -last -packer`)
 	fmt.Println(`  triage inspect -last -strings`)
+	fmt.Println(`  triage inspect -last -rust`)
 	fmt.Println(`  triage diff -left report_old.json -right report_new.json`)
 	fmt.Println(`  triage state`)
 	fmt.Println(`  triage markdown -last`)
@@ -77,7 +72,9 @@ func showUsage() {
 	fmt.Println("")
 }
 
-func buildConfigAndProjectRoot(ghidraDir, projectDir, projectName, scriptPath, postScript, ruleDir, outputDir string) (config.Config, string, error) {
+func buildConfigAndProjectRoot(
+	ghidraDir, projectDir, projectName, scriptPath, postScript, ruleDir, outputDir, rustEnginePath string,
+) (config.Config, string, error) {
 	projectRoot, err := config.ProjectRootFromWD()
 	if err != nil {
 		return config.Config{}, "", err
@@ -92,6 +89,7 @@ func buildConfigAndProjectRoot(ghidraDir, projectDir, projectName, scriptPath, p
 		postScript,
 		ruleDir,
 		outputDir,
+		rustEnginePath,
 	)
 
 	return cfg, projectRoot, nil
@@ -108,6 +106,7 @@ func runScan(args []string) {
 	postScript := fs.String("post-script", "export_report.py", "post script file name")
 	ruleDir := fs.String("rule-dir", "", "rule directory")
 	outputDir := fs.String("output-dir", "", "output/report directory")
+	rustEnginePath := fs.String("rust-engine", "", "rust engine executable path")
 
 	_ = fs.Parse(args)
 
@@ -120,7 +119,9 @@ func runScan(args []string) {
 		os.Exit(1)
 	}
 
-	cfg, projectRoot, err := buildConfigAndProjectRoot(*ghidraDir, *projectDir, *projectName, *scriptPath, *postScript, *ruleDir, *outputDir)
+	cfg, projectRoot, err := buildConfigAndProjectRoot(
+		*ghidraDir, *projectDir, *projectName, *scriptPath, *postScript, *ruleDir, *outputDir, *rustEnginePath,
+	)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "build config: %v\n", err)
 		os.Exit(1)
@@ -170,7 +171,8 @@ func runScan(args []string) {
 			fmt.Fprintf(os.Stderr, "[!] Save state warning: %v\n", err)
 		}
 
-		fmt.Printf("[+] Report: %s\n", result.FinalReportPath)
+		fmt.Printf("[+] Raw report: %s\n", result.RawReportPath)
+		fmt.Printf("[+] Enriched report: %s\n", result.EnrichedReportPath)
 
 		rep, err := report.Load(result.FinalReportPath)
 		if err != nil {
@@ -202,6 +204,7 @@ func runFast(args []string) {
 	postScript := fs.String("post-script", "", "post script file name")
 	ruleDir := fs.String("rule-dir", "", "rule directory")
 	outputDir := fs.String("output-dir", "", "output/report directory")
+	rustEnginePath := fs.String("rust-engine", "", "rust engine executable path")
 
 	_ = fs.Parse(args)
 
@@ -256,6 +259,11 @@ func runFast(args []string) {
 		resolvedOutputDir = *outputDir
 	}
 
+	resolvedRustEnginePath := st.RustEnginePath
+	if *rustEnginePath != "" {
+		resolvedRustEnginePath = *rustEnginePath
+	}
+
 	cfg, _, err := buildConfigAndProjectRoot(
 		resolvedGhidraDir,
 		resolvedProjectDir,
@@ -264,6 +272,7 @@ func runFast(args []string) {
 		resolvedPostScript,
 		resolvedRuleDir,
 		resolvedOutputDir,
+		resolvedRustEnginePath,
 	)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "build config: %v\n", err)
@@ -295,7 +304,8 @@ func runFast(args []string) {
 		fmt.Fprintf(os.Stderr, "save state warning: %v\n", err)
 	}
 
-	fmt.Printf("[+] Fast report: %s\n", result.FinalReportPath)
+	fmt.Printf("[+] Raw report: %s\n", result.RawReportPath)
+	fmt.Printf("[+] Enriched report: %s\n", result.EnrichedReportPath)
 }
 
 func runReport(args []string) {
@@ -367,6 +377,7 @@ func runInspect(args []string) {
 	capabilityName := fs.String("capability", "", "capability name")
 	packer := fs.Bool("packer", false, "inspect packer analysis")
 	stringsFlag := fs.Bool("strings", false, "inspect interesting strings")
+	rustFlag := fs.Bool("rust", false, "inspect rust enrichment")
 	reportsDir := fs.String("reports-dir", ".\\reports", "reports directory")
 
 	_ = fs.Parse(args)
@@ -398,9 +409,12 @@ func runInspect(args []string) {
 	if *stringsFlag {
 		modeCount++
 	}
+	if *rustFlag {
+		modeCount++
+	}
 
 	if modeCount == 0 {
-		fmt.Fprintln(os.Stderr, "specify one inspect target: -function, -capability, -packer, or -strings")
+		fmt.Fprintln(os.Stderr, "specify one inspect target: -function, -capability, -packer, -strings, or -rust")
 		os.Exit(1)
 	}
 	if modeCount > 1 {
@@ -440,6 +454,16 @@ func runInspect(args []string) {
 
 	if *stringsFlag {
 		out, err := report.InspectStrings(raw)
+		if err != nil {
+			fmt.Fprintln(os.Stderr, err)
+			os.Exit(1)
+		}
+		fmt.Println(report.Pretty(out))
+		return
+	}
+
+	if *rustFlag {
+		out, err := report.InspectRust(raw)
 		if err != nil {
 			fmt.Fprintln(os.Stderr, err)
 			os.Exit(1)
