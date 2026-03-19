@@ -1364,9 +1364,18 @@ def build_top_indicators(suspicious_apis, capabilities, interesting_strings, top
     return indicators[:12]
 
 
-def build_summary(sample_name, external_symbols, suspicious_apis, capabilities, functions, strings, interesting_strings, top_functions, raw_score, adjusted_score, risk_level, score_adjustments):
+def build_summary(sample_name, external_symbols, suspicious_apis, capabilities, functions, strings, interesting_strings, top_functions, raw_score, adjusted_score, risk_level, score_adjustments, packer_analysis):
+    packed_warning = None
+
+    if packer_analysis.get("likely_packed", False):
+        packed_warning = (
+            "This file appears to be packed. Static risk level, score, strings, and behavioral inference "
+            "should be interpreted with caution because packing can hide or distort the program's real behavior."
+        )
+
     return {
         "sample_name": sample_name,
+        "packed_warning": packed_warning,
         "risk_level": risk_level,
         "overall_score": adjusted_score,
         "raw_score": raw_score,
@@ -1385,6 +1394,9 @@ def build_summary(sample_name, external_symbols, suspicious_apis, capabilities, 
 
 def build_analyst_summary(summary, behavior_summary, capabilities, top_functions, score_adjustments):
     key_points = []
+
+    if summary.get("packed_warning"):
+        key_points.append("Packed-sample caution: static findings may not fully reflect the program's real runtime behavior.")
 
     key_points.append(
         f"Overall risk classified as {summary['risk_level']} with final score {summary['overall_score']}."
@@ -1589,7 +1601,7 @@ def find_oep_candidates(entrypoint_info):
     instr = listing.getInstructionAt(entry)
     scanned = 0
 
-    while instr is not None and scanned < 30:
+    while instr is not None and scanned < 120:
         mnemonic = instr.getMnemonicString().upper()
 
         if mnemonic in ["JMP", "CALL"]:
@@ -1606,34 +1618,54 @@ def find_oep_candidates(entrypoint_info):
                 if target_str in seen:
                     continue
 
+                # escludi target esterni/non utili per OEP recovery
+                if target_str.startswith("EXTERNAL:"):
+                    continue
+
                 target_block = memory.getBlock(target)
                 target_section = safe_block_name(target_block)
                 same_section = (target_section == entrypoint_info["section"])
 
+                # se non appartiene a un block reale, non è un buon candidato OEP
+                if target_block is None:
+                    continue
+
                 reason_parts = []
                 score = 0
 
-                # Candidato serio solo se cambia sezione o viene da contesto sospetto
                 if not same_section:
                     if mnemonic == "JMP":
                         reason_parts.append("unconditional jump from entry stub to different section")
                         score += 35
                     elif mnemonic == "CALL":
                         reason_parts.append("call target from entry stub to different section")
-                        score += 20
+                        score += 18
 
-                    if target_block and target_block.isExecute():
+                    if target_block.isExecute():
                         reason_parts.append("target section executable")
                         score += 10
+                    else:
+                        # se non è eseguibile non è un buon OEP candidate
+                        continue
 
-                # stesso blocco/section = molto più debole
+                    if target_section == ".text":
+                        reason_parts.append("target section is .text")
+                        score += 20
+
+                    if target_section not in SUSPICIOUS_SECTION_NAMES and target_section != "unknown":
+                        reason_parts.append("target section is non-stub/non-suspicious")
+                        score += 10
                 else:
                     if mnemonic == "JMP":
                         reason_parts.append("jump stays inside same section")
-                        score += 5
+                        score += 3
                     elif mnemonic == "CALL":
                         reason_parts.append("call stays inside same section")
-                        score += 2
+                        score += 1
+
+                    if target_block and target_block.isExecute():
+                        reason_parts.append("same-section executable target")
+                        score += 1
 
                 if score > 0:
                     candidates.append({
@@ -1859,8 +1891,13 @@ def build_analyst_targets(top_functions):
     return targets
 
 
-def build_analyst_playbook(behavior_story, top_functions):
+def build_analyst_playbook(behavior_story, top_functions, summary):
     steps = []
+
+    if summary.get("packed_warning"):
+        steps.append(
+            "Treat static score and behavior inference with caution because the sample appears packed; prioritize unpacking stub review and likely OEP recovery."
+        )
 
     if len(behavior_story["entry_candidates"]) > 0:
         first_entry = behavior_story["entry_candidates"][0]
@@ -1978,7 +2015,8 @@ def build_report():
         raw_score,
         adjusted_score,
         risk_level,
-        score_adjustments
+        score_adjustments,
+        packer_analysis
     )
 
     analyst_summary = build_analyst_summary(
@@ -1993,7 +2031,8 @@ def build_report():
 
     analyst_playbook = build_analyst_playbook(
         behavior_story,
-        top_functions
+        top_functions,
+        summary
     )
 
     return {

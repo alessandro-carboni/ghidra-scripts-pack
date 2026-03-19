@@ -1,12 +1,12 @@
 ﻿{
-    "last_report":  "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\reports\\notepad_20260319_051739.json",
+    "last_report":  "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\reports\\sample-20190115_20260319_053557.json",
     "output_dir":  "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\reports",
-    "last_file_path":  "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\samples\\notepad.exe",
+    "last_file_path":  "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\samples\\sample-20190115.exe",
     "project_dir":  "C:\\ghidra-projects",
     "post_script":  "export_report.py",
     "script_path":  "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\ghidra_scripts",
     "ghidra_dir":  "C:\\Users\\aless\\Desktop\\_\\Projects\\ghidra_12.0.4_PUBLIC",
-    "last_program":  "notepad.exe",
-    "updated_at":  "2026-03-19T05:17:39.4974694+01:00",
+    "last_program":  "sample-20190115.exe",
+    "updated_at":  "2026-03-19T05:35:57.5037585+01:00",
     "project_name":  "TriageProject"
 }
