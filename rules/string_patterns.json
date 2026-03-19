@@ -1,0 +1,82 @@
+{
+  "url_or_network": {
+    "keywords": [
+      "http://",
+      "https://",
+      "ftp://",
+      "www.",
+      ".com",
+      ".net",
+      ".org",
+      "user-agent",
+      "host:",
+      "cookie"
+    ],
+    "score": 15,
+    "tag": "networking"
+  },
+  "filesystem_path": {
+    "keywords": [
+      "c:\\",
+      "\\users\\",
+      "\\appdata\\",
+      "\\temp\\",
+      "\\windows\\",
+      ".exe",
+      ".bat",
+      ".cmd",
+      ".ps1"
+    ],
+    "score": 10,
+    "tag": "filesystem"
+  },
+  "registry": {
+    "keywords": [
+      "hkey_",
+      "software\\microsoft\\windows\\currentversion\\run",
+      "runonce",
+      "regsvr32"
+    ],
+    "score": 20,
+    "tag": "persistence"
+  },
+  "crypto_ransom": {
+    "keywords": [
+      "aes",
+      "rsa",
+      "encrypt",
+      "decrypt",
+      "ransom",
+      "bitcoin",
+      "wallet"
+    ],
+    "score": 12,
+    "tag": "crypto"
+  },
+  "commands": {
+    "keywords": [
+      "cmd.exe",
+      "powershell",
+      "rundll32",
+      "wmic",
+      "schtasks",
+      "bitsadmin",
+      "certutil"
+    ],
+    "score": 20,
+    "tag": "execution"
+  },
+  "anti_analysis": {
+    "keywords": [
+      "sandbox",
+      "debugger",
+      "vmware",
+      "virtualbox",
+      "wireshark",
+      "procmon",
+      "ollydbg"
+    ],
+    "score": 20,
+    "tag": "anti_analysis"
+  }
+}

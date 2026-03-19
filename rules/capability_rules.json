@@ -1,0 +1,71 @@
+{
+  "process_injection": {
+    "apis": [
+      "VirtualAlloc",
+      "VirtualAllocEx",
+      "WriteProcessMemory",
+      "CreateRemoteThread",
+      "CreateRemoteThreadEx",
+      "NtWriteVirtualMemory",
+      "NtCreateThreadEx"
+    ],
+    "min_matches": 2,
+    "score": 40
+  },
+  "networking": {
+    "apis": [
+      "socket",
+      "connect",
+      "recv",
+      "send",
+      "WSAStartup",
+      "WinHttpOpen",
+      "WinHttpConnect",
+      "WinHttpSendRequest",
+      "InternetOpenUrlA",
+      "InternetOpenUrlW",
+      "InternetReadFile",
+      "URLDownloadToFileA",
+      "URLDownloadToFileW"
+    ],
+    "min_matches": 2,
+    "score": 20
+  },
+  "crypto": {
+    "apis": [
+      "CryptEncrypt",
+      "CryptDecrypt",
+      "BCryptEncrypt",
+      "BCryptDecrypt"
+    ],
+    "min_matches": 1,
+    "score": 20
+  },
+  "persistence": {
+    "apis": [
+      "RegCreateKeyEx",
+      "RegSetValueEx",
+      "RegOpenKeyEx"
+    ],
+    "min_matches": 3,
+    "score": 15
+  },
+  "anti_analysis": {
+    "apis": [
+      "IsDebuggerPresent",
+      "OutputDebugString",
+      "CheckRemoteDebuggerPresent"
+    ],
+    "min_matches": 3,
+    "score": 8
+  },
+  "dynamic_loading": {
+    "apis": [
+      "LoadLibraryW",
+      "LoadLibraryA",
+      "GetProcAddress"
+    ],
+    "min_matches": 3,
+    "score": 10
+  }
+}

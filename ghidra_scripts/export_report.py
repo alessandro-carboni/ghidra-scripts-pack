@@ -8,6 +8,12 @@
 import os
 import json
 
+DEFAULT_RULES_DIR_NAME = "rules"
+DEFAULT_RULE_FILES = {
+    "api_weights": "api_weights.json",
+    "capability_rules": "capability_rules.json",
+    "string_patterns": "string_patterns.json",
+}
 
 MAX_STRINGS = 400
 MAX_STRING_LENGTH = 220
@@ -136,6 +142,7 @@ CLASSIC_UNPACKING_MNEMONICS = set(["PUSHAD", "PUSHA", "POPAD", "POPA", "JMP", "C
 
 SCHEMA_VERSION = "1.1.0"
 ANALYSIS_MODE = "static_headless"
+RULE_CONTRACT_VERSION = "1.0.0"
 
 API_NORMALIZATION_MAP = {
     "CreateProcessA": "CreateProcess",
@@ -166,6 +173,194 @@ API_NORMALIZATION_MAP = {
 
 BENIGN_STRING_KEYWORDS = ["microsoft", "notepad", "richedit", "comdlg", "print", "page setup", "font", "open file", "save file"]
 
+LOADED_RULES_METADATA = {
+    "rules_dir": None,
+    "rules_dir_exists": False,
+    "rules_arg_provided": False,
+    "expected_files": [],
+    "loaded_files": [],
+    "fallbacks_used": [],
+    "errors": [],
+    "rule_sources": {},
+    "effective_rule_counts": {},
+}
+
+
+def _get_script_directory():
+    try:
+        return os.path.dirname(os.path.abspath(__file__))
+    except Exception:
+        return os.getcwd()
+
+
+def _resolve_rules_dir(script_args):
+    if len(script_args) > 1 and script_args[1]:
+        return script_args[1]
+
+    script_dir = _get_script_directory()
+    project_root = os.path.dirname(script_dir)
+    return os.path.join(project_root, DEFAULT_RULES_DIR_NAME)
+
+
+def _load_json_file(path):
+    with open(path, "r") as f:
+        return json.load(f)
+
+
+def _validate_api_weights(data):
+    if not isinstance(data, dict):
+        raise ValueError("api_weights must be a JSON object")
+    for key, value in data.items():
+        if not isinstance(key, str):
+            raise ValueError("api_weights keys must be strings")
+        if not isinstance(value, int):
+            raise ValueError("api_weights values must be integers")
+    return data
+
+
+def _validate_capability_rules(data):
+    if not isinstance(data, dict):
+        raise ValueError("capability_rules must be a JSON object")
+
+    for capability_name, rule in data.items():
+        if not isinstance(capability_name, str):
+            raise ValueError("capability name must be a string")
+        if not isinstance(rule, dict):
+            raise ValueError("capability rule must be an object")
+        if "apis" not in rule or "min_matches" not in rule or "score" not in rule:
+            raise ValueError("capability rule must contain apis, min_matches, score")
+        if not isinstance(rule["apis"], list) or not all(isinstance(x, str) for x in rule["apis"]):
+            raise ValueError("capability rule 'apis' must be a list of strings")
+        if not isinstance(rule["min_matches"], int):
+            raise ValueError("capability rule 'min_matches' must be an integer")
+        if not isinstance(rule["score"], int):
+            raise ValueError("capability rule 'score' must be an integer")
+
+    return data
+
+
+def _validate_string_patterns(data):
+    if not isinstance(data, dict):
+        raise ValueError("string_patterns must be a JSON object")
+
+    for rule_name, rule in data.items():
+        if not isinstance(rule_name, str):
+            raise ValueError("string pattern name must be a string")
+        if not isinstance(rule, dict):
+            raise ValueError("string pattern rule must be an object")
+        if "keywords" not in rule or "score" not in rule or "tag" not in rule:
+            raise ValueError("string pattern rule must contain keywords, score, tag")
+        if not isinstance(rule["keywords"], list) or not all(isinstance(x, str) for x in rule["keywords"]):
+            raise ValueError("string pattern 'keywords' must be a list of strings")
+        if not isinstance(rule["score"], int):
+            raise ValueError("string pattern 'score' must be an integer")
+        if not isinstance(rule["tag"], str):
+            raise ValueError("string pattern 'tag' must be a string")
+
+    return data
+
+
+def _build_rule_sources_map():
+    loaded_rule_names = set([item["rule"] for item in LOADED_RULES_METADATA.get("loaded_files", [])])
+    fallback_rule_names = set([item["rule"] for item in LOADED_RULES_METADATA.get("fallbacks_used", [])])
+
+    sources = {}
+    for rule_key in DEFAULT_RULE_FILES.keys():
+        if rule_key in loaded_rule_names:
+            sources[rule_key] = "external"
+        elif rule_key in fallback_rule_names:
+            sources[rule_key] = "internal_fallback"
+        else:
+            sources[rule_key] = "unknown"
+
+    return sources
+
+
+def _build_effective_rule_counts():
+    return {
+        "api_weights": len(SUSPICIOUS_API_WEIGHTS),
+        "capability_rules": len(CAPABILITY_RULES),
+        "normalized_capability_rules": len(NORMALIZED_CAPABILITY_RULES),
+        "string_patterns": len(STRING_PATTERNS),
+    }
+
+
+def build_rule_contract():
+    capability_names = sorted(NORMALIZED_CAPABILITY_RULES.keys())
+    string_pattern_names = sorted(STRING_PATTERNS.keys())
+
+    return {
+        "version": RULE_CONTRACT_VERSION,
+        "external_rule_files": dict(DEFAULT_RULE_FILES),
+        "effective_rule_counts": _build_effective_rule_counts(),
+        "capability_rule_names": capability_names,
+        "string_pattern_names": string_pattern_names,
+    }
+
+
+def load_external_rules(script_args):
+    global SUSPICIOUS_API_WEIGHTS
+    global CAPABILITY_RULES
+    global STRING_PATTERNS
+    global NORMALIZED_CAPABILITY_RULES
+    global LOADED_RULES_METADATA
+
+    rules_dir = _resolve_rules_dir(script_args)
+
+    LOADED_RULES_METADATA = {
+        "rules_dir": rules_dir,
+        "rules_dir_exists": os.path.isdir(rules_dir),
+        "rules_arg_provided": len(script_args) > 1 and bool(script_args[1]),
+        "expected_files": [{"rule": rule_key, "filename": DEFAULT_RULE_FILES[rule_key]} for rule_key in sorted(DEFAULT_RULE_FILES.keys())],
+        "loaded_files": [],
+        "fallbacks_used": [],
+        "errors": [],
+        "rule_sources": {},
+        "effective_rule_counts": {},
+    }
+
+    config = [
+        ("api_weights", _validate_api_weights, "SUSPICIOUS_API_WEIGHTS"),
+        ("capability_rules", _validate_capability_rules, "CAPABILITY_RULES"),
+        ("string_patterns", _validate_string_patterns, "STRING_PATTERNS"),
+    ]
+
+    for rule_key, validator, target_name in config:
+        filename = DEFAULT_RULE_FILES[rule_key]
+        path = os.path.join(rules_dir, filename)
+
+        try:
+            if not os.path.exists(path):
+                LOADED_RULES_METADATA["fallbacks_used"].append(
+                    {"rule": rule_key, "reason": "file_not_found", "path": path}
+                )
+                continue
+
+            loaded = _load_json_file(path)
+            loaded = validator(loaded)
+
+            if target_name == "SUSPICIOUS_API_WEIGHTS":
+                SUSPICIOUS_API_WEIGHTS = loaded
+            elif target_name == "CAPABILITY_RULES":
+                CAPABILITY_RULES = loaded
+            elif target_name == "STRING_PATTERNS":
+                STRING_PATTERNS = loaded
+
+            LOADED_RULES_METADATA["loaded_files"].append(
+                {"rule": rule_key, "path": path}
+            )
+
+        except Exception as e:
+            LOADED_RULES_METADATA["errors"].append(
+                {"rule": rule_key, "path": path, "error": str(e)}
+            )
+            LOADED_RULES_METADATA["fallbacks_used"].append(
+                {"rule": rule_key, "reason": "load_error", "path": path}
+            )
+
+    NORMALIZED_CAPABILITY_RULES = build_capability_rule_index()
+    LOADED_RULES_METADATA["rule_sources"] = _build_rule_sources_map()
+    LOADED_RULES_METADATA["effective_rule_counts"] = _build_effective_rule_counts()
 
 def canonicalize_api_name(name):
     if not name:
@@ -216,7 +411,12 @@ def has_any_keyword(value, keywords):
 
 
 def build_analysis_metadata():
-    return {"schema_version": SCHEMA_VERSION, "analysis_mode": ANALYSIS_MODE}
+    return {
+        "schema_version": SCHEMA_VERSION,
+        "analysis_mode": ANALYSIS_MODE,
+        "rule_contract_version": RULE_CONTRACT_VERSION,
+        "rules_metadata": LOADED_RULES_METADATA,
+    }
 
 
 def safe_join(items, sep=", "):
@@ -1557,6 +1757,7 @@ def build_report():
 
     return {
         "analysis_metadata": analysis_metadata,
+        "rule_contract": build_rule_contract(),
         "sample": sample_info,
         "summary": summary,
         "global_analysis": {"external_symbols": external_symbols, "suspicious_apis": suspicious_apis, "capabilities": capabilities, "interesting_strings": interesting_strings, "strings": strings, "benign_contexts": benign_contexts, "score_adjustments": score_adjustments},
@@ -1571,6 +1772,11 @@ def main():
     script_args = getScriptArgs()
     output_dir = script_args[0] if len(script_args) > 0 else "."
     output_path = os.path.join(output_dir, "raw_report.json")
+
+    if not os.path.isdir(output_dir):
+        os.makedirs(output_dir)
+
+    load_external_rules(script_args)
 
     report = build_report()
 

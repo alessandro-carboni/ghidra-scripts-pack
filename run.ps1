@@ -1,6 +1,6 @@
 param(
     [Parameter(Position = 0)]
-    [ValidateSet("run", "fast", "report", "reports", "delete", "open", "markdown")]
+    [ValidateSet("run", "fast", "report", "reports", "delete", "open", "markdown", "inspect", "diff", "state")]
     [string]$Command,
 
     [Alias("f")]
@@ -19,7 +19,14 @@ param(
     [switch]$Last,
     [switch]$All,
 
-    [string]$Name
+    [string]$Name,
+    [string]$FunctionName,
+    [string]$CapabilityName,
+    [switch]$Packer,
+    [switch]$Strings,
+    [string]$LeftName,
+    [string]$RightName,
+    [string]$RuleDir
 )
 
 $ProjectRoot = $PSScriptRoot
@@ -32,7 +39,9 @@ function Show-Usage {
     Write-Host ""
     Write-Host "Usage examples:"
     Write-Host '  .\run.ps1 run -f ".\samples\sample.exe" -d "C:\path\ghidra_12.0.4_PUBLIC"'
-    Write-Host '  .\run.ps1 fast -d "C:\path\ghidra_version.x.y.z_PUBLIC" (reccomended version: 12.0.4)'
+    Write-Host '  .\run.ps1 run -f ".\samples\sample.exe" -d "C:\path\ghidra_12.0.4_PUBLIC" -RuleDir ".\rules"'
+    Write-Host '  .\run.ps1 fast -d "C:\path\ghidra_version.x.y.z_PUBLIC"'
+    Write-Host '  .\run.ps1 fast -RuleDir ".\rules"'
     Write-Host '  .\run.ps1 report -Last'
     Write-Host '  .\run.ps1 report -Last -o summary'
     Write-Host '  .\run.ps1 report -Last -o global_analysis'
@@ -44,6 +53,12 @@ function Show-Usage {
     Write-Host '  .\run.ps1 report -Last -o top_functions'
     Write-Host '  .\run.ps1 report -Last -o packer_analysis'
     Write-Host '  .\run.ps1 reports'
+    Write-Host '  .\run.ps1 inspect -Last -FunctionName FUN_401000'
+    Write-Host '  .\run.ps1 inspect -Last -CapabilityName process_injection'
+    Write-Host '  .\run.ps1 inspect -Last -Packer'
+    Write-Host '  .\run.ps1 inspect -Last -Strings'
+    Write-Host '  .\run.ps1 diff -LeftName report_old.json -RightName report_new.json'
+    Write-Host '  .\run.ps1 state'
     Write-Host '  .\run.ps1 markdown -Last'
     Write-Host '  .\run.ps1 open -Last'
     Write-Host '  .\run.ps1 delete -Last'
@@ -75,11 +90,89 @@ function Read-JsonFile([string]$Path) {
 }
 
 function Write-PrettyJson($Object) {
-    $Object | ConvertTo-Json -Depth 40
+    $Object | ConvertTo-Json -Depth 60
+}
+
+function Exit-InspectError([string]$Message) {
+    Write-Error $Message
+    exit 1
+}
+
+function Exit-DiffError([string]$Message) {
+    Write-Error $Message
+    exit 1
+}
+
+function Resolve-ReportPathByName([string]$ReportName) {
+    if (-not $ReportName) {
+        return $null
+    }
+
+    $fullPath = Join-Path $OutputDir $ReportName
+    if (-not (Test-Path $fullPath)) {
+        Exit-DiffError "Report not found: $fullPath"
+    }
+
+    return $fullPath
+}
+
+function Get-SafeArray($Value) {
+    if ($null -eq $Value) {
+        return @()
+    }
+    return @($Value)
+}
+
+function Get-NameList($Items) {
+    $names = @()
+
+    foreach ($item in (Get-SafeArray $Items)) {
+        if ($null -eq $item) {
+            continue
+        }
+
+        if ($item.PSObject.Properties["name"]) {
+            $names += [string]$item.name
+        }
+        elseif ($item -is [string]) {
+            $names += [string]$item
+        }
+    }
+
+    return @($names | Sort-Object -Unique)
+}
+
+function Get-ValueList($Items, [string]$PropertyName) {
+    $values = @()
+
+    foreach ($item in (Get-SafeArray $Items)) {
+        if ($null -eq $item) {
+            continue
+        }
+
+        if ($item.PSObject.Properties[$PropertyName]) {
+            $values += [string]$item.$PropertyName
+        }
+    }
+
+    return @($values | Sort-Object -Unique)
+}
+
+function Compare-StringSets($LeftItems, $RightItems) {
+    $left = Get-SafeArray $LeftItems
+    $right = Get-SafeArray $RightItems
+
+    $added = @($right | Where-Object { $_ -notin $left } | Sort-Object -Unique)
+    $removed = @($left | Where-Object { $_ -notin $right } | Sort-Object -Unique)
+
+    return [ordered]@{
+        added   = $added
+        removed = $removed
+    }
 }
 
 function Save-State($State) {
-    $State | ConvertTo-Json -Depth 10 | Set-Content -Path $StateFile -Encoding UTF8
+    $State | ConvertTo-Json -Depth 20 | Set-Content -Path $StateFile -Encoding UTF8
 }
 
 function Load-State {
@@ -94,6 +187,16 @@ function Load-State {
         Write-Error "Failed to read state file: $StateFile"
         return $null
     }
+}
+
+function Show-State {
+    $state = Load-State
+    if (-not $state) {
+        Write-Host "[*] No saved state found."
+        return
+    }
+
+    Write-PrettyJson $state
 }
 
 function Resolve-RequestedReport {
@@ -148,6 +251,20 @@ function Finalize-Report([string]$ResolvedFilePath) {
     return $finalReportPath
 }
 
+function Resolve-RuleDir {
+    if ($RuleDir) {
+        $resolved = (Resolve-Path $RuleDir -ErrorAction SilentlyContinue).Path
+        if (-not $resolved) {
+            Write-Error "Rule directory not found: $RuleDir"
+            exit 1
+        }
+        return $resolved
+    }
+
+    $defaultRuleDir = Join-Path $ProjectRoot "rules"
+    return $defaultRuleDir
+}
+
 function Run-Analysis {
     if (-not $FilePath) {
         Write-Error "Missing -f / -FilePath parameter."
@@ -172,6 +289,8 @@ function Run-Analysis {
         Write-Error "Ghidra directory not found: $GhidraDir"
         exit 1
     }
+
+    $ResolvedRuleDir = Resolve-RuleDir
 
     $PyGhidraRun = Join-Path $ResolvedGhidraDir "support\pyghidraRun.bat"
     if (-not (Test-Path $PyGhidraRun)) {
@@ -203,6 +322,7 @@ function Run-Analysis {
     Write-Host "[*] Project dir  : $ProjectDir"
     Write-Host "[*] Project name : $ProjectName"
     Write-Host "[*] Script path  : $ScriptPath"
+    Write-Host "[*] Rule dir     : $ResolvedRuleDir"
     Write-Host "[*] Output dir   : $OutputDir"
     Write-Host ""
 
@@ -213,7 +333,7 @@ function Run-Analysis {
         "-import" $ResolvedFilePath `
         "-overwrite" `
         "-scriptPath" $ScriptPath `
-        "-postScript" $PostScript $OutputDir
+        "-postScript" $PostScript $OutputDir $ResolvedRuleDir
 
     $ExitCode = $LASTEXITCODE
 
@@ -233,6 +353,7 @@ function Run-Analysis {
         project_name    = $ProjectName
         post_script     = $PostScript
         script_path     = $ScriptPath
+        rule_dir        = $ResolvedRuleDir
         output_dir      = $OutputDir
         last_file_path  = $ResolvedFilePath
         last_program    = $ProgramName
@@ -256,8 +377,23 @@ function Run-Fast {
             Write-Error "Ghidra directory not found: $GhidraDir"
             exit 1
         }
-    } else {
+    }
+    else {
         $ResolvedGhidraDir = $state.ghidra_dir
+    }
+
+    if ($RuleDir) {
+        $ResolvedRuleDir = (Resolve-Path $RuleDir -ErrorAction SilentlyContinue).Path
+        if (-not $ResolvedRuleDir) {
+            Write-Error "Rule directory not found: $RuleDir"
+            exit 1
+        }
+    }
+    elseif ($state.rule_dir) {
+        $ResolvedRuleDir = $state.rule_dir
+    }
+    else {
+        $ResolvedRuleDir = Join-Path $ProjectRoot "rules"
     }
 
     $SavedProjectDir   = $state.project_dir
@@ -290,6 +426,7 @@ function Run-Fast {
     Write-Host "[*] Ghidra dir   : $ResolvedGhidraDir"
     Write-Host "[*] Project dir  : $SavedProjectDir"
     Write-Host "[*] Project name : $SavedProjectName"
+    Write-Host "[*] Rule dir     : $ResolvedRuleDir"
     Write-Host ""
 
     & $PyGhidraRun `
@@ -299,7 +436,7 @@ function Run-Fast {
         "-process" $SavedProgramName `
         "-noanalysis" `
         "-scriptPath" $SavedScriptPath `
-        "-postScript" $SavedPostScript $OutputDir
+        "-postScript" $SavedPostScript $OutputDir $ResolvedRuleDir
 
     $ExitCode = $LASTEXITCODE
 
@@ -313,9 +450,10 @@ function Run-Fast {
 
     $finalReportPath = Finalize-Report $SavedFilePath
 
-    $state.ghidra_dir = $ResolvedGhidraDir
-    $state.last_report = $finalReportPath
-    $state.updated_at = (Get-Date).ToString("o")
+    $state.ghidra_dir   = $ResolvedGhidraDir
+    $state.rule_dir     = $ResolvedRuleDir
+    $state.last_report  = $finalReportPath
+    $state.updated_at   = (Get-Date).ToString("o")
     Save-State $state
 
     Write-Host "[+] Fast report generated successfully: $finalReportPath"
@@ -385,6 +523,238 @@ function Show-Report {
     Write-PrettyJson $selected
 }
 
+function Inspect-Report {
+    $reportPath = Resolve-RequestedReport
+    $report = Read-JsonFile $reportPath
+
+    Write-Host "[*] Report file: $reportPath"
+    Write-Host ""
+
+    $modeCount = 0
+    if ($FunctionName) { $modeCount++ }
+    if ($CapabilityName) { $modeCount++ }
+    if ($Packer) { $modeCount++ }
+    if ($Strings) { $modeCount++ }
+
+    if ($modeCount -eq 0) {
+        Exit-InspectError "Specify one inspect target: -FunctionName, -CapabilityName, -Packer, or -Strings"
+    }
+
+    if ($modeCount -gt 1) {
+        Exit-InspectError "Use only one inspect target at a time"
+    }
+
+    if ($FunctionName) {
+        $functions = $report.function_analysis.functions
+        if (-not $functions) {
+            Exit-InspectError "No function analysis found in report"
+        }
+
+        $match = $functions | Where-Object { $_.name -eq $FunctionName } | Select-Object -First 1
+        if (-not $match) {
+            Exit-InspectError "Function not found: $FunctionName"
+        }
+
+        $result = [ordered]@{
+            inspect_type         = "function"
+            name                 = $match.name
+            entry                = $match.entry
+            score                = $match.score
+            risk_level           = $match.risk_level
+            structure_role       = $match.structure_role
+            roles                = $match.roles
+            tags                 = $match.tags
+            matched_capabilities = $match.matched_capabilities
+            local_api_hits       = $match.local_api_hits
+            external_calls       = $match.external_calls
+            internal_calls       = $match.internal_calls
+            incoming_calls       = $match.incoming_calls
+            referenced_strings   = $match.referenced_strings
+            score_breakdown      = $match.score_breakdown
+        }
+
+        Write-PrettyJson $result
+        return
+    }
+
+    if ($CapabilityName) {
+        if (-not $report.global_analysis) {
+            Exit-InspectError "No global_analysis section found in report"
+        }
+
+        $capabilities = @()
+        if ($null -ne $report.global_analysis.capabilities) {
+            $capabilities = @($report.global_analysis.capabilities)
+        }
+
+        $functions = @()
+        if ($report.function_analysis -and $null -ne $report.function_analysis.functions) {
+            $functions = @($report.function_analysis.functions)
+        }
+
+        $capability = $capabilities | Where-Object { $_.name -eq $CapabilityName } | Select-Object -First 1
+        if (-not $capability) {
+            $capability = $null
+        }
+
+        $relatedFunctions = @()
+        if ($functions.Count -gt 0) {
+            $relatedFunctions = @(
+                $functions |
+                    Where-Object {
+                        ($_.matched_capabilities -contains $CapabilityName) -or
+                        ($_.tags -contains $CapabilityName) -or
+                        ($_.roles -contains $CapabilityName) -or
+                        (($CapabilityName -eq "networking") -and ($_.roles -contains "network")) -or
+                        (($CapabilityName -eq "process_injection") -and ($_.roles -contains "injection")) -or
+                        (($CapabilityName -eq "dynamic_loading") -and ($_.roles -contains "loader"))
+                    } |
+                    Sort-Object @{Expression="score";Descending=$true}, @{Expression="name";Descending=$false} |
+                    Select-Object -First 12
+            )
+        }
+
+        if (-not $capability -and $relatedFunctions.Count -eq 0) {
+            Exit-InspectError "Capability not found and no related functions matched: $CapabilityName"
+        }
+
+        $result = [ordered]@{
+            inspect_type                        = "capability"
+            requested_capability                = $CapabilityName
+            capability_found_in_global_analysis = ($null -ne $capability)
+            capability                          = $capability
+            related_function_count              = $relatedFunctions.Count
+            related_functions                   = @(
+                $relatedFunctions | ForEach-Object {
+                    [ordered]@{
+                        name                 = $_.name
+                        entry                = $_.entry
+                        score                = $_.score
+                        risk_level           = $_.risk_level
+                        structure_role       = $_.structure_role
+                        roles                = $_.roles
+                        tags                 = $_.tags
+                        matched_capabilities = $_.matched_capabilities
+                        local_api_hits       = $_.local_api_hits
+                    }
+                }
+            )
+        }
+
+        Write-PrettyJson $result
+        return
+    }
+
+    if ($Packer) {
+        if (-not $report.binary_structure -or -not $report.binary_structure.packer_analysis) {
+            Exit-InspectError "No packer analysis found in report"
+        }
+
+        $result = [ordered]@{
+            inspect_type    = "packer"
+            packer_analysis = $report.binary_structure.packer_analysis
+            entrypoint_info = $report.binary_structure.entrypoint_info
+            oep_candidates  = $report.binary_structure.oep_candidates
+            section_info    = $report.binary_structure.section_info
+        }
+
+        Write-PrettyJson $result
+        return
+    }
+
+    if ($Strings) {
+        $interestingStrings = $report.global_analysis.interesting_strings
+        if (-not $interestingStrings) {
+            Exit-InspectError "No interesting strings found in report"
+        }
+
+        $result = [ordered]@{
+            inspect_type = "interesting_strings"
+            count        = @($interestingStrings).Count
+            items        = $interestingStrings
+        }
+
+        Write-PrettyJson $result
+        return
+    }
+}
+
+function Diff-Reports {
+    if (-not $LeftName -or -not $RightName) {
+        Exit-DiffError "Specify both -LeftName and -RightName"
+    }
+
+    $leftPath = Resolve-ReportPathByName $LeftName
+    $rightPath = Resolve-ReportPathByName $RightName
+
+    $leftReport = Read-JsonFile $leftPath
+    $rightReport = Read-JsonFile $rightPath
+
+    $leftSummary = $leftReport.summary
+    $rightSummary = $rightReport.summary
+
+    $leftCapabilities = Get-NameList $leftReport.global_analysis.capabilities
+    $rightCapabilities = Get-NameList $rightReport.global_analysis.capabilities
+
+    $leftTopFunctions = Get-NameList $leftReport.function_analysis.top_functions
+    $rightTopFunctions = Get-NameList $rightReport.function_analysis.top_functions
+
+    $leftStrings = Get-ValueList $leftReport.global_analysis.interesting_strings "value"
+    $rightStrings = Get-ValueList $rightReport.global_analysis.interesting_strings "value"
+
+    $leftPacker = $leftReport.binary_structure.packer_analysis
+    $rightPacker = $rightReport.binary_structure.packer_analysis
+
+    $result = [ordered]@{
+        inspect_type = "report_diff"
+        left_report = [ordered]@{
+            name        = [System.IO.Path]::GetFileName($leftPath)
+            sample_name = $leftReport.sample.name
+        }
+        right_report = [ordered]@{
+            name        = [System.IO.Path]::GetFileName($rightPath)
+            sample_name = $rightReport.sample.name
+        }
+        summary_diff = [ordered]@{
+            left_risk_level                = $leftSummary.risk_level
+            right_risk_level               = $rightSummary.risk_level
+            left_overall_score             = [int]$leftSummary.overall_score
+            right_overall_score            = [int]$rightSummary.overall_score
+            overall_score_delta            = ([int]$rightSummary.overall_score - [int]$leftSummary.overall_score)
+            left_raw_score                 = [int]$leftSummary.raw_score
+            right_raw_score                = [int]$rightSummary.raw_score
+            raw_score_delta                = ([int]$rightSummary.raw_score - [int]$leftSummary.raw_score)
+            left_capability_count          = [int]$leftSummary.capability_count
+            right_capability_count         = [int]$rightSummary.capability_count
+            capability_count_delta         = ([int]$rightSummary.capability_count - [int]$leftSummary.capability_count)
+            left_suspicious_api_count      = [int]$leftSummary.suspicious_api_count
+            right_suspicious_api_count     = [int]$rightSummary.suspicious_api_count
+            suspicious_api_count_delta     = ([int]$rightSummary.suspicious_api_count - [int]$leftSummary.suspicious_api_count)
+            left_interesting_string_count  = [int]$leftSummary.interesting_string_count
+            right_interesting_string_count = [int]$rightSummary.interesting_string_count
+            interesting_string_count_delta = ([int]$rightSummary.interesting_string_count - [int]$leftSummary.interesting_string_count)
+        }
+        capability_diff = Compare-StringSets $leftCapabilities $rightCapabilities
+        top_function_diff = Compare-StringSets $leftTopFunctions $rightTopFunctions
+        interesting_string_diff = Compare-StringSets $leftStrings $rightStrings
+        packer_diff = [ordered]@{
+            left_likely_packed           = $leftPacker.likely_packed
+            right_likely_packed          = $rightPacker.likely_packed
+            left_packed_likelihood_score = [int]$leftPacker.packed_likelihood_score
+            right_packed_likelihood_score = [int]$rightPacker.packed_likelihood_score
+            packed_likelihood_score_delta = ([int]$rightPacker.packed_likelihood_score - [int]$leftPacker.packed_likelihood_score)
+            left_family_hint             = $leftPacker.packer_family_hint
+            right_family_hint            = $rightPacker.packer_family_hint
+        }
+    }
+
+    Write-Host "[*] Left report : $leftPath"
+    Write-Host "[*] Right report: $rightPath"
+    Write-Host ""
+
+    Write-PrettyJson $result
+}
+
 function List-Reports {
     $files = Get-ReportFiles
 
@@ -419,6 +789,7 @@ function Delete-Reports {
             Write-Error "No report files found."
             exit 1
         }
+
         Remove-Item $lastFile.FullName -Force
 
         $mdCandidate = [System.IO.Path]::ChangeExtension($lastFile.FullName, ".md")
@@ -436,7 +807,14 @@ function Delete-Reports {
             Write-Error "Report not found: $namedPath"
             exit 1
         }
+
         Remove-Item $namedPath -Force
+
+        $mdCandidate = [System.IO.Path]::ChangeExtension($namedPath, ".md")
+        if (Test-Path $mdCandidate) {
+            Remove-Item $mdCandidate -Force
+        }
+
         Write-Host "[+] Deleted report: $Name"
         return
     }
@@ -479,6 +857,9 @@ function New-MarkdownReport {
         $lines.Add("")
         $lines.Add("- **Schema version:** $($report.analysis_metadata.schema_version)")
         $lines.Add("- **Analysis mode:** $($report.analysis_metadata.analysis_mode)")
+        if ($report.analysis_metadata.rules_metadata) {
+            $lines.Add("- **Rules dir:** $($report.analysis_metadata.rules_metadata.rules_dir)")
+        }
         $lines.Add("")
     }
 
@@ -490,6 +871,11 @@ function New-MarkdownReport {
     $lines.Add("- **Adjustment total:** $($summary.score_adjustment_total)")
     $lines.Add("- **Contract version:** $($summary.contract_version)")
     $lines.Add("")
+
+    if ($summary.packed_warning) {
+        $lines.Add("> $($summary.packed_warning)")
+        $lines.Add("")
+    }
 
     if ($analystSummary) {
         $lines.Add("## Analyst Summary")
@@ -513,9 +899,11 @@ function New-MarkdownReport {
     $lines.Add("")
     $lines.Add("## Capabilities")
     $lines.Add("")
-    if (-not $capabilities -or $capabilities.Count -eq 0) {
+
+    if (-not $capabilities -or @($capabilities).Count -eq 0) {
         $lines.Add("- None detected")
-    } else {
+    }
+    else {
         foreach ($cap in $capabilities) {
             $lines.Add("- **$($cap.name)** (+$($cap.score))")
             $lines.Add("  - Confidence: $($cap.confidence)")
@@ -526,12 +914,14 @@ function New-MarkdownReport {
     $lines.Add("")
     $lines.Add("## Top Suspicious APIs")
     $lines.Add("")
-    if (-not $suspiciousApis -or $suspiciousApis.Count -eq 0) {
+
+    if (-not $suspiciousApis -or @($suspiciousApis).Count -eq 0) {
         $lines.Add("- None detected")
-    } else {
+    }
+    else {
         foreach ($api in ($suspiciousApis | Select-Object -First 15)) {
             $lines.Add("- **$($api.name)** (+$($api.weight))")
-            if ($api.variants -and $api.variants.Count -gt 0) {
+            if ($api.variants -and @($api.variants).Count -gt 0) {
                 $lines.Add("  - Variants: $($api.variants -join ', ')")
             }
         }
@@ -540,9 +930,11 @@ function New-MarkdownReport {
     $lines.Add("")
     $lines.Add("## Top Interesting Strings")
     $lines.Add("")
-    if (-not $interestingStrings -or $interestingStrings.Count -eq 0) {
+
+    if (-not $interestingStrings -or @($interestingStrings).Count -eq 0) {
         $lines.Add("- None detected")
-    } else {
+    }
+    else {
         foreach ($item in ($interestingStrings | Select-Object -First 10)) {
             $lines.Add("- **$($item.value)** (+$($item.score))")
             $lines.Add("  - Tags: $($item.tags -join ', ')")
@@ -571,8 +963,13 @@ function New-MarkdownReport {
         $lines.Add("## Packer Analysis")
         $lines.Add("")
         $lines.Add("- **Likely packed:** $($packer.likely_packed)")
-        $lines.Add("- **Confidence:** $($packer.confidence)")
         $lines.Add("- **Packed likelihood score:** $($packer.packed_likelihood_score)")
+        if ($packer.confidence) {
+            $lines.Add("- **Confidence:** $($packer.confidence)")
+        }
+        if ($packer.packer_family_hint) {
+            $lines.Add("- **Family hint:** $($packer.packer_family_hint)")
+        }
     }
 
     Set-Content -Path $mdPath -Value $lines -Encoding UTF8
@@ -589,6 +986,9 @@ switch ($Command) {
     "fast"     { Run-Fast }
     "report"   { Show-Report }
     "reports"  { List-Reports }
+    "inspect"  { Inspect-Report }
+    "diff"     { Diff-Reports }
+    "state"    { Show-State }
     "open"     { Open-Report }
     "delete"   { Delete-Reports }
     "markdown" { New-MarkdownReport }
