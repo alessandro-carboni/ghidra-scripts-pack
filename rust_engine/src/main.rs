@@ -1,5 +1,6 @@
 mod capability;
 mod enrichment;
+mod rules;
 mod schema;
 mod scoring;
 

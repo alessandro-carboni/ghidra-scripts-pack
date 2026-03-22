@@ -5,6 +5,7 @@ import (
 	"os"
 	"path/filepath"
 	"runtime"
+	"strings"
 )
 
 type Config struct {
@@ -22,7 +23,7 @@ type Config struct {
 func Default(projectRoot string) Config {
 	return Config{
 		GhidraDir:      "",
-		ProjectDir:     `C:\ghidra-projects`,
+		ProjectDir:     defaultProjectDir(),
 		ProjectName:    "TriageProject",
 		ScriptPath:     filepath.Join(projectRoot, "ghidra_scripts"),
 		PostScript:     "export_report.py",
@@ -31,6 +32,19 @@ func Default(projectRoot string) Config {
 		ReportsDir:     filepath.Join(projectRoot, "reports"),
 		RustEnginePath: filepath.Join(projectRoot, "rust_engine", "target", "debug", defaultRustEngineBinaryName()),
 	}
+}
+
+func defaultProjectDir() string {
+	if runtime.GOOS == "windows" {
+		return `C:\ghidra-projects`
+	}
+
+	home, err := os.UserHomeDir()
+	if err != nil || strings.TrimSpace(home) == "" {
+		return filepath.Join(os.TempDir(), "ghidra-projects")
+	}
+
+	return filepath.Join(home, "ghidra-projects")
 }
 
 func defaultRustEngineBinaryName() string {
@@ -77,32 +91,43 @@ func (c *Config) ApplyOverrides(
 	}
 }
 
-func (c Config) ValidateForScan() error {
-	if c.GhidraDir == "" {
+func (c Config) ValidateForAnalysis() error {
+	if strings.TrimSpace(c.GhidraDir) == "" {
 		return errors.New("missing ghidra directory")
 	}
-	if c.ProjectDir == "" {
+	if strings.TrimSpace(c.ProjectDir) == "" {
 		return errors.New("missing project directory")
 	}
-	if c.ProjectName == "" {
+	if strings.TrimSpace(c.ProjectName) == "" {
 		return errors.New("missing project name")
 	}
-	if c.ScriptPath == "" {
+	if strings.TrimSpace(c.ScriptPath) == "" {
 		return errors.New("missing script path")
 	}
-	if c.PostScript == "" {
+	if strings.TrimSpace(c.PostScript) == "" {
 		return errors.New("missing post script")
 	}
-	if c.RuleDir == "" {
+	if strings.TrimSpace(c.RuleDir) == "" {
 		return errors.New("missing rule dir")
 	}
-	if c.OutputDir == "" {
+	if strings.TrimSpace(c.OutputDir) == "" {
 		return errors.New("missing output dir")
 	}
-	if c.RustEnginePath == "" {
+	return nil
+}
+
+func (c Config) ValidateForEnrichment() error {
+	if strings.TrimSpace(c.OutputDir) == "" {
+		return errors.New("missing output dir")
+	}
+	if strings.TrimSpace(c.RustEnginePath) == "" {
 		return errors.New("missing rust engine path")
 	}
 	return nil
+}
+
+func (c Config) ValidateForScan() error {
+	return c.ValidateForAnalysis()
 }
 
 func EnsureDirs(c Config) error {
@@ -113,7 +138,7 @@ func EnsureDirs(c Config) error {
 	}
 
 	for _, dir := range dirs {
-		if dir == "" {
+		if strings.TrimSpace(dir) == "" {
 			continue
 		}
 		if err := os.MkdirAll(dir, 0o755); err != nil {

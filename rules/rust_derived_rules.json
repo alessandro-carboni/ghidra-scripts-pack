@@ -1,0 +1,55 @@
+[
+  {
+    "name": "in_memory_loader",
+    "confidence": "high",
+    "requires_all": ["process_injection", "dynamic_loading"],
+    "requires_high_confidence": ["process_injection"],
+    "min_high_risk_functions": 1,
+    "rationale": [
+      "process injection and dynamic loading are both present",
+      "this combination is consistent with staged or memory-resident execution"
+    ]
+  },
+  {
+    "name": "persistent_networked_payload",
+    "confidence": "medium",
+    "requires_all": ["networking", "persistence"],
+    "min_high_risk_functions": 1,
+    "rationale": [
+      "networking and persistence signals are both present",
+      "the combination suggests potential long-lived malicious utility"
+    ]
+  },
+  {
+    "name": "evasion_aware_injector",
+    "confidence": "medium",
+    "requires_all": ["anti_analysis", "process_injection"],
+    "requires_high_confidence": ["process_injection"],
+    "rationale": [
+      "anti-analysis and process injection signals co-occur",
+      "this pairing is commonly associated with stealthier payload deployment"
+    ]
+  },
+  {
+    "name": "packed_loader_stub",
+    "confidence": "medium",
+    "requires_any": ["dynamic_loading"],
+    "require_likely_packed": true,
+    "require_high_entropy_executable": true,
+    "rationale": [
+      "sample is likely packed and still exposes dynamic loading behavior",
+      "this is consistent with a loader or unpacking stub stage"
+    ]
+  },
+  {
+    "name": "staged_injector",
+    "confidence": "high",
+    "requires_all": ["process_injection", "dynamic_loading"],
+    "requires_high_confidence": ["process_injection"],
+    "min_top_function_score": 30,
+    "rationale": [
+      "process injection is supported by strong local evidence",
+      "dynamic loading plus high-scoring local functions suggest staged payload setup"
+    ]
+  }
+]

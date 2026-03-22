@@ -28,8 +28,7 @@ func ListReportInfos(reportsDir string) ([]ReportFileInfo, error) {
 			continue
 		}
 
-		ext := filepath.Ext(entry.Name())
-		if ext != ".json" {
+		if filepath.Ext(entry.Name()) != ".json" {
 			continue
 		}
 
@@ -48,6 +47,9 @@ func ListReportInfos(reportsDir string) ([]ReportFileInfo, error) {
 	}
 
 	sort.Slice(files, func(i, j int) bool {
+		if files[i].ModTime.Equal(files[j].ModTime) {
+			return files[i].Name < files[j].Name
+		}
 		return files[i].ModTime.Before(files[j].ModTime)
 	})
 
@@ -62,6 +64,20 @@ func GetLastReportInfo(reportsDir string) (*ReportFileInfo, error) {
 	if len(files) == 0 {
 		return nil, nil
 	}
+
+	for i := len(files) - 1; i >= 0; i-- {
+		preferredPath := preferredPathFor(files[i].Path)
+		info, err := os.Stat(preferredPath)
+		if err == nil {
+			return &ReportFileInfo{
+				Name:    filepath.Base(preferredPath),
+				Path:    preferredPath,
+				Size:    info.Size(),
+				ModTime: info.ModTime(),
+			}, nil
+		}
+	}
+
 	last := files[len(files)-1]
 	return &last, nil
 }
@@ -78,17 +94,27 @@ func ResolveReportPath(reportsDir string, name string, last bool) (string, error
 		return info.Path, nil
 	}
 
-	if name != "" {
-		fullPath := filepath.Join(reportsDir, name)
-		if _, err := os.Stat(fullPath); err != nil {
-			return "", fmt.Errorf("report not found: %s", fullPath)
+	if strings.TrimSpace(name) != "" {
+		candidates := []string{
+			filepath.Join(reportsDir, name),
 		}
-		return fullPath, nil
+
+		if filepath.Ext(name) == "" {
+			candidates = append(candidates, filepath.Join(reportsDir, name+".json"))
+		}
+
+		for _, candidate := range candidates {
+			if _, err := os.Stat(candidate); err == nil {
+				return preferredPathFor(candidate), nil
+			}
+		}
+
+		return "", fmt.Errorf("report not found: %s", filepath.Join(reportsDir, name))
 	}
 
-	defaultPath := filepath.Join(reportsDir, "raw_report.json")
-	if _, err := os.Stat(defaultPath); err == nil {
-		return defaultPath, nil
+	defaultPreferred := filepath.Join(reportsDir, "raw_report.json")
+	if _, err := os.Stat(defaultPreferred); err == nil {
+		return defaultPreferred, nil
 	}
 
 	info, err := GetLastReportInfo(reportsDir)
@@ -116,15 +142,14 @@ func DeleteReportWithMarkdown(reportPath string) error {
 		_ = os.Remove(mdPath)
 	}
 
-	if !strings.HasSuffix(reportPath, "_raw.json") && strings.HasSuffix(reportPath, ".json") {
-		rawSibling := strings.TrimSuffix(reportPath, ".json") + "_raw.json"
-		if _, err := os.Stat(rawSibling); err == nil {
-			_ = os.Remove(rawSibling)
+	companion := companionReportPath(reportPath)
+	if companion != "" {
+		if _, err := os.Stat(companion); err == nil {
+			_ = os.Remove(companion)
 		}
-
-		rawSiblingMD := CompanionMarkdownPath(rawSibling)
-		if _, err := os.Stat(rawSiblingMD); err == nil {
-			_ = os.Remove(rawSiblingMD)
+		companionMD := CompanionMarkdownPath(companion)
+		if _, err := os.Stat(companionMD); err == nil {
+			_ = os.Remove(companionMD)
 		}
 	}
 
@@ -152,4 +177,50 @@ func DeleteAllReportsWithMarkdown(reportsDir string) error {
 	}
 
 	return nil
+}
+
+func preferredPathFor(path string) string {
+	if isRawReportPath(path) {
+		enriched := enrichedPathFromRaw(path)
+		if _, err := os.Stat(enriched); err == nil {
+			return enriched
+		}
+	}
+	return path
+}
+
+func companionReportPath(path string) string {
+	if isRawReportPath(path) {
+		enriched := enrichedPathFromRaw(path)
+		if _, err := os.Stat(enriched); err == nil {
+			return enriched
+		}
+		return ""
+	}
+
+	if isEnrichedReportPath(path) {
+		raw := rawPathFromEnriched(path)
+		if _, err := os.Stat(raw); err == nil {
+			return raw
+		}
+	}
+
+	return ""
+}
+
+func isRawReportPath(path string) bool {
+	return strings.HasSuffix(strings.ToLower(path), "_raw.json")
+}
+
+func isEnrichedReportPath(path string) bool {
+	lower := strings.ToLower(path)
+	return strings.HasSuffix(lower, ".json") && !strings.HasSuffix(lower, "_raw.json")
+}
+
+func enrichedPathFromRaw(rawPath string) string {
+	return strings.TrimSuffix(rawPath, "_raw.json") + ".json"
+}
+
+func rawPathFromEnriched(enrichedPath string) string {
+	return strings.TrimSuffix(enrichedPath, ".json") + "_raw.json"
 }

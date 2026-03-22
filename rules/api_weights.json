@@ -1,6 +1,8 @@
 {
   "VirtualAlloc": 25,
   "VirtualAllocEx": 30,
+  "VirtualProtect": 18,
+  "VirtualProtectEx": 20,
   "WriteProcessMemory": 35,
   "CreateRemoteThread": 40,
   "CreateRemoteThreadEx": 40,

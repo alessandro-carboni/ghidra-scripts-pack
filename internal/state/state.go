@@ -9,20 +9,20 @@ import (
 )
 
 type State struct {
-	GhidraDir        string `json:"ghidra_dir"`
-	ProjectDir       string `json:"project_dir"`
-	ProjectName      string `json:"project_name"`
-	PostScript       string `json:"post_script"`
-	ScriptPath       string `json:"script_path"`
-	RuleDir          string `json:"rule_dir"`
-	OutputDir        string `json:"output_dir"`
-	RustEnginePath   string `json:"rust_engine_path"`
-	LastFilePath     string `json:"last_file_path"`
-	LastProgram      string `json:"last_program"`
-	LastReport       string `json:"last_report"`
-	LastRawReport    string `json:"last_raw_report"`
+	GhidraDir          string `json:"ghidra_dir"`
+	ProjectDir         string `json:"project_dir"`
+	ProjectName        string `json:"project_name"`
+	PostScript         string `json:"post_script"`
+	ScriptPath         string `json:"script_path"`
+	RuleDir            string `json:"rule_dir"`
+	OutputDir          string `json:"output_dir"`
+	RustEnginePath     string `json:"rust_engine_path"`
+	LastFilePath       string `json:"last_file_path"`
+	LastProgram        string `json:"last_program"`
+	LastReport         string `json:"last_report"`
+	LastRawReport      string `json:"last_raw_report"`
 	LastEnrichedReport string `json:"last_enriched_report"`
-	UpdatedAt        string `json:"updated_at"`
+	UpdatedAt          string `json:"updated_at"`
 }
 
 func StateFilePath(projectRoot string) string {

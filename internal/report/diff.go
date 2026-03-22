@@ -21,6 +21,9 @@ func BuildDiff(leftRaw, rightRaw map[string]any, leftPath, rightPath string) map
 	leftPacker := getMap(leftBinary["packer_analysis"])
 	rightPacker := getMap(rightBinary["packer_analysis"])
 
+	leftRust := getMap(leftRaw["rust_enrichment"])
+	rightRust := getMap(rightRaw["rust_enrichment"])
+
 	leftCapabilities := getNameList(leftGlobal["capabilities"])
 	rightCapabilities := getNameList(rightGlobal["capabilities"])
 
@@ -59,8 +62,8 @@ func BuildDiff(leftRaw, rightRaw map[string]any, leftPath, rightPath string) map
 			"right_interesting_string_count": getInt(rightSummary["interesting_string_count"]),
 			"interesting_string_count_delta": getInt(rightSummary["interesting_string_count"]) - getInt(leftSummary["interesting_string_count"]),
 		},
-		"capability_diff":        compareStringSets(leftCapabilities, rightCapabilities),
-		"top_function_diff":      compareStringSets(leftTopFunctions, rightTopFunctions),
+		"capability_diff":         compareStringSets(leftCapabilities, rightCapabilities),
+		"top_function_diff":       compareStringSets(leftTopFunctions, rightTopFunctions),
 		"interesting_string_diff": compareStringSets(leftStrings, rightStrings),
 		"packer_diff": map[string]any{
 			"left_likely_packed":            getBool(leftPacker["likely_packed"]),
@@ -71,6 +74,91 @@ func BuildDiff(leftRaw, rightRaw map[string]any, leftPath, rightPath string) map
 			"left_family_hint":              leftPacker["packer_family_hint"],
 			"right_family_hint":             rightPacker["packer_family_hint"],
 		},
+		"rust_diff": buildRustDiff(leftRust, rightRust),
+	}
+}
+
+func buildRustDiff(leftRust, rightRust map[string]any) map[string]any {
+	if len(leftRust) == 0 && len(rightRust) == 0 {
+		return map[string]any{
+			"left_present":  false,
+			"right_present": false,
+		}
+	}
+
+	leftScoreCalibration := getMap(leftRust["score_calibration"])
+	rightScoreCalibration := getMap(rightRust["score_calibration"])
+
+	leftScoreBands := getMap(leftRust["score_bands"])
+	rightScoreBands := getMap(rightRust["score_bands"])
+
+	leftDecisionSummary := getMap(leftRust["decision_summary"])
+	rightDecisionSummary := getMap(rightRust["decision_summary"])
+
+	leftMalwareRisk := getMap(leftRust["malware_risk"])
+	rightMalwareRisk := getMap(rightRust["malware_risk"])
+
+	leftPackingRisk := getMap(leftRust["packing_risk"])
+	rightPackingRisk := getMap(rightRust["packing_risk"])
+
+	leftRiskSplit := getMap(leftRust["risk_split_summary"])
+	rightRiskSplit := getMap(rightRust["risk_split_summary"])
+
+	leftDerived := getNameList(leftRust["derived_capabilities"])
+	rightDerived := getNameList(rightRust["derived_capabilities"])
+
+	return map[string]any{
+		"left_present":  len(leftRust) > 0,
+		"right_present": len(rightRust) > 0,
+
+		"score_calibration_diff": map[string]any{
+			"left_calibrated_score":  getInt(leftScoreCalibration["calibrated_score"]),
+			"right_calibrated_score": getInt(rightScoreCalibration["calibrated_score"]),
+			"calibrated_score_delta": getInt(rightScoreCalibration["calibrated_score"]) - getInt(leftScoreCalibration["calibrated_score"]),
+		},
+
+		"score_band_diff": map[string]any{
+			"left_original_band":    getString(leftScoreBands["original_band"]),
+			"right_original_band":   getString(rightScoreBands["original_band"]),
+			"left_calibrated_band":  getString(leftScoreBands["calibrated_band"]),
+			"right_calibrated_band": getString(rightScoreBands["calibrated_band"]),
+		},
+
+		"decision_diff": map[string]any{
+			"left_primary_assessment":   getString(leftDecisionSummary["primary_assessment"]),
+			"right_primary_assessment":  getString(rightDecisionSummary["primary_assessment"]),
+			"left_analysis_confidence":  getString(leftDecisionSummary["analysis_confidence"]),
+			"right_analysis_confidence": getString(rightDecisionSummary["analysis_confidence"]),
+			"left_needs_manual_review":  getBool(leftDecisionSummary["needs_manual_review"]),
+			"right_needs_manual_review": getBool(rightDecisionSummary["needs_manual_review"]),
+			"left_review_priority":      getString(leftDecisionSummary["manual_review_priority"]),
+			"right_review_priority":     getString(rightDecisionSummary["manual_review_priority"]),
+		},
+
+		"malware_risk_diff": map[string]any{
+			"left_score":  getInt(leftMalwareRisk["score"]),
+			"right_score": getInt(rightMalwareRisk["score"]),
+			"score_delta": getInt(rightMalwareRisk["score"]) - getInt(leftMalwareRisk["score"]),
+			"left_level":  getString(leftMalwareRisk["level"]),
+			"right_level": getString(rightMalwareRisk["level"]),
+		},
+
+		"packing_risk_diff": map[string]any{
+			"left_score":  getInt(leftPackingRisk["score"]),
+			"right_score": getInt(rightPackingRisk["score"]),
+			"score_delta": getInt(rightPackingRisk["score"]) - getInt(leftPackingRisk["score"]),
+			"left_level":  getString(leftPackingRisk["level"]),
+			"right_level": getString(rightPackingRisk["level"]),
+		},
+
+		"risk_split_diff": map[string]any{
+			"left_dominant_risk":   getString(leftRiskSplit["dominant_risk"]),
+			"right_dominant_risk":  getString(rightRiskSplit["dominant_risk"]),
+			"left_interpretation":  getString(leftRiskSplit["interpretation"]),
+			"right_interpretation": getString(rightRiskSplit["interpretation"]),
+		},
+
+		"derived_capability_diff": compareStringSets(leftDerived, rightDerived),
 	}
 }
 

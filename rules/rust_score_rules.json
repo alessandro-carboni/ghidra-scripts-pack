@@ -1,0 +1,50 @@
+[
+  {
+    "id": "multiple_high_risk_top_functions",
+    "condition": "multiple_high_risk_top_functions",
+    "delta": 10,
+    "rationale": "two or more top functions are already classified as high or critical risk"
+  },
+  {
+    "id": "packed_sample_static_visibility_penalty",
+    "condition": "packed_sample_static_visibility_penalty",
+    "delta": -10,
+    "rationale": "packing reduces visibility of true runtime behavior during static triage"
+  },
+  {
+    "id": "process_injection_capability",
+    "condition": "process_injection_capability",
+    "delta": 15,
+    "rationale": "process injection is a high-impact malicious behavior cluster"
+  },
+  {
+    "id": "high_signal_interesting_strings",
+    "condition": "high_signal_interesting_strings",
+    "delta": 5,
+    "rationale": "non-benign high-score strings support suspicious interpretation"
+  },
+  {
+    "id": "top_function_reasoned_evidence",
+    "condition": "top_function_reasoned_evidence",
+    "delta": 6,
+    "rationale": "at least one top function has explicit local evidence and reasoning"
+  },
+  {
+    "id": "strong_packing_with_weak_visible_behavior",
+    "condition": "strong_packing_with_weak_visible_behavior",
+    "delta": -6,
+    "rationale": "strong packing combined with weak visible malicious evidence should reduce malware-oriented calibration"
+  },
+  {
+    "id": "benign_context_heavy_discount",
+    "condition": "benign_context_heavy_discount",
+    "delta": -10,
+    "rationale": "multiple benign-context adjustments in the raw report justify a more conservative calibration"
+  },
+  {
+    "id": "soft_capability_only_discount",
+    "condition": "soft_capability_only_discount",
+    "delta": -8,
+    "rationale": "only soft capabilities are present, so the global score should remain conservative"
+  }
+]

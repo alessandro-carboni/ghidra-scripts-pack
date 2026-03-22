@@ -6,6 +6,7 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"strings"
 
 	"ghidra-malware-triage/internal/config"
 	"ghidra-malware-triage/internal/report"
@@ -49,26 +50,25 @@ func main() {
 func showUsage() {
 	fmt.Println("")
 	fmt.Println("Usage examples:")
-	fmt.Println(`  triage scan -input .\samples\sample.exe -ghidra-dir C:\path\ghidra_12.0.4_PUBLIC`)
-	fmt.Println(`  triage scan -input .\samples\sample.exe -ghidra-dir C:\path\ghidra_12.0.4_PUBLIC -rule-dir .\rules`)
-	fmt.Println(`  triage scan -input .\samples\sample.exe -ghidra-dir C:\path\ghidra_12.0.4_PUBLIC -rust-engine .\rust_engine\target\debug\rust_engine.exe`)
-	fmt.Println(`  triage fast -ghidra-dir C:\path\ghidra_12.0.4_PUBLIC`)
-	fmt.Println(`  triage fast -rule-dir .\rules`)
-	fmt.Println(`  triage report -last`)
-	fmt.Println(`  triage report -last -o summary`)
-	fmt.Println(`  triage report -last -o rust_enrichment`)
-	fmt.Println(`  triage reports`)
-	fmt.Println(`  triage inspect -last -function FUN_401000`)
-	fmt.Println(`  triage inspect -last -capability process_injection`)
-	fmt.Println(`  triage inspect -last -packer`)
-	fmt.Println(`  triage inspect -last -strings`)
-	fmt.Println(`  triage inspect -last -rust`)
-	fmt.Println(`  triage diff -left report_old.json -right report_new.json`)
-	fmt.Println(`  triage state`)
-	fmt.Println(`  triage markdown -last`)
-	fmt.Println(`  triage open -last`)
-	fmt.Println(`  triage delete -last`)
-	fmt.Println(`  triage delete -all`)
+	fmt.Println(`  .\triage.exe scan -input .\samples\prova.exe -ghidra-dir C:\Users\aless\Desktop\_\Projects\ghidra_12.0.4_PUBLIC`)
+	fmt.Println(`  .\triage.exe scan -input .\samples\prova.exe -ghidra-dir C:\Users\aless\Desktop\_\Projects\ghidra_12.0.4_PUBLIC -rule-dir .\rules`)
+	fmt.Println(`  .\triage.exe scan -input .\samples\prova.exe -ghidra-dir C:\Users\aless\Desktop\_\Projects\ghidra_12.0.4_PUBLIC -rust-engine .\rust_engine\target\debug\rust_engine.exe`)
+	fmt.Println(`  .\triage.exe fast -ghidra-dir C:\Users\aless\Desktop\_\Projects\ghidra_12.0.4_PUBLIC`)
+	fmt.Println(`  .\triage.exe report -last`)
+	fmt.Println(`  .\triage.exe report -last -o summary`)
+	fmt.Println(`  .\triage.exe report -last -o rust_enrichment`)
+	fmt.Println(`  .\triage.exe reports`)
+	fmt.Println(`  .\triage.exe inspect -last -function entry`)
+	fmt.Println(`  .\triage.exe inspect -last -capability process_injection`)
+	fmt.Println(`  .\triage.exe inspect -last -packer`)
+	fmt.Println(`  .\triage.exe inspect -last -strings`)
+	fmt.Println(`  .\triage.exe inspect -last -rust`)
+	fmt.Println(`  .\triage.exe diff -left old_raw.json -right new_raw.json`)
+	fmt.Println(`  .\triage.exe state`)
+	fmt.Println(`  .\triage.exe markdown -last`)
+	fmt.Println(`  .\triage.exe open -last`)
+	fmt.Println(`  .\triage.exe delete -last`)
+	fmt.Println(`  .\triage.exe delete -all`)
 	fmt.Println("")
 }
 
@@ -95,6 +95,14 @@ func buildConfigAndProjectRoot(
 	return cfg, projectRoot, nil
 }
 
+func defaultReportsDir() string {
+	projectRoot, err := config.ProjectRootFromWD()
+	if err != nil {
+		return `.\reports`
+	}
+	return filepath.Join(projectRoot, "reports")
+}
+
 func runScan(args []string) {
 	fs := flag.NewFlagSet("scan", flag.ExitOnError)
 
@@ -110,11 +118,11 @@ func runScan(args []string) {
 
 	_ = fs.Parse(args)
 
-	if *input == "" {
+	if strings.TrimSpace(*input) == "" {
 		fmt.Fprintln(os.Stderr, "missing -input")
 		os.Exit(1)
 	}
-	if *ghidraDir == "" {
+	if strings.TrimSpace(*ghidraDir) == "" {
 		fmt.Fprintln(os.Stderr, "missing -ghidra-dir")
 		os.Exit(1)
 	}
@@ -172,7 +180,15 @@ func runScan(args []string) {
 		}
 
 		fmt.Printf("[+] Raw report: %s\n", result.RawReportPath)
-		fmt.Printf("[+] Enriched report: %s\n", result.EnrichedReportPath)
+
+		if result.EnrichmentSucceeded {
+			fmt.Printf("[+] Enriched report: %s\n", result.EnrichedReportPath)
+		} else if result.EnrichmentAttempted && result.EnrichmentWarning != "" {
+			fmt.Printf("[!] Enrichment warning: %s\n", result.EnrichmentWarning)
+			fmt.Printf("[+] Final report kept as raw: %s\n", result.FinalReportPath)
+		} else {
+			fmt.Printf("[+] Final report: %s\n", result.FinalReportPath)
+		}
 
 		rep, err := report.Load(result.FinalReportPath)
 		if err != nil {
@@ -180,7 +196,8 @@ func runScan(args []string) {
 			continue
 		}
 
-		fmt.Printf("[+] Summary: sample=%s risk=%s score=%d capabilities=%d suspicious_apis=%d\n",
+		fmt.Printf(
+			"[+] Summary: sample=%s risk=%s score=%d capabilities=%d suspicious_apis=%d\n",
 			rep.Sample.Name,
 			rep.Summary.RiskLevel,
 			rep.Summary.OverallScore,
@@ -305,7 +322,15 @@ func runFast(args []string) {
 	}
 
 	fmt.Printf("[+] Raw report: %s\n", result.RawReportPath)
-	fmt.Printf("[+] Enriched report: %s\n", result.EnrichedReportPath)
+
+	if result.EnrichmentSucceeded {
+		fmt.Printf("[+] Enriched report: %s\n", result.EnrichedReportPath)
+	} else if result.EnrichmentAttempted && result.EnrichmentWarning != "" {
+		fmt.Printf("[!] Enrichment warning: %s\n", result.EnrichmentWarning)
+		fmt.Printf("[+] Final report kept as raw: %s\n", result.FinalReportPath)
+	} else {
+		fmt.Printf("[+] Final report: %s\n", result.FinalReportPath)
+	}
 }
 
 func runReport(args []string) {
@@ -314,7 +339,7 @@ func runReport(args []string) {
 	last := fs.Bool("last", false, "use last report")
 	name := fs.String("name", "", "report file name")
 	outputField := fs.String("o", "", "output field alias")
-	reportsDir := fs.String("reports-dir", ".\\reports", "reports directory")
+	reportsDir := fs.String("reports-dir", defaultReportsDir(), "reports directory")
 
 	_ = fs.Parse(args)
 
@@ -349,7 +374,7 @@ func runReport(args []string) {
 
 func runReports(args []string) {
 	fs := flag.NewFlagSet("reports", flag.ExitOnError)
-	reportsDir := fs.String("reports-dir", ".\\reports", "reports directory")
+	reportsDir := fs.String("reports-dir", defaultReportsDir(), "reports directory")
 	_ = fs.Parse(args)
 
 	infos, err := report.ListReportInfos(*reportsDir)
@@ -378,7 +403,7 @@ func runInspect(args []string) {
 	packer := fs.Bool("packer", false, "inspect packer analysis")
 	stringsFlag := fs.Bool("strings", false, "inspect interesting strings")
 	rustFlag := fs.Bool("rust", false, "inspect rust enrichment")
-	reportsDir := fs.String("reports-dir", ".\\reports", "reports directory")
+	reportsDir := fs.String("reports-dir", defaultReportsDir(), "reports directory")
 
 	_ = fs.Parse(args)
 
@@ -478,7 +503,7 @@ func runDiff(args []string) {
 
 	left := fs.String("left", "", "left report file name")
 	right := fs.String("right", "", "right report file name")
-	reportsDir := fs.String("reports-dir", ".\\reports", "reports directory")
+	reportsDir := fs.String("reports-dir", defaultReportsDir(), "reports directory")
 
 	_ = fs.Parse(args)
 
@@ -487,8 +512,17 @@ func runDiff(args []string) {
 		os.Exit(1)
 	}
 
-	leftPath := filepath.Join(*reportsDir, *left)
-	rightPath := filepath.Join(*reportsDir, *right)
+	leftPath, err := report.ResolveReportPath(*reportsDir, *left, false)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "resolve left report: %v\n", err)
+		os.Exit(1)
+	}
+
+	rightPath, err := report.ResolveReportPath(*reportsDir, *right, false)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "resolve right report: %v\n", err)
+		os.Exit(1)
+	}
 
 	leftRaw, err := report.LoadRaw(leftPath)
 	if err != nil {
@@ -535,7 +569,7 @@ func runOpen(args []string) {
 
 	last := fs.Bool("last", false, "use last report")
 	name := fs.String("name", "", "report file name")
-	reportsDir := fs.String("reports-dir", ".\\reports", "reports directory")
+	reportsDir := fs.String("reports-dir", defaultReportsDir(), "reports directory")
 
 	_ = fs.Parse(args)
 
@@ -558,7 +592,7 @@ func runDelete(args []string) {
 	last := fs.Bool("last", false, "delete last report")
 	all := fs.Bool("all", false, "delete all reports")
 	name := fs.String("name", "", "report file name")
-	reportsDir := fs.String("reports-dir", ".\\reports", "reports directory")
+	reportsDir := fs.String("reports-dir", defaultReportsDir(), "reports directory")
 
 	_ = fs.Parse(args)
 
@@ -611,7 +645,7 @@ func runMarkdown(args []string) {
 
 	last := fs.Bool("last", false, "use last report")
 	name := fs.String("name", "", "report file name")
-	reportsDir := fs.String("reports-dir", ".\\reports", "reports directory")
+	reportsDir := fs.String("reports-dir", defaultReportsDir(), "reports directory")
 
 	_ = fs.Parse(args)
 

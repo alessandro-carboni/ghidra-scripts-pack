@@ -2,9 +2,11 @@ package runner
 
 import (
 	"fmt"
+	"io/fs"
 	"os"
 	"os/exec"
 	"path/filepath"
+	"sort"
 	"strings"
 	"time"
 
@@ -12,15 +14,20 @@ import (
 	"ghidra-malware-triage/internal/state"
 )
 
+
+
 type ScanResult struct {
-	InputPath         string
-	SampleName        string
-	RawReportPath     string
-	EnrichedReportPath string
-	FinalReportPath   string
-	ExitCode          int
-	StartedAt         time.Time
-	FinishedAt        time.Time
+	InputPath           string
+	SampleName          string
+	RawReportPath       string
+	EnrichedReportPath  string
+	FinalReportPath     string
+	ExitCode            int
+	StartedAt           time.Time
+	FinishedAt          time.Time
+	EnrichmentAttempted bool
+	EnrichmentSucceeded bool
+	EnrichmentWarning   string
 }
 
 func BuildPyGhidraRunPath(ghidraDir string) string {
@@ -39,11 +46,19 @@ func EnsureExecutablePaths(cfg config.Config) error {
 	if _, err := os.Stat(cfg.RuleDir); err != nil {
 		return fmt.Errorf("rule dir not found: %s", cfg.RuleDir)
 	}
-	if _, err := os.Stat(cfg.RustEnginePath); err != nil {
-		return fmt.Errorf("rust engine not found: %s", cfg.RustEnginePath)
-	}
 
 	return nil
+}
+
+func looksLikeBinarySample(path string) bool {
+	ext := strings.ToLower(filepath.Ext(path))
+
+	switch ext {
+	case ".exe", ".dll", ".sys", ".bin":
+		return true
+	default:
+		return false
+	}
 }
 
 func CollectInputs(inputPath string) ([]string, error) {
@@ -58,23 +73,65 @@ func CollectInputs(inputPath string) ([]string, error) {
 	}
 
 	if !info.IsDir() {
+		if !isSupportedSampleFile(resolvedInput) {
+			return nil, fmt.Errorf("unsupported input file: %s", resolvedInput)
+		}
 		return []string{resolvedInput}, nil
 	}
 
-	entries, err := os.ReadDir(resolvedInput)
+	results := make([]string, 0)
+
+	err = filepath.WalkDir(resolvedInput, func(path string, d fs.DirEntry, walkErr error) error {
+		if walkErr != nil {
+			return walkErr
+		}
+
+		name := d.Name()
+
+		if d.IsDir() {
+			if path != resolvedInput && isHiddenName(name) {
+				return filepath.SkipDir
+			}
+			return nil
+		}
+
+		if isHiddenName(name) {
+			return nil
+		}
+
+		if !isSupportedSampleFile(path) {
+			return nil
+		}
+
+		results = append(results, path)
+		return nil
+	})
 	if err != nil {
 		return nil, err
 	}
 
-	results := make([]string, 0)
-	for _, entry := range entries {
-		if entry.IsDir() {
-			continue
-		}
-		results = append(results, filepath.Join(resolvedInput, entry.Name()))
+	sort.Strings(results)
+	return results, nil
+}
+
+func isHiddenName(name string) bool {
+	return strings.HasPrefix(name, ".")
+}
+
+func isSupportedSampleFile(path string) bool {
+	name := strings.ToLower(filepath.Base(path))
+	ext := strings.ToLower(filepath.Ext(name))
+
+	if name == "" {
+		return false
 	}
 
-	return results, nil
+	switch ext {
+	case ".exe", ".dll", ".sys", ".scr", ".drv", ".ocx", ".cpl", ".bin":
+		return true
+	}
+
+	return false
 }
 
 func ScanFile(cfg config.Config, inputPath string) (*ScanResult, error) {
@@ -126,29 +183,27 @@ func ScanFile(cfg config.Config, inputPath string) (*ScanResult, error) {
 		}, err
 	}
 
-	enrichedReportPath := buildEnrichedReportPathFromRaw(finalRawReportPath)
-	if err := runRustEnrichment(cfg.RustEnginePath, finalRawReportPath, enrichedReportPath); err != nil {
-		return &ScanResult{
-			InputPath:         resolvedInput,
-			SampleName:        sampleName,
-			RawReportPath:     finalRawReportPath,
-			EnrichedReportPath: enrichedReportPath,
-			ExitCode:          exitCode,
-			StartedAt:         startedAt,
-			FinishedAt:        time.Now(),
-		}, fmt.Errorf("rust enrichment failed: %w", err)
+	result := &ScanResult{
+		InputPath:       resolvedInput,
+		SampleName:      sampleName,
+		RawReportPath:   finalRawReportPath,
+		FinalReportPath: finalRawReportPath,
+		ExitCode:        exitCode,
+		StartedAt:       startedAt,
+		FinishedAt:      time.Now(),
 	}
 
-	return &ScanResult{
-		InputPath:          resolvedInput,
-		SampleName:         sampleName,
-		RawReportPath:      finalRawReportPath,
-		EnrichedReportPath: enrichedReportPath,
-		FinalReportPath:    enrichedReportPath,
-		ExitCode:           exitCode,
-		StartedAt:          startedAt,
-		FinishedAt:         time.Now(),
-	}, nil
+	enrichedReportPath, warning, succeeded := attemptRustEnrichment(cfg, finalRawReportPath)
+	result.EnrichmentAttempted = strings.TrimSpace(cfg.RustEnginePath) != ""
+	result.EnrichmentSucceeded = succeeded
+	result.EnrichmentWarning = warning
+
+	if succeeded {
+		result.EnrichedReportPath = enrichedReportPath
+		result.FinalReportPath = enrichedReportPath
+	}
+
+	return result, nil
 }
 
 func FastScan(cfg config.Config, st state.State) (*ScanResult, error) {
@@ -200,29 +255,27 @@ func FastScan(cfg config.Config, st state.State) (*ScanResult, error) {
 		}, err
 	}
 
-	enrichedReportPath := buildEnrichedReportPathFromRaw(finalRawReportPath)
-	if err := runRustEnrichment(cfg.RustEnginePath, finalRawReportPath, enrichedReportPath); err != nil {
-		return &ScanResult{
-			InputPath:          st.LastFilePath,
-			SampleName:         st.LastProgram,
-			RawReportPath:      finalRawReportPath,
-			EnrichedReportPath: enrichedReportPath,
-			ExitCode:           exitCode,
-			StartedAt:          startedAt,
-			FinishedAt:         time.Now(),
-		}, fmt.Errorf("rust enrichment failed: %w", err)
+	result := &ScanResult{
+		InputPath:       st.LastFilePath,
+		SampleName:      st.LastProgram,
+		RawReportPath:   finalRawReportPath,
+		FinalReportPath: finalRawReportPath,
+		ExitCode:        exitCode,
+		StartedAt:       startedAt,
+		FinishedAt:      time.Now(),
 	}
 
-	return &ScanResult{
-		InputPath:          st.LastFilePath,
-		SampleName:         st.LastProgram,
-		RawReportPath:      finalRawReportPath,
-		EnrichedReportPath: enrichedReportPath,
-		FinalReportPath:    enrichedReportPath,
-		ExitCode:           exitCode,
-		StartedAt:          startedAt,
-		FinishedAt:         time.Now(),
-	}, nil
+	enrichedReportPath, warning, succeeded := attemptRustEnrichment(cfg, finalRawReportPath)
+	result.EnrichmentAttempted = strings.TrimSpace(cfg.RustEnginePath) != ""
+	result.EnrichmentSucceeded = succeeded
+	result.EnrichmentWarning = warning
+
+	if succeeded {
+		result.EnrichedReportPath = enrichedReportPath
+		result.FinalReportPath = enrichedReportPath
+	}
+
+	return result, nil
 }
 
 func SaveStateFromScan(projectRoot string, cfg config.Config, result *ScanResult) error {
@@ -302,6 +355,26 @@ func buildEnrichedReportPathFromRaw(rawPath string) string {
 func runRustEnrichment(rustEnginePath, inputReportPath, outputReportPath string) error {
 	_, err := runCommand(rustEnginePath, []string{inputReportPath, outputReportPath})
 	return err
+}
+
+func attemptRustEnrichment(cfg config.Config, rawReportPath string) (string, string, bool) {
+	if strings.TrimSpace(cfg.RustEnginePath) == "" {
+		return "", "rust engine path not configured; keeping raw report as final output", false
+	}
+
+	if _, err := os.Stat(cfg.RustEnginePath); err != nil {
+		return "", fmt.Sprintf("rust engine not found: %s; keeping raw report as final output", cfg.RustEnginePath), false
+	}
+
+	enrichedReportPath := buildEnrichedReportPathFromRaw(rawReportPath)
+	_ = removeIfExists(enrichedReportPath)
+
+	if err := runRustEnrichment(cfg.RustEnginePath, rawReportPath, enrichedReportPath); err != nil {
+		_ = removeIfExists(enrichedReportPath)
+		return "", fmt.Sprintf("rust enrichment failed (%v); keeping raw report as final output", err), false
+	}
+
+	return enrichedReportPath, "", true
 }
 
 func removeIfExists(path string) error {

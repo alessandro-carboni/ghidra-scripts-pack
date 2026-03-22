@@ -65,7 +65,7 @@
       "LoadLibraryA",
       "GetProcAddress"
     ],
-    "min_matches": 3,
+    "min_matches": 2,
     "score": 10
   }
 }
