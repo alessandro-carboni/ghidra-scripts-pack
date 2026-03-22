@@ -2759,7 +2759,7 @@ def build_report():
         execution_flow_hypotheses,
         three_hop_flows,
     )
-    
+
     packer_analysis = apply_benign_packer_adjustments(
         packer_analysis,
         section_info,
