@@ -1946,8 +1946,6 @@ def collect_section_info():
         suspicious = False
         reasons = []
 
-        lower_name = (name or "").lower()
-
         sampled_bytes = sample_block_bytes(block)
         entropy = compute_shannon_entropy(sampled_bytes)
         entropy_class = classify_entropy(entropy)
