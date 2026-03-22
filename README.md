@@ -3,6 +3,10 @@
 A modular automated static-analysis framework for malware triage built around **Ghidra**, **Go**, **Rust**, and an optional **local AI-assisted analysis layer**.
 
 <p align="center">
+  <img src="docs/ghidra-scripts-pack.gif" alt="Malware Triage with AI" width="900"/>
+</p
+
+<p align="center">
   <i>Binary → Ghidra extraction → Rust enrichment → AI-assisted triage → Markdown / JSON analyst output</i>
 </p>
 
