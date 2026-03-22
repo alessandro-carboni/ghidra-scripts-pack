@@ -19,6 +19,7 @@ type Report struct {
 	BinaryStructure  BinaryStructure  `json:"binary_structure"`
 	AnalystOutput    map[string]any   `json:"analyst_output"`
 	RustEnrichment   map[string]any   `json:"rust_enrichment"`
+	AIAnalysis       map[string]any   `json:"ai_analysis"`
 }
 
 type SampleInfo struct {

@@ -17,6 +17,7 @@ func WriteMarkdownFromRaw(reportPath string, raw map[string]any) (string, error)
 	analystOutput := getMap(raw["analyst_output"])
 	binaryStructure := getMap(raw["binary_structure"])
 	rustEnrichment := getMap(raw["rust_enrichment"])
+	aiAnalysis := getMap(raw["ai_analysis"])
 	functionAnalysis := getMap(raw["function_analysis"])
 
 	capabilities := getSlice(globalAnalysis["capabilities"])
@@ -79,6 +80,63 @@ func WriteMarkdownFromRaw(reportPath string, raw map[string]any) (string, error)
 			}
 		}
 		lines = append(lines, "")
+	}
+
+	if len(aiAnalysis) > 0 {
+		lines = append(lines, "## AI Analysis", "")
+
+		if executive := getString(aiAnalysis["executive_summary"]); executive != "" {
+			lines = append(lines, "### Executive Summary", "")
+			lines = append(lines, executive, "")
+		}
+
+		if technical := getString(aiAnalysis["technical_summary"]); technical != "" {
+			lines = append(lines, "### Technical Summary", "")
+			lines = append(lines, technical, "")
+		}
+
+		triageRecommendation := getMap(aiAnalysis["triage_recommendation"])
+		if len(triageRecommendation) > 0 {
+			lines = append(lines, "### Triage Recommendation", "")
+			lines = append(lines, fmt.Sprintf("- **Verdict:** %s", getString(triageRecommendation["verdict"])))
+			lines = append(lines, fmt.Sprintf("- **Priority:** %s", getString(triageRecommendation["priority"])))
+			lines = append(lines, fmt.Sprintf("- **Next step:** %s", getString(triageRecommendation["next_step"])))
+			lines = append(lines, "")
+		}
+
+		suspiciousFunctionPriorities := getSlice(aiAnalysis["suspicious_function_priorities"])
+		if len(suspiciousFunctionPriorities) > 0 {
+			lines = append(lines, "### Suspicious Function Priorities", "")
+			for _, item := range suspiciousFunctionPriorities {
+				m := getMap(item)
+				lines = append(lines, fmt.Sprintf("- **%s**", getString(m["function"])))
+				lines = append(lines, fmt.Sprintf("  - Why: %s", getString(m["why"])))
+				lines = append(lines, fmt.Sprintf("  - Review focus: %s", getString(m["review_focus"])))
+			}
+			lines = append(lines, "")
+		}
+
+		analystQuestions := getSlice(aiAnalysis["analyst_questions"])
+		if len(analystQuestions) > 0 {
+			lines = append(lines, "### Analyst Questions", "")
+			for _, item := range analystQuestions {
+				if s, ok := item.(string); ok {
+					lines = append(lines, "- "+s)
+				}
+			}
+			lines = append(lines, "")
+		}
+
+		confidenceNotes := getSlice(aiAnalysis["confidence_notes"])
+		if len(confidenceNotes) > 0 {
+			lines = append(lines, "### Confidence Notes", "")
+			for _, item := range confidenceNotes {
+				if s, ok := item.(string); ok {
+					lines = append(lines, "- "+s)
+				}
+			}
+			lines = append(lines, "")
+		}
 	}
 
 	lines = append(lines, "## Top Indicators", "")

@@ -1,0 +1,136 @@
+{
+  "executive_summary": "The sample 'notepad.exe' is classified as medium malware risk with an overall score of 46. It exhibits persistence and anti-analysis capabilities, indicating potential for malicious behavior.",
+  "technical_summary": {
+    "overall_score": 46,
+    "risk_level": "medium",
+    "capabilities": [
+      "persistence (+21)",
+      "anti_analysis (+8)"
+    ],
+    "top_functions": [
+      "FUN_140011a28 (suspicious API mix: CreateFile, WriteFile; dispatcher-like high fan-out control node; large external API surface concentrated in one function)",
+      "FUN_140013080 (suspicious API mix: CreateFile, GetProcAddress; local capability evidence: dynamic_loading; behavior roles: loader)",
+      "FUN_140023b00 (suspicious API mix: CreateProcess)",
+      "FUN_1400224a4 (suspicious API mix: RegCreateKeyEx, RegSetValueEx; local capability evidence: persistence; behavior roles: persistence)"
+    ],
+    "behavior_story": "The sample exhibits persistence-related activity and anti-analysis or debugger-awareness features.",
+    "malware_risk": {
+      "level": "medium",
+      "rationale": [
+        "multiple top functions expose local suspicious API evidence",
+        "contextual benign adjustments in the raw report slightly reduce malware-oriented interpretation"
+      ],
+      "score": 49
+    },
+    "packing_risk": {
+      "level": "medium",
+      "rationale": [
+        "high-entropy sections are consistent with compression, encryption, or packing",
+        "packer analysis notes reinforce the interpretation that static visibility may be stub-dominated"
+      ],
+      "score": 30
+    }
+  },
+  "behavior": {
+    "behavior_story": "",
+    "behavior_summary": ""
+  },
+  "packer": {
+    "family_hint": "",
+    "high_entropy_count": 0,
+    "indicator_summary": "",
+    "likely_packed": false,
+    "oep_candidates": [
+      {
+        "address": "140001a34",
+        "reason": "same-section jump; same-section executable target; target resolves into a concrete memory-backed function; late trans...",
+        "score": 18
+      },
+      {
+        "address": "140001a61",
+        "reason": "same-section jump; same-section executable target; target resolves into a concrete memory-backed function; target resolves into a concrete memory-backed function; late trans...",
+        "score": 18
+      },
+      {
+        "address": "140001a79",
+        "reason": "same-section jump; same-section executable target; target resolves into a concrete memory-backed function; late trans...",
+        "score": 18
+      },
+      {
+        "address": "140001afe",
+        "reason": "same-section jump; same-section executable target; target resolves into a concrete memory-backed function; late trans...",
+        "score": 18
+      }
+    ],
+    "packing_score": null
+  },
+  "rust": {
+    "confidence_notes": [
+      "top function 'FUN_140011a28' includes explicit reasoning: suspicious API mix: CreateFile, WriteFile"
+    ],
+    "decision_summary": "",
+    "derived_capabilities": [],
+    "malware_risk": {
+      "level": "medium",
+      "rationale": [
+        "multiple top functions expose local suspicious API evidence",
+        "contextual benign adjustments in the raw report slightly reduce malware-oriented interpretation"
+      ],
+      "score": 49
+    },
+    "manual_review_reasons": [],
+    "packing_risk": {
+      "level": "medium",
+      "rationale": [
+        "high-entropy sections are consistent with compression, encryption, or packing",
+        "packer analysis notes reinforce the interpretation that static visibility may be stub-dominated"
+      ],
+      "score": 30
+    },
+    "risk_split_summary": ""
+  },
+  "analyst_output": {
+    "analyst_playbook": [],
+    "analyst_summary": {
+      "key_points": [
+        "Overall malware-risk classified as medium with final score 46.",
+        "Detected capabilities: persistence, anti_analysis.",
+        "Behavioral inference: persistence-related activity present; anti-analysis or debugger-awareness present; multi-stage ...",
+        "Score adjusted by contextual benign indicators."
+      ],
+      "priority_functions": [
+        "FUN_140011a28 (suspicious API mix: CreateFile, WriteFile)",
+        "FUN_140013080 (suspicious API mix: CreateFile, GetProcAddress)",
+        "FUN_140023b00 (suspicious API mix: CreateProcess)",
+        "FUN_1400224a4 (suspicious API mix: RegCreateKeyEx, RegSetValueEx)"
+      ]
+    },
+    "analyst_targets": [
+      {
+        "function": null,
+        "priority": null,
+        "why": "suspicious API mix: CreateFile, WriteFile; dispatcher-like high fan-out control node; large external API surface concentrated in one function"
+      },
+      {
+        "function": null,
+        "priority": null,
+        "why": "suspicious API mix: CreateFile, GetProcAddress; local capability evidence: dynamic_loading; behavior roles: loader."
+      },
+      {
+        "function": null,
+        "priority": null,
+        "why": "suspicious API mix: CreateProcess."
+      },
+      {
+        "function": null,
+        "priority": null,
+        "why": "suspicious API mix: RegCreateKeyEx, RegSetValueEx; local capability evidence: persistence; behavior roles: persistence."
+      },
+      {
+        "function": null,
+        "priority": null,
+        "why": "suspicious API mix: CreateFile, ReadFile."
+      }
+    ]
+  }
+}

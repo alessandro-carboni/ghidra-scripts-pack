@@ -2682,6 +2682,51 @@ def build_analyst_playbook(behavior_story, top_functions, summary, oep_candidate
 
 
 def build_report():
+    analysis_metadata = build_analysis_metadata()
+
+    program_name = currentProgram.getName()
+    executable_path = currentProgram.getExecutablePath()
+    executable_format = currentProgram.getExecutableFormat()
+
+    sample_name = str(program_name) if program_name else "unknown"
+    sample_info = {
+        "name": sample_name,
+        "path": str(executable_path) if executable_path else "",
+        "format": str(executable_format) if executable_format else "unknown",
+    }
+
+    external_symbols = get_external_symbols()
+    suspicious_apis = get_suspicious_apis(external_symbols)
+    strings = get_strings()
+    interesting_strings = analyze_interesting_strings(strings)
+
+    section_info = collect_section_info()
+    entrypoint_info = get_entrypoint_info()
+    entry_window = collect_entrypoint_instruction_window()
+    classic_patterns = detect_classic_unpacking_patterns(entry_window)
+    oep_candidates = find_oep_candidates(entrypoint_info)
+
+    packer_family_hint = detect_packer_family_hint(
+        section_info,
+        external_symbols,
+        entrypoint_info,
+        classic_patterns,
+    )
+
+    packer_analysis = build_packer_analysis(
+        section_info,
+        entrypoint_info,
+        external_symbols,
+        suspicious_apis,
+    )
+
+    packer_analysis = enrich_packer_analysis_with_patterns(
+        packer_analysis,
+        classic_patterns,
+        oep_candidates,
+        packer_family_hint,
+    )
+
     capabilities = detect_capabilities(external_symbols)
 
     functions = get_base_functions()
@@ -2713,6 +2758,14 @@ def build_report():
         functions,
         execution_flow_hypotheses,
         three_hop_flows,
+    )
+    
+    packer_analysis = apply_benign_packer_adjustments(
+        packer_analysis,
+        section_info,
+        entrypoint_info,
+        external_symbols,
+        functions,
     )
 
     raw_score = compute_raw_score(

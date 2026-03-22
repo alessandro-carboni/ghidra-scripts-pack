@@ -199,6 +199,18 @@ func InspectRust(raw map[string]any) (map[string]any, error) {
 	}, nil
 }
 
+func InspectAI(raw map[string]any) (map[string]any, error) {
+	aiBlock := getMap(raw["ai_analysis"])
+	if len(aiBlock) == 0 {
+		return nil, fmt.Errorf("no ai_analysis found in report")
+	}
+
+	return map[string]any{
+		"inspect_type": "ai_analysis",
+		"ai_analysis":  aiBlock,
+	}, nil
+}
+
 func contains(items []string, needle string) bool {
 	for _, item := range items {
 		if item == needle {

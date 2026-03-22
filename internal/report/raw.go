@@ -22,6 +22,15 @@ func LoadRaw(path string) (map[string]any, error) {
 	return raw, nil
 }
 
+func SaveRaw(path string, raw map[string]any) error {
+	data, err := json.MarshalIndent(raw, "", "  ")
+	if err != nil {
+		return err
+	}
+
+	return os.WriteFile(path, data, 0o644)
+}
+
 func Pretty(v any) string {
 	data, err := json.MarshalIndent(v, "", "  ")
 	if err != nil {
@@ -107,6 +116,8 @@ func SelectOutputField(raw map[string]any, field string) (any, []string, error) 
 		"analysis_metadata": "analysis_metadata",
 		"rule_contract":     "rule_contract",
 		"rust_enrichment":   "rust_enrichment",
+		"ai_analysis":       "ai_analysis",
+		"ai":                "ai_analysis",
 		"sample":            "sample",
 
 		"global_analysis":     "global_analysis",

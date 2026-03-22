@@ -66,6 +66,10 @@ func GetLastReportInfo(reportsDir string) (*ReportFileInfo, error) {
 	}
 
 	for i := len(files) - 1; i >= 0; i-- {
+		if isAIOnlyReportPath(files[i].Path) {
+			continue
+		}
+
 		preferredPath := preferredPathFor(files[i].Path)
 		info, err := os.Stat(preferredPath)
 		if err == nil {
@@ -214,7 +218,13 @@ func isRawReportPath(path string) bool {
 
 func isEnrichedReportPath(path string) bool {
 	lower := strings.ToLower(path)
-	return strings.HasSuffix(lower, ".json") && !strings.HasSuffix(lower, "_raw.json")
+	return strings.HasSuffix(lower, ".json") &&
+		!strings.HasSuffix(lower, "_raw.json") &&
+		!strings.HasSuffix(lower, "_ai.json")
+}
+
+func isAIOnlyReportPath(path string) bool {
+	return strings.HasSuffix(strings.ToLower(path), "_ai.json")
 }
 
 func enrichedPathFromRaw(rawPath string) string {

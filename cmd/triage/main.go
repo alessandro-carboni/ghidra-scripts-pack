@@ -8,6 +8,7 @@ import (
 	"path/filepath"
 	"strings"
 
+	"ghidra-malware-triage/internal/ai"
 	"ghidra-malware-triage/internal/config"
 	"ghidra-malware-triage/internal/report"
 	"ghidra-malware-triage/internal/runner"
@@ -41,6 +42,8 @@ func main() {
 		runDelete(os.Args[2:])
 	case "markdown":
 		runMarkdown(os.Args[2:])
+	case "reportAI":
+		runReportAI(os.Args[2:])
 	default:
 		showUsage()
 		os.Exit(1)
@@ -58,6 +61,11 @@ func showUsage() {
 	fmt.Println(`  .\triage.exe report -last -o summary`)
 	fmt.Println(`  .\triage.exe report -last -o rust_enrichment`)
 	fmt.Println(`  .\triage.exe reports`)
+	fmt.Println(`  .\triage.exe reportAI -last`)
+	fmt.Println(`  .\triage.exe reportAI -last -merge`)
+	fmt.Println(`  .\triage.exe report -last -o ai_analysis`)
+	fmt.Println(`  .\triage.exe inspect -last -ai`)
+	fmt.Println(`  .\triage.exe reportAI -name <SAMPLE_NAME> -ai-base-url http://localhost:<PORT>/v1 -ai-model llama3.1`)
 	fmt.Println(`  .\triage.exe inspect -last -function entry`)
 	fmt.Println(`  .\triage.exe inspect -last -capability process_injection`)
 	fmt.Println(`  .\triage.exe inspect -last -packer`)
@@ -372,6 +380,98 @@ func runReport(args []string) {
 	fmt.Println(report.Pretty(selected))
 }
 
+func runReportAI(args []string) {
+	fs := flag.NewFlagSet("reportAI", flag.ExitOnError)
+
+	last := fs.Bool("last", false, "use last primary report")
+	name := fs.String("name", "", "report file name")
+	reportsDir := fs.String("reports-dir", defaultReportsDir(), "reports directory")
+	aiBaseURL := fs.String("ai-base-url", "", "OpenAI-compatible AI base URL")
+	aiModel := fs.String("ai-model", "", "AI model name")
+	aiAPIKey := fs.String("ai-api-key", "", "AI API key (optional for local endpoints)")
+	aiTimeout := fs.Int("ai-timeout", 0, "AI timeout in seconds")
+	outPath := fs.String("out", "", "optional output path for AI-only report")
+	merge := fs.Bool("merge", false, "merge ai_analysis into source report and regenerate markdown")
+	debugRaw := fs.Bool("debug-raw", false, "save raw AI response on parse failure")
+
+	_ = fs.Parse(args)
+
+	reportPath, err := report.ResolveReportPath(*reportsDir, *name, *last)
+	if err != nil {
+		fmt.Fprintln(os.Stderr, err)
+		os.Exit(1)
+	}
+
+	raw, err := report.LoadRaw(reportPath)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "load report: %v\n", err)
+		os.Exit(1)
+	}
+
+	projectRoot, err := config.ProjectRootFromWD()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "resolve project root: %v\n", err)
+		os.Exit(1)
+	}
+
+	cfg := config.Default(projectRoot)
+	cfg.ApplyAIOverrides(*aiBaseURL, *aiModel, *aiAPIKey, *aiTimeout)
+
+	if err := cfg.ValidateForAI(); err != nil {
+		fmt.Fprintf(os.Stderr, "AI config error: %v\n", err)
+		os.Exit(1)
+	}
+
+	input := ai.BuildInputPayload(raw, reportPath)
+
+	genResult, err := ai.GenerateAIOnlyReport(cfg, input)
+	if err != nil {
+		if *debugRaw && genResult != nil && strings.TrimSpace(genResult.RawResponse) != "" {
+			rawPath := strings.TrimSuffix(reportPath, filepath.Ext(reportPath)) + "_ai_raw.txt"
+			if saveErr := ai.SaveRawAIResponse(rawPath, genResult.RawResponse); saveErr == nil {
+				fmt.Fprintf(os.Stderr, "[!] Raw AI response saved to: %s\n", rawPath)
+			}
+		}
+		fmt.Fprintf(os.Stderr, "AI analysis failed: %v\n", err)
+		os.Exit(1)
+	}
+
+	aiOnlyReport := genResult.Report
+
+	finalOutPath := strings.TrimSpace(*outPath)
+	if finalOutPath == "" {
+		finalOutPath = ai.SidecarReportPath(reportPath)
+	}
+
+	if err := ai.SaveAIReport(finalOutPath, *aiOnlyReport); err != nil {
+		fmt.Fprintf(os.Stderr, "save AI-only report: %v\n", err)
+		os.Exit(1)
+	}
+
+	if *merge {
+		mdPath, err := ai.MergeAIIntoReport(reportPath, aiOnlyReport.AIAnalysis)
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "merge AI into source report: %v\n", err)
+			os.Exit(1)
+		}
+		fmt.Printf("[+] Source report updated with ai_analysis: %s\n", reportPath)
+		fmt.Printf("[+] Markdown regenerated: %s\n", mdPath)
+	}
+
+	st, err := state.Load(projectRoot)
+	if err == nil {
+		if st == nil {
+			st = &state.State{}
+		}
+		st.LastAIReport = finalOutPath
+		_ = state.Save(projectRoot, *st)
+	}
+
+	fmt.Printf("[*] Source report: %s\n", reportPath)
+	fmt.Printf("[+] AI-only report: %s\n\n", finalOutPath)
+	fmt.Println(report.Pretty(aiOnlyReport.AIAnalysis))
+}
+
 func runReports(args []string) {
 	fs := flag.NewFlagSet("reports", flag.ExitOnError)
 	reportsDir := fs.String("reports-dir", defaultReportsDir(), "reports directory")
@@ -403,6 +503,7 @@ func runInspect(args []string) {
 	packer := fs.Bool("packer", false, "inspect packer analysis")
 	stringsFlag := fs.Bool("strings", false, "inspect interesting strings")
 	rustFlag := fs.Bool("rust", false, "inspect rust enrichment")
+	aiFlag := fs.Bool("ai", false, "inspect AI analysis")
 	reportsDir := fs.String("reports-dir", defaultReportsDir(), "reports directory")
 
 	_ = fs.Parse(args)
@@ -437,9 +538,12 @@ func runInspect(args []string) {
 	if *rustFlag {
 		modeCount++
 	}
+	if *aiFlag {
+		modeCount++
+	}
 
 	if modeCount == 0 {
-		fmt.Fprintln(os.Stderr, "specify one inspect target: -function, -capability, -packer, -strings, or -rust")
+		fmt.Fprintln(os.Stderr, "specify one inspect target: -function, -capability, -packer, -strings, -rust, or -ai")
 		os.Exit(1)
 	}
 	if modeCount > 1 {
@@ -489,6 +593,16 @@ func runInspect(args []string) {
 
 	if *rustFlag {
 		out, err := report.InspectRust(raw)
+		if err != nil {
+			fmt.Fprintln(os.Stderr, err)
+			os.Exit(1)
+		}
+		fmt.Println(report.Pretty(out))
+		return
+	}
+
+	if *aiFlag {
+		out, err := report.InspectAI(raw)
 		if err != nil {
 			fmt.Fprintln(os.Stderr, err)
 			os.Exit(1)

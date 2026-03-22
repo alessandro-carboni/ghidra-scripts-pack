@@ -5,32 +5,41 @@ import (
 	"os"
 	"path/filepath"
 	"runtime"
+	"strconv"
 	"strings"
 )
 
 type Config struct {
-	GhidraDir      string
-	ProjectDir     string
-	ProjectName    string
-	ScriptPath     string
-	PostScript     string
-	RuleDir        string
-	OutputDir      string
-	ReportsDir     string
-	RustEnginePath string
+	GhidraDir        string
+	ProjectDir       string
+	ProjectName      string
+	ScriptPath       string
+	PostScript       string
+	RuleDir          string
+	OutputDir        string
+	ReportsDir       string
+	RustEnginePath   string
+	AIBaseURL        string
+	AIModel          string
+	AIAPIKey         string
+	AITimeoutSeconds int
 }
 
 func Default(projectRoot string) Config {
 	return Config{
-		GhidraDir:      "",
-		ProjectDir:     defaultProjectDir(),
-		ProjectName:    "TriageProject",
-		ScriptPath:     filepath.Join(projectRoot, "ghidra_scripts"),
-		PostScript:     "export_report.py",
-		RuleDir:        filepath.Join(projectRoot, "rules"),
-		OutputDir:      filepath.Join(projectRoot, "reports"),
-		ReportsDir:     filepath.Join(projectRoot, "reports"),
-		RustEnginePath: filepath.Join(projectRoot, "rust_engine", "target", "debug", defaultRustEngineBinaryName()),
+		GhidraDir:        "",
+		ProjectDir:       defaultProjectDir(),
+		ProjectName:      "TriageProject",
+		ScriptPath:       filepath.Join(projectRoot, "ghidra_scripts"),
+		PostScript:       "export_report.py",
+		RuleDir:          filepath.Join(projectRoot, "rules"),
+		OutputDir:        filepath.Join(projectRoot, "reports"),
+		ReportsDir:       filepath.Join(projectRoot, "reports"),
+		RustEnginePath:   filepath.Join(projectRoot, "rust_engine", "target", "debug", defaultRustEngineBinaryName()),
+		AIBaseURL:        strings.TrimSpace(os.Getenv("TRIAGE_AI_BASE_URL")),
+		AIModel:          strings.TrimSpace(os.Getenv("TRIAGE_AI_MODEL")),
+		AIAPIKey:         strings.TrimSpace(os.Getenv("TRIAGE_AI_API_KEY")),
+		AITimeoutSeconds: readIntEnv("TRIAGE_AI_TIMEOUT_SECONDS", 90),
 	}
 }
 
@@ -91,6 +100,26 @@ func (c *Config) ApplyOverrides(
 	}
 }
 
+func (c *Config) ApplyAIOverrides(
+	baseURL string,
+	model string,
+	apiKey string,
+	timeoutSeconds int,
+) {
+	if strings.TrimSpace(baseURL) != "" {
+		c.AIBaseURL = strings.TrimSpace(baseURL)
+	}
+	if strings.TrimSpace(model) != "" {
+		c.AIModel = strings.TrimSpace(model)
+	}
+	if apiKey != "" {
+		c.AIAPIKey = apiKey
+	}
+	if timeoutSeconds > 0 {
+		c.AITimeoutSeconds = timeoutSeconds
+	}
+}
+
 func (c Config) ValidateForAnalysis() error {
 	if strings.TrimSpace(c.GhidraDir) == "" {
 		return errors.New("missing ghidra directory")
@@ -126,6 +155,19 @@ func (c Config) ValidateForEnrichment() error {
 	return nil
 }
 
+func (c Config) ValidateForAI() error {
+	if strings.TrimSpace(c.AIBaseURL) == "" {
+		return errors.New("missing AI base URL (set TRIAGE_AI_BASE_URL or pass -ai-base-url)")
+	}
+	if strings.TrimSpace(c.AIModel) == "" {
+		return errors.New("missing AI model (set TRIAGE_AI_MODEL or pass -ai-model)")
+	}
+	if c.AITimeoutSeconds <= 0 {
+		return errors.New("invalid AI timeout")
+	}
+	return nil
+}
+
 func (c Config) ValidateForScan() error {
 	return c.ValidateForAnalysis()
 }
@@ -151,4 +193,18 @@ func EnsureDirs(c Config) error {
 
 func ProjectRootFromWD() (string, error) {
 	return os.Getwd()
+}
+
+func readIntEnv(name string, fallback int) int {
+	raw := strings.TrimSpace(os.Getenv(name))
+	if raw == "" {
+		return fallback
+	}
+
+	v, err := strconv.Atoi(raw)
+	if err != nil || v <= 0 {
+		return fallback
+	}
+
+	return v
 }

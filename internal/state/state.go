@@ -22,6 +22,7 @@ type State struct {
 	LastReport         string `json:"last_report"`
 	LastRawReport      string `json:"last_raw_report"`
 	LastEnrichedReport string `json:"last_enriched_report"`
+	LastAIReport       string `json:"last_ai_report"`
 	UpdatedAt          string `json:"updated_at"`
 }
 
