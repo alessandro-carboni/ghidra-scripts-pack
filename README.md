@@ -372,27 +372,6 @@ This mirrors a realistic static malware triage process rather than a one-shot cl
 
 ---
 
-## Sample set note
-
-The repository includes a local sample layout for validation:
-```text
-samples/
-  notMalicious/
-  packed/
-  unpacked/
-```
-
-> **Important:** the `packed/` and `unpacked/` folder names are not the authoritative source of truth for packing state.
->
-> In this dataset:
-> - samples with the suffix `-unpacked` are the real unpacked versions
-> - samples **without** the `-unpacked` suffix are the packed versions
-> - `notMalicious/` contains benign Windows/system executables
-
-This matters especially when validating or tuning the AI layer.
-
----
-
 ## Validated behaviors
 
 The framework has been exercised across three broad categories.
@@ -408,16 +387,12 @@ Goal:
 
 ### Packed samples
 
-Examples: samples whose names do **not** contain `-unpacked`
-
 Goal:
 - detect likely packing
 - avoid overclaiming behavior when static visibility is stub-dominated
 - surface OEP and entrypoint clues for analyst follow-up
 
 ### Malware-like / stronger-signal samples
-
-Examples: unpacked or behavior-rich samples with injection, persistence, networking, or dynamic loading evidence
 
 Goal:
 - prioritize suspicious functions
