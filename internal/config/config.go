@@ -23,23 +23,26 @@ type Config struct {
 	AIModel          string
 	AIAPIKey         string
 	AITimeoutSeconds int
+	// SeededFingerprintingEnabled enables the experimental seeded fingerprinting pipeline.
+	SeededFingerprintingEnabled bool
 }
 
 func Default(projectRoot string) Config {
 	return Config{
-		GhidraDir:        "",
-		ProjectDir:       defaultProjectDir(),
-		ProjectName:      "TriageProject",
-		ScriptPath:       filepath.Join(projectRoot, "ghidra_scripts"),
-		PostScript:       "export_report.py",
-		RuleDir:          filepath.Join(projectRoot, "rules"),
-		OutputDir:        filepath.Join(projectRoot, "reports"),
-		ReportsDir:       filepath.Join(projectRoot, "reports"),
-		RustEnginePath:   filepath.Join(projectRoot, "rust_engine", "target", "debug", defaultRustEngineBinaryName()),
-		AIBaseURL:        strings.TrimSpace(os.Getenv("TRIAGE_AI_BASE_URL")),
-		AIModel:          strings.TrimSpace(os.Getenv("TRIAGE_AI_MODEL")),
-		AIAPIKey:         strings.TrimSpace(os.Getenv("TRIAGE_AI_API_KEY")),
-		AITimeoutSeconds: readIntEnv("TRIAGE_AI_TIMEOUT_SECONDS", 90),
+		GhidraDir:                   "",
+		ProjectDir:                  defaultProjectDir(),
+		ProjectName:                 "TriageProject",
+		ScriptPath:                  filepath.Join(projectRoot, "ghidra_scripts"),
+		PostScript:                  "export_report.py",
+		RuleDir:                     filepath.Join(projectRoot, "rules"),
+		OutputDir:                   filepath.Join(projectRoot, "reports"),
+		ReportsDir:                  filepath.Join(projectRoot, "reports"),
+		RustEnginePath:              filepath.Join(projectRoot, "rust_engine", "target", "debug", defaultRustEngineBinaryName()),
+		AIBaseURL:                   strings.TrimSpace(os.Getenv("TRIAGE_AI_BASE_URL")),
+		AIModel:                     strings.TrimSpace(os.Getenv("TRIAGE_AI_MODEL")),
+		AIAPIKey:                    strings.TrimSpace(os.Getenv("TRIAGE_AI_API_KEY")),
+		AITimeoutSeconds:            readIntEnv("TRIAGE_AI_TIMEOUT_SECONDS", 90),
+		SeededFingerprintingEnabled: false,
 	}
 }
 

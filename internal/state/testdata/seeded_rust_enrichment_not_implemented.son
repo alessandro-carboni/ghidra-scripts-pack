@@ -1,0 +1,9 @@
+{
+  "rust_enrichment": {
+    "seeded_fingerprinting": {
+      "status": "not_implemented",
+      "schema_version": "0.1.0",
+      "message": "Seeded fingerprinting is enabled but not implemented in this milestone."
+    }
+  }
+}

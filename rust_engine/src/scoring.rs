@@ -93,8 +93,7 @@ fn has_primary_reasoned_top_function(report: &Report) -> bool {
 fn has_high_confidence_global_capability(report: &Report, capability_name: &str) -> bool {
     report.global_analysis.capabilities.iter().any(|c| {
         c.name == capability_name
-            && (c.confidence.trim().eq_ignore_ascii_case("high")
-                || c.match_count >= c.min_matches + 1)
+            && (c.confidence.trim().eq_ignore_ascii_case("high") || c.match_count > c.min_matches)
     })
 }
 
@@ -238,8 +237,8 @@ fn evaluate_score_rule(report: &Report, rule: &ScoreRule) -> bool {
 
     if let Some(min_non_benign_interesting_strings) = rule.min_non_benign_interesting_strings {
         checked_any = true;
-        matched &= count_non_benign_interesting_strings(report, 12)
-            >= min_non_benign_interesting_strings;
+        matched &=
+            count_non_benign_interesting_strings(report, 12) >= min_non_benign_interesting_strings;
     }
 
     if let Some(requires_likely_packed) = rule.requires_likely_packed {
@@ -249,12 +248,17 @@ fn evaluate_score_rule(report: &Report, rule: &ScoreRule) -> bool {
 
     if let Some(min_packing_score) = rule.min_packing_score {
         checked_any = true;
-        matched &= report.binary_structure.packer_analysis.packed_likelihood_score >= min_packing_score;
+        matched &= report
+            .binary_structure
+            .packer_analysis
+            .packed_likelihood_score
+            >= min_packing_score;
     }
 
     if let Some(min_high_entropy_executable_sections) = rule.min_high_entropy_executable_sections {
         checked_any = true;
-        matched &= count_high_entropy_executable_sections(report) >= min_high_entropy_executable_sections;
+        matched &=
+            count_high_entropy_executable_sections(report) >= min_high_entropy_executable_sections;
     }
 
     if let Some(min_suspicious_section_count) = rule.min_suspicious_section_count {
@@ -266,7 +270,8 @@ fn evaluate_score_rule(report: &Report, rule: &ScoreRule) -> bool {
         rule.requires_primary_reasoned_top_function
     {
         checked_any = true;
-        matched &= has_primary_reasoned_top_function(report) == requires_primary_reasoned_top_function;
+        matched &=
+            has_primary_reasoned_top_function(report) == requires_primary_reasoned_top_function;
     }
 
     checked_any && matched
@@ -349,13 +354,17 @@ pub fn compute_malware_risk(report: &Report, calibrated_score: i32) -> RiskScore
 
     if has_networking && has_persistence {
         score += 8;
-        rationale.push("networking combined with persistence suggests sustained malicious utility".to_string());
+        rationale.push(
+            "networking combined with persistence suggests sustained malicious utility".to_string(),
+        );
     } else if has_networking && has_crypto {
         score += 8;
         rationale.push("networking combined with crypto increases suspicious utility".to_string());
     } else if has_networking {
         score += 4;
-        rationale.push("networking contributes to malware-oriented risk but is not decisive alone".to_string());
+        rationale.push(
+            "networking contributes to malware-oriented risk but is not decisive alone".to_string(),
+        );
     }
 
     if has_dynamic_loading && has_process_injection {
@@ -363,9 +372,14 @@ pub fn compute_malware_risk(report: &Report, calibrated_score: i32) -> RiskScore
         rationale.push("dynamic loading combined with process injection is consistent with staged or memory-resident execution".to_string());
     }
 
-    if has_anti_analysis && (has_process_injection || has_dynamic_loading || has_networking || has_crypto) {
+    if has_anti_analysis
+        && (has_process_injection || has_dynamic_loading || has_networking || has_crypto)
+    {
         score += 6;
-        rationale.push("anti-analysis combined with stronger offensive signals increases suspicion".to_string());
+        rationale.push(
+            "anti-analysis combined with stronger offensive signals increases suspicion"
+                .to_string(),
+        );
     }
 
     if high_risk_top_functions >= 3 {
@@ -380,7 +394,10 @@ pub fn compute_malware_risk(report: &Report, calibrated_score: i32) -> RiskScore
 
     if high_impact_cap_count == 0 && (has_persistence || has_dynamic_loading || has_anti_analysis) {
         score -= 15;
-        rationale.push("only soft capabilities are present, so malware attribution should remain conservative".to_string());
+        rationale.push(
+            "only soft capabilities are present, so malware attribution should remain conservative"
+                .to_string(),
+        );
     }
 
     if benign_contexts >= 2 {
@@ -434,8 +451,19 @@ pub fn compute_packing_risk(report: &Report) -> RiskScore {
         rationale.push("report explicitly flags the sample as likely packed".to_string());
     }
 
-    let family = if !report.binary_structure.packer_analysis.packer_family_hint.trim().is_empty() {
-        report.binary_structure.packer_analysis.packer_family_hint.trim().to_string()
+    let family = if !report
+        .binary_structure
+        .packer_analysis
+        .packer_family_hint
+        .trim()
+        .is_empty()
+    {
+        report
+            .binary_structure
+            .packer_analysis
+            .packer_family_hint
+            .trim()
+            .to_string()
     } else {
         report.summary.packer_family_hint.trim().to_string()
     };
@@ -460,7 +488,9 @@ pub fn compute_packing_risk(report: &Report) -> RiskScore {
     if suspicious_section_count > 0 {
         let bump = (suspicious_section_count * 4).min(12);
         score += bump;
-        rationale.push("suspicious or non-standard sections reinforce packing-oriented risk".to_string());
+        rationale.push(
+            "suspicious or non-standard sections reinforce packing-oriented risk".to_string(),
+        );
     }
 
     let high_entropy_section_count = report
@@ -472,17 +502,27 @@ pub fn compute_packing_risk(report: &Report) -> RiskScore {
     if high_entropy_section_count > 0 {
         let bump = (high_entropy_section_count * 4).min(12);
         score += bump;
-        rationale.push("high-entropy sections are consistent with compression, encryption, or packing".to_string());
+        rationale.push(
+            "high-entropy sections are consistent with compression, encryption, or packing"
+                .to_string(),
+        );
     }
 
     let high_entropy_executable_count = count_high_entropy_executable_sections(report) as i32;
     if high_entropy_executable_count > 0 {
         let bump = (high_entropy_executable_count * 6).min(18);
         score += bump;
-        rationale.push("high-entropy executable sections are strongly consistent with stub or packed code".to_string());
+        rationale.push(
+            "high-entropy executable sections are strongly consistent with stub or packed code"
+                .to_string(),
+        );
     }
 
-    if let Some(ep_entropy) = report.binary_structure.packer_analysis.entrypoint_section_entropy {
+    if let Some(ep_entropy) = report
+        .binary_structure
+        .packer_analysis
+        .entrypoint_section_entropy
+    {
         if ep_entropy >= 7.6 {
             score += 10;
             rationale.push("entrypoint section entropy is very high".to_string());
@@ -492,27 +532,45 @@ pub fn compute_packing_risk(report: &Report) -> RiskScore {
         }
     }
 
-    if let Some(ref top_oep) = report.binary_structure.packer_analysis.oep_candidate_summary {
+    if let Some(ref top_oep) = report
+        .binary_structure
+        .packer_analysis
+        .oep_candidate_summary
+    {
         if top_oep.score >= 35 {
             score += 12;
             rationale.push("strong OEP candidate near entrypoint supports a stub-to-real-code handoff hypothesis".to_string());
         } else if top_oep.score >= 20 {
             score += 6;
-            rationale.push("moderate OEP candidate near entrypoint supports possible handoff behavior".to_string());
+            rationale.push(
+                "moderate OEP candidate near entrypoint supports possible handoff behavior"
+                    .to_string(),
+            );
         }
     }
 
     if suspicious_api_count <= 3 && report.binary_structure.packer_analysis.likely_packed {
         score += 10;
-        rationale.push("low visible API surface combined with packing is consistent with stub-like behavior".to_string());
+        rationale.push(
+            "low visible API surface combined with packing is consistent with stub-like behavior"
+                .to_string(),
+        );
     }
 
     if capability_count == 0 && report.binary_structure.packer_analysis.likely_packed {
         score += 10;
-        rationale.push("few or no explicit capabilities with likely packing suggests hidden behavior".to_string());
+        rationale.push(
+            "few or no explicit capabilities with likely packing suggests hidden behavior"
+                .to_string(),
+        );
     }
 
-    if !report.binary_structure.packer_analysis.analysis_notes.is_empty() {
+    if !report
+        .binary_structure
+        .packer_analysis
+        .analysis_notes
+        .is_empty()
+    {
         score += 4;
         rationale.push("packer analysis notes reinforce the interpretation that static visibility may be stub-dominated".to_string());
     }
@@ -526,7 +584,10 @@ pub fn compute_packing_risk(report: &Report) -> RiskScore {
         && !report.binary_structure.packer_analysis.likely_packed
     {
         score -= 6;
-        rationale.push("no executable high-entropy section was observed, which weakens the packing hypothesis".to_string());
+        rationale.push(
+            "no executable high-entropy section was observed, which weakens the packing hypothesis"
+                .to_string(),
+        );
     }
 
     if score < 0 {

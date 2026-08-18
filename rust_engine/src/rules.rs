@@ -157,49 +157,63 @@ fn default_score_rules() -> Vec<ScoreRule> {
             id: "multiple_high_risk_top_functions".to_string(),
             condition: "multiple_high_risk_top_functions".to_string(),
             delta: 10,
-            rationale: "two or more top functions are already classified as high or critical risk".to_string(),
+            rationale:
+                "two or more top functions are already classified as high or critical risk"
+                    .to_string(),
+            ..Default::default()
         },
         ScoreRule {
             id: "packed_sample_static_visibility_penalty".to_string(),
             condition: "packed_sample_static_visibility_penalty".to_string(),
             delta: -10,
-            rationale: "packing reduces visibility of true runtime behavior during static triage".to_string(),
+            rationale:
+                "packing reduces visibility of true runtime behavior during static triage"
+                    .to_string(),
+            ..Default::default()
         },
         ScoreRule {
             id: "process_injection_capability".to_string(),
             condition: "process_injection_capability".to_string(),
             delta: 15,
             rationale: "process injection is a high-impact malicious behavior cluster".to_string(),
+            ..Default::default()
         },
         ScoreRule {
             id: "high_signal_interesting_strings".to_string(),
             condition: "high_signal_interesting_strings".to_string(),
             delta: 5,
-            rationale: "non-benign high-score strings support suspicious interpretation".to_string(),
+            rationale:
+                "non-benign high-score strings support suspicious interpretation".to_string(),
+            ..Default::default()
         },
         ScoreRule {
             id: "top_function_reasoned_evidence".to_string(),
             condition: "top_function_reasoned_evidence".to_string(),
             delta: 6,
-            rationale: "at least one top function has explicit local evidence and reasoning".to_string(),
+            rationale:
+                "at least one top function has explicit local evidence and reasoning".to_string(),
+            ..Default::default()
         },
         ScoreRule {
             id: "strong_packing_with_weak_visible_behavior".to_string(),
             condition: "strong_packing_with_weak_visible_behavior".to_string(),
             delta: -6,
             rationale: "strong packing combined with weak visible malicious evidence should reduce malware-oriented calibration".to_string(),
+            ..Default::default()
         },
         ScoreRule {
             id: "benign_context_heavy_discount".to_string(),
             condition: "benign_context_heavy_discount".to_string(),
             delta: -10,
             rationale: "multiple benign-context adjustments in the raw report justify a more conservative calibration".to_string(),
+            ..Default::default()
         },
         ScoreRule {
             id: "soft_capability_only_discount".to_string(),
             condition: "soft_capability_only_discount".to_string(),
             delta: -8,
             rationale: "only soft capabilities are present, so the global score should remain conservative".to_string(),
+            ..Default::default()
         },
     ]
 }
@@ -209,11 +223,15 @@ fn default_derived_capability_rules() -> Vec<DerivedCapabilityRule> {
         DerivedCapabilityRule {
             name: "in_memory_loader".to_string(),
             confidence: "high".to_string(),
-            requires_all: vec!["process_injection".to_string(), "dynamic_loading".to_string()],
+            requires_all: vec![
+                "process_injection".to_string(),
+                "dynamic_loading".to_string(),
+            ],
             requires_high_confidence: vec!["process_injection".to_string()],
             rationale: vec![
                 "process injection and dynamic loading are both present".to_string(),
-                "this combination is consistent with staged or memory-resident execution".to_string(),
+                "this combination is consistent with staged or memory-resident execution"
+                    .to_string(),
             ],
             ..Default::default()
         },
@@ -233,7 +251,8 @@ fn default_derived_capability_rules() -> Vec<DerivedCapabilityRule> {
             requires_all: vec!["anti_analysis".to_string(), "process_injection".to_string()],
             rationale: vec![
                 "anti-analysis and process injection signals co-occur".to_string(),
-                "this pairing is commonly associated with stealthier payload deployment".to_string(),
+                "this pairing is commonly associated with stealthier payload deployment"
+                    .to_string(),
             ],
             ..Default::default()
         },

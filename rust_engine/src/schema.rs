@@ -462,6 +462,29 @@ pub struct RustEnrichment {
     pub score_drivers: Vec<ScoreDriver>,
     #[serde(default)]
     pub manual_review_reasons: Vec<String>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub seeded_fingerprinting: Option<SeededFingerprintingResult>,
+}
+
+#[allow(dead_code)]
+#[derive(Debug, Serialize, Deserialize, Clone, Default)]
+#[serde(rename_all = "snake_case")]
+pub enum SeededFingerprintingStatus {
+    #[default]
+    Disabled,
+    NotImplemented,
+    Failed,
+}
+
+#[allow(dead_code)]
+#[derive(Debug, Serialize, Deserialize, Clone, Default)]
+pub struct SeededFingerprintingResult {
+    #[serde(default)]
+    pub status: SeededFingerprintingStatus,
+    #[serde(default)]
+    pub schema_version: Option<String>,
+    #[serde(default)]
+    pub message: Option<String>,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone, Default)]
@@ -582,4 +605,98 @@ pub struct ScoreDriver {
     pub weight: i32,
     #[serde(default)]
     pub rationale: String,
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn seeded_fingerprinting_status_disabled_serializes_as_snake_case() {
+        let serialized = serde_json::to_string(&SeededFingerprintingStatus::Disabled)
+            .expect("disabled status should serialize");
+
+        assert_eq!(serialized, "\"disabled\"");
+    }
+
+    #[test]
+    fn seeded_fingerprinting_status_not_implemented_serializes_as_snake_case() {
+        let serialized = serde_json::to_string(&SeededFingerprintingStatus::NotImplemented)
+            .expect("not implemented status should serialize");
+
+        assert_eq!(serialized, "\"not_implemented\"");
+    }
+
+    #[test]
+    fn seeded_fingerprinting_status_failed_serializes_as_snake_case() {
+        let serialized = serde_json::to_string(&SeededFingerprintingStatus::Failed)
+            .expect("failed status should serialize");
+
+        assert_eq!(serialized, "\"failed\"");
+    }
+
+    #[test]
+    fn seeded_fingerprinting_status_deserializes_not_implemented() {
+        let status: SeededFingerprintingStatus = serde_json::from_str("\"not_implemented\"")
+            .expect("not_implemented should deserialize");
+
+        assert!(matches!(status, SeededFingerprintingStatus::NotImplemented));
+    }
+
+    #[test]
+    fn seeded_fingerprinting_status_rejects_unknown_value() {
+        let result = serde_json::from_str::<SeededFingerprintingStatus>("\"running\"");
+
+        assert!(result.is_err());
+    }
+
+    #[test]
+    fn seeded_fingerprinting_result_round_trip_preserves_fields() {
+        let original = SeededFingerprintingResult {
+            status: SeededFingerprintingStatus::NotImplemented,
+            schema_version: Some("0.1.0".to_string()),
+            message: Some(
+                "Seeded fingerprinting is enabled but not implemented in this milestone."
+                    .to_string(),
+            ),
+        };
+
+        let serialized = serde_json::to_string(&original)
+            .expect("seeded fingerprinting result should serialize");
+
+        let deserialized: SeededFingerprintingResult = serde_json::from_str(&serialized)
+            .expect("seeded fingerprinting result should deserialize");
+
+        assert!(matches!(
+            deserialized.status,
+            SeededFingerprintingStatus::NotImplemented
+        ));
+        assert_eq!(deserialized.schema_version, original.schema_version);
+        assert_eq!(deserialized.message, original.message);
+    }
+
+    #[test]
+    fn legacy_rust_enrichment_without_seeded_field_deserializes_as_none() {
+        let enrichment: RustEnrichment =
+            serde_json::from_str("{}").expect("legacy Rust enrichment should deserialize");
+
+        assert!(enrichment.seeded_fingerprinting.is_none());
+    }
+}
+
+#[test]
+fn seeded_fingerprinting_default_result_serializes_null_optional_fields() {
+    let result = SeededFingerprintingResult::default();
+
+    let serialized = serde_json::to_value(&result)
+        .expect("default seeded fingerprinting result should serialize");
+
+    assert_eq!(
+        serialized,
+        serde_json::json!({
+            "status": "disabled",
+            "schema_version": null,
+            "message": null
+        })
+    );
 }

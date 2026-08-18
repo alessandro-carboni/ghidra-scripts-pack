@@ -14,8 +14,6 @@ import (
 	"ghidra-malware-triage/internal/state"
 )
 
-
-
 type ScanResult struct {
 	InputPath           string
 	SampleName          string
@@ -280,19 +278,20 @@ func FastScan(cfg config.Config, st state.State) (*ScanResult, error) {
 
 func SaveStateFromScan(projectRoot string, cfg config.Config, result *ScanResult) error {
 	s := state.State{
-		GhidraDir:          cfg.GhidraDir,
-		ProjectDir:         cfg.ProjectDir,
-		ProjectName:        cfg.ProjectName,
-		PostScript:         cfg.PostScript,
-		ScriptPath:         cfg.ScriptPath,
-		RuleDir:            cfg.RuleDir,
-		OutputDir:          cfg.OutputDir,
-		RustEnginePath:     cfg.RustEnginePath,
-		LastFilePath:       result.InputPath,
-		LastProgram:        filepath.Base(result.InputPath),
-		LastReport:         result.FinalReportPath,
-		LastRawReport:      result.RawReportPath,
-		LastEnrichedReport: result.EnrichedReportPath,
+		GhidraDir:                   cfg.GhidraDir,
+		ProjectDir:                  cfg.ProjectDir,
+		ProjectName:                 cfg.ProjectName,
+		PostScript:                  cfg.PostScript,
+		ScriptPath:                  cfg.ScriptPath,
+		RuleDir:                     cfg.RuleDir,
+		OutputDir:                   cfg.OutputDir,
+		RustEnginePath:              cfg.RustEnginePath,
+		LastFilePath:                result.InputPath,
+		LastProgram:                 filepath.Base(result.InputPath),
+		LastReport:                  result.FinalReportPath,
+		LastRawReport:               result.RawReportPath,
+		LastEnrichedReport:          result.EnrichedReportPath,
+		SeededFingerprintingEnabled: cfg.SeededFingerprintingEnabled,
 	}
 	return state.Save(projectRoot, s)
 }
@@ -309,6 +308,7 @@ func SaveStateAfterFast(projectRoot string, st state.State, cfg config.Config, r
 	st.LastReport = result.FinalReportPath
 	st.LastRawReport = result.RawReportPath
 	st.LastEnrichedReport = result.EnrichedReportPath
+	st.SeededFingerprintingEnabled = cfg.SeededFingerprintingEnabled
 
 	return state.Save(projectRoot, st)
 }
@@ -352,8 +352,27 @@ func buildEnrichedReportPathFromRaw(rawPath string) string {
 	return strings.Replace(rawPath, "_raw.json", ".json", 1)
 }
 
-func runRustEnrichment(rustEnginePath, inputReportPath, outputReportPath string) error {
-	_, err := runCommand(rustEnginePath, []string{inputReportPath, outputReportPath})
+func buildRustEnrichmentArgs(inputReportPath, outputReportPath string, seededEnabled bool) []string {
+	args := []string{
+		inputReportPath,
+		outputReportPath,
+	}
+
+	if seededEnabled {
+		args = append(args, "--seeded")
+	}
+
+	return args
+}
+
+func runRustEnrichment(
+	rustEnginePath,
+	inputReportPath,
+	outputReportPath string,
+	seededEnabled bool,
+) error {
+	args := buildRustEnrichmentArgs(inputReportPath, outputReportPath, seededEnabled)
+	_, err := runCommand(rustEnginePath, args)
 	return err
 }
 
@@ -369,7 +388,12 @@ func attemptRustEnrichment(cfg config.Config, rawReportPath string) (string, str
 	enrichedReportPath := buildEnrichedReportPathFromRaw(rawReportPath)
 	_ = removeIfExists(enrichedReportPath)
 
-	if err := runRustEnrichment(cfg.RustEnginePath, rawReportPath, enrichedReportPath); err != nil {
+	if err := runRustEnrichment(
+		cfg.RustEnginePath,
+		rawReportPath,
+		enrichedReportPath,
+		cfg.SeededFingerprintingEnabled,
+	); err != nil {
 		_ = removeIfExists(enrichedReportPath)
 		return "", fmt.Sprintf("rust enrichment failed (%v); keeping raw report as final output", err), false
 	}

@@ -2,9 +2,13 @@ use crate::capability::{calibrate_capability_confidence, derive_capabilities};
 use crate::rules::load_rules_from_dir;
 use crate::schema::{
     DecisionSummary, EngineMetadata, Report, RiskSplitSummary, RulesMetadata, RustEnrichment,
-    SchemaValidation, ScoreBands, ScoreCalibration,
+    SchemaValidation, ScoreBands, ScoreCalibration, SeededFingerprintingResult,
+    SeededFingerprintingStatus,
 };
 use crate::scoring::{calibrate_score, compute_malware_risk, compute_packing_risk, score_to_band};
+const SEEDED_FINGERPRINTING_SCHEMA_VERSION: &str = "0.1.0";
+const SEEDED_FINGERPRINTING_NOT_IMPLEMENTED_MESSAGE: &str =
+    "Seeded fingerprinting is enabled but not implemented in this milestone.";
 
 fn push_unique(vec: &mut Vec<String>, value: String) {
     if !vec.iter().any(|x| x == &value) {
@@ -95,7 +99,7 @@ pub fn validate_minimum_contract(report: &Report) -> SchemaValidation {
     }
 }
 
-pub fn build_rust_enrichment(report: &Report) -> RustEnrichment {
+pub fn build_rust_enrichment(report: &Report, seeded_enabled: bool) -> RustEnrichment {
     let rules_dir = resolve_rules_dir(report);
     let loaded_rules = load_rules_from_dir(&rules_dir);
 
@@ -104,8 +108,11 @@ pub fn build_rust_enrichment(report: &Report) -> RustEnrichment {
         calibrate_score(report, &loaded_rules.score_rules);
 
     let capability_confidence = calibrate_capability_confidence(report);
-    let derived_capabilities =
-        derive_capabilities(report, &capability_confidence, &loaded_rules.derived_capability_rules);
+    let derived_capabilities = derive_capabilities(
+        report,
+        &capability_confidence,
+        &loaded_rules.derived_capability_rules,
+    );
 
     let malware_risk = compute_malware_risk(report, calibrated_score);
     let packing_risk = compute_packing_risk(report);
@@ -138,14 +145,24 @@ pub fn build_rust_enrichment(report: &Report) -> RustEnrichment {
         );
     }
 
-    if report.binary_structure.packer_analysis.high_entropy_executable_count > 0 {
+    if report
+        .binary_structure
+        .packer_analysis
+        .high_entropy_executable_count
+        > 0
+    {
         push_unique(
             &mut risk_annotations,
-            "high-entropy executable sections reinforce a packing or stub-dominated interpretation".to_string(),
+            "high-entropy executable sections reinforce a packing or stub-dominated interpretation"
+                .to_string(),
         );
     }
 
-    if let Some(ref oep) = report.binary_structure.packer_analysis.oep_candidate_summary {
+    if let Some(ref oep) = report
+        .binary_structure
+        .packer_analysis
+        .oep_candidate_summary
+    {
         push_unique(
             &mut risk_annotations,
             format!(
@@ -167,7 +184,8 @@ pub fn build_rust_enrichment(report: &Report) -> RustEnrichment {
         );
         push_unique(
             &mut confidence_notes,
-            "process injection is a high-impact capability with strong triage relevance".to_string(),
+            "process injection is a high-impact capability with strong triage relevance"
+                .to_string(),
         );
         push_unique(
             &mut manual_review_reasons,
@@ -226,11 +244,13 @@ pub fn build_rust_enrichment(report: &Report) -> RustEnrichment {
     if !schema_validation.valid_minimum_contract {
         push_unique(
             &mut confidence_notes,
-            "minimum contract validation failed; enrichment should be interpreted cautiously".to_string(),
+            "minimum contract validation failed; enrichment should be interpreted cautiously"
+                .to_string(),
         );
         push_unique(
             &mut manual_review_reasons,
-            "report is missing minimum contract fields required for stronger automation confidence".to_string(),
+            "report is missing minimum contract fields required for stronger automation confidence"
+                .to_string(),
         );
     }
 
@@ -241,36 +261,39 @@ pub fn build_rust_enrichment(report: &Report) -> RustEnrichment {
         );
     }
 
-    let malicious_signal_strength = if benign_contexts >= 2 && !has_hi_cap && malware_risk.score < 65 {
-        "low".to_string()
-    } else if malware_risk.score >= 120
-        || high_conf_high_impact_caps >= 1
-        || (report
-            .global_analysis
-            .capabilities
-            .iter()
-            .any(|c| c.name == "process_injection")
-            && high_risk_top_functions >= 1)
-    {
-        "high".to_string()
-    } else if malware_risk.score >= 60 || high_conf_high_impact_caps >= 1 {
-        "medium".to_string()
-    } else {
-        "low".to_string()
-    };
+    let malicious_signal_strength =
+        if benign_contexts >= 2 && !has_hi_cap && malware_risk.score < 65 {
+            "low".to_string()
+        } else if malware_risk.score >= 120
+            || high_conf_high_impact_caps >= 1
+            || (report
+                .global_analysis
+                .capabilities
+                .iter()
+                .any(|c| c.name == "process_injection")
+                && high_risk_top_functions >= 1)
+        {
+            "high".to_string()
+        } else if malware_risk.score >= 60 || high_conf_high_impact_caps >= 1 {
+            "medium".to_string()
+        } else {
+            "low".to_string()
+        };
 
-    let analysis_confidence = if !schema_validation.valid_minimum_contract {
-        "low".to_string()
-    } else if report.binary_structure.packer_analysis.likely_packed && reasoned_top_functions == 0 {
+    let analysis_confidence = if !schema_validation.valid_minimum_contract
+        || (report.binary_structure.packer_analysis.likely_packed && reasoned_top_functions == 0)
+    {
         "low".to_string()
     } else if report.binary_structure.packer_analysis.likely_packed {
         "medium".to_string()
-    } else if high_conf_high_impact_caps > 0 || reasoned_top_functions >= 2 || high_risk_top_functions >= 2 {
+    } else if high_conf_high_impact_caps > 0
+        || reasoned_top_functions >= 2
+        || high_risk_top_functions >= 2
+    {
         "high".to_string()
     } else {
         "medium".to_string()
     };
-
     let needs_manual_review = report.binary_structure.packer_analysis.likely_packed
         || (calibrated_band == "critical" && has_hi_cap)
         || malware_risk.level == "high"
@@ -292,7 +315,10 @@ pub fn build_rust_enrichment(report: &Report) -> RustEnrichment {
         "low".to_string()
     };
 
-    let derived_names: Vec<String> = derived_capabilities.iter().map(|d| d.name.clone()).collect();
+    let derived_names: Vec<String> = derived_capabilities
+        .iter()
+        .map(|d| d.name.clone())
+        .collect();
 
     let primary_assessment = if benign_contexts >= 2 && !has_hi_cap && malware_risk.score < 65 {
         "sample contains mixed signals with meaningful benign context and should be interpreted conservatively".to_string()
@@ -301,14 +327,20 @@ pub fn build_rust_enrichment(report: &Report) -> RustEnrichment {
     } else if derived_names.iter().any(|x| x == "in_memory_loader") {
         "sample shows materially suspicious staged or memory-resident execution characteristics under static triage".to_string()
     } else if malware_risk.level == "critical" || malware_risk.level == "high" {
-        "sample shows materially suspicious malware-oriented behavior under static triage".to_string()
+        "sample shows materially suspicious malware-oriented behavior under static triage"
+            .to_string()
     } else if packing_risk.level == "high" {
         "sample is primarily notable for strong packing or obfuscation indicators that limit static interpretation".to_string()
     } else {
-        "sample contains limited or mixed signals and should be interpreted conservatively".to_string()
+        "sample contains limited or mixed signals and should be interpreted conservatively"
+            .to_string()
     };
 
-    let dominant_risk = if benign_contexts >= 2 && !has_hi_cap && malware_risk.score < 65 && packing_risk.score < 65 {
+    let dominant_risk = if benign_contexts >= 2
+        && !has_hi_cap
+        && malware_risk.score < 65
+        && packing_risk.score < 65
+    {
         "balanced".to_string()
     } else if malware_risk.score < 35 && packing_risk.score < 35 {
         "low_signal".to_string()
@@ -337,6 +369,16 @@ pub fn build_rust_enrichment(report: &Report) -> RustEnrichment {
             "malware and packing signals should be balanced against the benign context already visible in the raw report"
                 .to_string()
         }
+    };
+
+    let seeded_fingerprinting = if seeded_enabled {
+        Some(SeededFingerprintingResult {
+            status: SeededFingerprintingStatus::NotImplemented,
+            schema_version: Some(SEEDED_FINGERPRINTING_SCHEMA_VERSION.to_string()),
+            message: Some(SEEDED_FINGERPRINTING_NOT_IMPLEMENTED_MESSAGE.to_string()),
+        })
+    } else {
+        None
     };
 
     RustEnrichment {
@@ -382,6 +424,7 @@ pub fn build_rust_enrichment(report: &Report) -> RustEnrichment {
         },
         score_drivers,
         manual_review_reasons,
+        seeded_fingerprinting,
     }
 }
 
@@ -399,4 +442,89 @@ fn resolve_rules_dir(report: &Report) -> String {
     }
 
     "../rules".to_string()
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn seeded_disabled_omits_fingerprinting_result() {
+        let report = Report::default();
+        let enrichment = build_rust_enrichment(&report, false);
+
+        assert!(enrichment.seeded_fingerprinting.is_none());
+
+        let serialized =
+            serde_json::to_value(&enrichment).expect("disabled enrichment should serialize");
+
+        assert!(serialized.get("seeded_fingerprinting").is_none());
+    }
+
+    #[test]
+    fn seeded_enabled_emits_not_implemented_placeholder() {
+        let report = Report::default();
+        let enrichment = build_rust_enrichment(&report, true);
+
+        let seeded = enrichment
+            .seeded_fingerprinting
+            .as_ref()
+            .expect("seeded result should exist when enabled");
+
+        assert!(matches!(
+            seeded.status,
+            SeededFingerprintingStatus::NotImplemented
+        ));
+
+        assert_eq!(seeded.schema_version.as_deref(), Some("0.1.0"));
+
+        assert_eq!(
+            seeded.message.as_deref(),
+            Some("Seeded fingerprinting is enabled but not implemented in this milestone.")
+        );
+    }
+
+    #[test]
+    fn seeded_toggle_does_not_change_existing_enrichment_fields() {
+        let report = Report::default();
+
+        let disabled = build_rust_enrichment(&report, false);
+        let enabled = build_rust_enrichment(&report, true);
+
+        let mut disabled_json =
+            serde_json::to_value(&disabled).expect("disabled enrichment should serialize");
+
+        let mut enabled_json =
+            serde_json::to_value(&enabled).expect("enabled enrichment should serialize");
+
+        disabled_json
+            .as_object_mut()
+            .expect("disabled enrichment should serialize as an object")
+            .remove("seeded_fingerprinting");
+
+        enabled_json
+            .as_object_mut()
+            .expect("enabled enrichment should serialize as an object")
+            .remove("seeded_fingerprinting");
+
+        assert_eq!(disabled_json, enabled_json);
+    }
+
+    #[test]
+    fn seeded_enabled_serializes_expected_placeholder_contract() {
+        let report = Report::default();
+        let enrichment = build_rust_enrichment(&report, true);
+
+        let serialized =
+            serde_json::to_value(&enrichment).expect("enabled enrichment should serialize");
+
+        assert_eq!(
+            serialized.get("seeded_fingerprinting"),
+            Some(&serde_json::json!({
+                "status": "not_implemented",
+                "schema_version": "0.1.0",
+                "message": "Seeded fingerprinting is enabled but not implemented in this milestone."
+            }))
+        );
+    }
 }

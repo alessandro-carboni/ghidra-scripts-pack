@@ -18,8 +18,34 @@ type Report struct {
 	BehaviorAnalysis map[string]any   `json:"behavior_analysis"`
 	BinaryStructure  BinaryStructure  `json:"binary_structure"`
 	AnalystOutput    map[string]any   `json:"analyst_output"`
-	RustEnrichment   map[string]any   `json:"rust_enrichment"`
+	RustEnrichment   *RustEnrichment  `json:"rust_enrichment,omitempty"`
 	AIAnalysis       map[string]any   `json:"ai_analysis"`
+}
+
+type RustEnrichment struct {
+	EngineMetadata       any `json:"engine_metadata,omitempty"`
+	RulesMetadata        any `json:"rules_metadata,omitempty"`
+	SchemaValidation     any `json:"schema_validation,omitempty"`
+	ScoreCalibration     any `json:"score_calibration,omitempty"`
+	CapabilityConfidence any `json:"capability_confidence,omitempty"`
+	DerivedCapabilities  any `json:"derived_capabilities,omitempty"`
+	ConfidenceNotes      any `json:"confidence_notes,omitempty"`
+	ScoreBands           any `json:"score_bands,omitempty"`
+	DecisionSummary      any `json:"decision_summary,omitempty"`
+	RiskAnnotations      any `json:"risk_annotations,omitempty"`
+	MalwareRisk          any `json:"malware_risk,omitempty"`
+	PackingRisk          any `json:"packing_risk,omitempty"`
+	RiskSplitSummary     any `json:"risk_split_summary,omitempty"`
+	ScoreDrivers         any `json:"score_drivers,omitempty"`
+	ManualReviewReasons  any `json:"manual_review_reasons,omitempty"`
+
+	SeededFingerprinting *SeededFingerprintingResult `json:"seeded_fingerprinting,omitempty"`
+}
+
+type SeededFingerprintingResult struct {
+	Status        string `json:"status"`
+	SchemaVersion string `json:"schema_version,omitempty"`
+	Message       string `json:"message,omitempty"`
 }
 
 type SampleInfo struct {
@@ -176,6 +202,7 @@ func MustPretty(v any) string {
 	if err != nil {
 		return fmt.Sprintf(`{"error":"%v"}`, err)
 	}
+
 	return string(data)
 }
 
@@ -190,6 +217,7 @@ func ListReportFiles(reportsDir string) ([]string, error) {
 		if entry.IsDir() {
 			continue
 		}
+
 		if filepath.Ext(entry.Name()) == ".json" {
 			files = append(files, entry.Name())
 		}
@@ -205,5 +233,6 @@ func FindFunction(r *Report, name string) *FunctionInfo {
 			return &r.FunctionAnalysis.Functions[i]
 		}
 	}
+
 	return nil
 }

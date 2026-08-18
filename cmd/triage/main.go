@@ -127,6 +127,10 @@ func defaultReportsDir() string {
 	return filepath.Join(projectRoot, "reports")
 }
 
+func parseSeededFlag(fs *flag.FlagSet) *bool {
+	return fs.Bool("seeded", false, "Enable experimental seeded fingerprinting")
+}
+
 func runScan(args []string) {
 	fs := flag.NewFlagSet("scan", flag.ExitOnError)
 
@@ -139,6 +143,7 @@ func runScan(args []string) {
 	ruleDir := fs.String("rule-dir", "", "rule directory")
 	outputDir := fs.String("output-dir", "", "output/report directory")
 	rustEnginePath := fs.String("rust-engine", "", "rust engine executable path")
+	seeded := parseSeededFlag(fs)
 
 	_ = fs.Parse(args)
 
@@ -158,6 +163,8 @@ func runScan(args []string) {
 		fmt.Fprintf(os.Stderr, "build config: %v\n", err)
 		os.Exit(1)
 	}
+
+	cfg.SeededFingerprintingEnabled = *seeded
 
 	if err := cfg.ValidateForScan(); err != nil {
 		fmt.Fprintf(os.Stderr, "config error: %v\n", err)
@@ -246,6 +253,7 @@ func runFast(args []string) {
 	ruleDir := fs.String("rule-dir", "", "rule directory")
 	outputDir := fs.String("output-dir", "", "output/report directory")
 	rustEnginePath := fs.String("rust-engine", "", "rust engine executable path")
+	seeded := parseSeededFlag(fs)
 
 	_ = fs.Parse(args)
 
@@ -305,6 +313,8 @@ func runFast(args []string) {
 		resolvedRustEnginePath = *rustEnginePath
 	}
 
+	resolvedSeeded := state.ResolveSeededFingerprintingEnabled(st.SeededFingerprintingEnabled, *seeded)
+
 	cfg, _, err := buildConfigAndProjectRoot(
 		resolvedGhidraDir,
 		resolvedProjectDir,
@@ -319,6 +329,8 @@ func runFast(args []string) {
 		fmt.Fprintf(os.Stderr, "build config: %v\n", err)
 		os.Exit(1)
 	}
+
+	cfg.SeededFingerprintingEnabled = resolvedSeeded
 
 	if err := cfg.ValidateForScan(); err != nil {
 		fmt.Fprintf(os.Stderr, "config error: %v\n", err)

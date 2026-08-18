@@ -1,0 +1,17 @@
+{
+  "ghidra_dir": "ghidra",
+  "project_dir": "projects",
+  "project_name": "TriageProject",
+  "post_script": "export_report.py",
+  "script_path": "ghidra_scripts",
+  "rule_dir": "rules",
+  "output_dir": "reports",
+  "rust_engine_path": "rust_engine",
+  "last_file_path": "",
+  "last_program": "",
+  "last_report": "",
+  "last_raw_report": "",
+  "last_enriched_report": "",
+  "last_ai_report": "",
+  "updated_at": "2026-01-01T00:00:00Z"
+}

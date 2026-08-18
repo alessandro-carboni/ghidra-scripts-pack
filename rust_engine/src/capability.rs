@@ -20,10 +20,6 @@ fn rank_to_confidence(rank: i32) -> String {
     }
 }
 
-fn is_soft_capability(name: &str) -> bool {
-    matches!(name, "anti_analysis" | "persistence" | "dynamic_loading")
-}
-
 fn is_high_impact_capability(name: &str) -> bool {
     matches!(name, "process_injection" | "networking" | "crypto")
 }
@@ -181,8 +177,9 @@ pub fn calibrate_capability_confidence(report: &Report) -> Vec<CapabilityConfide
         if is_high_impact_capability(&cap.name) {
             if cap.match_count >= cap.min_matches + 2 {
                 rank = rank.max(3);
-                rationale.push("match count exceeds minimum threshold by a strong margin".to_string());
-            } else if cap.match_count >= cap.min_matches + 1 {
+                rationale
+                    .push("match count exceeds minimum threshold by a strong margin".to_string());
+            } else if cap.match_count > cap.min_matches {
                 rank = rank.max(2);
                 rationale.push("match count exceeds minimum threshold".to_string());
             }
@@ -200,30 +197,40 @@ pub fn calibrate_capability_confidence(report: &Report) -> Vec<CapabilityConfide
                 rationale.push("top-function evidence reinforces this capability".to_string());
             }
 
-            if cap.name == "process_injection" && (top_support >= 1 || supporting_medium_or_higher >= 1) {
+            if cap.name == "process_injection"
+                && (top_support >= 1 || supporting_medium_or_higher >= 1)
+            {
                 rank = rank.max(3);
                 rationale.push("process injection receives stronger weighting because it is high-impact and locally supported".to_string());
             }
         } else {
             if supporting_functions >= 2 {
                 rank = rank.max(2);
-                rationale.push("multiple functions locally support this soft capability".to_string());
+                rationale
+                    .push("multiple functions locally support this soft capability".to_string());
             } else if supporting_functions == 1 {
-                rank = rank.min(1).max(1);
-                rationale.push("soft capability remains isolated or minimally supported".to_string());
+                rank = 1;
+                rationale
+                    .push("soft capability remains isolated or minimally supported".to_string());
             }
 
-            if cap.match_count >= cap.min_matches + 2 && supporting_functions >= 2 && top_support >= 1 {
+            if cap.match_count >= cap.min_matches + 2
+                && supporting_functions >= 2
+                && top_support >= 1
+            {
                 rank = rank.max(3);
                 rationale.push("soft capability is backed by stronger global evidence plus top-function support".to_string());
-            } else if cap.match_count >= cap.min_matches + 1 && supporting_functions >= 2 {
+            } else if cap.match_count > cap.min_matches && supporting_functions >= 2 {
                 rank = rank.max(2);
                 rationale.push("soft capability has some reinforcing local evidence".to_string());
             }
 
             if benign_contexts >= 2 && top_support == 0 {
                 rank = 1;
-                rationale.push("benign contexts reduce confidence for isolated soft capability signals".to_string());
+                rationale.push(
+                    "benign contexts reduce confidence for isolated soft capability signals"
+                        .to_string(),
+                );
             } else if benign_adjustment_total >= 20 && supporting_medium_or_higher == 0 {
                 rank = 1;
                 rationale.push("raw report already contains meaningful benign score adjustments that weaken this soft capability".to_string());
