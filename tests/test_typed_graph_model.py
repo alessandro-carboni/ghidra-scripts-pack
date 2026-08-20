@@ -97,10 +97,7 @@ class FakeMemoryBlock:
 
 class FakeMemory:
     def __init__(self, functions):
-        self.sections = {
-            str(function.getEntryPoint()): function.section
-            for function in functions
-        }
+        self.sections = {str(function.getEntryPoint()): function.section for function in functions}
 
     def getBlock(self, address):
         section = self.sections.get(str(address))
@@ -310,9 +307,7 @@ class TypedGraphModelTests(unittest.TestCase):
             "FUN_00401000",
         )
 
-        self.assertIsNone(
-            identity["symbol_name"]
-        )
+        self.assertIsNone(identity["symbol_name"])
 
     def test_invalid_function_entry_addresses_are_rejected(self):
         for value in (
@@ -445,21 +440,9 @@ class TypedGraphModelTests(unittest.TestCase):
         self.assertFalse(nodes[2]["internal"])
 
     def test_seeded_script_marker_is_opt_in(self):
-        self.assertFalse(
-            export_report.parse_seeded_script_arg(
-                ["reports", "rules"]
-            )
-        )
-        self.assertTrue(
-            export_report.parse_seeded_script_arg(
-                ["reports", "rules", "seeded=true"]
-            )
-        )
-        self.assertTrue(
-            export_report.parse_seeded_script_arg(
-                ["reports", "rules", "SEEDED=TRUE"]
-            )
-        )
+        self.assertFalse(export_report.parse_seeded_script_arg(["reports", "rules"]))
+        self.assertTrue(export_report.parse_seeded_script_arg(["reports", "rules", "seeded=true"]))
+        self.assertTrue(export_report.parse_seeded_script_arg(["reports", "rules", "SEEDED=TRUE"]))
 
     def test_contract_is_json_serializable_and_versioned(self):
         contract = build_typed_graph_model_contract()

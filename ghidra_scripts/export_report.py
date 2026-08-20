@@ -578,6 +578,7 @@ def get_base_functions():
 
     return functions
 
+
 def get_function_symbol_name(func):
     try:
         symbol = func.getSymbol()
@@ -643,6 +644,7 @@ def get_typed_function_nodes():
         nodes.append(node)
 
     return sorted(nodes, key=lambda node: node["id"])
+
 
 def get_suspicious_apis(external_symbols):
     aggregated = {}

@@ -103,10 +103,7 @@ def validate_edge_endpoints(edge_type, source_type, target_type):
 
     expected_source, expected_target = EDGE_ENDPOINT_TYPES[parsed_edge_type]
 
-    if (
-        parsed_source_type != expected_source
-        or parsed_target_type != expected_target
-    ):
+    if parsed_source_type != expected_source or parsed_target_type != expected_target:
         raise ValueError(
             "invalid endpoints for {}: expected {} -> {}, got {} -> {}".format(
                 parsed_edge_type.value,
@@ -135,9 +132,7 @@ def normalize_entry_address(entry_address):
         raise ValueError("function entry address cannot be empty")
 
     if address_text.lower().startswith(FUNCTION_ID_PREFIX):
-        raise ValueError(
-            "function entry address must not include the function ID prefix"
-        )
+        raise ValueError("function entry address must not include the function ID prefix")
 
     if address_text.lower().startswith("0x"):
         address_text = address_text[2:]
