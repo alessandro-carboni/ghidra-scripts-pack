@@ -132,6 +132,21 @@ func isSupportedSampleFile(path string) bool {
 	return false
 }
 
+func buildGhidraPostScriptArgs(postScript, outputDir, ruleDir string, seededEnabled bool) []string {
+	args := []string{
+		"-postScript",
+		postScript,
+		outputDir,
+		ruleDir,
+	}
+
+	if seededEnabled {
+		args = append(args, "seeded=true")
+	}
+
+	return args
+}
+
 func ScanFile(cfg config.Config, inputPath string) (*ScanResult, error) {
 	resolvedInput, err := filepath.Abs(inputPath)
 	if err != nil {
@@ -153,8 +168,16 @@ func ScanFile(cfg config.Config, inputPath string) (*ScanResult, error) {
 		"-import", resolvedInput,
 		"-overwrite",
 		"-scriptPath", cfg.ScriptPath,
-		"-postScript", cfg.PostScript, cfg.OutputDir, cfg.RuleDir,
 	}
+	args = append(
+		args,
+		buildGhidraPostScriptArgs(
+			cfg.PostScript,
+			cfg.OutputDir,
+			cfg.RuleDir,
+			cfg.SeededFingerprintingEnabled,
+		)...,
+	)
 
 	startedAt := time.Now()
 	exitCode, err := runCommand(pyghidra, args)
@@ -225,8 +248,16 @@ func FastScan(cfg config.Config, st state.State) (*ScanResult, error) {
 		"-process", st.LastProgram,
 		"-noanalysis",
 		"-scriptPath", cfg.ScriptPath,
-		"-postScript", cfg.PostScript, cfg.OutputDir, cfg.RuleDir,
 	}
+	args = append(
+		args,
+		buildGhidraPostScriptArgs(
+			cfg.PostScript,
+			cfg.OutputDir,
+			cfg.RuleDir,
+			cfg.SeededFingerprintingEnabled,
+		)...,
+	)
 
 	startedAt := time.Now()
 	exitCode, err := runCommand(pyghidra, args)

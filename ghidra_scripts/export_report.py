@@ -6,8 +6,24 @@
 # @toolbar
 
 import os
+import sys
 import json
 import math
+
+
+def _load_typed_graph_model():
+    try:
+        from typed_graph_model import TYPED_GRAPH_MODEL_VERSION, build_function_node
+    except ImportError:
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        if script_dir not in sys.path:
+            sys.path.insert(0, script_dir)
+        from typed_graph_model import TYPED_GRAPH_MODEL_VERSION, build_function_node
+
+    return TYPED_GRAPH_MODEL_VERSION, build_function_node
+
+
+TYPED_GRAPH_MODEL_VERSION, build_function_node = _load_typed_graph_model()
 
 DEFAULT_RULES_DIR_NAME = "rules"
 DEFAULT_RULE_FILES = {
@@ -562,6 +578,71 @@ def get_base_functions():
 
     return functions
 
+def get_function_symbol_name(func):
+    try:
+        symbol = func.getSymbol()
+        if symbol is None:
+            return None
+
+        symbol_name = symbol.getName()
+        if symbol_name is None:
+            return None
+
+        symbol_name = str(symbol_name).strip()
+        return symbol_name if symbol_name else None
+    except Exception:
+        return None
+
+
+def get_function_section_name(func):
+    try:
+        memory = currentProgram.getMemory()
+        block = memory.getBlock(func.getEntryPoint())
+        if block is None:
+            return None
+
+        block_name = block.getName()
+        if block_name is None:
+            return None
+
+        block_name = str(block_name).strip()
+        return block_name if block_name else None
+    except Exception:
+        return None
+
+
+def get_function_size(func):
+    try:
+        body = func.getBody()
+        if body is None:
+            return None
+
+        size = body.getNumAddresses()
+        if size is None:
+            return None
+
+        return int(size)
+    except Exception:
+        return None
+
+
+def get_typed_function_nodes():
+    function_manager = currentProgram.getFunctionManager()
+    nodes = []
+
+    for func in function_manager.getFunctions(True):
+        node = build_function_node(
+            entry_address=str(func.getEntryPoint()),
+            ghidra_name=func.getName(),
+            symbol_name=get_function_symbol_name(func),
+            external=bool(func.isExternal()),
+            thunk=bool(func.isThunk()),
+            section=get_function_section_name(func),
+            size=get_function_size(func),
+        )
+        nodes.append(node)
+
+    return sorted(nodes, key=lambda node: node["id"])
 
 def get_suspicious_apis(external_symbols):
     aggregated = {}
@@ -2681,7 +2762,7 @@ def build_analyst_playbook(behavior_story, top_functions, summary, oep_candidate
     return {"steps": steps}
 
 
-def build_report():
+def build_report(seeded_enabled=False):
     analysis_metadata = build_analysis_metadata()
 
     program_name = currentProgram.getName()
@@ -2728,6 +2809,8 @@ def build_report():
     )
 
     capabilities = detect_capabilities(external_symbols)
+
+    typed_function_nodes = get_typed_function_nodes() if seeded_enabled else []
 
     functions = get_base_functions()
     functions = enrich_functions(functions, interesting_strings)
@@ -2822,7 +2905,7 @@ def build_report():
         oep_candidates,
     )
 
-    return {
+    report = {
         "analysis_metadata": analysis_metadata,
         "rule_contract": build_rule_contract(),
         "sample": sample_info,
@@ -2863,6 +2946,23 @@ def build_report():
         },
     }
 
+    if seeded_enabled:
+        report["typed_graph"] = {
+            "model_version": TYPED_GRAPH_MODEL_VERSION,
+            "nodes": typed_function_nodes,
+            "edges": [],
+        }
+
+    return report
+
+
+def parse_seeded_script_arg(script_args):
+    if len(script_args) <= 2:
+        return False
+
+    seeded_args = [str(arg).strip().lower() for arg in script_args[2:]]
+    return "seeded=true" in seeded_args
+
 
 def main():
     script_args = getScriptArgs()
@@ -2874,7 +2974,8 @@ def main():
 
     load_external_rules(script_args)
 
-    report = build_report()
+    seeded_enabled = parse_seeded_script_arg(script_args)
+    report = build_report(seeded_enabled=seeded_enabled)
 
     with open(output_path, "w") as f:
         json.dump(report, f, indent=2)
