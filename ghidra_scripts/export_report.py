@@ -883,6 +883,7 @@ def get_function_size(func):
     except Exception:
         return None
 
+
 def _resolve_external_api_function(func):
     """Return the terminal external function represented by func, if any.
 
@@ -1050,11 +1051,7 @@ def _is_string_data(data):
     except Exception:
         return False
 
-    return (
-        "string" in type_name
-        or "unicode" in type_name
-        or "terminated" in type_name
-    )
+    return "string" in type_name or "unicode" in type_name or "terminated" in type_name
 
 
 def _resolve_referenced_string_data(listing, to_addr):
@@ -1119,11 +1116,7 @@ def categorize_typed_string(value):
     if WINDOWS_PATH_RE.search(text) or UNIX_PATH_RE.search(text):
         categories.add("file_path")
 
-    if (
-        "user-agent" in lower_value
-        or "user_agent" in lower_value
-        or "mozilla/" in lower_value
-    ):
+    if "user-agent" in lower_value or "user_agent" in lower_value or "mozilla/" in lower_value:
         categories.add("user_agent")
 
     if any(hint in lower_value for hint in DEBUGGER_NAME_HINTS):
@@ -1132,11 +1125,7 @@ def categorize_typed_string(value):
     if any(hint in lower_value for hint in VM_INDICATOR_HINTS):
         categories.add("vm_indicator")
 
-    return [
-        category
-        for category in STRING_CATEGORY_ORDER
-        if category in categories
-    ]
+    return [category for category in STRING_CATEGORY_ORDER if category in categories]
 
 
 def _get_typed_string_payload(data):
@@ -1195,9 +1184,7 @@ def _decode_memory_protection(value):
     remaining = value & ~0xFF
     names = [base_name]
 
-    for flag_value, flag_name in sorted(
-        MEMORY_PROTECTION_MODIFIERS.items()
-    ):
+    for flag_value, flag_name in sorted(MEMORY_PROTECTION_MODIFIERS.items()):
         if (remaining & flag_value) == flag_value:
             names.append(flag_name)
             remaining &= ~flag_value
@@ -1372,14 +1359,10 @@ def _record_constants_for_api_call(
                     },
                 )
 
-                node_record["symbolic_names"].update(
-                    interpretation["symbolic_names"]
-                )
+                node_record["symbolic_names"].update(interpretation["symbolic_names"])
 
                 if scalar["bit_length"] is not None:
-                    node_record["bit_lengths"].add(
-                        scalar["bit_length"]
-                    )
+                    node_record["bit_lengths"].add(scalar["bit_length"])
 
                 edge_key = (
                     caller_id,
@@ -1395,13 +1378,9 @@ def _record_constants_for_api_call(
                     },
                 )
 
-                edge_record["use_sites"].add(
-                    use_site
-                )
+                edge_record["use_sites"].add(use_site)
                 edge_record["occurrences"] += 1
-                edge_record["context_apis"].add(
-                    api_name
-                )
+                edge_record["context_apis"].add(api_name)
 
 
 def _parse_hex_address(value):
@@ -1427,30 +1406,16 @@ def _parse_hex_address(value):
 
 def _find_section_record_for_function(function_node, section_info):
     section_name = function_node.get("section")
-    function_address = _parse_hex_address(
-        function_node.get("address")
-    )
+    function_address = _parse_hex_address(function_node.get("address"))
 
-    candidates = [
-        record
-        for record in (section_info or [])
-        if record.get("name") == section_name
-    ]
+    candidates = [record for record in (section_info or []) if record.get("name") == section_name]
 
     if function_address is not None:
         for record in candidates:
-            start = _parse_hex_address(
-                record.get("start")
-            )
-            end = _parse_hex_address(
-                record.get("end")
-            )
+            start = _parse_hex_address(record.get("start"))
+            end = _parse_hex_address(record.get("end"))
 
-            if (
-                start is not None
-                and end is not None
-                and start <= function_address <= end
-            ):
+            if start is not None and end is not None and start <= function_address <= end:
                 return record
 
     if len(candidates) == 1:
@@ -1473,9 +1438,7 @@ def _build_typed_section_evidence(function_nodes, section_info):
             continue
 
         try:
-            section_id = build_section_id(
-                record["start"]
-            )
+            section_id = build_section_id(record["start"])
 
             if section_id not in section_nodes:
                 section_nodes[section_id] = build_section_node(
@@ -1520,10 +1483,7 @@ def _build_typed_section_evidence(function_nodes, section_info):
             continue
 
     return (
-        [
-            section_nodes[section_id]
-            for section_id in sorted(section_nodes)
-        ],
+        [section_nodes[section_id] for section_id in sorted(section_nodes)],
         sorted(
             section_edges,
             key=lambda edge: (
@@ -1596,11 +1556,7 @@ def build_seeded_typed_graph(section_info=None):
                 continue
 
             try:
-                refs = list(
-                    reference_manager.getReferencesFrom(
-                        instruction_address
-                    )
-                )
+                refs = list(reference_manager.getReferencesFrom(instruction_address))
             except Exception:
                 refs = []
 
@@ -1635,9 +1591,7 @@ def build_seeded_typed_graph(section_info=None):
                     if target_func is None:
                         continue
 
-                    api_observation = _get_api_observation(
-                        target_func
-                    )
+                    api_observation = _get_api_observation(target_func)
 
                     if api_observation is not None:
                         resolved_call_target = True
@@ -1647,14 +1601,10 @@ def build_seeded_typed_graph(section_info=None):
 
                         continue
 
-                    if not _is_typed_internal_function(
-                        target_func
-                    ):
+                    if not _is_typed_internal_function(target_func):
                         continue
 
-                    callee_id = build_stable_function_id(
-                        target_func.getEntryPoint()
-                    )
+                    callee_id = build_stable_function_id(target_func.getEntryPoint())
 
                     if callee_id not in function_node_ids:
                         continue
@@ -1662,9 +1612,7 @@ def build_seeded_typed_graph(section_info=None):
                     resolved_call_target = True
                     internal_targets.add(callee_id)
 
-                resolved_target_ids = sorted(
-                    set(internal_targets) | set(api_targets.keys())
-                )
+                resolved_target_ids = sorted(set(internal_targets) | set(api_targets.keys()))
 
                 if indirect:
                     visibility_record = call_visibility.setdefault(
@@ -1680,25 +1628,17 @@ def build_seeded_typed_graph(section_info=None):
                     visibility_record["indirect_callsites"].add(callsite)
 
                     if resolved_call_target:
-                        visibility_record[
-                            "resolved_indirect_callsites"
-                        ].add(callsite)
+                        visibility_record["resolved_indirect_callsites"].add(callsite)
                     else:
-                        visibility_record[
-                            "unresolved_indirect_callsites"
-                        ].add(callsite)
+                        visibility_record["unresolved_indirect_callsites"].add(callsite)
 
                     # Conservative Step 2.10 dynamic-dispatch recognition:
                     # a computed callsite must expose multiple resolved call
                     # targets. A normal single-target indirect call is not
                     # promoted to dynamic_dispatch.
                     if len(resolved_target_ids) >= 2:
-                        visibility_record[
-                            "dynamic_dispatch_callsites"
-                        ].add(callsite)
-                        visibility_record[
-                            "dynamic_dispatch_targets"
-                        ].update(resolved_target_ids)
+                        visibility_record["dynamic_dispatch_callsites"].add(callsite)
+                        visibility_record["dynamic_dispatch_targets"].update(resolved_target_ids)
 
                 for callee_id in sorted(internal_targets):
                     key = (
@@ -1718,16 +1658,12 @@ def build_seeded_typed_graph(section_info=None):
                     node_record = api_nodes.setdefault(
                         api_id,
                         {
-                            "normalized_name": observation[
-                                "normalized_name"
-                            ],
+                            "normalized_name": observation["normalized_name"],
                             "original_names": set(),
                         },
                     )
 
-                    node_record["original_names"].add(
-                        observation["original_name"]
-                    )
+                    node_record["original_names"].add(observation["original_name"])
 
                     key = (
                         caller_id,
@@ -1743,13 +1679,9 @@ def build_seeded_typed_graph(section_info=None):
                         },
                     )
 
-                    edge_record["callsites"].add(
-                        callsite
-                    )
+                    edge_record["callsites"].add(callsite)
 
-                    edge_record["original_names"].add(
-                        observation["original_name"]
-                    )
+                    edge_record["original_names"].add(observation["original_name"])
 
                     _record_constants_for_api_call(
                         caller_id=caller_id,
@@ -1790,9 +1722,7 @@ def build_seeded_typed_graph(section_info=None):
                 if string_data is None:
                     continue
 
-                payload = _get_typed_string_payload(
-                    string_data
-                )
+                payload = _get_typed_string_payload(string_data)
 
                 if payload is None:
                     continue
@@ -1810,15 +1740,11 @@ def build_seeded_typed_graph(section_info=None):
                     },
                 )
 
-                node_record["categories"].update(
-                    payload["categories"]
-                )
+                node_record["categories"].update(payload["categories"])
                 node_record["reference_count"] += 1
 
                 for category in payload["categories"]:
-                    category_id = build_string_category_id(
-                        category
-                    )
+                    category_id = build_string_category_id(category)
 
                     string_categories[category_id] = category
                     string_category_edges.add(
@@ -1841,9 +1767,7 @@ def build_seeded_typed_graph(section_info=None):
                     },
                 )
 
-                edge_record["reference_sites"].add(
-                    callsite
-                )
+                edge_record["reference_sites"].add(callsite)
                 edge_record["reference_count"] += 1
 
     # -------------------------------------------------------------
@@ -1851,9 +1775,7 @@ def build_seeded_typed_graph(section_info=None):
     # -------------------------------------------------------------
     resolved_function_edges = []
 
-    for caller_id, callee_id, indirect in sorted(
-        function_calls
-    ):
+    for caller_id, callee_id, indirect in sorted(function_calls):
         resolved_function_edges.append(
             build_function_call_edge(
                 caller_id=caller_id,
@@ -1879,12 +1801,8 @@ def build_seeded_typed_graph(section_info=None):
 
         typed_api_nodes.append(
             build_api_node(
-                normalized_name=record[
-                    "normalized_name"
-                ],
-                original_names=record[
-                    "original_names"
-                ],
+                normalized_name=record["normalized_name"],
+                original_names=record["original_names"],
             )
         )
 
@@ -1893,9 +1811,7 @@ def build_seeded_typed_graph(section_info=None):
     # -------------------------------------------------------------
     resolved_api_edges = []
 
-    for caller_id, api_id, indirect in sorted(
-        api_calls
-    ):
+    for caller_id, api_id, indirect in sorted(api_calls):
         record = api_calls[
             (
                 caller_id,
@@ -1909,9 +1825,7 @@ def build_seeded_typed_graph(section_info=None):
                 caller_id=caller_id,
                 api_id=api_id,
                 callsites=record["callsites"],
-                original_names=record[
-                    "original_names"
-                ],
+                original_names=record["original_names"],
                 indirect=indirect,
             )
         )
@@ -1929,14 +1843,8 @@ def build_seeded_typed_graph(section_info=None):
                 address=record["address"],
                 value=record["value"],
                 raw_value=record["raw_value"],
-                categories=[
-                    category
-                    for category in STRING_CATEGORY_ORDER
-                    if category in record["categories"]
-                ],
-                reference_count=record[
-                    "reference_count"
-                ],
+                categories=[category for category in STRING_CATEGORY_ORDER if category in record["categories"]],
+                reference_count=record["reference_count"],
             )
         )
 
@@ -1945,9 +1853,7 @@ def build_seeded_typed_graph(section_info=None):
     # -------------------------------------------------------------
     string_edges = []
 
-    for function_id, string_id in sorted(
-        string_references
-    ):
+    for function_id, string_id in sorted(string_references):
         record = string_references[
             (
                 function_id,
@@ -1959,33 +1865,22 @@ def build_seeded_typed_graph(section_info=None):
             build_string_reference_edge(
                 function_id=function_id,
                 string_id=string_id,
-                reference_sites=record[
-                    "reference_sites"
-                ],
-                reference_count=record[
-                    "reference_count"
-                ],
+                reference_sites=record["reference_sites"],
+                reference_count=record["reference_count"],
             )
         )
 
     # -------------------------------------------------------------
     # Build deterministic STRING_CATEGORY nodes and edges
     # -------------------------------------------------------------
-    typed_string_category_nodes = [
-        build_string_category_node(
-            string_categories[category_id]
-        )
-        for category_id in sorted(string_categories)
-    ]
+    typed_string_category_nodes = [build_string_category_node(string_categories[category_id]) for category_id in sorted(string_categories)]
 
     typed_string_category_edges = [
         build_string_category_edge(
             string_id=string_id,
             category_id=category_id,
         )
-        for string_id, category_id in sorted(
-            string_category_edges
-        )
+        for string_id, category_id in sorted(string_category_edges)
     ]
 
     # -------------------------------------------------------------
@@ -2000,20 +1895,14 @@ def build_seeded_typed_graph(section_info=None):
             build_constant_node(
                 category=record["category"],
                 value=record["value"],
-                symbolic_names=record[
-                    "symbolic_names"
-                ],
-                bit_lengths=record[
-                    "bit_lengths"
-                ],
+                symbolic_names=record["symbolic_names"],
+                bit_lengths=record["bit_lengths"],
             )
         )
 
     typed_constant_edges = []
 
-    for function_id, constant_id in sorted(
-        constant_uses
-    ):
+    for function_id, constant_id in sorted(constant_uses):
         record = constant_uses[
             (
                 function_id,
@@ -2026,23 +1915,17 @@ def build_seeded_typed_graph(section_info=None):
                 function_id=function_id,
                 constant_id=constant_id,
                 use_sites=record["use_sites"],
-                occurrences=record[
-                    "occurrences"
-                ],
-                context_apis=record[
-                    "context_apis"
-                ],
+                occurrences=record["occurrences"],
+                context_apis=record["context_apis"],
             )
         )
 
     # -------------------------------------------------------------
     # Build deterministic SECTION nodes and FUNCTION -> SECTION edges
     # -------------------------------------------------------------
-    typed_section_nodes, typed_section_edges = (
-        _build_typed_section_evidence(
-            function_nodes,
-            section_info,
-        )
+    typed_section_nodes, typed_section_edges = _build_typed_section_evidence(
+        function_nodes,
+        section_info,
     )
 
     # -------------------------------------------------------------
@@ -2056,26 +1939,16 @@ def build_seeded_typed_graph(section_info=None):
         indicator_node = build_call_visibility_indicator_node(
             function_id=function_id,
             indirect_callsites=record["indirect_callsites"],
-            resolved_indirect_callsites=record[
-                "resolved_indirect_callsites"
-            ],
-            unresolved_indirect_callsites=record[
-                "unresolved_indirect_callsites"
-            ],
-            dynamic_dispatch_callsites=record[
-                "dynamic_dispatch_callsites"
-            ],
-            dynamic_dispatch_targets=record[
-                "dynamic_dispatch_targets"
-            ],
+            resolved_indirect_callsites=record["resolved_indirect_callsites"],
+            unresolved_indirect_callsites=record["unresolved_indirect_callsites"],
+            dynamic_dispatch_callsites=record["dynamic_dispatch_callsites"],
+            dynamic_dispatch_targets=record["dynamic_dispatch_targets"],
         )
         typed_visibility_nodes.append(indicator_node)
         typed_visibility_edges.append(
             build_indirect_call_indicator_edge(
                 function_id=function_id,
-                indicator_id=build_call_visibility_indicator_id(
-                    function_id
-                ),
+                indicator_id=build_call_visibility_indicator_id(function_id),
             )
         )
 
@@ -2088,37 +1961,17 @@ def build_seeded_typed_graph(section_info=None):
         ),
     )
 
-    typed_nodes = (
-        function_nodes
-        + typed_api_nodes
-        + typed_string_nodes
-        + typed_string_category_nodes
-        + typed_constant_nodes
-        + typed_section_nodes
-        + typed_visibility_nodes
-    )
+    typed_nodes = function_nodes + typed_api_nodes + typed_string_nodes + typed_string_category_nodes + typed_constant_nodes + typed_section_nodes + typed_visibility_nodes
 
-    typed_edges = (
-        resolved_function_edges
-        + resolved_api_edges
-        + string_edges
-        + typed_string_category_edges
-        + typed_constant_edges
-        + typed_section_edges
-        + typed_visibility_edges
-    )
+    typed_edges = resolved_function_edges + resolved_api_edges + string_edges + typed_string_category_edges + typed_constant_edges + typed_section_edges + typed_visibility_edges
 
     node_type_counts = {}
     for node in typed_nodes:
-        node_type_counts[node["type"]] = (
-            node_type_counts.get(node["type"], 0) + 1
-        )
+        node_type_counts[node["type"]] = node_type_counts.get(node["type"], 0) + 1
 
     edge_type_counts = {}
     for edge in typed_edges:
-        edge_type_counts[edge["type"]] = (
-            edge_type_counts.get(edge["type"], 0) + 1
-        )
+        edge_type_counts[edge["type"]] = edge_type_counts.get(edge["type"], 0) + 1
 
     return {
         "model_version": TYPED_GRAPH_MODEL_VERSION,
@@ -2131,19 +1984,14 @@ def build_seeded_typed_graph(section_info=None):
             "node_count": len(typed_nodes),
             "edge_count": len(typed_edges),
             "unresolved_call_count": len(unresolved_calls),
-            "node_type_counts": {
-                key: node_type_counts[key]
-                for key in sorted(node_type_counts)
-            },
-            "edge_type_counts": {
-                key: edge_type_counts[key]
-                for key in sorted(edge_type_counts)
-            },
+            "node_type_counts": {key: node_type_counts[key] for key in sorted(node_type_counts)},
+            "edge_type_counts": {key: edge_type_counts[key] for key in sorted(edge_type_counts)},
         },
         "nodes": typed_nodes,
         "edges": typed_edges,
         "unresolved_calls": unresolved_calls,
     }
+
 
 def get_suspicious_apis(external_symbols):
     aggregated = {}
@@ -4272,9 +4120,7 @@ def attach_seeded_typed_graph(report, seeded_enabled, typed_graph):
 
     if seeded_enabled:
         if typed_graph is None:
-            raise ValueError(
-                "seeded analysis requires a typed_graph payload"
-            )
+            raise ValueError("seeded analysis requires a typed_graph payload")
         report["typed_graph"] = typed_graph
 
     return report
@@ -4328,13 +4174,7 @@ def build_report(seeded_enabled=False):
 
     capabilities = detect_capabilities(external_symbols)
 
-    typed_graph = (
-        build_seeded_typed_graph(
-            section_info=section_info
-        )
-        if seeded_enabled
-        else None
-    )
+    typed_graph = build_seeded_typed_graph(section_info=section_info) if seeded_enabled else None
 
     functions = get_base_functions()
     functions = enrich_functions(functions, interesting_strings)

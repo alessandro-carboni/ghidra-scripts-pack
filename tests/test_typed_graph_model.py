@@ -130,10 +130,7 @@ class FakeMemoryBlock:
 
 class FakeMemory:
     def __init__(self, functions):
-        self.sections = {
-            str(function.getEntryPoint()): function.section
-            for function in functions
-        }
+        self.sections = {str(function.getEntryPoint()): function.section for function in functions}
 
     def getBlock(self, address):
         section = self.sections.get(str(address))
@@ -634,11 +631,7 @@ class TypedGraphModelTests(CurrentProgramMixin, unittest.TestCase):
             program,
             export_report.build_seeded_typed_graph,
         )
-        edges = [
-            edge
-            for edge in graph["edges"]
-            if edge["type"] == "calls_function"
-        ]
+        edges = [edge for edge in graph["edges"] if edge["type"] == "calls_function"]
 
         self.assertEqual(len(edges), 2)
         self.assertEqual(edges[0]["caller"], "fn:00401000")
@@ -665,11 +658,7 @@ class TypedGraphModelTests(CurrentProgramMixin, unittest.TestCase):
             program,
             export_report.build_seeded_typed_graph,
         )
-        edges = [
-            edge
-            for edge in graph["edges"]
-            if edge["type"] == "calls_function"
-        ]
+        edges = [edge for edge in graph["edges"] if edge["type"] == "calls_function"]
 
         self.assertEqual(len(edges), 1)
         self.assertEqual(edges[0]["callsites"], ["00401010", "00401020"])
@@ -697,11 +686,7 @@ class TypedGraphModelTests(CurrentProgramMixin, unittest.TestCase):
             program,
             export_report.build_seeded_typed_graph,
         )
-        edges = [
-            edge
-            for edge in graph["edges"]
-            if edge["type"] == "calls_function"
-        ]
+        edges = [edge for edge in graph["edges"] if edge["type"] == "calls_function"]
         self.assertEqual(len(edges), 1)
         self.assertEqual(edges[0]["callee"], "fn:00402000")
 
@@ -719,16 +704,8 @@ class TypedGraphModelTests(CurrentProgramMixin, unittest.TestCase):
             export_report.build_seeded_typed_graph,
         )
 
-        call_edges = [
-            edge
-            for edge in graph["edges"]
-            if edge["type"] in ("calls_function", "calls_api")
-        ]
-        visibility_edges = [
-            edge
-            for edge in graph["edges"]
-            if edge["type"] == "contains_indirect_call"
-        ]
+        call_edges = [edge for edge in graph["edges"] if edge["type"] in ("calls_function", "calls_api")]
+        visibility_edges = [edge for edge in graph["edges"] if edge["type"] == "contains_indirect_call"]
 
         self.assertEqual(call_edges, [])
         self.assertEqual(len(visibility_edges), 1)
@@ -779,9 +756,7 @@ class TypedGraphModelTests(CurrentProgramMixin, unittest.TestCase):
             [caller, external],
             instruction_map={caller.body: [instruction]},
             reference_map={
-                "00401010": [
-                    FakeReference("EXTERNAL:00000001", call=True)
-                ],
+                "00401010": [FakeReference("EXTERNAL:00000001", call=True)],
             },
         )
 
@@ -789,15 +764,9 @@ class TypedGraphModelTests(CurrentProgramMixin, unittest.TestCase):
             program,
             export_report.build_seeded_typed_graph,
         )
-        function_nodes = [
-            node for node in graph["nodes"] if node["type"] == "FUNCTION"
-        ]
-        api_nodes = [
-            node for node in graph["nodes"] if node["type"] == "API"
-        ]
-        api_edges = [
-            edge for edge in graph["edges"] if edge["type"] == "calls_api"
-        ]
+        function_nodes = [node for node in graph["nodes"] if node["type"] == "FUNCTION"]
+        api_nodes = [node for node in graph["nodes"] if node["type"] == "API"]
+        api_edges = [edge for edge in graph["edges"] if edge["type"] == "calls_api"]
 
         self.assertEqual([node["id"] for node in function_nodes], ["fn:00401000"])
         self.assertEqual([node["id"] for node in api_nodes], ["api:createfile"])
@@ -834,14 +803,8 @@ class TypedGraphModelTests(CurrentProgramMixin, unittest.TestCase):
             program,
             export_report.build_seeded_typed_graph,
         )
-        function_ids = [
-            node["id"]
-            for node in graph["nodes"]
-            if node["type"] == "FUNCTION"
-        ]
-        api_edges = [
-            edge for edge in graph["edges"] if edge["type"] == "calls_api"
-        ]
+        function_ids = [node["id"] for node in graph["nodes"] if node["type"] == "FUNCTION"]
+        api_edges = [edge for edge in graph["edges"] if edge["type"] == "calls_api"]
 
         self.assertEqual(function_ids, ["fn:00401000"])
         self.assertEqual(len(api_edges), 1)
@@ -866,12 +829,8 @@ class TypedGraphModelTests(CurrentProgramMixin, unittest.TestCase):
             program,
             export_report.build_seeded_typed_graph,
         )
-        api_nodes = [
-            node for node in graph["nodes"] if node["type"] == "API"
-        ]
-        api_edges = [
-            edge for edge in graph["edges"] if edge["type"] == "calls_api"
-        ]
+        api_nodes = [node for node in graph["nodes"] if node["type"] == "API"]
+        api_edges = [edge for edge in graph["edges"] if edge["type"] == "calls_api"]
 
         self.assertEqual(len(api_nodes), 1)
         self.assertEqual(api_nodes[0]["id"], "api:createfile")
@@ -941,14 +900,8 @@ class TypedGraphModelTests(CurrentProgramMixin, unittest.TestCase):
             program,
             export_report.build_seeded_typed_graph,
         )
-        string_nodes = [
-            node for node in graph["nodes"] if node["type"] == "STRING"
-        ]
-        string_edges = [
-            edge
-            for edge in graph["edges"]
-            if edge["type"] == "references_string"
-        ]
+        string_nodes = [node for node in graph["nodes"] if node["type"] == "STRING"]
+        string_edges = [edge for edge in graph["edges"] if edge["type"] == "references_string"]
 
         self.assertEqual(len(string_nodes), 1)
         self.assertEqual(string_nodes[0]["address"], "00405000")
@@ -985,9 +938,7 @@ class TypedGraphModelTests(CurrentProgramMixin, unittest.TestCase):
             program,
             export_report.build_seeded_typed_graph,
         )
-        self.assertFalse(
-            any(node["type"] == "STRING" for node in graph["nodes"])
-        )
+        self.assertFalse(any(node["type"] == "STRING" for node in graph["nodes"]))
 
     def test_seeded_graph_is_deterministic(self):
         caller = FakeFunction("00401000", "caller", size=64, section=".text")
@@ -1022,19 +973,9 @@ class TypedGraphModelTests(CurrentProgramMixin, unittest.TestCase):
         self.assertEqual(first, second)
 
     def test_seeded_script_marker_is_opt_in(self):
-        self.assertFalse(
-            export_report.parse_seeded_script_arg(["reports", "rules"])
-        )
-        self.assertTrue(
-            export_report.parse_seeded_script_arg(
-                ["reports", "rules", "seeded=true"]
-            )
-        )
-        self.assertTrue(
-            export_report.parse_seeded_script_arg(
-                ["reports", "rules", "SEEDED=TRUE"]
-            )
-        )
+        self.assertFalse(export_report.parse_seeded_script_arg(["reports", "rules"]))
+        self.assertTrue(export_report.parse_seeded_script_arg(["reports", "rules", "seeded=true"]))
+        self.assertTrue(export_report.parse_seeded_script_arg(["reports", "rules", "SEEDED=TRUE"]))
 
     def test_contract_is_json_serializable_and_versioned_through_step_2_12(self):
         contract = build_typed_graph_model_contract()
@@ -1134,21 +1075,9 @@ class TypedGraphModelTests(CurrentProgramMixin, unittest.TestCase):
             export_report.build_seeded_typed_graph,
         )
 
-        string_node = next(
-            node
-            for node in graph["nodes"]
-            if node["type"] == "STRING"
-        )
-        category_nodes = [
-            node
-            for node in graph["nodes"]
-            if node["type"] == "STRING_CATEGORY"
-        ]
-        category_edges = [
-            edge
-            for edge in graph["edges"]
-            if edge["type"] == "has_string_category"
-        ]
+        string_node = next(node for node in graph["nodes"] if node["type"] == "STRING")
+        category_nodes = [node for node in graph["nodes"] if node["type"] == "STRING_CATEGORY"]
+        category_edges = [edge for edge in graph["edges"] if edge["type"] == "has_string_category"]
 
         self.assertEqual(
             string_node["categories"],
@@ -1304,16 +1233,8 @@ class TypedGraphModelTests(CurrentProgramMixin, unittest.TestCase):
             export_report.build_seeded_typed_graph,
         )
 
-        constants = [
-            node
-            for node in graph["nodes"]
-            if node["type"] == "CONSTANT"
-        ]
-        edges = [
-            edge
-            for edge in graph["edges"]
-            if edge["type"] == "uses_constant"
-        ]
+        constants = [node for node in graph["nodes"] if node["type"] == "CONSTANT"]
+        edges = [edge for edge in graph["edges"] if edge["type"] == "uses_constant"]
 
         self.assertEqual(
             [node["id"] for node in constants],
@@ -1323,12 +1244,7 @@ class TypedGraphModelTests(CurrentProgramMixin, unittest.TestCase):
             ],
         )
         self.assertEqual(len(edges), 2)
-        self.assertTrue(
-            all(
-                edge["context_apis"] == ["VirtualAllocEx"]
-                for edge in edges
-            )
-        )
+        self.assertTrue(all(edge["context_apis"] == ["VirtualAllocEx"] for edge in edges))
 
     def test_unrelated_scalar_is_not_emitted_as_constant(self):
         caller = FakeFunction("00401000", "caller", size=32, section=".text")
@@ -1346,12 +1262,7 @@ class TypedGraphModelTests(CurrentProgramMixin, unittest.TestCase):
             export_report.build_seeded_typed_graph,
         )
 
-        self.assertFalse(
-            any(
-                node["type"] == "CONSTANT"
-                for node in graph["nodes"]
-            )
-        )
+        self.assertFalse(any(node["type"] == "CONSTANT" for node in graph["nodes"]))
 
     def test_section_node_preserves_permissions_entropy_and_size(self):
         node = build_section_node(
@@ -1442,21 +1353,11 @@ class TypedGraphModelTests(CurrentProgramMixin, unittest.TestCase):
 
         graph = self.run_with_program(
             program,
-            lambda: export_report.build_seeded_typed_graph(
-                section_info=section_info
-            ),
+            lambda: export_report.build_seeded_typed_graph(section_info=section_info),
         )
 
-        section_nodes = [
-            node
-            for node in graph["nodes"]
-            if node["type"] == "SECTION"
-        ]
-        section_edges = [
-            edge
-            for edge in graph["edges"]
-            if edge["type"] == "belongs_to_section"
-        ]
+        section_nodes = [node for node in graph["nodes"] if node["type"] == "SECTION"]
+        section_edges = [edge for edge in graph["edges"] if edge["type"] == "belongs_to_section"]
 
         self.assertEqual(len(section_nodes), 1)
         self.assertEqual(
@@ -1468,7 +1369,6 @@ class TypedGraphModelTests(CurrentProgramMixin, unittest.TestCase):
             [edge["source"] for edge in section_edges],
             ["fn:00401010", "fn:00401030"],
         )
-
 
     def test_call_visibility_indicator_preserves_indirect_unresolved_and_dispatch(self):
         node = build_call_visibility_indicator_node(
@@ -1559,9 +1459,7 @@ class TypedGraphModelTests(CurrentProgramMixin, unittest.TestCase):
                 callee.body: [],
             },
             reference_map={
-                "00401010": [
-                    FakeReference("00402000", call=True)
-                ],
+                "00401010": [FakeReference("00402000", call=True)],
                 "00401020": [],
             },
         )
@@ -1570,16 +1468,8 @@ class TypedGraphModelTests(CurrentProgramMixin, unittest.TestCase):
             program,
             export_report.build_seeded_typed_graph,
         )
-        visibility_nodes = [
-            node
-            for node in graph["nodes"]
-            if node["type"] == "VISIBILITY_INDICATOR"
-        ]
-        visibility_edges = [
-            edge
-            for edge in graph["edges"]
-            if edge["type"] == "contains_indirect_call"
-        ]
+        visibility_nodes = [node for node in graph["nodes"] if node["type"] == "VISIBILITY_INDICATOR"]
+        visibility_edges = [edge for edge in graph["edges"] if edge["type"] == "contains_indirect_call"]
 
         self.assertEqual(len(visibility_nodes), 1)
         self.assertEqual(len(visibility_edges), 1)
@@ -1639,11 +1529,7 @@ class TypedGraphModelTests(CurrentProgramMixin, unittest.TestCase):
             program,
             export_report.build_seeded_typed_graph,
         )
-        visibility = next(
-            node
-            for node in graph["nodes"]
-            if node["type"] == "VISIBILITY_INDICATOR"
-        )
+        visibility = next(node for node in graph["nodes"] if node["type"] == "VISIBILITY_INDICATOR")
 
         self.assertIn("dynamic_dispatch", visibility["signals"])
         self.assertEqual(visibility["dynamic_dispatch_count"], 1)
@@ -1680,28 +1566,18 @@ class TypedGraphModelTests(CurrentProgramMixin, unittest.TestCase):
                 caller.body: [indirect],
                 callee.body: [],
             },
-            reference_map={
-                "00401010": [
-                    FakeReference("00402000", call=True)
-                ]
-            },
+            reference_map={"00401010": [FakeReference("00402000", call=True)]},
         )
 
         graph = self.run_with_program(
             program,
             export_report.build_seeded_typed_graph,
         )
-        visibility = next(
-            node
-            for node in graph["nodes"]
-            if node["type"] == "VISIBILITY_INDICATOR"
-        )
+        visibility = next(node for node in graph["nodes"] if node["type"] == "VISIBILITY_INDICATOR")
 
         self.assertEqual(visibility["signals"], ["indirect_call"])
         self.assertEqual(visibility["dynamic_dispatch_count"], 0)
-        self.assertIsNone(
-            visibility["dynamic_dispatch_recognition"]
-        )
+        self.assertIsNone(visibility["dynamic_dispatch_recognition"])
 
     def test_final_typed_graph_metadata_declares_complete_nonlegacy_graph(self):
         caller = FakeFunction(
@@ -1734,9 +1610,7 @@ class TypedGraphModelTests(CurrentProgramMixin, unittest.TestCase):
             "ghidra_instruction_references",
         )
         self.assertFalse(metadata["legacy_callgraph_used"])
-        self.assertFalse(
-            metadata["legacy_callgraph_limits_applied"]
-        )
+        self.assertFalse(metadata["legacy_callgraph_limits_applied"])
         self.assertFalse(metadata["truncated"])
         self.assertEqual(metadata["node_count"], len(graph["nodes"]))
         self.assertEqual(metadata["edge_count"], len(graph["edges"]))
@@ -1761,21 +1635,14 @@ class TypedGraphModelTests(CurrentProgramMixin, unittest.TestCase):
                 caller.body: [call],
                 callee.body: [],
             },
-            reference_map={
-                "00401010": [
-                    FakeReference("00402000", call=True)
-                ]
-            },
+            reference_map={"00401010": [FakeReference("00402000", call=True)]},
         )
 
         graph = self.run_with_program(
             program,
             export_report.build_seeded_typed_graph,
         )
-        node_by_id = {
-            node["id"]: node
-            for node in graph["nodes"]
-        }
+        node_by_id = {node["id"]: node for node in graph["nodes"]}
 
         self.assertEqual(len(node_by_id), len(graph["nodes"]))
 
@@ -1808,22 +1675,14 @@ class TypedGraphModelTests(CurrentProgramMixin, unittest.TestCase):
                 caller.body: [call],
                 callee.body: [],
             },
-            reference_map={
-                "0040102a": [
-                    FakeReference("00402000", call=True)
-                ]
-            },
+            reference_map={"0040102a": [FakeReference("00402000", call=True)]},
         )
 
         graph = self.run_with_program(
             program,
             export_report.build_seeded_typed_graph,
         )
-        edge = next(
-            edge
-            for edge in graph["edges"]
-            if edge["type"] == "calls_function"
-        )
+        edge = next(edge for edge in graph["edges"] if edge["type"] == "calls_function")
 
         self.assertEqual(edge["callsite"], "0040102a")
         self.assertEqual(edge["callsites"], ["0040102a"])
@@ -1845,9 +1704,7 @@ class TypedGraphModelTests(CurrentProgramMixin, unittest.TestCase):
         for index, function in enumerate(functions):
             instructions = []
             for offset in (1, 2, 3):
-                call_address = "{:08x}".format(
-                    0x700000 + index * 0x10 + offset
-                )
+                call_address = "{:08x}".format(0x700000 + index * 0x10 + offset)
                 instruction = FakeInstruction(call_address, call=True)
                 instructions.append(instruction)
                 target = functions[(index + offset) % function_count]
@@ -1869,25 +1726,15 @@ class TypedGraphModelTests(CurrentProgramMixin, unittest.TestCase):
             export_report.build_seeded_typed_graph,
         )
 
-        function_nodes = [
-            node
-            for node in graph["nodes"]
-            if node["type"] == "FUNCTION"
-        ]
-        call_edges = [
-            edge
-            for edge in graph["edges"]
-            if edge["type"] == "calls_function"
-        ]
+        function_nodes = [node for node in graph["nodes"] if node["type"] == "FUNCTION"]
+        call_edges = [edge for edge in graph["edges"] if edge["type"] == "calls_function"]
 
         self.assertEqual(len(function_nodes), 300)
         self.assertEqual(len(call_edges), 900)
         self.assertGreater(len(function_nodes), 250)
         self.assertGreater(len(call_edges), 800)
         self.assertFalse(graph["metadata"]["truncated"])
-        self.assertFalse(
-            graph["metadata"]["legacy_callgraph_limits_applied"]
-        )
+        self.assertFalse(graph["metadata"]["legacy_callgraph_limits_applied"])
 
     def test_seeded_graph_final_output_is_deterministic(self):
         caller = FakeFunction(
@@ -1913,11 +1760,7 @@ class TypedGraphModelTests(CurrentProgramMixin, unittest.TestCase):
                 caller.body: [call],
                 callee.body: [],
             },
-            reference_map={
-                "00401010": [
-                    FakeReference("00402000", call=True)
-                ]
-            },
+            reference_map={"00401010": [FakeReference("00402000", call=True)]},
         )
 
         first = self.run_with_program(
@@ -1988,12 +1831,8 @@ class TypedGraphModelTests(CurrentProgramMixin, unittest.TestCase):
             contract["graph_contract"]["scope"],
             "complete_seeded_evidence_graph",
         )
-        self.assertFalse(
-            contract["graph_contract"]["legacy_callgraph_used"]
-        )
-        self.assertFalse(
-            contract["graph_contract"]["legacy_callgraph_limits_applied"]
-        )
+        self.assertFalse(contract["graph_contract"]["legacy_callgraph_used"])
+        self.assertFalse(contract["graph_contract"]["legacy_callgraph_limits_applied"])
 
 
 if __name__ == "__main__":

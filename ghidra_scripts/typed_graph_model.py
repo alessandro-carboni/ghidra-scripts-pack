@@ -9,7 +9,6 @@ indirect-call visibility evidence and the complete Step 2 graph contract.
 from enum import Enum
 
 
-
 TYPED_GRAPH_MODEL_VERSION = "0.12.0"
 FUNCTION_ID_PREFIX = "fn:"
 API_ID_PREFIX = "api:"
@@ -101,10 +100,7 @@ def validate_edge_endpoints(edge_type, source_type, target_type):
 
     expected_source, expected_target = EDGE_ENDPOINT_TYPES[parsed_edge_type]
 
-    if (
-        parsed_source_type != expected_source
-        or parsed_target_type != expected_target
-    ):
+    if parsed_source_type != expected_source or parsed_target_type != expected_target:
         raise ValueError(
             "invalid endpoints for {}: expected {} -> {}, got {} -> {}".format(
                 parsed_edge_type.value,
@@ -136,9 +132,7 @@ def normalize_entry_address(entry_address):
     )
 
     if address_text.lower().startswith(FUNCTION_ID_PREFIX):
-        raise ValueError(
-            "function entry address must not include the function ID prefix"
-        )
+        raise ValueError("function entry address must not include the function ID prefix")
 
     if address_text.lower().startswith("0x"):
         address_text = address_text[2:]
@@ -288,9 +282,7 @@ def build_api_node(normalized_name, original_names):
     """Build a typed API node while preserving all observed raw variants."""
 
     normalized = _normalize_api_name(normalized_name)
-    originals = sorted(
-        set(_normalize_api_name(name) for name in original_names)
-    )
+    originals = sorted(set(_normalize_api_name(name) for name in original_names))
 
     if not originals:
         raise ValueError("API node requires at least one original name")
@@ -363,11 +355,7 @@ def build_string_node(
     if raw_value is None:
         raise ValueError("string raw value cannot be None")
 
-    if (
-        isinstance(reference_count, bool)
-        or not isinstance(reference_count, int)
-        or reference_count < 0
-    ):
+    if isinstance(reference_count, bool) or not isinstance(reference_count, int) or reference_count < 0:
         raise ValueError("string reference_count must be a non-negative integer")
 
     normalized_categories = _normalize_string_categories(
@@ -375,11 +363,7 @@ def build_string_node(
         categories=categories,
     )
 
-    primary_category = (
-        normalized_categories[0]
-        if normalized_categories
-        else None
-    )
+    primary_category = normalized_categories[0] if normalized_categories else None
 
     return {
         "id": STRING_ID_PREFIX + normalized_address,
@@ -457,9 +441,7 @@ def _normalize_callsites(callsites):
     if callsites is None:
         raise ValueError("callsites cannot be None")
 
-    normalized = sorted(
-        set(normalize_graph_address(callsite) for callsite in callsites)
-    )
+    normalized = sorted(set(normalize_graph_address(callsite) for callsite in callsites))
 
     if not normalized:
         raise ValueError("at least one callsite is required")
@@ -512,9 +494,7 @@ def build_api_call_edge(
     caller = validate_stable_function_id(caller_id)
     api = validate_api_id(api_id)
     normalized_callsites = _normalize_callsites(callsites)
-    originals = sorted(
-        set(_normalize_api_name(name) for name in original_names)
-    )
+    originals = sorted(set(_normalize_api_name(name) for name in original_names))
 
     if not originals:
         raise ValueError("API call edge requires at least one original API name")
@@ -547,17 +527,11 @@ def build_string_reference_edge(
     string = validate_string_id(string_id)
     sites = _normalize_callsites(reference_sites)
 
-    if (
-        isinstance(reference_count, bool)
-        or not isinstance(reference_count, int)
-        or reference_count <= 0
-    ):
+    if isinstance(reference_count, bool) or not isinstance(reference_count, int) or reference_count <= 0:
         raise ValueError("string reference_count must be a positive integer")
 
     if reference_count < len(sites):
-        raise ValueError(
-            "string reference_count cannot be smaller than unique reference sites"
-        )
+        raise ValueError("string reference_count cannot be smaller than unique reference sites")
 
     return {
         "type": EdgeType.REFERENCES_STRING.value,
@@ -577,9 +551,7 @@ def _normalize_constant_category(category):
     ).lower()
 
     if any(ch not in "abcdefghijklmnopqrstuvwxyz0123456789_" for ch in normalized):
-        raise ValueError(
-            "constant category must contain only lowercase letters, digits, and underscores"
-        )
+        raise ValueError("constant category must contain only lowercase letters, digits, and underscores")
 
     return normalized
 
@@ -649,12 +621,7 @@ def build_constant_node(
     normalized_category = _normalize_constant_category(category)
     normalized_value = _validate_constant_value(value)
 
-    names = sorted(
-        set(
-            _normalize_nonempty_text(name, "constant symbolic name")
-            for name in symbolic_names
-        )
-    )
+    names = sorted(set(_normalize_nonempty_text(name, "constant symbolic name") for name in symbolic_names))
 
     if not names:
         raise ValueError("constant node requires at least one symbolic name")
@@ -697,24 +664,13 @@ def build_constant_use_edge(
     constant = validate_constant_id(constant_id)
     sites = _normalize_callsites(use_sites)
 
-    if (
-        isinstance(occurrences, bool)
-        or not isinstance(occurrences, int)
-        or occurrences <= 0
-    ):
+    if isinstance(occurrences, bool) or not isinstance(occurrences, int) or occurrences <= 0:
         raise ValueError("constant occurrences must be a positive integer")
 
     if occurrences < len(sites):
-        raise ValueError(
-            "constant occurrences cannot be smaller than unique use sites"
-        )
+        raise ValueError("constant occurrences cannot be smaller than unique use sites")
 
-    apis = sorted(
-        set(
-            _normalize_nonempty_text(api, "constant context API")
-            for api in context_apis
-        )
-    )
+    apis = sorted(set(_normalize_nonempty_text(api, "constant context API") for api in context_apis))
 
     if not apis:
         raise ValueError("constant use edge requires at least one context API")
@@ -794,24 +750,12 @@ def build_section_node(
             raise ValueError("section entropy must be numeric or None")
         entropy = float(entropy)
 
-    if (
-        isinstance(entropy_sampled_bytes, bool)
-        or not isinstance(entropy_sampled_bytes, int)
-        or entropy_sampled_bytes < 0
-    ):
-        raise ValueError(
-            "section entropy_sampled_bytes must be a non-negative integer"
-        )
+    if isinstance(entropy_sampled_bytes, bool) or not isinstance(entropy_sampled_bytes, int) or entropy_sampled_bytes < 0:
+        raise ValueError("section entropy_sampled_bytes must be a non-negative integer")
 
-    entropy_class_text = (
-        "unknown"
-        if entropy_class is None
-        else str(entropy_class).strip() or "unknown"
-    )
+    entropy_class_text = "unknown" if entropy_class is None else str(entropy_class).strip() or "unknown"
 
-    reason_values = sorted(
-        set(str(reason) for reason in (reasons or []) if str(reason).strip())
-    )
+    reason_values = sorted(set(str(reason) for reason in (reasons or []) if str(reason).strip()))
 
     permissions = "{}{}{}".format(
         "r" if read else "-",
@@ -871,9 +815,7 @@ def validate_call_visibility_indicator_id(indicator_id):
 
     prefix = VISIBILITY_ID_PREFIX + "call_visibility:"
     if not text.startswith(prefix):
-        raise ValueError(
-            "call visibility indicator id must start with 'vis:call_visibility:'"
-        )
+        raise ValueError("call visibility indicator id must start with 'vis:call_visibility:'")
 
     function_id = text[len(prefix) :]
     return prefix + validate_stable_function_id(function_id)
@@ -898,37 +840,17 @@ def build_call_visibility_indicator_node(
 
     resolved_sites = []
     if resolved_indirect_callsites:
-        resolved_sites = sorted(
-            set(
-                normalize_graph_address(callsite)
-                for callsite in resolved_indirect_callsites
-            )
-        )
+        resolved_sites = sorted(set(normalize_graph_address(callsite) for callsite in resolved_indirect_callsites))
 
     unresolved_sites = []
     if unresolved_indirect_callsites:
-        unresolved_sites = sorted(
-            set(
-                normalize_graph_address(callsite)
-                for callsite in unresolved_indirect_callsites
-            )
-        )
+        unresolved_sites = sorted(set(normalize_graph_address(callsite) for callsite in unresolved_indirect_callsites))
 
     dispatch_sites = []
     if dynamic_dispatch_callsites:
-        dispatch_sites = sorted(
-            set(
-                normalize_graph_address(callsite)
-                for callsite in dynamic_dispatch_callsites
-            )
-        )
+        dispatch_sites = sorted(set(normalize_graph_address(callsite) for callsite in dynamic_dispatch_callsites))
 
-    targets = sorted(
-        set(
-            _normalize_nonempty_text(target, "dynamic dispatch target").lower()
-            for target in (dynamic_dispatch_targets or [])
-        )
-    )
+    targets = sorted(set(_normalize_nonempty_text(target, "dynamic dispatch target").lower() for target in (dynamic_dispatch_targets or [])))
 
     signals = ["indirect_call"]
     if unresolved_sites:
@@ -951,11 +873,7 @@ def build_call_visibility_indicator_node(
         "dynamic_dispatch_callsites": dispatch_sites,
         "dynamic_dispatch_count": len(dispatch_sites),
         "dynamic_dispatch_targets": targets,
-        "dynamic_dispatch_recognition": (
-            "computed_call_with_multiple_resolved_targets"
-            if dispatch_sites
-            else None
-        ),
+        "dynamic_dispatch_recognition": ("computed_call_with_multiple_resolved_targets" if dispatch_sites else None),
     }
 
 
@@ -967,9 +885,7 @@ def build_indirect_call_indicator_edge(function_id, indicator_id):
 
     expected_indicator = build_call_visibility_indicator_id(function)
     if indicator != expected_indicator:
-        raise ValueError(
-            "call visibility indicator must belong to the source function"
-        )
+        raise ValueError("call visibility indicator must belong to the source function")
 
     return {
         "type": EdgeType.CONTAINS_INDIRECT_CALL.value,
@@ -1111,9 +1027,7 @@ def build_typed_graph_model_contract():
                 "unresolved_call",
                 "dynamic_dispatch",
             ],
-            "dynamic_dispatch_recognition": (
-                "computed_call_with_multiple_resolved_targets"
-            ),
+            "dynamic_dispatch_recognition": ("computed_call_with_multiple_resolved_targets"),
         },
         "function_call_edge": {
             "type": EdgeType.CALLS_FUNCTION.value,
