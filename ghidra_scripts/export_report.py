@@ -9,21 +9,118 @@ import os
 import sys
 import json
 import math
+import re
 
 
 def _load_typed_graph_model():
     try:
-        from typed_graph_model import TYPED_GRAPH_MODEL_VERSION, build_function_node
+        from typed_graph_model import (
+            TYPED_GRAPH_MODEL_VERSION,
+            build_api_call_edge,
+            build_api_id,
+            build_api_node,
+            build_call_visibility_indicator_id,
+            build_call_visibility_indicator_node,
+            build_constant_id,
+            build_constant_node,
+            build_constant_use_edge,
+            build_function_call_edge,
+            build_function_node,
+            build_function_section_edge,
+            build_indirect_call_indicator_edge,
+            build_section_id,
+            build_section_node,
+            build_stable_function_id,
+            build_string_category_edge,
+            build_string_category_id,
+            build_string_category_node,
+            build_string_id,
+            build_string_node,
+            build_string_reference_edge,
+            build_unresolved_function_call,
+        )
     except ImportError:
         script_dir = os.path.dirname(os.path.abspath(__file__))
         if script_dir not in sys.path:
             sys.path.insert(0, script_dir)
-        from typed_graph_model import TYPED_GRAPH_MODEL_VERSION, build_function_node
+        from typed_graph_model import (
+            TYPED_GRAPH_MODEL_VERSION,
+            build_api_call_edge,
+            build_api_id,
+            build_api_node,
+            build_call_visibility_indicator_id,
+            build_call_visibility_indicator_node,
+            build_constant_id,
+            build_constant_node,
+            build_constant_use_edge,
+            build_function_call_edge,
+            build_function_node,
+            build_function_section_edge,
+            build_indirect_call_indicator_edge,
+            build_section_id,
+            build_section_node,
+            build_stable_function_id,
+            build_string_category_edge,
+            build_string_category_id,
+            build_string_category_node,
+            build_string_id,
+            build_string_node,
+            build_string_reference_edge,
+            build_unresolved_function_call,
+        )
 
-    return TYPED_GRAPH_MODEL_VERSION, build_function_node
+    return (
+        TYPED_GRAPH_MODEL_VERSION,
+        build_api_call_edge,
+        build_api_id,
+        build_api_node,
+        build_call_visibility_indicator_id,
+        build_call_visibility_indicator_node,
+        build_constant_id,
+        build_constant_node,
+        build_constant_use_edge,
+        build_function_call_edge,
+        build_function_node,
+        build_function_section_edge,
+        build_indirect_call_indicator_edge,
+        build_section_id,
+        build_section_node,
+        build_stable_function_id,
+        build_string_category_edge,
+        build_string_category_id,
+        build_string_category_node,
+        build_string_id,
+        build_string_node,
+        build_string_reference_edge,
+        build_unresolved_function_call,
+    )
 
 
-TYPED_GRAPH_MODEL_VERSION, build_function_node = _load_typed_graph_model()
+(
+    TYPED_GRAPH_MODEL_VERSION,
+    build_api_call_edge,
+    build_api_id,
+    build_api_node,
+    build_call_visibility_indicator_id,
+    build_call_visibility_indicator_node,
+    build_constant_id,
+    build_constant_node,
+    build_constant_use_edge,
+    build_function_call_edge,
+    build_function_node,
+    build_function_section_edge,
+    build_indirect_call_indicator_edge,
+    build_section_id,
+    build_section_node,
+    build_stable_function_id,
+    build_string_category_edge,
+    build_string_category_id,
+    build_string_category_node,
+    build_string_id,
+    build_string_node,
+    build_string_reference_edge,
+    build_unresolved_function_call,
+) = _load_typed_graph_model()
 
 DEFAULT_RULES_DIR_NAME = "rules"
 DEFAULT_RULE_FILES = {
@@ -200,6 +297,166 @@ API_NORMALIZATION_MAP = {
 }
 
 BENIGN_STRING_KEYWORDS = ["microsoft", "notepad", "richedit", "comdlg", "print", "page setup", "font", "open file", "save file"]
+
+
+STRING_CATEGORY_ORDER = [
+    "url",
+    "ip_address",
+    "registry_path",
+    "shell_command",
+    "powershell",
+    "file_path",
+    "user_agent",
+    "debugger_name",
+    "vm_indicator",
+]
+
+URL_RE = re.compile(r"(?i)\b(?:https?|ftp)://[^\s\"'<>]+")
+IPV4_RE = re.compile(r"(?<![0-9])(?:[0-9]{1,3}\.){3}[0-9]{1,3}(?![0-9])")
+WINDOWS_PATH_RE = re.compile(r"(?i)(?:[a-z]:\\|\\\\)[^\\r\\n\"'<>|]+")
+UNIX_PATH_RE = re.compile(r"(?:^|[\s\"'])/(?:usr|var|tmp|home|etc|opt|bin|sbin)/[^\s\"']+")
+
+REGISTRY_HINTS = (
+    "hkey_",
+    "hkcu\\",
+    "hklm\\",
+    "hkcr\\",
+    "hku\\",
+    "software\\microsoft\\windows\\currentversion\\",
+)
+
+SHELL_COMMAND_HINTS = (
+    "cmd.exe",
+    "cmd /c",
+    "powershell",
+    "pwsh",
+    "rundll32",
+    "wmic",
+    "schtasks",
+    "bitsadmin",
+    "certutil",
+    "regsvr32",
+)
+
+DEBUGGER_NAME_HINTS = (
+    "x64dbg",
+    "x32dbg",
+    "ollydbg",
+    "windbg",
+    "immunity debugger",
+    "ida64",
+    "ida.exe",
+)
+
+VM_INDICATOR_HINTS = (
+    "vmware",
+    "virtualbox",
+    "vbox",
+    "qemu",
+    "xen",
+    "hyper-v",
+    "parallels",
+    "sandboxie",
+)
+
+MEMORY_PROTECTION_APIS = {
+    "VirtualAlloc",
+    "VirtualAllocEx",
+    "VirtualProtect",
+    "VirtualProtectEx",
+    "NtAllocateVirtualMemory",
+    "NtProtectVirtualMemory",
+}
+
+ALLOCATION_FLAG_APIS = {
+    "VirtualAlloc",
+    "VirtualAllocEx",
+    "NtAllocateVirtualMemory",
+}
+
+PROCESS_RIGHTS_APIS = {
+    "OpenProcess",
+    "NtOpenProcess",
+}
+
+REGISTRY_FLAG_APIS = {
+    "RegOpenKeyEx",
+    "RegCreateKeyEx",
+    "RegOpenKeyTransacted",
+    "RegCreateKeyTransacted",
+}
+
+MEMORY_PROTECTION_BASE_FLAGS = {
+    0x01: "PAGE_NOACCESS",
+    0x02: "PAGE_READONLY",
+    0x04: "PAGE_READWRITE",
+    0x08: "PAGE_WRITECOPY",
+    0x10: "PAGE_EXECUTE",
+    0x20: "PAGE_EXECUTE_READ",
+    0x40: "PAGE_EXECUTE_READWRITE",
+    0x80: "PAGE_EXECUTE_WRITECOPY",
+}
+
+MEMORY_PROTECTION_MODIFIERS = {
+    0x100: "PAGE_GUARD",
+    0x200: "PAGE_NOCACHE",
+    0x400: "PAGE_WRITECOMBINE",
+}
+
+ALLOCATION_FLAGS = {
+    0x1000: "MEM_COMMIT",
+    0x2000: "MEM_RESERVE",
+    0x4000: "MEM_REPLACE_PLACEHOLDER",
+    0x40000: "MEM_RESERVE_PLACEHOLDER",
+    0x80000: "MEM_RESET",
+    0x100000: "MEM_TOP_DOWN",
+    0x200000: "MEM_WRITE_WATCH",
+    0x400000: "MEM_PHYSICAL",
+    0x1000000: "MEM_RESET_UNDO",
+    0x20000000: "MEM_LARGE_PAGES",
+}
+
+PROCESS_RIGHTS_EXACT = {
+    0x1F0FFF: ["PROCESS_ALL_ACCESS_LEGACY"],
+    0x1FFFFF: ["PROCESS_ALL_ACCESS"],
+}
+
+PROCESS_RIGHT_FLAGS = {
+    0x0001: "PROCESS_TERMINATE",
+    0x0002: "PROCESS_CREATE_THREAD",
+    0x0004: "PROCESS_SET_SESSIONID",
+    0x0008: "PROCESS_VM_OPERATION",
+    0x0010: "PROCESS_VM_READ",
+    0x0020: "PROCESS_VM_WRITE",
+    0x0040: "PROCESS_DUP_HANDLE",
+    0x0080: "PROCESS_CREATE_PROCESS",
+    0x0100: "PROCESS_SET_QUOTA",
+    0x0200: "PROCESS_SET_INFORMATION",
+    0x0400: "PROCESS_QUERY_INFORMATION",
+    0x0800: "PROCESS_SUSPEND_RESUME",
+    0x1000: "PROCESS_QUERY_LIMITED_INFORMATION",
+    0x2000: "PROCESS_SET_LIMITED_INFORMATION",
+    0x100000: "SYNCHRONIZE",
+}
+
+REGISTRY_RIGHTS_EXACT = {
+    0x20019: ["KEY_READ"],
+    0x20006: ["KEY_WRITE"],
+    0xF003F: ["KEY_ALL_ACCESS"],
+}
+
+REGISTRY_RIGHT_FLAGS = {
+    0x0001: "KEY_QUERY_VALUE",
+    0x0002: "KEY_SET_VALUE",
+    0x0004: "KEY_CREATE_SUB_KEY",
+    0x0008: "KEY_ENUMERATE_SUB_KEYS",
+    0x0010: "KEY_NOTIFY",
+    0x0020: "KEY_CREATE_LINK",
+    0x0100: "KEY_WOW64_64KEY",
+    0x0200: "KEY_WOW64_32KEY",
+}
+
+CONSTANT_LOOKBACK_INSTRUCTIONS = 8
 
 LOADED_RULES_METADATA = {
     "rules_dir": None,
@@ -626,17 +883,83 @@ def get_function_size(func):
     except Exception:
         return None
 
+def _resolve_external_api_function(func):
+    """Return the terminal external function represented by func, if any.
+
+    Direct external functions are APIs. Internal thunks are also treated as API
+    proxies when Ghidra resolves their recursive thunk destination to an
+    external function. Internal thunks that ultimately target internal code
+    remain FUNCTION nodes.
+    """
+
+    if func is None:
+        return None
+
+    try:
+        if bool(func.isExternal()):
+            return func
+    except Exception:
+        return None
+
+    try:
+        if not bool(func.isThunk()):
+            return None
+    except Exception:
+        return None
+
+    try:
+        thunk_target = func.getThunkedFunction(True)
+    except Exception:
+        thunk_target = None
+
+    if thunk_target is None or thunk_target is func:
+        return None
+
+    try:
+        if bool(thunk_target.isExternal()):
+            return thunk_target
+    except Exception:
+        return None
+
+    return None
+
+
+def _is_typed_internal_function(func):
+    if func is None:
+        return False
+
+    try:
+        if bool(func.isExternal()):
+            return False
+    except Exception:
+        return False
+
+    if _resolve_external_api_function(func) is not None:
+        return False
+
+    return True
+
 
 def get_typed_function_nodes():
+    """Return only real internal FUNCTION nodes for the seeded graph.
+
+    Step 2.5 separates external APIs from FUNCTION nodes. Import thunks whose
+    recursive destination is external are therefore represented through API
+    nodes/edges instead of duplicating the same semantic target as FUNCTION.
+    """
+
     function_manager = currentProgram.getFunctionManager()
     nodes = []
 
     for func in function_manager.getFunctions(True):
+        if not _is_typed_internal_function(func):
+            continue
+
         node = build_function_node(
             entry_address=str(func.getEntryPoint()),
             ghidra_name=func.getName(),
             symbol_name=get_function_symbol_name(func),
-            external=bool(func.isExternal()),
+            external=False,
             thunk=bool(func.isThunk()),
             section=get_function_section_name(func),
             size=get_function_size(func),
@@ -645,6 +968,1182 @@ def get_typed_function_nodes():
 
     return sorted(nodes, key=lambda node: node["id"])
 
+
+def _is_call_instruction(instr):
+    try:
+        flow_type = instr.getFlowType()
+        return flow_type is not None and bool(flow_type.isCall())
+    except Exception:
+        return False
+
+
+def _is_indirect_call_instruction(instr):
+    try:
+        flow_type = instr.getFlowType()
+        return flow_type is not None and bool(flow_type.isComputed())
+    except Exception:
+        return False
+
+
+def _is_call_reference(ref):
+    try:
+        reference_type = ref.getReferenceType()
+        if reference_type is None:
+            return True
+        return bool(reference_type.isCall())
+    except Exception:
+        return True
+
+
+def _resolve_function_target(function_manager, to_addr):
+    try:
+        target_func = function_manager.getFunctionAt(to_addr)
+        if target_func is not None:
+            return target_func
+    except Exception:
+        pass
+
+    try:
+        return function_manager.getFunctionContaining(to_addr)
+    except Exception:
+        return None
+
+
+def _get_api_observation(target_func):
+    external_func = _resolve_external_api_function(target_func)
+    if external_func is None:
+        return None
+
+    try:
+        original_name = str(external_func.getName()).strip()
+    except Exception:
+        return None
+
+    if not original_name:
+        return None
+
+    normalized_name = canonicalize_api_name(original_name)
+    if normalized_name is None:
+        return None
+
+    normalized_name = str(normalized_name).strip()
+    if not normalized_name:
+        return None
+
+    return {
+        "id": build_api_id(normalized_name),
+        "normalized_name": normalized_name,
+        "original_name": original_name,
+    }
+
+
+def _is_string_data(data):
+    if data is None:
+        return False
+
+    try:
+        data_type = data.getDataType()
+        if data_type is None:
+            return False
+
+        type_name = str(data_type.getName()).lower()
+    except Exception:
+        return False
+
+    return (
+        "string" in type_name
+        or "unicode" in type_name
+        or "terminated" in type_name
+    )
+
+
+def _resolve_referenced_string_data(listing, to_addr):
+    try:
+        data = listing.getDataContaining(to_addr)
+    except Exception:
+        data = None
+
+    if data is None:
+        try:
+            data = listing.getDataAt(to_addr)
+        except Exception:
+            data = None
+
+    if not _is_string_data(data):
+        return None
+
+    return data
+
+
+def _is_valid_ipv4(value):
+    try:
+        parts = value.split(".")
+        if len(parts) != 4:
+            return False
+
+        for part in parts:
+            if not part.isdigit():
+                return False
+            if int(part) < 0 or int(part) > 255:
+                return False
+
+        return True
+    except Exception:
+        return False
+
+
+def categorize_typed_string(value):
+    """Return deterministic semantic categories for a referenced string."""
+
+    text = "" if value is None else str(value)
+    lower_value = text.lower()
+    categories = set()
+
+    if URL_RE.search(text):
+        categories.add("url")
+
+    for match in IPV4_RE.finditer(text):
+        if _is_valid_ipv4(match.group(0)):
+            categories.add("ip_address")
+            break
+
+    if any(hint in lower_value for hint in REGISTRY_HINTS):
+        categories.add("registry_path")
+
+    if "powershell" in lower_value or "pwsh" in lower_value or ".ps1" in lower_value:
+        categories.add("powershell")
+
+    if any(hint in lower_value for hint in SHELL_COMMAND_HINTS):
+        categories.add("shell_command")
+
+    if WINDOWS_PATH_RE.search(text) or UNIX_PATH_RE.search(text):
+        categories.add("file_path")
+
+    if (
+        "user-agent" in lower_value
+        or "user_agent" in lower_value
+        or "mozilla/" in lower_value
+    ):
+        categories.add("user_agent")
+
+    if any(hint in lower_value for hint in DEBUGGER_NAME_HINTS):
+        categories.add("debugger_name")
+
+    if any(hint in lower_value for hint in VM_INDICATOR_HINTS):
+        categories.add("vm_indicator")
+
+    return [
+        category
+        for category in STRING_CATEGORY_ORDER
+        if category in categories
+    ]
+
+
+def _get_typed_string_payload(data):
+    try:
+        raw_value = data.getDefaultValueRepresentation()
+        address = data.getAddress()
+    except Exception:
+        return None
+
+    if raw_value is None or address is None:
+        return None
+
+    raw_value = str(raw_value)
+    value = clean_string_value(raw_value)
+
+    if not value:
+        return None
+
+    categories = categorize_typed_string(value)
+
+    return {
+        "id": build_string_id(str(address)),
+        "address": str(address),
+        "value": value,
+        "raw_value": raw_value,
+        "category": categories[0] if categories else None,
+        "categories": categories,
+    }
+
+
+def _decode_exact_or_bitmask(value, exact_values, flag_values):
+    if value in exact_values:
+        return list(exact_values[value])
+
+    remaining = value
+    names = []
+
+    for flag_value, flag_name in sorted(flag_values.items()):
+        if flag_value != 0 and (remaining & flag_value) == flag_value:
+            names.append(flag_name)
+            remaining &= ~flag_value
+
+    if names and remaining == 0:
+        return names
+
+    return []
+
+
+def _decode_memory_protection(value):
+    base_value = value & 0xFF
+    base_name = MEMORY_PROTECTION_BASE_FLAGS.get(base_value)
+
+    if base_name is None:
+        return []
+
+    remaining = value & ~0xFF
+    names = [base_name]
+
+    for flag_value, flag_name in sorted(
+        MEMORY_PROTECTION_MODIFIERS.items()
+    ):
+        if (remaining & flag_value) == flag_value:
+            names.append(flag_name)
+            remaining &= ~flag_value
+
+    if remaining != 0:
+        return []
+
+    return names
+
+
+def _classify_constant_for_api(api_name, value):
+    """Return semantic constant interpretations supported by an API context."""
+
+    interpretations = []
+
+    if api_name in MEMORY_PROTECTION_APIS:
+        names = _decode_memory_protection(value)
+        if names:
+            interpretations.append(
+                {
+                    "category": "memory_protection",
+                    "symbolic_names": names,
+                }
+            )
+
+    if api_name in ALLOCATION_FLAG_APIS:
+        names = _decode_exact_or_bitmask(
+            value,
+            {},
+            ALLOCATION_FLAGS,
+        )
+        if names:
+            interpretations.append(
+                {
+                    "category": "allocation_flags",
+                    "symbolic_names": names,
+                }
+            )
+
+    if api_name in PROCESS_RIGHTS_APIS:
+        names = _decode_exact_or_bitmask(
+            value,
+            PROCESS_RIGHTS_EXACT,
+            PROCESS_RIGHT_FLAGS,
+        )
+        if names:
+            interpretations.append(
+                {
+                    "category": "process_rights",
+                    "symbolic_names": names,
+                }
+            )
+
+    if api_name in REGISTRY_FLAG_APIS:
+        names = _decode_exact_or_bitmask(
+            value,
+            REGISTRY_RIGHTS_EXACT,
+            REGISTRY_RIGHT_FLAGS,
+        )
+        if names:
+            interpretations.append(
+                {
+                    "category": "registry_flags",
+                    "symbolic_names": names,
+                }
+            )
+
+    return interpretations
+
+
+def _extract_instruction_scalars(instr):
+    """Extract unsigned Scalar operands without importing Java classes."""
+
+    results = []
+
+    try:
+        operand_count = int(instr.getNumOperands())
+    except Exception:
+        return results
+
+    for operand_index in range(operand_count):
+        try:
+            objects = instr.getOpObjects(operand_index)
+        except Exception:
+            continue
+
+        for obj in objects or []:
+            get_unsigned = getattr(obj, "getUnsignedValue", None)
+            if get_unsigned is None or not callable(get_unsigned):
+                continue
+
+            try:
+                value = int(get_unsigned())
+            except Exception:
+                continue
+
+            bit_length = None
+            get_bit_length = getattr(obj, "bitLength", None)
+
+            if get_bit_length is not None and callable(get_bit_length):
+                try:
+                    bit_length = int(get_bit_length())
+                except Exception:
+                    bit_length = None
+
+            results.append(
+                {
+                    "value": value,
+                    "bit_length": bit_length,
+                    "operand_index": operand_index,
+                }
+            )
+
+    return results
+
+
+def _record_constants_for_api_call(
+    caller_id,
+    api_name,
+    instructions,
+    call_index,
+    constant_nodes,
+    constant_uses,
+):
+    """Collect relevant constants from the local instruction window before an API call."""
+
+    first_index = max(
+        0,
+        call_index - CONSTANT_LOOKBACK_INSTRUCTIONS,
+    )
+
+    seen_observations = set()
+
+    for candidate_instr in instructions[first_index : call_index + 1]:
+        try:
+            use_site = str(candidate_instr.getAddress())
+        except Exception:
+            continue
+
+        for scalar in _extract_instruction_scalars(candidate_instr):
+            value = scalar["value"]
+
+            for interpretation in _classify_constant_for_api(
+                api_name,
+                value,
+            ):
+                category = interpretation["category"]
+                constant_id = build_constant_id(
+                    category,
+                    value,
+                )
+
+                observation_key = (
+                    constant_id,
+                    use_site,
+                    api_name,
+                    scalar["operand_index"],
+                )
+
+                if observation_key in seen_observations:
+                    continue
+
+                seen_observations.add(observation_key)
+
+                node_record = constant_nodes.setdefault(
+                    constant_id,
+                    {
+                        "category": category,
+                        "value": value,
+                        "symbolic_names": set(),
+                        "bit_lengths": set(),
+                    },
+                )
+
+                node_record["symbolic_names"].update(
+                    interpretation["symbolic_names"]
+                )
+
+                if scalar["bit_length"] is not None:
+                    node_record["bit_lengths"].add(
+                        scalar["bit_length"]
+                    )
+
+                edge_key = (
+                    caller_id,
+                    constant_id,
+                )
+
+                edge_record = constant_uses.setdefault(
+                    edge_key,
+                    {
+                        "use_sites": set(),
+                        "occurrences": 0,
+                        "context_apis": set(),
+                    },
+                )
+
+                edge_record["use_sites"].add(
+                    use_site
+                )
+                edge_record["occurrences"] += 1
+                edge_record["context_apis"].add(
+                    api_name
+                )
+
+
+def _parse_hex_address(value):
+    if value is None:
+        return None
+
+    text = str(value).strip().lower()
+
+    if not text:
+        return None
+
+    if ":" in text:
+        text = text.rsplit(":", 1)[-1]
+
+    if text.startswith("0x"):
+        text = text[2:]
+
+    try:
+        return int(text, 16)
+    except Exception:
+        return None
+
+
+def _find_section_record_for_function(function_node, section_info):
+    section_name = function_node.get("section")
+    function_address = _parse_hex_address(
+        function_node.get("address")
+    )
+
+    candidates = [
+        record
+        for record in (section_info or [])
+        if record.get("name") == section_name
+    ]
+
+    if function_address is not None:
+        for record in candidates:
+            start = _parse_hex_address(
+                record.get("start")
+            )
+            end = _parse_hex_address(
+                record.get("end")
+            )
+
+            if (
+                start is not None
+                and end is not None
+                and start <= function_address <= end
+            ):
+                return record
+
+    if len(candidates) == 1:
+        return candidates[0]
+
+    return None
+
+
+def _build_typed_section_evidence(function_nodes, section_info):
+    section_nodes = {}
+    section_edges = []
+
+    for function_node in function_nodes:
+        record = _find_section_record_for_function(
+            function_node,
+            section_info,
+        )
+
+        if record is None:
+            continue
+
+        try:
+            section_id = build_section_id(
+                record["start"]
+            )
+
+            if section_id not in section_nodes:
+                section_nodes[section_id] = build_section_node(
+                    name=record["name"],
+                    start=record["start"],
+                    end=record["end"],
+                    size=int(record["size"]),
+                    read=bool(record["read"]),
+                    write=bool(record["write"]),
+                    execute=bool(record["execute"]),
+                    initialized=bool(record["initialized"]),
+                    entropy=record.get("entropy"),
+                    entropy_class=record.get(
+                        "entropy_class",
+                        "unknown",
+                    ),
+                    entropy_sampled_bytes=int(
+                        record.get(
+                            "entropy_sampled_bytes",
+                            0,
+                        )
+                    ),
+                    suspicious=bool(
+                        record.get(
+                            "suspicious",
+                            False,
+                        )
+                    ),
+                    reasons=record.get(
+                        "reasons",
+                        [],
+                    ),
+                )
+
+            section_edges.append(
+                build_function_section_edge(
+                    function_id=function_node["id"],
+                    section_id=section_id,
+                )
+            )
+        except Exception:
+            continue
+
+    return (
+        [
+            section_nodes[section_id]
+            for section_id in sorted(section_nodes)
+        ],
+        sorted(
+            section_edges,
+            key=lambda edge: (
+                edge["source"],
+                edge["target"],
+            ),
+        ),
+    )
+
+
+def build_seeded_typed_graph(section_info=None):
+    """Build the complete Step 2 seeded Typed Evidence Graph.
+
+    The graph is built directly from Ghidra function/instruction/reference facts.
+    It does not consume the legacy visual callgraph and applies no legacy
+    250-node/800-edge truncation. Step 2.10 also adds conservative indirect-call
+    visibility evidence.
+    """
+
+    listing = currentProgram.getListing()
+    reference_manager = currentProgram.getReferenceManager()
+    function_manager = currentProgram.getFunctionManager()
+
+    function_nodes = get_typed_function_nodes()
+    function_node_ids = set(node["id"] for node in function_nodes)
+
+    function_calls = {}
+    api_calls = {}
+    api_nodes = {}
+    string_records = {}
+    string_references = {}
+    string_categories = {}
+    string_category_edges = set()
+    constant_records = {}
+    constant_uses = {}
+    unresolved_calls = []
+    call_visibility = {}
+
+    for caller_func in function_manager.getFunctions(True):
+        if not _is_typed_internal_function(caller_func):
+            continue
+
+        caller_id = build_stable_function_id(caller_func.getEntryPoint())
+        if caller_id not in function_node_ids:
+            continue
+
+        try:
+            body = caller_func.getBody()
+        except Exception:
+            body = None
+
+        if body is None:
+            continue
+
+        try:
+            instructions = list(
+                listing.getInstructions(
+                    body,
+                    True,
+                )
+            )
+        except Exception:
+            continue
+
+        for instruction_index, instr in enumerate(instructions):
+            try:
+                instruction_address = instr.getAddress()
+                callsite = str(instruction_address)
+            except Exception:
+                continue
+
+            try:
+                refs = list(
+                    reference_manager.getReferencesFrom(
+                        instruction_address
+                    )
+                )
+            except Exception:
+                refs = []
+
+            # ---------------------------------------------------------
+            # Step 2.4 + 2.5:
+            # function calls and API calls
+            # ---------------------------------------------------------
+            if _is_call_instruction(instr):
+                indirect = _is_indirect_call_instruction(instr)
+                resolved_call_target = False
+
+                internal_targets = set()
+                api_targets = {}
+
+                for ref in refs:
+                    if not _is_call_reference(ref):
+                        continue
+
+                    try:
+                        to_addr = ref.getToAddress()
+                    except Exception:
+                        to_addr = None
+
+                    if to_addr is None:
+                        continue
+
+                    target_func = _resolve_function_target(
+                        function_manager,
+                        to_addr,
+                    )
+
+                    if target_func is None:
+                        continue
+
+                    api_observation = _get_api_observation(
+                        target_func
+                    )
+
+                    if api_observation is not None:
+                        resolved_call_target = True
+
+                        api_id = api_observation["id"]
+                        api_targets[api_id] = api_observation
+
+                        continue
+
+                    if not _is_typed_internal_function(
+                        target_func
+                    ):
+                        continue
+
+                    callee_id = build_stable_function_id(
+                        target_func.getEntryPoint()
+                    )
+
+                    if callee_id not in function_node_ids:
+                        continue
+
+                    resolved_call_target = True
+                    internal_targets.add(callee_id)
+
+                resolved_target_ids = sorted(
+                    set(internal_targets) | set(api_targets.keys())
+                )
+
+                if indirect:
+                    visibility_record = call_visibility.setdefault(
+                        caller_id,
+                        {
+                            "indirect_callsites": set(),
+                            "resolved_indirect_callsites": set(),
+                            "unresolved_indirect_callsites": set(),
+                            "dynamic_dispatch_callsites": set(),
+                            "dynamic_dispatch_targets": set(),
+                        },
+                    )
+                    visibility_record["indirect_callsites"].add(callsite)
+
+                    if resolved_call_target:
+                        visibility_record[
+                            "resolved_indirect_callsites"
+                        ].add(callsite)
+                    else:
+                        visibility_record[
+                            "unresolved_indirect_callsites"
+                        ].add(callsite)
+
+                    # Conservative Step 2.10 dynamic-dispatch recognition:
+                    # a computed callsite must expose multiple resolved call
+                    # targets. A normal single-target indirect call is not
+                    # promoted to dynamic_dispatch.
+                    if len(resolved_target_ids) >= 2:
+                        visibility_record[
+                            "dynamic_dispatch_callsites"
+                        ].add(callsite)
+                        visibility_record[
+                            "dynamic_dispatch_targets"
+                        ].update(resolved_target_ids)
+
+                for callee_id in sorted(internal_targets):
+                    key = (
+                        caller_id,
+                        callee_id,
+                        indirect,
+                    )
+
+                    function_calls.setdefault(
+                        key,
+                        set(),
+                    ).add(callsite)
+
+                for api_id in sorted(api_targets):
+                    observation = api_targets[api_id]
+
+                    node_record = api_nodes.setdefault(
+                        api_id,
+                        {
+                            "normalized_name": observation[
+                                "normalized_name"
+                            ],
+                            "original_names": set(),
+                        },
+                    )
+
+                    node_record["original_names"].add(
+                        observation["original_name"]
+                    )
+
+                    key = (
+                        caller_id,
+                        api_id,
+                        indirect,
+                    )
+
+                    edge_record = api_calls.setdefault(
+                        key,
+                        {
+                            "callsites": set(),
+                            "original_names": set(),
+                        },
+                    )
+
+                    edge_record["callsites"].add(
+                        callsite
+                    )
+
+                    edge_record["original_names"].add(
+                        observation["original_name"]
+                    )
+
+                    _record_constants_for_api_call(
+                        caller_id=caller_id,
+                        api_name=observation["normalized_name"],
+                        instructions=instructions,
+                        call_index=instruction_index,
+                        constant_nodes=constant_records,
+                        constant_uses=constant_uses,
+                    )
+
+                if not resolved_call_target:
+                    unresolved_calls.append(
+                        build_unresolved_function_call(
+                            caller_id=caller_id,
+                            callsite=callsite,
+                            indirect=indirect,
+                        )
+                    )
+
+            # ---------------------------------------------------------
+            # Step 2.6:
+            # referenced string evidence
+            # ---------------------------------------------------------
+            for ref in refs:
+                try:
+                    to_addr = ref.getToAddress()
+                except Exception:
+                    to_addr = None
+
+                if to_addr is None:
+                    continue
+
+                string_data = _resolve_referenced_string_data(
+                    listing,
+                    to_addr,
+                )
+
+                if string_data is None:
+                    continue
+
+                payload = _get_typed_string_payload(
+                    string_data
+                )
+
+                if payload is None:
+                    continue
+
+                string_id = payload["id"]
+
+                node_record = string_records.setdefault(
+                    string_id,
+                    {
+                        "address": payload["address"],
+                        "value": payload["value"],
+                        "raw_value": payload["raw_value"],
+                        "categories": set(),
+                        "reference_count": 0,
+                    },
+                )
+
+                node_record["categories"].update(
+                    payload["categories"]
+                )
+                node_record["reference_count"] += 1
+
+                for category in payload["categories"]:
+                    category_id = build_string_category_id(
+                        category
+                    )
+
+                    string_categories[category_id] = category
+                    string_category_edges.add(
+                        (
+                            string_id,
+                            category_id,
+                        )
+                    )
+
+                key = (
+                    caller_id,
+                    string_id,
+                )
+
+                edge_record = string_references.setdefault(
+                    key,
+                    {
+                        "reference_sites": set(),
+                        "reference_count": 0,
+                    },
+                )
+
+                edge_record["reference_sites"].add(
+                    callsite
+                )
+                edge_record["reference_count"] += 1
+
+    # -------------------------------------------------------------
+    # Build deterministic FUNCTION -> FUNCTION edges
+    # -------------------------------------------------------------
+    resolved_function_edges = []
+
+    for caller_id, callee_id, indirect in sorted(
+        function_calls
+    ):
+        resolved_function_edges.append(
+            build_function_call_edge(
+                caller_id=caller_id,
+                callee_id=callee_id,
+                callsites=function_calls[
+                    (
+                        caller_id,
+                        callee_id,
+                        indirect,
+                    )
+                ],
+                indirect=indirect,
+            )
+        )
+
+    # -------------------------------------------------------------
+    # Build deterministic API nodes
+    # -------------------------------------------------------------
+    typed_api_nodes = []
+
+    for api_id in sorted(api_nodes):
+        record = api_nodes[api_id]
+
+        typed_api_nodes.append(
+            build_api_node(
+                normalized_name=record[
+                    "normalized_name"
+                ],
+                original_names=record[
+                    "original_names"
+                ],
+            )
+        )
+
+    # -------------------------------------------------------------
+    # Build deterministic FUNCTION -> API edges
+    # -------------------------------------------------------------
+    resolved_api_edges = []
+
+    for caller_id, api_id, indirect in sorted(
+        api_calls
+    ):
+        record = api_calls[
+            (
+                caller_id,
+                api_id,
+                indirect,
+            )
+        ]
+
+        resolved_api_edges.append(
+            build_api_call_edge(
+                caller_id=caller_id,
+                api_id=api_id,
+                callsites=record["callsites"],
+                original_names=record[
+                    "original_names"
+                ],
+                indirect=indirect,
+            )
+        )
+
+    # -------------------------------------------------------------
+    # Build deterministic STRING nodes
+    # -------------------------------------------------------------
+    typed_string_nodes = []
+
+    for string_id in sorted(string_records):
+        record = string_records[string_id]
+
+        typed_string_nodes.append(
+            build_string_node(
+                address=record["address"],
+                value=record["value"],
+                raw_value=record["raw_value"],
+                categories=[
+                    category
+                    for category in STRING_CATEGORY_ORDER
+                    if category in record["categories"]
+                ],
+                reference_count=record[
+                    "reference_count"
+                ],
+            )
+        )
+
+    # -------------------------------------------------------------
+    # Build deterministic FUNCTION -> STRING edges
+    # -------------------------------------------------------------
+    string_edges = []
+
+    for function_id, string_id in sorted(
+        string_references
+    ):
+        record = string_references[
+            (
+                function_id,
+                string_id,
+            )
+        ]
+
+        string_edges.append(
+            build_string_reference_edge(
+                function_id=function_id,
+                string_id=string_id,
+                reference_sites=record[
+                    "reference_sites"
+                ],
+                reference_count=record[
+                    "reference_count"
+                ],
+            )
+        )
+
+    # -------------------------------------------------------------
+    # Build deterministic STRING_CATEGORY nodes and edges
+    # -------------------------------------------------------------
+    typed_string_category_nodes = [
+        build_string_category_node(
+            string_categories[category_id]
+        )
+        for category_id in sorted(string_categories)
+    ]
+
+    typed_string_category_edges = [
+        build_string_category_edge(
+            string_id=string_id,
+            category_id=category_id,
+        )
+        for string_id, category_id in sorted(
+            string_category_edges
+        )
+    ]
+
+    # -------------------------------------------------------------
+    # Build deterministic CONSTANT nodes and FUNCTION -> CONSTANT edges
+    # -------------------------------------------------------------
+    typed_constant_nodes = []
+
+    for constant_id in sorted(constant_records):
+        record = constant_records[constant_id]
+
+        typed_constant_nodes.append(
+            build_constant_node(
+                category=record["category"],
+                value=record["value"],
+                symbolic_names=record[
+                    "symbolic_names"
+                ],
+                bit_lengths=record[
+                    "bit_lengths"
+                ],
+            )
+        )
+
+    typed_constant_edges = []
+
+    for function_id, constant_id in sorted(
+        constant_uses
+    ):
+        record = constant_uses[
+            (
+                function_id,
+                constant_id,
+            )
+        ]
+
+        typed_constant_edges.append(
+            build_constant_use_edge(
+                function_id=function_id,
+                constant_id=constant_id,
+                use_sites=record["use_sites"],
+                occurrences=record[
+                    "occurrences"
+                ],
+                context_apis=record[
+                    "context_apis"
+                ],
+            )
+        )
+
+    # -------------------------------------------------------------
+    # Build deterministic SECTION nodes and FUNCTION -> SECTION edges
+    # -------------------------------------------------------------
+    typed_section_nodes, typed_section_edges = (
+        _build_typed_section_evidence(
+            function_nodes,
+            section_info,
+        )
+    )
+
+    # -------------------------------------------------------------
+    # Step 2.10: explicit indirect-call visibility evidence
+    # -------------------------------------------------------------
+    typed_visibility_nodes = []
+    typed_visibility_edges = []
+
+    for function_id in sorted(call_visibility):
+        record = call_visibility[function_id]
+        indicator_node = build_call_visibility_indicator_node(
+            function_id=function_id,
+            indirect_callsites=record["indirect_callsites"],
+            resolved_indirect_callsites=record[
+                "resolved_indirect_callsites"
+            ],
+            unresolved_indirect_callsites=record[
+                "unresolved_indirect_callsites"
+            ],
+            dynamic_dispatch_callsites=record[
+                "dynamic_dispatch_callsites"
+            ],
+            dynamic_dispatch_targets=record[
+                "dynamic_dispatch_targets"
+            ],
+        )
+        typed_visibility_nodes.append(indicator_node)
+        typed_visibility_edges.append(
+            build_indirect_call_indicator_edge(
+                function_id=function_id,
+                indicator_id=build_call_visibility_indicator_id(
+                    function_id
+                ),
+            )
+        )
+
+    unresolved_calls = sorted(
+        unresolved_calls,
+        key=lambda item: (
+            item["caller"],
+            item["callsite"],
+            item["indirect"],
+        ),
+    )
+
+    typed_nodes = (
+        function_nodes
+        + typed_api_nodes
+        + typed_string_nodes
+        + typed_string_category_nodes
+        + typed_constant_nodes
+        + typed_section_nodes
+        + typed_visibility_nodes
+    )
+
+    typed_edges = (
+        resolved_function_edges
+        + resolved_api_edges
+        + string_edges
+        + typed_string_category_edges
+        + typed_constant_edges
+        + typed_section_edges
+        + typed_visibility_edges
+    )
+
+    node_type_counts = {}
+    for node in typed_nodes:
+        node_type_counts[node["type"]] = (
+            node_type_counts.get(node["type"], 0) + 1
+        )
+
+    edge_type_counts = {}
+    for edge in typed_edges:
+        edge_type_counts[edge["type"]] = (
+            edge_type_counts.get(edge["type"], 0) + 1
+        )
+
+    return {
+        "model_version": TYPED_GRAPH_MODEL_VERSION,
+        "metadata": {
+            "scope": "complete_seeded_evidence_graph",
+            "callgraph_source": "ghidra_instruction_references",
+            "legacy_callgraph_used": False,
+            "legacy_callgraph_limits_applied": False,
+            "truncated": False,
+            "node_count": len(typed_nodes),
+            "edge_count": len(typed_edges),
+            "unresolved_call_count": len(unresolved_calls),
+            "node_type_counts": {
+                key: node_type_counts[key]
+                for key in sorted(node_type_counts)
+            },
+            "edge_type_counts": {
+                key: edge_type_counts[key]
+                for key in sorted(edge_type_counts)
+            },
+        },
+        "nodes": typed_nodes,
+        "edges": typed_edges,
+        "unresolved_calls": unresolved_calls,
+    }
 
 def get_suspicious_apis(external_symbols):
     aggregated = {}
@@ -2764,6 +4263,23 @@ def build_analyst_playbook(behavior_story, top_functions, summary, oep_candidate
     return {"steps": steps}
 
 
+def attach_seeded_typed_graph(report, seeded_enabled, typed_graph):
+    """Attach the complete graph only for explicit seeded analyses.
+
+    This small boundary is intentionally testable so Step 2.12 can guarantee
+    that legacy raw reports remain unchanged when ``-seeded`` is absent.
+    """
+
+    if seeded_enabled:
+        if typed_graph is None:
+            raise ValueError(
+                "seeded analysis requires a typed_graph payload"
+            )
+        report["typed_graph"] = typed_graph
+
+    return report
+
+
 def build_report(seeded_enabled=False):
     analysis_metadata = build_analysis_metadata()
 
@@ -2812,7 +4328,13 @@ def build_report(seeded_enabled=False):
 
     capabilities = detect_capabilities(external_symbols)
 
-    typed_function_nodes = get_typed_function_nodes() if seeded_enabled else []
+    typed_graph = (
+        build_seeded_typed_graph(
+            section_info=section_info
+        )
+        if seeded_enabled
+        else None
+    )
 
     functions = get_base_functions()
     functions = enrich_functions(functions, interesting_strings)
@@ -2948,12 +4470,11 @@ def build_report(seeded_enabled=False):
         },
     }
 
-    if seeded_enabled:
-        report["typed_graph"] = {
-            "model_version": TYPED_GRAPH_MODEL_VERSION,
-            "nodes": typed_function_nodes,
-            "edges": [],
-        }
+    attach_seeded_typed_graph(
+        report,
+        seeded_enabled,
+        typed_graph,
+    )
 
     return report
 
