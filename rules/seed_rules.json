@@ -1,0 +1,401 @@
+{
+  "schema_version": "0.3.0",
+  "rules": [
+    {
+      "id": "api.virtualalloc",
+      "type": "api",
+      "match": {
+        "normalized_name": "VirtualAlloc"
+      },
+      "reason_template": "Function calls API {normalized_name}",
+      "family": "memory_management"
+    },
+    {
+      "id": "api.virtualallocex",
+      "type": "api",
+      "match": {
+        "normalized_name": "VirtualAllocEx"
+      },
+      "reason_template": "Function calls API {normalized_name}",
+      "family": "memory_management"
+    },
+    {
+      "id": "api.virtualprotect",
+      "type": "api",
+      "match": {
+        "normalized_name": "VirtualProtect"
+      },
+      "reason_template": "Function calls API {normalized_name}",
+      "family": "memory_management"
+    },
+    {
+      "id": "api.virtualprotectex",
+      "type": "api",
+      "match": {
+        "normalized_name": "VirtualProtectEx"
+      },
+      "reason_template": "Function calls API {normalized_name}",
+      "family": "memory_management"
+    },
+    {
+      "id": "api.openprocess",
+      "type": "api",
+      "match": {
+        "normalized_name": "OpenProcess"
+      },
+      "reason_template": "Function calls API {normalized_name}",
+      "family": "process_interaction"
+    },
+    {
+      "id": "api.writeprocessmemory",
+      "type": "api",
+      "match": {
+        "normalized_name": "WriteProcessMemory"
+      },
+      "reason_template": "Function calls API {normalized_name}",
+      "family": "process_memory_access"
+    },
+    {
+      "id": "api.ntwritevirtualmemory",
+      "type": "api",
+      "match": {
+        "normalized_name": "NtWriteVirtualMemory"
+      },
+      "reason_template": "Function calls API {normalized_name}",
+      "family": "process_memory_access"
+    },
+    {
+      "id": "api.createremotethread",
+      "type": "api",
+      "match": {
+        "normalized_name": "CreateRemoteThread"
+      },
+      "reason_template": "Function calls API {normalized_name}",
+      "family": "thread_execution"
+    },
+    {
+      "id": "api.createremotethreadex",
+      "type": "api",
+      "match": {
+        "normalized_name": "CreateRemoteThreadEx"
+      },
+      "reason_template": "Function calls API {normalized_name}",
+      "family": "thread_execution"
+    },
+    {
+      "id": "api.ntcreatethreadex",
+      "type": "api",
+      "match": {
+        "normalized_name": "NtCreateThreadEx"
+      },
+      "reason_template": "Function calls API {normalized_name}",
+      "family": "thread_execution"
+    },
+    {
+      "id": "api.getprocaddress",
+      "type": "api",
+      "match": {
+        "normalized_name": "GetProcAddress"
+      },
+      "reason_template": "Function calls API {normalized_name}",
+      "family": "dynamic_api_resolution"
+    },
+    {
+      "id": "api.loadlibrary",
+      "type": "api",
+      "match": {
+        "normalized_name": "LoadLibrary"
+      },
+      "reason_template": "Function calls API {normalized_name}",
+      "family": "dynamic_api_resolution"
+    },
+    {
+      "id": "api.loadlibraryexa",
+      "type": "api",
+      "match": {
+        "normalized_name": "LoadLibraryExA"
+      },
+      "reason_template": "Function calls API {normalized_name}",
+      "family": "dynamic_api_resolution"
+    },
+    {
+      "id": "api.loadlibraryexw",
+      "type": "api",
+      "match": {
+        "normalized_name": "LoadLibraryExW"
+      },
+      "reason_template": "Function calls API {normalized_name}",
+      "family": "dynamic_api_resolution"
+    },
+    {
+      "id": "api.regcreatekeyex",
+      "type": "api",
+      "match": {
+        "normalized_name": "RegCreateKeyEx"
+      },
+      "reason_template": "Function calls API {normalized_name}",
+      "family": "registry_interaction"
+    },
+    {
+      "id": "api.regsetvalueex",
+      "type": "api",
+      "match": {
+        "normalized_name": "RegSetValueEx"
+      },
+      "reason_template": "Function calls API {normalized_name}",
+      "family": "registry_interaction"
+    },
+    {
+      "id": "api.regopenkeyex",
+      "type": "api",
+      "match": {
+        "normalized_name": "RegOpenKeyEx"
+      },
+      "reason_template": "Function calls API {normalized_name}",
+      "family": "registry_interaction"
+    },
+    {
+      "id": "api.socket",
+      "type": "api",
+      "match": {
+        "normalized_name": "socket"
+      },
+      "reason_template": "Function calls API {normalized_name}",
+      "family": "networking"
+    },
+    {
+      "id": "api.connect",
+      "type": "api",
+      "match": {
+        "normalized_name": "connect"
+      },
+      "reason_template": "Function calls API {normalized_name}",
+      "family": "networking"
+    },
+    {
+      "id": "api.send",
+      "type": "api",
+      "match": {
+        "normalized_name": "send"
+      },
+      "reason_template": "Function calls API {normalized_name}",
+      "family": "networking"
+    },
+    {
+      "id": "api.recv",
+      "type": "api",
+      "match": {
+        "normalized_name": "recv"
+      },
+      "reason_template": "Function calls API {normalized_name}",
+      "family": "networking"
+    },
+    {
+      "id": "api.wsastartup",
+      "type": "api",
+      "match": {
+        "normalized_name": "WSAStartup"
+      },
+      "reason_template": "Function calls API {normalized_name}",
+      "family": "networking"
+    },
+    {
+      "id": "api.winhttpopen",
+      "type": "api",
+      "match": {
+        "normalized_name": "WinHttpOpen"
+      },
+      "reason_template": "Function calls API {normalized_name}",
+      "family": "networking"
+    },
+    {
+      "id": "api.winhttpconnect",
+      "type": "api",
+      "match": {
+        "normalized_name": "WinHttpConnect"
+      },
+      "reason_template": "Function calls API {normalized_name}",
+      "family": "networking"
+    },
+    {
+      "id": "api.winhttpsendrequest",
+      "type": "api",
+      "match": {
+        "normalized_name": "WinHttpSendRequest"
+      },
+      "reason_template": "Function calls API {normalized_name}",
+      "family": "networking"
+    },
+    {
+      "id": "api.internetopenurl",
+      "type": "api",
+      "match": {
+        "normalized_name": "InternetOpenUrl"
+      },
+      "reason_template": "Function calls API {normalized_name}",
+      "family": "networking"
+    },
+    {
+      "id": "api.internetreadfile",
+      "type": "api",
+      "match": {
+        "normalized_name": "InternetReadFile"
+      },
+      "reason_template": "Function calls API {normalized_name}",
+      "family": "networking"
+    },
+    {
+      "id": "api.urldownloadtofile",
+      "type": "api",
+      "match": {
+        "normalized_name": "URLDownloadToFile"
+      },
+      "reason_template": "Function calls API {normalized_name}",
+      "family": "networking"
+    },
+    {
+      "id": "api.isdebuggerpresent",
+      "type": "api",
+      "match": {
+        "normalized_name": "IsDebuggerPresent"
+      },
+      "reason_template": "Function calls API {normalized_name}",
+      "family": "anti_analysis"
+    },
+    {
+      "id": "api.checkremotedebuggerpresent",
+      "type": "api",
+      "match": {
+        "normalized_name": "CheckRemoteDebuggerPresent"
+      },
+      "reason_template": "Function calls API {normalized_name}",
+      "family": "anti_analysis"
+    },
+    {
+      "id": "api.outputdebugstring",
+      "type": "api",
+      "match": {
+        "normalized_name": "OutputDebugString"
+      },
+      "reason_template": "Function calls API {normalized_name}",
+      "family": "anti_analysis"
+    },
+    {
+      "id": "string_category.powershell",
+      "type": "string_category",
+      "match": {
+        "category": "powershell"
+      },
+      "reason_template": "Function references string categorized as {category}",
+      "family": "command_execution"
+    },
+    {
+      "id": "string_category.shell_command",
+      "type": "string_category",
+      "match": {
+        "category": "shell_command"
+      },
+      "reason_template": "Function references string categorized as {category}",
+      "family": "command_execution"
+    },
+    {
+      "id": "string_category.registry_path",
+      "type": "string_category",
+      "match": {
+        "category": "registry_path"
+      },
+      "reason_template": "Function references string categorized as {category}",
+      "family": "registry_interaction"
+    },
+    {
+      "id": "string_category.url",
+      "type": "string_category",
+      "match": {
+        "category": "url"
+      },
+      "reason_template": "Function references string categorized as {category}",
+      "family": "networking"
+    },
+    {
+      "id": "string_category.debugger_name",
+      "type": "string_category",
+      "match": {
+        "category": "debugger_name"
+      },
+      "reason_template": "Function references string categorized as {category}",
+      "family": "anti_analysis"
+    },
+    {
+      "id": "string_category.vm_indicator",
+      "type": "string_category",
+      "match": {
+        "category": "vm_indicator"
+      },
+      "reason_template": "Function references string categorized as {category}",
+      "family": "anti_analysis"
+    },
+    {
+      "id": "constant_category.memory_protection",
+      "type": "constant_category",
+      "match": {
+        "category": "memory_protection"
+      },
+      "reason_template": "Function uses constant evidence from category {category}",
+      "family": "memory_management"
+    },
+    {
+      "id": "constant_category.allocation_flags",
+      "type": "constant_category",
+      "match": {
+        "category": "allocation_flags"
+      },
+      "reason_template": "Function uses constant evidence from category {category}",
+      "family": "memory_management"
+    },
+    {
+      "id": "constant_category.process_rights",
+      "type": "constant_category",
+      "match": {
+        "category": "process_rights"
+      },
+      "reason_template": "Function uses constant evidence from category {category}",
+      "family": "process_interaction"
+    },
+    {
+      "id": "constant_category.registry_flags",
+      "type": "constant_category",
+      "match": {
+        "category": "registry_flags"
+      },
+      "reason_template": "Function uses constant evidence from category {category}",
+      "family": "registry_interaction"
+    },
+    {
+      "id": "section_property.suspicious",
+      "type": "section_property",
+      "match": {
+        "suspicious": true
+      },
+      "reason_template": "Function belongs to suspicious section {section_name}",
+      "family": "section_context"
+    },
+    {
+      "id": "visibility_signal.indirect_call",
+      "type": "visibility_signal",
+      "match": {
+        "signal": "indirect_call"
+      },
+      "reason_template": "Function contains visibility signal {signal}",
+      "family": "call_visibility"
+    },
+    {
+      "id": "unresolved_call.present",
+      "type": "unresolved_call",
+      "match": {
+        "indicator": "unresolved_call"
+      },
+      "reason_template": "Function contains unresolved call evidence {indicator}",
+      "family": "call_visibility"
+    }
+  ]
+}

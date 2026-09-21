@@ -1,6 +1,16 @@
 mod capability;
 mod enrichment;
 mod rules;
+
+#[allow(dead_code)]
+mod seed_consolidation;
+
+#[allow(dead_code)]
+mod seed_detection;
+
+#[allow(dead_code)]
+mod seed_rules;
+
 mod schema;
 mod scoring;
 

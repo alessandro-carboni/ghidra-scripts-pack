@@ -24,6 +24,9 @@ pub struct Report {
     #[serde(default)]
     pub behavior_analysis: Value,
 
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub typed_graph: Option<Value>,
+
     #[serde(default)]
     pub binary_structure: BinaryStructure,
 
@@ -487,6 +490,270 @@ pub struct SeededFingerprintingResult {
     pub message: Option<String>,
 }
 
+#[allow(dead_code)]
+pub const SEED_MODEL_VERSION: &str = "0.2.0";
+
+#[allow(dead_code)]
+pub fn build_seed_id(anchor_function_id: &str, trigger_id: &str) -> Result<String, String> {
+    let anchor = anchor_function_id.trim();
+    let trigger = trigger_id.trim();
+
+    if !anchor.starts_with("fn:") || anchor.len() <= "fn:".len() {
+        return Err(
+            "seed anchor_function_id must be a stable FUNCTION id starting with 'fn:'".to_string(),
+        );
+    }
+
+    if trigger.is_empty() {
+        return Err("seed trigger_id cannot be empty".to_string());
+    }
+
+    Ok(format!("seed:{anchor}:{trigger}"))
+}
+
+#[allow(dead_code)]
+pub fn build_consolidated_seed_id(anchor_function_id: &str) -> Result<String, String> {
+    let anchor = anchor_function_id.trim();
+
+    if !anchor.starts_with("fn:") || anchor.len() <= "fn:".len() {
+        return Err(
+            "consolidated seed anchor_function_id must be a stable FUNCTION id starting with 'fn:'"
+                .to_string(),
+        );
+    }
+
+    Ok(format!("seed:{anchor}"))
+}
+
+#[allow(dead_code)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
+#[serde(deny_unknown_fields)]
+pub struct SeedEvidence {
+    pub kind: String,
+    pub value: String,
+
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub node_id: Option<String>,
+
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub edge_type: Option<String>,
+
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub callsite: Option<String>,
+}
+
+#[allow(dead_code)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
+#[serde(deny_unknown_fields)]
+pub struct SeedCandidate {
+    pub seed_id: String,
+
+    pub anchor_function_id: String,
+
+    pub trigger_id: String,
+
+    #[serde(default)]
+    pub evidence: Vec<SeedEvidence>,
+
+    pub reason: String,
+}
+
+#[allow(dead_code)]
+impl SeedCandidate {
+    pub fn validate(&self) -> Result<(), String> {
+        let expected_seed_id = build_seed_id(&self.anchor_function_id, &self.trigger_id)?;
+
+        if self.seed_id != expected_seed_id {
+            return Err(format!(
+                "seed_id does not match \
+                 anchor_function_id + trigger_id: \
+                 expected {expected_seed_id}"
+            ));
+        }
+
+        if self.evidence.is_empty() {
+            return Err("seed must contain at least one evidence item".to_string());
+        }
+
+        if self.reason.trim().is_empty() {
+            return Err("seed reason cannot be empty".to_string());
+        }
+
+        for evidence in &self.evidence {
+            if evidence.kind.trim().is_empty() {
+                return Err("seed evidence kind cannot be empty".to_string());
+            }
+
+            if evidence.value.trim().is_empty() {
+                return Err("seed evidence value cannot be empty".to_string());
+            }
+
+            if let Some(value) = &evidence.node_id {
+                if value.trim().is_empty() {
+                    return Err("seed evidence node_id cannot be \
+                         empty when present"
+                        .to_string());
+                }
+            }
+
+            if let Some(value) = &evidence.edge_type {
+                if value.trim().is_empty() {
+                    return Err("seed evidence edge_type cannot be \
+                         empty when present"
+                        .to_string());
+                }
+            }
+
+            if let Some(value) = &evidence.callsite {
+                if value.trim().is_empty() {
+                    return Err("seed evidence callsite cannot be \
+                         empty when present"
+                        .to_string());
+                }
+            }
+        }
+
+        Ok(())
+    }
+}
+
+#[allow(dead_code)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
+#[serde(deny_unknown_fields)]
+pub struct ConsolidatedSeed {
+    pub seed_id: String,
+
+    pub anchor_function_id: String,
+
+    #[serde(default)]
+    pub trigger_ids: Vec<String>,
+
+    #[serde(default)]
+    pub source_candidate_ids: Vec<String>,
+
+    #[serde(default)]
+    pub evidence: Vec<SeedEvidence>,
+
+    #[serde(default)]
+    pub reasons: Vec<String>,
+}
+
+#[allow(dead_code)]
+impl ConsolidatedSeed {
+    pub fn validate(&self) -> Result<(), String> {
+        let expected_seed_id = build_consolidated_seed_id(&self.anchor_function_id)?;
+
+        if self.seed_id != expected_seed_id {
+            return Err(format!(
+                "consolidated seed_id does not match \
+                 anchor_function_id: expected \
+                 {expected_seed_id}"
+            ));
+        }
+
+        if self.trigger_ids.is_empty() {
+            return Err("consolidated seed must contain \
+                 at least one trigger_id"
+                .to_string());
+        }
+
+        if self.source_candidate_ids.is_empty() {
+            return Err("consolidated seed must contain \
+                 at least one source_candidate_id"
+                .to_string());
+        }
+
+        if self.evidence.is_empty() {
+            return Err("consolidated seed must contain \
+                 at least one evidence item"
+                .to_string());
+        }
+
+        if self.reasons.is_empty() {
+            return Err("consolidated seed must contain \
+                 at least one reason"
+                .to_string());
+        }
+
+        validate_sorted_unique_nonempty(&self.trigger_ids, "trigger_ids")?;
+
+        validate_sorted_unique_nonempty(&self.source_candidate_ids, "source_candidate_ids")?;
+
+        validate_sorted_unique_nonempty(&self.reasons, "reasons")?;
+
+        let expected_source_candidate_ids: Vec<String> = self
+            .trigger_ids
+            .iter()
+            .map(|trigger_id| build_seed_id(&self.anchor_function_id, trigger_id))
+            .collect::<Result<Vec<_>, _>>()?;
+
+        if self.source_candidate_ids != expected_source_candidate_ids {
+            return Err("consolidated seed \
+                 source_candidate_ids must correspond \
+                 exactly to anchor + trigger_ids"
+                .to_string());
+        }
+
+        for evidence in &self.evidence {
+            if evidence.kind.trim().is_empty() {
+                return Err("consolidated seed evidence kind \
+                     cannot be empty"
+                    .to_string());
+            }
+
+            if evidence.value.trim().is_empty() {
+                return Err("consolidated seed evidence value \
+                     cannot be empty"
+                    .to_string());
+            }
+
+            for (field_name, value) in [
+                ("node_id", evidence.node_id.as_deref()),
+                ("edge_type", evidence.edge_type.as_deref()),
+                ("callsite", evidence.callsite.as_deref()),
+            ] {
+                if value.is_some_and(|text| text.trim().is_empty()) {
+                    return Err(format!(
+                        "consolidated seed evidence \
+                         {field_name} cannot be empty \
+                         when present"
+                    ));
+                }
+            }
+        }
+
+        Ok(())
+    }
+}
+
+fn validate_sorted_unique_nonempty(values: &[String], field_name: &str) -> Result<(), String> {
+    let mut previous: Option<&str> = None;
+
+    for value in values {
+        let value = value.trim();
+
+        if value.is_empty() {
+            return Err(format!(
+                "consolidated seed {field_name} \
+                 cannot contain empty values"
+            ));
+        }
+
+        if let Some(previous_value) = previous {
+            if previous_value >= value {
+                return Err(format!(
+                    "consolidated seed {field_name} \
+                     must be sorted and unique"
+                ));
+            }
+        }
+
+        previous = Some(value);
+    }
+
+    Ok(())
+}
+
 #[derive(Debug, Serialize, Deserialize, Clone, Default)]
 pub struct EngineMetadata {
     #[serde(default)]
@@ -673,6 +940,244 @@ mod tests {
         ));
         assert_eq!(deserialized.schema_version, original.schema_version);
         assert_eq!(deserialized.message, original.message);
+    }
+
+    #[test]
+    fn seed_id_is_deterministic() {
+        let first = build_seed_id("fn:140001000", "api.virtualalloc")
+            .expect("valid seed id should be built");
+
+        let second = build_seed_id("fn:140001000", "api.virtualalloc")
+            .expect("valid seed id should be built");
+
+        assert_eq!(first, "seed:fn:140001000:api.virtualalloc");
+
+        assert_eq!(first, second);
+    }
+
+    #[test]
+    fn seed_candidate_round_trip_preserves_observed_evidence() {
+        let candidate = SeedCandidate {
+            seed_id: "seed:fn:140001000:api.virtualalloc".to_string(),
+
+            anchor_function_id: "fn:140001000".to_string(),
+
+            trigger_id: "api.virtualalloc".to_string(),
+
+            evidence: vec![SeedEvidence {
+                kind: "api".to_string(),
+
+                value: "VirtualAlloc".to_string(),
+
+                node_id: Some("api:virtualalloc".to_string()),
+
+                edge_type: Some("calls_api".to_string()),
+
+                callsite: Some("140001050".to_string()),
+            }],
+
+            reason: "Function references VirtualAlloc".to_string(),
+        };
+
+        candidate
+            .validate()
+            .expect("well-formed seed candidate should validate");
+
+        let serialized =
+            serde_json::to_string(&candidate).expect("seed candidate should serialize");
+
+        let deserialized: SeedCandidate =
+            serde_json::from_str(&serialized).expect("seed candidate should deserialize");
+
+        assert_eq!(deserialized, candidate);
+    }
+
+    #[test]
+    fn seed_candidate_serialization_contains_no_scoring_fields() {
+        let candidate = SeedCandidate {
+            seed_id: "seed:fn:140001000:api.virtualalloc".to_string(),
+
+            anchor_function_id: "fn:140001000".to_string(),
+
+            trigger_id: "api.virtualalloc".to_string(),
+
+            evidence: vec![SeedEvidence {
+                kind: "api".to_string(),
+
+                value: "VirtualAlloc".to_string(),
+
+                node_id: Some("api:virtualalloc".to_string()),
+
+                edge_type: Some("calls_api".to_string()),
+
+                callsite: Some("140001050".to_string()),
+            }],
+
+            reason: "Function references VirtualAlloc".to_string(),
+        };
+
+        let serialized = serde_json::to_value(&candidate).expect("seed candidate should serialize");
+
+        for forbidden_field in [
+            "score",
+            "priority",
+            "confidence",
+            "risk_level",
+            "legacy_metadata",
+            "function_score",
+        ] {
+            assert!(
+                serialized.get(forbidden_field).is_none(),
+                "seed candidate must not expose \
+                scoring field: {forbidden_field}"
+            );
+        }
+    }
+
+    #[test]
+    fn seed_candidate_deserialization_rejects_scoring_fields() {
+        let json = serde_json::json!({
+            "seed_id":
+                "seed:fn:140001000:api.virtualalloc",
+
+            "anchor_function_id":
+                "fn:140001000",
+
+            "trigger_id":
+                "api.virtualalloc",
+
+            "evidence": [
+                {
+                    "kind": "api",
+                    "value": "VirtualAlloc",
+                    "node_id": "api:virtualalloc",
+                    "edge_type": "calls_api",
+                    "callsite": "140001050"
+                }
+            ],
+
+            "reason":
+                "Function references VirtualAlloc",
+
+            "priority": 80
+        });
+
+        let result = serde_json::from_value::<SeedCandidate>(json);
+
+        assert!(result.is_err());
+    }
+
+    #[test]
+    fn seed_candidate_validation_rejects_invalid_anchor() {
+        let candidate = SeedCandidate {
+            seed_id: "seed:140001000:api.virtualalloc".to_string(),
+
+            anchor_function_id: "140001000".to_string(),
+
+            trigger_id: "api.virtualalloc".to_string(),
+
+            evidence: vec![SeedEvidence {
+                kind: "api".to_string(),
+
+                value: "VirtualAlloc".to_string(),
+
+                node_id: None,
+                edge_type: None,
+                callsite: None,
+            }],
+
+            reason: "Function references VirtualAlloc".to_string(),
+        };
+
+        assert!(candidate.validate().is_err());
+    }
+
+    #[test]
+    fn seed_candidate_validation_rejects_empty_trigger_reason_or_evidence() {
+        let base = SeedCandidate {
+            seed_id: "seed:fn:140001000:api.virtualalloc".to_string(),
+
+            anchor_function_id: "fn:140001000".to_string(),
+
+            trigger_id: "api.virtualalloc".to_string(),
+
+            evidence: vec![SeedEvidence {
+                kind: "api".to_string(),
+
+                value: "VirtualAlloc".to_string(),
+
+                node_id: None,
+                edge_type: None,
+                callsite: None,
+            }],
+
+            reason: "Function references VirtualAlloc".to_string(),
+        };
+
+        let mut no_trigger = base.clone();
+        no_trigger.trigger_id = "   ".to_string();
+
+        assert!(no_trigger.validate().is_err());
+
+        let mut no_reason = base.clone();
+        no_reason.reason = "   ".to_string();
+
+        assert!(no_reason.validate().is_err());
+
+        let mut no_evidence = base;
+        no_evidence.evidence.clear();
+
+        assert!(no_evidence.validate().is_err());
+    }
+
+    #[test]
+    fn seed_candidate_validation_rejects_mismatched_seed_id() {
+        let candidate = SeedCandidate {
+            seed_id: "seed:fn:140001000:api.getprocaddress".to_string(),
+
+            anchor_function_id: "fn:140001000".to_string(),
+
+            trigger_id: "api.virtualalloc".to_string(),
+
+            evidence: vec![SeedEvidence {
+                kind: "api".to_string(),
+
+                value: "VirtualAlloc".to_string(),
+
+                node_id: None,
+                edge_type: None,
+                callsite: None,
+            }],
+
+            reason: "Function references VirtualAlloc".to_string(),
+        };
+
+        assert!(candidate.validate().is_err());
+    }
+
+    #[test]
+    fn seed_candidate_validation_rejects_blank_evidence_fields() {
+        let candidate = SeedCandidate {
+            seed_id: "seed:fn:140001000:api.virtualalloc".to_string(),
+
+            anchor_function_id: "fn:140001000".to_string(),
+
+            trigger_id: "api.virtualalloc".to_string(),
+
+            evidence: vec![SeedEvidence {
+                kind: " ".to_string(),
+
+                value: "VirtualAlloc".to_string(),
+
+                node_id: None,
+                edge_type: None,
+                callsite: None,
+            }],
+
+            reason: "Function references VirtualAlloc".to_string(),
+        };
+
+        assert!(candidate.validate().is_err());
     }
 
     #[test]
