@@ -1,0 +1,26 @@
+{
+  "model_version": "0.12.0",
+  "nodes": [
+    {"id": "fn:00402000", "type": "FUNCTION"},
+    {"id": "fn:00401000", "type": "FUNCTION"},
+    {"id": "api:virtualalloc", "type": "API", "normalized_name": "VirtualAlloc"},
+    {"id": "api:writeprocessmemory", "type": "API", "normalized_name": "WriteProcessMemory"},
+    {"id": "str:00403000", "type": "STRING", "value": "powershell -NoProfile"},
+    {"id": "strcat:powershell", "type": "STRING_CATEGORY", "category": "powershell"},
+    {"id": "const:memory_protection:0x40", "type": "CONSTANT", "category": "memory_protection", "value": 64, "value_hex": "0x40", "symbolic_names": ["PAGE_EXECUTE_READWRITE"], "bit_lengths": [32]},
+    {"id": "sec:00401000", "type": "SECTION", "name": ".packed", "suspicious": true},
+    {"id": "vis:call_visibility:fn:00401000", "type": "VISIBILITY_INDICATOR", "indicator": "call_visibility", "function": "fn:00401000", "signals": ["indirect_call"], "indirect_callsites": ["00401080", "00401070"], "unresolved_indirect_callsites": ["00401090"], "dynamic_dispatch_callsites": []}
+  ],
+  "edges": [
+    {"type": "calls_api", "source": "fn:00402000", "target": "api:writeprocessmemory", "callsites": ["00402020"]},
+    {"type": "contains_indirect_call", "source": "fn:00401000", "target": "vis:call_visibility:fn:00401000"},
+    {"type": "references_string", "source": "fn:00401000", "target": "str:00403000", "reference_sites": ["00401040"], "reference_count": 1},
+    {"type": "has_string_category", "source": "str:00403000", "target": "strcat:powershell"},
+    {"type": "belongs_to_section", "source": "fn:00401000", "target": "sec:00401000"},
+    {"type": "uses_constant", "source": "fn:00401000", "target": "const:memory_protection:0x40", "use_sites": ["00401050"], "occurrences": 1, "context_apis": ["VirtualAlloc"]},
+    {"type": "calls_api", "source": "fn:00401000", "target": "api:virtualalloc", "callsites": ["00401030", "00401020"]}
+  ],
+  "unresolved_calls": [
+    {"indicator": "unresolved_call", "reason": "no_resolved_function_or_api_target", "caller": "fn:00401000", "callee": null, "callsite": "00401090", "direct": false, "indirect": true, "unresolved": true, "occurrences": 1}
+  ]
+}

@@ -491,7 +491,26 @@ pub struct SeededFingerprintingResult {
 }
 
 #[allow(dead_code)]
-pub const SEED_MODEL_VERSION: &str = "0.2.0";
+pub const SEED_MODEL_VERSION: &str = "0.4.0";
+
+/// Descriptive provenance only, never a score, risk, capability or verdict.
+/// Ordering follows this vocabulary declaration for this model version.
+#[derive(Debug, Serialize, Deserialize, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[serde(rename_all = "snake_case")]
+pub enum SeedTriggerFamily {
+    MemoryManagement,
+    ProcessInteraction,
+    ProcessMemoryAccess,
+    DynamicApiResolution,
+    ThreadExecution,
+    RegistryInteraction,
+    PersistenceRelated,
+    Networking,
+    AntiAnalysis,
+    CommandExecution,
+    SectionContext,
+    CallVisibility,
+}
 
 #[allow(dead_code)]
 pub fn build_seed_id(anchor_function_id: &str, trigger_id: &str) -> Result<String, String> {
@@ -551,6 +570,8 @@ pub struct SeedCandidate {
     pub anchor_function_id: String,
 
     pub trigger_id: String,
+
+    pub family: SeedTriggerFamily,
 
     #[serde(default)]
     pub evidence: Vec<SeedEvidence>,
@@ -628,6 +649,8 @@ pub struct ConsolidatedSeed {
     #[serde(default)]
     pub trigger_ids: Vec<String>,
 
+    pub families: Vec<SeedTriggerFamily>,
+
     #[serde(default)]
     pub source_candidate_ids: Vec<String>,
 
@@ -655,6 +678,13 @@ impl ConsolidatedSeed {
             return Err("consolidated seed must contain \
                  at least one trigger_id"
                 .to_string());
+        }
+
+        if self.families.is_empty() {
+            return Err("consolidated seed must contain at least one family".to_string());
+        }
+        if self.families.windows(2).any(|pair| pair[0] >= pair[1]) {
+            return Err("consolidated seed families must be sorted and unique".to_string());
         }
 
         if self.source_candidate_ids.is_empty() {
@@ -963,6 +993,7 @@ mod tests {
             anchor_function_id: "fn:140001000".to_string(),
 
             trigger_id: "api.virtualalloc".to_string(),
+            family: SeedTriggerFamily::MemoryManagement,
 
             evidence: vec![SeedEvidence {
                 kind: "api".to_string(),
@@ -990,6 +1021,90 @@ mod tests {
             serde_json::from_str(&serialized).expect("seed candidate should deserialize");
 
         assert_eq!(deserialized, candidate);
+        assert_eq!(
+            serde_json::to_value(&candidate).unwrap()["family"],
+            "memory_management"
+        );
+    }
+
+    #[test]
+    fn trigger_family_vocabulary_round_trips_as_snake_case() {
+        use SeedTriggerFamily::*;
+        for (family, name) in [
+            (MemoryManagement, "memory_management"),
+            (ProcessInteraction, "process_interaction"),
+            (ProcessMemoryAccess, "process_memory_access"),
+            (DynamicApiResolution, "dynamic_api_resolution"),
+            (ThreadExecution, "thread_execution"),
+            (RegistryInteraction, "registry_interaction"),
+            (PersistenceRelated, "persistence_related"),
+            (Networking, "networking"),
+            (AntiAnalysis, "anti_analysis"),
+            (CommandExecution, "command_execution"),
+            (SectionContext, "section_context"),
+            (CallVisibility, "call_visibility"),
+        ] {
+            let value = serde_json::json!(name);
+            assert_eq!(serde_json::to_value(family).unwrap(), value);
+            assert_eq!(
+                serde_json::from_value::<SeedTriggerFamily>(value).unwrap(),
+                family
+            );
+        }
+    }
+
+    #[test]
+    fn seed_candidate_requires_known_family() {
+        let mut value = serde_json::json!({
+            "seed_id": "seed:fn:140001000:api.virtualalloc",
+            "anchor_function_id": "fn:140001000",
+            "trigger_id": "api.virtualalloc",
+            "reason": "Function calls API VirtualAlloc",
+            "evidence": [{"kind": "api", "value": "VirtualAlloc"}],
+            "family": "memory_management"
+        });
+        serde_json::from_value::<SeedCandidate>(value.clone())
+            .unwrap()
+            .validate()
+            .unwrap();
+        value.as_object_mut().unwrap().remove("family");
+        assert!(serde_json::from_value::<SeedCandidate>(value.clone()).is_err());
+        for family in [serde_json::json!("robe_sospette"), serde_json::json!(null)] {
+            value["family"] = family;
+            assert!(serde_json::from_value::<SeedCandidate>(value.clone()).is_err());
+        }
+    }
+
+    #[test]
+    fn consolidated_seed_requires_nonempty_sorted_unique_families() {
+        use SeedTriggerFamily::{MemoryManagement, ProcessMemoryAccess};
+        let mut seed = ConsolidatedSeed {
+            seed_id: "seed:fn:140001000".to_string(),
+            anchor_function_id: "fn:140001000".to_string(),
+            trigger_ids: vec!["api.virtualalloc".to_string()],
+            source_candidate_ids: vec!["seed:fn:140001000:api.virtualalloc".to_string()],
+            families: vec![MemoryManagement, ProcessMemoryAccess],
+            evidence: vec![SeedEvidence {
+                kind: "api".to_string(),
+                value: "VirtualAlloc".to_string(),
+                node_id: None,
+                edge_type: None,
+                callsite: None,
+            }],
+            reasons: vec!["Observed API".to_string()],
+        };
+        seed.validate().unwrap();
+        let mut value = serde_json::to_value(&seed).unwrap();
+        value.as_object_mut().unwrap().remove("families");
+        assert!(serde_json::from_value::<ConsolidatedSeed>(value).is_err());
+        for families in [
+            vec![],
+            vec![MemoryManagement, MemoryManagement],
+            vec![ProcessMemoryAccess, MemoryManagement],
+        ] {
+            seed.families = families;
+            assert!(seed.validate().unwrap_err().contains("famil"));
+        }
     }
 
     #[test]
@@ -1000,6 +1115,7 @@ mod tests {
             anchor_function_id: "fn:140001000".to_string(),
 
             trigger_id: "api.virtualalloc".to_string(),
+            family: SeedTriggerFamily::MemoryManagement,
 
             evidence: vec![SeedEvidence {
                 kind: "api".to_string(),
@@ -1059,6 +1175,7 @@ mod tests {
             "reason":
                 "Function references VirtualAlloc",
 
+            "family": "memory_management",
             "priority": 80
         });
 
@@ -1075,6 +1192,7 @@ mod tests {
             anchor_function_id: "140001000".to_string(),
 
             trigger_id: "api.virtualalloc".to_string(),
+            family: SeedTriggerFamily::MemoryManagement,
 
             evidence: vec![SeedEvidence {
                 kind: "api".to_string(),
@@ -1100,6 +1218,7 @@ mod tests {
             anchor_function_id: "fn:140001000".to_string(),
 
             trigger_id: "api.virtualalloc".to_string(),
+            family: SeedTriggerFamily::MemoryManagement,
 
             evidence: vec![SeedEvidence {
                 kind: "api".to_string(),
@@ -1138,6 +1257,7 @@ mod tests {
             anchor_function_id: "fn:140001000".to_string(),
 
             trigger_id: "api.virtualalloc".to_string(),
+            family: SeedTriggerFamily::MemoryManagement,
 
             evidence: vec![SeedEvidence {
                 kind: "api".to_string(),
@@ -1163,6 +1283,7 @@ mod tests {
             anchor_function_id: "fn:140001000".to_string(),
 
             trigger_id: "api.virtualalloc".to_string(),
+            family: SeedTriggerFamily::MemoryManagement,
 
             evidence: vec![SeedEvidence {
                 kind: " ".to_string(),

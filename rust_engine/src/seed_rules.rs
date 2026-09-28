@@ -1,9 +1,10 @@
+use crate::schema::SeedTriggerFamily;
 use serde::{Deserialize, Serialize};
 use std::collections::HashSet;
 use std::fs;
 use std::path::{Path, PathBuf};
 
-pub const SEED_RULES_SCHEMA_VERSION: &str = "0.3.0";
+pub const SEED_RULES_SCHEMA_VERSION: &str = "0.4.0";
 
 #[derive(Debug, Serialize, Deserialize, Clone, Copy, PartialEq, Eq)]
 #[serde(rename_all = "snake_case")]
@@ -61,8 +62,7 @@ pub struct SeedRule {
 
     pub reason_template: String,
 
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub family: Option<String>,
+    pub family: SeedTriggerFamily,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
@@ -105,15 +105,6 @@ impl SeedRulesConfig {
                     "seed rule '{}' reason_template cannot be empty",
                     rule.id
                 ));
-            }
-
-            if let Some(family) = &rule.family {
-                if family.trim().is_empty() {
-                    return Err(format!(
-                        "seed rule '{}' family cannot be empty when present",
-                        rule.id
-                    ));
-                }
             }
 
             match rule.evidence_type {
@@ -368,7 +359,7 @@ mod tests {
             evidence_type,
             match_condition,
             reason_template: reason_template.to_string(),
-            family: Some("test_family".to_string()),
+            family: SeedTriggerFamily::MemoryManagement,
         }
     }
 
@@ -414,6 +405,31 @@ mod tests {
             .expect("bundled seed_rules.json should load and validate");
         assert_eq!(config.schema_version, SEED_RULES_SCHEMA_VERSION);
         assert_eq!(config.rules.len(), 44);
+        for rule in &config.rules {
+            if rule.id.starts_with("api.reg") || rule.id == "string_category.registry_path" {
+                assert_eq!(rule.family, SeedTriggerFamily::RegistryInteraction);
+            }
+        }
+    }
+
+    #[test]
+    fn rule_requires_family() {
+        let mut value = serde_json::to_value(api_rule("api.virtualalloc", "VirtualAlloc")).unwrap();
+        value.as_object_mut().unwrap().remove("family");
+        assert!(serde_json::from_value::<SeedRule>(value)
+            .unwrap_err()
+            .to_string()
+            .contains("family"));
+    }
+
+    #[test]
+    fn rule_rejects_unknown_or_null_family() {
+        for family in [json!("robe_sospette"), json!(""), json!(null)] {
+            let mut value =
+                serde_json::to_value(api_rule("api.virtualalloc", "VirtualAlloc")).unwrap();
+            value["family"] = family;
+            assert!(serde_json::from_value::<SeedRule>(value).is_err());
+        }
     }
 
     #[test]

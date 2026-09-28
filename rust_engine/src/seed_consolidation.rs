@@ -1,11 +1,16 @@
-use crate::schema::{build_consolidated_seed_id, ConsolidatedSeed, SeedCandidate, SeedEvidence};
+use crate::schema::{
+    build_consolidated_seed_id, ConsolidatedSeed, SeedCandidate, SeedEvidence, SeedTriggerFamily,
+};
+use crate::seed_deduplication::{deduplicate_seed_candidates, evidence_key, EvidenceKey};
+use crate::seed_ordering::order_consolidated_seeds;
 use std::collections::{BTreeMap, BTreeSet};
 
 #[derive(Debug, Default)]
 struct ConsolidationAccumulator {
     trigger_ids: BTreeSet<String>,
+    families: BTreeSet<SeedTriggerFamily>,
     source_candidate_ids: BTreeSet<String>,
-    evidence_by_key: BTreeMap<String, SeedEvidence>,
+    evidence_by_key: BTreeMap<EvidenceKey, SeedEvidence>,
     reasons: BTreeSet<String>,
 }
 
@@ -18,7 +23,8 @@ pub fn consolidate_seed_candidates(
 ) -> Result<Vec<ConsolidatedSeed>, String> {
     let mut by_anchor: BTreeMap<String, ConsolidationAccumulator> = BTreeMap::new();
 
-    for candidate in candidates {
+    let candidates = deduplicate_seed_candidates(candidates)?;
+    for candidate in &candidates {
         candidate.validate()?;
 
         let accumulator = by_anchor
@@ -26,6 +32,7 @@ pub fn consolidate_seed_candidates(
             .or_default();
 
         accumulator.trigger_ids.insert(candidate.trigger_id.clone());
+        accumulator.families.insert(candidate.family);
         accumulator
             .source_candidate_ids
             .insert(candidate.seed_id.clone());
@@ -46,6 +53,7 @@ pub fn consolidate_seed_candidates(
             seed_id: build_consolidated_seed_id(&anchor_function_id)?,
             anchor_function_id,
             trigger_ids: accumulator.trigger_ids.into_iter().collect(),
+            families: accumulator.families.into_iter().collect(),
             source_candidate_ids: accumulator.source_candidate_ids.into_iter().collect(),
             evidence: accumulator.evidence_by_key.into_values().collect(),
             reasons: accumulator.reasons.into_iter().collect(),
@@ -55,18 +63,8 @@ pub fn consolidate_seed_candidates(
         consolidated.push(seed);
     }
 
+    order_consolidated_seeds(&mut consolidated);
     Ok(consolidated)
-}
-
-fn evidence_key(evidence: &SeedEvidence) -> String {
-    format!(
-        "{}\u{1f}{}\u{1f}{}\u{1f}{}\u{1f}{}",
-        evidence.kind,
-        evidence.value,
-        evidence.node_id.as_deref().unwrap_or(""),
-        evidence.edge_type.as_deref().unwrap_or(""),
-        evidence.callsite.as_deref().unwrap_or("")
-    )
 }
 
 #[cfg(test)]
@@ -84,6 +82,14 @@ mod tests {
             seed_id: build_seed_id(anchor, trigger).expect("test seed id should be valid"),
             anchor_function_id: anchor.to_string(),
             trigger_id: trigger.to_string(),
+            family:
+                crate::seed_rules::load_seed_rules(crate::seed_rules::bundled_seed_rules_path())
+                    .unwrap()
+                    .rules
+                    .into_iter()
+                    .find(|rule| rule.id == trigger)
+                    .unwrap()
+                    .family,
             evidence,
             reason: reason.to_string(),
         }
@@ -103,6 +109,56 @@ mod tests {
             edge_type: Some(edge_type.to_string()),
             callsite: callsite.map(str::to_string),
         }
+    }
+
+    #[test]
+    fn families_are_aggregated_deduplicated_and_deterministic() {
+        let candidates: Vec<_> = [
+            ("api.virtualallocex", SeedTriggerFamily::MemoryManagement),
+            (
+                "api.writeprocessmemory",
+                SeedTriggerFamily::ProcessMemoryAccess,
+            ),
+            (
+                "constant_category.memory_protection",
+                SeedTriggerFamily::MemoryManagement,
+            ),
+        ]
+        .into_iter()
+        .map(|(trigger, family)| {
+            let entry = candidate(
+                "fn:140001000",
+                trigger,
+                "Observed trigger",
+                vec![evidence("observed", trigger, trigger, "observed", None)],
+            );
+            assert_eq!(entry.family, family);
+            entry
+        })
+        .collect();
+        let seeds = consolidate_seed_candidates(&candidates).unwrap();
+        assert_eq!(seeds.len(), 1);
+        assert_eq!(seeds[0].trigger_ids.len(), 3);
+        assert_eq!(
+            seeds[0].families,
+            vec![
+                SeedTriggerFamily::MemoryManagement,
+                SeedTriggerFamily::ProcessMemoryAccess
+            ]
+        );
+        let mut reverse = candidates;
+        reverse.reverse();
+        reverse.push(reverse[0].clone());
+        assert_eq!(seeds, consolidate_seed_candidates(&reverse).unwrap());
+        let serialized = serde_json::to_value(&seeds[0]).unwrap();
+        assert_eq!(
+            serialized["families"],
+            serde_json::json!(["memory_management", "process_memory_access"])
+        );
+        assert_eq!(
+            serde_json::from_value::<ConsolidatedSeed>(serialized).unwrap(),
+            seeds[0]
+        );
     }
 
     #[test]

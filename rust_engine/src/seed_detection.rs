@@ -1,4 +1,5 @@
-use crate::schema::{build_seed_id, Report, SeedCandidate, SeedEvidence};
+use crate::schema::{build_seed_id, Report, SeedCandidate, SeedEvidence, SeedTriggerFamily};
+use crate::seed_deduplication::{deduplicate_seed_candidates, evidence_key, EvidenceKey};
 use crate::seed_rules::{SeedRuleType, SeedRulesConfig};
 use serde_json::Value;
 use std::collections::{BTreeMap, BTreeSet};
@@ -18,12 +19,50 @@ const USES_CONSTANT_EDGE_TYPE: &str = "uses_constant";
 const BELONGS_TO_SECTION_EDGE_TYPE: &str = "belongs_to_section";
 const CONTAINS_INDIRECT_CALL_EDGE_TYPE: &str = "contains_indirect_call";
 
+/// Complete seed-stage API. Configuration affects only technical output limits.
+pub fn detect_seeds(
+    typed_graph: &Value,
+    rules: &SeedRulesConfig,
+    config: &crate::seed_limits::SeedDetectionConfig,
+) -> Result<crate::seed_limits::SeedDetectionResult, String> {
+    let candidates = detect_seed_candidates(typed_graph, rules)?;
+    crate::seed_limits::build_seed_detection_result(&candidates, config)
+}
+
+pub fn detect_seeds_from_report(
+    report: &Report,
+    rules: &SeedRulesConfig,
+    config: &crate::seed_limits::SeedDetectionConfig,
+) -> Result<crate::seed_limits::SeedDetectionResult, String> {
+    let graph = report
+        .typed_graph
+        .as_ref()
+        .ok_or_else(|| "seed detection requires report.typed_graph".to_string())?;
+    detect_seeds(graph, rules, config)
+}
+
+/// Runs all observable-trigger detectors and returns one canonical global order.
+/// Runtime fingerprinting remains separate until the later pipeline integration step.
+pub fn detect_seed_candidates(
+    typed_graph: &Value,
+    rules: &SeedRulesConfig,
+) -> Result<Vec<SeedCandidate>, String> {
+    let mut seeds = detect_api_seeds(typed_graph, rules)?;
+    seeds.extend(detect_string_category_seeds(typed_graph, rules)?);
+    seeds.extend(detect_constant_category_seeds(typed_graph, rules)?);
+    seeds.extend(detect_section_property_seeds(typed_graph, rules)?);
+    seeds.extend(detect_visibility_signal_seeds(typed_graph, rules)?);
+    seeds.extend(detect_unresolved_call_seeds(typed_graph, rules)?);
+    deduplicate_seed_candidates(&seeds)
+}
+
 #[derive(Debug)]
 struct SeedAccumulator {
     anchor_function_id: String,
     trigger_id: String,
+    family: SeedTriggerFamily,
     reason: String,
-    evidence_by_key: BTreeMap<String, SeedEvidence>,
+    evidence_by_key: BTreeMap<EvidenceKey, SeedEvidence>,
 }
 
 pub fn detect_api_seeds_from_report(
@@ -107,7 +146,7 @@ pub fn detect_api_seeds(
         api_rules_by_name.insert(normalized_name, rule);
     }
 
-    let mut accumulators: BTreeMap<(String, String), SeedAccumulator> = BTreeMap::new();
+    let mut accumulators: BTreeMap<(String, String, String), SeedAccumulator> = BTreeMap::new();
 
     for edge in edges {
         if edge.get("type").and_then(Value::as_str) != Some(CALLS_API_EDGE_TYPE) {
@@ -137,10 +176,12 @@ pub fn detect_api_seeds(
 
         let key = (source.to_string(), rule.id.clone());
         let reason = rule.reason_template.replace("{normalized_name}", api_name);
+        let key = (key.0, key.1, reason.clone());
 
         let accumulator = accumulators.entry(key).or_insert_with(|| SeedAccumulator {
             anchor_function_id: source.to_string(),
             trigger_id: rule.id.clone(),
+            family: rule.family,
             reason,
             evidence_by_key: BTreeMap::new(),
         });
@@ -154,16 +195,9 @@ pub fn detect_api_seeds(
                 callsite: callsite.clone(),
             };
 
-            let evidence_key = format!(
-                "{}\u{1f}{}\u{1f}{}",
-                target,
-                CALLS_API_EDGE_TYPE,
-                callsite.as_deref().unwrap_or("")
-            );
-
             accumulator
                 .evidence_by_key
-                .entry(evidence_key)
+                .entry(evidence_key(&evidence))
                 .or_insert(evidence);
         }
     }
@@ -177,6 +211,7 @@ pub fn detect_api_seeds(
             seed_id,
             anchor_function_id: accumulator.anchor_function_id,
             trigger_id: accumulator.trigger_id,
+            family: accumulator.family,
             evidence: accumulator.evidence_by_key.into_values().collect(),
             reason: accumulator.reason,
         };
@@ -185,12 +220,7 @@ pub fn detect_api_seeds(
         seeds.push(candidate);
     }
 
-    seeds.sort_by(|left, right| {
-        left.anchor_function_id
-            .cmp(&right.anchor_function_id)
-            .then_with(|| left.trigger_id.cmp(&right.trigger_id))
-            .then_with(|| left.seed_id.cmp(&right.seed_id))
-    });
+    crate::seed_ordering::order_seed_candidates(&mut seeds);
 
     Ok(seeds)
 }
@@ -316,7 +346,7 @@ pub fn detect_string_category_seeds(
             .insert(target.to_string());
     }
 
-    let mut accumulators: BTreeMap<(String, String), SeedAccumulator> = BTreeMap::new();
+    let mut accumulators: BTreeMap<(String, String, String), SeedAccumulator> = BTreeMap::new();
 
     for edge in edges {
         if edge.get("type").and_then(Value::as_str) != Some(REFERENCES_STRING_EDGE_TYPE) {
@@ -360,10 +390,12 @@ pub fn detect_string_category_seeds(
 
             let key = (source.to_string(), rule.id.clone());
             let reason = rule.reason_template.replace("{category}", category);
+            let key = (key.0, key.1, reason.clone());
 
             let accumulator = accumulators.entry(key).or_insert_with(|| SeedAccumulator {
                 anchor_function_id: source.to_string(),
                 trigger_id: rule.id.clone(),
+                family: rule.family,
                 reason,
                 evidence_by_key: BTreeMap::new(),
             });
@@ -378,10 +410,7 @@ pub fn detect_string_category_seeds(
 
             accumulator
                 .evidence_by_key
-                .entry(format!(
-                    "category\u{1f}{}\u{1f}{}",
-                    category_id, HAS_STRING_CATEGORY_EDGE_TYPE
-                ))
+                .entry(evidence_key(&category_evidence))
                 .or_insert(category_evidence);
 
             for reference_site in &reference_sites {
@@ -393,16 +422,9 @@ pub fn detect_string_category_seeds(
                     callsite: reference_site.clone(),
                 };
 
-                let evidence_key = format!(
-                    "string\u{1f}{}\u{1f}{}\u{1f}{}",
-                    target,
-                    REFERENCES_STRING_EDGE_TYPE,
-                    reference_site.as_deref().unwrap_or("")
-                );
-
                 accumulator
                     .evidence_by_key
-                    .entry(evidence_key)
+                    .entry(evidence_key(&string_evidence))
                     .or_insert(string_evidence);
             }
         }
@@ -417,6 +439,7 @@ pub fn detect_string_category_seeds(
             seed_id,
             anchor_function_id: accumulator.anchor_function_id,
             trigger_id: accumulator.trigger_id,
+            family: accumulator.family,
             evidence: accumulator.evidence_by_key.into_values().collect(),
             reason: accumulator.reason,
         };
@@ -425,12 +448,7 @@ pub fn detect_string_category_seeds(
         seeds.push(candidate);
     }
 
-    seeds.sort_by(|left, right| {
-        left.anchor_function_id
-            .cmp(&right.anchor_function_id)
-            .then_with(|| left.trigger_id.cmp(&right.trigger_id))
-            .then_with(|| left.seed_id.cmp(&right.seed_id))
-    });
+    crate::seed_ordering::order_seed_candidates(&mut seeds);
 
     Ok(seeds)
 }
@@ -502,7 +520,7 @@ pub fn detect_constant_category_seeds(
         rules_by_category.insert(category, rule);
     }
 
-    let mut accumulators: BTreeMap<(String, String), SeedAccumulator> = BTreeMap::new();
+    let mut accumulators: BTreeMap<(String, String, String), SeedAccumulator> = BTreeMap::new();
 
     for edge in edges {
         if edge.get("type").and_then(Value::as_str) != Some(USES_CONSTANT_EDGE_TYPE) {
@@ -532,9 +550,11 @@ pub fn detect_constant_category_seeds(
 
         let key = (source.to_string(), rule.id.clone());
         let reason = rule.reason_template.replace("{category}", category);
+        let key = (key.0, key.1, reason.clone());
         let accumulator = accumulators.entry(key).or_insert_with(|| SeedAccumulator {
             anchor_function_id: source.to_string(),
             trigger_id: rule.id.clone(),
+            family: rule.family,
             reason,
             evidence_by_key: BTreeMap::new(),
         });
@@ -547,15 +567,9 @@ pub fn detect_constant_category_seeds(
                 edge_type: Some(USES_CONSTANT_EDGE_TYPE.to_string()),
                 callsite: use_site.clone(),
             };
-            let evidence_key = format!(
-                "constant\u{1f}{}\u{1f}{}\u{1f}{}",
-                target,
-                category,
-                use_site.as_deref().unwrap_or("")
-            );
             accumulator
                 .evidence_by_key
-                .entry(evidence_key)
+                .entry(evidence_key(&evidence))
                 .or_insert(evidence);
         }
     }
@@ -631,7 +645,7 @@ pub fn detect_section_property_seeds(
         return Ok(Vec::new());
     };
 
-    let mut accumulators: BTreeMap<(String, String), SeedAccumulator> = BTreeMap::new();
+    let mut accumulators: BTreeMap<(String, String, String), SeedAccumulator> = BTreeMap::new();
 
     for edge in edges {
         if edge.get("type").and_then(Value::as_str) != Some(BELONGS_TO_SECTION_EDGE_TYPE) {
@@ -658,9 +672,11 @@ pub fn detect_section_property_seeds(
 
         let key = (source.to_string(), rule.id.clone());
         let reason = rule.reason_template.replace("{section_name}", section_name);
+        let key = (key.0, key.1, reason.clone());
         let accumulator = accumulators.entry(key).or_insert_with(|| SeedAccumulator {
             anchor_function_id: source.to_string(),
             trigger_id: rule.id.clone(),
+            family: rule.family,
             reason,
             evidence_by_key: BTreeMap::new(),
         });
@@ -673,7 +689,7 @@ pub fn detect_section_property_seeds(
         };
         accumulator
             .evidence_by_key
-            .entry(format!("section\u{1f}{}", target))
+            .entry(evidence_key(&evidence))
             .or_insert(evidence);
     }
 
@@ -744,7 +760,7 @@ pub fn detect_visibility_signal_seeds(
         rules_by_signal.insert(signal, rule);
     }
 
-    let mut accumulators: BTreeMap<(String, String), SeedAccumulator> = BTreeMap::new();
+    let mut accumulators: BTreeMap<(String, String, String), SeedAccumulator> = BTreeMap::new();
 
     for edge in edges {
         if edge.get("type").and_then(Value::as_str) != Some(CONTAINS_INDIRECT_CALL_EDGE_TYPE) {
@@ -782,9 +798,11 @@ pub fn detect_visibility_signal_seeds(
             let callsites = visibility_callsites(indicator, &signal)?;
             let key = (source.to_string(), rule.id.clone());
             let reason = rule.reason_template.replace("{signal}", &signal);
+            let key = (key.0, key.1, reason.clone());
             let accumulator = accumulators.entry(key).or_insert_with(|| SeedAccumulator {
                 anchor_function_id: source.to_string(),
                 trigger_id: rule.id.clone(),
+                family: rule.family,
                 reason,
                 evidence_by_key: BTreeMap::new(),
             });
@@ -797,15 +815,9 @@ pub fn detect_visibility_signal_seeds(
                     edge_type: Some(CONTAINS_INDIRECT_CALL_EDGE_TYPE.to_string()),
                     callsite: callsite.clone(),
                 };
-                let evidence_key = format!(
-                    "visibility\u{1f}{}\u{1f}{}\u{1f}{}",
-                    target,
-                    signal,
-                    callsite.as_deref().unwrap_or("")
-                );
                 accumulator
                     .evidence_by_key
-                    .entry(evidence_key)
+                    .entry(evidence_key(&evidence))
                     .or_insert(evidence);
             }
         }
@@ -865,7 +877,7 @@ pub fn detect_unresolved_call_seeds(
         rules_by_indicator.insert(indicator, rule);
     }
 
-    let mut accumulators: BTreeMap<(String, String), SeedAccumulator> = BTreeMap::new();
+    let mut accumulators: BTreeMap<(String, String, String), SeedAccumulator> = BTreeMap::new();
 
     for record in unresolved_calls {
         let indicator = required_string(record, "indicator", "unresolved_call record")?;
@@ -903,9 +915,11 @@ pub fn detect_unresolved_call_seeds(
 
         let key = (caller.to_string(), rule.id.clone());
         let reason = rule.reason_template.replace("{indicator}", indicator);
+        let key = (key.0, key.1, reason.clone());
         let accumulator = accumulators.entry(key).or_insert_with(|| SeedAccumulator {
             anchor_function_id: caller.to_string(),
             trigger_id: rule.id.clone(),
+            family: rule.family,
             reason,
             evidence_by_key: BTreeMap::new(),
         });
@@ -916,14 +930,9 @@ pub fn detect_unresolved_call_seeds(
             edge_type: None,
             callsite: callsite.clone(),
         };
-        let evidence_key = format!(
-            "unresolved\u{1f}{}\u{1f}{}",
-            callsite.as_deref().unwrap_or(""),
-            record_reason
-        );
         accumulator
             .evidence_by_key
-            .entry(evidence_key)
+            .entry(evidence_key(&evidence))
             .or_insert(evidence);
     }
 
@@ -931,7 +940,7 @@ pub fn detect_unresolved_call_seeds(
 }
 
 fn finalize_accumulators(
-    accumulators: BTreeMap<(String, String), SeedAccumulator>,
+    accumulators: BTreeMap<(String, String, String), SeedAccumulator>,
 ) -> Result<Vec<SeedCandidate>, String> {
     let mut seeds = Vec::with_capacity(accumulators.len());
     for (_, accumulator) in accumulators {
@@ -940,18 +949,14 @@ fn finalize_accumulators(
             seed_id,
             anchor_function_id: accumulator.anchor_function_id,
             trigger_id: accumulator.trigger_id,
+            family: accumulator.family,
             evidence: accumulator.evidence_by_key.into_values().collect(),
             reason: accumulator.reason,
         };
         candidate.validate()?;
         seeds.push(candidate);
     }
-    seeds.sort_by(|left, right| {
-        left.anchor_function_id
-            .cmp(&right.anchor_function_id)
-            .then_with(|| left.trigger_id.cmp(&right.trigger_id))
-            .then_with(|| left.seed_id.cmp(&right.seed_id))
-    });
+    crate::seed_ordering::order_seed_candidates(&mut seeds);
     Ok(seeds)
 }
 
@@ -1127,7 +1132,7 @@ mod tests {
                 ..SeedRuleMatch::default()
             },
             reason_template: "Function calls API {normalized_name}".to_string(),
-            family: Some("test_family".to_string()),
+            family: SeedTriggerFamily::MemoryManagement,
         }
     }
 
@@ -1140,7 +1145,7 @@ mod tests {
                 ..SeedRuleMatch::default()
             },
             reason_template: "Function references string categorized as {category}".to_string(),
-            family: Some("test_family".to_string()),
+            family: SeedTriggerFamily::CommandExecution,
         }
     }
 
@@ -1158,6 +1163,39 @@ mod tests {
             "edges": edges,
             "unresolved_calls": []
         })
+    }
+
+    #[test]
+    fn multiple_section_explanations_are_preserved_independently_of_edge_order() {
+        let config = rules(vec![section_rule()]);
+        let mut input = graph(
+            vec![
+                function_node("fn:A"),
+                section_node("sec:a", ".a", true),
+                section_node("sec:b", ".b", true),
+            ],
+            vec![
+                section_edge("fn:A", "sec:b"),
+                section_edge("fn:A", "sec:a"),
+                section_edge("fn:A", "sec:b"),
+            ],
+        );
+        let forward = detect_section_property_seeds(&input, &config).unwrap();
+        input["edges"].as_array_mut().unwrap().reverse();
+        assert_eq!(
+            forward,
+            detect_section_property_seeds(&input, &config).unwrap()
+        );
+        let consolidated =
+            crate::seed_consolidation::consolidate_seed_candidates(&forward).unwrap();
+        assert_eq!(consolidated[0].evidence.len(), 2);
+        assert_eq!(
+            consolidated[0].reasons,
+            vec![
+                "Function belongs to suspicious section .a",
+                "Function belongs to suspicious section .b"
+            ]
+        );
     }
 
     fn function_node(id: &str) -> Value {
@@ -1228,7 +1266,7 @@ mod tests {
                 ..SeedRuleMatch::default()
             },
             reason_template: "Function uses constant evidence from category {category}".to_string(),
-            family: Some("test_family".to_string()),
+            family: SeedTriggerFamily::MemoryManagement,
         }
     }
 
@@ -1241,7 +1279,7 @@ mod tests {
                 ..SeedRuleMatch::default()
             },
             reason_template: "Function belongs to suspicious section {section_name}".to_string(),
-            family: Some("test_family".to_string()),
+            family: SeedTriggerFamily::SectionContext,
         }
     }
 
@@ -1254,7 +1292,7 @@ mod tests {
                 ..SeedRuleMatch::default()
             },
             reason_template: "Function contains visibility signal {signal}".to_string(),
-            family: Some("test_family".to_string()),
+            family: SeedTriggerFamily::CallVisibility,
         }
     }
 
@@ -1267,7 +1305,7 @@ mod tests {
                 ..SeedRuleMatch::default()
             },
             reason_template: "Function contains unresolved call evidence {indicator}".to_string(),
-            family: Some("test_family".to_string()),
+            family: SeedTriggerFamily::CallVisibility,
         }
     }
 
@@ -1379,6 +1417,7 @@ mod tests {
         assert_eq!(seeds[0].seed_id, "seed:fn:00401000:api.virtualalloc");
         assert_eq!(seeds[0].anchor_function_id, "fn:00401000");
         assert_eq!(seeds[0].trigger_id, "api.virtualalloc");
+        assert_eq!(seeds[0].family, SeedTriggerFamily::MemoryManagement);
         assert_eq!(seeds[0].reason, "Function calls API VirtualAlloc");
         assert_eq!(seeds[0].evidence.len(), 1);
         assert_eq!(seeds[0].evidence[0].callsite.as_deref(), Some("00401020"));
@@ -1590,6 +1629,7 @@ mod tests {
         );
         assert_eq!(seeds[0].anchor_function_id, "fn:00401000");
         assert_eq!(seeds[0].trigger_id, "string_category.powershell");
+        assert_eq!(seeds[0].family, SeedTriggerFamily::CommandExecution);
         assert_eq!(
             seeds[0].reason,
             "Function references string categorized as powershell"
@@ -1881,6 +1921,7 @@ mod tests {
         )
         .expect("constant trigger should succeed");
         assert_eq!(seeds.len(), 1);
+        assert_eq!(seeds[0].family, SeedTriggerFamily::MemoryManagement);
         assert_eq!(
             seeds[0].seed_id,
             "seed:fn:00401000:constant_category.memory_protection"
@@ -1971,6 +2012,7 @@ mod tests {
             .expect("section trigger should succeed");
         assert_eq!(seeds.len(), 1);
         assert_eq!(seeds[0].trigger_id, "section_property.suspicious");
+        assert_eq!(seeds[0].family, SeedTriggerFamily::SectionContext);
         assert_eq!(seeds[0].evidence[0].value, ".packed");
     }
 
@@ -2019,6 +2061,7 @@ mod tests {
         )
         .expect("visibility trigger should succeed");
         assert_eq!(seeds.len(), 1);
+        assert_eq!(seeds[0].family, SeedTriggerFamily::CallVisibility);
         assert_eq!(seeds[0].evidence.len(), 2);
         assert_eq!(seeds[0].evidence[0].callsite.as_deref(), Some("00401020"));
         assert_eq!(seeds[0].evidence[1].callsite.as_deref(), Some("00401030"));
@@ -2058,6 +2101,7 @@ mod tests {
             .expect("unresolved call trigger should succeed");
         assert_eq!(seeds.len(), 1);
         assert_eq!(seeds[0].trigger_id, "unresolved_call.present");
+        assert_eq!(seeds[0].family, SeedTriggerFamily::CallVisibility);
         assert_eq!(seeds[0].evidence[0].kind, "unresolved_call");
         assert_eq!(seeds[0].evidence[0].callsite.as_deref(), Some("00401050"));
     }
