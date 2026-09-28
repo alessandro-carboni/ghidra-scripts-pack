@@ -11,6 +11,18 @@ mod seed_detection;
 #[allow(dead_code)]
 mod seed_rules;
 
+#[allow(dead_code)]
+mod seed_ordering;
+
+#[allow(dead_code)]
+mod seed_deduplication;
+
+#[allow(dead_code)]
+mod seed_limits;
+
+#[cfg(test)]
+mod seed_detection_tests;
+
 mod schema;
 mod scoring;
 
