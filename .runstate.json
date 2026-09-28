@@ -6,13 +6,13 @@
   "script_path": "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\ghidra_scripts",
   "rule_dir": "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\rules",
   "output_dir": "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\reports",
-  "rust_engine_path": "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\rust_engine\\target\\debug\\rust_engine.exe",
+  "rust_engine_path": ".\\rust_engine\\target\\debug\\rust_engine.exe",
   "last_file_path": "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\samples\\notMalicious\\notepad.exe",
   "last_program": "notepad.exe",
-  "last_report": "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\reports\\notepad_20260820_095908.json",
-  "last_raw_report": "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\reports\\notepad_20260820_095908_raw.json",
-  "last_enriched_report": "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\reports\\notepad_20260820_095908.json",
+  "last_report": "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\reports\\notepad_20260924_091552.json",
+  "last_raw_report": "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\reports\\notepad_20260924_091552_raw.json",
+  "last_enriched_report": "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\reports\\notepad_20260924_091552.json",
   "last_ai_report": "",
   "seeded_fingerprinting_enabled": true,
-  "updated_at": "2026-08-20T09:59:09+02:00"
+  "updated_at": "2026-09-24T09:15:52+02:00"
 }
