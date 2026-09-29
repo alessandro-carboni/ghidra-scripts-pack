@@ -1,3 +1,15 @@
+#[allow(dead_code)]
+mod local_subgraph;
+
+#[allow(dead_code)]
+mod seed_validation;
+
+#[allow(dead_code)]
+mod graph_indexes;
+
+#[allow(dead_code)]
+mod graph;
+
 mod capability;
 mod enrichment;
 mod rules;

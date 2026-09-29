@@ -16,7 +16,7 @@ priority, maliciousness confidence, capability or verdict.
 Versions: Typed Evidence Graph **0.12.0**, Seed Rules **0.4.0**, Seed Model **0.4.0**.
 The CLI's final fingerprinting output remains the existing placeholder. Wiring the
 complete Seeded runtime is a later roadmap step; no CLI flags are added here.
-The typed graph version loader/validator is also reserved for Step 4.1.
+The typed graph loader, seed provenance validator and local context extraction are documented in [local_subgraph.md](local_subgraph.md).
 
 ## Ordering and identity
 
