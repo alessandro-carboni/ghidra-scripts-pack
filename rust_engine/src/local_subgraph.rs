@@ -1,5 +1,5 @@
 //! Deterministic function traversal for local seed context. No ranking or scoring.
-use crate::graph::{GraphEdge, GraphNode};
+use crate::graph::{GraphEdge, GraphNode, UnresolvedCall};
 use crate::graph_indexes::{edge_sort_key, GraphIndexes};
 use crate::schema::ConsolidatedSeed;
 use crate::seed_validation::validate_consolidated_seed;
@@ -62,8 +62,7 @@ pub fn select_seed_functions(
     })
 }
 
-/// Internal local context through Step 4.7. The versioned export contract and
-/// unresolved-record attachment are reserved for their respective roadmap steps.
+/// Local context with observed unresolved records; never infer missing targets.
 #[derive(Debug, Clone, PartialEq)]
 pub struct LocalSubgraph {
     pub seed_id: String,
@@ -72,6 +71,11 @@ pub struct LocalSubgraph {
     pub selection: FunctionSelection,
     pub nodes: Vec<GraphNode>,
     pub edges: Vec<GraphEdge>,
+    pub unresolved_calls: Vec<UnresolvedCall>,
+}
+
+pub fn unresolved_sort_key(call: &UnresolvedCall) -> String {
+    serde_json::to_string(call).expect("unresolved JSON attributes are serializable")
 }
 
 pub fn extract_local_subgraph(
@@ -102,6 +106,15 @@ pub fn extract_local_subgraph(
     edges.sort_by_cached_key(edge_sort_key);
     // Only identical records are duplicates. Different callsite/occurrence properties stay separate.
     edges.dedup();
+    let mut unresolved_calls: Vec<_> = index
+        .graph()
+        .unresolved_calls()
+        .iter()
+        .filter(|call| selection.function_ids.contains(&call.caller))
+        .cloned()
+        .collect();
+    unresolved_calls.sort_by_cached_key(unresolved_sort_key);
+    unresolved_calls.dedup();
     Ok(LocalSubgraph {
         seed_id: seed.seed_id.clone(),
         source_graph_version: index.graph().model_version().into(),
@@ -109,6 +122,7 @@ pub fn extract_local_subgraph(
         selection,
         nodes,
         edges,
+        unresolved_calls,
     })
 }
 
@@ -171,6 +185,121 @@ mod tests {
     use crate::seed_limits::SeedDetectionConfig;
     use crate::seed_rules::{bundled_seed_rules_path, load_seed_rules};
     use serde_json::{json, Value};
+
+    #[test]
+    fn unresolved_records_are_local_complete_and_do_not_create_targets() {
+        let (graph, seed) = mixed_fixture();
+        let mut value = serde_json::to_value(&graph).unwrap();
+        let mut unrelated = value["unresolved_calls"][0].clone();
+        unrelated["caller"] = json!("fn:00402000");
+        value["unresolved_calls"]
+            .as_array_mut()
+            .unwrap()
+            .push(unrelated);
+        let graph = TypedGraph::from_value(&value).unwrap();
+        let local = extract_local_subgraph(
+            &GraphIndexes::new(&graph),
+            &seed,
+            &LocalExtractionConfig::default(),
+        )
+        .unwrap();
+        assert_eq!(
+            local.unresolved_calls,
+            vec![graph.unresolved_calls()[0].clone()]
+        );
+        assert!(local.unresolved_calls[0].callee.is_none());
+        assert_eq!(local.nodes.len(), 7);
+        assert_eq!(local.edges.len(), 6);
+    }
+
+    #[test]
+    fn unresolved_dedup_keeps_different_callsites_reasons_and_attributes() {
+        let (graph, seed) = mixed_fixture();
+        let mut value = serde_json::to_value(&graph).unwrap();
+        let original = value["unresolved_calls"][0].clone();
+        let mut other = original.clone();
+        other["reason"] = json!("other_observed_reason");
+        let mut site = original.clone();
+        site["callsite"] = json!("00401091");
+        let mut attrs = original.clone();
+        attrs["occurrences"] = json!(2);
+        value["unresolved_calls"]
+            .as_array_mut()
+            .unwrap()
+            .extend([original, other, site, attrs]);
+        let first = TypedGraph::from_value(&value).unwrap();
+        let expected = extract_local_subgraph(
+            &GraphIndexes::new(&first),
+            &seed,
+            &LocalExtractionConfig::default(),
+        )
+        .unwrap();
+        assert_eq!(expected.unresolved_calls.len(), 4);
+        value["unresolved_calls"].as_array_mut().unwrap().reverse();
+        let second = TypedGraph::from_value(&value).unwrap();
+        assert_eq!(
+            expected,
+            extract_local_subgraph(
+                &GraphIndexes::new(&second),
+                &seed,
+                &LocalExtractionConfig::default()
+            )
+            .unwrap()
+        );
+    }
+
+    #[test]
+    fn explicit_dynamic_dispatch_is_preserved_without_inference_or_extra_edges() {
+        let (graph, seed) = mixed_fixture();
+        let mut value = serde_json::to_value(&graph).unwrap();
+        let visibility = value["nodes"]
+            .as_array_mut()
+            .unwrap()
+            .iter_mut()
+            .find(|n| n["type"] == "VISIBILITY_INDICATOR")
+            .unwrap();
+        visibility["signals"] = json!(["indirect_call", "dynamic_dispatch"]);
+        visibility["dynamic_dispatch_callsites"] = json!(["00401070"]);
+        visibility["dynamic_dispatch_targets"] = json!(["fn:00402000", "api:virtualalloc"]);
+        visibility["dynamic_dispatch_recognition"] =
+            json!("computed_call_with_multiple_resolved_targets");
+        let graph = TypedGraph::from_value(&value).unwrap();
+        let local = extract_local_subgraph(
+            &GraphIndexes::new(&graph),
+            &seed,
+            &LocalExtractionConfig::default(),
+        )
+        .unwrap();
+        let node = local
+            .nodes
+            .iter()
+            .find(|n| n.node_type == crate::graph::NodeType::VisibilityIndicator)
+            .unwrap();
+        assert_eq!(
+            node.properties["dynamic_dispatch_targets"],
+            json!(["fn:00402000", "api:virtualalloc"])
+        );
+        assert!(!local.selection.function_ids.contains("fn:00402000"));
+        assert_eq!(local.edges.len(), 6);
+    }
+
+    #[test]
+    fn ordinary_indirect_visibility_does_not_become_dynamic_dispatch() {
+        let (graph, seed) = mixed_fixture();
+        let local = extract_local_subgraph(
+            &GraphIndexes::new(&graph),
+            &seed,
+            &LocalExtractionConfig::default(),
+        )
+        .unwrap();
+        let node = local
+            .nodes
+            .iter()
+            .find(|n| n.node_type == crate::graph::NodeType::VisibilityIndicator)
+            .unwrap();
+        assert_eq!(node.properties["signals"], json!(["indirect_call"]));
+        assert_eq!(node.properties["dynamic_dispatch_callsites"], json!([]));
+    }
 
     fn fixture(calls: &[(&str, &str)]) -> (TypedGraph, ConsolidatedSeed) {
         let mut nodes: Vec<Value> = ["a", "b", "c", "d", "e", "z"]
