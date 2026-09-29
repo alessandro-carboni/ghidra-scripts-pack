@@ -2,6 +2,12 @@
 mod local_subgraph;
 
 #[allow(dead_code)]
+mod local_subgraph_schema;
+
+#[allow(dead_code)]
+mod related_seed_grouping;
+
+#[allow(dead_code)]
 mod seed_validation;
 
 #[allow(dead_code)]
@@ -34,6 +40,9 @@ mod seed_limits;
 
 #[cfg(test)]
 mod seed_detection_tests;
+
+#[cfg(test)]
+mod local_subgraph_tests;
 
 mod schema;
 mod scoring;

@@ -4,15 +4,15 @@
   "project_name": "TriageProject",
   "post_script": "export_report.py",
   "script_path": "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\ghidra_scripts",
-  "rule_dir": "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\rules",
+  "rule_dir": ".\\rules",
   "output_dir": "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\reports",
   "rust_engine_path": ".\\rust_engine\\target\\debug\\rust_engine.exe",
-  "last_file_path": "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\samples\\notMalicious\\notepad.exe",
+  "last_file_path": "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\samples\\notepad.exe",
   "last_program": "notepad.exe",
-  "last_report": "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\reports\\notepad_20260924_091552.json",
-  "last_raw_report": "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\reports\\notepad_20260924_091552_raw.json",
-  "last_enriched_report": "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\reports\\notepad_20260924_091552.json",
+  "last_report": "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\reports\\notepad_20260929_184824.json",
+  "last_raw_report": "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\reports\\notepad_20260929_184824_raw.json",
+  "last_enriched_report": "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\reports\\notepad_20260929_184824.json",
   "last_ai_report": "",
   "seeded_fingerprinting_enabled": true,
-  "updated_at": "2026-09-24T09:15:52+02:00"
+  "updated_at": "2026-09-29T18:48:24+02:00"
 }
