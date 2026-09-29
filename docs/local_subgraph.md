@@ -1,4 +1,4 @@
-# Local seed context through Step 4.7
+# Local seed context through Step 4.9
 
 This stage loads the Typed Evidence Graph, validates seed provenance, selects
 nearby functions and attaches their observed evidence. It performs no scoring,
@@ -76,15 +76,50 @@ and canonical JSON properties. Identical edge records are deduplicated; parallel
 records with different callsites or occurrence attributes remain distinct. A
 shared evidence node never causes another function to enter the function set.
 
+
+## Unresolved and indirect evidence
+
+Local subgraphs preserve unresolved-call records whose caller belongs to the
+selected function set. These records retain their original callsite, reason and
+exporter attributes and never create a synthetic target.
+
+Indirect-call and explicitly recognized dynamic-dispatch information remains in
+the original VISIBILITY_INDICATOR nodes. Dynamic-dispatch metadata does not
+implicitly add functions or edges to the selected topology.
+
+## Local graph resource limits
+
+`LocalExtractionConfig` supports four optional technical limits:
+
+- `max_function_nodes`;
+- `max_evidence_nodes`;
+- `max_total_nodes`;
+- `max_edges`.
+
+Missing or null limits are unlimited and preserve the previous behavior.
+
+The anchor FUNCTION is always retained. Function selection is deterministic:
+minimum BFS distance is used first and node ID resolves equal-distance ties.
+Evidence is taken from retained functions in deterministic locality order.
+
+`max_total_nodes` limits FUNCTION plus evidence nodes. `max_edges` is applied
+to the canonical deterministic edge order.
+
+The limits are resource controls only. They do not use malware scores, seed
+priority, trigger family importance, capability weights or verdicts.
+
+Unresolved-call records remain separate from the four node/edge limits defined
+for Step 4.9.
+
+
 ## Current boundary and verification
 
-`FunctionSelection` and `LocalSubgraph` are internal Rust results, not the final
-versioned export contract. Separate unresolved-call record attachment belongs to
-Step 4.8; graph limits/truncation to 4.9–4.10; the export schema to 4.12. Existing
-visibility-node properties are already preserved intact. Final CLI fingerprinting
-still uses its planned placeholder until the later runtime integration step.
+`FunctionSelection` and `LocalSubgraph` remain internal Rust results, not the
+final versioned local-subgraph export contract.
 
-Steps 4.1–4.7 add 36 tests covering malformed/versioned graphs, indexes, provenance,
-directional BFS, minimum distances, cycles, depth boundaries, evidence inclusion,
-parallel edges and deterministic permutations. Full regression at this milestone:
-156 Rust tests and 57 Python tests, plus Clippy, Go test/vet, Ruff and formatting.
+Step 4.9 introduces deterministic technical graph limits. The explicit
+truncation contract belongs to Step 4.10 and will record whether a limit was
+reached, requested/effective depth, node/edge counts and the truncation reason.
+
+The export schema remains reserved for Step 4.12. Final CLI fingerprinting still
+uses its planned placeholder until the later runtime integration step.
