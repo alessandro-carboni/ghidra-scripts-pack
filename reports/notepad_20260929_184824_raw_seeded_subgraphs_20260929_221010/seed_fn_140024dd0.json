@@ -1,0 +1,144 @@
+{
+  "schema_version": "0.1.0",
+  "seed_id": "seed:fn:140024dd0",
+  "anchor_function_id": "fn:140024dd0",
+  "graph_version": "0.12.0",
+  "extraction_config": {
+    "caller_depth": 1,
+    "callee_depth": 2,
+    "max_function_nodes": null,
+    "max_evidence_nodes": null,
+    "max_total_nodes": null,
+    "max_edges": null
+  },
+  "function_selection": {
+    "anchor_function_id": "fn:140024dd0",
+    "function_ids": [
+      "fn:140024dd0"
+    ],
+    "caller_distances": {
+      "fn:140024dd0": 0
+    },
+    "callee_distances": {
+      "fn:140024dd0": 0
+    }
+  },
+  "nodes": [
+    {
+      "id": "api:setlasterror",
+      "type": "API",
+      "name": "SetLastError",
+      "normalized_name": "SetLastError",
+      "original_names": [
+        "SetLastError"
+      ]
+    },
+    {
+      "id": "fn:140024dd0",
+      "type": "FUNCTION",
+      "address": "140024dd0",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140024dd0",
+      "section": ".text",
+      "size": 28,
+      "symbol_name": "FUN_140024dd0",
+      "thunk": false
+    },
+    {
+      "id": "sec:140001000",
+      "type": "SECTION",
+      "end": "140027fff",
+      "entropy": 6.1732,
+      "entropy_class": "normal",
+      "entropy_sampled_bytes": 65536,
+      "execute": true,
+      "initialized": true,
+      "name": ".text",
+      "permissions": "r-x",
+      "read": true,
+      "reasons": [],
+      "size": 159744,
+      "start": "140001000",
+      "suspicious": false,
+      "write": false
+    },
+    {
+      "id": "vis:call_visibility:fn:140024dd0",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:140024dd0",
+      "indicator": "call_visibility",
+      "indirect_call_count": 1,
+      "indirect_callsites": [
+        "140024dd9"
+      ],
+      "resolved_indirect_call_count": 1,
+      "resolved_indirect_callsites": [
+        "140024dd9"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    }
+  ],
+  "edges": [
+    {
+      "type": "calls_api",
+      "source": "fn:140024dd0",
+      "target": "api:setlasterror",
+      "api": "api:setlasterror",
+      "api_original_names": [
+        "SetLastError"
+      ],
+      "caller": "fn:140024dd0",
+      "callsite": "140024dd9",
+      "callsites": [
+        "140024dd9"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140024dd0",
+      "target": "sec:140001000",
+      "function": "fn:140024dd0",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:140024dd0",
+      "target": "vis:call_visibility:fn:140024dd0",
+      "function": "fn:140024dd0",
+      "indicator": "vis:call_visibility:fn:140024dd0"
+    }
+  ],
+  "unresolved_calls": [],
+  "truncation": {
+    "truncated": false,
+    "limits_reached": [],
+    "requested_depth": {
+      "caller_depth": 1,
+      "callee_depth": 2
+    },
+    "effective_depth": {
+      "caller_depth": 0,
+      "callee_depth": 0
+    },
+    "counts": {
+      "function_nodes": 1,
+      "evidence_nodes": 3,
+      "total_nodes": 4,
+      "edges": 3,
+      "unresolved_calls": 0
+    }
+  }
+}

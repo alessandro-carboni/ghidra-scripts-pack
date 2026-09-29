@@ -1,0 +1,715 @@
+{
+  "schema_version": "0.1.0",
+  "seed_id": "seed:fn:140009f6c",
+  "anchor_function_id": "fn:140009f6c",
+  "graph_version": "0.12.0",
+  "extraction_config": {
+    "caller_depth": 1,
+    "callee_depth": 2,
+    "max_function_nodes": null,
+    "max_evidence_nodes": null,
+    "max_total_nodes": null,
+    "max_edges": null
+  },
+  "function_selection": {
+    "anchor_function_id": "fn:140009f6c",
+    "function_ids": [
+      "fn:140009bcc",
+      "fn:140009f6c",
+      "fn:140024ebc",
+      "fn:140025144",
+      "fn:140028010"
+    ],
+    "caller_distances": {
+      "fn:140009bcc": 1,
+      "fn:140009f6c": 0,
+      "fn:140024ebc": 1,
+      "fn:140025144": 1
+    },
+    "callee_distances": {
+      "fn:140009f6c": 0,
+      "fn:140028010": 1
+    }
+  },
+  "nodes": [
+    {
+      "id": "api:cocreatefreethreadedmarshaler",
+      "type": "API",
+      "name": "CoCreateFreeThreadedMarshaler",
+      "normalized_name": "CoCreateFreeThreadedMarshaler",
+      "original_names": [
+        "CoCreateFreeThreadedMarshaler"
+      ]
+    },
+    {
+      "id": "api:cowaitformultiplehandles",
+      "type": "API",
+      "name": "CoWaitForMultipleHandles",
+      "normalized_name": "CoWaitForMultipleHandles",
+      "original_names": [
+        "CoWaitForMultipleHandles"
+      ]
+    },
+    {
+      "id": "api:createeventexw",
+      "type": "API",
+      "name": "CreateEventExW",
+      "normalized_name": "CreateEventExW",
+      "original_names": [
+        "CreateEventExW"
+      ]
+    },
+    {
+      "id": "api:getlasterror",
+      "type": "API",
+      "name": "GetLastError",
+      "normalized_name": "GetLastError",
+      "original_names": [
+        "GetLastError"
+      ]
+    },
+    {
+      "id": "fn:140009bcc",
+      "type": "FUNCTION",
+      "address": "140009bcc",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140009bcc",
+      "section": ".text",
+      "size": 625,
+      "symbol_name": "FUN_140009bcc",
+      "thunk": false
+    },
+    {
+      "id": "fn:140009f6c",
+      "type": "FUNCTION",
+      "address": "140009f6c",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140009f6c",
+      "section": ".text",
+      "size": 176,
+      "symbol_name": "FUN_140009f6c",
+      "thunk": false
+    },
+    {
+      "id": "fn:140024ebc",
+      "type": "FUNCTION",
+      "address": "140024ebc",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140024ebc",
+      "section": ".text",
+      "size": 638,
+      "symbol_name": "FUN_140024ebc",
+      "thunk": false
+    },
+    {
+      "id": "fn:140025144",
+      "type": "FUNCTION",
+      "address": "140025144",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140025144",
+      "section": ".text",
+      "size": 638,
+      "symbol_name": "FUN_140025144",
+      "thunk": false
+    },
+    {
+      "id": "fn:140028010",
+      "type": "FUNCTION",
+      "address": "140028010",
+      "external": false,
+      "internal": true,
+      "name": "_guard_dispatch_icall",
+      "section": "fothk",
+      "size": 5,
+      "symbol_name": "_guard_dispatch_icall",
+      "thunk": true
+    },
+    {
+      "id": "sec:140001000",
+      "type": "SECTION",
+      "end": "140027fff",
+      "entropy": 6.1732,
+      "entropy_class": "normal",
+      "entropy_sampled_bytes": 65536,
+      "execute": true,
+      "initialized": true,
+      "name": ".text",
+      "permissions": "r-x",
+      "read": true,
+      "reasons": [],
+      "size": 159744,
+      "start": "140001000",
+      "suspicious": false,
+      "write": false
+    },
+    {
+      "id": "sec:140028000",
+      "type": "SECTION",
+      "end": "140028fff",
+      "entropy": 0.0159,
+      "entropy_class": "normal",
+      "entropy_sampled_bytes": 4096,
+      "execute": true,
+      "initialized": true,
+      "name": "fothk",
+      "permissions": "r-x",
+      "read": true,
+      "reasons": [],
+      "size": 4096,
+      "start": "140028000",
+      "suspicious": false,
+      "write": false
+    },
+    {
+      "id": "str:14002ad07",
+      "type": "STRING",
+      "address": "14002ad07",
+      "categories": [
+        "file_path"
+      ],
+      "category": "file_path",
+      "raw_value": "\"Aonecore\\\\internal\\\\sdk\\\\inc\\\\wil\\\\opensource\\\\wil\\\\winrt.h\"",
+      "reference_count": 3,
+      "value": "Aonecore\\\\internal\\\\sdk\\\\inc\\\\wil\\\\opensource\\\\wil\\\\winrt.h"
+    },
+    {
+      "id": "strcat:file_path",
+      "type": "STRING_CATEGORY",
+      "category": "file_path",
+      "name": "file_path"
+    },
+    {
+      "id": "vis:call_visibility:fn:140009bcc",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:140009bcc",
+      "indicator": "call_visibility",
+      "indirect_call_count": 3,
+      "indirect_callsites": [
+        "140009c83",
+        "140009c97",
+        "140009d85"
+      ],
+      "resolved_indirect_call_count": 3,
+      "resolved_indirect_callsites": [
+        "140009c83",
+        "140009c97",
+        "140009d85"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    },
+    {
+      "id": "vis:call_visibility:fn:140009f6c",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:140009f6c",
+      "indicator": "call_visibility",
+      "indirect_call_count": 1,
+      "indirect_callsites": [
+        "140009fa0"
+      ],
+      "resolved_indirect_call_count": 1,
+      "resolved_indirect_callsites": [
+        "140009fa0"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    },
+    {
+      "id": "vis:call_visibility:fn:140024ebc",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:140024ebc",
+      "indicator": "call_visibility",
+      "indirect_call_count": 3,
+      "indirect_callsites": [
+        "140024f7e",
+        "140024f93",
+        "140025032"
+      ],
+      "resolved_indirect_call_count": 3,
+      "resolved_indirect_callsites": [
+        "140024f7e",
+        "140024f93",
+        "140025032"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    },
+    {
+      "id": "vis:call_visibility:fn:140025144",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:140025144",
+      "indicator": "call_visibility",
+      "indirect_call_count": 3,
+      "indirect_callsites": [
+        "140025206",
+        "14002521b",
+        "1400252ba"
+      ],
+      "resolved_indirect_call_count": 3,
+      "resolved_indirect_callsites": [
+        "140025206",
+        "14002521b",
+        "1400252ba"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    }
+  ],
+  "edges": [
+    {
+      "type": "calls_function",
+      "source": "fn:140009bcc",
+      "target": "fn:140009f6c",
+      "callee": "fn:140009f6c",
+      "caller": "fn:140009bcc",
+      "callsite": "140009c1e",
+      "callsites": [
+        "140009c1e"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140009bcc",
+      "target": "fn:140028010",
+      "callee": "fn:140028010",
+      "caller": "fn:140009bcc",
+      "callsite": "140009c51",
+      "callsites": [
+        "140009c51",
+        "140009cb9",
+        "140009cc8",
+        "140009cda",
+        "140009d07",
+        "140009d3b",
+        "140009dcd",
+        "140009dee",
+        "140009e10",
+        "140009e2b"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 10,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140009bcc",
+      "target": "api:cowaitformultiplehandles",
+      "api": "api:cowaitformultiplehandles",
+      "api_original_names": [
+        "CoWaitForMultipleHandles"
+      ],
+      "caller": "fn:140009bcc",
+      "callsite": "140009d85",
+      "callsites": [
+        "140009d85"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140009bcc",
+      "target": "api:createeventexw",
+      "api": "api:createeventexw",
+      "api_original_names": [
+        "CreateEventExW"
+      ],
+      "caller": "fn:140009bcc",
+      "callsite": "140009c83",
+      "callsites": [
+        "140009c83"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140009bcc",
+      "target": "api:getlasterror",
+      "api": "api:getlasterror",
+      "api_original_names": [
+        "GetLastError"
+      ],
+      "caller": "fn:140009bcc",
+      "callsite": "140009c97",
+      "callsites": [
+        "140009c97"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "references_string",
+      "source": "fn:140009bcc",
+      "target": "str:14002ad07",
+      "function": "fn:140009bcc",
+      "reference_count": 3,
+      "reference_sites": [
+        "140009cee",
+        "140009d1d",
+        "140009d44"
+      ],
+      "string": "str:14002ad07"
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140009bcc",
+      "target": "sec:140001000",
+      "function": "fn:140009bcc",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:140009bcc",
+      "target": "vis:call_visibility:fn:140009bcc",
+      "function": "fn:140009bcc",
+      "indicator": "vis:call_visibility:fn:140009bcc"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140009f6c",
+      "target": "fn:140028010",
+      "callee": "fn:140028010",
+      "caller": "fn:140009f6c",
+      "callsite": "140009fce",
+      "callsites": [
+        "140009fce",
+        "140009fe3",
+        "140009fff"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 3,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140009f6c",
+      "target": "api:cocreatefreethreadedmarshaler",
+      "api": "api:cocreatefreethreadedmarshaler",
+      "api_original_names": [
+        "CoCreateFreeThreadedMarshaler"
+      ],
+      "caller": "fn:140009f6c",
+      "callsite": "140009fa0",
+      "callsites": [
+        "140009fa0"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140009f6c",
+      "target": "sec:140001000",
+      "function": "fn:140009f6c",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:140009f6c",
+      "target": "vis:call_visibility:fn:140009f6c",
+      "function": "fn:140009f6c",
+      "indicator": "vis:call_visibility:fn:140009f6c"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140024ebc",
+      "target": "fn:140009f6c",
+      "callee": "fn:140009f6c",
+      "caller": "fn:140024ebc",
+      "callsite": "140024f1c",
+      "callsites": [
+        "140024f1c"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140024ebc",
+      "target": "fn:140028010",
+      "callee": "fn:140028010",
+      "caller": "fn:140024ebc",
+      "callsite": "140024ee3",
+      "callsites": [
+        "140024ee3",
+        "140024f4f",
+        "140024fbc",
+        "140024fd3",
+        "140024fe2",
+        "140024ff4",
+        "140025076",
+        "14002508a",
+        "1400250c8",
+        "1400250e0",
+        "140025100",
+        "140025112",
+        "140025126"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 13,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140024ebc",
+      "target": "api:cowaitformultiplehandles",
+      "api": "api:cowaitformultiplehandles",
+      "api_original_names": [
+        "CoWaitForMultipleHandles"
+      ],
+      "caller": "fn:140024ebc",
+      "callsite": "140025032",
+      "callsites": [
+        "140025032"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140024ebc",
+      "target": "api:createeventexw",
+      "api": "api:createeventexw",
+      "api_original_names": [
+        "CreateEventExW"
+      ],
+      "caller": "fn:140024ebc",
+      "callsite": "140024f7e",
+      "callsites": [
+        "140024f7e"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140024ebc",
+      "target": "api:getlasterror",
+      "api": "api:getlasterror",
+      "api_original_names": [
+        "GetLastError"
+      ],
+      "caller": "fn:140024ebc",
+      "callsite": "140024f93",
+      "callsites": [
+        "140024f93"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140024ebc",
+      "target": "sec:140001000",
+      "function": "fn:140024ebc",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:140024ebc",
+      "target": "vis:call_visibility:fn:140024ebc",
+      "function": "fn:140024ebc",
+      "indicator": "vis:call_visibility:fn:140024ebc"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140025144",
+      "target": "fn:140009f6c",
+      "callee": "fn:140009f6c",
+      "caller": "fn:140025144",
+      "callsite": "1400251a4",
+      "callsites": [
+        "1400251a4"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140025144",
+      "target": "fn:140028010",
+      "callee": "fn:140028010",
+      "caller": "fn:140025144",
+      "callsite": "14002516b",
+      "callsites": [
+        "14002516b",
+        "1400251d7",
+        "140025244",
+        "14002525b",
+        "14002526a",
+        "14002527c",
+        "1400252fe",
+        "140025312",
+        "140025350",
+        "140025368",
+        "140025388",
+        "14002539a",
+        "1400253ae"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 13,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140025144",
+      "target": "api:cowaitformultiplehandles",
+      "api": "api:cowaitformultiplehandles",
+      "api_original_names": [
+        "CoWaitForMultipleHandles"
+      ],
+      "caller": "fn:140025144",
+      "callsite": "1400252ba",
+      "callsites": [
+        "1400252ba"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140025144",
+      "target": "api:createeventexw",
+      "api": "api:createeventexw",
+      "api_original_names": [
+        "CreateEventExW"
+      ],
+      "caller": "fn:140025144",
+      "callsite": "140025206",
+      "callsites": [
+        "140025206"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140025144",
+      "target": "api:getlasterror",
+      "api": "api:getlasterror",
+      "api_original_names": [
+        "GetLastError"
+      ],
+      "caller": "fn:140025144",
+      "callsite": "14002521b",
+      "callsites": [
+        "14002521b"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140025144",
+      "target": "sec:140001000",
+      "function": "fn:140025144",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:140025144",
+      "target": "vis:call_visibility:fn:140025144",
+      "function": "fn:140025144",
+      "indicator": "vis:call_visibility:fn:140025144"
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140028010",
+      "target": "sec:140028000",
+      "function": "fn:140028010",
+      "section": "sec:140028000"
+    },
+    {
+      "type": "has_string_category",
+      "source": "str:14002ad07",
+      "target": "strcat:file_path",
+      "category": "strcat:file_path",
+      "string": "str:14002ad07"
+    }
+  ],
+  "unresolved_calls": [],
+  "truncation": {
+    "truncated": false,
+    "limits_reached": [],
+    "requested_depth": {
+      "caller_depth": 1,
+      "callee_depth": 2
+    },
+    "effective_depth": {
+      "caller_depth": 1,
+      "callee_depth": 1
+    },
+    "counts": {
+      "function_nodes": 5,
+      "evidence_nodes": 12,
+      "total_nodes": 17,
+      "edges": 28,
+      "unresolved_calls": 0
+    }
+  }
+}

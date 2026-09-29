@@ -1,0 +1,772 @@
+{
+  "schema_version": "0.1.0",
+  "seed_id": "seed:fn:14001ed0c",
+  "anchor_function_id": "fn:14001ed0c",
+  "graph_version": "0.12.0",
+  "extraction_config": {
+    "caller_depth": 1,
+    "callee_depth": 2,
+    "max_function_nodes": null,
+    "max_evidence_nodes": null,
+    "max_total_nodes": null,
+    "max_edges": null
+  },
+  "function_selection": {
+    "anchor_function_id": "fn:14001ed0c",
+    "function_ids": [
+      "fn:14000925c",
+      "fn:1400093f0",
+      "fn:14001e848",
+      "fn:14001ec2c",
+      "fn:14001ed0c",
+      "fn:14001f5f0",
+      "fn:140028010"
+    ],
+    "caller_distances": {
+      "fn:14001ec2c": 1,
+      "fn:14001ed0c": 0
+    },
+    "callee_distances": {
+      "fn:14000925c": 2,
+      "fn:1400093f0": 2,
+      "fn:14001e848": 1,
+      "fn:14001ed0c": 0,
+      "fn:14001f5f0": 1,
+      "fn:140028010": 1
+    }
+  },
+  "nodes": [
+    {
+      "id": "api:acquiresrwlockexclusive",
+      "type": "API",
+      "name": "AcquireSRWLockExclusive",
+      "normalized_name": "AcquireSRWLockExclusive",
+      "original_names": [
+        "AcquireSRWLockExclusive"
+      ]
+    },
+    {
+      "id": "api:closethreadpooltimer",
+      "type": "API",
+      "name": "CloseThreadpoolTimer",
+      "normalized_name": "CloseThreadpoolTimer",
+      "original_names": [
+        "CloseThreadpoolTimer"
+      ]
+    },
+    {
+      "id": "api:createthreadpooltimer",
+      "type": "API",
+      "name": "CreateThreadpoolTimer",
+      "normalized_name": "CreateThreadpoolTimer",
+      "original_names": [
+        "CreateThreadpoolTimer"
+      ]
+    },
+    {
+      "id": "api:getlasterror",
+      "type": "API",
+      "name": "GetLastError",
+      "normalized_name": "GetLastError",
+      "original_names": [
+        "GetLastError"
+      ]
+    },
+    {
+      "id": "api:releasesrwlockexclusive",
+      "type": "API",
+      "name": "ReleaseSRWLockExclusive",
+      "normalized_name": "ReleaseSRWLockExclusive",
+      "original_names": [
+        "ReleaseSRWLockExclusive"
+      ]
+    },
+    {
+      "id": "api:setlasterror",
+      "type": "API",
+      "name": "SetLastError",
+      "normalized_name": "SetLastError",
+      "original_names": [
+        "SetLastError"
+      ]
+    },
+    {
+      "id": "api:setthreadpooltimer",
+      "type": "API",
+      "name": "SetThreadpoolTimer",
+      "normalized_name": "SetThreadpoolTimer",
+      "original_names": [
+        "SetThreadpoolTimer"
+      ]
+    },
+    {
+      "id": "api:waitforthreadpooltimercallbacks",
+      "type": "API",
+      "name": "WaitForThreadpoolTimerCallbacks",
+      "normalized_name": "WaitForThreadpoolTimerCallbacks",
+      "original_names": [
+        "WaitForThreadpoolTimerCallbacks"
+      ]
+    },
+    {
+      "id": "fn:14000925c",
+      "type": "FUNCTION",
+      "address": "14000925c",
+      "external": false,
+      "internal": true,
+      "name": "FUN_14000925c",
+      "section": ".text",
+      "size": 157,
+      "symbol_name": "FUN_14000925c",
+      "thunk": false
+    },
+    {
+      "id": "fn:1400093f0",
+      "type": "FUNCTION",
+      "address": "1400093f0",
+      "external": false,
+      "internal": true,
+      "name": "FUN_1400093f0",
+      "section": ".text",
+      "size": 144,
+      "symbol_name": "FUN_1400093f0",
+      "thunk": false
+    },
+    {
+      "id": "fn:14001e848",
+      "type": "FUNCTION",
+      "address": "14001e848",
+      "external": false,
+      "internal": true,
+      "name": "FUN_14001e848",
+      "section": ".text",
+      "size": 351,
+      "symbol_name": "FUN_14001e848",
+      "thunk": false
+    },
+    {
+      "id": "fn:14001ec2c",
+      "type": "FUNCTION",
+      "address": "14001ec2c",
+      "external": false,
+      "internal": true,
+      "name": "FUN_14001ec2c",
+      "section": ".text",
+      "size": 215,
+      "symbol_name": "FUN_14001ec2c",
+      "thunk": false
+    },
+    {
+      "id": "fn:14001ed0c",
+      "type": "FUNCTION",
+      "address": "14001ed0c",
+      "external": false,
+      "internal": true,
+      "name": "FUN_14001ed0c",
+      "section": ".text",
+      "size": 459,
+      "symbol_name": "FUN_14001ed0c",
+      "thunk": false
+    },
+    {
+      "id": "fn:14001f5f0",
+      "type": "FUNCTION",
+      "address": "14001f5f0",
+      "external": false,
+      "internal": true,
+      "name": "FUN_14001f5f0",
+      "section": ".text",
+      "size": 735,
+      "symbol_name": "FUN_14001f5f0",
+      "thunk": false
+    },
+    {
+      "id": "fn:140028010",
+      "type": "FUNCTION",
+      "address": "140028010",
+      "external": false,
+      "internal": true,
+      "name": "_guard_dispatch_icall",
+      "section": "fothk",
+      "size": 5,
+      "symbol_name": "_guard_dispatch_icall",
+      "thunk": true
+    },
+    {
+      "id": "sec:140001000",
+      "type": "SECTION",
+      "end": "140027fff",
+      "entropy": 6.1732,
+      "entropy_class": "normal",
+      "entropy_sampled_bytes": 65536,
+      "execute": true,
+      "initialized": true,
+      "name": ".text",
+      "permissions": "r-x",
+      "read": true,
+      "reasons": [],
+      "size": 159744,
+      "start": "140001000",
+      "suspicious": false,
+      "write": false
+    },
+    {
+      "id": "sec:140028000",
+      "type": "SECTION",
+      "end": "140028fff",
+      "entropy": 0.0159,
+      "entropy_class": "normal",
+      "entropy_sampled_bytes": 4096,
+      "execute": true,
+      "initialized": true,
+      "name": "fothk",
+      "permissions": "r-x",
+      "read": true,
+      "reasons": [],
+      "size": 4096,
+      "start": "140028000",
+      "suspicious": false,
+      "write": false
+    },
+    {
+      "id": "vis:call_visibility:fn:1400093f0",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:1400093f0",
+      "indicator": "call_visibility",
+      "indirect_call_count": 5,
+      "indirect_callsites": [
+        "140009412",
+        "14000942b",
+        "14000943f",
+        "14000944e",
+        "14000945c"
+      ],
+      "resolved_indirect_call_count": 5,
+      "resolved_indirect_callsites": [
+        "140009412",
+        "14000942b",
+        "14000943f",
+        "14000944e",
+        "14000945c"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    },
+    {
+      "id": "vis:call_visibility:fn:14001e848",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:14001e848",
+      "indicator": "call_visibility",
+      "indirect_call_count": 6,
+      "indirect_callsites": [
+        "14001e89a",
+        "14001e908",
+        "14001e923",
+        "14001e93c",
+        "14001e96d",
+        "14001e985"
+      ],
+      "resolved_indirect_call_count": 6,
+      "resolved_indirect_callsites": [
+        "14001e89a",
+        "14001e908",
+        "14001e923",
+        "14001e93c",
+        "14001e96d",
+        "14001e985"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    },
+    {
+      "id": "vis:call_visibility:fn:14001ed0c",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:14001ed0c",
+      "indicator": "call_visibility",
+      "indirect_call_count": 2,
+      "indirect_callsites": [
+        "14001edff",
+        "14001ee53"
+      ],
+      "resolved_indirect_call_count": 2,
+      "resolved_indirect_callsites": [
+        "14001edff",
+        "14001ee53"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    }
+  ],
+  "edges": [
+    {
+      "type": "belongs_to_section",
+      "source": "fn:14000925c",
+      "target": "sec:140001000",
+      "function": "fn:14000925c",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:1400093f0",
+      "target": "api:closethreadpooltimer",
+      "api": "api:closethreadpooltimer",
+      "api_original_names": [
+        "CloseThreadpoolTimer"
+      ],
+      "caller": "fn:1400093f0",
+      "callsite": "14000944e",
+      "callsites": [
+        "14000944e"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:1400093f0",
+      "target": "api:getlasterror",
+      "api": "api:getlasterror",
+      "api_original_names": [
+        "GetLastError"
+      ],
+      "caller": "fn:1400093f0",
+      "callsite": "140009412",
+      "callsites": [
+        "140009412"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:1400093f0",
+      "target": "api:setlasterror",
+      "api": "api:setlasterror",
+      "api_original_names": [
+        "SetLastError"
+      ],
+      "caller": "fn:1400093f0",
+      "callsite": "14000945c",
+      "callsites": [
+        "14000945c"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:1400093f0",
+      "target": "api:setthreadpooltimer",
+      "api": "api:setthreadpooltimer",
+      "api_original_names": [
+        "SetThreadpoolTimer"
+      ],
+      "caller": "fn:1400093f0",
+      "callsite": "14000942b",
+      "callsites": [
+        "14000942b"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:1400093f0",
+      "target": "api:waitforthreadpooltimercallbacks",
+      "api": "api:waitforthreadpooltimercallbacks",
+      "api_original_names": [
+        "WaitForThreadpoolTimerCallbacks"
+      ],
+      "caller": "fn:1400093f0",
+      "callsite": "14000943f",
+      "callsites": [
+        "14000943f"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:1400093f0",
+      "target": "sec:140001000",
+      "function": "fn:1400093f0",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:1400093f0",
+      "target": "vis:call_visibility:fn:1400093f0",
+      "function": "fn:1400093f0",
+      "indicator": "vis:call_visibility:fn:1400093f0"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:14001e848",
+      "target": "fn:14000925c",
+      "callee": "fn:14000925c",
+      "caller": "fn:14001e848",
+      "callsite": "14001e8f3",
+      "callsites": [
+        "14001e8f3"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:14001e848",
+      "target": "fn:1400093f0",
+      "callee": "fn:1400093f0",
+      "caller": "fn:14001e848",
+      "callsite": "14001e935",
+      "callsites": [
+        "14001e935"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:14001e848",
+      "target": "fn:140028010",
+      "callee": "fn:140028010",
+      "caller": "fn:14001e848",
+      "callsite": "14001e886",
+      "callsites": [
+        "14001e886",
+        "14001e8c9"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 2,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14001e848",
+      "target": "api:acquiresrwlockexclusive",
+      "api": "api:acquiresrwlockexclusive",
+      "api_original_names": [
+        "AcquireSRWLockExclusive"
+      ],
+      "caller": "fn:14001e848",
+      "callsite": "14001e89a",
+      "callsites": [
+        "14001e89a"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14001e848",
+      "target": "api:createthreadpooltimer",
+      "api": "api:createthreadpooltimer",
+      "api_original_names": [
+        "CreateThreadpoolTimer"
+      ],
+      "caller": "fn:14001e848",
+      "callsite": "14001e923",
+      "callsites": [
+        "14001e923"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14001e848",
+      "target": "api:getlasterror",
+      "api": "api:getlasterror",
+      "api_original_names": [
+        "GetLastError"
+      ],
+      "caller": "fn:14001e848",
+      "callsite": "14001e908",
+      "callsites": [
+        "14001e908"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14001e848",
+      "target": "api:releasesrwlockexclusive",
+      "api": "api:releasesrwlockexclusive",
+      "api_original_names": [
+        "ReleaseSRWLockExclusive"
+      ],
+      "caller": "fn:14001e848",
+      "callsite": "14001e985",
+      "callsites": [
+        "14001e985"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14001e848",
+      "target": "api:setlasterror",
+      "api": "api:setlasterror",
+      "api_original_names": [
+        "SetLastError"
+      ],
+      "caller": "fn:14001e848",
+      "callsite": "14001e93c",
+      "callsites": [
+        "14001e93c"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14001e848",
+      "target": "api:setthreadpooltimer",
+      "api": "api:setthreadpooltimer",
+      "api_original_names": [
+        "SetThreadpoolTimer"
+      ],
+      "caller": "fn:14001e848",
+      "callsite": "14001e96d",
+      "callsites": [
+        "14001e96d"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:14001e848",
+      "target": "sec:140001000",
+      "function": "fn:14001e848",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:14001e848",
+      "target": "vis:call_visibility:fn:14001e848",
+      "function": "fn:14001e848",
+      "indicator": "vis:call_visibility:fn:14001e848"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:14001ec2c",
+      "target": "fn:14001ed0c",
+      "callee": "fn:14001ed0c",
+      "caller": "fn:14001ec2c",
+      "callsite": "14001ecae",
+      "callsites": [
+        "14001ecae"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:14001ec2c",
+      "target": "fn:140028010",
+      "callee": "fn:140028010",
+      "caller": "fn:14001ec2c",
+      "callsite": "14001ecf3",
+      "callsites": [
+        "14001ecf3"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:14001ec2c",
+      "target": "sec:140001000",
+      "function": "fn:14001ec2c",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:14001ed0c",
+      "target": "fn:14001e848",
+      "callee": "fn:14001e848",
+      "caller": "fn:14001ed0c",
+      "callsite": "14001ed9d",
+      "callsites": [
+        "14001ed9d"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:14001ed0c",
+      "target": "fn:14001f5f0",
+      "callee": "fn:14001f5f0",
+      "caller": "fn:14001ed0c",
+      "callsite": "14001ed3e",
+      "callsites": [
+        "14001ed3e"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:14001ed0c",
+      "target": "fn:140028010",
+      "callee": "fn:140028010",
+      "caller": "fn:14001ed0c",
+      "callsite": "14001ed81",
+      "callsites": [
+        "14001ed81",
+        "14001ede1",
+        "14001ee47",
+        "14001ee90",
+        "14001eeb2"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 5,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14001ed0c",
+      "target": "api:acquiresrwlockexclusive",
+      "api": "api:acquiresrwlockexclusive",
+      "api_original_names": [
+        "AcquireSRWLockExclusive"
+      ],
+      "caller": "fn:14001ed0c",
+      "callsite": "14001edff",
+      "callsites": [
+        "14001edff"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14001ed0c",
+      "target": "api:releasesrwlockexclusive",
+      "api": "api:releasesrwlockexclusive",
+      "api_original_names": [
+        "ReleaseSRWLockExclusive"
+      ],
+      "caller": "fn:14001ed0c",
+      "callsite": "14001ee53",
+      "callsites": [
+        "14001ee53"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:14001ed0c",
+      "target": "sec:140001000",
+      "function": "fn:14001ed0c",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:14001ed0c",
+      "target": "vis:call_visibility:fn:14001ed0c",
+      "function": "fn:14001ed0c",
+      "indicator": "vis:call_visibility:fn:14001ed0c"
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:14001f5f0",
+      "target": "sec:140001000",
+      "function": "fn:14001f5f0",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140028010",
+      "target": "sec:140028000",
+      "function": "fn:140028010",
+      "section": "sec:140028000"
+    }
+  ],
+  "unresolved_calls": [],
+  "truncation": {
+    "truncated": false,
+    "limits_reached": [],
+    "requested_depth": {
+      "caller_depth": 1,
+      "callee_depth": 2
+    },
+    "effective_depth": {
+      "caller_depth": 1,
+      "callee_depth": 2
+    },
+    "counts": {
+      "function_nodes": 7,
+      "evidence_nodes": 13,
+      "total_nodes": 20,
+      "edges": 31,
+      "unresolved_calls": 0
+    }
+  }
+}

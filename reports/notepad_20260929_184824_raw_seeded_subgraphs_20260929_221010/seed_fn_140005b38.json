@@ -1,0 +1,602 @@
+{
+  "schema_version": "0.1.0",
+  "seed_id": "seed:fn:140005b38",
+  "anchor_function_id": "fn:140005b38",
+  "graph_version": "0.12.0",
+  "extraction_config": {
+    "caller_depth": 1,
+    "callee_depth": 2,
+    "max_function_nodes": null,
+    "max_evidence_nodes": null,
+    "max_total_nodes": null,
+    "max_edges": null
+  },
+  "function_selection": {
+    "anchor_function_id": "fn:140005b38",
+    "function_ids": [
+      "fn:1400031d8",
+      "fn:14000329c",
+      "fn:140005b38",
+      "fn:140007cd0",
+      "fn:140007cf0",
+      "fn:1400088d4"
+    ],
+    "caller_distances": {
+      "fn:140005b38": 0,
+      "fn:1400088d4": 1
+    },
+    "callee_distances": {
+      "fn:1400031d8": 2,
+      "fn:14000329c": 2,
+      "fn:140005b38": 0,
+      "fn:140007cd0": 1,
+      "fn:140007cf0": 1
+    }
+  },
+  "nodes": [
+    {
+      "id": "api:closehandle",
+      "type": "API",
+      "name": "CloseHandle",
+      "normalized_name": "CloseHandle",
+      "original_names": [
+        "CloseHandle"
+      ]
+    },
+    {
+      "id": "api:getlasterror",
+      "type": "API",
+      "name": "GetLastError",
+      "normalized_name": "GetLastError",
+      "original_names": [
+        "GetLastError"
+      ]
+    },
+    {
+      "id": "api:opensemaphorew",
+      "type": "API",
+      "name": "OpenSemaphoreW",
+      "normalized_name": "OpenSemaphoreW",
+      "original_names": [
+        "OpenSemaphoreW"
+      ]
+    },
+    {
+      "id": "api:releasesemaphore",
+      "type": "API",
+      "name": "ReleaseSemaphore",
+      "normalized_name": "ReleaseSemaphore",
+      "original_names": [
+        "ReleaseSemaphore"
+      ]
+    },
+    {
+      "id": "api:waitforsingleobject",
+      "type": "API",
+      "name": "WaitForSingleObject",
+      "normalized_name": "WaitForSingleObject",
+      "original_names": [
+        "WaitForSingleObject"
+      ]
+    },
+    {
+      "id": "fn:1400031d8",
+      "type": "FUNCTION",
+      "address": "1400031d8",
+      "external": false,
+      "internal": true,
+      "name": "FUN_1400031d8",
+      "section": ".text",
+      "size": 189,
+      "symbol_name": "FUN_1400031d8",
+      "thunk": false
+    },
+    {
+      "id": "fn:14000329c",
+      "type": "FUNCTION",
+      "address": "14000329c",
+      "external": false,
+      "internal": true,
+      "name": "FUN_14000329c",
+      "section": ".text",
+      "size": 74,
+      "symbol_name": "FUN_14000329c",
+      "thunk": false
+    },
+    {
+      "id": "fn:140005b38",
+      "type": "FUNCTION",
+      "address": "140005b38",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140005b38",
+      "section": ".text",
+      "size": 383,
+      "symbol_name": "FUN_140005b38",
+      "thunk": false
+    },
+    {
+      "id": "fn:140007cd0",
+      "type": "FUNCTION",
+      "address": "140007cd0",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140007cd0",
+      "section": ".text",
+      "size": 24,
+      "symbol_name": "FUN_140007cd0",
+      "thunk": false
+    },
+    {
+      "id": "fn:140007cf0",
+      "type": "FUNCTION",
+      "address": "140007cf0",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140007cf0",
+      "section": ".text",
+      "size": 29,
+      "symbol_name": "FUN_140007cf0",
+      "thunk": false
+    },
+    {
+      "id": "fn:1400088d4",
+      "type": "FUNCTION",
+      "address": "1400088d4",
+      "external": false,
+      "internal": true,
+      "name": "FUN_1400088d4",
+      "section": ".text",
+      "size": 727,
+      "symbol_name": "FUN_1400088d4",
+      "thunk": false
+    },
+    {
+      "id": "sec:140001000",
+      "type": "SECTION",
+      "end": "140027fff",
+      "entropy": 6.1732,
+      "entropy_class": "normal",
+      "entropy_sampled_bytes": 65536,
+      "execute": true,
+      "initialized": true,
+      "name": ".text",
+      "permissions": "r-x",
+      "read": true,
+      "reasons": [],
+      "size": 159744,
+      "start": "140001000",
+      "suspicious": false,
+      "write": false
+    },
+    {
+      "id": "vis:call_visibility:fn:1400031d8",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:1400031d8",
+      "indicator": "call_visibility",
+      "indirect_call_count": 1,
+      "indirect_callsites": [
+        "1400031f9"
+      ],
+      "resolved_indirect_call_count": 1,
+      "resolved_indirect_callsites": [
+        "1400031f9"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    },
+    {
+      "id": "vis:call_visibility:fn:140005b38",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:140005b38",
+      "indicator": "call_visibility",
+      "indirect_call_count": 8,
+      "indirect_callsites": [
+        "140005b4a",
+        "140005ba1",
+        "140005bc6",
+        "140005bd6",
+        "140005c01",
+        "140005c33",
+        "140005c43",
+        "140005c5b"
+      ],
+      "resolved_indirect_call_count": 8,
+      "resolved_indirect_callsites": [
+        "140005b4a",
+        "140005ba1",
+        "140005bc6",
+        "140005bd6",
+        "140005c01",
+        "140005c33",
+        "140005c43",
+        "140005c5b"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    },
+    {
+      "id": "vis:call_visibility:fn:1400088d4",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:1400088d4",
+      "indicator": "call_visibility",
+      "indirect_call_count": 9,
+      "indirect_callsites": [
+        "140008976",
+        "14000898a",
+        "1400089f7",
+        "140008a32",
+        "140008a63",
+        "140008aaa",
+        "140008ac1",
+        "140008adc",
+        "140008b07"
+      ],
+      "resolved_indirect_call_count": 9,
+      "resolved_indirect_callsites": [
+        "140008976",
+        "14000898a",
+        "1400089f7",
+        "140008a32",
+        "140008a63",
+        "140008aaa",
+        "140008ac1",
+        "140008adc",
+        "140008b07"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    }
+  ],
+  "edges": [
+    {
+      "type": "calls_api",
+      "source": "fn:1400031d8",
+      "target": "api:getlasterror",
+      "api": "api:getlasterror",
+      "api_original_names": [
+        "GetLastError"
+      ],
+      "caller": "fn:1400031d8",
+      "callsite": "1400031f9",
+      "callsites": [
+        "1400031f9"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:1400031d8",
+      "target": "sec:140001000",
+      "function": "fn:1400031d8",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:1400031d8",
+      "target": "vis:call_visibility:fn:1400031d8",
+      "function": "fn:1400031d8",
+      "indicator": "vis:call_visibility:fn:1400031d8"
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:14000329c",
+      "target": "sec:140001000",
+      "function": "fn:14000329c",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140005b38",
+      "target": "fn:140007cd0",
+      "callee": "fn:140007cd0",
+      "caller": "fn:140005b38",
+      "callsite": "140005b6c",
+      "callsites": [
+        "140005b6c"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140005b38",
+      "target": "fn:140007cf0",
+      "callee": "fn:140007cf0",
+      "caller": "fn:140005b38",
+      "callsite": "140005ca2",
+      "callsites": [
+        "140005ca2"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140005b38",
+      "target": "api:getlasterror",
+      "api": "api:getlasterror",
+      "api_original_names": [
+        "GetLastError"
+      ],
+      "caller": "fn:140005b38",
+      "callsite": "140005bd6",
+      "callsites": [
+        "140005bd6",
+        "140005c43"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 2,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140005b38",
+      "target": "api:releasesemaphore",
+      "api": "api:releasesemaphore",
+      "api_original_names": [
+        "ReleaseSemaphore"
+      ],
+      "caller": "fn:140005b38",
+      "callsite": "140005ba1",
+      "callsites": [
+        "140005ba1",
+        "140005bc6",
+        "140005c01",
+        "140005c33"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 4,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140005b38",
+      "target": "api:waitforsingleobject",
+      "api": "api:waitforsingleobject",
+      "api_original_names": [
+        "WaitForSingleObject"
+      ],
+      "caller": "fn:140005b38",
+      "callsite": "140005b4a",
+      "callsites": [
+        "140005b4a",
+        "140005c5b"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 2,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140005b38",
+      "target": "sec:140001000",
+      "function": "fn:140005b38",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:140005b38",
+      "target": "vis:call_visibility:fn:140005b38",
+      "function": "fn:140005b38",
+      "indicator": "vis:call_visibility:fn:140005b38"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140007cd0",
+      "target": "fn:1400031d8",
+      "callee": "fn:1400031d8",
+      "caller": "fn:140007cd0",
+      "callsite": "140007cde",
+      "callsites": [
+        "140007cde"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140007cd0",
+      "target": "sec:140001000",
+      "function": "fn:140007cd0",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140007cf0",
+      "target": "fn:14000329c",
+      "callee": "fn:14000329c",
+      "caller": "fn:140007cf0",
+      "callsite": "140007d03",
+      "callsites": [
+        "140007d03"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140007cf0",
+      "target": "sec:140001000",
+      "function": "fn:140007cf0",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:1400088d4",
+      "target": "fn:140005b38",
+      "callee": "fn:140005b38",
+      "caller": "fn:1400088d4",
+      "callsite": "1400089ce",
+      "callsites": [
+        "1400089ce",
+        "140008a81"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 2,
+      "unresolved": false
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:1400088d4",
+      "target": "fn:140007cd0",
+      "callee": "fn:140007cd0",
+      "caller": "fn:1400088d4",
+      "callsite": "1400089b2",
+      "callsites": [
+        "1400089b2",
+        "140008a59"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 2,
+      "unresolved": false
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:1400088d4",
+      "target": "fn:140007cf0",
+      "callee": "fn:140007cf0",
+      "caller": "fn:1400088d4",
+      "callsite": "1400089ef",
+      "callsites": [
+        "1400089ef",
+        "140008aa2"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 2,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:1400088d4",
+      "target": "api:closehandle",
+      "api": "api:closehandle",
+      "api_original_names": [
+        "CloseHandle"
+      ],
+      "caller": "fn:1400088d4",
+      "callsite": "1400089f7",
+      "callsites": [
+        "1400089f7",
+        "140008a63",
+        "140008aaa",
+        "140008ac1",
+        "140008adc",
+        "140008b07"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 6,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:1400088d4",
+      "target": "api:getlasterror",
+      "api": "api:getlasterror",
+      "api_original_names": [
+        "GetLastError"
+      ],
+      "caller": "fn:1400088d4",
+      "callsite": "14000898a",
+      "callsites": [
+        "14000898a"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:1400088d4",
+      "target": "api:opensemaphorew",
+      "api": "api:opensemaphorew",
+      "api_original_names": [
+        "OpenSemaphoreW"
+      ],
+      "caller": "fn:1400088d4",
+      "callsite": "140008976",
+      "callsites": [
+        "140008976",
+        "140008a32"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 2,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:1400088d4",
+      "target": "sec:140001000",
+      "function": "fn:1400088d4",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:1400088d4",
+      "target": "vis:call_visibility:fn:1400088d4",
+      "function": "fn:1400088d4",
+      "indicator": "vis:call_visibility:fn:1400088d4"
+    }
+  ],
+  "unresolved_calls": [],
+  "truncation": {
+    "truncated": false,
+    "limits_reached": [],
+    "requested_depth": {
+      "caller_depth": 1,
+      "callee_depth": 2
+    },
+    "effective_depth": {
+      "caller_depth": 1,
+      "callee_depth": 2
+    },
+    "counts": {
+      "function_nodes": 6,
+      "evidence_nodes": 9,
+      "total_nodes": 15,
+      "edges": 23,
+      "unresolved_calls": 0
+    }
+  }
+}

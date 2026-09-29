@@ -1,0 +1,350 @@
+{
+  "schema_version": "0.1.0",
+  "seed_id": "seed:fn:1400124e0",
+  "anchor_function_id": "fn:1400124e0",
+  "graph_version": "0.12.0",
+  "extraction_config": {
+    "caller_depth": 1,
+    "callee_depth": 2,
+    "max_function_nodes": null,
+    "max_evidence_nodes": null,
+    "max_total_nodes": null,
+    "max_edges": null
+  },
+  "function_selection": {
+    "anchor_function_id": "fn:1400124e0",
+    "function_ids": [
+      "fn:1400019f0",
+      "fn:140006b2c",
+      "fn:140008f18",
+      "fn:1400124e0",
+      "fn:140028010"
+    ],
+    "caller_distances": {
+      "fn:1400124e0": 0
+    },
+    "callee_distances": {
+      "fn:1400019f0": 2,
+      "fn:140006b2c": 1,
+      "fn:140008f18": 2,
+      "fn:1400124e0": 0,
+      "fn:140028010": 2
+    }
+  },
+  "nodes": [
+    {
+      "id": "api:acquiresrwlockexclusive",
+      "type": "API",
+      "name": "AcquireSRWLockExclusive",
+      "normalized_name": "AcquireSRWLockExclusive",
+      "original_names": [
+        "AcquireSRWLockExclusive"
+      ]
+    },
+    {
+      "id": "api:releasesrwlockexclusive",
+      "type": "API",
+      "name": "ReleaseSRWLockExclusive",
+      "normalized_name": "ReleaseSRWLockExclusive",
+      "original_names": [
+        "ReleaseSRWLockExclusive"
+      ]
+    },
+    {
+      "id": "fn:1400019f0",
+      "type": "FUNCTION",
+      "address": "1400019f0",
+      "external": false,
+      "internal": true,
+      "name": "__security_check_cookie",
+      "section": ".text",
+      "size": 30,
+      "symbol_name": "__security_check_cookie",
+      "thunk": false
+    },
+    {
+      "id": "fn:140006b2c",
+      "type": "FUNCTION",
+      "address": "140006b2c",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140006b2c",
+      "section": ".text",
+      "size": 459,
+      "symbol_name": "FUN_140006b2c",
+      "thunk": false
+    },
+    {
+      "id": "fn:140008f18",
+      "type": "FUNCTION",
+      "address": "140008f18",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140008f18",
+      "section": ".text",
+      "size": 86,
+      "symbol_name": "FUN_140008f18",
+      "thunk": false
+    },
+    {
+      "id": "fn:1400124e0",
+      "type": "FUNCTION",
+      "address": "1400124e0",
+      "external": false,
+      "internal": true,
+      "name": "FUN_1400124e0",
+      "section": ".text",
+      "size": 87,
+      "symbol_name": "FUN_1400124e0",
+      "thunk": false
+    },
+    {
+      "id": "fn:140028010",
+      "type": "FUNCTION",
+      "address": "140028010",
+      "external": false,
+      "internal": true,
+      "name": "_guard_dispatch_icall",
+      "section": "fothk",
+      "size": 5,
+      "symbol_name": "_guard_dispatch_icall",
+      "thunk": true
+    },
+    {
+      "id": "sec:140001000",
+      "type": "SECTION",
+      "end": "140027fff",
+      "entropy": 6.1732,
+      "entropy_class": "normal",
+      "entropy_sampled_bytes": 65536,
+      "execute": true,
+      "initialized": true,
+      "name": ".text",
+      "permissions": "r-x",
+      "read": true,
+      "reasons": [],
+      "size": 159744,
+      "start": "140001000",
+      "suspicious": false,
+      "write": false
+    },
+    {
+      "id": "sec:140028000",
+      "type": "SECTION",
+      "end": "140028fff",
+      "entropy": 0.0159,
+      "entropy_class": "normal",
+      "entropy_sampled_bytes": 4096,
+      "execute": true,
+      "initialized": true,
+      "name": "fothk",
+      "permissions": "r-x",
+      "read": true,
+      "reasons": [],
+      "size": 4096,
+      "start": "140028000",
+      "suspicious": false,
+      "write": false
+    },
+    {
+      "id": "vis:call_visibility:fn:1400124e0",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:1400124e0",
+      "indicator": "call_visibility",
+      "indirect_call_count": 2,
+      "indirect_callsites": [
+        "1400124fa",
+        "140012520"
+      ],
+      "resolved_indirect_call_count": 2,
+      "resolved_indirect_callsites": [
+        "1400124fa",
+        "140012520"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    }
+  ],
+  "edges": [
+    {
+      "type": "belongs_to_section",
+      "source": "fn:1400019f0",
+      "target": "sec:140001000",
+      "function": "fn:1400019f0",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140006b2c",
+      "target": "fn:1400019f0",
+      "callee": "fn:1400019f0",
+      "caller": "fn:140006b2c",
+      "callsite": "140006cd8",
+      "callsites": [
+        "140006cd8"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140006b2c",
+      "target": "fn:140008f18",
+      "callee": "fn:140008f18",
+      "caller": "fn:140006b2c",
+      "callsite": "140006c90",
+      "callsites": [
+        "140006c90"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140006b2c",
+      "target": "fn:140028010",
+      "callee": "fn:140028010",
+      "caller": "fn:140006b2c",
+      "callsite": "140006ccb",
+      "callsites": [
+        "140006ccb"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140006b2c",
+      "target": "sec:140001000",
+      "function": "fn:140006b2c",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140008f18",
+      "target": "fn:140028010",
+      "callee": "fn:140028010",
+      "caller": "fn:140008f18",
+      "callsite": "140008f54",
+      "callsites": [
+        "140008f54"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140008f18",
+      "target": "sec:140001000",
+      "function": "fn:140008f18",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:1400124e0",
+      "target": "fn:140006b2c",
+      "callee": "fn:140006b2c",
+      "caller": "fn:1400124e0",
+      "callsite": "14001250f",
+      "callsites": [
+        "14001250f"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:1400124e0",
+      "target": "api:acquiresrwlockexclusive",
+      "api": "api:acquiresrwlockexclusive",
+      "api_original_names": [
+        "AcquireSRWLockExclusive"
+      ],
+      "caller": "fn:1400124e0",
+      "callsite": "1400124fa",
+      "callsites": [
+        "1400124fa"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:1400124e0",
+      "target": "api:releasesrwlockexclusive",
+      "api": "api:releasesrwlockexclusive",
+      "api_original_names": [
+        "ReleaseSRWLockExclusive"
+      ],
+      "caller": "fn:1400124e0",
+      "callsite": "140012520",
+      "callsites": [
+        "140012520"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:1400124e0",
+      "target": "sec:140001000",
+      "function": "fn:1400124e0",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:1400124e0",
+      "target": "vis:call_visibility:fn:1400124e0",
+      "function": "fn:1400124e0",
+      "indicator": "vis:call_visibility:fn:1400124e0"
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140028010",
+      "target": "sec:140028000",
+      "function": "fn:140028010",
+      "section": "sec:140028000"
+    }
+  ],
+  "unresolved_calls": [],
+  "truncation": {
+    "truncated": false,
+    "limits_reached": [],
+    "requested_depth": {
+      "caller_depth": 1,
+      "callee_depth": 2
+    },
+    "effective_depth": {
+      "caller_depth": 0,
+      "callee_depth": 2
+    },
+    "counts": {
+      "function_nodes": 5,
+      "evidence_nodes": 5,
+      "total_nodes": 10,
+      "edges": 13,
+      "unresolved_calls": 0
+    }
+  }
+}

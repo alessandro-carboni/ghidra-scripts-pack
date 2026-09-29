@@ -1,0 +1,607 @@
+{
+  "schema_version": "0.1.0",
+  "seed_id": "seed:fn:14000cc40",
+  "anchor_function_id": "fn:14000cc40",
+  "graph_version": "0.12.0",
+  "extraction_config": {
+    "caller_depth": 1,
+    "callee_depth": 2,
+    "max_function_nodes": null,
+    "max_evidence_nodes": null,
+    "max_total_nodes": null,
+    "max_edges": null
+  },
+  "function_selection": {
+    "anchor_function_id": "fn:14000cc40",
+    "function_ids": [
+      "fn:1400019f0",
+      "fn:140001cf0",
+      "fn:1400029f4",
+      "fn:1400083f8",
+      "fn:14000cc40"
+    ],
+    "caller_distances": {
+      "fn:14000cc40": 0
+    },
+    "callee_distances": {
+      "fn:1400019f0": 1,
+      "fn:140001cf0": 2,
+      "fn:1400029f4": 2,
+      "fn:1400083f8": 1,
+      "fn:14000cc40": 0
+    }
+  },
+  "nodes": [
+    {
+      "id": "api:_o___stdio_common_vswprintf",
+      "type": "API",
+      "name": "_o___stdio_common_vswprintf",
+      "normalized_name": "_o___stdio_common_vswprintf",
+      "original_names": [
+        "_o___stdio_common_vswprintf"
+      ]
+    },
+    {
+      "id": "api:_o__wtol",
+      "type": "API",
+      "name": "_o__wtol",
+      "normalized_name": "_o__wtol",
+      "original_names": [
+        "_o__wtol"
+      ]
+    },
+    {
+      "id": "api:enddialog",
+      "type": "API",
+      "name": "EndDialog",
+      "normalized_name": "EndDialog",
+      "original_names": [
+        "EndDialog"
+      ]
+    },
+    {
+      "id": "api:foldstringw",
+      "type": "API",
+      "name": "FoldStringW",
+      "normalized_name": "FoldStringW",
+      "original_names": [
+        "FoldStringW"
+      ]
+    },
+    {
+      "id": "api:getdlgitemtextw",
+      "type": "API",
+      "name": "GetDlgItemTextW",
+      "normalized_name": "GetDlgItemTextW",
+      "original_names": [
+        "GetDlgItemTextW"
+      ]
+    },
+    {
+      "id": "api:isprocessorfeaturepresent",
+      "type": "API",
+      "name": "IsProcessorFeaturePresent",
+      "normalized_name": "IsProcessorFeaturePresent",
+      "original_names": [
+        "IsProcessorFeaturePresent"
+      ]
+    },
+    {
+      "id": "api:messageboxw",
+      "type": "API",
+      "name": "MessageBoxW",
+      "normalized_name": "MessageBoxW",
+      "original_names": [
+        "MessageBoxW"
+      ]
+    },
+    {
+      "id": "api:sendmessagew",
+      "type": "API",
+      "name": "SendMessageW",
+      "normalized_name": "SendMessageW",
+      "original_names": [
+        "SendMessageW"
+      ]
+    },
+    {
+      "id": "api:setdlgitemtextw",
+      "type": "API",
+      "name": "SetDlgItemTextW",
+      "normalized_name": "SetDlgItemTextW",
+      "original_names": [
+        "SetDlgItemTextW"
+      ]
+    },
+    {
+      "id": "api:setfocus",
+      "type": "API",
+      "name": "SetFocus",
+      "normalized_name": "SetFocus",
+      "original_names": [
+        "SetFocus"
+      ]
+    },
+    {
+      "id": "fn:1400019f0",
+      "type": "FUNCTION",
+      "address": "1400019f0",
+      "external": false,
+      "internal": true,
+      "name": "__security_check_cookie",
+      "section": ".text",
+      "size": 30,
+      "symbol_name": "__security_check_cookie",
+      "thunk": false
+    },
+    {
+      "id": "fn:140001cf0",
+      "type": "FUNCTION",
+      "address": "140001cf0",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140001cf0",
+      "section": ".text",
+      "size": 210,
+      "symbol_name": "FUN_140001cf0",
+      "thunk": false
+    },
+    {
+      "id": "fn:1400029f4",
+      "type": "FUNCTION",
+      "address": "1400029f4",
+      "external": false,
+      "internal": true,
+      "name": "FID_conflict:_vsnprintf",
+      "section": ".text",
+      "size": 98,
+      "symbol_name": "FID_conflict:_vsnprintf",
+      "thunk": false
+    },
+    {
+      "id": "fn:1400083f8",
+      "type": "FUNCTION",
+      "address": "1400083f8",
+      "external": false,
+      "internal": true,
+      "name": "FUN_1400083f8",
+      "section": ".text",
+      "size": 107,
+      "symbol_name": "FUN_1400083f8",
+      "thunk": false
+    },
+    {
+      "id": "fn:14000cc40",
+      "type": "FUNCTION",
+      "address": "14000cc40",
+      "external": false,
+      "internal": true,
+      "name": "FUN_14000cc40",
+      "section": ".text",
+      "size": 565,
+      "symbol_name": "FUN_14000cc40",
+      "thunk": false
+    },
+    {
+      "id": "sec:140001000",
+      "type": "SECTION",
+      "end": "140027fff",
+      "entropy": 6.1732,
+      "entropy_class": "normal",
+      "entropy_sampled_bytes": 65536,
+      "execute": true,
+      "initialized": true,
+      "name": ".text",
+      "permissions": "r-x",
+      "read": true,
+      "reasons": [],
+      "size": 159744,
+      "start": "140001000",
+      "suspicious": false,
+      "write": false
+    },
+    {
+      "id": "vis:call_visibility:fn:140001cf0",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:140001cf0",
+      "indicator": "call_visibility",
+      "indirect_call_count": 2,
+      "indirect_callsites": [
+        "140001cfe",
+        "140001d0d"
+      ],
+      "resolved_indirect_call_count": 1,
+      "resolved_indirect_callsites": [
+        "140001cfe"
+      ],
+      "signals": [
+        "indirect_call",
+        "unresolved_call"
+      ],
+      "unresolved_indirect_call_count": 1,
+      "unresolved_indirect_callsites": [
+        "140001d0d"
+      ]
+    },
+    {
+      "id": "vis:call_visibility:fn:14000cc40",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:14000cc40",
+      "indicator": "call_visibility",
+      "indirect_call_count": 13,
+      "indirect_callsites": [
+        "14000cca7",
+        "14000cccb",
+        "14000ccf2",
+        "14000cd03",
+        "14000cd28",
+        "14000cd5d",
+        "14000cd7b",
+        "14000cdad",
+        "14000cdbc",
+        "14000cde5",
+        "14000ce05",
+        "14000ce38",
+        "14000ce47"
+      ],
+      "resolved_indirect_call_count": 13,
+      "resolved_indirect_callsites": [
+        "14000cca7",
+        "14000cccb",
+        "14000ccf2",
+        "14000cd03",
+        "14000cd28",
+        "14000cd5d",
+        "14000cd7b",
+        "14000cdad",
+        "14000cdbc",
+        "14000cde5",
+        "14000ce05",
+        "14000ce38",
+        "14000ce47"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    }
+  ],
+  "edges": [
+    {
+      "type": "calls_function",
+      "source": "fn:1400019f0",
+      "target": "fn:140001cf0",
+      "callee": "fn:140001cf0",
+      "caller": "fn:1400019f0",
+      "callsite": "140001a09",
+      "callsites": [
+        "140001a09"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:1400019f0",
+      "target": "sec:140001000",
+      "function": "fn:1400019f0",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140001cf0",
+      "target": "api:isprocessorfeaturepresent",
+      "api": "api:isprocessorfeaturepresent",
+      "api_original_names": [
+        "IsProcessorFeaturePresent"
+      ],
+      "caller": "fn:140001cf0",
+      "callsite": "140001cfe",
+      "callsites": [
+        "140001cfe"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140001cf0",
+      "target": "sec:140001000",
+      "function": "fn:140001cf0",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:140001cf0",
+      "target": "vis:call_visibility:fn:140001cf0",
+      "function": "fn:140001cf0",
+      "indicator": "vis:call_visibility:fn:140001cf0"
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:1400029f4",
+      "target": "api:_o___stdio_common_vswprintf",
+      "api": "api:_o___stdio_common_vswprintf",
+      "api_original_names": [
+        "_o___stdio_common_vswprintf"
+      ],
+      "caller": "fn:1400029f4",
+      "callsite": "140002a34",
+      "callsites": [
+        "140002a34"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:1400029f4",
+      "target": "sec:140001000",
+      "function": "fn:1400029f4",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:1400083f8",
+      "target": "fn:1400029f4",
+      "callee": "fn:1400029f4",
+      "caller": "fn:1400083f8",
+      "callsite": "140008439",
+      "callsites": [
+        "140008439"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:1400083f8",
+      "target": "sec:140001000",
+      "function": "fn:1400083f8",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:14000cc40",
+      "target": "fn:1400019f0",
+      "callee": "fn:1400019f0",
+      "caller": "fn:14000cc40",
+      "callsite": "14000ce5f",
+      "callsites": [
+        "14000ce5f"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:14000cc40",
+      "target": "fn:1400083f8",
+      "callee": "fn:1400083f8",
+      "caller": "fn:14000cc40",
+      "callsite": "14000cd9b",
+      "callsites": [
+        "14000cd9b",
+        "14000ce26"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 2,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14000cc40",
+      "target": "api:_o__wtol",
+      "api": "api:_o__wtol",
+      "api_original_names": [
+        "_o__wtol"
+      ],
+      "caller": "fn:14000cc40",
+      "callsite": "14000cd03",
+      "callsites": [
+        "14000cd03"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14000cc40",
+      "target": "api:enddialog",
+      "api": "api:enddialog",
+      "api_original_names": [
+        "EndDialog"
+      ],
+      "caller": "fn:14000cc40",
+      "callsite": "14000cca7",
+      "callsites": [
+        "14000cca7"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14000cc40",
+      "target": "api:foldstringw",
+      "api": "api:foldstringw",
+      "api_original_names": [
+        "FoldStringW"
+      ],
+      "caller": "fn:14000cc40",
+      "callsite": "14000ccf2",
+      "callsites": [
+        "14000ccf2"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14000cc40",
+      "target": "api:getdlgitemtextw",
+      "api": "api:getdlgitemtextw",
+      "api_original_names": [
+        "GetDlgItemTextW"
+      ],
+      "caller": "fn:14000cc40",
+      "callsite": "14000cccb",
+      "callsites": [
+        "14000cccb"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14000cc40",
+      "target": "api:messageboxw",
+      "api": "api:messageboxw",
+      "api_original_names": [
+        "MessageBoxW"
+      ],
+      "caller": "fn:14000cc40",
+      "callsite": "14000cd5d",
+      "callsites": [
+        "14000cd5d"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14000cc40",
+      "target": "api:sendmessagew",
+      "api": "api:sendmessagew",
+      "api_original_names": [
+        "SendMessageW"
+      ],
+      "caller": "fn:14000cc40",
+      "callsite": "14000cd28",
+      "callsites": [
+        "14000cd28",
+        "14000cd7b",
+        "14000cde5",
+        "14000ce05"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 4,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14000cc40",
+      "target": "api:setdlgitemtextw",
+      "api": "api:setdlgitemtextw",
+      "api_original_names": [
+        "SetDlgItemTextW"
+      ],
+      "caller": "fn:14000cc40",
+      "callsite": "14000cdad",
+      "callsites": [
+        "14000cdad",
+        "14000ce38"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 2,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14000cc40",
+      "target": "api:setfocus",
+      "api": "api:setfocus",
+      "api_original_names": [
+        "SetFocus"
+      ],
+      "caller": "fn:14000cc40",
+      "callsite": "14000cdbc",
+      "callsites": [
+        "14000cdbc",
+        "14000ce47"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 2,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:14000cc40",
+      "target": "sec:140001000",
+      "function": "fn:14000cc40",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:14000cc40",
+      "target": "vis:call_visibility:fn:14000cc40",
+      "function": "fn:14000cc40",
+      "indicator": "vis:call_visibility:fn:14000cc40"
+    }
+  ],
+  "unresolved_calls": [
+    {
+      "indicator": "unresolved_call",
+      "caller": "fn:140001cf0",
+      "callee": null,
+      "callsite": "140001d0d",
+      "unresolved": true,
+      "reason": "no_resolved_function_or_api_target",
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1
+    }
+  ],
+  "truncation": {
+    "truncated": false,
+    "limits_reached": [],
+    "requested_depth": {
+      "caller_depth": 1,
+      "callee_depth": 2
+    },
+    "effective_depth": {
+      "caller_depth": 0,
+      "callee_depth": 2
+    },
+    "counts": {
+      "function_nodes": 5,
+      "evidence_nodes": 13,
+      "total_nodes": 18,
+      "edges": 21,
+      "unresolved_calls": 1
+    }
+  }
+}

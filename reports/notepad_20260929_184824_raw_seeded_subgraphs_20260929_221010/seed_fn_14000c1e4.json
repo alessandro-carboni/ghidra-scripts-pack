@@ -1,0 +1,596 @@
+{
+  "schema_version": "0.1.0",
+  "seed_id": "seed:fn:14000c1e4",
+  "anchor_function_id": "fn:14000c1e4",
+  "graph_version": "0.12.0",
+  "extraction_config": {
+    "caller_depth": 1,
+    "callee_depth": 2,
+    "max_function_nodes": null,
+    "max_evidence_nodes": null,
+    "max_total_nodes": null,
+    "max_edges": null
+  },
+  "function_selection": {
+    "anchor_function_id": "fn:14000c1e4",
+    "function_ids": [
+      "fn:14000c1e4",
+      "fn:14000d54c",
+      "fn:14000d6a8",
+      "fn:140028010"
+    ],
+    "caller_distances": {
+      "fn:14000c1e4": 0,
+      "fn:14000d54c": 1,
+      "fn:14000d6a8": 1
+    },
+    "callee_distances": {
+      "fn:14000c1e4": 0,
+      "fn:140028010": 1
+    }
+  },
+  "nodes": [
+    {
+      "id": "api:cocreateinstance",
+      "type": "API",
+      "name": "CoCreateInstance",
+      "normalized_name": "CoCreateInstance",
+      "original_names": [
+        "CoCreateInstance"
+      ]
+    },
+    {
+      "id": "api:getacp",
+      "type": "API",
+      "name": "GetACP",
+      "normalized_name": "GetACP",
+      "original_names": [
+        "GetACP"
+      ]
+    },
+    {
+      "id": "api:pathisfilespecw",
+      "type": "API",
+      "name": "PathIsFileSpecW",
+      "normalized_name": "PathIsFileSpecW",
+      "original_names": [
+        "PathIsFileSpecW"
+      ]
+    },
+    {
+      "id": "api:psgetpropertydescriptionlistfromstring",
+      "type": "API",
+      "name": "PSGetPropertyDescriptionListFromString",
+      "normalized_name": "PSGetPropertyDescriptionListFromString",
+      "original_names": [
+        "PSGetPropertyDescriptionListFromString"
+      ]
+    },
+    {
+      "id": "api:shcreateitemfromparsingname",
+      "type": "API",
+      "name": "SHCreateItemFromParsingName",
+      "normalized_name": "SHCreateItemFromParsingName",
+      "original_names": [
+        "SHCreateItemFromParsingName"
+      ]
+    },
+    {
+      "id": "fn:14000c1e4",
+      "type": "FUNCTION",
+      "address": "14000c1e4",
+      "external": false,
+      "internal": true,
+      "name": "FUN_14000c1e4",
+      "section": ".text",
+      "size": 439,
+      "symbol_name": "FUN_14000c1e4",
+      "thunk": false
+    },
+    {
+      "id": "fn:14000d54c",
+      "type": "FUNCTION",
+      "address": "14000d54c",
+      "external": false,
+      "internal": true,
+      "name": "FUN_14000d54c",
+      "section": ".text",
+      "size": 341,
+      "symbol_name": "FUN_14000d54c",
+      "thunk": false
+    },
+    {
+      "id": "fn:14000d6a8",
+      "type": "FUNCTION",
+      "address": "14000d6a8",
+      "external": false,
+      "internal": true,
+      "name": "FUN_14000d6a8",
+      "section": ".text",
+      "size": 736,
+      "symbol_name": "FUN_14000d6a8",
+      "thunk": false
+    },
+    {
+      "id": "fn:140028010",
+      "type": "FUNCTION",
+      "address": "140028010",
+      "external": false,
+      "internal": true,
+      "name": "_guard_dispatch_icall",
+      "section": "fothk",
+      "size": 5,
+      "symbol_name": "_guard_dispatch_icall",
+      "thunk": true
+    },
+    {
+      "id": "sec:140001000",
+      "type": "SECTION",
+      "end": "140027fff",
+      "entropy": 6.1732,
+      "entropy_class": "normal",
+      "entropy_sampled_bytes": 65536,
+      "execute": true,
+      "initialized": true,
+      "name": ".text",
+      "permissions": "r-x",
+      "read": true,
+      "reasons": [],
+      "size": 159744,
+      "start": "140001000",
+      "suspicious": false,
+      "write": false
+    },
+    {
+      "id": "sec:140028000",
+      "type": "SECTION",
+      "end": "140028fff",
+      "entropy": 0.0159,
+      "entropy_class": "normal",
+      "entropy_sampled_bytes": 4096,
+      "execute": true,
+      "initialized": true,
+      "name": "fothk",
+      "permissions": "r-x",
+      "read": true,
+      "reasons": [],
+      "size": 4096,
+      "start": "140028000",
+      "suspicious": false,
+      "write": false
+    },
+    {
+      "id": "str:14002aff8",
+      "type": "STRING",
+      "address": "14002aff8",
+      "categories": [],
+      "category": null,
+      "raw_value": "u\"GB18030\"",
+      "reference_count": 5,
+      "value": "GB18030"
+    },
+    {
+      "id": "str:14002b060",
+      "type": "STRING",
+      "address": "14002b060",
+      "categories": [],
+      "category": null,
+      "raw_value": "u\"prop:System.Security.EncryptionOwners\"",
+      "reference_count": 1,
+      "value": "prop:System.Security.EncryptionOwners"
+    },
+    {
+      "id": "str:14002b1d0",
+      "type": "STRING",
+      "address": "14002b1d0",
+      "categories": [
+        "file_path"
+      ],
+      "category": "file_path",
+      "raw_value": "\"onecore\\\\internal\\\\sdk\\\\inc\\\\wil\\\\opensource/wil/win32_helpers.h\"",
+      "reference_count": 9,
+      "value": "onecore\\\\internal\\\\sdk\\\\inc\\\\wil\\\\opensource/wil/win32_helpers.h"
+    },
+    {
+      "id": "strcat:file_path",
+      "type": "STRING_CATEGORY",
+      "category": "file_path",
+      "name": "file_path"
+    },
+    {
+      "id": "vis:call_visibility:fn:14000c1e4",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:14000c1e4",
+      "indicator": "call_visibility",
+      "indirect_call_count": 1,
+      "indirect_callsites": [
+        "14000c33c"
+      ],
+      "resolved_indirect_call_count": 1,
+      "resolved_indirect_callsites": [
+        "14000c33c"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    },
+    {
+      "id": "vis:call_visibility:fn:14000d54c",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:14000d54c",
+      "indicator": "call_visibility",
+      "indirect_call_count": 1,
+      "indirect_callsites": [
+        "14000d583"
+      ],
+      "resolved_indirect_call_count": 1,
+      "resolved_indirect_callsites": [
+        "14000d583"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    },
+    {
+      "id": "vis:call_visibility:fn:14000d6a8",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:14000d6a8",
+      "indicator": "call_visibility",
+      "indirect_call_count": 4,
+      "indirect_callsites": [
+        "14000d6fa",
+        "14000d730",
+        "14000d800",
+        "14000d838"
+      ],
+      "resolved_indirect_call_count": 4,
+      "resolved_indirect_callsites": [
+        "14000d6fa",
+        "14000d730",
+        "14000d800",
+        "14000d838"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    }
+  ],
+  "edges": [
+    {
+      "type": "calls_function",
+      "source": "fn:14000c1e4",
+      "target": "fn:140028010",
+      "callee": "fn:140028010",
+      "caller": "fn:14000c1e4",
+      "callsite": "14000c214",
+      "callsites": [
+        "14000c214",
+        "14000c234",
+        "14000c261",
+        "14000c289",
+        "14000c2b4",
+        "14000c2df",
+        "14000c30a",
+        "14000c331",
+        "14000c36b",
+        "14000c37f"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 10,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14000c1e4",
+      "target": "api:getacp",
+      "api": "api:getacp",
+      "api_original_names": [
+        "GetACP"
+      ],
+      "caller": "fn:14000c1e4",
+      "callsite": "14000c33c",
+      "callsites": [
+        "14000c33c"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "references_string",
+      "source": "fn:14000c1e4",
+      "target": "str:14002aff8",
+      "function": "fn:14000c1e4",
+      "reference_count": 1,
+      "reference_sites": [
+        "14000c352"
+      ],
+      "string": "str:14002aff8"
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:14000c1e4",
+      "target": "sec:140001000",
+      "function": "fn:14000c1e4",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:14000c1e4",
+      "target": "vis:call_visibility:fn:14000c1e4",
+      "function": "fn:14000c1e4",
+      "indicator": "vis:call_visibility:fn:14000c1e4"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:14000d54c",
+      "target": "fn:14000c1e4",
+      "callee": "fn:14000c1e4",
+      "caller": "fn:14000d54c",
+      "callsite": "14000d5c8",
+      "callsites": [
+        "14000d5c8"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:14000d54c",
+      "target": "fn:140028010",
+      "callee": "fn:140028010",
+      "caller": "fn:14000d54c",
+      "callsite": "14000d5b3",
+      "callsites": [
+        "14000d5b3",
+        "14000d5ec",
+        "14000d62e",
+        "14000d673",
+        "14000d68d"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 5,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14000d54c",
+      "target": "api:cocreateinstance",
+      "api": "api:cocreateinstance",
+      "api_original_names": [
+        "CoCreateInstance"
+      ],
+      "caller": "fn:14000d54c",
+      "callsite": "14000d583",
+      "callsites": [
+        "14000d583"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "references_string",
+      "source": "fn:14000d54c",
+      "target": "str:14002b1d0",
+      "function": "fn:14000d54c",
+      "reference_count": 1,
+      "reference_sites": [
+        "14000d5c6"
+      ],
+      "string": "str:14002b1d0"
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:14000d54c",
+      "target": "sec:140001000",
+      "function": "fn:14000d54c",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:14000d54c",
+      "target": "vis:call_visibility:fn:14000d54c",
+      "function": "fn:14000d54c",
+      "indicator": "vis:call_visibility:fn:14000d54c"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:14000d6a8",
+      "target": "fn:14000c1e4",
+      "callee": "fn:14000c1e4",
+      "caller": "fn:14000d6a8",
+      "callsite": "14000d798",
+      "callsites": [
+        "14000d798"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:14000d6a8",
+      "target": "fn:140028010",
+      "callee": "fn:140028010",
+      "caller": "fn:14000d6a8",
+      "callsite": "14000d75b",
+      "callsites": [
+        "14000d75b",
+        "14000d783",
+        "14000d7cb",
+        "14000d7ea",
+        "14000d81d",
+        "14000d859",
+        "14000d869",
+        "14000d887",
+        "14000d8c7",
+        "14000d8ef",
+        "14000d908",
+        "14000d92a",
+        "14000d94a",
+        "14000d963"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 14,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14000d6a8",
+      "target": "api:cocreateinstance",
+      "api": "api:cocreateinstance",
+      "api_original_names": [
+        "CoCreateInstance"
+      ],
+      "caller": "fn:14000d6a8",
+      "callsite": "14000d6fa",
+      "callsites": [
+        "14000d6fa"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14000d6a8",
+      "target": "api:pathisfilespecw",
+      "api": "api:pathisfilespecw",
+      "api_original_names": [
+        "PathIsFileSpecW"
+      ],
+      "caller": "fn:14000d6a8",
+      "callsite": "14000d800",
+      "callsites": [
+        "14000d800"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14000d6a8",
+      "target": "api:psgetpropertydescriptionlistfromstring",
+      "api": "api:psgetpropertydescriptionlistfromstring",
+      "api_original_names": [
+        "PSGetPropertyDescriptionListFromString"
+      ],
+      "caller": "fn:14000d6a8",
+      "callsite": "14000d730",
+      "callsites": [
+        "14000d730"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14000d6a8",
+      "target": "api:shcreateitemfromparsingname",
+      "api": "api:shcreateitemfromparsingname",
+      "api_original_names": [
+        "SHCreateItemFromParsingName"
+      ],
+      "caller": "fn:14000d6a8",
+      "callsite": "14000d838",
+      "callsites": [
+        "14000d838"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "references_string",
+      "source": "fn:14000d6a8",
+      "target": "str:14002b060",
+      "function": "fn:14000d6a8",
+      "reference_count": 1,
+      "reference_sites": [
+        "14000d725"
+      ],
+      "string": "str:14002b060"
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:14000d6a8",
+      "target": "sec:140001000",
+      "function": "fn:14000d6a8",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:14000d6a8",
+      "target": "vis:call_visibility:fn:14000d6a8",
+      "function": "fn:14000d6a8",
+      "indicator": "vis:call_visibility:fn:14000d6a8"
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140028010",
+      "target": "sec:140028000",
+      "function": "fn:140028010",
+      "section": "sec:140028000"
+    },
+    {
+      "type": "has_string_category",
+      "source": "str:14002b1d0",
+      "target": "strcat:file_path",
+      "category": "strcat:file_path",
+      "string": "str:14002b1d0"
+    }
+  ],
+  "unresolved_calls": [],
+  "truncation": {
+    "truncated": false,
+    "limits_reached": [],
+    "requested_depth": {
+      "caller_depth": 1,
+      "callee_depth": 2
+    },
+    "effective_depth": {
+      "caller_depth": 1,
+      "callee_depth": 1
+    },
+    "counts": {
+      "function_nodes": 4,
+      "evidence_nodes": 14,
+      "total_nodes": 18,
+      "edges": 22,
+      "unresolved_calls": 0
+    }
+  }
+}

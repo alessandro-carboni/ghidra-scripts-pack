@@ -1,0 +1,1611 @@
+{
+  "schema_version": "0.1.0",
+  "seed_id": "seed:fn:140007004",
+  "anchor_function_id": "fn:140007004",
+  "graph_version": "0.12.0",
+  "extraction_config": {
+    "caller_depth": 1,
+    "callee_depth": 2,
+    "max_function_nodes": null,
+    "max_evidence_nodes": null,
+    "max_total_nodes": null,
+    "max_edges": null
+  },
+  "function_selection": {
+    "anchor_function_id": "fn:140007004",
+    "function_ids": [
+      "fn:140004180",
+      "fn:140004f4c",
+      "fn:140006634",
+      "fn:1400068f0",
+      "fn:140006ef4",
+      "fn:140006f2c",
+      "fn:140007004",
+      "fn:14000717c",
+      "fn:140008078",
+      "fn:1400090c8",
+      "fn:140009200",
+      "fn:140009300",
+      "fn:1400096fc"
+    ],
+    "caller_distances": {
+      "fn:140004180": 1,
+      "fn:140006ef4": 1,
+      "fn:140006f2c": 1,
+      "fn:140007004": 0
+    },
+    "callee_distances": {
+      "fn:140004f4c": 2,
+      "fn:140006634": 2,
+      "fn:1400068f0": 2,
+      "fn:140007004": 0,
+      "fn:14000717c": 1,
+      "fn:140008078": 1,
+      "fn:1400090c8": 2,
+      "fn:140009200": 2,
+      "fn:140009300": 1,
+      "fn:1400096fc": 2
+    }
+  },
+  "nodes": [
+    {
+      "id": "api:_o__errno",
+      "type": "API",
+      "name": "_o__errno",
+      "normalized_name": "_o__errno",
+      "original_names": [
+        "_o__errno"
+      ]
+    },
+    {
+      "id": "api:_o__invalid_parameter_noinfo",
+      "type": "API",
+      "name": "_o__invalid_parameter_noinfo",
+      "normalized_name": "_o__invalid_parameter_noinfo",
+      "original_names": [
+        "_o__invalid_parameter_noinfo"
+      ]
+    },
+    {
+      "id": "api:getlasterror",
+      "type": "API",
+      "name": "GetLastError",
+      "normalized_name": "GetLastError",
+      "original_names": [
+        "GetLastError"
+      ]
+    },
+    {
+      "id": "api:getmodulehandlew",
+      "type": "API",
+      "name": "GetModuleHandleW",
+      "normalized_name": "GetModuleHandleW",
+      "original_names": [
+        "GetModuleHandleW"
+      ]
+    },
+    {
+      "id": "api:getprocaddress",
+      "type": "API",
+      "name": "GetProcAddress",
+      "normalized_name": "GetProcAddress",
+      "original_names": [
+        "GetProcAddress"
+      ]
+    },
+    {
+      "id": "api:getprocessheap",
+      "type": "API",
+      "name": "GetProcessHeap",
+      "normalized_name": "GetProcessHeap",
+      "original_names": [
+        "GetProcessHeap"
+      ]
+    },
+    {
+      "id": "api:heapalloc",
+      "type": "API",
+      "name": "HeapAlloc",
+      "normalized_name": "HeapAlloc",
+      "original_names": [
+        "HeapAlloc"
+      ]
+    },
+    {
+      "id": "api:heapfree",
+      "type": "API",
+      "name": "HeapFree",
+      "normalized_name": "HeapFree",
+      "original_names": [
+        "HeapFree"
+      ]
+    },
+    {
+      "id": "api:memcmp",
+      "type": "API",
+      "name": "memcmp",
+      "normalized_name": "memcmp",
+      "original_names": [
+        "memcmp"
+      ]
+    },
+    {
+      "id": "api:memcpy",
+      "type": "API",
+      "name": "memcpy",
+      "normalized_name": "memcpy",
+      "original_names": [
+        "memcpy"
+      ]
+    },
+    {
+      "id": "api:memmove",
+      "type": "API",
+      "name": "memmove",
+      "normalized_name": "memmove",
+      "original_names": [
+        "memmove"
+      ]
+    },
+    {
+      "id": "api:memset",
+      "type": "API",
+      "name": "memset",
+      "normalized_name": "memset",
+      "original_names": [
+        "memset"
+      ]
+    },
+    {
+      "id": "api:setlasterror",
+      "type": "API",
+      "name": "SetLastError",
+      "normalized_name": "SetLastError",
+      "original_names": [
+        "SetLastError"
+      ]
+    },
+    {
+      "id": "fn:140004180",
+      "type": "FUNCTION",
+      "address": "140004180",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140004180",
+      "section": ".text",
+      "size": 95,
+      "symbol_name": "FUN_140004180",
+      "thunk": false
+    },
+    {
+      "id": "fn:140004f4c",
+      "type": "FUNCTION",
+      "address": "140004f4c",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140004f4c",
+      "section": ".text",
+      "size": 725,
+      "symbol_name": "FUN_140004f4c",
+      "thunk": false
+    },
+    {
+      "id": "fn:140006634",
+      "type": "FUNCTION",
+      "address": "140006634",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140006634",
+      "section": ".text",
+      "size": 182,
+      "symbol_name": "FUN_140006634",
+      "thunk": false
+    },
+    {
+      "id": "fn:1400068f0",
+      "type": "FUNCTION",
+      "address": "1400068f0",
+      "external": false,
+      "internal": true,
+      "name": "FUN_1400068f0",
+      "section": ".text",
+      "size": 291,
+      "symbol_name": "FUN_1400068f0",
+      "thunk": false
+    },
+    {
+      "id": "fn:140006ef4",
+      "type": "FUNCTION",
+      "address": "140006ef4",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140006ef4",
+      "section": ".text",
+      "size": 46,
+      "symbol_name": "FUN_140006ef4",
+      "thunk": false
+    },
+    {
+      "id": "fn:140006f2c",
+      "type": "FUNCTION",
+      "address": "140006f2c",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140006f2c",
+      "section": ".text",
+      "size": 49,
+      "symbol_name": "FUN_140006f2c",
+      "thunk": false
+    },
+    {
+      "id": "fn:140007004",
+      "type": "FUNCTION",
+      "address": "140007004",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140007004",
+      "section": ".text",
+      "size": 366,
+      "symbol_name": "FUN_140007004",
+      "thunk": false
+    },
+    {
+      "id": "fn:14000717c",
+      "type": "FUNCTION",
+      "address": "14000717c",
+      "external": false,
+      "internal": true,
+      "name": "FUN_14000717c",
+      "section": ".text",
+      "size": 1002,
+      "symbol_name": "FUN_14000717c",
+      "thunk": false
+    },
+    {
+      "id": "fn:140008078",
+      "type": "FUNCTION",
+      "address": "140008078",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140008078",
+      "section": ".text",
+      "size": 298,
+      "symbol_name": "FUN_140008078",
+      "thunk": false
+    },
+    {
+      "id": "fn:1400090c8",
+      "type": "FUNCTION",
+      "address": "1400090c8",
+      "external": false,
+      "internal": true,
+      "name": "FUN_1400090c8",
+      "section": ".text",
+      "size": 258,
+      "symbol_name": "FUN_1400090c8",
+      "thunk": false
+    },
+    {
+      "id": "fn:140009200",
+      "type": "FUNCTION",
+      "address": "140009200",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140009200",
+      "section": ".text",
+      "size": 20,
+      "symbol_name": "FUN_140009200",
+      "thunk": false
+    },
+    {
+      "id": "fn:140009300",
+      "type": "FUNCTION",
+      "address": "140009300",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140009300",
+      "section": ".text",
+      "size": 233,
+      "symbol_name": "FUN_140009300",
+      "thunk": false
+    },
+    {
+      "id": "fn:1400096fc",
+      "type": "FUNCTION",
+      "address": "1400096fc",
+      "external": false,
+      "internal": true,
+      "name": "FUN_1400096fc",
+      "section": ".text",
+      "size": 149,
+      "symbol_name": "FUN_1400096fc",
+      "thunk": false
+    },
+    {
+      "id": "sec:140001000",
+      "type": "SECTION",
+      "end": "140027fff",
+      "entropy": 6.1732,
+      "entropy_class": "normal",
+      "entropy_sampled_bytes": 65536,
+      "execute": true,
+      "initialized": true,
+      "name": ".text",
+      "permissions": "r-x",
+      "read": true,
+      "reasons": [],
+      "size": 159744,
+      "start": "140001000",
+      "suspicious": false,
+      "write": false
+    },
+    {
+      "id": "str:14002aa18",
+      "type": "STRING",
+      "address": "14002aa18",
+      "categories": [],
+      "category": null,
+      "raw_value": "u\"ntdll.dll\"",
+      "reference_count": 12,
+      "value": "ntdll.dll"
+    },
+    {
+      "id": "str:14002aa30",
+      "type": "STRING",
+      "address": "14002aa30",
+      "categories": [],
+      "category": null,
+      "raw_value": "\"RtlDisownModuleHeapAllocation\"",
+      "reference_count": 1,
+      "value": "RtlDisownModuleHeapAllocation"
+    },
+    {
+      "id": "str:14002ac38",
+      "type": "STRING",
+      "address": "14002ac38",
+      "categories": [
+        "file_path"
+      ],
+      "category": "file_path",
+      "raw_value": "\"onecore\\\\internal\\\\sdk\\\\inc\\\\wil/Staging.h\"",
+      "reference_count": 1,
+      "value": "onecore\\\\internal\\\\sdk\\\\inc\\\\wil/Staging.h"
+    },
+    {
+      "id": "strcat:file_path",
+      "type": "STRING_CATEGORY",
+      "category": "file_path",
+      "name": "file_path"
+    },
+    {
+      "id": "vis:call_visibility:fn:140004f4c",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:140004f4c",
+      "indicator": "call_visibility",
+      "indirect_call_count": 3,
+      "indirect_callsites": [
+        "140004ff2",
+        "14000519e",
+        "1400051e3"
+      ],
+      "resolved_indirect_call_count": 3,
+      "resolved_indirect_callsites": [
+        "140004ff2",
+        "14000519e",
+        "1400051e3"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    },
+    {
+      "id": "vis:call_visibility:fn:140006634",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:140006634",
+      "indicator": "call_visibility",
+      "indirect_call_count": 4,
+      "indirect_callsites": [
+        "140006648",
+        "14000665f",
+        "140006689",
+        "1400066a4"
+      ],
+      "resolved_indirect_call_count": 4,
+      "resolved_indirect_callsites": [
+        "140006648",
+        "14000665f",
+        "140006689",
+        "1400066a4"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    },
+    {
+      "id": "vis:call_visibility:fn:1400068f0",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:1400068f0",
+      "indicator": "call_visibility",
+      "indirect_call_count": 3,
+      "indirect_callsites": [
+        "14000693c",
+        "140006986",
+        "1400069cd"
+      ],
+      "resolved_indirect_call_count": 3,
+      "resolved_indirect_callsites": [
+        "14000693c",
+        "140006986",
+        "1400069cd"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    },
+    {
+      "id": "vis:call_visibility:fn:140007004",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:140007004",
+      "indicator": "call_visibility",
+      "indirect_call_count": 4,
+      "indirect_callsites": [
+        "1400070bc",
+        "1400070d0",
+        "1400070ec",
+        "140007100"
+      ],
+      "resolved_indirect_call_count": 4,
+      "resolved_indirect_callsites": [
+        "1400070bc",
+        "1400070d0",
+        "1400070ec",
+        "140007100"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    },
+    {
+      "id": "vis:call_visibility:fn:14000717c",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:14000717c",
+      "indicator": "call_visibility",
+      "indirect_call_count": 5,
+      "indirect_callsites": [
+        "14000726d",
+        "14000730f",
+        "14000749d",
+        "1400074b1",
+        "140007518"
+      ],
+      "resolved_indirect_call_count": 5,
+      "resolved_indirect_callsites": [
+        "14000726d",
+        "14000730f",
+        "14000749d",
+        "1400074b1",
+        "140007518"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    },
+    {
+      "id": "vis:call_visibility:fn:140008078",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:140008078",
+      "indicator": "call_visibility",
+      "indirect_call_count": 2,
+      "indirect_callsites": [
+        "1400080b6",
+        "1400080ca"
+      ],
+      "resolved_indirect_call_count": 2,
+      "resolved_indirect_callsites": [
+        "1400080b6",
+        "1400080ca"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    },
+    {
+      "id": "vis:call_visibility:fn:1400090c8",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:1400090c8",
+      "indicator": "call_visibility",
+      "indirect_call_count": 1,
+      "indirect_callsites": [
+        "140009134"
+      ],
+      "resolved_indirect_call_count": 1,
+      "resolved_indirect_callsites": [
+        "140009134"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    },
+    {
+      "id": "vis:call_visibility:fn:140009200",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:140009200",
+      "indicator": "call_visibility",
+      "indirect_call_count": 1,
+      "indirect_callsites": [
+        "140009213"
+      ],
+      "resolved_indirect_call_count": 0,
+      "resolved_indirect_callsites": [],
+      "signals": [
+        "indirect_call",
+        "unresolved_call"
+      ],
+      "unresolved_indirect_call_count": 1,
+      "unresolved_indirect_callsites": [
+        "140009213"
+      ]
+    },
+    {
+      "id": "vis:call_visibility:fn:140009300",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:140009300",
+      "indicator": "call_visibility",
+      "indirect_call_count": 5,
+      "indirect_callsites": [
+        "14000932e",
+        "140009358",
+        "14000938d",
+        "1400093a1",
+        "1400093c2"
+      ],
+      "resolved_indirect_call_count": 5,
+      "resolved_indirect_callsites": [
+        "14000932e",
+        "140009358",
+        "14000938d",
+        "1400093a1",
+        "1400093c2"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    },
+    {
+      "id": "vis:call_visibility:fn:1400096fc",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:1400096fc",
+      "indicator": "call_visibility",
+      "indirect_call_count": 2,
+      "indirect_callsites": [
+        "140009722",
+        "140009769"
+      ],
+      "resolved_indirect_call_count": 2,
+      "resolved_indirect_callsites": [
+        "140009722",
+        "140009769"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    }
+  ],
+  "edges": [
+    {
+      "type": "calls_function",
+      "source": "fn:140004180",
+      "target": "fn:140007004",
+      "callee": "fn:140007004",
+      "caller": "fn:140004180",
+      "callsite": "1400041c0",
+      "callsites": [
+        "1400041c0"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140004180",
+      "target": "sec:140001000",
+      "function": "fn:140004180",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140004f4c",
+      "target": "fn:1400068f0",
+      "callee": "fn:1400068f0",
+      "caller": "fn:140004f4c",
+      "callsite": "14000505b",
+      "callsites": [
+        "14000505b",
+        "1400050ba",
+        "140005104"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 3,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140004f4c",
+      "target": "api:_o__errno",
+      "api": "api:_o__errno",
+      "api_original_names": [
+        "_o__errno"
+      ],
+      "caller": "fn:140004f4c",
+      "callsite": "140004ff2",
+      "callsites": [
+        "140004ff2",
+        "14000519e",
+        "1400051e3"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 3,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140004f4c",
+      "target": "api:_o__invalid_parameter_noinfo",
+      "api": "api:_o__invalid_parameter_noinfo",
+      "api_original_names": [
+        "_o__invalid_parameter_noinfo"
+      ],
+      "caller": "fn:140004f4c",
+      "callsite": "140005000",
+      "callsites": [
+        "140005000",
+        "1400051b0",
+        "1400051f5"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 3,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140004f4c",
+      "target": "api:memcmp",
+      "api": "api:memcmp",
+      "api_original_names": [
+        "memcmp"
+      ],
+      "caller": "fn:140004f4c",
+      "callsite": "140005074",
+      "callsites": [
+        "140005074",
+        "1400050d3",
+        "140005125"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 3,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140004f4c",
+      "target": "sec:140001000",
+      "function": "fn:140004f4c",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:140004f4c",
+      "target": "vis:call_visibility:fn:140004f4c",
+      "function": "fn:140004f4c",
+      "indicator": "vis:call_visibility:fn:140004f4c"
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140006634",
+      "target": "api:getmodulehandlew",
+      "api": "api:getmodulehandlew",
+      "api_original_names": [
+        "GetModuleHandleW"
+      ],
+      "caller": "fn:140006634",
+      "callsite": "140006689",
+      "callsites": [
+        "140006689"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140006634",
+      "target": "api:getprocaddress",
+      "api": "api:getprocaddress",
+      "api_original_names": [
+        "GetProcAddress"
+      ],
+      "caller": "fn:140006634",
+      "callsite": "1400066a4",
+      "callsites": [
+        "1400066a4"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140006634",
+      "target": "api:getprocessheap",
+      "api": "api:getprocessheap",
+      "api_original_names": [
+        "GetProcessHeap"
+      ],
+      "caller": "fn:140006634",
+      "callsite": "140006648",
+      "callsites": [
+        "140006648"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140006634",
+      "target": "api:heapalloc",
+      "api": "api:heapalloc",
+      "api_original_names": [
+        "HeapAlloc"
+      ],
+      "caller": "fn:140006634",
+      "callsite": "14000665f",
+      "callsites": [
+        "14000665f"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "references_string",
+      "source": "fn:140006634",
+      "target": "str:14002aa18",
+      "function": "fn:140006634",
+      "reference_count": 1,
+      "reference_sites": [
+        "140006682"
+      ],
+      "string": "str:14002aa18"
+    },
+    {
+      "type": "references_string",
+      "source": "fn:140006634",
+      "target": "str:14002aa30",
+      "function": "fn:140006634",
+      "reference_count": 1,
+      "reference_sites": [
+        "14000669a"
+      ],
+      "string": "str:14002aa30"
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140006634",
+      "target": "sec:140001000",
+      "function": "fn:140006634",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:140006634",
+      "target": "vis:call_visibility:fn:140006634",
+      "function": "fn:140006634",
+      "indicator": "vis:call_visibility:fn:140006634"
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:1400068f0",
+      "target": "api:_o__errno",
+      "api": "api:_o__errno",
+      "api_original_names": [
+        "_o__errno"
+      ],
+      "caller": "fn:1400068f0",
+      "callsite": "14000693c",
+      "callsites": [
+        "14000693c",
+        "140006986",
+        "1400069cd"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 3,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:1400068f0",
+      "target": "api:_o__invalid_parameter_noinfo",
+      "api": "api:_o__invalid_parameter_noinfo",
+      "api_original_names": [
+        "_o__invalid_parameter_noinfo"
+      ],
+      "caller": "fn:1400068f0",
+      "callsite": "14000694b",
+      "callsites": [
+        "14000694b",
+        "140006995",
+        "1400069dc"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 3,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:1400068f0",
+      "target": "sec:140001000",
+      "function": "fn:1400068f0",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:1400068f0",
+      "target": "vis:call_visibility:fn:1400068f0",
+      "function": "fn:1400068f0",
+      "indicator": "vis:call_visibility:fn:1400068f0"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140006ef4",
+      "target": "fn:140007004",
+      "callee": "fn:140007004",
+      "caller": "fn:140006ef4",
+      "callsite": "140006f18",
+      "callsites": [
+        "140006f18"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140006ef4",
+      "target": "sec:140001000",
+      "function": "fn:140006ef4",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140006f2c",
+      "target": "fn:140007004",
+      "callee": "fn:140007004",
+      "caller": "fn:140006f2c",
+      "callsite": "140006f53",
+      "callsites": [
+        "140006f53"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140006f2c",
+      "target": "sec:140001000",
+      "function": "fn:140006f2c",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140007004",
+      "target": "fn:14000717c",
+      "callee": "fn:14000717c",
+      "caller": "fn:140007004",
+      "callsite": "140007044",
+      "callsites": [
+        "140007044",
+        "14000714f"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 2,
+      "unresolved": false
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140007004",
+      "target": "fn:140008078",
+      "callee": "fn:140008078",
+      "caller": "fn:140007004",
+      "callsite": "1400070a3",
+      "callsites": [
+        "1400070a3"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140007004",
+      "target": "fn:140009300",
+      "callee": "fn:140009300",
+      "caller": "fn:140007004",
+      "callsite": "140007087",
+      "callsites": [
+        "140007087",
+        "140007134"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 2,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140007004",
+      "target": "api:getprocessheap",
+      "api": "api:getprocessheap",
+      "api_original_names": [
+        "GetProcessHeap"
+      ],
+      "caller": "fn:140007004",
+      "callsite": "1400070bc",
+      "callsites": [
+        "1400070bc",
+        "1400070ec"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 2,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140007004",
+      "target": "api:heapfree",
+      "api": "api:heapfree",
+      "api_original_names": [
+        "HeapFree"
+      ],
+      "caller": "fn:140007004",
+      "callsite": "1400070d0",
+      "callsites": [
+        "1400070d0",
+        "140007100"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 2,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140007004",
+      "target": "sec:140001000",
+      "function": "fn:140007004",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:140007004",
+      "target": "vis:call_visibility:fn:140007004",
+      "function": "fn:140007004",
+      "indicator": "vis:call_visibility:fn:140007004"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:14000717c",
+      "target": "fn:140004f4c",
+      "callee": "fn:140004f4c",
+      "caller": "fn:14000717c",
+      "callsite": "1400073ad",
+      "callsites": [
+        "1400073ad"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:14000717c",
+      "target": "fn:1400068f0",
+      "callee": "fn:1400068f0",
+      "caller": "fn:14000717c",
+      "callsite": "1400072cd",
+      "callsites": [
+        "1400072cd",
+        "140007336"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 2,
+      "unresolved": false
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:14000717c",
+      "target": "fn:1400090c8",
+      "callee": "fn:1400090c8",
+      "caller": "fn:14000717c",
+      "callsite": "1400074e4",
+      "callsites": [
+        "1400074e4",
+        "14000753b"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 2,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14000717c",
+      "target": "api:_o__errno",
+      "api": "api:_o__errno",
+      "api_original_names": [
+        "_o__errno"
+      ],
+      "caller": "fn:14000717c",
+      "callsite": "14000726d",
+      "callsites": [
+        "14000726d",
+        "14000730f",
+        "14000749d",
+        "1400074b1",
+        "140007518"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 5,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14000717c",
+      "target": "api:_o__invalid_parameter_noinfo",
+      "api": "api:_o__invalid_parameter_noinfo",
+      "api_original_names": [
+        "_o__invalid_parameter_noinfo"
+      ],
+      "caller": "fn:14000717c",
+      "callsite": "14000727f",
+      "callsites": [
+        "14000727f",
+        "140007321",
+        "1400074c3",
+        "14000752a"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 4,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14000717c",
+      "target": "api:memcmp",
+      "api": "api:memcmp",
+      "api_original_names": [
+        "memcmp"
+      ],
+      "caller": "fn:14000717c",
+      "callsite": "1400071f7",
+      "callsites": [
+        "1400071f7"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14000717c",
+      "target": "api:memmove",
+      "api": "api:memmove",
+      "api_original_names": [
+        "memmove"
+      ],
+      "caller": "fn:14000717c",
+      "callsite": "140007496",
+      "callsites": [
+        "140007496"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:14000717c",
+      "target": "sec:140001000",
+      "function": "fn:14000717c",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:14000717c",
+      "target": "vis:call_visibility:fn:14000717c",
+      "function": "fn:14000717c",
+      "indicator": "vis:call_visibility:fn:14000717c"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140008078",
+      "target": "fn:140009200",
+      "callee": "fn:140009200",
+      "caller": "fn:140008078",
+      "callsite": "14000819e",
+      "callsites": [
+        "14000819e"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140008078",
+      "target": "api:getprocessheap",
+      "api": "api:getprocessheap",
+      "api_original_names": [
+        "GetProcessHeap"
+      ],
+      "caller": "fn:140008078",
+      "callsite": "1400080b6",
+      "callsites": [
+        "1400080b6"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140008078",
+      "target": "api:heapfree",
+      "api": "api:heapfree",
+      "api_original_names": [
+        "HeapFree"
+      ],
+      "caller": "fn:140008078",
+      "callsite": "1400080ca",
+      "callsites": [
+        "1400080ca"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "references_string",
+      "source": "fn:140008078",
+      "target": "str:14002ac38",
+      "function": "fn:140008078",
+      "reference_count": 1,
+      "reference_sites": [
+        "140008192"
+      ],
+      "string": "str:14002ac38"
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140008078",
+      "target": "sec:140001000",
+      "function": "fn:140008078",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:140008078",
+      "target": "vis:call_visibility:fn:140008078",
+      "function": "fn:140008078",
+      "indicator": "vis:call_visibility:fn:140008078"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:1400090c8",
+      "target": "fn:1400096fc",
+      "callee": "fn:1400096fc",
+      "caller": "fn:1400090c8",
+      "callsite": "140009173",
+      "callsites": [
+        "140009173",
+        "1400091a0"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 2,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:1400090c8",
+      "target": "api:_o__errno",
+      "api": "api:_o__errno",
+      "api_original_names": [
+        "_o__errno"
+      ],
+      "caller": "fn:1400090c8",
+      "callsite": "140009134",
+      "callsites": [
+        "140009134"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:1400090c8",
+      "target": "api:_o__invalid_parameter_noinfo",
+      "api": "api:_o__invalid_parameter_noinfo",
+      "api_original_names": [
+        "_o__invalid_parameter_noinfo"
+      ],
+      "caller": "fn:1400090c8",
+      "callsite": "140009146",
+      "callsites": [
+        "140009146"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:1400090c8",
+      "target": "sec:140001000",
+      "function": "fn:1400090c8",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:1400090c8",
+      "target": "vis:call_visibility:fn:1400090c8",
+      "function": "fn:1400090c8",
+      "indicator": "vis:call_visibility:fn:1400090c8"
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140009200",
+      "target": "sec:140001000",
+      "function": "fn:140009200",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:140009200",
+      "target": "vis:call_visibility:fn:140009200",
+      "function": "fn:140009200",
+      "indicator": "vis:call_visibility:fn:140009200"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140009300",
+      "target": "fn:140006634",
+      "callee": "fn:140006634",
+      "caller": "fn:140009300",
+      "callsite": "140009349",
+      "callsites": [
+        "140009349"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140009300",
+      "target": "fn:1400096fc",
+      "callee": "fn:1400096fc",
+      "caller": "fn:140009300",
+      "callsite": "14000937b",
+      "callsites": [
+        "14000937b"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140009300",
+      "target": "api:getlasterror",
+      "api": "api:getlasterror",
+      "api_original_names": [
+        "GetLastError"
+      ],
+      "caller": "fn:140009300",
+      "callsite": "14000932e",
+      "callsites": [
+        "14000932e"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140009300",
+      "target": "api:getprocessheap",
+      "api": "api:getprocessheap",
+      "api_original_names": [
+        "GetProcessHeap"
+      ],
+      "caller": "fn:140009300",
+      "callsite": "14000938d",
+      "callsites": [
+        "14000938d"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140009300",
+      "target": "api:heapfree",
+      "api": "api:heapfree",
+      "api_original_names": [
+        "HeapFree"
+      ],
+      "caller": "fn:140009300",
+      "callsite": "1400093a1",
+      "callsites": [
+        "1400093a1"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140009300",
+      "target": "api:setlasterror",
+      "api": "api:setlasterror",
+      "api_original_names": [
+        "SetLastError"
+      ],
+      "caller": "fn:140009300",
+      "callsite": "140009358",
+      "callsites": [
+        "140009358",
+        "1400093c2"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 2,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140009300",
+      "target": "sec:140001000",
+      "function": "fn:140009300",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:140009300",
+      "target": "vis:call_visibility:fn:140009300",
+      "function": "fn:140009300",
+      "indicator": "vis:call_visibility:fn:140009300"
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:1400096fc",
+      "target": "api:_o__errno",
+      "api": "api:_o__errno",
+      "api_original_names": [
+        "_o__errno"
+      ],
+      "caller": "fn:1400096fc",
+      "callsite": "140009722",
+      "callsites": [
+        "140009722",
+        "140009769"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 2,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:1400096fc",
+      "target": "api:_o__invalid_parameter_noinfo",
+      "api": "api:_o__invalid_parameter_noinfo",
+      "api_original_names": [
+        "_o__invalid_parameter_noinfo"
+      ],
+      "caller": "fn:1400096fc",
+      "callsite": "140009735",
+      "callsites": [
+        "140009735"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:1400096fc",
+      "target": "api:memcpy",
+      "api": "api:memcpy",
+      "api_original_names": [
+        "memcpy"
+      ],
+      "caller": "fn:1400096fc",
+      "callsite": "14000974e",
+      "callsites": [
+        "14000974e"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:1400096fc",
+      "target": "api:memset",
+      "api": "api:memset",
+      "api_original_names": [
+        "memset"
+      ],
+      "caller": "fn:1400096fc",
+      "callsite": "14000975a",
+      "callsites": [
+        "14000975a"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:1400096fc",
+      "target": "sec:140001000",
+      "function": "fn:1400096fc",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:1400096fc",
+      "target": "vis:call_visibility:fn:1400096fc",
+      "function": "fn:1400096fc",
+      "indicator": "vis:call_visibility:fn:1400096fc"
+    },
+    {
+      "type": "has_string_category",
+      "source": "str:14002ac38",
+      "target": "strcat:file_path",
+      "category": "strcat:file_path",
+      "string": "str:14002ac38"
+    }
+  ],
+  "unresolved_calls": [
+    {
+      "indicator": "unresolved_call",
+      "caller": "fn:140009200",
+      "callee": null,
+      "callsite": "140009213",
+      "unresolved": true,
+      "reason": "no_resolved_function_or_api_target",
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1
+    }
+  ],
+  "truncation": {
+    "truncated": false,
+    "limits_reached": [],
+    "requested_depth": {
+      "caller_depth": 1,
+      "callee_depth": 2
+    },
+    "effective_depth": {
+      "caller_depth": 1,
+      "callee_depth": 2
+    },
+    "counts": {
+      "function_nodes": 13,
+      "evidence_nodes": 28,
+      "total_nodes": 41,
+      "edges": 68,
+      "unresolved_calls": 1
+    }
+  }
+}

@@ -1,0 +1,520 @@
+{
+  "schema_version": "0.1.0",
+  "seed_id": "seed:fn:140025a60",
+  "anchor_function_id": "fn:140025a60",
+  "graph_version": "0.12.0",
+  "extraction_config": {
+    "caller_depth": 1,
+    "callee_depth": 2,
+    "max_function_nodes": null,
+    "max_evidence_nodes": null,
+    "max_total_nodes": null,
+    "max_edges": null
+  },
+  "function_selection": {
+    "anchor_function_id": "fn:140025a60",
+    "function_ids": [
+      "fn:14000329c",
+      "fn:140007cf0",
+      "fn:140025680",
+      "fn:140025a60",
+      "fn:140028010"
+    ],
+    "caller_distances": {
+      "fn:140025a60": 0
+    },
+    "callee_distances": {
+      "fn:14000329c": 2,
+      "fn:140007cf0": 1,
+      "fn:140025680": 1,
+      "fn:140025a60": 0,
+      "fn:140028010": 1
+    }
+  },
+  "nodes": [
+    {
+      "id": "api:comparestringordinal",
+      "type": "API",
+      "name": "CompareStringOrdinal",
+      "normalized_name": "CompareStringOrdinal",
+      "original_names": [
+        "CompareStringOrdinal"
+      ]
+    },
+    {
+      "id": "api:rogetmatchingrestrictederrorinfo",
+      "type": "API",
+      "name": "RoGetMatchingRestrictedErrorInfo",
+      "normalized_name": "RoGetMatchingRestrictedErrorInfo",
+      "original_names": [
+        "RoGetMatchingRestrictedErrorInfo"
+      ]
+    },
+    {
+      "id": "api:setrestrictederrorinfo",
+      "type": "API",
+      "name": "SetRestrictedErrorInfo",
+      "normalized_name": "SetRestrictedErrorInfo",
+      "original_names": [
+        "SetRestrictedErrorInfo"
+      ]
+    },
+    {
+      "id": "api:windowsdeletestring",
+      "type": "API",
+      "name": "WindowsDeleteString",
+      "normalized_name": "WindowsDeleteString",
+      "original_names": [
+        "WindowsDeleteString"
+      ]
+    },
+    {
+      "id": "api:windowsgetstringrawbuffer",
+      "type": "API",
+      "name": "WindowsGetStringRawBuffer",
+      "normalized_name": "WindowsGetStringRawBuffer",
+      "original_names": [
+        "WindowsGetStringRawBuffer"
+      ]
+    },
+    {
+      "id": "fn:14000329c",
+      "type": "FUNCTION",
+      "address": "14000329c",
+      "external": false,
+      "internal": true,
+      "name": "FUN_14000329c",
+      "section": ".text",
+      "size": 74,
+      "symbol_name": "FUN_14000329c",
+      "thunk": false
+    },
+    {
+      "id": "fn:140007cf0",
+      "type": "FUNCTION",
+      "address": "140007cf0",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140007cf0",
+      "section": ".text",
+      "size": 29,
+      "symbol_name": "FUN_140007cf0",
+      "thunk": false
+    },
+    {
+      "id": "fn:140025680",
+      "type": "FUNCTION",
+      "address": "140025680",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140025680",
+      "section": ".text",
+      "size": 81,
+      "symbol_name": "FUN_140025680",
+      "thunk": false
+    },
+    {
+      "id": "fn:140025a60",
+      "type": "FUNCTION",
+      "address": "140025a60",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140025a60",
+      "section": ".text",
+      "size": 462,
+      "symbol_name": "FUN_140025a60",
+      "thunk": false
+    },
+    {
+      "id": "fn:140028010",
+      "type": "FUNCTION",
+      "address": "140028010",
+      "external": false,
+      "internal": true,
+      "name": "_guard_dispatch_icall",
+      "section": "fothk",
+      "size": 5,
+      "symbol_name": "_guard_dispatch_icall",
+      "thunk": true
+    },
+    {
+      "id": "sec:140001000",
+      "type": "SECTION",
+      "end": "140027fff",
+      "entropy": 6.1732,
+      "entropy_class": "normal",
+      "entropy_sampled_bytes": 65536,
+      "execute": true,
+      "initialized": true,
+      "name": ".text",
+      "permissions": "r-x",
+      "read": true,
+      "reasons": [],
+      "size": 159744,
+      "start": "140001000",
+      "suspicious": false,
+      "write": false
+    },
+    {
+      "id": "sec:140028000",
+      "type": "SECTION",
+      "end": "140028fff",
+      "entropy": 0.0159,
+      "entropy_class": "normal",
+      "entropy_sampled_bytes": 4096,
+      "execute": true,
+      "initialized": true,
+      "name": "fothk",
+      "permissions": "r-x",
+      "read": true,
+      "reasons": [],
+      "size": 4096,
+      "start": "140028000",
+      "suspicious": false,
+      "write": false
+    },
+    {
+      "id": "str:14002e0c0",
+      "type": "STRING",
+      "address": "14002e0c0",
+      "categories": [
+        "file_path"
+      ],
+      "category": "file_path",
+      "raw_value": "\"shell\\\\osshell\\\\accesory\\\\common\\\\edpapphelper\\\\edpapphelper.cpp\"",
+      "reference_count": 29,
+      "value": "shell\\\\osshell\\\\accesory\\\\common\\\\edpapphelper\\\\edpapphelper.cpp"
+    },
+    {
+      "id": "strcat:file_path",
+      "type": "STRING_CATEGORY",
+      "category": "file_path",
+      "name": "file_path"
+    },
+    {
+      "id": "vis:call_visibility:fn:140025680",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:140025680",
+      "indicator": "call_visibility",
+      "indirect_call_count": 2,
+      "indirect_callsites": [
+        "14002568f",
+        "1400256a4"
+      ],
+      "resolved_indirect_call_count": 2,
+      "resolved_indirect_callsites": [
+        "14002568f",
+        "1400256a4"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    },
+    {
+      "id": "vis:call_visibility:fn:140025a60",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:140025a60",
+      "indicator": "call_visibility",
+      "indirect_call_count": 7,
+      "indirect_callsites": [
+        "140025af7",
+        "140025b28",
+        "140025b3d",
+        "140025b5e",
+        "140025b73",
+        "140025bcc",
+        "140025bfa"
+      ],
+      "resolved_indirect_call_count": 7,
+      "resolved_indirect_callsites": [
+        "140025af7",
+        "140025b28",
+        "140025b3d",
+        "140025b5e",
+        "140025b73",
+        "140025bcc",
+        "140025bfa"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    }
+  ],
+  "edges": [
+    {
+      "type": "belongs_to_section",
+      "source": "fn:14000329c",
+      "target": "sec:140001000",
+      "function": "fn:14000329c",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140007cf0",
+      "target": "fn:14000329c",
+      "callee": "fn:14000329c",
+      "caller": "fn:140007cf0",
+      "callsite": "140007d03",
+      "callsites": [
+        "140007d03"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140007cf0",
+      "target": "sec:140001000",
+      "function": "fn:140007cf0",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140025680",
+      "target": "fn:140028010",
+      "callee": "fn:140028010",
+      "caller": "fn:140025680",
+      "callsite": "1400256c7",
+      "callsites": [
+        "1400256c7"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140025680",
+      "target": "api:rogetmatchingrestrictederrorinfo",
+      "api": "api:rogetmatchingrestrictederrorinfo",
+      "api_original_names": [
+        "RoGetMatchingRestrictedErrorInfo"
+      ],
+      "caller": "fn:140025680",
+      "callsite": "14002568f",
+      "callsites": [
+        "14002568f"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140025680",
+      "target": "api:setrestrictederrorinfo",
+      "api": "api:setrestrictederrorinfo",
+      "api_original_names": [
+        "SetRestrictedErrorInfo"
+      ],
+      "caller": "fn:140025680",
+      "callsite": "1400256a4",
+      "callsites": [
+        "1400256a4"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140025680",
+      "target": "sec:140001000",
+      "function": "fn:140025680",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:140025680",
+      "target": "vis:call_visibility:fn:140025680",
+      "function": "fn:140025680",
+      "indicator": "vis:call_visibility:fn:140025680"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140025a60",
+      "target": "fn:140007cf0",
+      "callee": "fn:140007cf0",
+      "caller": "fn:140025a60",
+      "callsite": "140025aae",
+      "callsites": [
+        "140025aae",
+        "140025bf1"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 2,
+      "unresolved": false
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140025a60",
+      "target": "fn:140025680",
+      "callee": "fn:140025680",
+      "caller": "fn:140025a60",
+      "callsite": "140025c25",
+      "callsites": [
+        "140025c25"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140025a60",
+      "target": "fn:140028010",
+      "callee": "fn:140028010",
+      "caller": "fn:140025a60",
+      "callsite": "140025a90",
+      "callsites": [
+        "140025a90",
+        "140025acb",
+        "140025b13",
+        "140025ba3",
+        "140025bc3",
+        "140025c1e"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 6,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140025a60",
+      "target": "api:comparestringordinal",
+      "api": "api:comparestringordinal",
+      "api_original_names": [
+        "CompareStringOrdinal"
+      ],
+      "caller": "fn:140025a60",
+      "callsite": "140025b5e",
+      "callsites": [
+        "140025b5e"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140025a60",
+      "target": "api:windowsdeletestring",
+      "api": "api:windowsdeletestring",
+      "api_original_names": [
+        "WindowsDeleteString"
+      ],
+      "caller": "fn:140025a60",
+      "callsite": "140025af7",
+      "callsites": [
+        "140025af7",
+        "140025b73",
+        "140025bcc",
+        "140025bfa"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 4,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140025a60",
+      "target": "api:windowsgetstringrawbuffer",
+      "api": "api:windowsgetstringrawbuffer",
+      "api_original_names": [
+        "WindowsGetStringRawBuffer"
+      ],
+      "caller": "fn:140025a60",
+      "callsite": "140025b28",
+      "callsites": [
+        "140025b28",
+        "140025b3d"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 2,
+      "unresolved": false
+    },
+    {
+      "type": "references_string",
+      "source": "fn:140025a60",
+      "target": "str:14002e0c0",
+      "function": "fn:140025a60",
+      "reference_count": 2,
+      "reference_sites": [
+        "140025aa4",
+        "140025be2"
+      ],
+      "string": "str:14002e0c0"
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140025a60",
+      "target": "sec:140001000",
+      "function": "fn:140025a60",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:140025a60",
+      "target": "vis:call_visibility:fn:140025a60",
+      "function": "fn:140025a60",
+      "indicator": "vis:call_visibility:fn:140025a60"
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140028010",
+      "target": "sec:140028000",
+      "function": "fn:140028010",
+      "section": "sec:140028000"
+    },
+    {
+      "type": "has_string_category",
+      "source": "str:14002e0c0",
+      "target": "strcat:file_path",
+      "category": "strcat:file_path",
+      "string": "str:14002e0c0"
+    }
+  ],
+  "unresolved_calls": [],
+  "truncation": {
+    "truncated": false,
+    "limits_reached": [],
+    "requested_depth": {
+      "caller_depth": 1,
+      "callee_depth": 2
+    },
+    "effective_depth": {
+      "caller_depth": 0,
+      "callee_depth": 2
+    },
+    "counts": {
+      "function_nodes": 5,
+      "evidence_nodes": 11,
+      "total_nodes": 16,
+      "edges": 19,
+      "unresolved_calls": 0
+    }
+  }
+}

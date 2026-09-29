@@ -1,0 +1,634 @@
+{
+  "schema_version": "0.1.0",
+  "seed_id": "seed:fn:14000a048",
+  "anchor_function_id": "fn:14000a048",
+  "graph_version": "0.12.0",
+  "extraction_config": {
+    "caller_depth": 1,
+    "callee_depth": 2,
+    "max_function_nodes": null,
+    "max_evidence_nodes": null,
+    "max_total_nodes": null,
+    "max_edges": null
+  },
+  "function_selection": {
+    "anchor_function_id": "fn:14000a048",
+    "function_ids": [
+      "fn:14000a048",
+      "fn:14000a630"
+    ],
+    "caller_distances": {
+      "fn:14000a048": 0,
+      "fn:14000a630": 1
+    },
+    "callee_distances": {
+      "fn:14000a048": 0
+    }
+  },
+  "nodes": [
+    {
+      "id": "api:beginpaint",
+      "type": "API",
+      "name": "BeginPaint",
+      "normalized_name": "BeginPaint",
+      "original_names": [
+        "BeginPaint"
+      ]
+    },
+    {
+      "id": "api:cotaskmemfree",
+      "type": "API",
+      "name": "CoTaskMemFree",
+      "normalized_name": "CoTaskMemFree",
+      "original_names": [
+        "CoTaskMemFree"
+      ]
+    },
+    {
+      "id": "api:createsolidbrush",
+      "type": "API",
+      "name": "CreateSolidBrush",
+      "normalized_name": "CreateSolidBrush",
+      "original_names": [
+        "CreateSolidBrush"
+      ]
+    },
+    {
+      "id": "api:defwindowprocw",
+      "type": "API",
+      "name": "DefWindowProcW",
+      "normalized_name": "DefWindowProcW",
+      "original_names": [
+        "DefWindowProcW"
+      ]
+    },
+    {
+      "id": "api:deleteobject",
+      "type": "API",
+      "name": "DeleteObject",
+      "normalized_name": "DeleteObject",
+      "original_names": [
+        "DeleteObject"
+      ]
+    },
+    {
+      "id": "api:drawfocusrect",
+      "type": "API",
+      "name": "DrawFocusRect",
+      "normalized_name": "DrawFocusRect",
+      "original_names": [
+        "DrawFocusRect"
+      ]
+    },
+    {
+      "id": "api:drawtextw",
+      "type": "API",
+      "name": "DrawTextW",
+      "normalized_name": "DrawTextW",
+      "original_names": [
+        "DrawTextW"
+      ]
+    },
+    {
+      "id": "api:endpaint",
+      "type": "API",
+      "name": "EndPaint",
+      "normalized_name": "EndPaint",
+      "original_names": [
+        "EndPaint"
+      ]
+    },
+    {
+      "id": "api:fillrect",
+      "type": "API",
+      "name": "FillRect",
+      "normalized_name": "FillRect",
+      "original_names": [
+        "FillRect"
+      ]
+    },
+    {
+      "id": "api:imagelist_draw",
+      "type": "API",
+      "name": "ImageList_Draw",
+      "normalized_name": "ImageList_Draw",
+      "original_names": [
+        "ImageList_Draw"
+      ]
+    },
+    {
+      "id": "api:imagelist_geticonsize",
+      "type": "API",
+      "name": "ImageList_GetIconSize",
+      "normalized_name": "ImageList_GetIconSize",
+      "original_names": [
+        "ImageList_GetIconSize"
+      ]
+    },
+    {
+      "id": "api:memset",
+      "type": "API",
+      "name": "memset",
+      "normalized_name": "memset",
+      "original_names": [
+        "memset"
+      ]
+    },
+    {
+      "id": "api:postquitmessage",
+      "type": "API",
+      "name": "PostQuitMessage",
+      "normalized_name": "PostQuitMessage",
+      "original_names": [
+        "PostQuitMessage"
+      ]
+    },
+    {
+      "id": "api:selectobject",
+      "type": "API",
+      "name": "SelectObject",
+      "normalized_name": "SelectObject",
+      "original_names": [
+        "SelectObject"
+      ]
+    },
+    {
+      "id": "api:setbkcolor",
+      "type": "API",
+      "name": "SetBkColor",
+      "normalized_name": "SetBkColor",
+      "original_names": [
+        "SetBkColor"
+      ]
+    },
+    {
+      "id": "fn:14000a048",
+      "type": "FUNCTION",
+      "address": "14000a048",
+      "external": false,
+      "internal": true,
+      "name": "FUN_14000a048",
+      "section": ".text",
+      "size": 111,
+      "symbol_name": "FUN_14000a048",
+      "thunk": false
+    },
+    {
+      "id": "fn:14000a630",
+      "type": "FUNCTION",
+      "address": "14000a630",
+      "external": false,
+      "internal": true,
+      "name": "FUN_14000a630",
+      "section": ".text",
+      "size": 762,
+      "symbol_name": "FUN_14000a630",
+      "thunk": false
+    },
+    {
+      "id": "sec:140001000",
+      "type": "SECTION",
+      "end": "140027fff",
+      "entropy": 6.1732,
+      "entropy_class": "normal",
+      "entropy_sampled_bytes": 65536,
+      "execute": true,
+      "initialized": true,
+      "name": ".text",
+      "permissions": "r-x",
+      "read": true,
+      "reasons": [],
+      "size": 159744,
+      "start": "140001000",
+      "suspicious": false,
+      "write": false
+    },
+    {
+      "id": "str:14002ad90",
+      "type": "STRING",
+      "address": "14002ad90",
+      "categories": [],
+      "category": null,
+      "raw_value": "u\"ms-windows-store://pdp/?PFN=Microsoft.WindowsNotepad_8wekyb3d8bbwe\"",
+      "reference_count": 1,
+      "value": "ms-windows-store://pdp/?PFN=Microsoft.WindowsNotepad_8wekyb3d8bbwe"
+    },
+    {
+      "id": "vis:call_visibility:fn:14000a048",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:14000a048",
+      "indicator": "call_visibility",
+      "indirect_call_count": 1,
+      "indirect_callsites": [
+        "14000a0a6"
+      ],
+      "resolved_indirect_call_count": 1,
+      "resolved_indirect_callsites": [
+        "14000a0a6"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    },
+    {
+      "id": "vis:call_visibility:fn:14000a630",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:14000a630",
+      "indicator": "call_visibility",
+      "indirect_call_count": 13,
+      "indirect_callsites": [
+        "14000a6b2",
+        "14000a710",
+        "14000a727",
+        "14000a7a3",
+        "14000a7ce",
+        "14000a7f4",
+        "14000a830",
+        "14000a877",
+        "14000a890",
+        "14000a8a1",
+        "14000a8b7",
+        "14000a8e0",
+        "14000a8f4"
+      ],
+      "resolved_indirect_call_count": 13,
+      "resolved_indirect_callsites": [
+        "14000a6b2",
+        "14000a710",
+        "14000a727",
+        "14000a7a3",
+        "14000a7ce",
+        "14000a7f4",
+        "14000a830",
+        "14000a877",
+        "14000a890",
+        "14000a8a1",
+        "14000a8b7",
+        "14000a8e0",
+        "14000a8f4"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    }
+  ],
+  "edges": [
+    {
+      "type": "calls_api",
+      "source": "fn:14000a048",
+      "target": "api:endpaint",
+      "api": "api:endpaint",
+      "api_original_names": [
+        "EndPaint"
+      ],
+      "caller": "fn:14000a048",
+      "callsite": "14000a0a6",
+      "callsites": [
+        "14000a0a6"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:14000a048",
+      "target": "sec:140001000",
+      "function": "fn:14000a048",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:14000a048",
+      "target": "vis:call_visibility:fn:14000a048",
+      "function": "fn:14000a048",
+      "indicator": "vis:call_visibility:fn:14000a048"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:14000a630",
+      "target": "fn:14000a048",
+      "callee": "fn:14000a048",
+      "caller": "fn:14000a630",
+      "callsite": "14000a904",
+      "callsites": [
+        "14000a904"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14000a630",
+      "target": "api:beginpaint",
+      "api": "api:beginpaint",
+      "api_original_names": [
+        "BeginPaint"
+      ],
+      "caller": "fn:14000a630",
+      "callsite": "14000a830",
+      "callsites": [
+        "14000a830"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14000a630",
+      "target": "api:cotaskmemfree",
+      "api": "api:cotaskmemfree",
+      "api_original_names": [
+        "CoTaskMemFree"
+      ],
+      "caller": "fn:14000a630",
+      "callsite": "14000a710",
+      "callsites": [
+        "14000a710"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14000a630",
+      "target": "api:createsolidbrush",
+      "api": "api:createsolidbrush",
+      "api_original_names": [
+        "CreateSolidBrush"
+      ],
+      "caller": "fn:14000a630",
+      "callsite": "14000a877",
+      "callsites": [
+        "14000a877"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14000a630",
+      "target": "api:defwindowprocw",
+      "api": "api:defwindowprocw",
+      "api_original_names": [
+        "DefWindowProcW"
+      ],
+      "caller": "fn:14000a630",
+      "callsite": "14000a6b2",
+      "callsites": [
+        "14000a6b2"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14000a630",
+      "target": "api:deleteobject",
+      "api": "api:deleteobject",
+      "api_original_names": [
+        "DeleteObject"
+      ],
+      "caller": "fn:14000a630",
+      "callsite": "14000a8f4",
+      "callsites": [
+        "14000a8f4"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14000a630",
+      "target": "api:drawfocusrect",
+      "api": "api:drawfocusrect",
+      "api_original_names": [
+        "DrawFocusRect"
+      ],
+      "caller": "fn:14000a630",
+      "callsite": "14000a7f4",
+      "callsites": [
+        "14000a7f4"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14000a630",
+      "target": "api:drawtextw",
+      "api": "api:drawtextw",
+      "api_original_names": [
+        "DrawTextW"
+      ],
+      "caller": "fn:14000a630",
+      "callsite": "14000a8e0",
+      "callsites": [
+        "14000a8e0"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14000a630",
+      "target": "api:fillrect",
+      "api": "api:fillrect",
+      "api_original_names": [
+        "FillRect"
+      ],
+      "caller": "fn:14000a630",
+      "callsite": "14000a890",
+      "callsites": [
+        "14000a890"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14000a630",
+      "target": "api:imagelist_draw",
+      "api": "api:imagelist_draw",
+      "api_original_names": [
+        "ImageList_Draw"
+      ],
+      "caller": "fn:14000a630",
+      "callsite": "14000a7a3",
+      "callsites": [
+        "14000a7a3"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14000a630",
+      "target": "api:imagelist_geticonsize",
+      "api": "api:imagelist_geticonsize",
+      "api_original_names": [
+        "ImageList_GetIconSize"
+      ],
+      "caller": "fn:14000a630",
+      "callsite": "14000a7ce",
+      "callsites": [
+        "14000a7ce"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14000a630",
+      "target": "api:memset",
+      "api": "api:memset",
+      "api_original_names": [
+        "memset"
+      ],
+      "caller": "fn:14000a630",
+      "callsite": "14000a814",
+      "callsites": [
+        "14000a814",
+        "14000a824"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 2,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14000a630",
+      "target": "api:postquitmessage",
+      "api": "api:postquitmessage",
+      "api_original_names": [
+        "PostQuitMessage"
+      ],
+      "caller": "fn:14000a630",
+      "callsite": "14000a727",
+      "callsites": [
+        "14000a727"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14000a630",
+      "target": "api:selectobject",
+      "api": "api:selectobject",
+      "api_original_names": [
+        "SelectObject"
+      ],
+      "caller": "fn:14000a630",
+      "callsite": "14000a8b7",
+      "callsites": [
+        "14000a8b7"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14000a630",
+      "target": "api:setbkcolor",
+      "api": "api:setbkcolor",
+      "api_original_names": [
+        "SetBkColor"
+      ],
+      "caller": "fn:14000a630",
+      "callsite": "14000a8a1",
+      "callsites": [
+        "14000a8a1"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "references_string",
+      "source": "fn:14000a630",
+      "target": "str:14002ad90",
+      "function": "fn:14000a630",
+      "reference_count": 1,
+      "reference_sites": [
+        "14000a738"
+      ],
+      "string": "str:14002ad90"
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:14000a630",
+      "target": "sec:140001000",
+      "function": "fn:14000a630",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:14000a630",
+      "target": "vis:call_visibility:fn:14000a630",
+      "function": "fn:14000a630",
+      "indicator": "vis:call_visibility:fn:14000a630"
+    }
+  ],
+  "unresolved_calls": [],
+  "truncation": {
+    "truncated": false,
+    "limits_reached": [],
+    "requested_depth": {
+      "caller_depth": 1,
+      "callee_depth": 2
+    },
+    "effective_depth": {
+      "caller_depth": 1,
+      "callee_depth": 0
+    },
+    "counts": {
+      "function_nodes": 2,
+      "evidence_nodes": 19,
+      "total_nodes": 21,
+      "edges": 21,
+      "unresolved_calls": 0
+    }
+  }
+}

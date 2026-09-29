@@ -1,0 +1,267 @@
+{
+  "schema_version": "0.1.0",
+  "seed_id": "seed:fn:140001f98",
+  "anchor_function_id": "fn:140001f98",
+  "graph_version": "0.12.0",
+  "extraction_config": {
+    "caller_depth": 1,
+    "callee_depth": 2,
+    "max_function_nodes": null,
+    "max_evidence_nodes": null,
+    "max_total_nodes": null,
+    "max_edges": null
+  },
+  "function_selection": {
+    "anchor_function_id": "fn:140001f98",
+    "function_ids": [
+      "fn:1400019c0",
+      "fn:140001f98"
+    ],
+    "caller_distances": {
+      "fn:1400019c0": 1,
+      "fn:140001f98": 0
+    },
+    "callee_distances": {
+      "fn:140001f98": 0
+    }
+  },
+  "nodes": [
+    {
+      "id": "api:getcurrentprocessid",
+      "type": "API",
+      "name": "GetCurrentProcessId",
+      "normalized_name": "GetCurrentProcessId",
+      "original_names": [
+        "GetCurrentProcessId"
+      ]
+    },
+    {
+      "id": "api:getcurrentthreadid",
+      "type": "API",
+      "name": "GetCurrentThreadId",
+      "normalized_name": "GetCurrentThreadId",
+      "original_names": [
+        "GetCurrentThreadId"
+      ]
+    },
+    {
+      "id": "api:getsystemtimeasfiletime",
+      "type": "API",
+      "name": "GetSystemTimeAsFileTime",
+      "normalized_name": "GetSystemTimeAsFileTime",
+      "original_names": [
+        "GetSystemTimeAsFileTime"
+      ]
+    },
+    {
+      "id": "api:queryperformancecounter",
+      "type": "API",
+      "name": "QueryPerformanceCounter",
+      "normalized_name": "QueryPerformanceCounter",
+      "original_names": [
+        "QueryPerformanceCounter"
+      ]
+    },
+    {
+      "id": "fn:1400019c0",
+      "type": "FUNCTION",
+      "address": "1400019c0",
+      "external": false,
+      "internal": true,
+      "name": "entry",
+      "section": ".text",
+      "size": 18,
+      "symbol_name": "entry",
+      "thunk": false
+    },
+    {
+      "id": "fn:140001f98",
+      "type": "FUNCTION",
+      "address": "140001f98",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140001f98",
+      "section": ".text",
+      "size": 177,
+      "symbol_name": "FUN_140001f98",
+      "thunk": false
+    },
+    {
+      "id": "sec:140001000",
+      "type": "SECTION",
+      "end": "140027fff",
+      "entropy": 6.1732,
+      "entropy_class": "normal",
+      "entropy_sampled_bytes": 65536,
+      "execute": true,
+      "initialized": true,
+      "name": ".text",
+      "permissions": "r-x",
+      "read": true,
+      "reasons": [],
+      "size": 159744,
+      "start": "140001000",
+      "suspicious": false,
+      "write": false
+    },
+    {
+      "id": "vis:call_visibility:fn:140001f98",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:140001f98",
+      "indicator": "call_visibility",
+      "indirect_call_count": 4,
+      "indirect_callsites": [
+        "140001fc9",
+        "140001fd7",
+        "140001fe3",
+        "140001ff3"
+      ],
+      "resolved_indirect_call_count": 4,
+      "resolved_indirect_callsites": [
+        "140001fc9",
+        "140001fd7",
+        "140001fe3",
+        "140001ff3"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    }
+  ],
+  "edges": [
+    {
+      "type": "calls_function",
+      "source": "fn:1400019c0",
+      "target": "fn:140001f98",
+      "callee": "fn:140001f98",
+      "caller": "fn:1400019c0",
+      "callsite": "1400019c4",
+      "callsites": [
+        "1400019c4"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:1400019c0",
+      "target": "sec:140001000",
+      "function": "fn:1400019c0",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140001f98",
+      "target": "api:getcurrentprocessid",
+      "api": "api:getcurrentprocessid",
+      "api_original_names": [
+        "GetCurrentProcessId"
+      ],
+      "caller": "fn:140001f98",
+      "callsite": "140001fe3",
+      "callsites": [
+        "140001fe3"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140001f98",
+      "target": "api:getcurrentthreadid",
+      "api": "api:getcurrentthreadid",
+      "api_original_names": [
+        "GetCurrentThreadId"
+      ],
+      "caller": "fn:140001f98",
+      "callsite": "140001fd7",
+      "callsites": [
+        "140001fd7"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140001f98",
+      "target": "api:getsystemtimeasfiletime",
+      "api": "api:getsystemtimeasfiletime",
+      "api_original_names": [
+        "GetSystemTimeAsFileTime"
+      ],
+      "caller": "fn:140001f98",
+      "callsite": "140001fc9",
+      "callsites": [
+        "140001fc9"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140001f98",
+      "target": "api:queryperformancecounter",
+      "api": "api:queryperformancecounter",
+      "api_original_names": [
+        "QueryPerformanceCounter"
+      ],
+      "caller": "fn:140001f98",
+      "callsite": "140001ff3",
+      "callsites": [
+        "140001ff3"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140001f98",
+      "target": "sec:140001000",
+      "function": "fn:140001f98",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:140001f98",
+      "target": "vis:call_visibility:fn:140001f98",
+      "function": "fn:140001f98",
+      "indicator": "vis:call_visibility:fn:140001f98"
+    }
+  ],
+  "unresolved_calls": [],
+  "truncation": {
+    "truncated": false,
+    "limits_reached": [],
+    "requested_depth": {
+      "caller_depth": 1,
+      "callee_depth": 2
+    },
+    "effective_depth": {
+      "caller_depth": 1,
+      "callee_depth": 0
+    },
+    "counts": {
+      "function_nodes": 2,
+      "evidence_nodes": 6,
+      "total_nodes": 8,
+      "edges": 8,
+      "unresolved_calls": 0
+    }
+  }
+}

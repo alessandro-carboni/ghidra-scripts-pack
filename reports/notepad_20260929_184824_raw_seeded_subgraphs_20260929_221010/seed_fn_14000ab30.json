@@ -1,0 +1,173 @@
+{
+  "schema_version": "0.1.0",
+  "seed_id": "seed:fn:14000ab30",
+  "anchor_function_id": "fn:14000ab30",
+  "graph_version": "0.12.0",
+  "extraction_config": {
+    "caller_depth": 1,
+    "callee_depth": 2,
+    "max_function_nodes": null,
+    "max_evidence_nodes": null,
+    "max_total_nodes": null,
+    "max_edges": null
+  },
+  "function_selection": {
+    "anchor_function_id": "fn:14000ab30",
+    "function_ids": [
+      "fn:14000ab30"
+    ],
+    "caller_distances": {
+      "fn:14000ab30": 0
+    },
+    "callee_distances": {
+      "fn:14000ab30": 0
+    }
+  },
+  "nodes": [
+    {
+      "id": "api:invalidaterect",
+      "type": "API",
+      "name": "InvalidateRect",
+      "normalized_name": "InvalidateRect",
+      "original_names": [
+        "InvalidateRect"
+      ]
+    },
+    {
+      "id": "api:trackmouseevent",
+      "type": "API",
+      "name": "TrackMouseEvent",
+      "normalized_name": "TrackMouseEvent",
+      "original_names": [
+        "TrackMouseEvent"
+      ]
+    },
+    {
+      "id": "fn:14000ab30",
+      "type": "FUNCTION",
+      "address": "14000ab30",
+      "external": false,
+      "internal": true,
+      "name": "FUN_14000ab30",
+      "section": ".text",
+      "size": 137,
+      "symbol_name": "FUN_14000ab30",
+      "thunk": false
+    },
+    {
+      "id": "sec:140001000",
+      "type": "SECTION",
+      "end": "140027fff",
+      "entropy": 6.1732,
+      "entropy_class": "normal",
+      "entropy_sampled_bytes": 65536,
+      "execute": true,
+      "initialized": true,
+      "name": ".text",
+      "permissions": "r-x",
+      "read": true,
+      "reasons": [],
+      "size": 159744,
+      "start": "140001000",
+      "suspicious": false,
+      "write": false
+    },
+    {
+      "id": "vis:call_visibility:fn:14000ab30",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:14000ab30",
+      "indicator": "call_visibility",
+      "indirect_call_count": 2,
+      "indirect_callsites": [
+        "14000ab8c",
+        "14000abaa"
+      ],
+      "resolved_indirect_call_count": 2,
+      "resolved_indirect_callsites": [
+        "14000ab8c",
+        "14000abaa"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    }
+  ],
+  "edges": [
+    {
+      "type": "calls_api",
+      "source": "fn:14000ab30",
+      "target": "api:invalidaterect",
+      "api": "api:invalidaterect",
+      "api_original_names": [
+        "InvalidateRect"
+      ],
+      "caller": "fn:14000ab30",
+      "callsite": "14000abaa",
+      "callsites": [
+        "14000abaa"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14000ab30",
+      "target": "api:trackmouseevent",
+      "api": "api:trackmouseevent",
+      "api_original_names": [
+        "TrackMouseEvent"
+      ],
+      "caller": "fn:14000ab30",
+      "callsite": "14000ab8c",
+      "callsites": [
+        "14000ab8c"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:14000ab30",
+      "target": "sec:140001000",
+      "function": "fn:14000ab30",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:14000ab30",
+      "target": "vis:call_visibility:fn:14000ab30",
+      "function": "fn:14000ab30",
+      "indicator": "vis:call_visibility:fn:14000ab30"
+    }
+  ],
+  "unresolved_calls": [],
+  "truncation": {
+    "truncated": false,
+    "limits_reached": [],
+    "requested_depth": {
+      "caller_depth": 1,
+      "callee_depth": 2
+    },
+    "effective_depth": {
+      "caller_depth": 0,
+      "callee_depth": 0
+    },
+    "counts": {
+      "function_nodes": 1,
+      "evidence_nodes": 4,
+      "total_nodes": 5,
+      "edges": 4,
+      "unresolved_calls": 0
+    }
+  }
+}

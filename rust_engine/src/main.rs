@@ -7,6 +7,8 @@ mod local_subgraph_schema;
 #[allow(dead_code)]
 mod related_seed_grouping;
 
+mod runtime_subgraph_export;
+
 #[allow(dead_code)]
 mod seed_validation;
 
@@ -52,6 +54,10 @@ use std::fs;
 use std::process;
 
 use enrichment::build_rust_enrichment;
+use runtime_subgraph_export::{
+    export_local_subgraphs, parse_local_subgraph_export_args, LocalSubgraphExportOptions,
+    SEEDED_SUBGRAPH_MANIFEST_FILENAME,
+};
 use schema::Report;
 
 /// Parsed command-line invocation for the Rust enrichment engine.
@@ -64,6 +70,12 @@ struct RuntimeOptions {
     input_path: String,
     output_path: String,
     seeded_enabled: bool,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+enum RuntimeCommand {
+    Enrich(RuntimeOptions),
+    ExportLocalSubgraphs(LocalSubgraphExportOptions),
 }
 
 /// Parses the engine's command-line arguments (excluding the program name).
@@ -115,6 +127,19 @@ where
     })
 }
 
+fn parse_command<I, S>(args: I) -> Result<RuntimeCommand, String>
+where
+    I: IntoIterator<Item = S>,
+    S: Into<String>,
+{
+    let args: Vec<String> = args.into_iter().map(Into::into).collect();
+    if args.first().map(String::as_str) == Some("export-local-subgraphs") {
+        return parse_local_subgraph_export_args(args.into_iter().skip(1))
+            .map(RuntimeCommand::ExportLocalSubgraphs);
+    }
+    parse_args(args).map(RuntimeCommand::Enrich)
+}
+
 fn main() {
     if let Err(err) = run() {
         eprintln!("[!] {}", err);
@@ -123,8 +148,13 @@ fn main() {
 }
 
 fn run() -> Result<(), String> {
-    let options = parse_args(env::args().skip(1))?;
+    match parse_command(env::args().skip(1))? {
+        RuntimeCommand::Enrich(options) => run_enrichment(options),
+        RuntimeCommand::ExportLocalSubgraphs(options) => run_local_subgraph_export(options),
+    }
+}
 
+fn run_enrichment(options: RuntimeOptions) -> Result<(), String> {
     let input_data = fs::read_to_string(&options.input_path).map_err(|e| {
         format!(
             "failed to read input report '{}': {}",
@@ -153,6 +183,34 @@ fn run() -> Result<(), String> {
     })?;
 
     println!("[+] Enriched report written to: {}", options.output_path);
+    Ok(())
+}
+
+fn run_local_subgraph_export(options: LocalSubgraphExportOptions) -> Result<(), String> {
+    let manifest = export_local_subgraphs(&options)?;
+    let manifest_path =
+        std::path::Path::new(&options.output_dir).join(SEEDED_SUBGRAPH_MANIFEST_FILENAME);
+
+    println!(
+        "[+] Seeded local subgraphs exported to: {}",
+        options.output_dir
+    );
+    println!(
+        "[+] Seeds: {} returned / {} detected{}",
+        manifest.seed_detection.returned,
+        manifest.seed_detection.total_detected,
+        if manifest.seed_detection.truncated {
+            " (seed list truncated by technical max_seeds)"
+        } else {
+            ""
+        }
+    );
+    println!("[+] Local subgraphs: {}", manifest.subgraphs.len());
+    println!(
+        "[+] Related seed groups: {}",
+        manifest.related_seed_groups.len()
+    );
+    println!("[+] Manifest: {}", manifest_path.display());
     Ok(())
 }
 
@@ -205,5 +263,38 @@ mod tests {
         let result = parse_args(vec!["input.json", "output.json", "--seeded", "--seeded"]);
 
         assert!(result.is_err());
+    }
+
+    #[test]
+    fn export_subcommand_is_parsed_without_changing_legacy_contract() {
+        let command = parse_command(vec![
+            "export-local-subgraphs",
+            "raw.json",
+            "out",
+            "--max-seeds",
+            "3",
+        ])
+        .unwrap();
+
+        match command {
+            RuntimeCommand::ExportLocalSubgraphs(options) => {
+                assert_eq!(options.input_path, "raw.json");
+                assert_eq!(options.output_dir, "out");
+                assert_eq!(options.seed_config.max_seeds, Some(3));
+            }
+            RuntimeCommand::Enrich(_) => panic!("expected export command"),
+        }
+    }
+
+    #[test]
+    fn legacy_command_still_uses_original_argument_parser() {
+        assert_eq!(
+            parse_command(vec!["input.json", "output.json", "--seeded"]).unwrap(),
+            RuntimeCommand::Enrich(RuntimeOptions {
+                input_path: "input.json".into(),
+                output_path: "output.json".into(),
+                seeded_enabled: true,
+            })
+        );
     }
 }

@@ -1,0 +1,904 @@
+{
+  "schema_version": "0.1.0",
+  "seed_id": "seed:fn:1400066f4",
+  "anchor_function_id": "fn:1400066f4",
+  "graph_version": "0.12.0",
+  "extraction_config": {
+    "caller_depth": 1,
+    "callee_depth": 2,
+    "max_function_nodes": null,
+    "max_evidence_nodes": null,
+    "max_total_nodes": null,
+    "max_edges": null
+  },
+  "function_selection": {
+    "anchor_function_id": "fn:1400066f4",
+    "function_ids": [
+      "fn:1400019f0",
+      "fn:140003ba4",
+      "fn:1400066f4",
+      "fn:140006b2c",
+      "fn:140008f18",
+      "fn:1400093f0",
+      "fn:140027590",
+      "fn:140028010"
+    ],
+    "caller_distances": {
+      "fn:140003ba4": 1,
+      "fn:1400066f4": 0,
+      "fn:140027590": 1
+    },
+    "callee_distances": {
+      "fn:1400019f0": 2,
+      "fn:1400066f4": 0,
+      "fn:140006b2c": 1,
+      "fn:140008f18": 2,
+      "fn:1400093f0": 1,
+      "fn:140028010": 2
+    }
+  },
+  "nodes": [
+    {
+      "id": "api:acquiresrwlockexclusive",
+      "type": "API",
+      "name": "AcquireSRWLockExclusive",
+      "normalized_name": "AcquireSRWLockExclusive",
+      "original_names": [
+        "AcquireSRWLockExclusive"
+      ]
+    },
+    {
+      "id": "api:closethreadpooltimer",
+      "type": "API",
+      "name": "CloseThreadpoolTimer",
+      "normalized_name": "CloseThreadpoolTimer",
+      "original_names": [
+        "CloseThreadpoolTimer"
+      ]
+    },
+    {
+      "id": "api:getlasterror",
+      "type": "API",
+      "name": "GetLastError",
+      "normalized_name": "GetLastError",
+      "original_names": [
+        "GetLastError"
+      ]
+    },
+    {
+      "id": "api:getprocessheap",
+      "type": "API",
+      "name": "GetProcessHeap",
+      "normalized_name": "GetProcessHeap",
+      "original_names": [
+        "GetProcessHeap"
+      ]
+    },
+    {
+      "id": "api:heapfree",
+      "type": "API",
+      "name": "HeapFree",
+      "normalized_name": "HeapFree",
+      "original_names": [
+        "HeapFree"
+      ]
+    },
+    {
+      "id": "api:releasesrwlockexclusive",
+      "type": "API",
+      "name": "ReleaseSRWLockExclusive",
+      "normalized_name": "ReleaseSRWLockExclusive",
+      "original_names": [
+        "ReleaseSRWLockExclusive"
+      ]
+    },
+    {
+      "id": "api:setlasterror",
+      "type": "API",
+      "name": "SetLastError",
+      "normalized_name": "SetLastError",
+      "original_names": [
+        "SetLastError"
+      ]
+    },
+    {
+      "id": "api:setthreadpooltimer",
+      "type": "API",
+      "name": "SetThreadpoolTimer",
+      "normalized_name": "SetThreadpoolTimer",
+      "original_names": [
+        "SetThreadpoolTimer"
+      ]
+    },
+    {
+      "id": "api:waitforthreadpooltimercallbacks",
+      "type": "API",
+      "name": "WaitForThreadpoolTimerCallbacks",
+      "normalized_name": "WaitForThreadpoolTimerCallbacks",
+      "original_names": [
+        "WaitForThreadpoolTimerCallbacks"
+      ]
+    },
+    {
+      "id": "fn:1400019f0",
+      "type": "FUNCTION",
+      "address": "1400019f0",
+      "external": false,
+      "internal": true,
+      "name": "__security_check_cookie",
+      "section": ".text",
+      "size": 30,
+      "symbol_name": "__security_check_cookie",
+      "thunk": false
+    },
+    {
+      "id": "fn:140003ba4",
+      "type": "FUNCTION",
+      "address": "140003ba4",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140003ba4",
+      "section": ".text",
+      "size": 304,
+      "symbol_name": "FUN_140003ba4",
+      "thunk": false
+    },
+    {
+      "id": "fn:1400066f4",
+      "type": "FUNCTION",
+      "address": "1400066f4",
+      "external": false,
+      "internal": true,
+      "name": "FUN_1400066f4",
+      "section": ".text",
+      "size": 171,
+      "symbol_name": "FUN_1400066f4",
+      "thunk": false
+    },
+    {
+      "id": "fn:140006b2c",
+      "type": "FUNCTION",
+      "address": "140006b2c",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140006b2c",
+      "section": ".text",
+      "size": 459,
+      "symbol_name": "FUN_140006b2c",
+      "thunk": false
+    },
+    {
+      "id": "fn:140008f18",
+      "type": "FUNCTION",
+      "address": "140008f18",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140008f18",
+      "section": ".text",
+      "size": 86,
+      "symbol_name": "FUN_140008f18",
+      "thunk": false
+    },
+    {
+      "id": "fn:1400093f0",
+      "type": "FUNCTION",
+      "address": "1400093f0",
+      "external": false,
+      "internal": true,
+      "name": "FUN_1400093f0",
+      "section": ".text",
+      "size": 144,
+      "symbol_name": "FUN_1400093f0",
+      "thunk": false
+    },
+    {
+      "id": "fn:140027590",
+      "type": "FUNCTION",
+      "address": "140027590",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140027590",
+      "section": ".text",
+      "size": 66,
+      "symbol_name": "FUN_140027590",
+      "thunk": false
+    },
+    {
+      "id": "fn:140028010",
+      "type": "FUNCTION",
+      "address": "140028010",
+      "external": false,
+      "internal": true,
+      "name": "_guard_dispatch_icall",
+      "section": "fothk",
+      "size": 5,
+      "symbol_name": "_guard_dispatch_icall",
+      "thunk": true
+    },
+    {
+      "id": "sec:140001000",
+      "type": "SECTION",
+      "end": "140027fff",
+      "entropy": 6.1732,
+      "entropy_class": "normal",
+      "entropy_sampled_bytes": 65536,
+      "execute": true,
+      "initialized": true,
+      "name": ".text",
+      "permissions": "r-x",
+      "read": true,
+      "reasons": [],
+      "size": 159744,
+      "start": "140001000",
+      "suspicious": false,
+      "write": false
+    },
+    {
+      "id": "sec:140028000",
+      "type": "SECTION",
+      "end": "140028fff",
+      "entropy": 0.0159,
+      "entropy_class": "normal",
+      "entropy_sampled_bytes": 4096,
+      "execute": true,
+      "initialized": true,
+      "name": "fothk",
+      "permissions": "r-x",
+      "read": true,
+      "reasons": [],
+      "size": 4096,
+      "start": "140028000",
+      "suspicious": false,
+      "write": false
+    },
+    {
+      "id": "vis:call_visibility:fn:140003ba4",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:140003ba4",
+      "indicator": "call_visibility",
+      "indirect_call_count": 7,
+      "indirect_callsites": [
+        "140003c33",
+        "140003c47",
+        "140003c61",
+        "140003c75",
+        "140003c95",
+        "140003ca9",
+        "140003cb8"
+      ],
+      "resolved_indirect_call_count": 7,
+      "resolved_indirect_callsites": [
+        "140003c33",
+        "140003c47",
+        "140003c61",
+        "140003c75",
+        "140003c95",
+        "140003ca9",
+        "140003cb8"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    },
+    {
+      "id": "vis:call_visibility:fn:1400066f4",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:1400066f4",
+      "indicator": "call_visibility",
+      "indirect_call_count": 5,
+      "indirect_callsites": [
+        "14000671c",
+        "140006738",
+        "140006765",
+        "140006779",
+        "140006788"
+      ],
+      "resolved_indirect_call_count": 5,
+      "resolved_indirect_callsites": [
+        "14000671c",
+        "140006738",
+        "140006765",
+        "140006779",
+        "140006788"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    },
+    {
+      "id": "vis:call_visibility:fn:1400093f0",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:1400093f0",
+      "indicator": "call_visibility",
+      "indirect_call_count": 5,
+      "indirect_callsites": [
+        "140009412",
+        "14000942b",
+        "14000943f",
+        "14000944e",
+        "14000945c"
+      ],
+      "resolved_indirect_call_count": 5,
+      "resolved_indirect_callsites": [
+        "140009412",
+        "14000942b",
+        "14000943f",
+        "14000944e",
+        "14000945c"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    }
+  ],
+  "edges": [
+    {
+      "type": "belongs_to_section",
+      "source": "fn:1400019f0",
+      "target": "sec:140001000",
+      "function": "fn:1400019f0",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140003ba4",
+      "target": "fn:1400066f4",
+      "callee": "fn:1400066f4",
+      "caller": "fn:140003ba4",
+      "callsite": "140003bca",
+      "callsites": [
+        "140003bca"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140003ba4",
+      "target": "fn:1400093f0",
+      "callee": "fn:1400093f0",
+      "caller": "fn:140003ba4",
+      "callsite": "140003bc2",
+      "callsites": [
+        "140003bc2"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140003ba4",
+      "target": "fn:140028010",
+      "callee": "fn:140028010",
+      "caller": "fn:140003ba4",
+      "callsite": "140003bf5",
+      "callsites": [
+        "140003bf5",
+        "140003c20"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 2,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140003ba4",
+      "target": "api:closethreadpooltimer",
+      "api": "api:closethreadpooltimer",
+      "api_original_names": [
+        "CloseThreadpoolTimer"
+      ],
+      "caller": "fn:140003ba4",
+      "callsite": "140003cb8",
+      "callsites": [
+        "140003cb8"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140003ba4",
+      "target": "api:getprocessheap",
+      "api": "api:getprocessheap",
+      "api_original_names": [
+        "GetProcessHeap"
+      ],
+      "caller": "fn:140003ba4",
+      "callsite": "140003c33",
+      "callsites": [
+        "140003c33",
+        "140003c61"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 2,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140003ba4",
+      "target": "api:heapfree",
+      "api": "api:heapfree",
+      "api_original_names": [
+        "HeapFree"
+      ],
+      "caller": "fn:140003ba4",
+      "callsite": "140003c47",
+      "callsites": [
+        "140003c47",
+        "140003c75"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 2,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140003ba4",
+      "target": "api:setthreadpooltimer",
+      "api": "api:setthreadpooltimer",
+      "api_original_names": [
+        "SetThreadpoolTimer"
+      ],
+      "caller": "fn:140003ba4",
+      "callsite": "140003c95",
+      "callsites": [
+        "140003c95"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140003ba4",
+      "target": "api:waitforthreadpooltimercallbacks",
+      "api": "api:waitforthreadpooltimercallbacks",
+      "api_original_names": [
+        "WaitForThreadpoolTimerCallbacks"
+      ],
+      "caller": "fn:140003ba4",
+      "callsite": "140003ca9",
+      "callsites": [
+        "140003ca9"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140003ba4",
+      "target": "sec:140001000",
+      "function": "fn:140003ba4",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:140003ba4",
+      "target": "vis:call_visibility:fn:140003ba4",
+      "function": "fn:140003ba4",
+      "indicator": "vis:call_visibility:fn:140003ba4"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:1400066f4",
+      "target": "fn:140006b2c",
+      "callee": "fn:140006b2c",
+      "caller": "fn:1400066f4",
+      "callsite": "14000672b",
+      "callsites": [
+        "14000672b"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:1400066f4",
+      "target": "fn:1400093f0",
+      "callee": "fn:1400093f0",
+      "caller": "fn:1400066f4",
+      "callsite": "14000674b",
+      "callsites": [
+        "14000674b"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:1400066f4",
+      "target": "api:acquiresrwlockexclusive",
+      "api": "api:acquiresrwlockexclusive",
+      "api_original_names": [
+        "AcquireSRWLockExclusive"
+      ],
+      "caller": "fn:1400066f4",
+      "callsite": "14000671c",
+      "callsites": [
+        "14000671c"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:1400066f4",
+      "target": "api:closethreadpooltimer",
+      "api": "api:closethreadpooltimer",
+      "api_original_names": [
+        "CloseThreadpoolTimer"
+      ],
+      "caller": "fn:1400066f4",
+      "callsite": "140006788",
+      "callsites": [
+        "140006788"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:1400066f4",
+      "target": "api:releasesrwlockexclusive",
+      "api": "api:releasesrwlockexclusive",
+      "api_original_names": [
+        "ReleaseSRWLockExclusive"
+      ],
+      "caller": "fn:1400066f4",
+      "callsite": "140006738",
+      "callsites": [
+        "140006738"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:1400066f4",
+      "target": "api:setthreadpooltimer",
+      "api": "api:setthreadpooltimer",
+      "api_original_names": [
+        "SetThreadpoolTimer"
+      ],
+      "caller": "fn:1400066f4",
+      "callsite": "140006765",
+      "callsites": [
+        "140006765"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:1400066f4",
+      "target": "api:waitforthreadpooltimercallbacks",
+      "api": "api:waitforthreadpooltimercallbacks",
+      "api_original_names": [
+        "WaitForThreadpoolTimerCallbacks"
+      ],
+      "caller": "fn:1400066f4",
+      "callsite": "140006779",
+      "callsites": [
+        "140006779"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:1400066f4",
+      "target": "sec:140001000",
+      "function": "fn:1400066f4",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:1400066f4",
+      "target": "vis:call_visibility:fn:1400066f4",
+      "function": "fn:1400066f4",
+      "indicator": "vis:call_visibility:fn:1400066f4"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140006b2c",
+      "target": "fn:1400019f0",
+      "callee": "fn:1400019f0",
+      "caller": "fn:140006b2c",
+      "callsite": "140006cd8",
+      "callsites": [
+        "140006cd8"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140006b2c",
+      "target": "fn:140008f18",
+      "callee": "fn:140008f18",
+      "caller": "fn:140006b2c",
+      "callsite": "140006c90",
+      "callsites": [
+        "140006c90"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140006b2c",
+      "target": "fn:140028010",
+      "callee": "fn:140028010",
+      "caller": "fn:140006b2c",
+      "callsite": "140006ccb",
+      "callsites": [
+        "140006ccb"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140006b2c",
+      "target": "sec:140001000",
+      "function": "fn:140006b2c",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140008f18",
+      "target": "fn:140028010",
+      "callee": "fn:140028010",
+      "caller": "fn:140008f18",
+      "callsite": "140008f54",
+      "callsites": [
+        "140008f54"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140008f18",
+      "target": "sec:140001000",
+      "function": "fn:140008f18",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:1400093f0",
+      "target": "api:closethreadpooltimer",
+      "api": "api:closethreadpooltimer",
+      "api_original_names": [
+        "CloseThreadpoolTimer"
+      ],
+      "caller": "fn:1400093f0",
+      "callsite": "14000944e",
+      "callsites": [
+        "14000944e"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:1400093f0",
+      "target": "api:getlasterror",
+      "api": "api:getlasterror",
+      "api_original_names": [
+        "GetLastError"
+      ],
+      "caller": "fn:1400093f0",
+      "callsite": "140009412",
+      "callsites": [
+        "140009412"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:1400093f0",
+      "target": "api:setlasterror",
+      "api": "api:setlasterror",
+      "api_original_names": [
+        "SetLastError"
+      ],
+      "caller": "fn:1400093f0",
+      "callsite": "14000945c",
+      "callsites": [
+        "14000945c"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:1400093f0",
+      "target": "api:setthreadpooltimer",
+      "api": "api:setthreadpooltimer",
+      "api_original_names": [
+        "SetThreadpoolTimer"
+      ],
+      "caller": "fn:1400093f0",
+      "callsite": "14000942b",
+      "callsites": [
+        "14000942b"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:1400093f0",
+      "target": "api:waitforthreadpooltimercallbacks",
+      "api": "api:waitforthreadpooltimercallbacks",
+      "api_original_names": [
+        "WaitForThreadpoolTimerCallbacks"
+      ],
+      "caller": "fn:1400093f0",
+      "callsite": "14000943f",
+      "callsites": [
+        "14000943f"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:1400093f0",
+      "target": "sec:140001000",
+      "function": "fn:1400093f0",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:1400093f0",
+      "target": "vis:call_visibility:fn:1400093f0",
+      "function": "fn:1400093f0",
+      "indicator": "vis:call_visibility:fn:1400093f0"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140027590",
+      "target": "fn:140003ba4",
+      "callee": "fn:140003ba4",
+      "caller": "fn:140027590",
+      "callsite": "1400275bd",
+      "callsites": [
+        "1400275bd"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140027590",
+      "target": "fn:1400066f4",
+      "callee": "fn:1400066f4",
+      "caller": "fn:140027590",
+      "callsite": "1400275cd",
+      "callsites": [
+        "1400275cd"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140027590",
+      "target": "fn:140028010",
+      "callee": "fn:140028010",
+      "caller": "fn:140027590",
+      "callsite": "1400275a9",
+      "callsites": [
+        "1400275a9"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140027590",
+      "target": "sec:140001000",
+      "function": "fn:140027590",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140028010",
+      "target": "sec:140028000",
+      "function": "fn:140028010",
+      "section": "sec:140028000"
+    }
+  ],
+  "unresolved_calls": [],
+  "truncation": {
+    "truncated": false,
+    "limits_reached": [],
+    "requested_depth": {
+      "caller_depth": 1,
+      "callee_depth": 2
+    },
+    "effective_depth": {
+      "caller_depth": 1,
+      "callee_depth": 2
+    },
+    "counts": {
+      "function_nodes": 8,
+      "evidence_nodes": 14,
+      "total_nodes": 22,
+      "edges": 38,
+      "unresolved_calls": 0
+    }
+  }
+}

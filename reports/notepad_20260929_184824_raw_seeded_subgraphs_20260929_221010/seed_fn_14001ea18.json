@@ -1,0 +1,1392 @@
+{
+  "schema_version": "0.1.0",
+  "seed_id": "seed:fn:14001ea18",
+  "anchor_function_id": "fn:14001ea18",
+  "graph_version": "0.12.0",
+  "extraction_config": {
+    "caller_depth": 1,
+    "callee_depth": 2,
+    "max_function_nodes": null,
+    "max_evidence_nodes": null,
+    "max_total_nodes": null,
+    "max_edges": null
+  },
+  "function_selection": {
+    "anchor_function_id": "fn:14001ea18",
+    "function_ids": [
+      "fn:140012a2c",
+      "fn:14001ea18"
+    ],
+    "caller_distances": {
+      "fn:140012a2c": 1,
+      "fn:14001ea18": 0
+    },
+    "callee_distances": {
+      "fn:14001ea18": 0
+    }
+  },
+  "nodes": [
+    {
+      "id": "api:memset",
+      "type": "API",
+      "name": "memset",
+      "normalized_name": "memset",
+      "original_names": [
+        "memset"
+      ]
+    },
+    {
+      "id": "api:regclosekey",
+      "type": "API",
+      "name": "RegCloseKey",
+      "normalized_name": "RegCloseKey",
+      "original_names": [
+        "RegCloseKey"
+      ]
+    },
+    {
+      "id": "api:regcreatekeyw",
+      "type": "API",
+      "name": "RegCreateKeyW",
+      "normalized_name": "RegCreateKeyW",
+      "original_names": [
+        "RegCreateKeyW"
+      ]
+    },
+    {
+      "id": "api:regopenkeyex",
+      "type": "API",
+      "name": "RegOpenKeyEx",
+      "normalized_name": "RegOpenKeyEx",
+      "original_names": [
+        "RegOpenKeyExW"
+      ]
+    },
+    {
+      "id": "api:regqueryvalueexw",
+      "type": "API",
+      "name": "RegQueryValueExW",
+      "normalized_name": "RegQueryValueExW",
+      "original_names": [
+        "RegQueryValueExW"
+      ]
+    },
+    {
+      "id": "api:regsetvalueex",
+      "type": "API",
+      "name": "RegSetValueEx",
+      "normalized_name": "RegSetValueEx",
+      "original_names": [
+        "RegSetValueExW"
+      ]
+    },
+    {
+      "id": "const:registry_flags:0x15",
+      "type": "CONSTANT",
+      "bit_lengths": [
+        64
+      ],
+      "category": "registry_flags",
+      "symbolic_names": [
+        "KEY_CREATE_SUB_KEY",
+        "KEY_NOTIFY",
+        "KEY_QUERY_VALUE"
+      ],
+      "value": 21,
+      "value_hex": "0x15"
+    },
+    {
+      "id": "const:registry_flags:0x20",
+      "type": "CONSTANT",
+      "bit_lengths": [
+        64
+      ],
+      "category": "registry_flags",
+      "symbolic_names": [
+        "KEY_CREATE_LINK"
+      ],
+      "value": 32,
+      "value_hex": "0x20"
+    },
+    {
+      "id": "const:registry_flags:0x20019",
+      "type": "CONSTANT",
+      "bit_lengths": [
+        32
+      ],
+      "category": "registry_flags",
+      "symbolic_names": [
+        "KEY_READ"
+      ],
+      "value": 131097,
+      "value_hex": "0x20019"
+    },
+    {
+      "id": "const:registry_flags:0x25",
+      "type": "CONSTANT",
+      "bit_lengths": [
+        64
+      ],
+      "category": "registry_flags",
+      "symbolic_names": [
+        "KEY_CREATE_LINK",
+        "KEY_CREATE_SUB_KEY",
+        "KEY_QUERY_VALUE"
+      ],
+      "value": 37,
+      "value_hex": "0x25"
+    },
+    {
+      "id": "const:registry_flags:0x35",
+      "type": "CONSTANT",
+      "bit_lengths": [
+        64
+      ],
+      "category": "registry_flags",
+      "symbolic_names": [
+        "KEY_CREATE_LINK",
+        "KEY_CREATE_SUB_KEY",
+        "KEY_NOTIFY",
+        "KEY_QUERY_VALUE"
+      ],
+      "value": 53,
+      "value_hex": "0x35"
+    },
+    {
+      "id": "const:registry_flags:0x7",
+      "type": "CONSTANT",
+      "bit_lengths": [
+        64
+      ],
+      "category": "registry_flags",
+      "symbolic_names": [
+        "KEY_CREATE_SUB_KEY",
+        "KEY_QUERY_VALUE",
+        "KEY_SET_VALUE"
+      ],
+      "value": 7,
+      "value_hex": "0x7"
+    },
+    {
+      "id": "fn:140012a2c",
+      "type": "FUNCTION",
+      "address": "140012a2c",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140012a2c",
+      "section": ".text",
+      "size": 1286,
+      "symbol_name": "FUN_140012a2c",
+      "thunk": false
+    },
+    {
+      "id": "fn:14001ea18",
+      "type": "FUNCTION",
+      "address": "14001ea18",
+      "external": false,
+      "internal": true,
+      "name": "FUN_14001ea18",
+      "section": ".text",
+      "size": 213,
+      "symbol_name": "FUN_14001ea18",
+      "thunk": false
+    },
+    {
+      "id": "sec:140001000",
+      "type": "SECTION",
+      "end": "140027fff",
+      "entropy": 6.1732,
+      "entropy_class": "normal",
+      "entropy_sampled_bytes": 65536,
+      "execute": true,
+      "initialized": true,
+      "name": ".text",
+      "permissions": "r-x",
+      "read": true,
+      "reasons": [],
+      "size": 159744,
+      "start": "140001000",
+      "suspicious": false,
+      "write": false
+    },
+    {
+      "id": "str:14002aee8",
+      "type": "STRING",
+      "address": "14002aee8",
+      "categories": [
+        "file_path"
+      ],
+      "category": "file_path",
+      "raw_value": "u\"Software\\\\Microsoft\\\\Notepad\"",
+      "reference_count": 5,
+      "value": "Software\\\\Microsoft\\\\Notepad"
+    },
+    {
+      "id": "str:14002b320",
+      "type": "STRING",
+      "address": "14002b320",
+      "categories": [],
+      "category": null,
+      "raw_value": "u\"lfEscapement\"",
+      "reference_count": 2,
+      "value": "lfEscapement"
+    },
+    {
+      "id": "str:14002b340",
+      "type": "STRING",
+      "address": "14002b340",
+      "categories": [],
+      "category": null,
+      "raw_value": "u\"lfOrientation\"",
+      "reference_count": 2,
+      "value": "lfOrientation"
+    },
+    {
+      "id": "str:14002b360",
+      "type": "STRING",
+      "address": "14002b360",
+      "categories": [],
+      "category": null,
+      "raw_value": "u\"lfWeight\"",
+      "reference_count": 2,
+      "value": "lfWeight"
+    },
+    {
+      "id": "str:14002b378",
+      "type": "STRING",
+      "address": "14002b378",
+      "categories": [],
+      "category": null,
+      "raw_value": "u\"lfItalic\"",
+      "reference_count": 2,
+      "value": "lfItalic"
+    },
+    {
+      "id": "str:14002b390",
+      "type": "STRING",
+      "address": "14002b390",
+      "categories": [],
+      "category": null,
+      "raw_value": "u\"lfUnderline\"",
+      "reference_count": 2,
+      "value": "lfUnderline"
+    },
+    {
+      "id": "str:14002b3a8",
+      "type": "STRING",
+      "address": "14002b3a8",
+      "categories": [],
+      "category": null,
+      "raw_value": "u\"lfStrikeOut\"",
+      "reference_count": 2,
+      "value": "lfStrikeOut"
+    },
+    {
+      "id": "str:14002b3c0",
+      "type": "STRING",
+      "address": "14002b3c0",
+      "categories": [],
+      "category": null,
+      "raw_value": "u\"lfCharSet\"",
+      "reference_count": 2,
+      "value": "lfCharSet"
+    },
+    {
+      "id": "str:14002b3d8",
+      "type": "STRING",
+      "address": "14002b3d8",
+      "categories": [],
+      "category": null,
+      "raw_value": "u\"lfOutPrecision\"",
+      "reference_count": 2,
+      "value": "lfOutPrecision"
+    },
+    {
+      "id": "str:14002b3f8",
+      "type": "STRING",
+      "address": "14002b3f8",
+      "categories": [],
+      "category": null,
+      "raw_value": "u\"lfClipPrecision\"",
+      "reference_count": 2,
+      "value": "lfClipPrecision"
+    },
+    {
+      "id": "str:14002b418",
+      "type": "STRING",
+      "address": "14002b418",
+      "categories": [],
+      "category": null,
+      "raw_value": "u\"lfQuality\"",
+      "reference_count": 2,
+      "value": "lfQuality"
+    },
+    {
+      "id": "str:14002b430",
+      "type": "STRING",
+      "address": "14002b430",
+      "categories": [],
+      "category": null,
+      "raw_value": "u\"lfPitchAndFamily\"",
+      "reference_count": 2,
+      "value": "lfPitchAndFamily"
+    },
+    {
+      "id": "str:14002b458",
+      "type": "STRING",
+      "address": "14002b458",
+      "categories": [],
+      "category": null,
+      "raw_value": "u\"lfFaceName\"",
+      "reference_count": 3,
+      "value": "lfFaceName"
+    },
+    {
+      "id": "str:14002b470",
+      "type": "STRING",
+      "address": "14002b470",
+      "categories": [],
+      "category": null,
+      "raw_value": "u\"iPointSize\"",
+      "reference_count": 3,
+      "value": "iPointSize"
+    },
+    {
+      "id": "str:14002b488",
+      "type": "STRING",
+      "address": "14002b488",
+      "categories": [],
+      "category": null,
+      "raw_value": "u\"fWrap\"",
+      "reference_count": 2,
+      "value": "fWrap"
+    },
+    {
+      "id": "str:14002b498",
+      "type": "STRING",
+      "address": "14002b498",
+      "categories": [],
+      "category": null,
+      "raw_value": "u\"StatusBar\"",
+      "reference_count": 2,
+      "value": "StatusBar"
+    },
+    {
+      "id": "str:14002b4b0",
+      "type": "STRING",
+      "address": "14002b4b0",
+      "categories": [],
+      "category": null,
+      "raw_value": "u\"szHeader\"",
+      "reference_count": 2,
+      "value": "szHeader"
+    },
+    {
+      "id": "str:14002b4c8",
+      "type": "STRING",
+      "address": "14002b4c8",
+      "categories": [],
+      "category": null,
+      "raw_value": "u\"szTrailer\"",
+      "reference_count": 2,
+      "value": "szTrailer"
+    },
+    {
+      "id": "str:14002b4e0",
+      "type": "STRING",
+      "address": "14002b4e0",
+      "categories": [],
+      "category": null,
+      "raw_value": "u\"iMarginTop\"",
+      "reference_count": 2,
+      "value": "iMarginTop"
+    },
+    {
+      "id": "str:14002b4f8",
+      "type": "STRING",
+      "address": "14002b4f8",
+      "categories": [],
+      "category": null,
+      "raw_value": "u\"iMarginBottom\"",
+      "reference_count": 2,
+      "value": "iMarginBottom"
+    },
+    {
+      "id": "str:14002b518",
+      "type": "STRING",
+      "address": "14002b518",
+      "categories": [],
+      "category": null,
+      "raw_value": "u\"iMarginLeft\"",
+      "reference_count": 2,
+      "value": "iMarginLeft"
+    },
+    {
+      "id": "str:14002b530",
+      "type": "STRING",
+      "address": "14002b530",
+      "categories": [],
+      "category": null,
+      "raw_value": "u\"iMarginRight\"",
+      "reference_count": 2,
+      "value": "iMarginRight"
+    },
+    {
+      "id": "str:14002b550",
+      "type": "STRING",
+      "address": "14002b550",
+      "categories": [],
+      "category": null,
+      "raw_value": "u\"iWindowPosX\"",
+      "reference_count": 2,
+      "value": "iWindowPosX"
+    },
+    {
+      "id": "str:14002b568",
+      "type": "STRING",
+      "address": "14002b568",
+      "categories": [],
+      "category": null,
+      "raw_value": "u\"iWindowPosY\"",
+      "reference_count": 2,
+      "value": "iWindowPosY"
+    },
+    {
+      "id": "str:14002b580",
+      "type": "STRING",
+      "address": "14002b580",
+      "categories": [],
+      "category": null,
+      "raw_value": "u\"iWindowPosDX\"",
+      "reference_count": 2,
+      "value": "iWindowPosDX"
+    },
+    {
+      "id": "str:14002b5a0",
+      "type": "STRING",
+      "address": "14002b5a0",
+      "categories": [],
+      "category": null,
+      "raw_value": "u\"iWindowPosDY\"",
+      "reference_count": 2,
+      "value": "iWindowPosDY"
+    },
+    {
+      "id": "str:14002b5c0",
+      "type": "STRING",
+      "address": "14002b5c0",
+      "categories": [],
+      "category": null,
+      "raw_value": "u\"fReverse\"",
+      "reference_count": 2,
+      "value": "fReverse"
+    },
+    {
+      "id": "str:14002b5d8",
+      "type": "STRING",
+      "address": "14002b5d8",
+      "categories": [],
+      "category": null,
+      "raw_value": "u\"fWrapAround\"",
+      "reference_count": 2,
+      "value": "fWrapAround"
+    },
+    {
+      "id": "str:14002b5f0",
+      "type": "STRING",
+      "address": "14002b5f0",
+      "categories": [],
+      "category": null,
+      "raw_value": "u\"fMatchCase\"",
+      "reference_count": 2,
+      "value": "fMatchCase"
+    },
+    {
+      "id": "str:14002b608",
+      "type": "STRING",
+      "address": "14002b608",
+      "categories": [],
+      "category": null,
+      "raw_value": "u\"searchString\"",
+      "reference_count": 2,
+      "value": "searchString"
+    },
+    {
+      "id": "str:14002b628",
+      "type": "STRING",
+      "address": "14002b628",
+      "categories": [],
+      "category": null,
+      "raw_value": "u\"replaceString\"",
+      "reference_count": 2,
+      "value": "replaceString"
+    },
+    {
+      "id": "str:14002b648",
+      "type": "STRING",
+      "address": "14002b648",
+      "categories": [],
+      "category": null,
+      "raw_value": "u\"Lucida Console\"",
+      "reference_count": 5,
+      "value": "Lucida Console"
+    },
+    {
+      "id": "str:14002b668",
+      "type": "STRING",
+      "address": "14002b668",
+      "categories": [],
+      "category": null,
+      "raw_value": "u\"iDefaultEncoding\"",
+      "reference_count": 1,
+      "value": "iDefaultEncoding"
+    },
+    {
+      "id": "str:14002b690",
+      "type": "STRING",
+      "address": "14002b690",
+      "categories": [],
+      "category": null,
+      "raw_value": "u\"fSaveWindowPositions\"",
+      "reference_count": 1,
+      "value": "fSaveWindowPositions"
+    },
+    {
+      "id": "str:14002b6c0",
+      "type": "STRING",
+      "address": "14002b6c0",
+      "categories": [],
+      "category": null,
+      "raw_value": "u\"fWindowsOnlyEOL\"",
+      "reference_count": 1,
+      "value": "fWindowsOnlyEOL"
+    },
+    {
+      "id": "str:14002b6e0",
+      "type": "STRING",
+      "address": "14002b6e0",
+      "categories": [],
+      "category": null,
+      "raw_value": "u\"fPasteOriginalEOL\"",
+      "reference_count": 1,
+      "value": "fPasteOriginalEOL"
+    },
+    {
+      "id": "str:14002b708",
+      "type": "STRING",
+      "address": "14002b708",
+      "categories": [],
+      "category": null,
+      "raw_value": "u\"fMLE_is_broken\"",
+      "reference_count": 1,
+      "value": "fMLE_is_broken"
+    },
+    {
+      "id": "str:14002b860",
+      "type": "STRING",
+      "address": "14002b860",
+      "categories": [
+        "file_path"
+      ],
+      "category": "file_path",
+      "raw_value": "u\"Software\\\\Microsoft\\\\Notepad\\\\DefaultFonts\"",
+      "reference_count": 1,
+      "value": "Software\\\\Microsoft\\\\Notepad\\\\DefaultFonts"
+    },
+    {
+      "id": "strcat:file_path",
+      "type": "STRING_CATEGORY",
+      "category": "file_path",
+      "name": "file_path"
+    },
+    {
+      "id": "vis:call_visibility:fn:140012a2c",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:140012a2c",
+      "indicator": "call_visibility",
+      "indirect_call_count": 4,
+      "indirect_callsites": [
+        "140012ac4",
+        "140012c19",
+        "140012c65",
+        "140012f09"
+      ],
+      "resolved_indirect_call_count": 4,
+      "resolved_indirect_callsites": [
+        "140012ac4",
+        "140012c19",
+        "140012c65",
+        "140012f09"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    },
+    {
+      "id": "vis:call_visibility:fn:14001ea18",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:14001ea18",
+      "indicator": "call_visibility",
+      "indirect_call_count": 4,
+      "indirect_callsites": [
+        "14001ea64",
+        "14001ea92",
+        "14001eac3",
+        "14001ead3"
+      ],
+      "resolved_indirect_call_count": 4,
+      "resolved_indirect_callsites": [
+        "14001ea64",
+        "14001ea92",
+        "14001eac3",
+        "14001ead3"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    }
+  ],
+  "edges": [
+    {
+      "type": "calls_function",
+      "source": "fn:140012a2c",
+      "target": "fn:14001ea18",
+      "callee": "fn:14001ea18",
+      "caller": "fn:140012a2c",
+      "callsite": "140012d1c",
+      "callsites": [
+        "140012d1c",
+        "140012d32",
+        "140012d48",
+        "140012d61",
+        "140012d7a"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 5,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140012a2c",
+      "target": "api:memset",
+      "api": "api:memset",
+      "api_original_names": [
+        "memset"
+      ],
+      "caller": "fn:140012a2c",
+      "callsite": "140012a56",
+      "callsites": [
+        "140012a56"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140012a2c",
+      "target": "api:regclosekey",
+      "api": "api:regclosekey",
+      "api_original_names": [
+        "RegCloseKey"
+      ],
+      "caller": "fn:140012a2c",
+      "callsite": "140012c65",
+      "callsites": [
+        "140012c65",
+        "140012f09"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 2,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140012a2c",
+      "target": "api:regopenkeyex",
+      "api": "api:regopenkeyex",
+      "api_original_names": [
+        "RegOpenKeyExW"
+      ],
+      "caller": "fn:140012a2c",
+      "callsite": "140012ac4",
+      "callsites": [
+        "140012ac4",
+        "140012c19"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 2,
+      "unresolved": false
+    },
+    {
+      "type": "references_string",
+      "source": "fn:140012a2c",
+      "target": "str:14002aee8",
+      "function": "fn:140012a2c",
+      "reference_count": 1,
+      "reference_sites": [
+        "140012a61"
+      ],
+      "string": "str:14002aee8"
+    },
+    {
+      "type": "references_string",
+      "source": "fn:140012a2c",
+      "target": "str:14002b320",
+      "function": "fn:140012a2c",
+      "reference_count": 1,
+      "reference_sites": [
+        "140012ae4"
+      ],
+      "string": "str:14002b320"
+    },
+    {
+      "type": "references_string",
+      "source": "fn:140012a2c",
+      "target": "str:14002b340",
+      "function": "fn:140012a2c",
+      "reference_count": 1,
+      "reference_sites": [
+        "140012afb"
+      ],
+      "string": "str:14002b340"
+    },
+    {
+      "type": "references_string",
+      "source": "fn:140012a2c",
+      "target": "str:14002b360",
+      "function": "fn:140012a2c",
+      "reference_count": 1,
+      "reference_sites": [
+        "140012b15"
+      ],
+      "string": "str:14002b360"
+    },
+    {
+      "type": "references_string",
+      "source": "fn:140012a2c",
+      "target": "str:14002b378",
+      "function": "fn:140012a2c",
+      "reference_count": 1,
+      "reference_sites": [
+        "140012b2f"
+      ],
+      "string": "str:14002b378"
+    },
+    {
+      "type": "references_string",
+      "source": "fn:140012a2c",
+      "target": "str:14002b390",
+      "function": "fn:140012a2c",
+      "reference_count": 1,
+      "reference_sites": [
+        "140012b48"
+      ],
+      "string": "str:14002b390"
+    },
+    {
+      "type": "references_string",
+      "source": "fn:140012a2c",
+      "target": "str:14002b3a8",
+      "function": "fn:140012a2c",
+      "reference_count": 1,
+      "reference_sites": [
+        "140012b61"
+      ],
+      "string": "str:14002b3a8"
+    },
+    {
+      "type": "references_string",
+      "source": "fn:140012a2c",
+      "target": "str:14002b3c0",
+      "function": "fn:140012a2c",
+      "reference_count": 1,
+      "reference_sites": [
+        "140012b7a"
+      ],
+      "string": "str:14002b3c0"
+    },
+    {
+      "type": "references_string",
+      "source": "fn:140012a2c",
+      "target": "str:14002b3d8",
+      "function": "fn:140012a2c",
+      "reference_count": 1,
+      "reference_sites": [
+        "140012b93"
+      ],
+      "string": "str:14002b3d8"
+    },
+    {
+      "type": "references_string",
+      "source": "fn:140012a2c",
+      "target": "str:14002b3f8",
+      "function": "fn:140012a2c",
+      "reference_count": 1,
+      "reference_sites": [
+        "140012bac"
+      ],
+      "string": "str:14002b3f8"
+    },
+    {
+      "type": "references_string",
+      "source": "fn:140012a2c",
+      "target": "str:14002b418",
+      "function": "fn:140012a2c",
+      "reference_count": 1,
+      "reference_sites": [
+        "140012bc5"
+      ],
+      "string": "str:14002b418"
+    },
+    {
+      "type": "references_string",
+      "source": "fn:140012a2c",
+      "target": "str:14002b430",
+      "function": "fn:140012a2c",
+      "reference_count": 1,
+      "reference_sites": [
+        "140012bde"
+      ],
+      "string": "str:14002b430"
+    },
+    {
+      "type": "references_string",
+      "source": "fn:140012a2c",
+      "target": "str:14002b458",
+      "function": "fn:140012a2c",
+      "reference_count": 2,
+      "reference_sites": [
+        "140012c40",
+        "140012c88"
+      ],
+      "string": "str:14002b458"
+    },
+    {
+      "type": "references_string",
+      "source": "fn:140012a2c",
+      "target": "str:14002b470",
+      "function": "fn:140012a2c",
+      "reference_count": 2,
+      "reference_sites": [
+        "140012c50",
+        "140012c98"
+      ],
+      "string": "str:14002b470"
+    },
+    {
+      "type": "references_string",
+      "source": "fn:140012a2c",
+      "target": "str:14002b488",
+      "function": "fn:140012a2c",
+      "reference_count": 1,
+      "reference_sites": [
+        "140012cab"
+      ],
+      "string": "str:14002b488"
+    },
+    {
+      "type": "references_string",
+      "source": "fn:140012a2c",
+      "target": "str:14002b498",
+      "function": "fn:140012a2c",
+      "reference_count": 1,
+      "reference_sites": [
+        "140012ce0"
+      ],
+      "string": "str:14002b498"
+    },
+    {
+      "type": "references_string",
+      "source": "fn:140012a2c",
+      "target": "str:14002b4b0",
+      "function": "fn:140012a2c",
+      "reference_count": 1,
+      "reference_sites": [
+        "140012dd9"
+      ],
+      "string": "str:14002b4b0"
+    },
+    {
+      "type": "references_string",
+      "source": "fn:140012a2c",
+      "target": "str:14002b4c8",
+      "function": "fn:140012a2c",
+      "reference_count": 1,
+      "reference_sites": [
+        "140012dfe"
+      ],
+      "string": "str:14002b4c8"
+    },
+    {
+      "type": "references_string",
+      "source": "fn:140012a2c",
+      "target": "str:14002b4e0",
+      "function": "fn:140012a2c",
+      "reference_count": 1,
+      "reference_sites": [
+        "140012e11"
+      ],
+      "string": "str:14002b4e0"
+    },
+    {
+      "type": "references_string",
+      "source": "fn:140012a2c",
+      "target": "str:14002b4f8",
+      "function": "fn:140012a2c",
+      "reference_count": 1,
+      "reference_sites": [
+        "140012e28"
+      ],
+      "string": "str:14002b4f8"
+    },
+    {
+      "type": "references_string",
+      "source": "fn:140012a2c",
+      "target": "str:14002b518",
+      "function": "fn:140012a2c",
+      "reference_count": 1,
+      "reference_sites": [
+        "140012e45"
+      ],
+      "string": "str:14002b518"
+    },
+    {
+      "type": "references_string",
+      "source": "fn:140012a2c",
+      "target": "str:14002b530",
+      "function": "fn:140012a2c",
+      "reference_count": 1,
+      "reference_sites": [
+        "140012e62"
+      ],
+      "string": "str:14002b530"
+    },
+    {
+      "type": "references_string",
+      "source": "fn:140012a2c",
+      "target": "str:14002b550",
+      "function": "fn:140012a2c",
+      "reference_count": 1,
+      "reference_sites": [
+        "140012e9a"
+      ],
+      "string": "str:14002b550"
+    },
+    {
+      "type": "references_string",
+      "source": "fn:140012a2c",
+      "target": "str:14002b568",
+      "function": "fn:140012a2c",
+      "reference_count": 1,
+      "reference_sites": [
+        "140012e7c"
+      ],
+      "string": "str:14002b568"
+    },
+    {
+      "type": "references_string",
+      "source": "fn:140012a2c",
+      "target": "str:14002b580",
+      "function": "fn:140012a2c",
+      "reference_count": 1,
+      "reference_sites": [
+        "140012eb3"
+      ],
+      "string": "str:14002b580"
+    },
+    {
+      "type": "references_string",
+      "source": "fn:140012a2c",
+      "target": "str:14002b5a0",
+      "function": "fn:140012a2c",
+      "reference_count": 1,
+      "reference_sites": [
+        "140012ecc"
+      ],
+      "string": "str:14002b5a0"
+    },
+    {
+      "type": "references_string",
+      "source": "fn:140012a2c",
+      "target": "str:14002b5c0",
+      "function": "fn:140012a2c",
+      "reference_count": 1,
+      "reference_sites": [
+        "140012d3b"
+      ],
+      "string": "str:14002b5c0"
+    },
+    {
+      "type": "references_string",
+      "source": "fn:140012a2c",
+      "target": "str:14002b5d8",
+      "function": "fn:140012a2c",
+      "reference_count": 1,
+      "reference_sites": [
+        "140012d51"
+      ],
+      "string": "str:14002b5d8"
+    },
+    {
+      "type": "references_string",
+      "source": "fn:140012a2c",
+      "target": "str:14002b5f0",
+      "function": "fn:140012a2c",
+      "reference_count": 1,
+      "reference_sites": [
+        "140012d6a"
+      ],
+      "string": "str:14002b5f0"
+    },
+    {
+      "type": "references_string",
+      "source": "fn:140012a2c",
+      "target": "str:14002b608",
+      "function": "fn:140012a2c",
+      "reference_count": 1,
+      "reference_sites": [
+        "140012d8c"
+      ],
+      "string": "str:14002b608"
+    },
+    {
+      "type": "references_string",
+      "source": "fn:140012a2c",
+      "target": "str:14002b628",
+      "function": "fn:140012a2c",
+      "reference_count": 1,
+      "reference_sites": [
+        "140012dbd"
+      ],
+      "string": "str:14002b628"
+    },
+    {
+      "type": "references_string",
+      "source": "fn:140012a2c",
+      "target": "str:14002b648",
+      "function": "fn:140012a2c",
+      "reference_count": 5,
+      "reference_sites": [
+        "140012a5b",
+        "140012a68",
+        "140012a8c",
+        "140012a9d",
+        "140012c31"
+      ],
+      "string": "str:14002b648"
+    },
+    {
+      "type": "references_string",
+      "source": "fn:140012a2c",
+      "target": "str:14002b668",
+      "function": "fn:140012a2c",
+      "reference_count": 1,
+      "reference_sites": [
+        "140012cc4"
+      ],
+      "string": "str:14002b668"
+    },
+    {
+      "type": "references_string",
+      "source": "fn:140012a2c",
+      "target": "str:14002b690",
+      "function": "fn:140012a2c",
+      "reference_count": 1,
+      "reference_sites": [
+        "140012cfc"
+      ],
+      "string": "str:14002b690"
+    },
+    {
+      "type": "references_string",
+      "source": "fn:140012a2c",
+      "target": "str:14002b6c0",
+      "function": "fn:140012a2c",
+      "reference_count": 1,
+      "reference_sites": [
+        "140012d15"
+      ],
+      "string": "str:14002b6c0"
+    },
+    {
+      "type": "references_string",
+      "source": "fn:140012a2c",
+      "target": "str:14002b6e0",
+      "function": "fn:140012a2c",
+      "reference_count": 1,
+      "reference_sites": [
+        "140012d25"
+      ],
+      "string": "str:14002b6e0"
+    },
+    {
+      "type": "references_string",
+      "source": "fn:140012a2c",
+      "target": "str:14002b708",
+      "function": "fn:140012a2c",
+      "reference_count": 1,
+      "reference_sites": [
+        "140012ee5"
+      ],
+      "string": "str:14002b708"
+    },
+    {
+      "type": "references_string",
+      "source": "fn:140012a2c",
+      "target": "str:14002b860",
+      "function": "fn:140012a2c",
+      "reference_count": 1,
+      "reference_sites": [
+        "140012bf9"
+      ],
+      "string": "str:14002b860"
+    },
+    {
+      "type": "uses_constant",
+      "source": "fn:140012a2c",
+      "target": "const:registry_flags:0x15",
+      "constant": "const:registry_flags:0x15",
+      "context_apis": [
+        "RegOpenKeyEx"
+      ],
+      "function": "fn:140012a2c",
+      "occurrences": 1,
+      "use_sites": [
+        "140012abc"
+      ]
+    },
+    {
+      "type": "uses_constant",
+      "source": "fn:140012a2c",
+      "target": "const:registry_flags:0x20",
+      "constant": "const:registry_flags:0x20",
+      "context_apis": [
+        "RegOpenKeyEx"
+      ],
+      "function": "fn:140012a2c",
+      "occurrences": 2,
+      "use_sites": [
+        "140012ab7",
+        "140012c0d"
+      ]
+    },
+    {
+      "type": "uses_constant",
+      "source": "fn:140012a2c",
+      "target": "const:registry_flags:0x20019",
+      "constant": "const:registry_flags:0x20019",
+      "context_apis": [
+        "RegOpenKeyEx"
+      ],
+      "function": "fn:140012a2c",
+      "occurrences": 1,
+      "use_sites": [
+        "140012c04"
+      ]
+    },
+    {
+      "type": "uses_constant",
+      "source": "fn:140012a2c",
+      "target": "const:registry_flags:0x25",
+      "constant": "const:registry_flags:0x25",
+      "context_apis": [
+        "RegOpenKeyEx"
+      ],
+      "function": "fn:140012a2c",
+      "occurrences": 1,
+      "use_sites": [
+        "140012ac0"
+      ]
+    },
+    {
+      "type": "uses_constant",
+      "source": "fn:140012a2c",
+      "target": "const:registry_flags:0x35",
+      "constant": "const:registry_flags:0x35",
+      "context_apis": [
+        "RegOpenKeyEx"
+      ],
+      "function": "fn:140012a2c",
+      "occurrences": 1,
+      "use_sites": [
+        "140012ab0"
+      ]
+    },
+    {
+      "type": "uses_constant",
+      "source": "fn:140012a2c",
+      "target": "const:registry_flags:0x7",
+      "constant": "const:registry_flags:0x7",
+      "context_apis": [
+        "RegOpenKeyEx"
+      ],
+      "function": "fn:140012a2c",
+      "occurrences": 1,
+      "use_sites": [
+        "140012aa5"
+      ]
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140012a2c",
+      "target": "sec:140001000",
+      "function": "fn:140012a2c",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:140012a2c",
+      "target": "vis:call_visibility:fn:140012a2c",
+      "function": "fn:140012a2c",
+      "indicator": "vis:call_visibility:fn:140012a2c"
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14001ea18",
+      "target": "api:regclosekey",
+      "api": "api:regclosekey",
+      "api_original_names": [
+        "RegCloseKey"
+      ],
+      "caller": "fn:14001ea18",
+      "callsite": "14001ead3",
+      "callsites": [
+        "14001ead3"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14001ea18",
+      "target": "api:regcreatekeyw",
+      "api": "api:regcreatekeyw",
+      "api_original_names": [
+        "RegCreateKeyW"
+      ],
+      "caller": "fn:14001ea18",
+      "callsite": "14001ea92",
+      "callsites": [
+        "14001ea92"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14001ea18",
+      "target": "api:regqueryvalueexw",
+      "api": "api:regqueryvalueexw",
+      "api_original_names": [
+        "RegQueryValueExW"
+      ],
+      "caller": "fn:14001ea18",
+      "callsite": "14001ea64",
+      "callsites": [
+        "14001ea64"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14001ea18",
+      "target": "api:regsetvalueex",
+      "api": "api:regsetvalueex",
+      "api_original_names": [
+        "RegSetValueExW"
+      ],
+      "caller": "fn:14001ea18",
+      "callsite": "14001eac3",
+      "callsites": [
+        "14001eac3"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "references_string",
+      "source": "fn:14001ea18",
+      "target": "str:14002aee8",
+      "function": "fn:14001ea18",
+      "reference_count": 1,
+      "reference_sites": [
+        "14001ea84"
+      ],
+      "string": "str:14002aee8"
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:14001ea18",
+      "target": "sec:140001000",
+      "function": "fn:14001ea18",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:14001ea18",
+      "target": "vis:call_visibility:fn:14001ea18",
+      "function": "fn:14001ea18",
+      "indicator": "vis:call_visibility:fn:14001ea18"
+    },
+    {
+      "type": "has_string_category",
+      "source": "str:14002aee8",
+      "target": "strcat:file_path",
+      "category": "strcat:file_path",
+      "string": "str:14002aee8"
+    },
+    {
+      "type": "has_string_category",
+      "source": "str:14002b860",
+      "target": "strcat:file_path",
+      "category": "strcat:file_path",
+      "string": "str:14002b860"
+    }
+  ],
+  "unresolved_calls": [],
+  "truncation": {
+    "truncated": false,
+    "limits_reached": [],
+    "requested_depth": {
+      "caller_depth": 1,
+      "callee_depth": 2
+    },
+    "effective_depth": {
+      "caller_depth": 1,
+      "callee_depth": 0
+    },
+    "counts": {
+      "function_nodes": 2,
+      "evidence_nodes": 54,
+      "total_nodes": 56,
+      "edges": 59,
+      "unresolved_calls": 0
+    }
+  }
+}

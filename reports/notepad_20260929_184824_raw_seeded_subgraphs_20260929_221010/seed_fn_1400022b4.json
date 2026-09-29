@@ -1,0 +1,412 @@
+{
+  "schema_version": "0.1.0",
+  "seed_id": "seed:fn:1400022b4",
+  "anchor_function_id": "fn:1400022b4",
+  "graph_version": "0.12.0",
+  "extraction_config": {
+    "caller_depth": 1,
+    "callee_depth": 2,
+    "max_function_nodes": null,
+    "max_evidence_nodes": null,
+    "max_total_nodes": null,
+    "max_edges": null
+  },
+  "function_selection": {
+    "anchor_function_id": "fn:1400022b4",
+    "function_ids": [
+      "fn:140001840",
+      "fn:1400022b4"
+    ],
+    "caller_distances": {
+      "fn:140001840": 1,
+      "fn:1400022b4": 0
+    },
+    "callee_distances": {
+      "fn:1400022b4": 0
+    }
+  },
+  "nodes": [
+    {
+      "id": "api:_initterm",
+      "type": "API",
+      "name": "_initterm",
+      "normalized_name": "_initterm",
+      "original_names": [
+        "_initterm"
+      ]
+    },
+    {
+      "id": "api:_initterm_e",
+      "type": "API",
+      "name": "_initterm_e",
+      "normalized_name": "_initterm_e",
+      "original_names": [
+        "_initterm_e"
+      ]
+    },
+    {
+      "id": "api:_o__cexit",
+      "type": "API",
+      "name": "_o__cexit",
+      "normalized_name": "_o__cexit",
+      "original_names": [
+        "_o__cexit"
+      ]
+    },
+    {
+      "id": "api:_o__exit",
+      "type": "API",
+      "name": "_o__exit",
+      "normalized_name": "_o__exit",
+      "original_names": [
+        "_o__exit"
+      ]
+    },
+    {
+      "id": "api:_o__get_wide_winmain_command_line",
+      "type": "API",
+      "name": "_o__get_wide_winmain_command_line",
+      "normalized_name": "_o__get_wide_winmain_command_line",
+      "original_names": [
+        "_o__get_wide_winmain_command_line"
+      ]
+    },
+    {
+      "id": "api:_o_exit",
+      "type": "API",
+      "name": "_o_exit",
+      "normalized_name": "_o_exit",
+      "original_names": [
+        "_o_exit"
+      ]
+    },
+    {
+      "id": "api:_register_thread_local_exe_atexit_callback",
+      "type": "API",
+      "name": "_register_thread_local_exe_atexit_callback",
+      "normalized_name": "_register_thread_local_exe_atexit_callback",
+      "original_names": [
+        "_register_thread_local_exe_atexit_callback"
+      ]
+    },
+    {
+      "id": "api:getmodulehandlew",
+      "type": "API",
+      "name": "GetModuleHandleW",
+      "normalized_name": "GetModuleHandleW",
+      "original_names": [
+        "GetModuleHandleW"
+      ]
+    },
+    {
+      "id": "fn:140001840",
+      "type": "FUNCTION",
+      "address": "140001840",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140001840",
+      "section": ".text",
+      "size": 344,
+      "symbol_name": "FUN_140001840",
+      "thunk": false
+    },
+    {
+      "id": "fn:1400022b4",
+      "type": "FUNCTION",
+      "address": "1400022b4",
+      "external": false,
+      "internal": true,
+      "name": "FUN_1400022b4",
+      "section": ".text",
+      "size": 81,
+      "symbol_name": "FUN_1400022b4",
+      "thunk": false
+    },
+    {
+      "id": "sec:140001000",
+      "type": "SECTION",
+      "end": "140027fff",
+      "entropy": 6.1732,
+      "entropy_class": "normal",
+      "entropy_sampled_bytes": 65536,
+      "execute": true,
+      "initialized": true,
+      "name": ".text",
+      "permissions": "r-x",
+      "read": true,
+      "reasons": [],
+      "size": 159744,
+      "start": "140001000",
+      "suspicious": false,
+      "write": false
+    },
+    {
+      "id": "vis:call_visibility:fn:140001840",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:140001840",
+      "indicator": "call_visibility",
+      "indirect_call_count": 1,
+      "indirect_callsites": [
+        "1400019b0"
+      ],
+      "resolved_indirect_call_count": 0,
+      "resolved_indirect_callsites": [],
+      "signals": [
+        "indirect_call",
+        "unresolved_call"
+      ],
+      "unresolved_indirect_call_count": 1,
+      "unresolved_indirect_callsites": [
+        "1400019b0"
+      ]
+    },
+    {
+      "id": "vis:call_visibility:fn:1400022b4",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:1400022b4",
+      "indicator": "call_visibility",
+      "indirect_call_count": 1,
+      "indirect_callsites": [
+        "1400022ba"
+      ],
+      "resolved_indirect_call_count": 1,
+      "resolved_indirect_callsites": [
+        "1400022ba"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    }
+  ],
+  "edges": [
+    {
+      "type": "calls_function",
+      "source": "fn:140001840",
+      "target": "fn:1400022b4",
+      "callee": "fn:1400022b4",
+      "caller": "fn:140001840",
+      "callsite": "140001947",
+      "callsites": [
+        "140001947"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140001840",
+      "target": "api:_initterm",
+      "api": "api:_initterm",
+      "api_original_names": [
+        "_initterm"
+      ],
+      "caller": "fn:140001840",
+      "callsite": "1400018b7",
+      "callsites": [
+        "1400018b7"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140001840",
+      "target": "api:_initterm_e",
+      "api": "api:_initterm_e",
+      "api_original_names": [
+        "_initterm_e"
+      ],
+      "caller": "fn:140001840",
+      "callsite": "140001896",
+      "callsites": [
+        "140001896"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140001840",
+      "target": "api:_o__cexit",
+      "api": "api:_o__cexit",
+      "api_original_names": [
+        "_o__cexit"
+      ],
+      "caller": "fn:140001840",
+      "callsite": "140001955",
+      "callsites": [
+        "140001955"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140001840",
+      "target": "api:_o__exit",
+      "api": "api:_o__exit",
+      "api_original_names": [
+        "_o__exit"
+      ],
+      "caller": "fn:140001840",
+      "callsite": "1400019aa",
+      "callsites": [
+        "1400019aa"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140001840",
+      "target": "api:_o__get_wide_winmain_command_line",
+      "api": "api:_o__get_wide_winmain_command_line",
+      "api_original_names": [
+        "_o__get_wide_winmain_command_line"
+      ],
+      "caller": "fn:140001840",
+      "callsite": "14000192c",
+      "callsites": [
+        "14000192c"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140001840",
+      "target": "api:_o_exit",
+      "api": "api:_o_exit",
+      "api_original_names": [
+        "_o_exit"
+      ],
+      "caller": "fn:140001840",
+      "callsite": "1400019a2",
+      "callsites": [
+        "1400019a2"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140001840",
+      "target": "api:_register_thread_local_exe_atexit_callback",
+      "api": "api:_register_thread_local_exe_atexit_callback",
+      "api_original_names": [
+        "_register_thread_local_exe_atexit_callback"
+      ],
+      "caller": "fn:140001840",
+      "callsite": "14000191f",
+      "callsites": [
+        "14000191f"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140001840",
+      "target": "sec:140001000",
+      "function": "fn:140001840",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:140001840",
+      "target": "vis:call_visibility:fn:140001840",
+      "function": "fn:140001840",
+      "indicator": "vis:call_visibility:fn:140001840"
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:1400022b4",
+      "target": "api:getmodulehandlew",
+      "api": "api:getmodulehandlew",
+      "api_original_names": [
+        "GetModuleHandleW"
+      ],
+      "caller": "fn:1400022b4",
+      "callsite": "1400022ba",
+      "callsites": [
+        "1400022ba"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:1400022b4",
+      "target": "sec:140001000",
+      "function": "fn:1400022b4",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:1400022b4",
+      "target": "vis:call_visibility:fn:1400022b4",
+      "function": "fn:1400022b4",
+      "indicator": "vis:call_visibility:fn:1400022b4"
+    }
+  ],
+  "unresolved_calls": [
+    {
+      "indicator": "unresolved_call",
+      "caller": "fn:140001840",
+      "callee": null,
+      "callsite": "1400019b0",
+      "unresolved": true,
+      "reason": "no_resolved_function_or_api_target",
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1
+    }
+  ],
+  "truncation": {
+    "truncated": false,
+    "limits_reached": [],
+    "requested_depth": {
+      "caller_depth": 1,
+      "callee_depth": 2
+    },
+    "effective_depth": {
+      "caller_depth": 1,
+      "callee_depth": 0
+    },
+    "counts": {
+      "function_nodes": 2,
+      "evidence_nodes": 11,
+      "total_nodes": 13,
+      "edges": 13,
+      "unresolved_calls": 1
+    }
+  }
+}

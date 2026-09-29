@@ -1,0 +1,998 @@
+{
+  "schema_version": "0.1.0",
+  "seed_id": "seed:fn:14000aac4",
+  "anchor_function_id": "fn:14000aac4",
+  "graph_version": "0.12.0",
+  "extraction_config": {
+    "caller_depth": 1,
+    "callee_depth": 2,
+    "max_function_nodes": null,
+    "max_evidence_nodes": null,
+    "max_total_nodes": null,
+    "max_edges": null
+  },
+  "function_selection": {
+    "anchor_function_id": "fn:14000aac4",
+    "function_ids": [
+      "fn:1400019f0",
+      "fn:14000a630",
+      "fn:14000aac4",
+      "fn:14000b160",
+      "fn:14000e848"
+    ],
+    "caller_distances": {
+      "fn:14000a630": 1,
+      "fn:14000aac4": 0
+    },
+    "callee_distances": {
+      "fn:1400019f0": 2,
+      "fn:14000aac4": 0,
+      "fn:14000b160": 1,
+      "fn:14000e848": 2
+    }
+  },
+  "nodes": [
+    {
+      "id": "api:beginpaint",
+      "type": "API",
+      "name": "BeginPaint",
+      "normalized_name": "BeginPaint",
+      "original_names": [
+        "BeginPaint"
+      ]
+    },
+    {
+      "id": "api:cotaskmemfree",
+      "type": "API",
+      "name": "CoTaskMemFree",
+      "normalized_name": "CoTaskMemFree",
+      "original_names": [
+        "CoTaskMemFree"
+      ]
+    },
+    {
+      "id": "api:createsolidbrush",
+      "type": "API",
+      "name": "CreateSolidBrush",
+      "normalized_name": "CreateSolidBrush",
+      "original_names": [
+        "CreateSolidBrush"
+      ]
+    },
+    {
+      "id": "api:defwindowprocw",
+      "type": "API",
+      "name": "DefWindowProcW",
+      "normalized_name": "DefWindowProcW",
+      "original_names": [
+        "DefWindowProcW"
+      ]
+    },
+    {
+      "id": "api:deleteobject",
+      "type": "API",
+      "name": "DeleteObject",
+      "normalized_name": "DeleteObject",
+      "original_names": [
+        "DeleteObject"
+      ]
+    },
+    {
+      "id": "api:destroywindow",
+      "type": "API",
+      "name": "DestroyWindow",
+      "normalized_name": "DestroyWindow",
+      "original_names": [
+        "DestroyWindow"
+      ]
+    },
+    {
+      "id": "api:drawfocusrect",
+      "type": "API",
+      "name": "DrawFocusRect",
+      "normalized_name": "DrawFocusRect",
+      "original_names": [
+        "DrawFocusRect"
+      ]
+    },
+    {
+      "id": "api:drawtextw",
+      "type": "API",
+      "name": "DrawTextW",
+      "normalized_name": "DrawTextW",
+      "original_names": [
+        "DrawTextW"
+      ]
+    },
+    {
+      "id": "api:fillrect",
+      "type": "API",
+      "name": "FillRect",
+      "normalized_name": "FillRect",
+      "original_names": [
+        "FillRect"
+      ]
+    },
+    {
+      "id": "api:getclientrect",
+      "type": "API",
+      "name": "GetClientRect",
+      "normalized_name": "GetClientRect",
+      "original_names": [
+        "GetClientRect"
+      ]
+    },
+    {
+      "id": "api:imagelist_draw",
+      "type": "API",
+      "name": "ImageList_Draw",
+      "normalized_name": "ImageList_Draw",
+      "original_names": [
+        "ImageList_Draw"
+      ]
+    },
+    {
+      "id": "api:imagelist_geticonsize",
+      "type": "API",
+      "name": "ImageList_GetIconSize",
+      "normalized_name": "ImageList_GetIconSize",
+      "original_names": [
+        "ImageList_GetIconSize"
+      ]
+    },
+    {
+      "id": "api:memset",
+      "type": "API",
+      "name": "memset",
+      "normalized_name": "memset",
+      "original_names": [
+        "memset"
+      ]
+    },
+    {
+      "id": "api:movewindow",
+      "type": "API",
+      "name": "MoveWindow",
+      "normalized_name": "MoveWindow",
+      "original_names": [
+        "MoveWindow"
+      ]
+    },
+    {
+      "id": "api:postquitmessage",
+      "type": "API",
+      "name": "PostQuitMessage",
+      "normalized_name": "PostQuitMessage",
+      "original_names": [
+        "PostQuitMessage"
+      ]
+    },
+    {
+      "id": "api:regsetkeyvaluew",
+      "type": "API",
+      "name": "RegSetKeyValueW",
+      "normalized_name": "RegSetKeyValueW",
+      "original_names": [
+        "RegSetKeyValueW"
+      ]
+    },
+    {
+      "id": "api:selectobject",
+      "type": "API",
+      "name": "SelectObject",
+      "normalized_name": "SelectObject",
+      "original_names": [
+        "SelectObject"
+      ]
+    },
+    {
+      "id": "api:setbkcolor",
+      "type": "API",
+      "name": "SetBkColor",
+      "normalized_name": "SetBkColor",
+      "original_names": [
+        "SetBkColor"
+      ]
+    },
+    {
+      "id": "fn:1400019f0",
+      "type": "FUNCTION",
+      "address": "1400019f0",
+      "external": false,
+      "internal": true,
+      "name": "__security_check_cookie",
+      "section": ".text",
+      "size": 30,
+      "symbol_name": "__security_check_cookie",
+      "thunk": false
+    },
+    {
+      "id": "fn:14000a630",
+      "type": "FUNCTION",
+      "address": "14000a630",
+      "external": false,
+      "internal": true,
+      "name": "FUN_14000a630",
+      "section": ".text",
+      "size": 762,
+      "symbol_name": "FUN_14000a630",
+      "thunk": false
+    },
+    {
+      "id": "fn:14000aac4",
+      "type": "FUNCTION",
+      "address": "14000aac4",
+      "external": false,
+      "internal": true,
+      "name": "FUN_14000aac4",
+      "section": ".text",
+      "size": 100,
+      "symbol_name": "FUN_14000aac4",
+      "thunk": false
+    },
+    {
+      "id": "fn:14000b160",
+      "type": "FUNCTION",
+      "address": "14000b160",
+      "external": false,
+      "internal": true,
+      "name": "FUN_14000b160",
+      "section": ".text",
+      "size": 90,
+      "symbol_name": "FUN_14000b160",
+      "thunk": false
+    },
+    {
+      "id": "fn:14000e848",
+      "type": "FUNCTION",
+      "address": "14000e848",
+      "external": false,
+      "internal": true,
+      "name": "FUN_14000e848",
+      "section": ".text",
+      "size": 246,
+      "symbol_name": "FUN_14000e848",
+      "thunk": false
+    },
+    {
+      "id": "sec:140001000",
+      "type": "SECTION",
+      "end": "140027fff",
+      "entropy": 6.1732,
+      "entropy_class": "normal",
+      "entropy_sampled_bytes": 65536,
+      "execute": true,
+      "initialized": true,
+      "name": ".text",
+      "permissions": "r-x",
+      "read": true,
+      "reasons": [],
+      "size": 159744,
+      "start": "140001000",
+      "suspicious": false,
+      "write": false
+    },
+    {
+      "id": "str:14002ad40",
+      "type": "STRING",
+      "address": "14002ad40",
+      "categories": [],
+      "category": null,
+      "raw_value": "u\"ShowStoreBanner\"",
+      "reference_count": 2,
+      "value": "ShowStoreBanner"
+    },
+    {
+      "id": "str:14002ad90",
+      "type": "STRING",
+      "address": "14002ad90",
+      "categories": [],
+      "category": null,
+      "raw_value": "u\"ms-windows-store://pdp/?PFN=Microsoft.WindowsNotepad_8wekyb3d8bbwe\"",
+      "reference_count": 1,
+      "value": "ms-windows-store://pdp/?PFN=Microsoft.WindowsNotepad_8wekyb3d8bbwe"
+    },
+    {
+      "id": "str:14002aee8",
+      "type": "STRING",
+      "address": "14002aee8",
+      "categories": [
+        "file_path"
+      ],
+      "category": "file_path",
+      "raw_value": "u\"Software\\\\Microsoft\\\\Notepad\"",
+      "reference_count": 5,
+      "value": "Software\\\\Microsoft\\\\Notepad"
+    },
+    {
+      "id": "strcat:file_path",
+      "type": "STRING_CATEGORY",
+      "category": "file_path",
+      "name": "file_path"
+    },
+    {
+      "id": "vis:call_visibility:fn:14000a630",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:14000a630",
+      "indicator": "call_visibility",
+      "indirect_call_count": 13,
+      "indirect_callsites": [
+        "14000a6b2",
+        "14000a710",
+        "14000a727",
+        "14000a7a3",
+        "14000a7ce",
+        "14000a7f4",
+        "14000a830",
+        "14000a877",
+        "14000a890",
+        "14000a8a1",
+        "14000a8b7",
+        "14000a8e0",
+        "14000a8f4"
+      ],
+      "resolved_indirect_call_count": 13,
+      "resolved_indirect_callsites": [
+        "14000a6b2",
+        "14000a710",
+        "14000a727",
+        "14000a7a3",
+        "14000a7ce",
+        "14000a7f4",
+        "14000a830",
+        "14000a877",
+        "14000a890",
+        "14000a8a1",
+        "14000a8b7",
+        "14000a8e0",
+        "14000a8f4"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    },
+    {
+      "id": "vis:call_visibility:fn:14000aac4",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:14000aac4",
+      "indicator": "call_visibility",
+      "indirect_call_count": 2,
+      "indirect_callsites": [
+        "14000aaf7",
+        "14000ab0a"
+      ],
+      "resolved_indirect_call_count": 2,
+      "resolved_indirect_callsites": [
+        "14000aaf7",
+        "14000ab0a"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    },
+    {
+      "id": "vis:call_visibility:fn:14000b160",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:14000b160",
+      "indicator": "call_visibility",
+      "indirect_call_count": 1,
+      "indirect_callsites": [
+        "14000b187"
+      ],
+      "resolved_indirect_call_count": 1,
+      "resolved_indirect_callsites": [
+        "14000b187"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    },
+    {
+      "id": "vis:call_visibility:fn:14000e848",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:14000e848",
+      "indicator": "call_visibility",
+      "indirect_call_count": 4,
+      "indirect_callsites": [
+        "14000e88a",
+        "14000e8b9",
+        "14000e8ed",
+        "14000e915"
+      ],
+      "resolved_indirect_call_count": 4,
+      "resolved_indirect_callsites": [
+        "14000e88a",
+        "14000e8b9",
+        "14000e8ed",
+        "14000e915"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    }
+  ],
+  "edges": [
+    {
+      "type": "belongs_to_section",
+      "source": "fn:1400019f0",
+      "target": "sec:140001000",
+      "function": "fn:1400019f0",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:14000a630",
+      "target": "fn:1400019f0",
+      "callee": "fn:1400019f0",
+      "caller": "fn:14000a630",
+      "callsite": "14000a919",
+      "callsites": [
+        "14000a919"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:14000a630",
+      "target": "fn:14000aac4",
+      "callee": "fn:14000aac4",
+      "caller": "fn:14000a630",
+      "callsite": "14000a757",
+      "callsites": [
+        "14000a757"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14000a630",
+      "target": "api:beginpaint",
+      "api": "api:beginpaint",
+      "api_original_names": [
+        "BeginPaint"
+      ],
+      "caller": "fn:14000a630",
+      "callsite": "14000a830",
+      "callsites": [
+        "14000a830"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14000a630",
+      "target": "api:cotaskmemfree",
+      "api": "api:cotaskmemfree",
+      "api_original_names": [
+        "CoTaskMemFree"
+      ],
+      "caller": "fn:14000a630",
+      "callsite": "14000a710",
+      "callsites": [
+        "14000a710"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14000a630",
+      "target": "api:createsolidbrush",
+      "api": "api:createsolidbrush",
+      "api_original_names": [
+        "CreateSolidBrush"
+      ],
+      "caller": "fn:14000a630",
+      "callsite": "14000a877",
+      "callsites": [
+        "14000a877"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14000a630",
+      "target": "api:defwindowprocw",
+      "api": "api:defwindowprocw",
+      "api_original_names": [
+        "DefWindowProcW"
+      ],
+      "caller": "fn:14000a630",
+      "callsite": "14000a6b2",
+      "callsites": [
+        "14000a6b2"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14000a630",
+      "target": "api:deleteobject",
+      "api": "api:deleteobject",
+      "api_original_names": [
+        "DeleteObject"
+      ],
+      "caller": "fn:14000a630",
+      "callsite": "14000a8f4",
+      "callsites": [
+        "14000a8f4"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14000a630",
+      "target": "api:drawfocusrect",
+      "api": "api:drawfocusrect",
+      "api_original_names": [
+        "DrawFocusRect"
+      ],
+      "caller": "fn:14000a630",
+      "callsite": "14000a7f4",
+      "callsites": [
+        "14000a7f4"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14000a630",
+      "target": "api:drawtextw",
+      "api": "api:drawtextw",
+      "api_original_names": [
+        "DrawTextW"
+      ],
+      "caller": "fn:14000a630",
+      "callsite": "14000a8e0",
+      "callsites": [
+        "14000a8e0"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14000a630",
+      "target": "api:fillrect",
+      "api": "api:fillrect",
+      "api_original_names": [
+        "FillRect"
+      ],
+      "caller": "fn:14000a630",
+      "callsite": "14000a890",
+      "callsites": [
+        "14000a890"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14000a630",
+      "target": "api:imagelist_draw",
+      "api": "api:imagelist_draw",
+      "api_original_names": [
+        "ImageList_Draw"
+      ],
+      "caller": "fn:14000a630",
+      "callsite": "14000a7a3",
+      "callsites": [
+        "14000a7a3"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14000a630",
+      "target": "api:imagelist_geticonsize",
+      "api": "api:imagelist_geticonsize",
+      "api_original_names": [
+        "ImageList_GetIconSize"
+      ],
+      "caller": "fn:14000a630",
+      "callsite": "14000a7ce",
+      "callsites": [
+        "14000a7ce"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14000a630",
+      "target": "api:memset",
+      "api": "api:memset",
+      "api_original_names": [
+        "memset"
+      ],
+      "caller": "fn:14000a630",
+      "callsite": "14000a814",
+      "callsites": [
+        "14000a814",
+        "14000a824"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 2,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14000a630",
+      "target": "api:postquitmessage",
+      "api": "api:postquitmessage",
+      "api_original_names": [
+        "PostQuitMessage"
+      ],
+      "caller": "fn:14000a630",
+      "callsite": "14000a727",
+      "callsites": [
+        "14000a727"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14000a630",
+      "target": "api:selectobject",
+      "api": "api:selectobject",
+      "api_original_names": [
+        "SelectObject"
+      ],
+      "caller": "fn:14000a630",
+      "callsite": "14000a8b7",
+      "callsites": [
+        "14000a8b7"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14000a630",
+      "target": "api:setbkcolor",
+      "api": "api:setbkcolor",
+      "api_original_names": [
+        "SetBkColor"
+      ],
+      "caller": "fn:14000a630",
+      "callsite": "14000a8a1",
+      "callsites": [
+        "14000a8a1"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "references_string",
+      "source": "fn:14000a630",
+      "target": "str:14002ad90",
+      "function": "fn:14000a630",
+      "reference_count": 1,
+      "reference_sites": [
+        "14000a738"
+      ],
+      "string": "str:14002ad90"
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:14000a630",
+      "target": "sec:140001000",
+      "function": "fn:14000a630",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:14000a630",
+      "target": "vis:call_visibility:fn:14000a630",
+      "function": "fn:14000a630",
+      "indicator": "vis:call_visibility:fn:14000a630"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:14000aac4",
+      "target": "fn:14000b160",
+      "callee": "fn:14000b160",
+      "caller": "fn:14000aac4",
+      "callsite": "14000ab1e",
+      "callsites": [
+        "14000ab1e"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14000aac4",
+      "target": "api:destroywindow",
+      "api": "api:destroywindow",
+      "api_original_names": [
+        "DestroyWindow"
+      ],
+      "caller": "fn:14000aac4",
+      "callsite": "14000ab0a",
+      "callsites": [
+        "14000ab0a"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14000aac4",
+      "target": "api:regsetkeyvaluew",
+      "api": "api:regsetkeyvaluew",
+      "api_original_names": [
+        "RegSetKeyValueW"
+      ],
+      "caller": "fn:14000aac4",
+      "callsite": "14000aaf7",
+      "callsites": [
+        "14000aaf7"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "references_string",
+      "source": "fn:14000aac4",
+      "target": "str:14002ad40",
+      "function": "fn:14000aac4",
+      "reference_count": 1,
+      "reference_sites": [
+        "14000aad8"
+      ],
+      "string": "str:14002ad40"
+    },
+    {
+      "type": "references_string",
+      "source": "fn:14000aac4",
+      "target": "str:14002aee8",
+      "function": "fn:14000aac4",
+      "reference_count": 1,
+      "reference_sites": [
+        "14000aae4"
+      ],
+      "string": "str:14002aee8"
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:14000aac4",
+      "target": "sec:140001000",
+      "function": "fn:14000aac4",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:14000aac4",
+      "target": "vis:call_visibility:fn:14000aac4",
+      "function": "fn:14000aac4",
+      "indicator": "vis:call_visibility:fn:14000aac4"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:14000b160",
+      "target": "fn:1400019f0",
+      "callee": "fn:1400019f0",
+      "caller": "fn:14000b160",
+      "callsite": "14000b1b0",
+      "callsites": [
+        "14000b1b0"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:14000b160",
+      "target": "fn:14000e848",
+      "callee": "fn:14000e848",
+      "caller": "fn:14000b160",
+      "callsite": "14000b1a3",
+      "callsites": [
+        "14000b1a3"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14000b160",
+      "target": "api:getclientrect",
+      "api": "api:getclientrect",
+      "api_original_names": [
+        "GetClientRect"
+      ],
+      "caller": "fn:14000b160",
+      "callsite": "14000b187",
+      "callsites": [
+        "14000b187"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:14000b160",
+      "target": "sec:140001000",
+      "function": "fn:14000b160",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:14000b160",
+      "target": "vis:call_visibility:fn:14000b160",
+      "function": "fn:14000b160",
+      "indicator": "vis:call_visibility:fn:14000b160"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:14000e848",
+      "target": "fn:1400019f0",
+      "callee": "fn:1400019f0",
+      "caller": "fn:14000e848",
+      "callsite": "14000e929",
+      "callsites": [
+        "14000e929"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14000e848",
+      "target": "api:getclientrect",
+      "api": "api:getclientrect",
+      "api_original_names": [
+        "GetClientRect"
+      ],
+      "caller": "fn:14000e848",
+      "callsite": "14000e88a",
+      "callsites": [
+        "14000e88a",
+        "14000e8b9"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 2,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14000e848",
+      "target": "api:movewindow",
+      "api": "api:movewindow",
+      "api_original_names": [
+        "MoveWindow"
+      ],
+      "caller": "fn:14000e848",
+      "callsite": "14000e8ed",
+      "callsites": [
+        "14000e8ed",
+        "14000e915"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 2,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:14000e848",
+      "target": "sec:140001000",
+      "function": "fn:14000e848",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:14000e848",
+      "target": "vis:call_visibility:fn:14000e848",
+      "function": "fn:14000e848",
+      "indicator": "vis:call_visibility:fn:14000e848"
+    },
+    {
+      "type": "has_string_category",
+      "source": "str:14002aee8",
+      "target": "strcat:file_path",
+      "category": "strcat:file_path",
+      "string": "str:14002aee8"
+    }
+  ],
+  "unresolved_calls": [],
+  "truncation": {
+    "truncated": false,
+    "limits_reached": [],
+    "requested_depth": {
+      "caller_depth": 1,
+      "callee_depth": 2
+    },
+    "effective_depth": {
+      "caller_depth": 1,
+      "callee_depth": 2
+    },
+    "counts": {
+      "function_nodes": 5,
+      "evidence_nodes": 27,
+      "total_nodes": 32,
+      "edges": 38,
+      "unresolved_calls": 0
+    }
+  }
+}

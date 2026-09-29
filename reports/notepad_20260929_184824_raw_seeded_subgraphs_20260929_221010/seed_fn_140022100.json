@@ -1,0 +1,309 @@
+{
+  "schema_version": "0.1.0",
+  "seed_id": "seed:fn:140022100",
+  "anchor_function_id": "fn:140022100",
+  "graph_version": "0.12.0",
+  "extraction_config": {
+    "caller_depth": 1,
+    "callee_depth": 2,
+    "max_function_nodes": null,
+    "max_evidence_nodes": null,
+    "max_total_nodes": null,
+    "max_edges": null
+  },
+  "function_selection": {
+    "anchor_function_id": "fn:140022100",
+    "function_ids": [
+      "fn:1400031d8",
+      "fn:140007cd0",
+      "fn:140022100"
+    ],
+    "caller_distances": {
+      "fn:140022100": 0
+    },
+    "callee_distances": {
+      "fn:1400031d8": 2,
+      "fn:140007cd0": 1,
+      "fn:140022100": 0
+    }
+  },
+  "nodes": [
+    {
+      "id": "api:getcurrentdirectoryw",
+      "type": "API",
+      "name": "GetCurrentDirectoryW",
+      "normalized_name": "GetCurrentDirectoryW",
+      "original_names": [
+        "GetCurrentDirectoryW"
+      ]
+    },
+    {
+      "id": "api:getlasterror",
+      "type": "API",
+      "name": "GetLastError",
+      "normalized_name": "GetLastError",
+      "original_names": [
+        "GetLastError"
+      ]
+    },
+    {
+      "id": "fn:1400031d8",
+      "type": "FUNCTION",
+      "address": "1400031d8",
+      "external": false,
+      "internal": true,
+      "name": "FUN_1400031d8",
+      "section": ".text",
+      "size": 189,
+      "symbol_name": "FUN_1400031d8",
+      "thunk": false
+    },
+    {
+      "id": "fn:140007cd0",
+      "type": "FUNCTION",
+      "address": "140007cd0",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140007cd0",
+      "section": ".text",
+      "size": 24,
+      "symbol_name": "FUN_140007cd0",
+      "thunk": false
+    },
+    {
+      "id": "fn:140022100",
+      "type": "FUNCTION",
+      "address": "140022100",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140022100",
+      "section": ".text",
+      "size": 95,
+      "symbol_name": "FUN_140022100",
+      "thunk": false
+    },
+    {
+      "id": "sec:140001000",
+      "type": "SECTION",
+      "end": "140027fff",
+      "entropy": 6.1732,
+      "entropy_class": "normal",
+      "entropy_sampled_bytes": 65536,
+      "execute": true,
+      "initialized": true,
+      "name": ".text",
+      "permissions": "r-x",
+      "read": true,
+      "reasons": [],
+      "size": 159744,
+      "start": "140001000",
+      "suspicious": false,
+      "write": false
+    },
+    {
+      "id": "str:14002b2e0",
+      "type": "STRING",
+      "address": "14002b2e0",
+      "categories": [
+        "file_path"
+      ],
+      "category": "file_path",
+      "raw_value": "\"onecore\\\\internal\\\\sdk\\\\inc\\\\wil\\\\opensource/wil/filesystem.h\"",
+      "reference_count": 2,
+      "value": "onecore\\\\internal\\\\sdk\\\\inc\\\\wil\\\\opensource/wil/filesystem.h"
+    },
+    {
+      "id": "strcat:file_path",
+      "type": "STRING_CATEGORY",
+      "category": "file_path",
+      "name": "file_path"
+    },
+    {
+      "id": "vis:call_visibility:fn:1400031d8",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:1400031d8",
+      "indicator": "call_visibility",
+      "indirect_call_count": 1,
+      "indirect_callsites": [
+        "1400031f9"
+      ],
+      "resolved_indirect_call_count": 1,
+      "resolved_indirect_callsites": [
+        "1400031f9"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    },
+    {
+      "id": "vis:call_visibility:fn:140022100",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:140022100",
+      "indicator": "call_visibility",
+      "indirect_call_count": 1,
+      "indirect_callsites": [
+        "140022115"
+      ],
+      "resolved_indirect_call_count": 1,
+      "resolved_indirect_callsites": [
+        "140022115"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    }
+  ],
+  "edges": [
+    {
+      "type": "calls_api",
+      "source": "fn:1400031d8",
+      "target": "api:getlasterror",
+      "api": "api:getlasterror",
+      "api_original_names": [
+        "GetLastError"
+      ],
+      "caller": "fn:1400031d8",
+      "callsite": "1400031f9",
+      "callsites": [
+        "1400031f9"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:1400031d8",
+      "target": "sec:140001000",
+      "function": "fn:1400031d8",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:1400031d8",
+      "target": "vis:call_visibility:fn:1400031d8",
+      "function": "fn:1400031d8",
+      "indicator": "vis:call_visibility:fn:1400031d8"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140007cd0",
+      "target": "fn:1400031d8",
+      "callee": "fn:1400031d8",
+      "caller": "fn:140007cd0",
+      "callsite": "140007cde",
+      "callsites": [
+        "140007cde"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140007cd0",
+      "target": "sec:140001000",
+      "function": "fn:140007cd0",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140022100",
+      "target": "fn:140007cd0",
+      "callee": "fn:140007cd0",
+      "caller": "fn:140022100",
+      "callsite": "14002213e",
+      "callsites": [
+        "14002213e"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140022100",
+      "target": "api:getcurrentdirectoryw",
+      "api": "api:getcurrentdirectoryw",
+      "api_original_names": [
+        "GetCurrentDirectoryW"
+      ],
+      "caller": "fn:140022100",
+      "callsite": "140022115",
+      "callsites": [
+        "140022115"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "references_string",
+      "source": "fn:140022100",
+      "target": "str:14002b2e0",
+      "function": "fn:140022100",
+      "reference_count": 1,
+      "reference_sites": [
+        "140022132"
+      ],
+      "string": "str:14002b2e0"
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140022100",
+      "target": "sec:140001000",
+      "function": "fn:140022100",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:140022100",
+      "target": "vis:call_visibility:fn:140022100",
+      "function": "fn:140022100",
+      "indicator": "vis:call_visibility:fn:140022100"
+    },
+    {
+      "type": "has_string_category",
+      "source": "str:14002b2e0",
+      "target": "strcat:file_path",
+      "category": "strcat:file_path",
+      "string": "str:14002b2e0"
+    }
+  ],
+  "unresolved_calls": [],
+  "truncation": {
+    "truncated": false,
+    "limits_reached": [],
+    "requested_depth": {
+      "caller_depth": 1,
+      "callee_depth": 2
+    },
+    "effective_depth": {
+      "caller_depth": 0,
+      "callee_depth": 2
+    },
+    "counts": {
+      "function_nodes": 3,
+      "evidence_nodes": 7,
+      "total_nodes": 10,
+      "edges": 11,
+      "unresolved_calls": 0
+    }
+  }
+}

@@ -1,0 +1,171 @@
+{
+  "schema_version": "0.1.0",
+  "seed_id": "seed:fn:140025470",
+  "anchor_function_id": "fn:140025470",
+  "graph_version": "0.12.0",
+  "extraction_config": {
+    "caller_depth": 1,
+    "callee_depth": 2,
+    "max_function_nodes": null,
+    "max_evidence_nodes": null,
+    "max_total_nodes": null,
+    "max_edges": null
+  },
+  "function_selection": {
+    "anchor_function_id": "fn:140025470",
+    "function_ids": [
+      "fn:140025470"
+    ],
+    "caller_distances": {
+      "fn:140025470": 0
+    },
+    "callee_distances": {
+      "fn:140025470": 0
+    }
+  },
+  "nodes": [
+    {
+      "id": "api:_o_free",
+      "type": "API",
+      "name": "_o_free",
+      "normalized_name": "_o_free",
+      "original_names": [
+        "_o_free"
+      ]
+    },
+    {
+      "id": "api:windowsdeletestring",
+      "type": "API",
+      "name": "WindowsDeleteString",
+      "normalized_name": "WindowsDeleteString",
+      "original_names": [
+        "WindowsDeleteString"
+      ]
+    },
+    {
+      "id": "fn:140025470",
+      "type": "FUNCTION",
+      "address": "140025470",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140025470",
+      "section": ".text",
+      "size": 70,
+      "symbol_name": "FUN_140025470",
+      "thunk": false
+    },
+    {
+      "id": "sec:140001000",
+      "type": "SECTION",
+      "end": "140027fff",
+      "entropy": 6.1732,
+      "entropy_class": "normal",
+      "entropy_sampled_bytes": 65536,
+      "execute": true,
+      "initialized": true,
+      "name": ".text",
+      "permissions": "r-x",
+      "read": true,
+      "reasons": [],
+      "size": 159744,
+      "start": "140001000",
+      "suspicious": false,
+      "write": false
+    },
+    {
+      "id": "vis:call_visibility:fn:140025470",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:140025470",
+      "indicator": "call_visibility",
+      "indirect_call_count": 1,
+      "indirect_callsites": [
+        "140025483"
+      ],
+      "resolved_indirect_call_count": 1,
+      "resolved_indirect_callsites": [
+        "140025483"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    }
+  ],
+  "edges": [
+    {
+      "type": "calls_api",
+      "source": "fn:140025470",
+      "target": "api:_o_free",
+      "api": "api:_o_free",
+      "api_original_names": [
+        "_o_free"
+      ],
+      "caller": "fn:140025470",
+      "callsite": "1400254a3",
+      "callsites": [
+        "1400254a3"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140025470",
+      "target": "api:windowsdeletestring",
+      "api": "api:windowsdeletestring",
+      "api_original_names": [
+        "WindowsDeleteString"
+      ],
+      "caller": "fn:140025470",
+      "callsite": "140025483",
+      "callsites": [
+        "140025483"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140025470",
+      "target": "sec:140001000",
+      "function": "fn:140025470",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:140025470",
+      "target": "vis:call_visibility:fn:140025470",
+      "function": "fn:140025470",
+      "indicator": "vis:call_visibility:fn:140025470"
+    }
+  ],
+  "unresolved_calls": [],
+  "truncation": {
+    "truncated": false,
+    "limits_reached": [],
+    "requested_depth": {
+      "caller_depth": 1,
+      "callee_depth": 2
+    },
+    "effective_depth": {
+      "caller_depth": 0,
+      "callee_depth": 0
+    },
+    "counts": {
+      "function_nodes": 1,
+      "evidence_nodes": 4,
+      "total_nodes": 5,
+      "edges": 4,
+      "unresolved_calls": 0
+    }
+  }
+}

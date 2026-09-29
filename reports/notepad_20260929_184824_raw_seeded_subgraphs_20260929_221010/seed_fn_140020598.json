@@ -1,0 +1,451 @@
+{
+  "schema_version": "0.1.0",
+  "seed_id": "seed:fn:140020598",
+  "anchor_function_id": "fn:140020598",
+  "graph_version": "0.12.0",
+  "extraction_config": {
+    "caller_depth": 1,
+    "callee_depth": 2,
+    "max_function_nodes": null,
+    "max_evidence_nodes": null,
+    "max_total_nodes": null,
+    "max_edges": null
+  },
+  "function_selection": {
+    "anchor_function_id": "fn:140020598",
+    "function_ids": [
+      "fn:14000f5b8",
+      "fn:140020598",
+      "fn:140021324"
+    ],
+    "caller_distances": {
+      "fn:140020598": 0,
+      "fn:140021324": 1
+    },
+    "callee_distances": {
+      "fn:14000f5b8": 1,
+      "fn:140020598": 0
+    }
+  },
+  "nodes": [
+    {
+      "id": "api:formatmessagew",
+      "type": "API",
+      "name": "FormatMessageW",
+      "normalized_name": "FormatMessageW",
+      "original_names": [
+        "FormatMessageW"
+      ]
+    },
+    {
+      "id": "api:getlasterror",
+      "type": "API",
+      "name": "GetLastError",
+      "normalized_name": "GetLastError",
+      "original_names": [
+        "GetLastError"
+      ]
+    },
+    {
+      "id": "api:memset",
+      "type": "API",
+      "name": "memset",
+      "normalized_name": "memset",
+      "original_names": [
+        "memset"
+      ]
+    },
+    {
+      "id": "api:pagesetupdlgw",
+      "type": "API",
+      "name": "PageSetupDlgW",
+      "normalized_name": "PageSetupDlgW",
+      "original_names": [
+        "PageSetupDlgW"
+      ]
+    },
+    {
+      "id": "api:printdlgexw",
+      "type": "API",
+      "name": "PrintDlgExW",
+      "normalized_name": "PrintDlgExW",
+      "original_names": [
+        "PrintDlgExW"
+      ]
+    },
+    {
+      "id": "api:setcursor",
+      "type": "API",
+      "name": "SetCursor",
+      "normalized_name": "SetCursor",
+      "original_names": [
+        "SetCursor"
+      ]
+    },
+    {
+      "id": "api:setthreaddpiawarenesscontext",
+      "type": "API",
+      "name": "SetThreadDpiAwarenessContext",
+      "normalized_name": "SetThreadDpiAwarenessContext",
+      "original_names": [
+        "SetThreadDpiAwarenessContext"
+      ]
+    },
+    {
+      "id": "fn:14000f5b8",
+      "type": "FUNCTION",
+      "address": "14000f5b8",
+      "external": false,
+      "internal": true,
+      "name": "FUN_14000f5b8",
+      "section": ".text",
+      "size": 80,
+      "symbol_name": "FUN_14000f5b8",
+      "thunk": false
+    },
+    {
+      "id": "fn:140020598",
+      "type": "FUNCTION",
+      "address": "140020598",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140020598",
+      "section": ".text",
+      "size": 276,
+      "symbol_name": "FUN_140020598",
+      "thunk": false
+    },
+    {
+      "id": "fn:140021324",
+      "type": "FUNCTION",
+      "address": "140021324",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140021324",
+      "section": ".text",
+      "size": 329,
+      "symbol_name": "FUN_140021324",
+      "thunk": false
+    },
+    {
+      "id": "sec:140001000",
+      "type": "SECTION",
+      "end": "140027fff",
+      "entropy": 6.1732,
+      "entropy_class": "normal",
+      "entropy_sampled_bytes": 65536,
+      "execute": true,
+      "initialized": true,
+      "name": ".text",
+      "permissions": "r-x",
+      "read": true,
+      "reasons": [],
+      "size": 159744,
+      "start": "140001000",
+      "suspicious": false,
+      "write": false
+    },
+    {
+      "id": "vis:call_visibility:fn:14000f5b8",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:14000f5b8",
+      "indicator": "call_visibility",
+      "indirect_call_count": 3,
+      "indirect_callsites": [
+        "14000f5cc",
+        "14000f5de",
+        "14000f5ef"
+      ],
+      "resolved_indirect_call_count": 3,
+      "resolved_indirect_callsites": [
+        "14000f5cc",
+        "14000f5de",
+        "14000f5ef"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    },
+    {
+      "id": "vis:call_visibility:fn:140020598",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:140020598",
+      "indicator": "call_visibility",
+      "indirect_call_count": 1,
+      "indirect_callsites": [
+        "140020636"
+      ],
+      "resolved_indirect_call_count": 1,
+      "resolved_indirect_callsites": [
+        "140020636"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    },
+    {
+      "id": "vis:call_visibility:fn:140021324",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:140021324",
+      "indicator": "call_visibility",
+      "indirect_call_count": 4,
+      "indirect_callsites": [
+        "140021348",
+        "140021381",
+        "1400213d3",
+        "140021408"
+      ],
+      "resolved_indirect_call_count": 4,
+      "resolved_indirect_callsites": [
+        "140021348",
+        "140021381",
+        "1400213d3",
+        "140021408"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    }
+  ],
+  "edges": [
+    {
+      "type": "calls_api",
+      "source": "fn:14000f5b8",
+      "target": "api:pagesetupdlgw",
+      "api": "api:pagesetupdlgw",
+      "api_original_names": [
+        "PageSetupDlgW"
+      ],
+      "caller": "fn:14000f5b8",
+      "callsite": "14000f5de",
+      "callsites": [
+        "14000f5de"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14000f5b8",
+      "target": "api:setthreaddpiawarenesscontext",
+      "api": "api:setthreaddpiawarenesscontext",
+      "api_original_names": [
+        "SetThreadDpiAwarenessContext"
+      ],
+      "caller": "fn:14000f5b8",
+      "callsite": "14000f5cc",
+      "callsites": [
+        "14000f5cc",
+        "14000f5ef"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 2,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:14000f5b8",
+      "target": "sec:140001000",
+      "function": "fn:14000f5b8",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:14000f5b8",
+      "target": "vis:call_visibility:fn:14000f5b8",
+      "function": "fn:14000f5b8",
+      "indicator": "vis:call_visibility:fn:14000f5b8"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140020598",
+      "target": "fn:14000f5b8",
+      "callee": "fn:14000f5b8",
+      "caller": "fn:140020598",
+      "callsite": "1400205c7",
+      "callsites": [
+        "1400205c7",
+        "140020673"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 2,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140020598",
+      "target": "api:memset",
+      "api": "api:memset",
+      "api_original_names": [
+        "memset"
+      ],
+      "caller": "fn:140020598",
+      "callsite": "1400205e9",
+      "callsites": [
+        "1400205e9"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140020598",
+      "target": "api:printdlgexw",
+      "api": "api:printdlgexw",
+      "api_original_names": [
+        "PrintDlgExW"
+      ],
+      "caller": "fn:140020598",
+      "callsite": "140020636",
+      "callsites": [
+        "140020636"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140020598",
+      "target": "sec:140001000",
+      "function": "fn:140020598",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:140020598",
+      "target": "vis:call_visibility:fn:140020598",
+      "function": "fn:140020598",
+      "indicator": "vis:call_visibility:fn:140020598"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140021324",
+      "target": "fn:140020598",
+      "callee": "fn:140020598",
+      "caller": "fn:140021324",
+      "callsite": "140021370",
+      "callsites": [
+        "140021370"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140021324",
+      "target": "api:formatmessagew",
+      "api": "api:formatmessagew",
+      "api_original_names": [
+        "FormatMessageW"
+      ],
+      "caller": "fn:140021324",
+      "callsite": "140021408",
+      "callsites": [
+        "140021408"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140021324",
+      "target": "api:getlasterror",
+      "api": "api:getlasterror",
+      "api_original_names": [
+        "GetLastError"
+      ],
+      "caller": "fn:140021324",
+      "callsite": "1400213d3",
+      "callsites": [
+        "1400213d3"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140021324",
+      "target": "api:setcursor",
+      "api": "api:setcursor",
+      "api_original_names": [
+        "SetCursor"
+      ],
+      "caller": "fn:140021324",
+      "callsite": "140021348",
+      "callsites": [
+        "140021348",
+        "140021381"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 2,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140021324",
+      "target": "sec:140001000",
+      "function": "fn:140021324",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:140021324",
+      "target": "vis:call_visibility:fn:140021324",
+      "function": "fn:140021324",
+      "indicator": "vis:call_visibility:fn:140021324"
+    }
+  ],
+  "unresolved_calls": [],
+  "truncation": {
+    "truncated": false,
+    "limits_reached": [],
+    "requested_depth": {
+      "caller_depth": 1,
+      "callee_depth": 2
+    },
+    "effective_depth": {
+      "caller_depth": 1,
+      "callee_depth": 1
+    },
+    "counts": {
+      "function_nodes": 3,
+      "evidence_nodes": 11,
+      "total_nodes": 14,
+      "edges": 15,
+      "unresolved_calls": 0
+    }
+  }
+}
