@@ -1,0 +1,126 @@
+{
+  "schema_version": "0.1.0",
+  "seed_id": "seed:fn:1400012dc",
+  "anchor_function_id": "fn:1400012dc",
+  "graph_version": "0.12.0",
+  "extraction_config": {
+    "caller_depth": 1,
+    "callee_depth": 2,
+    "max_function_nodes": null,
+    "max_evidence_nodes": null,
+    "max_total_nodes": 3,
+    "max_edges": null
+  },
+  "function_selection": {
+    "anchor_function_id": "fn:1400012dc",
+    "function_ids": [
+      "fn:140001008",
+      "fn:140001094",
+      "fn:1400012dc"
+    ],
+    "caller_distances": {
+      "fn:140001008": 1,
+      "fn:140001094": 1,
+      "fn:1400012dc": 0
+    },
+    "callee_distances": {
+      "fn:1400012dc": 0
+    }
+  },
+  "nodes": [
+    {
+      "id": "fn:140001008",
+      "type": "FUNCTION",
+      "address": "140001008",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140001008",
+      "section": ".text",
+      "size": 133,
+      "symbol_name": "FUN_140001008",
+      "thunk": false
+    },
+    {
+      "id": "fn:140001094",
+      "type": "FUNCTION",
+      "address": "140001094",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140001094",
+      "section": ".text",
+      "size": 288,
+      "symbol_name": "FUN_140001094",
+      "thunk": false
+    },
+    {
+      "id": "fn:1400012dc",
+      "type": "FUNCTION",
+      "address": "1400012dc",
+      "external": false,
+      "internal": true,
+      "name": "FUN_1400012dc",
+      "section": ".text",
+      "size": 157,
+      "symbol_name": "FUN_1400012dc",
+      "thunk": false
+    }
+  ],
+  "edges": [
+    {
+      "type": "calls_function",
+      "source": "fn:140001008",
+      "target": "fn:1400012dc",
+      "callee": "fn:1400012dc",
+      "caller": "fn:140001008",
+      "callsite": "140001073",
+      "callsites": [
+        "140001073"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140001094",
+      "target": "fn:1400012dc",
+      "callee": "fn:1400012dc",
+      "caller": "fn:140001094",
+      "callsite": "14000119a",
+      "callsites": [
+        "14000119a"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    }
+  ],
+  "unresolved_calls": [],
+  "truncation": {
+    "truncated": true,
+    "limits_reached": [
+      {
+        "kind": "total_nodes",
+        "configured_limit": 3
+      }
+    ],
+    "requested_depth": {
+      "caller_depth": 1,
+      "callee_depth": 2
+    },
+    "effective_depth": {
+      "caller_depth": 1,
+      "callee_depth": 0
+    },
+    "counts": {
+      "function_nodes": 3,
+      "evidence_nodes": 0,
+      "total_nodes": 3,
+      "edges": 2,
+      "unresolved_calls": 0
+    },
+    "reason": "resource_limit"
+  }
+}

@@ -1,0 +1,29 @@
+digraph evidence {
+  // All current graph
+  "api:eventwritetransfer" [label="EventWriteTransfer", type="API"];
+  "fn:140001008" [label="FUN_140001008", type="FUNCTION"];
+  "fn:140001094" [label="FUN_140001094", type="FUNCTION"];
+  "fn:1400011bc" [label="FUN_1400011bc", type="FUNCTION"];
+  "fn:1400012dc" [label="FUN_1400012dc", type="FUNCTION"];
+  "fn:140022fe8" [label="FUN_140022fe8", type="FUNCTION"];
+  "fn:140023890" [label="FUN_140023890", type="FUNCTION"];
+  "sec:140001000" [label=".text", type="SECTION"];
+  "str:14002ba98" [label="EditMenu", type="STRING"];
+  "str:14002bab0" [label="ContextMenu", type="STRING"];
+  "vis:call_visibility:fn:1400012dc" [label="vis:call_visibility:fn:1400012dc", type="VISIBILITY_INDICATOR"];
+  "fn:140001008" -> "fn:1400012dc" [label="calls_function"];
+  "fn:140001008" -> "sec:140001000" [label="belongs_to_section"];
+  "fn:140001094" -> "fn:1400012dc" [label="calls_function"];
+  "fn:140001094" -> "sec:140001000" [label="belongs_to_section"];
+  "fn:1400011bc" -> "fn:1400012dc" [label="calls_function"];
+  "fn:1400011bc" -> "sec:140001000" [label="belongs_to_section"];
+  "fn:1400012dc" -> "api:eventwritetransfer" [label="calls_api"];
+  "fn:1400012dc" -> "sec:140001000" [label="belongs_to_section"];
+  "fn:1400012dc" -> "vis:call_visibility:fn:1400012dc" [label="contains_indirect_call"];
+  "fn:140022fe8" -> "fn:1400012dc" [label="calls_function"];
+  "fn:140022fe8" -> "sec:140001000" [label="belongs_to_section"];
+  "fn:140023890" -> "fn:1400012dc" [label="calls_function"];
+  "fn:140023890" -> "str:14002ba98" [label="references_string"];
+  "fn:140023890" -> "str:14002bab0" [label="references_string"];
+  "fn:140023890" -> "sec:140001000" [label="belongs_to_section"];
+}

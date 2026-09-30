@@ -1,0 +1,46 @@
+:root {
+  color-scheme: dark;
+  font-family:
+    Segoe UI,
+    sans-serif;
+  color: #dce5f3;
+  background: #101722;
+}
+body {
+  margin: 0;
+}
+#graph {
+  position: absolute;
+  inset: 0;
+}
+#empty {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  text-align: center;
+  background: radial-gradient(circle at 50% 45%, #18283b 0, transparent 55%);
+}
+h1 {
+  font-size: 38px;
+  letter-spacing: -1.5px;
+  font-weight: 600;
+  margin: 18px 0;
+}
+p {
+  color: #99a9bf;
+  font-size: 15px;
+  line-height: 1.8;
+}
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: #74c8c3;
+}
+small {
+  margin-top: 42px;
+  color: #77889f;
+}
