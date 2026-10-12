@@ -2,6 +2,10 @@
 mod canonical;
 #[allow(dead_code)]
 mod canonical_order;
+#[allow(dead_code)]
+mod fingerprint;
+#[allow(dead_code)]
+mod fingerprint_motifs;
 
 #[allow(dead_code)]
 mod local_subgraph;

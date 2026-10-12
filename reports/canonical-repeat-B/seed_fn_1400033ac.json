@@ -1,0 +1,7308 @@
+{
+  "schema_version": "0.1.0",
+  "source_local_subgraph_schema_version": "0.1.0",
+  "graph_version": "0.12.0",
+  "seed_id": "seed:fn:1400033ac",
+  "anchor_function_id": "fn:1400033ac",
+  "canonicalization_version": "0.1.0",
+  "nodes": [
+    {
+      "id": "N0",
+      "kind": "API",
+      "facts": {
+        "canonical_value": "formatmessagew"
+      }
+    },
+    {
+      "id": "N1",
+      "kind": "FUNCTION",
+      "facts": {
+        "callee_distance": 1,
+        "caller_distance": null,
+        "role": "CALLEE"
+      }
+    },
+    {
+      "id": "N2",
+      "kind": "STRING",
+      "facts": {
+        "normalized": "%hs(%d) tid(%x) %08X %ws"
+      }
+    },
+    {
+      "id": "N3",
+      "kind": "STRING",
+      "facts": {
+        "normalized": "[%hs(%hs)]\\n"
+      }
+    },
+    {
+      "id": "N4",
+      "kind": "STRING",
+      "facts": {
+        "normalized": "%hs(%u)\\\\%hs!%p:"
+      }
+    },
+    {
+      "id": "N5",
+      "kind": "STRING",
+      "facts": {
+        "normalized": "(caller: %p)"
+      }
+    },
+    {
+      "id": "N6",
+      "kind": "STRING",
+      "facts": {
+        "normalized": "CallContext:[%hs]"
+      }
+    },
+    {
+      "id": "N7",
+      "kind": "FUNCTION",
+      "facts": {
+        "callee_distance": null,
+        "caller_distance": 1,
+        "role": "CALLER"
+      }
+    },
+    {
+      "id": "N8",
+      "kind": "STRING",
+      "facts": {
+        "normalized": "FailFast"
+      }
+    },
+    {
+      "id": "N9",
+      "kind": "STRING",
+      "facts": {
+        "normalized": "LogHr"
+      }
+    },
+    {
+      "id": "N10",
+      "kind": "API",
+      "facts": {
+        "canonical_value": "isdebuggerpresent"
+      }
+    },
+    {
+      "id": "N11",
+      "kind": "STRING",
+      "facts": {
+        "normalized": "LogNt"
+      }
+    },
+    {
+      "id": "N12",
+      "kind": "FUNCTION",
+      "facts": {
+        "callee_distance": 1,
+        "caller_distance": null,
+        "role": "CALLEE"
+      }
+    },
+    {
+      "id": "N13",
+      "kind": "STRING",
+      "facts": {
+        "normalized": "Msg:[%ws]"
+      }
+    },
+    {
+      "id": "N14",
+      "kind": "STRING",
+      "facts": {
+        "normalized": "ReturnHr"
+      }
+    },
+    {
+      "id": "N15",
+      "kind": "VISIBILITY_INDICATOR",
+      "facts": {
+        "explicit_dynamic_dispatch": 0,
+        "indirect_calls": 3,
+        "unresolved_indirect_calls": 0
+      }
+    },
+    {
+      "id": "N16",
+      "kind": "STRING",
+      "facts": {
+        "normalized": "ReturnNt"
+      }
+    },
+    {
+      "id": "N17",
+      "kind": "STRING_CATEGORY",
+      "facts": {
+        "category": "file_path"
+      }
+    },
+    {
+      "id": "N18",
+      "kind": "VISIBILITY_INDICATOR",
+      "facts": {
+        "explicit_dynamic_dispatch": 0,
+        "indirect_calls": 1,
+        "unresolved_indirect_calls": 1
+      }
+    },
+    {
+      "id": "N19",
+      "kind": "VISIBILITY_INDICATOR",
+      "facts": {
+        "explicit_dynamic_dispatch": 0,
+        "indirect_calls": 1,
+        "unresolved_indirect_calls": 1
+      }
+    },
+    {
+      "id": "N20",
+      "kind": "VISIBILITY_INDICATOR",
+      "facts": {
+        "explicit_dynamic_dispatch": 0,
+        "indirect_calls": 2,
+        "unresolved_indirect_calls": 0
+      }
+    },
+    {
+      "id": "N21",
+      "kind": "VISIBILITY_INDICATOR",
+      "facts": {
+        "explicit_dynamic_dispatch": 0,
+        "indirect_calls": 2,
+        "unresolved_indirect_calls": 2
+      }
+    },
+    {
+      "id": "N22",
+      "kind": "API",
+      "facts": {
+        "canonical_value": "memset"
+      }
+    },
+    {
+      "id": "N23",
+      "kind": "STRING",
+      "facts": {
+        "normalized": "[%hs]\\n"
+      }
+    },
+    {
+      "id": "N24",
+      "kind": "API",
+      "facts": {
+        "canonical_value": "getcurrentthreadid"
+      }
+    },
+    {
+      "id": "N25",
+      "kind": "API",
+      "facts": {
+        "canonical_value": "outputdebugstring"
+      }
+    },
+    {
+      "id": "N26",
+      "kind": "FUNCTION",
+      "facts": {
+        "callee_distance": 0,
+        "caller_distance": 0,
+        "role": "ANCHOR"
+      }
+    },
+    {
+      "id": "N27",
+      "kind": "FUNCTION",
+      "facts": {
+        "callee_distance": 1,
+        "caller_distance": null,
+        "role": "CALLEE"
+      }
+    },
+    {
+      "id": "N28",
+      "kind": "SECTION",
+      "facts": {
+        "execute": true,
+        "initialized": true,
+        "read": true,
+        "role": "executable",
+        "write": false
+      }
+    },
+    {
+      "id": "N29",
+      "kind": "FUNCTION",
+      "facts": {
+        "callee_distance": 1,
+        "caller_distance": null,
+        "role": "CALLEE"
+      }
+    },
+    {
+      "id": "N30",
+      "kind": "FUNCTION",
+      "facts": {
+        "callee_distance": 1,
+        "caller_distance": null,
+        "role": "CALLEE"
+      }
+    },
+    {
+      "id": "N31",
+      "kind": "FUNCTION",
+      "facts": {
+        "callee_distance": 1,
+        "caller_distance": null,
+        "role": "CALLEE"
+      }
+    },
+    {
+      "id": "N32",
+      "kind": "FUNCTION",
+      "facts": {
+        "callee_distance": 2,
+        "caller_distance": null,
+        "role": "CALLEE"
+      }
+    },
+    {
+      "id": "N33",
+      "kind": "FUNCTION",
+      "facts": {
+        "callee_distance": 2,
+        "caller_distance": null,
+        "role": "CALLEE"
+      }
+    },
+    {
+      "id": "N34",
+      "kind": "FUNCTION",
+      "facts": {
+        "callee_distance": 2,
+        "caller_distance": null,
+        "role": "CALLEE"
+      }
+    },
+    {
+      "id": "N35",
+      "kind": "STRING",
+      "facts": {
+        "normalized": "Exception"
+      }
+    },
+    {
+      "id": "N36",
+      "kind": "SECTION",
+      "facts": {
+        "execute": true,
+        "initialized": true,
+        "read": true,
+        "role": "executable",
+        "write": false
+      }
+    },
+    {
+      "id": "N37",
+      "kind": "STRING",
+      "facts": {
+        "normalized": "%hs!%p:"
+      }
+    }
+  ],
+  "node_sources": {
+    "N0": [
+      {
+        "id": "api:formatmessagew",
+        "type": "API",
+        "name": "FormatMessageW",
+        "normalized_name": "FormatMessageW",
+        "original_names": [
+          "FormatMessageW"
+        ]
+      }
+    ],
+    "N1": [
+      {
+        "id": "fn:140005cc0",
+        "type": "FUNCTION",
+        "address": "140005cc0",
+        "external": false,
+        "internal": true,
+        "name": "FUN_140005cc0",
+        "section": ".text",
+        "size": 457,
+        "symbol_name": "FUN_140005cc0",
+        "thunk": false
+      }
+    ],
+    "N10": [
+      {
+        "id": "api:isdebuggerpresent",
+        "type": "API",
+        "name": "IsDebuggerPresent",
+        "normalized_name": "IsDebuggerPresent",
+        "original_names": [
+          "IsDebuggerPresent"
+        ]
+      }
+    ],
+    "N11": [
+      {
+        "id": "str:14002a8dc",
+        "type": "STRING",
+        "address": "14002a8dc",
+        "categories": [],
+        "category": null,
+        "raw_value": "\"LogNt\"",
+        "reference_count": 1,
+        "value": "LogNt"
+      }
+    ],
+    "N12": [
+      {
+        "id": "fn:140028010",
+        "type": "FUNCTION",
+        "address": "140028010",
+        "external": false,
+        "internal": true,
+        "name": "_guard_dispatch_icall",
+        "section": "fothk",
+        "size": 5,
+        "symbol_name": "_guard_dispatch_icall",
+        "thunk": true
+      }
+    ],
+    "N13": [
+      {
+        "id": "str:14002a9a8",
+        "type": "STRING",
+        "address": "14002a9a8",
+        "categories": [],
+        "category": null,
+        "raw_value": "u\"Msg:[%ws] \"",
+        "reference_count": 1,
+        "value": "Msg:[%ws]"
+      }
+    ],
+    "N14": [
+      {
+        "id": "str:14002a8d0",
+        "type": "STRING",
+        "address": "14002a8d0",
+        "categories": [],
+        "category": null,
+        "raw_value": "\"ReturnHr\"",
+        "reference_count": 1,
+        "value": "ReturnHr"
+      }
+    ],
+    "N15": [
+      {
+        "id": "vis:call_visibility:fn:1400033ac",
+        "type": "VISIBILITY_INDICATOR",
+        "dynamic_dispatch_callsites": [],
+        "dynamic_dispatch_count": 0,
+        "dynamic_dispatch_recognition": null,
+        "dynamic_dispatch_targets": [],
+        "function": "fn:1400033ac",
+        "indicator": "call_visibility",
+        "indirect_call_count": 3,
+        "indirect_callsites": [
+          "14000344d",
+          "140003556",
+          "1400035e6"
+        ],
+        "resolved_indirect_call_count": 3,
+        "resolved_indirect_callsites": [
+          "14000344d",
+          "140003556",
+          "1400035e6"
+        ],
+        "signals": [
+          "indirect_call"
+        ],
+        "unresolved_indirect_call_count": 0,
+        "unresolved_indirect_callsites": []
+      }
+    ],
+    "N16": [
+      {
+        "id": "str:14002a8c0",
+        "type": "STRING",
+        "address": "14002a8c0",
+        "categories": [],
+        "category": null,
+        "raw_value": "\"ReturnNt\"",
+        "reference_count": 1,
+        "value": "ReturnNt"
+      }
+    ],
+    "N17": [
+      {
+        "id": "strcat:file_path",
+        "type": "STRING_CATEGORY",
+        "category": "file_path",
+        "name": "file_path"
+      }
+    ],
+    "N18": [
+      {
+        "id": "vis:call_visibility:fn:14000312c",
+        "type": "VISIBILITY_INDICATOR",
+        "dynamic_dispatch_callsites": [],
+        "dynamic_dispatch_count": 0,
+        "dynamic_dispatch_recognition": null,
+        "dynamic_dispatch_targets": [],
+        "function": "fn:14000312c",
+        "indicator": "call_visibility",
+        "indirect_call_count": 1,
+        "indirect_callsites": [
+          "14000314f"
+        ],
+        "resolved_indirect_call_count": 0,
+        "resolved_indirect_callsites": [],
+        "signals": [
+          "indirect_call",
+          "unresolved_call"
+        ],
+        "unresolved_indirect_call_count": 1,
+        "unresolved_indirect_callsites": [
+          "14000314f"
+        ]
+      }
+    ],
+    "N19": [
+      {
+        "id": "vis:call_visibility:fn:14000909c",
+        "type": "VISIBILITY_INDICATOR",
+        "dynamic_dispatch_callsites": [],
+        "dynamic_dispatch_count": 0,
+        "dynamic_dispatch_recognition": null,
+        "dynamic_dispatch_targets": [],
+        "function": "fn:14000909c",
+        "indicator": "call_visibility",
+        "indirect_call_count": 1,
+        "indirect_callsites": [
+          "1400090b8"
+        ],
+        "resolved_indirect_call_count": 0,
+        "resolved_indirect_callsites": [],
+        "signals": [
+          "indirect_call",
+          "unresolved_call"
+        ],
+        "unresolved_indirect_call_count": 1,
+        "unresolved_indirect_callsites": [
+          "1400090b8"
+        ]
+      }
+    ],
+    "N2": [
+      {
+        "id": "str:14002a960",
+        "type": "STRING",
+        "address": "14002a960",
+        "categories": [],
+        "category": null,
+        "raw_value": "u\"%hs(%d) tid(%x) %08X %ws\"",
+        "reference_count": 1,
+        "value": "%hs(%d) tid(%x) %08X %ws"
+      }
+    ],
+    "N20": [
+      {
+        "id": "vis:call_visibility:fn:1400054a4",
+        "type": "VISIBILITY_INDICATOR",
+        "dynamic_dispatch_callsites": [],
+        "dynamic_dispatch_count": 0,
+        "dynamic_dispatch_recognition": null,
+        "dynamic_dispatch_targets": [],
+        "function": "fn:1400054a4",
+        "indicator": "call_visibility",
+        "indirect_call_count": 2,
+        "indirect_callsites": [
+          "1400055d4",
+          "14000565b"
+        ],
+        "resolved_indirect_call_count": 2,
+        "resolved_indirect_callsites": [
+          "1400055d4",
+          "14000565b"
+        ],
+        "signals": [
+          "indirect_call"
+        ],
+        "unresolved_indirect_call_count": 0,
+        "unresolved_indirect_callsites": []
+      }
+    ],
+    "N21": [
+      {
+        "id": "vis:call_visibility:fn:140008fec",
+        "type": "VISIBILITY_INDICATOR",
+        "dynamic_dispatch_callsites": [],
+        "dynamic_dispatch_count": 0,
+        "dynamic_dispatch_recognition": null,
+        "dynamic_dispatch_targets": [],
+        "function": "fn:140008fec",
+        "indicator": "call_visibility",
+        "indirect_call_count": 2,
+        "indirect_callsites": [
+          "140009066",
+          "140009092"
+        ],
+        "resolved_indirect_call_count": 0,
+        "resolved_indirect_callsites": [],
+        "signals": [
+          "indirect_call",
+          "unresolved_call"
+        ],
+        "unresolved_indirect_call_count": 2,
+        "unresolved_indirect_callsites": [
+          "140009066",
+          "140009092"
+        ]
+      }
+    ],
+    "N22": [
+      {
+        "id": "api:memset",
+        "type": "API",
+        "name": "memset",
+        "normalized_name": "memset",
+        "original_names": [
+          "memset"
+        ]
+      }
+    ],
+    "N23": [
+      {
+        "id": "str:14002aa00",
+        "type": "STRING",
+        "address": "14002aa00",
+        "categories": [],
+        "category": null,
+        "raw_value": "u\"[%hs]\\n\"",
+        "reference_count": 1,
+        "value": "[%hs]\\n"
+      }
+    ],
+    "N24": [
+      {
+        "id": "api:getcurrentthreadid",
+        "type": "API",
+        "name": "GetCurrentThreadId",
+        "normalized_name": "GetCurrentThreadId",
+        "original_names": [
+          "GetCurrentThreadId"
+        ]
+      }
+    ],
+    "N25": [
+      {
+        "id": "api:outputdebugstring",
+        "type": "API",
+        "name": "OutputDebugString",
+        "normalized_name": "OutputDebugString",
+        "original_names": [
+          "OutputDebugStringW"
+        ]
+      }
+    ],
+    "N26": [
+      {
+        "id": "fn:1400033ac",
+        "type": "FUNCTION",
+        "address": "1400033ac",
+        "external": false,
+        "internal": true,
+        "name": "FUN_1400033ac",
+        "section": ".text",
+        "size": 625,
+        "symbol_name": "FUN_1400033ac",
+        "thunk": false
+      }
+    ],
+    "N27": [
+      {
+        "id": "fn:140008fec",
+        "type": "FUNCTION",
+        "address": "140008fec",
+        "external": false,
+        "internal": true,
+        "name": "FUN_140008fec",
+        "section": ".text",
+        "size": 167,
+        "symbol_name": "FUN_140008fec",
+        "thunk": false
+      }
+    ],
+    "N28": [
+      {
+        "id": "sec:140001000",
+        "type": "SECTION",
+        "end": "140027fff",
+        "entropy": 6.1732,
+        "entropy_class": "normal",
+        "entropy_sampled_bytes": 65536,
+        "execute": true,
+        "initialized": true,
+        "name": ".text",
+        "permissions": "r-x",
+        "read": true,
+        "reasons": [],
+        "size": 159744,
+        "start": "140001000",
+        "suspicious": false,
+        "write": false
+      }
+    ],
+    "N29": [
+      {
+        "id": "fn:1400054a4",
+        "type": "FUNCTION",
+        "address": "1400054a4",
+        "external": false,
+        "internal": true,
+        "name": "FUN_1400054a4",
+        "section": ".text",
+        "size": 704,
+        "symbol_name": "FUN_1400054a4",
+        "thunk": false
+      }
+    ],
+    "N3": [
+      {
+        "id": "str:14002a9e8",
+        "type": "STRING",
+        "address": "14002a9e8",
+        "categories": [],
+        "category": null,
+        "raw_value": "u\"[%hs(%hs)]\\n\"",
+        "reference_count": 1,
+        "value": "[%hs(%hs)]\\n"
+      }
+    ],
+    "N30": [
+      {
+        "id": "fn:140027440",
+        "type": "FUNCTION",
+        "address": "140027440",
+        "external": false,
+        "internal": true,
+        "name": "__chkstk",
+        "section": ".text",
+        "size": 78,
+        "symbol_name": "__chkstk",
+        "thunk": false
+      }
+    ],
+    "N31": [
+      {
+        "id": "fn:140006d20",
+        "type": "FUNCTION",
+        "address": "140006d20",
+        "external": false,
+        "internal": true,
+        "name": "FUN_140006d20",
+        "section": ".text",
+        "size": 12,
+        "symbol_name": "FUN_140006d20",
+        "thunk": false
+      }
+    ],
+    "N32": [
+      {
+        "id": "fn:14000909c",
+        "type": "FUNCTION",
+        "address": "14000909c",
+        "external": false,
+        "internal": true,
+        "name": "FUN_14000909c",
+        "section": ".text",
+        "size": 35,
+        "symbol_name": "FUN_14000909c",
+        "thunk": false
+      }
+    ],
+    "N33": [
+      {
+        "id": "fn:14000627c",
+        "type": "FUNCTION",
+        "address": "14000627c",
+        "external": false,
+        "internal": true,
+        "name": "FUN_14000627c",
+        "section": ".text",
+        "size": 118,
+        "symbol_name": "FUN_14000627c",
+        "thunk": false
+      }
+    ],
+    "N34": [
+      {
+        "id": "fn:1400019f0",
+        "type": "FUNCTION",
+        "address": "1400019f0",
+        "external": false,
+        "internal": true,
+        "name": "__security_check_cookie",
+        "section": ".text",
+        "size": 30,
+        "symbol_name": "__security_check_cookie",
+        "thunk": false
+      }
+    ],
+    "N35": [
+      {
+        "id": "str:14002a8b0",
+        "type": "STRING",
+        "address": "14002a8b0",
+        "categories": [],
+        "category": null,
+        "raw_value": "\"Exception\"",
+        "reference_count": 1,
+        "value": "Exception"
+      }
+    ],
+    "N36": [
+      {
+        "id": "sec:140028000",
+        "type": "SECTION",
+        "end": "140028fff",
+        "entropy": 0.0159,
+        "entropy_class": "normal",
+        "entropy_sampled_bytes": 4096,
+        "execute": true,
+        "initialized": true,
+        "name": "fothk",
+        "permissions": "r-x",
+        "read": true,
+        "reasons": [],
+        "size": 4096,
+        "start": "140028000",
+        "suspicious": false,
+        "write": false
+      }
+    ],
+    "N37": [
+      {
+        "id": "str:14002a928",
+        "type": "STRING",
+        "address": "14002a928",
+        "categories": [],
+        "category": null,
+        "raw_value": "u\"%hs!%p: \"",
+        "reference_count": 1,
+        "value": "%hs!%p:"
+      }
+    ],
+    "N4": [
+      {
+        "id": "str:14002a900",
+        "type": "STRING",
+        "address": "14002a900",
+        "categories": [
+          "file_path"
+        ],
+        "category": "file_path",
+        "raw_value": "u\"%hs(%u)\\\\%hs!%p: \"",
+        "reference_count": 1,
+        "value": "%hs(%u)\\\\%hs!%p:"
+      }
+    ],
+    "N5": [
+      {
+        "id": "str:14002a940",
+        "type": "STRING",
+        "address": "14002a940",
+        "categories": [],
+        "category": null,
+        "raw_value": "u\"(caller: %p) \"",
+        "reference_count": 1,
+        "value": "(caller: %p)"
+      }
+    ],
+    "N6": [
+      {
+        "id": "str:14002a9c0",
+        "type": "STRING",
+        "address": "14002a9c0",
+        "categories": [],
+        "category": null,
+        "raw_value": "u\"CallContext:[%hs] \"",
+        "reference_count": 1,
+        "value": "CallContext:[%hs]"
+      }
+    ],
+    "N7": [
+      {
+        "id": "fn:14000312c",
+        "type": "FUNCTION",
+        "address": "14000312c",
+        "external": false,
+        "internal": true,
+        "name": "FUN_14000312c",
+        "section": ".text",
+        "size": 36,
+        "symbol_name": "FUN_14000312c",
+        "thunk": false
+      }
+    ],
+    "N8": [
+      {
+        "id": "str:14002a8f0",
+        "type": "STRING",
+        "address": "14002a8f0",
+        "categories": [],
+        "category": null,
+        "raw_value": "\"FailFast\"",
+        "reference_count": 2,
+        "value": "FailFast"
+      }
+    ],
+    "N9": [
+      {
+        "id": "str:14002a8e4",
+        "type": "STRING",
+        "address": "14002a8e4",
+        "categories": [],
+        "category": null,
+        "raw_value": "\"LogHr\"",
+        "reference_count": 1,
+        "value": "LogHr"
+      }
+    ]
+  },
+  "unresolved_calls": [
+    {
+      "id": "U0",
+      "caller": "N27",
+      "facts": {
+        "direct": false,
+        "indirect": true,
+        "occurrences": 1,
+        "unresolved": true
+      }
+    },
+    {
+      "id": "U1",
+      "caller": "N27",
+      "facts": {
+        "direct": false,
+        "indirect": true,
+        "occurrences": 1,
+        "unresolved": true
+      }
+    },
+    {
+      "id": "U2",
+      "caller": "N32",
+      "facts": {
+        "direct": false,
+        "indirect": true,
+        "occurrences": 1,
+        "unresolved": true
+      }
+    },
+    {
+      "id": "U3",
+      "caller": "N7",
+      "facts": {
+        "direct": false,
+        "indirect": true,
+        "occurrences": 1,
+        "unresolved": true
+      }
+    }
+  ],
+  "unresolved_sources": {
+    "U0": [
+      {
+        "indicator": "unresolved_call",
+        "caller": "fn:140008fec",
+        "callee": null,
+        "callsite": "140009066",
+        "unresolved": true,
+        "reason": "no_resolved_function_or_api_target",
+        "direct": false,
+        "indirect": true,
+        "occurrences": 1
+      }
+    ],
+    "U1": [
+      {
+        "indicator": "unresolved_call",
+        "caller": "fn:140008fec",
+        "callee": null,
+        "callsite": "140009092",
+        "unresolved": true,
+        "reason": "no_resolved_function_or_api_target",
+        "direct": false,
+        "indirect": true,
+        "occurrences": 1
+      }
+    ],
+    "U2": [
+      {
+        "indicator": "unresolved_call",
+        "caller": "fn:14000909c",
+        "callee": null,
+        "callsite": "1400090b8",
+        "unresolved": true,
+        "reason": "no_resolved_function_or_api_target",
+        "direct": false,
+        "indirect": true,
+        "occurrences": 1
+      }
+    ],
+    "U3": [
+      {
+        "indicator": "unresolved_call",
+        "caller": "fn:14000312c",
+        "callee": null,
+        "callsite": "14000314f",
+        "unresolved": true,
+        "reason": "no_resolved_function_or_api_target",
+        "direct": false,
+        "indirect": true,
+        "occurrences": 1
+      }
+    ]
+  },
+  "local_graph_truncation": {
+    "truncated": false,
+    "limits_reached": [],
+    "requested_depth": {
+      "caller_depth": 1,
+      "callee_depth": 2
+    },
+    "effective_depth": {
+      "caller_depth": 1,
+      "callee_depth": 2
+    },
+    "counts": {
+      "function_nodes": 11,
+      "evidence_nodes": 27,
+      "total_nodes": 38,
+      "edges": 52,
+      "unresolved_calls": 4
+    }
+  },
+  "edges": [
+    {
+      "id": "E0",
+      "kind": "belongs_to_section",
+      "source": "N1",
+      "target": "N28",
+      "facts": {
+        "context_apis": [],
+        "direct": null,
+        "indirect": null,
+        "occurrences": 1
+      }
+    },
+    {
+      "id": "E1",
+      "kind": "belongs_to_section",
+      "source": "N12",
+      "target": "N36",
+      "facts": {
+        "context_apis": [],
+        "direct": null,
+        "indirect": null,
+        "occurrences": 1
+      }
+    },
+    {
+      "id": "E2",
+      "kind": "belongs_to_section",
+      "source": "N26",
+      "target": "N28",
+      "facts": {
+        "context_apis": [],
+        "direct": null,
+        "indirect": null,
+        "occurrences": 1
+      }
+    },
+    {
+      "id": "E3",
+      "kind": "belongs_to_section",
+      "source": "N27",
+      "target": "N28",
+      "facts": {
+        "context_apis": [],
+        "direct": null,
+        "indirect": null,
+        "occurrences": 1
+      }
+    },
+    {
+      "id": "E4",
+      "kind": "belongs_to_section",
+      "source": "N29",
+      "target": "N28",
+      "facts": {
+        "context_apis": [],
+        "direct": null,
+        "indirect": null,
+        "occurrences": 1
+      }
+    },
+    {
+      "id": "E5",
+      "kind": "belongs_to_section",
+      "source": "N30",
+      "target": "N28",
+      "facts": {
+        "context_apis": [],
+        "direct": null,
+        "indirect": null,
+        "occurrences": 1
+      }
+    },
+    {
+      "id": "E6",
+      "kind": "belongs_to_section",
+      "source": "N31",
+      "target": "N28",
+      "facts": {
+        "context_apis": [],
+        "direct": null,
+        "indirect": null,
+        "occurrences": 1
+      }
+    },
+    {
+      "id": "E7",
+      "kind": "belongs_to_section",
+      "source": "N32",
+      "target": "N28",
+      "facts": {
+        "context_apis": [],
+        "direct": null,
+        "indirect": null,
+        "occurrences": 1
+      }
+    },
+    {
+      "id": "E8",
+      "kind": "belongs_to_section",
+      "source": "N33",
+      "target": "N28",
+      "facts": {
+        "context_apis": [],
+        "direct": null,
+        "indirect": null,
+        "occurrences": 1
+      }
+    },
+    {
+      "id": "E9",
+      "kind": "belongs_to_section",
+      "source": "N34",
+      "target": "N28",
+      "facts": {
+        "context_apis": [],
+        "direct": null,
+        "indirect": null,
+        "occurrences": 1
+      }
+    },
+    {
+      "id": "E10",
+      "kind": "belongs_to_section",
+      "source": "N7",
+      "target": "N28",
+      "facts": {
+        "context_apis": [],
+        "direct": null,
+        "indirect": null,
+        "occurrences": 1
+      }
+    },
+    {
+      "id": "E11",
+      "kind": "calls_api",
+      "source": "N26",
+      "target": "N10",
+      "facts": {
+        "context_apis": [],
+        "direct": false,
+        "indirect": true,
+        "occurrences": 1
+      }
+    },
+    {
+      "id": "E12",
+      "kind": "calls_api",
+      "source": "N26",
+      "target": "N22",
+      "facts": {
+        "context_apis": [],
+        "direct": true,
+        "indirect": false,
+        "occurrences": 1
+      }
+    },
+    {
+      "id": "E13",
+      "kind": "calls_api",
+      "source": "N26",
+      "target": "N24",
+      "facts": {
+        "context_apis": [],
+        "direct": false,
+        "indirect": true,
+        "occurrences": 1
+      }
+    },
+    {
+      "id": "E14",
+      "kind": "calls_api",
+      "source": "N26",
+      "target": "N25",
+      "facts": {
+        "context_apis": [],
+        "direct": false,
+        "indirect": true,
+        "occurrences": 1
+      }
+    },
+    {
+      "id": "E15",
+      "kind": "calls_api",
+      "source": "N27",
+      "target": "N22",
+      "facts": {
+        "context_apis": [],
+        "direct": true,
+        "indirect": false,
+        "occurrences": 1
+      }
+    },
+    {
+      "id": "E16",
+      "kind": "calls_api",
+      "source": "N29",
+      "target": "N0",
+      "facts": {
+        "context_apis": [],
+        "direct": false,
+        "indirect": true,
+        "occurrences": 1
+      }
+    },
+    {
+      "id": "E17",
+      "kind": "calls_api",
+      "source": "N29",
+      "target": "N22",
+      "facts": {
+        "context_apis": [],
+        "direct": true,
+        "indirect": false,
+        "occurrences": 1
+      }
+    },
+    {
+      "id": "E18",
+      "kind": "calls_api",
+      "source": "N29",
+      "target": "N24",
+      "facts": {
+        "context_apis": [],
+        "direct": false,
+        "indirect": true,
+        "occurrences": 1
+      }
+    },
+    {
+      "id": "E19",
+      "kind": "calls_function",
+      "source": "N26",
+      "target": "N1",
+      "facts": {
+        "context_apis": [],
+        "direct": true,
+        "indirect": false,
+        "occurrences": 1
+      }
+    },
+    {
+      "id": "E20",
+      "kind": "calls_function",
+      "source": "N26",
+      "target": "N12",
+      "facts": {
+        "context_apis": [],
+        "direct": true,
+        "indirect": false,
+        "occurrences": 9
+      }
+    },
+    {
+      "id": "E21",
+      "kind": "calls_function",
+      "source": "N26",
+      "target": "N27",
+      "facts": {
+        "context_apis": [],
+        "direct": true,
+        "indirect": false,
+        "occurrences": 1
+      }
+    },
+    {
+      "id": "E22",
+      "kind": "calls_function",
+      "source": "N26",
+      "target": "N29",
+      "facts": {
+        "context_apis": [],
+        "direct": true,
+        "indirect": false,
+        "occurrences": 1
+      }
+    },
+    {
+      "id": "E23",
+      "kind": "calls_function",
+      "source": "N26",
+      "target": "N30",
+      "facts": {
+        "context_apis": [],
+        "direct": true,
+        "indirect": false,
+        "occurrences": 1
+      }
+    },
+    {
+      "id": "E24",
+      "kind": "calls_function",
+      "source": "N26",
+      "target": "N31",
+      "facts": {
+        "context_apis": [],
+        "direct": true,
+        "indirect": false,
+        "occurrences": 1
+      }
+    },
+    {
+      "id": "E25",
+      "kind": "calls_function",
+      "source": "N27",
+      "target": "N12",
+      "facts": {
+        "context_apis": [],
+        "direct": true,
+        "indirect": false,
+        "occurrences": 2
+      }
+    },
+    {
+      "id": "E26",
+      "kind": "calls_function",
+      "source": "N27",
+      "target": "N32",
+      "facts": {
+        "context_apis": [],
+        "direct": true,
+        "indirect": false,
+        "occurrences": 2
+      }
+    },
+    {
+      "id": "E27",
+      "kind": "calls_function",
+      "source": "N29",
+      "target": "N12",
+      "facts": {
+        "context_apis": [],
+        "direct": true,
+        "indirect": false,
+        "occurrences": 2
+      }
+    },
+    {
+      "id": "E28",
+      "kind": "calls_function",
+      "source": "N29",
+      "target": "N33",
+      "facts": {
+        "context_apis": [],
+        "direct": true,
+        "indirect": false,
+        "occurrences": 10
+      }
+    },
+    {
+      "id": "E29",
+      "kind": "calls_function",
+      "source": "N29",
+      "target": "N34",
+      "facts": {
+        "context_apis": [],
+        "direct": true,
+        "indirect": false,
+        "occurrences": 1
+      }
+    },
+    {
+      "id": "E30",
+      "kind": "calls_function",
+      "source": "N32",
+      "target": "N12",
+      "facts": {
+        "context_apis": [],
+        "direct": true,
+        "indirect": false,
+        "occurrences": 1
+      }
+    },
+    {
+      "id": "E31",
+      "kind": "calls_function",
+      "source": "N7",
+      "target": "N26",
+      "facts": {
+        "context_apis": [],
+        "direct": true,
+        "indirect": false,
+        "occurrences": 1
+      }
+    },
+    {
+      "id": "E32",
+      "kind": "contains_indirect_call",
+      "source": "N26",
+      "target": "N15",
+      "facts": {
+        "context_apis": [],
+        "direct": null,
+        "indirect": null,
+        "occurrences": 1
+      }
+    },
+    {
+      "id": "E33",
+      "kind": "contains_indirect_call",
+      "source": "N27",
+      "target": "N21",
+      "facts": {
+        "context_apis": [],
+        "direct": null,
+        "indirect": null,
+        "occurrences": 1
+      }
+    },
+    {
+      "id": "E34",
+      "kind": "contains_indirect_call",
+      "source": "N29",
+      "target": "N20",
+      "facts": {
+        "context_apis": [],
+        "direct": null,
+        "indirect": null,
+        "occurrences": 1
+      }
+    },
+    {
+      "id": "E35",
+      "kind": "contains_indirect_call",
+      "source": "N32",
+      "target": "N19",
+      "facts": {
+        "context_apis": [],
+        "direct": null,
+        "indirect": null,
+        "occurrences": 1
+      }
+    },
+    {
+      "id": "E36",
+      "kind": "contains_indirect_call",
+      "source": "N7",
+      "target": "N18",
+      "facts": {
+        "context_apis": [],
+        "direct": null,
+        "indirect": null,
+        "occurrences": 1
+      }
+    },
+    {
+      "id": "E37",
+      "kind": "has_string_category",
+      "source": "N4",
+      "target": "N17",
+      "facts": {
+        "context_apis": [],
+        "direct": null,
+        "indirect": null,
+        "occurrences": 1
+      }
+    },
+    {
+      "id": "E38",
+      "kind": "references_string",
+      "source": "N29",
+      "target": "N11",
+      "facts": {
+        "context_apis": [],
+        "direct": null,
+        "indirect": null,
+        "occurrences": 1
+      }
+    },
+    {
+      "id": "E39",
+      "kind": "references_string",
+      "source": "N29",
+      "target": "N13",
+      "facts": {
+        "context_apis": [],
+        "direct": null,
+        "indirect": null,
+        "occurrences": 1
+      }
+    },
+    {
+      "id": "E40",
+      "kind": "references_string",
+      "source": "N29",
+      "target": "N14",
+      "facts": {
+        "context_apis": [],
+        "direct": null,
+        "indirect": null,
+        "occurrences": 1
+      }
+    },
+    {
+      "id": "E41",
+      "kind": "references_string",
+      "source": "N29",
+      "target": "N16",
+      "facts": {
+        "context_apis": [],
+        "direct": null,
+        "indirect": null,
+        "occurrences": 1
+      }
+    },
+    {
+      "id": "E42",
+      "kind": "references_string",
+      "source": "N29",
+      "target": "N2",
+      "facts": {
+        "context_apis": [],
+        "direct": null,
+        "indirect": null,
+        "occurrences": 1
+      }
+    },
+    {
+      "id": "E43",
+      "kind": "references_string",
+      "source": "N29",
+      "target": "N23",
+      "facts": {
+        "context_apis": [],
+        "direct": null,
+        "indirect": null,
+        "occurrences": 1
+      }
+    },
+    {
+      "id": "E44",
+      "kind": "references_string",
+      "source": "N29",
+      "target": "N3",
+      "facts": {
+        "context_apis": [],
+        "direct": null,
+        "indirect": null,
+        "occurrences": 1
+      }
+    },
+    {
+      "id": "E45",
+      "kind": "references_string",
+      "source": "N29",
+      "target": "N35",
+      "facts": {
+        "context_apis": [],
+        "direct": null,
+        "indirect": null,
+        "occurrences": 1
+      }
+    },
+    {
+      "id": "E46",
+      "kind": "references_string",
+      "source": "N29",
+      "target": "N37",
+      "facts": {
+        "context_apis": [],
+        "direct": null,
+        "indirect": null,
+        "occurrences": 1
+      }
+    },
+    {
+      "id": "E47",
+      "kind": "references_string",
+      "source": "N29",
+      "target": "N4",
+      "facts": {
+        "context_apis": [],
+        "direct": null,
+        "indirect": null,
+        "occurrences": 1
+      }
+    },
+    {
+      "id": "E48",
+      "kind": "references_string",
+      "source": "N29",
+      "target": "N5",
+      "facts": {
+        "context_apis": [],
+        "direct": null,
+        "indirect": null,
+        "occurrences": 1
+      }
+    },
+    {
+      "id": "E49",
+      "kind": "references_string",
+      "source": "N29",
+      "target": "N6",
+      "facts": {
+        "context_apis": [],
+        "direct": null,
+        "indirect": null,
+        "occurrences": 1
+      }
+    },
+    {
+      "id": "E50",
+      "kind": "references_string",
+      "source": "N29",
+      "target": "N8",
+      "facts": {
+        "context_apis": [],
+        "direct": null,
+        "indirect": null,
+        "occurrences": 2
+      }
+    },
+    {
+      "id": "E51",
+      "kind": "references_string",
+      "source": "N29",
+      "target": "N9",
+      "facts": {
+        "context_apis": [],
+        "direct": null,
+        "indirect": null,
+        "occurrences": 1
+      }
+    }
+  ],
+  "edge_sources": {
+    "E0": [
+      {
+        "type": "belongs_to_section",
+        "source": "fn:140005cc0",
+        "target": "sec:140001000",
+        "function": "fn:140005cc0",
+        "section": "sec:140001000"
+      }
+    ],
+    "E1": [
+      {
+        "type": "belongs_to_section",
+        "source": "fn:140028010",
+        "target": "sec:140028000",
+        "function": "fn:140028010",
+        "section": "sec:140028000"
+      }
+    ],
+    "E10": [
+      {
+        "type": "belongs_to_section",
+        "source": "fn:14000312c",
+        "target": "sec:140001000",
+        "function": "fn:14000312c",
+        "section": "sec:140001000"
+      }
+    ],
+    "E11": [
+      {
+        "type": "calls_api",
+        "source": "fn:1400033ac",
+        "target": "api:isdebuggerpresent",
+        "api": "api:isdebuggerpresent",
+        "api_original_names": [
+          "IsDebuggerPresent"
+        ],
+        "caller": "fn:1400033ac",
+        "callsite": "140003556",
+        "callsites": [
+          "140003556"
+        ],
+        "direct": false,
+        "indirect": true,
+        "occurrences": 1,
+        "unresolved": false
+      }
+    ],
+    "E12": [
+      {
+        "type": "calls_api",
+        "source": "fn:1400033ac",
+        "target": "api:memset",
+        "api": "api:memset",
+        "api_original_names": [
+          "memset"
+        ],
+        "caller": "fn:1400033ac",
+        "callsite": "1400033ee",
+        "callsites": [
+          "1400033ee"
+        ],
+        "direct": true,
+        "indirect": false,
+        "occurrences": 1,
+        "unresolved": false
+      }
+    ],
+    "E13": [
+      {
+        "type": "calls_api",
+        "source": "fn:1400033ac",
+        "target": "api:getcurrentthreadid",
+        "api": "api:getcurrentthreadid",
+        "api_original_names": [
+          "GetCurrentThreadId"
+        ],
+        "caller": "fn:1400033ac",
+        "callsite": "14000344d",
+        "callsites": [
+          "14000344d"
+        ],
+        "direct": false,
+        "indirect": true,
+        "occurrences": 1,
+        "unresolved": false
+      }
+    ],
+    "E14": [
+      {
+        "type": "calls_api",
+        "source": "fn:1400033ac",
+        "target": "api:outputdebugstring",
+        "api": "api:outputdebugstring",
+        "api_original_names": [
+          "OutputDebugStringW"
+        ],
+        "caller": "fn:1400033ac",
+        "callsite": "1400035e6",
+        "callsites": [
+          "1400035e6"
+        ],
+        "direct": false,
+        "indirect": true,
+        "occurrences": 1,
+        "unresolved": false
+      }
+    ],
+    "E15": [
+      {
+        "type": "calls_api",
+        "source": "fn:140008fec",
+        "target": "api:memset",
+        "api": "api:memset",
+        "api_original_names": [
+          "memset"
+        ],
+        "caller": "fn:140008fec",
+        "callsite": "14000902a",
+        "callsites": [
+          "14000902a"
+        ],
+        "direct": true,
+        "indirect": false,
+        "occurrences": 1,
+        "unresolved": false
+      }
+    ],
+    "E16": [
+      {
+        "type": "calls_api",
+        "source": "fn:1400054a4",
+        "target": "api:formatmessagew",
+        "api": "api:formatmessagew",
+        "api_original_names": [
+          "FormatMessageW"
+        ],
+        "caller": "fn:1400054a4",
+        "callsite": "1400055d4",
+        "callsites": [
+          "1400055d4"
+        ],
+        "direct": false,
+        "indirect": true,
+        "occurrences": 1,
+        "unresolved": false
+      }
+    ],
+    "E17": [
+      {
+        "type": "calls_api",
+        "source": "fn:1400054a4",
+        "target": "api:memset",
+        "api": "api:memset",
+        "api_original_names": [
+          "memset"
+        ],
+        "caller": "fn:1400054a4",
+        "callsite": "14000557c",
+        "callsites": [
+          "14000557c"
+        ],
+        "direct": true,
+        "indirect": false,
+        "occurrences": 1,
+        "unresolved": false
+      }
+    ],
+    "E18": [
+      {
+        "type": "calls_api",
+        "source": "fn:1400054a4",
+        "target": "api:getcurrentthreadid",
+        "api": "api:getcurrentthreadid",
+        "api_original_names": [
+          "GetCurrentThreadId"
+        ],
+        "caller": "fn:1400054a4",
+        "callsite": "14000565b",
+        "callsites": [
+          "14000565b"
+        ],
+        "direct": false,
+        "indirect": true,
+        "occurrences": 1,
+        "unresolved": false
+      }
+    ],
+    "E19": [
+      {
+        "type": "calls_function",
+        "source": "fn:1400033ac",
+        "target": "fn:140005cc0",
+        "callee": "fn:140005cc0",
+        "caller": "fn:1400033ac",
+        "callsite": "14000352f",
+        "callsites": [
+          "14000352f"
+        ],
+        "direct": true,
+        "indirect": false,
+        "occurrences": 1,
+        "unresolved": false
+      }
+    ],
+    "E2": [
+      {
+        "type": "belongs_to_section",
+        "source": "fn:1400033ac",
+        "target": "sec:140001000",
+        "function": "fn:1400033ac",
+        "section": "sec:140001000"
+      }
+    ],
+    "E20": [
+      {
+        "type": "calls_function",
+        "source": "fn:1400033ac",
+        "target": "fn:140028010",
+        "callee": "fn:140028010",
+        "caller": "fn:1400033ac",
+        "callsite": "1400034a7",
+        "callsites": [
+          "1400034a7",
+          "1400034c7",
+          "1400034e7",
+          "1400034fd",
+          "14000351a",
+          "14000354d",
+          "14000358c",
+          "1400035bc",
+          "14000360e"
+        ],
+        "direct": true,
+        "indirect": false,
+        "occurrences": 9,
+        "unresolved": false
+      }
+    ],
+    "E21": [
+      {
+        "type": "calls_function",
+        "source": "fn:1400033ac",
+        "target": "fn:140008fec",
+        "callee": "fn:140008fec",
+        "caller": "fn:1400033ac",
+        "callsite": "140003618",
+        "callsites": [
+          "140003618"
+        ],
+        "direct": true,
+        "indirect": false,
+        "occurrences": 1,
+        "unresolved": false
+      }
+    ],
+    "E22": [
+      {
+        "type": "calls_function",
+        "source": "fn:1400033ac",
+        "target": "fn:1400054a4",
+        "callee": "fn:1400054a4",
+        "caller": "fn:1400033ac",
+        "callsite": "1400035da",
+        "callsites": [
+          "1400035da"
+        ],
+        "direct": true,
+        "indirect": false,
+        "occurrences": 1,
+        "unresolved": false
+      }
+    ],
+    "E23": [
+      {
+        "type": "calls_function",
+        "source": "fn:1400033ac",
+        "target": "fn:140027440",
+        "callee": "fn:140027440",
+        "caller": "fn:1400033ac",
+        "callsite": "1400033c9",
+        "callsites": [
+          "1400033c9"
+        ],
+        "direct": true,
+        "indirect": false,
+        "occurrences": 1,
+        "unresolved": false
+      }
+    ],
+    "E24": [
+      {
+        "type": "calls_function",
+        "source": "fn:1400033ac",
+        "target": "fn:140006d20",
+        "callee": "fn:140006d20",
+        "caller": "fn:1400033ac",
+        "callsite": "140003416",
+        "callsites": [
+          "140003416"
+        ],
+        "direct": true,
+        "indirect": false,
+        "occurrences": 1,
+        "unresolved": false
+      }
+    ],
+    "E25": [
+      {
+        "type": "calls_function",
+        "source": "fn:140008fec",
+        "target": "fn:140028010",
+        "callee": "fn:140028010",
+        "caller": "fn:140008fec",
+        "callsite": "140009004",
+        "callsites": [
+          "140009004",
+          "140009018"
+        ],
+        "direct": true,
+        "indirect": false,
+        "occurrences": 2,
+        "unresolved": false
+      }
+    ],
+    "E26": [
+      {
+        "type": "calls_function",
+        "source": "fn:140008fec",
+        "target": "fn:14000909c",
+        "callee": "fn:14000909c",
+        "caller": "fn:140008fec",
+        "callsite": "140009061",
+        "callsites": [
+          "140009061",
+          "14000908d"
+        ],
+        "direct": true,
+        "indirect": false,
+        "occurrences": 2,
+        "unresolved": false
+      }
+    ],
+    "E27": [
+      {
+        "type": "calls_function",
+        "source": "fn:1400054a4",
+        "target": "fn:140028010",
+        "callee": "fn:140028010",
+        "caller": "fn:1400054a4",
+        "callsite": "140005509",
+        "callsites": [
+          "140005509",
+          "1400055a3"
+        ],
+        "direct": true,
+        "indirect": false,
+        "occurrences": 2,
+        "unresolved": false
+      }
+    ],
+    "E28": [
+      {
+        "type": "calls_function",
+        "source": "fn:1400054a4",
+        "target": "fn:14000627c",
+        "callee": "fn:14000627c",
+        "caller": "fn:1400054a4",
+        "callsite": "140005619",
+        "callsites": [
+          "140005619",
+          "140005632",
+          "140005653",
+          "140005690",
+          "1400056b8",
+          "1400056d3",
+          "1400056ee",
+          "140005712",
+          "140005728",
+          "140005736"
+        ],
+        "direct": true,
+        "indirect": false,
+        "occurrences": 10,
+        "unresolved": false
+      }
+    ],
+    "E29": [
+      {
+        "type": "calls_function",
+        "source": "fn:1400054a4",
+        "target": "fn:1400019f0",
+        "callee": "fn:1400019f0",
+        "caller": "fn:1400054a4",
+        "callsite": "140005748",
+        "callsites": [
+          "140005748"
+        ],
+        "direct": true,
+        "indirect": false,
+        "occurrences": 1,
+        "unresolved": false
+      }
+    ],
+    "E3": [
+      {
+        "type": "belongs_to_section",
+        "source": "fn:140008fec",
+        "target": "sec:140001000",
+        "function": "fn:140008fec",
+        "section": "sec:140001000"
+      }
+    ],
+    "E30": [
+      {
+        "type": "calls_function",
+        "source": "fn:14000909c",
+        "target": "fn:140028010",
+        "callee": "fn:140028010",
+        "caller": "fn:14000909c",
+        "callsite": "1400090ae",
+        "callsites": [
+          "1400090ae"
+        ],
+        "direct": true,
+        "indirect": false,
+        "occurrences": 1,
+        "unresolved": false
+      }
+    ],
+    "E31": [
+      {
+        "type": "calls_function",
+        "source": "fn:14000312c",
+        "target": "fn:1400033ac",
+        "callee": "fn:1400033ac",
+        "caller": "fn:14000312c",
+        "callsite": "14000314a",
+        "callsites": [
+          "14000314a"
+        ],
+        "direct": true,
+        "indirect": false,
+        "occurrences": 1,
+        "unresolved": false
+      }
+    ],
+    "E32": [
+      {
+        "type": "contains_indirect_call",
+        "source": "fn:1400033ac",
+        "target": "vis:call_visibility:fn:1400033ac",
+        "function": "fn:1400033ac",
+        "indicator": "vis:call_visibility:fn:1400033ac"
+      }
+    ],
+    "E33": [
+      {
+        "type": "contains_indirect_call",
+        "source": "fn:140008fec",
+        "target": "vis:call_visibility:fn:140008fec",
+        "function": "fn:140008fec",
+        "indicator": "vis:call_visibility:fn:140008fec"
+      }
+    ],
+    "E34": [
+      {
+        "type": "contains_indirect_call",
+        "source": "fn:1400054a4",
+        "target": "vis:call_visibility:fn:1400054a4",
+        "function": "fn:1400054a4",
+        "indicator": "vis:call_visibility:fn:1400054a4"
+      }
+    ],
+    "E35": [
+      {
+        "type": "contains_indirect_call",
+        "source": "fn:14000909c",
+        "target": "vis:call_visibility:fn:14000909c",
+        "function": "fn:14000909c",
+        "indicator": "vis:call_visibility:fn:14000909c"
+      }
+    ],
+    "E36": [
+      {
+        "type": "contains_indirect_call",
+        "source": "fn:14000312c",
+        "target": "vis:call_visibility:fn:14000312c",
+        "function": "fn:14000312c",
+        "indicator": "vis:call_visibility:fn:14000312c"
+      }
+    ],
+    "E37": [
+      {
+        "type": "has_string_category",
+        "source": "str:14002a900",
+        "target": "strcat:file_path",
+        "category": "strcat:file_path",
+        "string": "str:14002a900"
+      }
+    ],
+    "E38": [
+      {
+        "type": "references_string",
+        "source": "fn:1400054a4",
+        "target": "str:14002a8dc",
+        "function": "fn:1400054a4",
+        "reference_count": 1,
+        "reference_sites": [
+          "140005547"
+        ],
+        "string": "str:14002a8dc"
+      }
+    ],
+    "E39": [
+      {
+        "type": "references_string",
+        "source": "fn:1400054a4",
+        "target": "str:14002a9a8",
+        "function": "fn:1400054a4",
+        "reference_count": 1,
+        "reference_sites": [
+          "1400056c6"
+        ],
+        "string": "str:14002a9a8"
+      }
+    ],
+    "E4": [
+      {
+        "type": "belongs_to_section",
+        "source": "fn:1400054a4",
+        "target": "sec:140001000",
+        "function": "fn:1400054a4",
+        "section": "sec:140001000"
+      }
+    ],
+    "E40": [
+      {
+        "type": "references_string",
+        "source": "fn:1400054a4",
+        "target": "str:14002a8d0",
+        "function": "fn:1400054a4",
+        "reference_count": 1,
+        "reference_sites": [
+          "140005550"
+        ],
+        "string": "str:14002a8d0"
+      }
+    ],
+    "E41": [
+      {
+        "type": "references_string",
+        "source": "fn:1400054a4",
+        "target": "str:14002a8c0",
+        "function": "fn:1400054a4",
+        "reference_count": 1,
+        "reference_sites": [
+          "140005557"
+        ],
+        "string": "str:14002a8c0"
+      }
+    ],
+    "E42": [
+      {
+        "type": "references_string",
+        "source": "fn:1400054a4",
+        "target": "str:14002a960",
+        "function": "fn:1400054a4",
+        "reference_count": 1,
+        "reference_sites": [
+          "140005674"
+        ],
+        "string": "str:14002a960"
+      }
+    ],
+    "E43": [
+      {
+        "type": "references_string",
+        "source": "fn:1400054a4",
+        "target": "str:14002aa00",
+        "function": "fn:1400054a4",
+        "reference_count": 1,
+        "reference_sites": [
+          "140005721"
+        ],
+        "string": "str:14002aa00"
+      }
+    ],
+    "E44": [
+      {
+        "type": "references_string",
+        "source": "fn:1400054a4",
+        "target": "str:14002a9e8",
+        "function": "fn:1400054a4",
+        "reference_count": 1,
+        "reference_sites": [
+          "140005708"
+        ],
+        "string": "str:14002a9e8"
+      }
+    ],
+    "E45": [
+      {
+        "type": "references_string",
+        "source": "fn:1400054a4",
+        "target": "str:14002a8b0",
+        "function": "fn:1400054a4",
+        "reference_count": 1,
+        "reference_sites": [
+          "140005568"
+        ],
+        "string": "str:14002a8b0"
+      }
+    ],
+    "E46": [
+      {
+        "type": "references_string",
+        "source": "fn:1400054a4",
+        "target": "str:14002a928",
+        "function": "fn:1400054a4",
+        "reference_count": 1,
+        "reference_sites": [
+          "14000562b"
+        ],
+        "string": "str:14002a928"
+      }
+    ],
+    "E47": [
+      {
+        "type": "references_string",
+        "source": "fn:1400054a4",
+        "target": "str:14002a900",
+        "function": "fn:1400054a4",
+        "reference_count": 1,
+        "reference_sites": [
+          "140005603"
+        ],
+        "string": "str:14002a900"
+      }
+    ],
+    "E48": [
+      {
+        "type": "references_string",
+        "source": "fn:1400054a4",
+        "target": "str:14002a940",
+        "function": "fn:1400054a4",
+        "reference_count": 1,
+        "reference_sites": [
+          "140005646"
+        ],
+        "string": "str:14002a940"
+      }
+    ],
+    "E49": [
+      {
+        "type": "references_string",
+        "source": "fn:1400054a4",
+        "target": "str:14002a9c0",
+        "function": "fn:1400054a4",
+        "reference_count": 1,
+        "reference_sites": [
+          "1400056e1"
+        ],
+        "string": "str:14002a9c0"
+      }
+    ],
+    "E5": [
+      {
+        "type": "belongs_to_section",
+        "source": "fn:140027440",
+        "target": "sec:140001000",
+        "function": "fn:140027440",
+        "section": "sec:140001000"
+      }
+    ],
+    "E50": [
+      {
+        "type": "references_string",
+        "source": "fn:1400054a4",
+        "target": "str:14002a8f0",
+        "function": "fn:1400054a4",
+        "reference_count": 2,
+        "reference_sites": [
+          "140005537",
+          "14000567f"
+        ],
+        "string": "str:14002a8f0"
+      }
+    ],
+    "E51": [
+      {
+        "type": "references_string",
+        "source": "fn:1400054a4",
+        "target": "str:14002a8e4",
+        "function": "fn:1400054a4",
+        "reference_count": 1,
+        "reference_sites": [
+          "140005540"
+        ],
+        "string": "str:14002a8e4"
+      }
+    ],
+    "E6": [
+      {
+        "type": "belongs_to_section",
+        "source": "fn:140006d20",
+        "target": "sec:140001000",
+        "function": "fn:140006d20",
+        "section": "sec:140001000"
+      }
+    ],
+    "E7": [
+      {
+        "type": "belongs_to_section",
+        "source": "fn:14000909c",
+        "target": "sec:140001000",
+        "function": "fn:14000909c",
+        "section": "sec:140001000"
+      }
+    ],
+    "E8": [
+      {
+        "type": "belongs_to_section",
+        "source": "fn:14000627c",
+        "target": "sec:140001000",
+        "function": "fn:14000627c",
+        "section": "sec:140001000"
+      }
+    ],
+    "E9": [
+      {
+        "type": "belongs_to_section",
+        "source": "fn:1400019f0",
+        "target": "sec:140001000",
+        "function": "fn:1400019f0",
+        "section": "sec:140001000"
+      }
+    ]
+  },
+  "provenance_map": {
+    "E0": [
+      {
+        "collection": "edges",
+        "index": 38,
+        "property_paths": [
+          "/edges/38/function",
+          "/edges/38/section",
+          "/edges/38/source",
+          "/edges/38/target",
+          "/edges/38/type"
+        ]
+      }
+    ],
+    "E1": [
+      {
+        "collection": "edges",
+        "index": 50,
+        "property_paths": [
+          "/edges/50/function",
+          "/edges/50/section",
+          "/edges/50/source",
+          "/edges/50/target",
+          "/edges/50/type"
+        ]
+      }
+    ],
+    "E10": [
+      {
+        "collection": "edges",
+        "index": 2,
+        "property_paths": [
+          "/edges/2/function",
+          "/edges/2/section",
+          "/edges/2/source",
+          "/edges/2/target",
+          "/edges/2/type"
+        ]
+      }
+    ],
+    "E11": [
+      {
+        "collection": "edges",
+        "index": 11,
+        "property_paths": [
+          "/edges/11/api",
+          "/edges/11/api_original_names",
+          "/edges/11/caller",
+          "/edges/11/callsite",
+          "/edges/11/callsites",
+          "/edges/11/direct",
+          "/edges/11/indirect",
+          "/edges/11/occurrences",
+          "/edges/11/source",
+          "/edges/11/target",
+          "/edges/11/type",
+          "/edges/11/unresolved"
+        ]
+      }
+    ],
+    "E12": [
+      {
+        "collection": "edges",
+        "index": 12,
+        "property_paths": [
+          "/edges/12/api",
+          "/edges/12/api_original_names",
+          "/edges/12/caller",
+          "/edges/12/callsite",
+          "/edges/12/callsites",
+          "/edges/12/direct",
+          "/edges/12/indirect",
+          "/edges/12/occurrences",
+          "/edges/12/source",
+          "/edges/12/target",
+          "/edges/12/type",
+          "/edges/12/unresolved"
+        ]
+      }
+    ],
+    "E13": [
+      {
+        "collection": "edges",
+        "index": 10,
+        "property_paths": [
+          "/edges/10/api",
+          "/edges/10/api_original_names",
+          "/edges/10/caller",
+          "/edges/10/callsite",
+          "/edges/10/callsites",
+          "/edges/10/direct",
+          "/edges/10/indirect",
+          "/edges/10/occurrences",
+          "/edges/10/source",
+          "/edges/10/target",
+          "/edges/10/type",
+          "/edges/10/unresolved"
+        ]
+      }
+    ],
+    "E14": [
+      {
+        "collection": "edges",
+        "index": 13,
+        "property_paths": [
+          "/edges/13/api",
+          "/edges/13/api_original_names",
+          "/edges/13/caller",
+          "/edges/13/callsite",
+          "/edges/13/callsites",
+          "/edges/13/direct",
+          "/edges/13/indirect",
+          "/edges/13/occurrences",
+          "/edges/13/source",
+          "/edges/13/target",
+          "/edges/13/type",
+          "/edges/13/unresolved"
+        ]
+      }
+    ],
+    "E15": [
+      {
+        "collection": "edges",
+        "index": 43,
+        "property_paths": [
+          "/edges/43/api",
+          "/edges/43/api_original_names",
+          "/edges/43/caller",
+          "/edges/43/callsite",
+          "/edges/43/callsites",
+          "/edges/43/direct",
+          "/edges/43/indirect",
+          "/edges/43/occurrences",
+          "/edges/43/source",
+          "/edges/43/target",
+          "/edges/43/type",
+          "/edges/43/unresolved"
+        ]
+      }
+    ],
+    "E16": [
+      {
+        "collection": "edges",
+        "index": 19,
+        "property_paths": [
+          "/edges/19/api",
+          "/edges/19/api_original_names",
+          "/edges/19/caller",
+          "/edges/19/callsite",
+          "/edges/19/callsites",
+          "/edges/19/direct",
+          "/edges/19/indirect",
+          "/edges/19/occurrences",
+          "/edges/19/source",
+          "/edges/19/target",
+          "/edges/19/type",
+          "/edges/19/unresolved"
+        ]
+      }
+    ],
+    "E17": [
+      {
+        "collection": "edges",
+        "index": 21,
+        "property_paths": [
+          "/edges/21/api",
+          "/edges/21/api_original_names",
+          "/edges/21/caller",
+          "/edges/21/callsite",
+          "/edges/21/callsites",
+          "/edges/21/direct",
+          "/edges/21/indirect",
+          "/edges/21/occurrences",
+          "/edges/21/source",
+          "/edges/21/target",
+          "/edges/21/type",
+          "/edges/21/unresolved"
+        ]
+      }
+    ],
+    "E18": [
+      {
+        "collection": "edges",
+        "index": 20,
+        "property_paths": [
+          "/edges/20/api",
+          "/edges/20/api_original_names",
+          "/edges/20/caller",
+          "/edges/20/callsite",
+          "/edges/20/callsites",
+          "/edges/20/direct",
+          "/edges/20/indirect",
+          "/edges/20/occurrences",
+          "/edges/20/source",
+          "/edges/20/target",
+          "/edges/20/type",
+          "/edges/20/unresolved"
+        ]
+      }
+    ],
+    "E19": [
+      {
+        "collection": "edges",
+        "index": 5,
+        "property_paths": [
+          "/edges/5/callee",
+          "/edges/5/caller",
+          "/edges/5/callsite",
+          "/edges/5/callsites",
+          "/edges/5/direct",
+          "/edges/5/indirect",
+          "/edges/5/occurrences",
+          "/edges/5/source",
+          "/edges/5/target",
+          "/edges/5/type",
+          "/edges/5/unresolved"
+        ]
+      }
+    ],
+    "E2": [
+      {
+        "collection": "edges",
+        "index": 14,
+        "property_paths": [
+          "/edges/14/function",
+          "/edges/14/section",
+          "/edges/14/source",
+          "/edges/14/target",
+          "/edges/14/type"
+        ]
+      }
+    ],
+    "E20": [
+      {
+        "collection": "edges",
+        "index": 9,
+        "property_paths": [
+          "/edges/9/callee",
+          "/edges/9/caller",
+          "/edges/9/callsite",
+          "/edges/9/callsites",
+          "/edges/9/direct",
+          "/edges/9/indirect",
+          "/edges/9/occurrences",
+          "/edges/9/source",
+          "/edges/9/target",
+          "/edges/9/type",
+          "/edges/9/unresolved"
+        ]
+      }
+    ],
+    "E21": [
+      {
+        "collection": "edges",
+        "index": 7,
+        "property_paths": [
+          "/edges/7/callee",
+          "/edges/7/caller",
+          "/edges/7/callsite",
+          "/edges/7/callsites",
+          "/edges/7/direct",
+          "/edges/7/indirect",
+          "/edges/7/occurrences",
+          "/edges/7/source",
+          "/edges/7/target",
+          "/edges/7/type",
+          "/edges/7/unresolved"
+        ]
+      }
+    ],
+    "E22": [
+      {
+        "collection": "edges",
+        "index": 4,
+        "property_paths": [
+          "/edges/4/callee",
+          "/edges/4/caller",
+          "/edges/4/callsite",
+          "/edges/4/callsites",
+          "/edges/4/direct",
+          "/edges/4/indirect",
+          "/edges/4/occurrences",
+          "/edges/4/source",
+          "/edges/4/target",
+          "/edges/4/type",
+          "/edges/4/unresolved"
+        ]
+      }
+    ],
+    "E23": [
+      {
+        "collection": "edges",
+        "index": 8,
+        "property_paths": [
+          "/edges/8/callee",
+          "/edges/8/caller",
+          "/edges/8/callsite",
+          "/edges/8/callsites",
+          "/edges/8/direct",
+          "/edges/8/indirect",
+          "/edges/8/occurrences",
+          "/edges/8/source",
+          "/edges/8/target",
+          "/edges/8/type",
+          "/edges/8/unresolved"
+        ]
+      }
+    ],
+    "E24": [
+      {
+        "collection": "edges",
+        "index": 6,
+        "property_paths": [
+          "/edges/6/callee",
+          "/edges/6/caller",
+          "/edges/6/callsite",
+          "/edges/6/callsites",
+          "/edges/6/direct",
+          "/edges/6/indirect",
+          "/edges/6/occurrences",
+          "/edges/6/source",
+          "/edges/6/target",
+          "/edges/6/type",
+          "/edges/6/unresolved"
+        ]
+      }
+    ],
+    "E25": [
+      {
+        "collection": "edges",
+        "index": 42,
+        "property_paths": [
+          "/edges/42/callee",
+          "/edges/42/caller",
+          "/edges/42/callsite",
+          "/edges/42/callsites",
+          "/edges/42/direct",
+          "/edges/42/indirect",
+          "/edges/42/occurrences",
+          "/edges/42/source",
+          "/edges/42/target",
+          "/edges/42/type",
+          "/edges/42/unresolved"
+        ]
+      }
+    ],
+    "E26": [
+      {
+        "collection": "edges",
+        "index": 41,
+        "property_paths": [
+          "/edges/41/callee",
+          "/edges/41/caller",
+          "/edges/41/callsite",
+          "/edges/41/callsites",
+          "/edges/41/direct",
+          "/edges/41/indirect",
+          "/edges/41/occurrences",
+          "/edges/41/source",
+          "/edges/41/target",
+          "/edges/41/type",
+          "/edges/41/unresolved"
+        ]
+      }
+    ],
+    "E27": [
+      {
+        "collection": "edges",
+        "index": 18,
+        "property_paths": [
+          "/edges/18/callee",
+          "/edges/18/caller",
+          "/edges/18/callsite",
+          "/edges/18/callsites",
+          "/edges/18/direct",
+          "/edges/18/indirect",
+          "/edges/18/occurrences",
+          "/edges/18/source",
+          "/edges/18/target",
+          "/edges/18/type",
+          "/edges/18/unresolved"
+        ]
+      }
+    ],
+    "E28": [
+      {
+        "collection": "edges",
+        "index": 17,
+        "property_paths": [
+          "/edges/17/callee",
+          "/edges/17/caller",
+          "/edges/17/callsite",
+          "/edges/17/callsites",
+          "/edges/17/direct",
+          "/edges/17/indirect",
+          "/edges/17/occurrences",
+          "/edges/17/source",
+          "/edges/17/target",
+          "/edges/17/type",
+          "/edges/17/unresolved"
+        ]
+      }
+    ],
+    "E29": [
+      {
+        "collection": "edges",
+        "index": 16,
+        "property_paths": [
+          "/edges/16/callee",
+          "/edges/16/caller",
+          "/edges/16/callsite",
+          "/edges/16/callsites",
+          "/edges/16/direct",
+          "/edges/16/indirect",
+          "/edges/16/occurrences",
+          "/edges/16/source",
+          "/edges/16/target",
+          "/edges/16/type",
+          "/edges/16/unresolved"
+        ]
+      }
+    ],
+    "E3": [
+      {
+        "collection": "edges",
+        "index": 44,
+        "property_paths": [
+          "/edges/44/function",
+          "/edges/44/section",
+          "/edges/44/source",
+          "/edges/44/target",
+          "/edges/44/type"
+        ]
+      }
+    ],
+    "E30": [
+      {
+        "collection": "edges",
+        "index": 46,
+        "property_paths": [
+          "/edges/46/callee",
+          "/edges/46/caller",
+          "/edges/46/callsite",
+          "/edges/46/callsites",
+          "/edges/46/direct",
+          "/edges/46/indirect",
+          "/edges/46/occurrences",
+          "/edges/46/source",
+          "/edges/46/target",
+          "/edges/46/type",
+          "/edges/46/unresolved"
+        ]
+      }
+    ],
+    "E31": [
+      {
+        "collection": "edges",
+        "index": 1,
+        "property_paths": [
+          "/edges/1/callee",
+          "/edges/1/caller",
+          "/edges/1/callsite",
+          "/edges/1/callsites",
+          "/edges/1/direct",
+          "/edges/1/indirect",
+          "/edges/1/occurrences",
+          "/edges/1/source",
+          "/edges/1/target",
+          "/edges/1/type",
+          "/edges/1/unresolved"
+        ]
+      }
+    ],
+    "E32": [
+      {
+        "collection": "edges",
+        "index": 15,
+        "property_paths": [
+          "/edges/15/function",
+          "/edges/15/indicator",
+          "/edges/15/source",
+          "/edges/15/target",
+          "/edges/15/type"
+        ]
+      }
+    ],
+    "E33": [
+      {
+        "collection": "edges",
+        "index": 45,
+        "property_paths": [
+          "/edges/45/function",
+          "/edges/45/indicator",
+          "/edges/45/source",
+          "/edges/45/target",
+          "/edges/45/type"
+        ]
+      }
+    ],
+    "E34": [
+      {
+        "collection": "edges",
+        "index": 37,
+        "property_paths": [
+          "/edges/37/function",
+          "/edges/37/indicator",
+          "/edges/37/source",
+          "/edges/37/target",
+          "/edges/37/type"
+        ]
+      }
+    ],
+    "E35": [
+      {
+        "collection": "edges",
+        "index": 48,
+        "property_paths": [
+          "/edges/48/function",
+          "/edges/48/indicator",
+          "/edges/48/source",
+          "/edges/48/target",
+          "/edges/48/type"
+        ]
+      }
+    ],
+    "E36": [
+      {
+        "collection": "edges",
+        "index": 3,
+        "property_paths": [
+          "/edges/3/function",
+          "/edges/3/indicator",
+          "/edges/3/source",
+          "/edges/3/target",
+          "/edges/3/type"
+        ]
+      }
+    ],
+    "E37": [
+      {
+        "collection": "edges",
+        "index": 51,
+        "property_paths": [
+          "/edges/51/category",
+          "/edges/51/source",
+          "/edges/51/string",
+          "/edges/51/target",
+          "/edges/51/type"
+        ]
+      }
+    ],
+    "E38": [
+      {
+        "collection": "edges",
+        "index": 25,
+        "property_paths": [
+          "/edges/25/function",
+          "/edges/25/reference_count",
+          "/edges/25/reference_sites",
+          "/edges/25/source",
+          "/edges/25/string",
+          "/edges/25/target",
+          "/edges/25/type"
+        ]
+      }
+    ],
+    "E39": [
+      {
+        "collection": "edges",
+        "index": 32,
+        "property_paths": [
+          "/edges/32/function",
+          "/edges/32/reference_count",
+          "/edges/32/reference_sites",
+          "/edges/32/source",
+          "/edges/32/string",
+          "/edges/32/target",
+          "/edges/32/type"
+        ]
+      }
+    ],
+    "E4": [
+      {
+        "collection": "edges",
+        "index": 36,
+        "property_paths": [
+          "/edges/36/function",
+          "/edges/36/section",
+          "/edges/36/source",
+          "/edges/36/target",
+          "/edges/36/type"
+        ]
+      }
+    ],
+    "E40": [
+      {
+        "collection": "edges",
+        "index": 24,
+        "property_paths": [
+          "/edges/24/function",
+          "/edges/24/reference_count",
+          "/edges/24/reference_sites",
+          "/edges/24/source",
+          "/edges/24/string",
+          "/edges/24/target",
+          "/edges/24/type"
+        ]
+      }
+    ],
+    "E41": [
+      {
+        "collection": "edges",
+        "index": 23,
+        "property_paths": [
+          "/edges/23/function",
+          "/edges/23/reference_count",
+          "/edges/23/reference_sites",
+          "/edges/23/source",
+          "/edges/23/string",
+          "/edges/23/target",
+          "/edges/23/type"
+        ]
+      }
+    ],
+    "E42": [
+      {
+        "collection": "edges",
+        "index": 31,
+        "property_paths": [
+          "/edges/31/function",
+          "/edges/31/reference_count",
+          "/edges/31/reference_sites",
+          "/edges/31/source",
+          "/edges/31/string",
+          "/edges/31/target",
+          "/edges/31/type"
+        ]
+      }
+    ],
+    "E43": [
+      {
+        "collection": "edges",
+        "index": 35,
+        "property_paths": [
+          "/edges/35/function",
+          "/edges/35/reference_count",
+          "/edges/35/reference_sites",
+          "/edges/35/source",
+          "/edges/35/string",
+          "/edges/35/target",
+          "/edges/35/type"
+        ]
+      }
+    ],
+    "E44": [
+      {
+        "collection": "edges",
+        "index": 34,
+        "property_paths": [
+          "/edges/34/function",
+          "/edges/34/reference_count",
+          "/edges/34/reference_sites",
+          "/edges/34/source",
+          "/edges/34/string",
+          "/edges/34/target",
+          "/edges/34/type"
+        ]
+      }
+    ],
+    "E45": [
+      {
+        "collection": "edges",
+        "index": 22,
+        "property_paths": [
+          "/edges/22/function",
+          "/edges/22/reference_count",
+          "/edges/22/reference_sites",
+          "/edges/22/source",
+          "/edges/22/string",
+          "/edges/22/target",
+          "/edges/22/type"
+        ]
+      }
+    ],
+    "E46": [
+      {
+        "collection": "edges",
+        "index": 29,
+        "property_paths": [
+          "/edges/29/function",
+          "/edges/29/reference_count",
+          "/edges/29/reference_sites",
+          "/edges/29/source",
+          "/edges/29/string",
+          "/edges/29/target",
+          "/edges/29/type"
+        ]
+      }
+    ],
+    "E47": [
+      {
+        "collection": "edges",
+        "index": 28,
+        "property_paths": [
+          "/edges/28/function",
+          "/edges/28/reference_count",
+          "/edges/28/reference_sites",
+          "/edges/28/source",
+          "/edges/28/string",
+          "/edges/28/target",
+          "/edges/28/type"
+        ]
+      }
+    ],
+    "E48": [
+      {
+        "collection": "edges",
+        "index": 30,
+        "property_paths": [
+          "/edges/30/function",
+          "/edges/30/reference_count",
+          "/edges/30/reference_sites",
+          "/edges/30/source",
+          "/edges/30/string",
+          "/edges/30/target",
+          "/edges/30/type"
+        ]
+      }
+    ],
+    "E49": [
+      {
+        "collection": "edges",
+        "index": 33,
+        "property_paths": [
+          "/edges/33/function",
+          "/edges/33/reference_count",
+          "/edges/33/reference_sites",
+          "/edges/33/source",
+          "/edges/33/string",
+          "/edges/33/target",
+          "/edges/33/type"
+        ]
+      }
+    ],
+    "E5": [
+      {
+        "collection": "edges",
+        "index": 49,
+        "property_paths": [
+          "/edges/49/function",
+          "/edges/49/section",
+          "/edges/49/source",
+          "/edges/49/target",
+          "/edges/49/type"
+        ]
+      }
+    ],
+    "E50": [
+      {
+        "collection": "edges",
+        "index": 27,
+        "property_paths": [
+          "/edges/27/function",
+          "/edges/27/reference_count",
+          "/edges/27/reference_sites",
+          "/edges/27/source",
+          "/edges/27/string",
+          "/edges/27/target",
+          "/edges/27/type"
+        ]
+      }
+    ],
+    "E51": [
+      {
+        "collection": "edges",
+        "index": 26,
+        "property_paths": [
+          "/edges/26/function",
+          "/edges/26/reference_count",
+          "/edges/26/reference_sites",
+          "/edges/26/source",
+          "/edges/26/string",
+          "/edges/26/target",
+          "/edges/26/type"
+        ]
+      }
+    ],
+    "E6": [
+      {
+        "collection": "edges",
+        "index": 40,
+        "property_paths": [
+          "/edges/40/function",
+          "/edges/40/section",
+          "/edges/40/source",
+          "/edges/40/target",
+          "/edges/40/type"
+        ]
+      }
+    ],
+    "E7": [
+      {
+        "collection": "edges",
+        "index": 47,
+        "property_paths": [
+          "/edges/47/function",
+          "/edges/47/section",
+          "/edges/47/source",
+          "/edges/47/target",
+          "/edges/47/type"
+        ]
+      }
+    ],
+    "E8": [
+      {
+        "collection": "edges",
+        "index": 39,
+        "property_paths": [
+          "/edges/39/function",
+          "/edges/39/section",
+          "/edges/39/source",
+          "/edges/39/target",
+          "/edges/39/type"
+        ]
+      }
+    ],
+    "E9": [
+      {
+        "collection": "edges",
+        "index": 0,
+        "property_paths": [
+          "/edges/0/function",
+          "/edges/0/section",
+          "/edges/0/source",
+          "/edges/0/target",
+          "/edges/0/type"
+        ]
+      }
+    ],
+    "N0": [
+      {
+        "collection": "nodes",
+        "index": 0,
+        "property_paths": [
+          "/nodes/0/id",
+          "/nodes/0/name",
+          "/nodes/0/normalized_name",
+          "/nodes/0/original_names",
+          "/nodes/0/type"
+        ]
+      }
+    ],
+    "N1": [
+      {
+        "collection": "nodes",
+        "index": 9,
+        "property_paths": [
+          "/nodes/9/address",
+          "/nodes/9/external",
+          "/nodes/9/id",
+          "/nodes/9/internal",
+          "/nodes/9/name",
+          "/nodes/9/section",
+          "/nodes/9/size",
+          "/nodes/9/symbol_name",
+          "/nodes/9/thunk",
+          "/nodes/9/type"
+        ]
+      }
+    ],
+    "N10": [
+      {
+        "collection": "nodes",
+        "index": 2,
+        "property_paths": [
+          "/nodes/2/id",
+          "/nodes/2/name",
+          "/nodes/2/normalized_name",
+          "/nodes/2/original_names",
+          "/nodes/2/type"
+        ]
+      }
+    ],
+    "N11": [
+      {
+        "collection": "nodes",
+        "index": 21,
+        "property_paths": [
+          "/nodes/21/address",
+          "/nodes/21/categories",
+          "/nodes/21/category",
+          "/nodes/21/id",
+          "/nodes/21/raw_value",
+          "/nodes/21/reference_count",
+          "/nodes/21/type",
+          "/nodes/21/value"
+        ]
+      }
+    ],
+    "N12": [
+      {
+        "collection": "nodes",
+        "index": 15,
+        "property_paths": [
+          "/nodes/15/address",
+          "/nodes/15/external",
+          "/nodes/15/id",
+          "/nodes/15/internal",
+          "/nodes/15/name",
+          "/nodes/15/section",
+          "/nodes/15/size",
+          "/nodes/15/symbol_name",
+          "/nodes/15/thunk",
+          "/nodes/15/type"
+        ]
+      }
+    ],
+    "N13": [
+      {
+        "collection": "nodes",
+        "index": 28,
+        "property_paths": [
+          "/nodes/28/address",
+          "/nodes/28/categories",
+          "/nodes/28/category",
+          "/nodes/28/id",
+          "/nodes/28/raw_value",
+          "/nodes/28/reference_count",
+          "/nodes/28/type",
+          "/nodes/28/value"
+        ]
+      }
+    ],
+    "N14": [
+      {
+        "collection": "nodes",
+        "index": 20,
+        "property_paths": [
+          "/nodes/20/address",
+          "/nodes/20/categories",
+          "/nodes/20/category",
+          "/nodes/20/id",
+          "/nodes/20/raw_value",
+          "/nodes/20/reference_count",
+          "/nodes/20/type",
+          "/nodes/20/value"
+        ]
+      }
+    ],
+    "N15": [
+      {
+        "collection": "nodes",
+        "index": 34,
+        "property_paths": [
+          "/nodes/34/dynamic_dispatch_callsites",
+          "/nodes/34/dynamic_dispatch_count",
+          "/nodes/34/dynamic_dispatch_recognition",
+          "/nodes/34/dynamic_dispatch_targets",
+          "/nodes/34/function",
+          "/nodes/34/id",
+          "/nodes/34/indicator",
+          "/nodes/34/indirect_call_count",
+          "/nodes/34/indirect_callsites",
+          "/nodes/34/resolved_indirect_call_count",
+          "/nodes/34/resolved_indirect_callsites",
+          "/nodes/34/signals",
+          "/nodes/34/type",
+          "/nodes/34/unresolved_indirect_call_count",
+          "/nodes/34/unresolved_indirect_callsites"
+        ]
+      }
+    ],
+    "N16": [
+      {
+        "collection": "nodes",
+        "index": 19,
+        "property_paths": [
+          "/nodes/19/address",
+          "/nodes/19/categories",
+          "/nodes/19/category",
+          "/nodes/19/id",
+          "/nodes/19/raw_value",
+          "/nodes/19/reference_count",
+          "/nodes/19/type",
+          "/nodes/19/value"
+        ]
+      }
+    ],
+    "N17": [
+      {
+        "collection": "nodes",
+        "index": 32,
+        "property_paths": [
+          "/nodes/32/category",
+          "/nodes/32/id",
+          "/nodes/32/name",
+          "/nodes/32/type"
+        ]
+      }
+    ],
+    "N18": [
+      {
+        "collection": "nodes",
+        "index": 33,
+        "property_paths": [
+          "/nodes/33/dynamic_dispatch_callsites",
+          "/nodes/33/dynamic_dispatch_count",
+          "/nodes/33/dynamic_dispatch_recognition",
+          "/nodes/33/dynamic_dispatch_targets",
+          "/nodes/33/function",
+          "/nodes/33/id",
+          "/nodes/33/indicator",
+          "/nodes/33/indirect_call_count",
+          "/nodes/33/indirect_callsites",
+          "/nodes/33/resolved_indirect_call_count",
+          "/nodes/33/resolved_indirect_callsites",
+          "/nodes/33/signals",
+          "/nodes/33/type",
+          "/nodes/33/unresolved_indirect_call_count",
+          "/nodes/33/unresolved_indirect_callsites"
+        ]
+      }
+    ],
+    "N19": [
+      {
+        "collection": "nodes",
+        "index": 37,
+        "property_paths": [
+          "/nodes/37/dynamic_dispatch_callsites",
+          "/nodes/37/dynamic_dispatch_count",
+          "/nodes/37/dynamic_dispatch_recognition",
+          "/nodes/37/dynamic_dispatch_targets",
+          "/nodes/37/function",
+          "/nodes/37/id",
+          "/nodes/37/indicator",
+          "/nodes/37/indirect_call_count",
+          "/nodes/37/indirect_callsites",
+          "/nodes/37/resolved_indirect_call_count",
+          "/nodes/37/resolved_indirect_callsites",
+          "/nodes/37/signals",
+          "/nodes/37/type",
+          "/nodes/37/unresolved_indirect_call_count",
+          "/nodes/37/unresolved_indirect_callsites"
+        ]
+      }
+    ],
+    "N2": [
+      {
+        "collection": "nodes",
+        "index": 27,
+        "property_paths": [
+          "/nodes/27/address",
+          "/nodes/27/categories",
+          "/nodes/27/category",
+          "/nodes/27/id",
+          "/nodes/27/raw_value",
+          "/nodes/27/reference_count",
+          "/nodes/27/type",
+          "/nodes/27/value"
+        ]
+      }
+    ],
+    "N20": [
+      {
+        "collection": "nodes",
+        "index": 35,
+        "property_paths": [
+          "/nodes/35/dynamic_dispatch_callsites",
+          "/nodes/35/dynamic_dispatch_count",
+          "/nodes/35/dynamic_dispatch_recognition",
+          "/nodes/35/dynamic_dispatch_targets",
+          "/nodes/35/function",
+          "/nodes/35/id",
+          "/nodes/35/indicator",
+          "/nodes/35/indirect_call_count",
+          "/nodes/35/indirect_callsites",
+          "/nodes/35/resolved_indirect_call_count",
+          "/nodes/35/resolved_indirect_callsites",
+          "/nodes/35/signals",
+          "/nodes/35/type",
+          "/nodes/35/unresolved_indirect_call_count",
+          "/nodes/35/unresolved_indirect_callsites"
+        ]
+      }
+    ],
+    "N21": [
+      {
+        "collection": "nodes",
+        "index": 36,
+        "property_paths": [
+          "/nodes/36/dynamic_dispatch_callsites",
+          "/nodes/36/dynamic_dispatch_count",
+          "/nodes/36/dynamic_dispatch_recognition",
+          "/nodes/36/dynamic_dispatch_targets",
+          "/nodes/36/function",
+          "/nodes/36/id",
+          "/nodes/36/indicator",
+          "/nodes/36/indirect_call_count",
+          "/nodes/36/indirect_callsites",
+          "/nodes/36/resolved_indirect_call_count",
+          "/nodes/36/resolved_indirect_callsites",
+          "/nodes/36/signals",
+          "/nodes/36/type",
+          "/nodes/36/unresolved_indirect_call_count",
+          "/nodes/36/unresolved_indirect_callsites"
+        ]
+      }
+    ],
+    "N22": [
+      {
+        "collection": "nodes",
+        "index": 3,
+        "property_paths": [
+          "/nodes/3/id",
+          "/nodes/3/name",
+          "/nodes/3/normalized_name",
+          "/nodes/3/original_names",
+          "/nodes/3/type"
+        ]
+      }
+    ],
+    "N23": [
+      {
+        "collection": "nodes",
+        "index": 31,
+        "property_paths": [
+          "/nodes/31/address",
+          "/nodes/31/categories",
+          "/nodes/31/category",
+          "/nodes/31/id",
+          "/nodes/31/raw_value",
+          "/nodes/31/reference_count",
+          "/nodes/31/type",
+          "/nodes/31/value"
+        ]
+      }
+    ],
+    "N24": [
+      {
+        "collection": "nodes",
+        "index": 1,
+        "property_paths": [
+          "/nodes/1/id",
+          "/nodes/1/name",
+          "/nodes/1/normalized_name",
+          "/nodes/1/original_names",
+          "/nodes/1/type"
+        ]
+      }
+    ],
+    "N25": [
+      {
+        "collection": "nodes",
+        "index": 4,
+        "property_paths": [
+          "/nodes/4/id",
+          "/nodes/4/name",
+          "/nodes/4/normalized_name",
+          "/nodes/4/original_names",
+          "/nodes/4/type"
+        ]
+      }
+    ],
+    "N26": [
+      {
+        "collection": "nodes",
+        "index": 7,
+        "property_paths": [
+          "/nodes/7/address",
+          "/nodes/7/external",
+          "/nodes/7/id",
+          "/nodes/7/internal",
+          "/nodes/7/name",
+          "/nodes/7/section",
+          "/nodes/7/size",
+          "/nodes/7/symbol_name",
+          "/nodes/7/thunk",
+          "/nodes/7/type"
+        ]
+      }
+    ],
+    "N27": [
+      {
+        "collection": "nodes",
+        "index": 12,
+        "property_paths": [
+          "/nodes/12/address",
+          "/nodes/12/external",
+          "/nodes/12/id",
+          "/nodes/12/internal",
+          "/nodes/12/name",
+          "/nodes/12/section",
+          "/nodes/12/size",
+          "/nodes/12/symbol_name",
+          "/nodes/12/thunk",
+          "/nodes/12/type"
+        ]
+      }
+    ],
+    "N28": [
+      {
+        "collection": "nodes",
+        "index": 16,
+        "property_paths": [
+          "/nodes/16/end",
+          "/nodes/16/entropy",
+          "/nodes/16/entropy_class",
+          "/nodes/16/entropy_sampled_bytes",
+          "/nodes/16/execute",
+          "/nodes/16/id",
+          "/nodes/16/initialized",
+          "/nodes/16/name",
+          "/nodes/16/permissions",
+          "/nodes/16/read",
+          "/nodes/16/reasons",
+          "/nodes/16/size",
+          "/nodes/16/start",
+          "/nodes/16/suspicious",
+          "/nodes/16/type",
+          "/nodes/16/write"
+        ]
+      }
+    ],
+    "N29": [
+      {
+        "collection": "nodes",
+        "index": 8,
+        "property_paths": [
+          "/nodes/8/address",
+          "/nodes/8/external",
+          "/nodes/8/id",
+          "/nodes/8/internal",
+          "/nodes/8/name",
+          "/nodes/8/section",
+          "/nodes/8/size",
+          "/nodes/8/symbol_name",
+          "/nodes/8/thunk",
+          "/nodes/8/type"
+        ]
+      }
+    ],
+    "N3": [
+      {
+        "collection": "nodes",
+        "index": 30,
+        "property_paths": [
+          "/nodes/30/address",
+          "/nodes/30/categories",
+          "/nodes/30/category",
+          "/nodes/30/id",
+          "/nodes/30/raw_value",
+          "/nodes/30/reference_count",
+          "/nodes/30/type",
+          "/nodes/30/value"
+        ]
+      }
+    ],
+    "N30": [
+      {
+        "collection": "nodes",
+        "index": 14,
+        "property_paths": [
+          "/nodes/14/address",
+          "/nodes/14/external",
+          "/nodes/14/id",
+          "/nodes/14/internal",
+          "/nodes/14/name",
+          "/nodes/14/section",
+          "/nodes/14/size",
+          "/nodes/14/symbol_name",
+          "/nodes/14/thunk",
+          "/nodes/14/type"
+        ]
+      }
+    ],
+    "N31": [
+      {
+        "collection": "nodes",
+        "index": 11,
+        "property_paths": [
+          "/nodes/11/address",
+          "/nodes/11/external",
+          "/nodes/11/id",
+          "/nodes/11/internal",
+          "/nodes/11/name",
+          "/nodes/11/section",
+          "/nodes/11/size",
+          "/nodes/11/symbol_name",
+          "/nodes/11/thunk",
+          "/nodes/11/type"
+        ]
+      }
+    ],
+    "N32": [
+      {
+        "collection": "nodes",
+        "index": 13,
+        "property_paths": [
+          "/nodes/13/address",
+          "/nodes/13/external",
+          "/nodes/13/id",
+          "/nodes/13/internal",
+          "/nodes/13/name",
+          "/nodes/13/section",
+          "/nodes/13/size",
+          "/nodes/13/symbol_name",
+          "/nodes/13/thunk",
+          "/nodes/13/type"
+        ]
+      }
+    ],
+    "N33": [
+      {
+        "collection": "nodes",
+        "index": 10,
+        "property_paths": [
+          "/nodes/10/address",
+          "/nodes/10/external",
+          "/nodes/10/id",
+          "/nodes/10/internal",
+          "/nodes/10/name",
+          "/nodes/10/section",
+          "/nodes/10/size",
+          "/nodes/10/symbol_name",
+          "/nodes/10/thunk",
+          "/nodes/10/type"
+        ]
+      }
+    ],
+    "N34": [
+      {
+        "collection": "nodes",
+        "index": 5,
+        "property_paths": [
+          "/nodes/5/address",
+          "/nodes/5/external",
+          "/nodes/5/id",
+          "/nodes/5/internal",
+          "/nodes/5/name",
+          "/nodes/5/section",
+          "/nodes/5/size",
+          "/nodes/5/symbol_name",
+          "/nodes/5/thunk",
+          "/nodes/5/type"
+        ]
+      }
+    ],
+    "N35": [
+      {
+        "collection": "nodes",
+        "index": 18,
+        "property_paths": [
+          "/nodes/18/address",
+          "/nodes/18/categories",
+          "/nodes/18/category",
+          "/nodes/18/id",
+          "/nodes/18/raw_value",
+          "/nodes/18/reference_count",
+          "/nodes/18/type",
+          "/nodes/18/value"
+        ]
+      }
+    ],
+    "N36": [
+      {
+        "collection": "nodes",
+        "index": 17,
+        "property_paths": [
+          "/nodes/17/end",
+          "/nodes/17/entropy",
+          "/nodes/17/entropy_class",
+          "/nodes/17/entropy_sampled_bytes",
+          "/nodes/17/execute",
+          "/nodes/17/id",
+          "/nodes/17/initialized",
+          "/nodes/17/name",
+          "/nodes/17/permissions",
+          "/nodes/17/read",
+          "/nodes/17/reasons",
+          "/nodes/17/size",
+          "/nodes/17/start",
+          "/nodes/17/suspicious",
+          "/nodes/17/type",
+          "/nodes/17/write"
+        ]
+      }
+    ],
+    "N37": [
+      {
+        "collection": "nodes",
+        "index": 25,
+        "property_paths": [
+          "/nodes/25/address",
+          "/nodes/25/categories",
+          "/nodes/25/category",
+          "/nodes/25/id",
+          "/nodes/25/raw_value",
+          "/nodes/25/reference_count",
+          "/nodes/25/type",
+          "/nodes/25/value"
+        ]
+      }
+    ],
+    "N4": [
+      {
+        "collection": "nodes",
+        "index": 24,
+        "property_paths": [
+          "/nodes/24/address",
+          "/nodes/24/categories",
+          "/nodes/24/category",
+          "/nodes/24/id",
+          "/nodes/24/raw_value",
+          "/nodes/24/reference_count",
+          "/nodes/24/type",
+          "/nodes/24/value"
+        ]
+      }
+    ],
+    "N5": [
+      {
+        "collection": "nodes",
+        "index": 26,
+        "property_paths": [
+          "/nodes/26/address",
+          "/nodes/26/categories",
+          "/nodes/26/category",
+          "/nodes/26/id",
+          "/nodes/26/raw_value",
+          "/nodes/26/reference_count",
+          "/nodes/26/type",
+          "/nodes/26/value"
+        ]
+      }
+    ],
+    "N6": [
+      {
+        "collection": "nodes",
+        "index": 29,
+        "property_paths": [
+          "/nodes/29/address",
+          "/nodes/29/categories",
+          "/nodes/29/category",
+          "/nodes/29/id",
+          "/nodes/29/raw_value",
+          "/nodes/29/reference_count",
+          "/nodes/29/type",
+          "/nodes/29/value"
+        ]
+      }
+    ],
+    "N7": [
+      {
+        "collection": "nodes",
+        "index": 6,
+        "property_paths": [
+          "/nodes/6/address",
+          "/nodes/6/external",
+          "/nodes/6/id",
+          "/nodes/6/internal",
+          "/nodes/6/name",
+          "/nodes/6/section",
+          "/nodes/6/size",
+          "/nodes/6/symbol_name",
+          "/nodes/6/thunk",
+          "/nodes/6/type"
+        ]
+      }
+    ],
+    "N8": [
+      {
+        "collection": "nodes",
+        "index": 23,
+        "property_paths": [
+          "/nodes/23/address",
+          "/nodes/23/categories",
+          "/nodes/23/category",
+          "/nodes/23/id",
+          "/nodes/23/raw_value",
+          "/nodes/23/reference_count",
+          "/nodes/23/type",
+          "/nodes/23/value"
+        ]
+      }
+    ],
+    "N9": [
+      {
+        "collection": "nodes",
+        "index": 22,
+        "property_paths": [
+          "/nodes/22/address",
+          "/nodes/22/categories",
+          "/nodes/22/category",
+          "/nodes/22/id",
+          "/nodes/22/raw_value",
+          "/nodes/22/reference_count",
+          "/nodes/22/type",
+          "/nodes/22/value"
+        ]
+      }
+    ],
+    "U0": [
+      {
+        "collection": "unresolved_calls",
+        "index": 1,
+        "property_paths": [
+          "/unresolved_calls/1/callee",
+          "/unresolved_calls/1/caller",
+          "/unresolved_calls/1/callsite",
+          "/unresolved_calls/1/direct",
+          "/unresolved_calls/1/indicator",
+          "/unresolved_calls/1/indirect",
+          "/unresolved_calls/1/occurrences",
+          "/unresolved_calls/1/reason",
+          "/unresolved_calls/1/unresolved"
+        ]
+      }
+    ],
+    "U1": [
+      {
+        "collection": "unresolved_calls",
+        "index": 2,
+        "property_paths": [
+          "/unresolved_calls/2/callee",
+          "/unresolved_calls/2/caller",
+          "/unresolved_calls/2/callsite",
+          "/unresolved_calls/2/direct",
+          "/unresolved_calls/2/indicator",
+          "/unresolved_calls/2/indirect",
+          "/unresolved_calls/2/occurrences",
+          "/unresolved_calls/2/reason",
+          "/unresolved_calls/2/unresolved"
+        ]
+      }
+    ],
+    "U2": [
+      {
+        "collection": "unresolved_calls",
+        "index": 3,
+        "property_paths": [
+          "/unresolved_calls/3/callee",
+          "/unresolved_calls/3/caller",
+          "/unresolved_calls/3/callsite",
+          "/unresolved_calls/3/direct",
+          "/unresolved_calls/3/indicator",
+          "/unresolved_calls/3/indirect",
+          "/unresolved_calls/3/occurrences",
+          "/unresolved_calls/3/reason",
+          "/unresolved_calls/3/unresolved"
+        ]
+      }
+    ],
+    "U3": [
+      {
+        "collection": "unresolved_calls",
+        "index": 0,
+        "property_paths": [
+          "/unresolved_calls/0/callee",
+          "/unresolved_calls/0/caller",
+          "/unresolved_calls/0/callsite",
+          "/unresolved_calls/0/direct",
+          "/unresolved_calls/0/indicator",
+          "/unresolved_calls/0/indirect",
+          "/unresolved_calls/0/occurrences",
+          "/unresolved_calls/0/reason",
+          "/unresolved_calls/0/unresolved"
+        ]
+      }
+    ]
+  },
+  "source_document": {
+    "schema_version": "0.1.0",
+    "seed_id": "seed:fn:1400033ac",
+    "anchor_function_id": "fn:1400033ac",
+    "graph_version": "0.12.0",
+    "extraction_config": {
+      "caller_depth": 1,
+      "callee_depth": 2,
+      "max_function_nodes": null,
+      "max_evidence_nodes": null,
+      "max_total_nodes": null,
+      "max_edges": null
+    },
+    "function_selection": {
+      "anchor_function_id": "fn:1400033ac",
+      "function_ids": [
+        "fn:1400019f0",
+        "fn:14000312c",
+        "fn:1400033ac",
+        "fn:1400054a4",
+        "fn:140005cc0",
+        "fn:14000627c",
+        "fn:140006d20",
+        "fn:140008fec",
+        "fn:14000909c",
+        "fn:140027440",
+        "fn:140028010"
+      ],
+      "caller_distances": {
+        "fn:14000312c": 1,
+        "fn:1400033ac": 0
+      },
+      "callee_distances": {
+        "fn:1400019f0": 2,
+        "fn:1400033ac": 0,
+        "fn:1400054a4": 1,
+        "fn:140005cc0": 1,
+        "fn:14000627c": 2,
+        "fn:140006d20": 1,
+        "fn:140008fec": 1,
+        "fn:14000909c": 2,
+        "fn:140027440": 1,
+        "fn:140028010": 1
+      }
+    },
+    "nodes": [
+      {
+        "id": "api:formatmessagew",
+        "type": "API",
+        "name": "FormatMessageW",
+        "normalized_name": "FormatMessageW",
+        "original_names": [
+          "FormatMessageW"
+        ]
+      },
+      {
+        "id": "api:getcurrentthreadid",
+        "type": "API",
+        "name": "GetCurrentThreadId",
+        "normalized_name": "GetCurrentThreadId",
+        "original_names": [
+          "GetCurrentThreadId"
+        ]
+      },
+      {
+        "id": "api:isdebuggerpresent",
+        "type": "API",
+        "name": "IsDebuggerPresent",
+        "normalized_name": "IsDebuggerPresent",
+        "original_names": [
+          "IsDebuggerPresent"
+        ]
+      },
+      {
+        "id": "api:memset",
+        "type": "API",
+        "name": "memset",
+        "normalized_name": "memset",
+        "original_names": [
+          "memset"
+        ]
+      },
+      {
+        "id": "api:outputdebugstring",
+        "type": "API",
+        "name": "OutputDebugString",
+        "normalized_name": "OutputDebugString",
+        "original_names": [
+          "OutputDebugStringW"
+        ]
+      },
+      {
+        "id": "fn:1400019f0",
+        "type": "FUNCTION",
+        "address": "1400019f0",
+        "external": false,
+        "internal": true,
+        "name": "__security_check_cookie",
+        "section": ".text",
+        "size": 30,
+        "symbol_name": "__security_check_cookie",
+        "thunk": false
+      },
+      {
+        "id": "fn:14000312c",
+        "type": "FUNCTION",
+        "address": "14000312c",
+        "external": false,
+        "internal": true,
+        "name": "FUN_14000312c",
+        "section": ".text",
+        "size": 36,
+        "symbol_name": "FUN_14000312c",
+        "thunk": false
+      },
+      {
+        "id": "fn:1400033ac",
+        "type": "FUNCTION",
+        "address": "1400033ac",
+        "external": false,
+        "internal": true,
+        "name": "FUN_1400033ac",
+        "section": ".text",
+        "size": 625,
+        "symbol_name": "FUN_1400033ac",
+        "thunk": false
+      },
+      {
+        "id": "fn:1400054a4",
+        "type": "FUNCTION",
+        "address": "1400054a4",
+        "external": false,
+        "internal": true,
+        "name": "FUN_1400054a4",
+        "section": ".text",
+        "size": 704,
+        "symbol_name": "FUN_1400054a4",
+        "thunk": false
+      },
+      {
+        "id": "fn:140005cc0",
+        "type": "FUNCTION",
+        "address": "140005cc0",
+        "external": false,
+        "internal": true,
+        "name": "FUN_140005cc0",
+        "section": ".text",
+        "size": 457,
+        "symbol_name": "FUN_140005cc0",
+        "thunk": false
+      },
+      {
+        "id": "fn:14000627c",
+        "type": "FUNCTION",
+        "address": "14000627c",
+        "external": false,
+        "internal": true,
+        "name": "FUN_14000627c",
+        "section": ".text",
+        "size": 118,
+        "symbol_name": "FUN_14000627c",
+        "thunk": false
+      },
+      {
+        "id": "fn:140006d20",
+        "type": "FUNCTION",
+        "address": "140006d20",
+        "external": false,
+        "internal": true,
+        "name": "FUN_140006d20",
+        "section": ".text",
+        "size": 12,
+        "symbol_name": "FUN_140006d20",
+        "thunk": false
+      },
+      {
+        "id": "fn:140008fec",
+        "type": "FUNCTION",
+        "address": "140008fec",
+        "external": false,
+        "internal": true,
+        "name": "FUN_140008fec",
+        "section": ".text",
+        "size": 167,
+        "symbol_name": "FUN_140008fec",
+        "thunk": false
+      },
+      {
+        "id": "fn:14000909c",
+        "type": "FUNCTION",
+        "address": "14000909c",
+        "external": false,
+        "internal": true,
+        "name": "FUN_14000909c",
+        "section": ".text",
+        "size": 35,
+        "symbol_name": "FUN_14000909c",
+        "thunk": false
+      },
+      {
+        "id": "fn:140027440",
+        "type": "FUNCTION",
+        "address": "140027440",
+        "external": false,
+        "internal": true,
+        "name": "__chkstk",
+        "section": ".text",
+        "size": 78,
+        "symbol_name": "__chkstk",
+        "thunk": false
+      },
+      {
+        "id": "fn:140028010",
+        "type": "FUNCTION",
+        "address": "140028010",
+        "external": false,
+        "internal": true,
+        "name": "_guard_dispatch_icall",
+        "section": "fothk",
+        "size": 5,
+        "symbol_name": "_guard_dispatch_icall",
+        "thunk": true
+      },
+      {
+        "id": "sec:140001000",
+        "type": "SECTION",
+        "end": "140027fff",
+        "entropy": 6.1732,
+        "entropy_class": "normal",
+        "entropy_sampled_bytes": 65536,
+        "execute": true,
+        "initialized": true,
+        "name": ".text",
+        "permissions": "r-x",
+        "read": true,
+        "reasons": [],
+        "size": 159744,
+        "start": "140001000",
+        "suspicious": false,
+        "write": false
+      },
+      {
+        "id": "sec:140028000",
+        "type": "SECTION",
+        "end": "140028fff",
+        "entropy": 0.0159,
+        "entropy_class": "normal",
+        "entropy_sampled_bytes": 4096,
+        "execute": true,
+        "initialized": true,
+        "name": "fothk",
+        "permissions": "r-x",
+        "read": true,
+        "reasons": [],
+        "size": 4096,
+        "start": "140028000",
+        "suspicious": false,
+        "write": false
+      },
+      {
+        "id": "str:14002a8b0",
+        "type": "STRING",
+        "address": "14002a8b0",
+        "categories": [],
+        "category": null,
+        "raw_value": "\"Exception\"",
+        "reference_count": 1,
+        "value": "Exception"
+      },
+      {
+        "id": "str:14002a8c0",
+        "type": "STRING",
+        "address": "14002a8c0",
+        "categories": [],
+        "category": null,
+        "raw_value": "\"ReturnNt\"",
+        "reference_count": 1,
+        "value": "ReturnNt"
+      },
+      {
+        "id": "str:14002a8d0",
+        "type": "STRING",
+        "address": "14002a8d0",
+        "categories": [],
+        "category": null,
+        "raw_value": "\"ReturnHr\"",
+        "reference_count": 1,
+        "value": "ReturnHr"
+      },
+      {
+        "id": "str:14002a8dc",
+        "type": "STRING",
+        "address": "14002a8dc",
+        "categories": [],
+        "category": null,
+        "raw_value": "\"LogNt\"",
+        "reference_count": 1,
+        "value": "LogNt"
+      },
+      {
+        "id": "str:14002a8e4",
+        "type": "STRING",
+        "address": "14002a8e4",
+        "categories": [],
+        "category": null,
+        "raw_value": "\"LogHr\"",
+        "reference_count": 1,
+        "value": "LogHr"
+      },
+      {
+        "id": "str:14002a8f0",
+        "type": "STRING",
+        "address": "14002a8f0",
+        "categories": [],
+        "category": null,
+        "raw_value": "\"FailFast\"",
+        "reference_count": 2,
+        "value": "FailFast"
+      },
+      {
+        "id": "str:14002a900",
+        "type": "STRING",
+        "address": "14002a900",
+        "categories": [
+          "file_path"
+        ],
+        "category": "file_path",
+        "raw_value": "u\"%hs(%u)\\\\%hs!%p: \"",
+        "reference_count": 1,
+        "value": "%hs(%u)\\\\%hs!%p:"
+      },
+      {
+        "id": "str:14002a928",
+        "type": "STRING",
+        "address": "14002a928",
+        "categories": [],
+        "category": null,
+        "raw_value": "u\"%hs!%p: \"",
+        "reference_count": 1,
+        "value": "%hs!%p:"
+      },
+      {
+        "id": "str:14002a940",
+        "type": "STRING",
+        "address": "14002a940",
+        "categories": [],
+        "category": null,
+        "raw_value": "u\"(caller: %p) \"",
+        "reference_count": 1,
+        "value": "(caller: %p)"
+      },
+      {
+        "id": "str:14002a960",
+        "type": "STRING",
+        "address": "14002a960",
+        "categories": [],
+        "category": null,
+        "raw_value": "u\"%hs(%d) tid(%x) %08X %ws\"",
+        "reference_count": 1,
+        "value": "%hs(%d) tid(%x) %08X %ws"
+      },
+      {
+        "id": "str:14002a9a8",
+        "type": "STRING",
+        "address": "14002a9a8",
+        "categories": [],
+        "category": null,
+        "raw_value": "u\"Msg:[%ws] \"",
+        "reference_count": 1,
+        "value": "Msg:[%ws]"
+      },
+      {
+        "id": "str:14002a9c0",
+        "type": "STRING",
+        "address": "14002a9c0",
+        "categories": [],
+        "category": null,
+        "raw_value": "u\"CallContext:[%hs] \"",
+        "reference_count": 1,
+        "value": "CallContext:[%hs]"
+      },
+      {
+        "id": "str:14002a9e8",
+        "type": "STRING",
+        "address": "14002a9e8",
+        "categories": [],
+        "category": null,
+        "raw_value": "u\"[%hs(%hs)]\\n\"",
+        "reference_count": 1,
+        "value": "[%hs(%hs)]\\n"
+      },
+      {
+        "id": "str:14002aa00",
+        "type": "STRING",
+        "address": "14002aa00",
+        "categories": [],
+        "category": null,
+        "raw_value": "u\"[%hs]\\n\"",
+        "reference_count": 1,
+        "value": "[%hs]\\n"
+      },
+      {
+        "id": "strcat:file_path",
+        "type": "STRING_CATEGORY",
+        "category": "file_path",
+        "name": "file_path"
+      },
+      {
+        "id": "vis:call_visibility:fn:14000312c",
+        "type": "VISIBILITY_INDICATOR",
+        "dynamic_dispatch_callsites": [],
+        "dynamic_dispatch_count": 0,
+        "dynamic_dispatch_recognition": null,
+        "dynamic_dispatch_targets": [],
+        "function": "fn:14000312c",
+        "indicator": "call_visibility",
+        "indirect_call_count": 1,
+        "indirect_callsites": [
+          "14000314f"
+        ],
+        "resolved_indirect_call_count": 0,
+        "resolved_indirect_callsites": [],
+        "signals": [
+          "indirect_call",
+          "unresolved_call"
+        ],
+        "unresolved_indirect_call_count": 1,
+        "unresolved_indirect_callsites": [
+          "14000314f"
+        ]
+      },
+      {
+        "id": "vis:call_visibility:fn:1400033ac",
+        "type": "VISIBILITY_INDICATOR",
+        "dynamic_dispatch_callsites": [],
+        "dynamic_dispatch_count": 0,
+        "dynamic_dispatch_recognition": null,
+        "dynamic_dispatch_targets": [],
+        "function": "fn:1400033ac",
+        "indicator": "call_visibility",
+        "indirect_call_count": 3,
+        "indirect_callsites": [
+          "14000344d",
+          "140003556",
+          "1400035e6"
+        ],
+        "resolved_indirect_call_count": 3,
+        "resolved_indirect_callsites": [
+          "14000344d",
+          "140003556",
+          "1400035e6"
+        ],
+        "signals": [
+          "indirect_call"
+        ],
+        "unresolved_indirect_call_count": 0,
+        "unresolved_indirect_callsites": []
+      },
+      {
+        "id": "vis:call_visibility:fn:1400054a4",
+        "type": "VISIBILITY_INDICATOR",
+        "dynamic_dispatch_callsites": [],
+        "dynamic_dispatch_count": 0,
+        "dynamic_dispatch_recognition": null,
+        "dynamic_dispatch_targets": [],
+        "function": "fn:1400054a4",
+        "indicator": "call_visibility",
+        "indirect_call_count": 2,
+        "indirect_callsites": [
+          "1400055d4",
+          "14000565b"
+        ],
+        "resolved_indirect_call_count": 2,
+        "resolved_indirect_callsites": [
+          "1400055d4",
+          "14000565b"
+        ],
+        "signals": [
+          "indirect_call"
+        ],
+        "unresolved_indirect_call_count": 0,
+        "unresolved_indirect_callsites": []
+      },
+      {
+        "id": "vis:call_visibility:fn:140008fec",
+        "type": "VISIBILITY_INDICATOR",
+        "dynamic_dispatch_callsites": [],
+        "dynamic_dispatch_count": 0,
+        "dynamic_dispatch_recognition": null,
+        "dynamic_dispatch_targets": [],
+        "function": "fn:140008fec",
+        "indicator": "call_visibility",
+        "indirect_call_count": 2,
+        "indirect_callsites": [
+          "140009066",
+          "140009092"
+        ],
+        "resolved_indirect_call_count": 0,
+        "resolved_indirect_callsites": [],
+        "signals": [
+          "indirect_call",
+          "unresolved_call"
+        ],
+        "unresolved_indirect_call_count": 2,
+        "unresolved_indirect_callsites": [
+          "140009066",
+          "140009092"
+        ]
+      },
+      {
+        "id": "vis:call_visibility:fn:14000909c",
+        "type": "VISIBILITY_INDICATOR",
+        "dynamic_dispatch_callsites": [],
+        "dynamic_dispatch_count": 0,
+        "dynamic_dispatch_recognition": null,
+        "dynamic_dispatch_targets": [],
+        "function": "fn:14000909c",
+        "indicator": "call_visibility",
+        "indirect_call_count": 1,
+        "indirect_callsites": [
+          "1400090b8"
+        ],
+        "resolved_indirect_call_count": 0,
+        "resolved_indirect_callsites": [],
+        "signals": [
+          "indirect_call",
+          "unresolved_call"
+        ],
+        "unresolved_indirect_call_count": 1,
+        "unresolved_indirect_callsites": [
+          "1400090b8"
+        ]
+      }
+    ],
+    "edges": [
+      {
+        "type": "belongs_to_section",
+        "source": "fn:1400019f0",
+        "target": "sec:140001000",
+        "function": "fn:1400019f0",
+        "section": "sec:140001000"
+      },
+      {
+        "type": "calls_function",
+        "source": "fn:14000312c",
+        "target": "fn:1400033ac",
+        "callee": "fn:1400033ac",
+        "caller": "fn:14000312c",
+        "callsite": "14000314a",
+        "callsites": [
+          "14000314a"
+        ],
+        "direct": true,
+        "indirect": false,
+        "occurrences": 1,
+        "unresolved": false
+      },
+      {
+        "type": "belongs_to_section",
+        "source": "fn:14000312c",
+        "target": "sec:140001000",
+        "function": "fn:14000312c",
+        "section": "sec:140001000"
+      },
+      {
+        "type": "contains_indirect_call",
+        "source": "fn:14000312c",
+        "target": "vis:call_visibility:fn:14000312c",
+        "function": "fn:14000312c",
+        "indicator": "vis:call_visibility:fn:14000312c"
+      },
+      {
+        "type": "calls_function",
+        "source": "fn:1400033ac",
+        "target": "fn:1400054a4",
+        "callee": "fn:1400054a4",
+        "caller": "fn:1400033ac",
+        "callsite": "1400035da",
+        "callsites": [
+          "1400035da"
+        ],
+        "direct": true,
+        "indirect": false,
+        "occurrences": 1,
+        "unresolved": false
+      },
+      {
+        "type": "calls_function",
+        "source": "fn:1400033ac",
+        "target": "fn:140005cc0",
+        "callee": "fn:140005cc0",
+        "caller": "fn:1400033ac",
+        "callsite": "14000352f",
+        "callsites": [
+          "14000352f"
+        ],
+        "direct": true,
+        "indirect": false,
+        "occurrences": 1,
+        "unresolved": false
+      },
+      {
+        "type": "calls_function",
+        "source": "fn:1400033ac",
+        "target": "fn:140006d20",
+        "callee": "fn:140006d20",
+        "caller": "fn:1400033ac",
+        "callsite": "140003416",
+        "callsites": [
+          "140003416"
+        ],
+        "direct": true,
+        "indirect": false,
+        "occurrences": 1,
+        "unresolved": false
+      },
+      {
+        "type": "calls_function",
+        "source": "fn:1400033ac",
+        "target": "fn:140008fec",
+        "callee": "fn:140008fec",
+        "caller": "fn:1400033ac",
+        "callsite": "140003618",
+        "callsites": [
+          "140003618"
+        ],
+        "direct": true,
+        "indirect": false,
+        "occurrences": 1,
+        "unresolved": false
+      },
+      {
+        "type": "calls_function",
+        "source": "fn:1400033ac",
+        "target": "fn:140027440",
+        "callee": "fn:140027440",
+        "caller": "fn:1400033ac",
+        "callsite": "1400033c9",
+        "callsites": [
+          "1400033c9"
+        ],
+        "direct": true,
+        "indirect": false,
+        "occurrences": 1,
+        "unresolved": false
+      },
+      {
+        "type": "calls_function",
+        "source": "fn:1400033ac",
+        "target": "fn:140028010",
+        "callee": "fn:140028010",
+        "caller": "fn:1400033ac",
+        "callsite": "1400034a7",
+        "callsites": [
+          "1400034a7",
+          "1400034c7",
+          "1400034e7",
+          "1400034fd",
+          "14000351a",
+          "14000354d",
+          "14000358c",
+          "1400035bc",
+          "14000360e"
+        ],
+        "direct": true,
+        "indirect": false,
+        "occurrences": 9,
+        "unresolved": false
+      },
+      {
+        "type": "calls_api",
+        "source": "fn:1400033ac",
+        "target": "api:getcurrentthreadid",
+        "api": "api:getcurrentthreadid",
+        "api_original_names": [
+          "GetCurrentThreadId"
+        ],
+        "caller": "fn:1400033ac",
+        "callsite": "14000344d",
+        "callsites": [
+          "14000344d"
+        ],
+        "direct": false,
+        "indirect": true,
+        "occurrences": 1,
+        "unresolved": false
+      },
+      {
+        "type": "calls_api",
+        "source": "fn:1400033ac",
+        "target": "api:isdebuggerpresent",
+        "api": "api:isdebuggerpresent",
+        "api_original_names": [
+          "IsDebuggerPresent"
+        ],
+        "caller": "fn:1400033ac",
+        "callsite": "140003556",
+        "callsites": [
+          "140003556"
+        ],
+        "direct": false,
+        "indirect": true,
+        "occurrences": 1,
+        "unresolved": false
+      },
+      {
+        "type": "calls_api",
+        "source": "fn:1400033ac",
+        "target": "api:memset",
+        "api": "api:memset",
+        "api_original_names": [
+          "memset"
+        ],
+        "caller": "fn:1400033ac",
+        "callsite": "1400033ee",
+        "callsites": [
+          "1400033ee"
+        ],
+        "direct": true,
+        "indirect": false,
+        "occurrences": 1,
+        "unresolved": false
+      },
+      {
+        "type": "calls_api",
+        "source": "fn:1400033ac",
+        "target": "api:outputdebugstring",
+        "api": "api:outputdebugstring",
+        "api_original_names": [
+          "OutputDebugStringW"
+        ],
+        "caller": "fn:1400033ac",
+        "callsite": "1400035e6",
+        "callsites": [
+          "1400035e6"
+        ],
+        "direct": false,
+        "indirect": true,
+        "occurrences": 1,
+        "unresolved": false
+      },
+      {
+        "type": "belongs_to_section",
+        "source": "fn:1400033ac",
+        "target": "sec:140001000",
+        "function": "fn:1400033ac",
+        "section": "sec:140001000"
+      },
+      {
+        "type": "contains_indirect_call",
+        "source": "fn:1400033ac",
+        "target": "vis:call_visibility:fn:1400033ac",
+        "function": "fn:1400033ac",
+        "indicator": "vis:call_visibility:fn:1400033ac"
+      },
+      {
+        "type": "calls_function",
+        "source": "fn:1400054a4",
+        "target": "fn:1400019f0",
+        "callee": "fn:1400019f0",
+        "caller": "fn:1400054a4",
+        "callsite": "140005748",
+        "callsites": [
+          "140005748"
+        ],
+        "direct": true,
+        "indirect": false,
+        "occurrences": 1,
+        "unresolved": false
+      },
+      {
+        "type": "calls_function",
+        "source": "fn:1400054a4",
+        "target": "fn:14000627c",
+        "callee": "fn:14000627c",
+        "caller": "fn:1400054a4",
+        "callsite": "140005619",
+        "callsites": [
+          "140005619",
+          "140005632",
+          "140005653",
+          "140005690",
+          "1400056b8",
+          "1400056d3",
+          "1400056ee",
+          "140005712",
+          "140005728",
+          "140005736"
+        ],
+        "direct": true,
+        "indirect": false,
+        "occurrences": 10,
+        "unresolved": false
+      },
+      {
+        "type": "calls_function",
+        "source": "fn:1400054a4",
+        "target": "fn:140028010",
+        "callee": "fn:140028010",
+        "caller": "fn:1400054a4",
+        "callsite": "140005509",
+        "callsites": [
+          "140005509",
+          "1400055a3"
+        ],
+        "direct": true,
+        "indirect": false,
+        "occurrences": 2,
+        "unresolved": false
+      },
+      {
+        "type": "calls_api",
+        "source": "fn:1400054a4",
+        "target": "api:formatmessagew",
+        "api": "api:formatmessagew",
+        "api_original_names": [
+          "FormatMessageW"
+        ],
+        "caller": "fn:1400054a4",
+        "callsite": "1400055d4",
+        "callsites": [
+          "1400055d4"
+        ],
+        "direct": false,
+        "indirect": true,
+        "occurrences": 1,
+        "unresolved": false
+      },
+      {
+        "type": "calls_api",
+        "source": "fn:1400054a4",
+        "target": "api:getcurrentthreadid",
+        "api": "api:getcurrentthreadid",
+        "api_original_names": [
+          "GetCurrentThreadId"
+        ],
+        "caller": "fn:1400054a4",
+        "callsite": "14000565b",
+        "callsites": [
+          "14000565b"
+        ],
+        "direct": false,
+        "indirect": true,
+        "occurrences": 1,
+        "unresolved": false
+      },
+      {
+        "type": "calls_api",
+        "source": "fn:1400054a4",
+        "target": "api:memset",
+        "api": "api:memset",
+        "api_original_names": [
+          "memset"
+        ],
+        "caller": "fn:1400054a4",
+        "callsite": "14000557c",
+        "callsites": [
+          "14000557c"
+        ],
+        "direct": true,
+        "indirect": false,
+        "occurrences": 1,
+        "unresolved": false
+      },
+      {
+        "type": "references_string",
+        "source": "fn:1400054a4",
+        "target": "str:14002a8b0",
+        "function": "fn:1400054a4",
+        "reference_count": 1,
+        "reference_sites": [
+          "140005568"
+        ],
+        "string": "str:14002a8b0"
+      },
+      {
+        "type": "references_string",
+        "source": "fn:1400054a4",
+        "target": "str:14002a8c0",
+        "function": "fn:1400054a4",
+        "reference_count": 1,
+        "reference_sites": [
+          "140005557"
+        ],
+        "string": "str:14002a8c0"
+      },
+      {
+        "type": "references_string",
+        "source": "fn:1400054a4",
+        "target": "str:14002a8d0",
+        "function": "fn:1400054a4",
+        "reference_count": 1,
+        "reference_sites": [
+          "140005550"
+        ],
+        "string": "str:14002a8d0"
+      },
+      {
+        "type": "references_string",
+        "source": "fn:1400054a4",
+        "target": "str:14002a8dc",
+        "function": "fn:1400054a4",
+        "reference_count": 1,
+        "reference_sites": [
+          "140005547"
+        ],
+        "string": "str:14002a8dc"
+      },
+      {
+        "type": "references_string",
+        "source": "fn:1400054a4",
+        "target": "str:14002a8e4",
+        "function": "fn:1400054a4",
+        "reference_count": 1,
+        "reference_sites": [
+          "140005540"
+        ],
+        "string": "str:14002a8e4"
+      },
+      {
+        "type": "references_string",
+        "source": "fn:1400054a4",
+        "target": "str:14002a8f0",
+        "function": "fn:1400054a4",
+        "reference_count": 2,
+        "reference_sites": [
+          "140005537",
+          "14000567f"
+        ],
+        "string": "str:14002a8f0"
+      },
+      {
+        "type": "references_string",
+        "source": "fn:1400054a4",
+        "target": "str:14002a900",
+        "function": "fn:1400054a4",
+        "reference_count": 1,
+        "reference_sites": [
+          "140005603"
+        ],
+        "string": "str:14002a900"
+      },
+      {
+        "type": "references_string",
+        "source": "fn:1400054a4",
+        "target": "str:14002a928",
+        "function": "fn:1400054a4",
+        "reference_count": 1,
+        "reference_sites": [
+          "14000562b"
+        ],
+        "string": "str:14002a928"
+      },
+      {
+        "type": "references_string",
+        "source": "fn:1400054a4",
+        "target": "str:14002a940",
+        "function": "fn:1400054a4",
+        "reference_count": 1,
+        "reference_sites": [
+          "140005646"
+        ],
+        "string": "str:14002a940"
+      },
+      {
+        "type": "references_string",
+        "source": "fn:1400054a4",
+        "target": "str:14002a960",
+        "function": "fn:1400054a4",
+        "reference_count": 1,
+        "reference_sites": [
+          "140005674"
+        ],
+        "string": "str:14002a960"
+      },
+      {
+        "type": "references_string",
+        "source": "fn:1400054a4",
+        "target": "str:14002a9a8",
+        "function": "fn:1400054a4",
+        "reference_count": 1,
+        "reference_sites": [
+          "1400056c6"
+        ],
+        "string": "str:14002a9a8"
+      },
+      {
+        "type": "references_string",
+        "source": "fn:1400054a4",
+        "target": "str:14002a9c0",
+        "function": "fn:1400054a4",
+        "reference_count": 1,
+        "reference_sites": [
+          "1400056e1"
+        ],
+        "string": "str:14002a9c0"
+      },
+      {
+        "type": "references_string",
+        "source": "fn:1400054a4",
+        "target": "str:14002a9e8",
+        "function": "fn:1400054a4",
+        "reference_count": 1,
+        "reference_sites": [
+          "140005708"
+        ],
+        "string": "str:14002a9e8"
+      },
+      {
+        "type": "references_string",
+        "source": "fn:1400054a4",
+        "target": "str:14002aa00",
+        "function": "fn:1400054a4",
+        "reference_count": 1,
+        "reference_sites": [
+          "140005721"
+        ],
+        "string": "str:14002aa00"
+      },
+      {
+        "type": "belongs_to_section",
+        "source": "fn:1400054a4",
+        "target": "sec:140001000",
+        "function": "fn:1400054a4",
+        "section": "sec:140001000"
+      },
+      {
+        "type": "contains_indirect_call",
+        "source": "fn:1400054a4",
+        "target": "vis:call_visibility:fn:1400054a4",
+        "function": "fn:1400054a4",
+        "indicator": "vis:call_visibility:fn:1400054a4"
+      },
+      {
+        "type": "belongs_to_section",
+        "source": "fn:140005cc0",
+        "target": "sec:140001000",
+        "function": "fn:140005cc0",
+        "section": "sec:140001000"
+      },
+      {
+        "type": "belongs_to_section",
+        "source": "fn:14000627c",
+        "target": "sec:140001000",
+        "function": "fn:14000627c",
+        "section": "sec:140001000"
+      },
+      {
+        "type": "belongs_to_section",
+        "source": "fn:140006d20",
+        "target": "sec:140001000",
+        "function": "fn:140006d20",
+        "section": "sec:140001000"
+      },
+      {
+        "type": "calls_function",
+        "source": "fn:140008fec",
+        "target": "fn:14000909c",
+        "callee": "fn:14000909c",
+        "caller": "fn:140008fec",
+        "callsite": "140009061",
+        "callsites": [
+          "140009061",
+          "14000908d"
+        ],
+        "direct": true,
+        "indirect": false,
+        "occurrences": 2,
+        "unresolved": false
+      },
+      {
+        "type": "calls_function",
+        "source": "fn:140008fec",
+        "target": "fn:140028010",
+        "callee": "fn:140028010",
+        "caller": "fn:140008fec",
+        "callsite": "140009004",
+        "callsites": [
+          "140009004",
+          "140009018"
+        ],
+        "direct": true,
+        "indirect": false,
+        "occurrences": 2,
+        "unresolved": false
+      },
+      {
+        "type": "calls_api",
+        "source": "fn:140008fec",
+        "target": "api:memset",
+        "api": "api:memset",
+        "api_original_names": [
+          "memset"
+        ],
+        "caller": "fn:140008fec",
+        "callsite": "14000902a",
+        "callsites": [
+          "14000902a"
+        ],
+        "direct": true,
+        "indirect": false,
+        "occurrences": 1,
+        "unresolved": false
+      },
+      {
+        "type": "belongs_to_section",
+        "source": "fn:140008fec",
+        "target": "sec:140001000",
+        "function": "fn:140008fec",
+        "section": "sec:140001000"
+      },
+      {
+        "type": "contains_indirect_call",
+        "source": "fn:140008fec",
+        "target": "vis:call_visibility:fn:140008fec",
+        "function": "fn:140008fec",
+        "indicator": "vis:call_visibility:fn:140008fec"
+      },
+      {
+        "type": "calls_function",
+        "source": "fn:14000909c",
+        "target": "fn:140028010",
+        "callee": "fn:140028010",
+        "caller": "fn:14000909c",
+        "callsite": "1400090ae",
+        "callsites": [
+          "1400090ae"
+        ],
+        "direct": true,
+        "indirect": false,
+        "occurrences": 1,
+        "unresolved": false
+      },
+      {
+        "type": "belongs_to_section",
+        "source": "fn:14000909c",
+        "target": "sec:140001000",
+        "function": "fn:14000909c",
+        "section": "sec:140001000"
+      },
+      {
+        "type": "contains_indirect_call",
+        "source": "fn:14000909c",
+        "target": "vis:call_visibility:fn:14000909c",
+        "function": "fn:14000909c",
+        "indicator": "vis:call_visibility:fn:14000909c"
+      },
+      {
+        "type": "belongs_to_section",
+        "source": "fn:140027440",
+        "target": "sec:140001000",
+        "function": "fn:140027440",
+        "section": "sec:140001000"
+      },
+      {
+        "type": "belongs_to_section",
+        "source": "fn:140028010",
+        "target": "sec:140028000",
+        "function": "fn:140028010",
+        "section": "sec:140028000"
+      },
+      {
+        "type": "has_string_category",
+        "source": "str:14002a900",
+        "target": "strcat:file_path",
+        "category": "strcat:file_path",
+        "string": "str:14002a900"
+      }
+    ],
+    "unresolved_calls": [
+      {
+        "indicator": "unresolved_call",
+        "caller": "fn:14000312c",
+        "callee": null,
+        "callsite": "14000314f",
+        "unresolved": true,
+        "reason": "no_resolved_function_or_api_target",
+        "direct": false,
+        "indirect": true,
+        "occurrences": 1
+      },
+      {
+        "indicator": "unresolved_call",
+        "caller": "fn:140008fec",
+        "callee": null,
+        "callsite": "140009066",
+        "unresolved": true,
+        "reason": "no_resolved_function_or_api_target",
+        "direct": false,
+        "indirect": true,
+        "occurrences": 1
+      },
+      {
+        "indicator": "unresolved_call",
+        "caller": "fn:140008fec",
+        "callee": null,
+        "callsite": "140009092",
+        "unresolved": true,
+        "reason": "no_resolved_function_or_api_target",
+        "direct": false,
+        "indirect": true,
+        "occurrences": 1
+      },
+      {
+        "indicator": "unresolved_call",
+        "caller": "fn:14000909c",
+        "callee": null,
+        "callsite": "1400090b8",
+        "unresolved": true,
+        "reason": "no_resolved_function_or_api_target",
+        "direct": false,
+        "indirect": true,
+        "occurrences": 1
+      }
+    ],
+    "truncation": {
+      "truncated": false,
+      "limits_reached": [],
+      "requested_depth": {
+        "caller_depth": 1,
+        "callee_depth": 2
+      },
+      "effective_depth": {
+        "caller_depth": 1,
+        "callee_depth": 2
+      },
+      "counts": {
+        "function_nodes": 11,
+        "evidence_nodes": 27,
+        "total_nodes": 38,
+        "edges": 52,
+        "unresolved_calls": 4
+      }
+    }
+  },
+  "coverage_ledger": {
+    "entries": [
+      {
+        "source": {
+          "collection": "nodes",
+          "index": 0,
+          "property_paths": [
+            "/nodes/0/id",
+            "/nodes/0/name",
+            "/nodes/0/normalized_name",
+            "/nodes/0/original_names",
+            "/nodes/0/type"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "N0"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "nodes",
+          "index": 1,
+          "property_paths": [
+            "/nodes/1/id",
+            "/nodes/1/name",
+            "/nodes/1/normalized_name",
+            "/nodes/1/original_names",
+            "/nodes/1/type"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "N24"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "nodes",
+          "index": 2,
+          "property_paths": [
+            "/nodes/2/id",
+            "/nodes/2/name",
+            "/nodes/2/normalized_name",
+            "/nodes/2/original_names",
+            "/nodes/2/type"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "N10"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "nodes",
+          "index": 3,
+          "property_paths": [
+            "/nodes/3/id",
+            "/nodes/3/name",
+            "/nodes/3/normalized_name",
+            "/nodes/3/original_names",
+            "/nodes/3/type"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "N22"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "nodes",
+          "index": 4,
+          "property_paths": [
+            "/nodes/4/id",
+            "/nodes/4/name",
+            "/nodes/4/normalized_name",
+            "/nodes/4/original_names",
+            "/nodes/4/type"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "N25"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "nodes",
+          "index": 5,
+          "property_paths": [
+            "/nodes/5/address",
+            "/nodes/5/external",
+            "/nodes/5/id",
+            "/nodes/5/internal",
+            "/nodes/5/name",
+            "/nodes/5/section",
+            "/nodes/5/size",
+            "/nodes/5/symbol_name",
+            "/nodes/5/thunk",
+            "/nodes/5/type"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "N34"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "nodes",
+          "index": 6,
+          "property_paths": [
+            "/nodes/6/address",
+            "/nodes/6/external",
+            "/nodes/6/id",
+            "/nodes/6/internal",
+            "/nodes/6/name",
+            "/nodes/6/section",
+            "/nodes/6/size",
+            "/nodes/6/symbol_name",
+            "/nodes/6/thunk",
+            "/nodes/6/type"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "N7"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "nodes",
+          "index": 7,
+          "property_paths": [
+            "/nodes/7/address",
+            "/nodes/7/external",
+            "/nodes/7/id",
+            "/nodes/7/internal",
+            "/nodes/7/name",
+            "/nodes/7/section",
+            "/nodes/7/size",
+            "/nodes/7/symbol_name",
+            "/nodes/7/thunk",
+            "/nodes/7/type"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "N26"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "nodes",
+          "index": 8,
+          "property_paths": [
+            "/nodes/8/address",
+            "/nodes/8/external",
+            "/nodes/8/id",
+            "/nodes/8/internal",
+            "/nodes/8/name",
+            "/nodes/8/section",
+            "/nodes/8/size",
+            "/nodes/8/symbol_name",
+            "/nodes/8/thunk",
+            "/nodes/8/type"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "N29"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "nodes",
+          "index": 9,
+          "property_paths": [
+            "/nodes/9/address",
+            "/nodes/9/external",
+            "/nodes/9/id",
+            "/nodes/9/internal",
+            "/nodes/9/name",
+            "/nodes/9/section",
+            "/nodes/9/size",
+            "/nodes/9/symbol_name",
+            "/nodes/9/thunk",
+            "/nodes/9/type"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "N1"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "nodes",
+          "index": 10,
+          "property_paths": [
+            "/nodes/10/address",
+            "/nodes/10/external",
+            "/nodes/10/id",
+            "/nodes/10/internal",
+            "/nodes/10/name",
+            "/nodes/10/section",
+            "/nodes/10/size",
+            "/nodes/10/symbol_name",
+            "/nodes/10/thunk",
+            "/nodes/10/type"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "N33"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "nodes",
+          "index": 11,
+          "property_paths": [
+            "/nodes/11/address",
+            "/nodes/11/external",
+            "/nodes/11/id",
+            "/nodes/11/internal",
+            "/nodes/11/name",
+            "/nodes/11/section",
+            "/nodes/11/size",
+            "/nodes/11/symbol_name",
+            "/nodes/11/thunk",
+            "/nodes/11/type"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "N31"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "nodes",
+          "index": 12,
+          "property_paths": [
+            "/nodes/12/address",
+            "/nodes/12/external",
+            "/nodes/12/id",
+            "/nodes/12/internal",
+            "/nodes/12/name",
+            "/nodes/12/section",
+            "/nodes/12/size",
+            "/nodes/12/symbol_name",
+            "/nodes/12/thunk",
+            "/nodes/12/type"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "N27"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "nodes",
+          "index": 13,
+          "property_paths": [
+            "/nodes/13/address",
+            "/nodes/13/external",
+            "/nodes/13/id",
+            "/nodes/13/internal",
+            "/nodes/13/name",
+            "/nodes/13/section",
+            "/nodes/13/size",
+            "/nodes/13/symbol_name",
+            "/nodes/13/thunk",
+            "/nodes/13/type"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "N32"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "nodes",
+          "index": 14,
+          "property_paths": [
+            "/nodes/14/address",
+            "/nodes/14/external",
+            "/nodes/14/id",
+            "/nodes/14/internal",
+            "/nodes/14/name",
+            "/nodes/14/section",
+            "/nodes/14/size",
+            "/nodes/14/symbol_name",
+            "/nodes/14/thunk",
+            "/nodes/14/type"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "N30"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "nodes",
+          "index": 15,
+          "property_paths": [
+            "/nodes/15/address",
+            "/nodes/15/external",
+            "/nodes/15/id",
+            "/nodes/15/internal",
+            "/nodes/15/name",
+            "/nodes/15/section",
+            "/nodes/15/size",
+            "/nodes/15/symbol_name",
+            "/nodes/15/thunk",
+            "/nodes/15/type"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "N12"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "nodes",
+          "index": 16,
+          "property_paths": [
+            "/nodes/16/end",
+            "/nodes/16/entropy",
+            "/nodes/16/entropy_class",
+            "/nodes/16/entropy_sampled_bytes",
+            "/nodes/16/execute",
+            "/nodes/16/id",
+            "/nodes/16/initialized",
+            "/nodes/16/name",
+            "/nodes/16/permissions",
+            "/nodes/16/read",
+            "/nodes/16/reasons",
+            "/nodes/16/size",
+            "/nodes/16/start",
+            "/nodes/16/suspicious",
+            "/nodes/16/type",
+            "/nodes/16/write"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "N28"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "nodes",
+          "index": 17,
+          "property_paths": [
+            "/nodes/17/end",
+            "/nodes/17/entropy",
+            "/nodes/17/entropy_class",
+            "/nodes/17/entropy_sampled_bytes",
+            "/nodes/17/execute",
+            "/nodes/17/id",
+            "/nodes/17/initialized",
+            "/nodes/17/name",
+            "/nodes/17/permissions",
+            "/nodes/17/read",
+            "/nodes/17/reasons",
+            "/nodes/17/size",
+            "/nodes/17/start",
+            "/nodes/17/suspicious",
+            "/nodes/17/type",
+            "/nodes/17/write"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "N36"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "nodes",
+          "index": 18,
+          "property_paths": [
+            "/nodes/18/address",
+            "/nodes/18/categories",
+            "/nodes/18/category",
+            "/nodes/18/id",
+            "/nodes/18/raw_value",
+            "/nodes/18/reference_count",
+            "/nodes/18/type",
+            "/nodes/18/value"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "N35"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "nodes",
+          "index": 19,
+          "property_paths": [
+            "/nodes/19/address",
+            "/nodes/19/categories",
+            "/nodes/19/category",
+            "/nodes/19/id",
+            "/nodes/19/raw_value",
+            "/nodes/19/reference_count",
+            "/nodes/19/type",
+            "/nodes/19/value"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "N16"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "nodes",
+          "index": 20,
+          "property_paths": [
+            "/nodes/20/address",
+            "/nodes/20/categories",
+            "/nodes/20/category",
+            "/nodes/20/id",
+            "/nodes/20/raw_value",
+            "/nodes/20/reference_count",
+            "/nodes/20/type",
+            "/nodes/20/value"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "N14"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "nodes",
+          "index": 21,
+          "property_paths": [
+            "/nodes/21/address",
+            "/nodes/21/categories",
+            "/nodes/21/category",
+            "/nodes/21/id",
+            "/nodes/21/raw_value",
+            "/nodes/21/reference_count",
+            "/nodes/21/type",
+            "/nodes/21/value"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "N11"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "nodes",
+          "index": 22,
+          "property_paths": [
+            "/nodes/22/address",
+            "/nodes/22/categories",
+            "/nodes/22/category",
+            "/nodes/22/id",
+            "/nodes/22/raw_value",
+            "/nodes/22/reference_count",
+            "/nodes/22/type",
+            "/nodes/22/value"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "N9"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "nodes",
+          "index": 23,
+          "property_paths": [
+            "/nodes/23/address",
+            "/nodes/23/categories",
+            "/nodes/23/category",
+            "/nodes/23/id",
+            "/nodes/23/raw_value",
+            "/nodes/23/reference_count",
+            "/nodes/23/type",
+            "/nodes/23/value"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "N8"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "nodes",
+          "index": 24,
+          "property_paths": [
+            "/nodes/24/address",
+            "/nodes/24/categories",
+            "/nodes/24/category",
+            "/nodes/24/id",
+            "/nodes/24/raw_value",
+            "/nodes/24/reference_count",
+            "/nodes/24/type",
+            "/nodes/24/value"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "N4"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "nodes",
+          "index": 25,
+          "property_paths": [
+            "/nodes/25/address",
+            "/nodes/25/categories",
+            "/nodes/25/category",
+            "/nodes/25/id",
+            "/nodes/25/raw_value",
+            "/nodes/25/reference_count",
+            "/nodes/25/type",
+            "/nodes/25/value"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "N37"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "nodes",
+          "index": 26,
+          "property_paths": [
+            "/nodes/26/address",
+            "/nodes/26/categories",
+            "/nodes/26/category",
+            "/nodes/26/id",
+            "/nodes/26/raw_value",
+            "/nodes/26/reference_count",
+            "/nodes/26/type",
+            "/nodes/26/value"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "N5"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "nodes",
+          "index": 27,
+          "property_paths": [
+            "/nodes/27/address",
+            "/nodes/27/categories",
+            "/nodes/27/category",
+            "/nodes/27/id",
+            "/nodes/27/raw_value",
+            "/nodes/27/reference_count",
+            "/nodes/27/type",
+            "/nodes/27/value"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "N2"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "nodes",
+          "index": 28,
+          "property_paths": [
+            "/nodes/28/address",
+            "/nodes/28/categories",
+            "/nodes/28/category",
+            "/nodes/28/id",
+            "/nodes/28/raw_value",
+            "/nodes/28/reference_count",
+            "/nodes/28/type",
+            "/nodes/28/value"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "N13"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "nodes",
+          "index": 29,
+          "property_paths": [
+            "/nodes/29/address",
+            "/nodes/29/categories",
+            "/nodes/29/category",
+            "/nodes/29/id",
+            "/nodes/29/raw_value",
+            "/nodes/29/reference_count",
+            "/nodes/29/type",
+            "/nodes/29/value"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "N6"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "nodes",
+          "index": 30,
+          "property_paths": [
+            "/nodes/30/address",
+            "/nodes/30/categories",
+            "/nodes/30/category",
+            "/nodes/30/id",
+            "/nodes/30/raw_value",
+            "/nodes/30/reference_count",
+            "/nodes/30/type",
+            "/nodes/30/value"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "N3"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "nodes",
+          "index": 31,
+          "property_paths": [
+            "/nodes/31/address",
+            "/nodes/31/categories",
+            "/nodes/31/category",
+            "/nodes/31/id",
+            "/nodes/31/raw_value",
+            "/nodes/31/reference_count",
+            "/nodes/31/type",
+            "/nodes/31/value"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "N23"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "nodes",
+          "index": 32,
+          "property_paths": [
+            "/nodes/32/category",
+            "/nodes/32/id",
+            "/nodes/32/name",
+            "/nodes/32/type"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "N17"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "nodes",
+          "index": 33,
+          "property_paths": [
+            "/nodes/33/dynamic_dispatch_callsites",
+            "/nodes/33/dynamic_dispatch_count",
+            "/nodes/33/dynamic_dispatch_recognition",
+            "/nodes/33/dynamic_dispatch_targets",
+            "/nodes/33/function",
+            "/nodes/33/id",
+            "/nodes/33/indicator",
+            "/nodes/33/indirect_call_count",
+            "/nodes/33/indirect_callsites",
+            "/nodes/33/resolved_indirect_call_count",
+            "/nodes/33/resolved_indirect_callsites",
+            "/nodes/33/signals",
+            "/nodes/33/type",
+            "/nodes/33/unresolved_indirect_call_count",
+            "/nodes/33/unresolved_indirect_callsites"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "N18"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "nodes",
+          "index": 34,
+          "property_paths": [
+            "/nodes/34/dynamic_dispatch_callsites",
+            "/nodes/34/dynamic_dispatch_count",
+            "/nodes/34/dynamic_dispatch_recognition",
+            "/nodes/34/dynamic_dispatch_targets",
+            "/nodes/34/function",
+            "/nodes/34/id",
+            "/nodes/34/indicator",
+            "/nodes/34/indirect_call_count",
+            "/nodes/34/indirect_callsites",
+            "/nodes/34/resolved_indirect_call_count",
+            "/nodes/34/resolved_indirect_callsites",
+            "/nodes/34/signals",
+            "/nodes/34/type",
+            "/nodes/34/unresolved_indirect_call_count",
+            "/nodes/34/unresolved_indirect_callsites"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "N15"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "nodes",
+          "index": 35,
+          "property_paths": [
+            "/nodes/35/dynamic_dispatch_callsites",
+            "/nodes/35/dynamic_dispatch_count",
+            "/nodes/35/dynamic_dispatch_recognition",
+            "/nodes/35/dynamic_dispatch_targets",
+            "/nodes/35/function",
+            "/nodes/35/id",
+            "/nodes/35/indicator",
+            "/nodes/35/indirect_call_count",
+            "/nodes/35/indirect_callsites",
+            "/nodes/35/resolved_indirect_call_count",
+            "/nodes/35/resolved_indirect_callsites",
+            "/nodes/35/signals",
+            "/nodes/35/type",
+            "/nodes/35/unresolved_indirect_call_count",
+            "/nodes/35/unresolved_indirect_callsites"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "N20"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "nodes",
+          "index": 36,
+          "property_paths": [
+            "/nodes/36/dynamic_dispatch_callsites",
+            "/nodes/36/dynamic_dispatch_count",
+            "/nodes/36/dynamic_dispatch_recognition",
+            "/nodes/36/dynamic_dispatch_targets",
+            "/nodes/36/function",
+            "/nodes/36/id",
+            "/nodes/36/indicator",
+            "/nodes/36/indirect_call_count",
+            "/nodes/36/indirect_callsites",
+            "/nodes/36/resolved_indirect_call_count",
+            "/nodes/36/resolved_indirect_callsites",
+            "/nodes/36/signals",
+            "/nodes/36/type",
+            "/nodes/36/unresolved_indirect_call_count",
+            "/nodes/36/unresolved_indirect_callsites"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "N21"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "nodes",
+          "index": 37,
+          "property_paths": [
+            "/nodes/37/dynamic_dispatch_callsites",
+            "/nodes/37/dynamic_dispatch_count",
+            "/nodes/37/dynamic_dispatch_recognition",
+            "/nodes/37/dynamic_dispatch_targets",
+            "/nodes/37/function",
+            "/nodes/37/id",
+            "/nodes/37/indicator",
+            "/nodes/37/indirect_call_count",
+            "/nodes/37/indirect_callsites",
+            "/nodes/37/resolved_indirect_call_count",
+            "/nodes/37/resolved_indirect_callsites",
+            "/nodes/37/signals",
+            "/nodes/37/type",
+            "/nodes/37/unresolved_indirect_call_count",
+            "/nodes/37/unresolved_indirect_callsites"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "N19"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "edges",
+          "index": 0,
+          "property_paths": [
+            "/edges/0/function",
+            "/edges/0/section",
+            "/edges/0/source",
+            "/edges/0/target",
+            "/edges/0/type"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "E9"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "edges",
+          "index": 1,
+          "property_paths": [
+            "/edges/1/callee",
+            "/edges/1/caller",
+            "/edges/1/callsite",
+            "/edges/1/callsites",
+            "/edges/1/direct",
+            "/edges/1/indirect",
+            "/edges/1/occurrences",
+            "/edges/1/source",
+            "/edges/1/target",
+            "/edges/1/type",
+            "/edges/1/unresolved"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "E31"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "edges",
+          "index": 2,
+          "property_paths": [
+            "/edges/2/function",
+            "/edges/2/section",
+            "/edges/2/source",
+            "/edges/2/target",
+            "/edges/2/type"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "E10"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "edges",
+          "index": 3,
+          "property_paths": [
+            "/edges/3/function",
+            "/edges/3/indicator",
+            "/edges/3/source",
+            "/edges/3/target",
+            "/edges/3/type"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "E36"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "edges",
+          "index": 4,
+          "property_paths": [
+            "/edges/4/callee",
+            "/edges/4/caller",
+            "/edges/4/callsite",
+            "/edges/4/callsites",
+            "/edges/4/direct",
+            "/edges/4/indirect",
+            "/edges/4/occurrences",
+            "/edges/4/source",
+            "/edges/4/target",
+            "/edges/4/type",
+            "/edges/4/unresolved"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "E22"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "edges",
+          "index": 5,
+          "property_paths": [
+            "/edges/5/callee",
+            "/edges/5/caller",
+            "/edges/5/callsite",
+            "/edges/5/callsites",
+            "/edges/5/direct",
+            "/edges/5/indirect",
+            "/edges/5/occurrences",
+            "/edges/5/source",
+            "/edges/5/target",
+            "/edges/5/type",
+            "/edges/5/unresolved"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "E19"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "edges",
+          "index": 6,
+          "property_paths": [
+            "/edges/6/callee",
+            "/edges/6/caller",
+            "/edges/6/callsite",
+            "/edges/6/callsites",
+            "/edges/6/direct",
+            "/edges/6/indirect",
+            "/edges/6/occurrences",
+            "/edges/6/source",
+            "/edges/6/target",
+            "/edges/6/type",
+            "/edges/6/unresolved"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "E24"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "edges",
+          "index": 7,
+          "property_paths": [
+            "/edges/7/callee",
+            "/edges/7/caller",
+            "/edges/7/callsite",
+            "/edges/7/callsites",
+            "/edges/7/direct",
+            "/edges/7/indirect",
+            "/edges/7/occurrences",
+            "/edges/7/source",
+            "/edges/7/target",
+            "/edges/7/type",
+            "/edges/7/unresolved"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "E21"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "edges",
+          "index": 8,
+          "property_paths": [
+            "/edges/8/callee",
+            "/edges/8/caller",
+            "/edges/8/callsite",
+            "/edges/8/callsites",
+            "/edges/8/direct",
+            "/edges/8/indirect",
+            "/edges/8/occurrences",
+            "/edges/8/source",
+            "/edges/8/target",
+            "/edges/8/type",
+            "/edges/8/unresolved"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "E23"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "edges",
+          "index": 9,
+          "property_paths": [
+            "/edges/9/callee",
+            "/edges/9/caller",
+            "/edges/9/callsite",
+            "/edges/9/callsites",
+            "/edges/9/direct",
+            "/edges/9/indirect",
+            "/edges/9/occurrences",
+            "/edges/9/source",
+            "/edges/9/target",
+            "/edges/9/type",
+            "/edges/9/unresolved"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "E20"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "edges",
+          "index": 10,
+          "property_paths": [
+            "/edges/10/api",
+            "/edges/10/api_original_names",
+            "/edges/10/caller",
+            "/edges/10/callsite",
+            "/edges/10/callsites",
+            "/edges/10/direct",
+            "/edges/10/indirect",
+            "/edges/10/occurrences",
+            "/edges/10/source",
+            "/edges/10/target",
+            "/edges/10/type",
+            "/edges/10/unresolved"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "E13"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "edges",
+          "index": 11,
+          "property_paths": [
+            "/edges/11/api",
+            "/edges/11/api_original_names",
+            "/edges/11/caller",
+            "/edges/11/callsite",
+            "/edges/11/callsites",
+            "/edges/11/direct",
+            "/edges/11/indirect",
+            "/edges/11/occurrences",
+            "/edges/11/source",
+            "/edges/11/target",
+            "/edges/11/type",
+            "/edges/11/unresolved"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "E11"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "edges",
+          "index": 12,
+          "property_paths": [
+            "/edges/12/api",
+            "/edges/12/api_original_names",
+            "/edges/12/caller",
+            "/edges/12/callsite",
+            "/edges/12/callsites",
+            "/edges/12/direct",
+            "/edges/12/indirect",
+            "/edges/12/occurrences",
+            "/edges/12/source",
+            "/edges/12/target",
+            "/edges/12/type",
+            "/edges/12/unresolved"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "E12"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "edges",
+          "index": 13,
+          "property_paths": [
+            "/edges/13/api",
+            "/edges/13/api_original_names",
+            "/edges/13/caller",
+            "/edges/13/callsite",
+            "/edges/13/callsites",
+            "/edges/13/direct",
+            "/edges/13/indirect",
+            "/edges/13/occurrences",
+            "/edges/13/source",
+            "/edges/13/target",
+            "/edges/13/type",
+            "/edges/13/unresolved"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "E14"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "edges",
+          "index": 14,
+          "property_paths": [
+            "/edges/14/function",
+            "/edges/14/section",
+            "/edges/14/source",
+            "/edges/14/target",
+            "/edges/14/type"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "E2"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "edges",
+          "index": 15,
+          "property_paths": [
+            "/edges/15/function",
+            "/edges/15/indicator",
+            "/edges/15/source",
+            "/edges/15/target",
+            "/edges/15/type"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "E32"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "edges",
+          "index": 16,
+          "property_paths": [
+            "/edges/16/callee",
+            "/edges/16/caller",
+            "/edges/16/callsite",
+            "/edges/16/callsites",
+            "/edges/16/direct",
+            "/edges/16/indirect",
+            "/edges/16/occurrences",
+            "/edges/16/source",
+            "/edges/16/target",
+            "/edges/16/type",
+            "/edges/16/unresolved"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "E29"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "edges",
+          "index": 17,
+          "property_paths": [
+            "/edges/17/callee",
+            "/edges/17/caller",
+            "/edges/17/callsite",
+            "/edges/17/callsites",
+            "/edges/17/direct",
+            "/edges/17/indirect",
+            "/edges/17/occurrences",
+            "/edges/17/source",
+            "/edges/17/target",
+            "/edges/17/type",
+            "/edges/17/unresolved"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "E28"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "edges",
+          "index": 18,
+          "property_paths": [
+            "/edges/18/callee",
+            "/edges/18/caller",
+            "/edges/18/callsite",
+            "/edges/18/callsites",
+            "/edges/18/direct",
+            "/edges/18/indirect",
+            "/edges/18/occurrences",
+            "/edges/18/source",
+            "/edges/18/target",
+            "/edges/18/type",
+            "/edges/18/unresolved"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "E27"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "edges",
+          "index": 19,
+          "property_paths": [
+            "/edges/19/api",
+            "/edges/19/api_original_names",
+            "/edges/19/caller",
+            "/edges/19/callsite",
+            "/edges/19/callsites",
+            "/edges/19/direct",
+            "/edges/19/indirect",
+            "/edges/19/occurrences",
+            "/edges/19/source",
+            "/edges/19/target",
+            "/edges/19/type",
+            "/edges/19/unresolved"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "E16"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "edges",
+          "index": 20,
+          "property_paths": [
+            "/edges/20/api",
+            "/edges/20/api_original_names",
+            "/edges/20/caller",
+            "/edges/20/callsite",
+            "/edges/20/callsites",
+            "/edges/20/direct",
+            "/edges/20/indirect",
+            "/edges/20/occurrences",
+            "/edges/20/source",
+            "/edges/20/target",
+            "/edges/20/type",
+            "/edges/20/unresolved"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "E18"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "edges",
+          "index": 21,
+          "property_paths": [
+            "/edges/21/api",
+            "/edges/21/api_original_names",
+            "/edges/21/caller",
+            "/edges/21/callsite",
+            "/edges/21/callsites",
+            "/edges/21/direct",
+            "/edges/21/indirect",
+            "/edges/21/occurrences",
+            "/edges/21/source",
+            "/edges/21/target",
+            "/edges/21/type",
+            "/edges/21/unresolved"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "E17"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "edges",
+          "index": 22,
+          "property_paths": [
+            "/edges/22/function",
+            "/edges/22/reference_count",
+            "/edges/22/reference_sites",
+            "/edges/22/source",
+            "/edges/22/string",
+            "/edges/22/target",
+            "/edges/22/type"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "E45"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "edges",
+          "index": 23,
+          "property_paths": [
+            "/edges/23/function",
+            "/edges/23/reference_count",
+            "/edges/23/reference_sites",
+            "/edges/23/source",
+            "/edges/23/string",
+            "/edges/23/target",
+            "/edges/23/type"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "E41"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "edges",
+          "index": 24,
+          "property_paths": [
+            "/edges/24/function",
+            "/edges/24/reference_count",
+            "/edges/24/reference_sites",
+            "/edges/24/source",
+            "/edges/24/string",
+            "/edges/24/target",
+            "/edges/24/type"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "E40"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "edges",
+          "index": 25,
+          "property_paths": [
+            "/edges/25/function",
+            "/edges/25/reference_count",
+            "/edges/25/reference_sites",
+            "/edges/25/source",
+            "/edges/25/string",
+            "/edges/25/target",
+            "/edges/25/type"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "E38"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "edges",
+          "index": 26,
+          "property_paths": [
+            "/edges/26/function",
+            "/edges/26/reference_count",
+            "/edges/26/reference_sites",
+            "/edges/26/source",
+            "/edges/26/string",
+            "/edges/26/target",
+            "/edges/26/type"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "E51"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "edges",
+          "index": 27,
+          "property_paths": [
+            "/edges/27/function",
+            "/edges/27/reference_count",
+            "/edges/27/reference_sites",
+            "/edges/27/source",
+            "/edges/27/string",
+            "/edges/27/target",
+            "/edges/27/type"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "E50"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "edges",
+          "index": 28,
+          "property_paths": [
+            "/edges/28/function",
+            "/edges/28/reference_count",
+            "/edges/28/reference_sites",
+            "/edges/28/source",
+            "/edges/28/string",
+            "/edges/28/target",
+            "/edges/28/type"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "E47"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "edges",
+          "index": 29,
+          "property_paths": [
+            "/edges/29/function",
+            "/edges/29/reference_count",
+            "/edges/29/reference_sites",
+            "/edges/29/source",
+            "/edges/29/string",
+            "/edges/29/target",
+            "/edges/29/type"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "E46"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "edges",
+          "index": 30,
+          "property_paths": [
+            "/edges/30/function",
+            "/edges/30/reference_count",
+            "/edges/30/reference_sites",
+            "/edges/30/source",
+            "/edges/30/string",
+            "/edges/30/target",
+            "/edges/30/type"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "E48"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "edges",
+          "index": 31,
+          "property_paths": [
+            "/edges/31/function",
+            "/edges/31/reference_count",
+            "/edges/31/reference_sites",
+            "/edges/31/source",
+            "/edges/31/string",
+            "/edges/31/target",
+            "/edges/31/type"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "E42"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "edges",
+          "index": 32,
+          "property_paths": [
+            "/edges/32/function",
+            "/edges/32/reference_count",
+            "/edges/32/reference_sites",
+            "/edges/32/source",
+            "/edges/32/string",
+            "/edges/32/target",
+            "/edges/32/type"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "E39"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "edges",
+          "index": 33,
+          "property_paths": [
+            "/edges/33/function",
+            "/edges/33/reference_count",
+            "/edges/33/reference_sites",
+            "/edges/33/source",
+            "/edges/33/string",
+            "/edges/33/target",
+            "/edges/33/type"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "E49"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "edges",
+          "index": 34,
+          "property_paths": [
+            "/edges/34/function",
+            "/edges/34/reference_count",
+            "/edges/34/reference_sites",
+            "/edges/34/source",
+            "/edges/34/string",
+            "/edges/34/target",
+            "/edges/34/type"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "E44"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "edges",
+          "index": 35,
+          "property_paths": [
+            "/edges/35/function",
+            "/edges/35/reference_count",
+            "/edges/35/reference_sites",
+            "/edges/35/source",
+            "/edges/35/string",
+            "/edges/35/target",
+            "/edges/35/type"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "E43"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "edges",
+          "index": 36,
+          "property_paths": [
+            "/edges/36/function",
+            "/edges/36/section",
+            "/edges/36/source",
+            "/edges/36/target",
+            "/edges/36/type"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "E4"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "edges",
+          "index": 37,
+          "property_paths": [
+            "/edges/37/function",
+            "/edges/37/indicator",
+            "/edges/37/source",
+            "/edges/37/target",
+            "/edges/37/type"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "E34"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "edges",
+          "index": 38,
+          "property_paths": [
+            "/edges/38/function",
+            "/edges/38/section",
+            "/edges/38/source",
+            "/edges/38/target",
+            "/edges/38/type"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "E0"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "edges",
+          "index": 39,
+          "property_paths": [
+            "/edges/39/function",
+            "/edges/39/section",
+            "/edges/39/source",
+            "/edges/39/target",
+            "/edges/39/type"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "E8"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "edges",
+          "index": 40,
+          "property_paths": [
+            "/edges/40/function",
+            "/edges/40/section",
+            "/edges/40/source",
+            "/edges/40/target",
+            "/edges/40/type"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "E6"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "edges",
+          "index": 41,
+          "property_paths": [
+            "/edges/41/callee",
+            "/edges/41/caller",
+            "/edges/41/callsite",
+            "/edges/41/callsites",
+            "/edges/41/direct",
+            "/edges/41/indirect",
+            "/edges/41/occurrences",
+            "/edges/41/source",
+            "/edges/41/target",
+            "/edges/41/type",
+            "/edges/41/unresolved"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "E26"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "edges",
+          "index": 42,
+          "property_paths": [
+            "/edges/42/callee",
+            "/edges/42/caller",
+            "/edges/42/callsite",
+            "/edges/42/callsites",
+            "/edges/42/direct",
+            "/edges/42/indirect",
+            "/edges/42/occurrences",
+            "/edges/42/source",
+            "/edges/42/target",
+            "/edges/42/type",
+            "/edges/42/unresolved"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "E25"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "edges",
+          "index": 43,
+          "property_paths": [
+            "/edges/43/api",
+            "/edges/43/api_original_names",
+            "/edges/43/caller",
+            "/edges/43/callsite",
+            "/edges/43/callsites",
+            "/edges/43/direct",
+            "/edges/43/indirect",
+            "/edges/43/occurrences",
+            "/edges/43/source",
+            "/edges/43/target",
+            "/edges/43/type",
+            "/edges/43/unresolved"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "E15"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "edges",
+          "index": 44,
+          "property_paths": [
+            "/edges/44/function",
+            "/edges/44/section",
+            "/edges/44/source",
+            "/edges/44/target",
+            "/edges/44/type"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "E3"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "edges",
+          "index": 45,
+          "property_paths": [
+            "/edges/45/function",
+            "/edges/45/indicator",
+            "/edges/45/source",
+            "/edges/45/target",
+            "/edges/45/type"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "E33"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "edges",
+          "index": 46,
+          "property_paths": [
+            "/edges/46/callee",
+            "/edges/46/caller",
+            "/edges/46/callsite",
+            "/edges/46/callsites",
+            "/edges/46/direct",
+            "/edges/46/indirect",
+            "/edges/46/occurrences",
+            "/edges/46/source",
+            "/edges/46/target",
+            "/edges/46/type",
+            "/edges/46/unresolved"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "E30"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "edges",
+          "index": 47,
+          "property_paths": [
+            "/edges/47/function",
+            "/edges/47/section",
+            "/edges/47/source",
+            "/edges/47/target",
+            "/edges/47/type"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "E7"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "edges",
+          "index": 48,
+          "property_paths": [
+            "/edges/48/function",
+            "/edges/48/indicator",
+            "/edges/48/source",
+            "/edges/48/target",
+            "/edges/48/type"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "E35"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "edges",
+          "index": 49,
+          "property_paths": [
+            "/edges/49/function",
+            "/edges/49/section",
+            "/edges/49/source",
+            "/edges/49/target",
+            "/edges/49/type"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "E5"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "edges",
+          "index": 50,
+          "property_paths": [
+            "/edges/50/function",
+            "/edges/50/section",
+            "/edges/50/source",
+            "/edges/50/target",
+            "/edges/50/type"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "E1"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "edges",
+          "index": 51,
+          "property_paths": [
+            "/edges/51/category",
+            "/edges/51/source",
+            "/edges/51/string",
+            "/edges/51/target",
+            "/edges/51/type"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "E37"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "unresolved_calls",
+          "index": 0,
+          "property_paths": [
+            "/unresolved_calls/0/callee",
+            "/unresolved_calls/0/caller",
+            "/unresolved_calls/0/callsite",
+            "/unresolved_calls/0/direct",
+            "/unresolved_calls/0/indicator",
+            "/unresolved_calls/0/indirect",
+            "/unresolved_calls/0/occurrences",
+            "/unresolved_calls/0/reason",
+            "/unresolved_calls/0/unresolved"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "U3"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "unresolved_calls",
+          "index": 1,
+          "property_paths": [
+            "/unresolved_calls/1/callee",
+            "/unresolved_calls/1/caller",
+            "/unresolved_calls/1/callsite",
+            "/unresolved_calls/1/direct",
+            "/unresolved_calls/1/indicator",
+            "/unresolved_calls/1/indirect",
+            "/unresolved_calls/1/occurrences",
+            "/unresolved_calls/1/reason",
+            "/unresolved_calls/1/unresolved"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "U0"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "unresolved_calls",
+          "index": 2,
+          "property_paths": [
+            "/unresolved_calls/2/callee",
+            "/unresolved_calls/2/caller",
+            "/unresolved_calls/2/callsite",
+            "/unresolved_calls/2/direct",
+            "/unresolved_calls/2/indicator",
+            "/unresolved_calls/2/indirect",
+            "/unresolved_calls/2/occurrences",
+            "/unresolved_calls/2/reason",
+            "/unresolved_calls/2/unresolved"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "U1"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "unresolved_calls",
+          "index": 3,
+          "property_paths": [
+            "/unresolved_calls/3/callee",
+            "/unresolved_calls/3/caller",
+            "/unresolved_calls/3/callsite",
+            "/unresolved_calls/3/direct",
+            "/unresolved_calls/3/indicator",
+            "/unresolved_calls/3/indirect",
+            "/unresolved_calls/3/occurrences",
+            "/unresolved_calls/3/reason",
+            "/unresolved_calls/3/unresolved"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "U2"
+          ]
+        }
+      }
+    ],
+    "source_nodes": 38,
+    "source_edges": 52,
+    "source_unresolved_records": 4,
+    "represented": 94,
+    "excluded": 0
+  },
+  "canonical_digest": "sha256:4bbaf7ac6dcab62506d9b14d00adb5a63bd83243228989320a7014b65ffc9173"
+}
