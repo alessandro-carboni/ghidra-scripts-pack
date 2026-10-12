@@ -1,0 +1,516 @@
+{
+  "schema_version": "0.1.0",
+  "seed_id": "seed:fn:14002048c",
+  "anchor_function_id": "fn:14002048c",
+  "graph_version": "0.12.0",
+  "extraction_config": {
+    "caller_depth": 1,
+    "callee_depth": 2,
+    "max_function_nodes": null,
+    "max_evidence_nodes": null,
+    "max_total_nodes": null,
+    "max_edges": null
+  },
+  "function_selection": {
+    "anchor_function_id": "fn:14002048c",
+    "function_ids": [
+      "fn:14000f5b8",
+      "fn:14002048c",
+      "fn:140021324"
+    ],
+    "caller_distances": {
+      "fn:14002048c": 0,
+      "fn:140021324": 1
+    },
+    "callee_distances": {
+      "fn:14000f5b8": 1,
+      "fn:14002048c": 0
+    }
+  },
+  "nodes": [
+    {
+      "id": "api:createdcw",
+      "type": "API",
+      "name": "CreateDCW",
+      "normalized_name": "CreateDCW",
+      "original_names": [
+        "CreateDCW"
+      ]
+    },
+    {
+      "id": "api:formatmessagew",
+      "type": "API",
+      "name": "FormatMessageW",
+      "normalized_name": "FormatMessageW",
+      "original_names": [
+        "FormatMessageW"
+      ]
+    },
+    {
+      "id": "api:getlasterror",
+      "type": "API",
+      "name": "GetLastError",
+      "normalized_name": "GetLastError",
+      "original_names": [
+        "GetLastError"
+      ]
+    },
+    {
+      "id": "api:globallock",
+      "type": "API",
+      "name": "GlobalLock",
+      "normalized_name": "GlobalLock",
+      "original_names": [
+        "GlobalLock"
+      ]
+    },
+    {
+      "id": "api:globalunlock",
+      "type": "API",
+      "name": "GlobalUnlock",
+      "normalized_name": "GlobalUnlock",
+      "original_names": [
+        "GlobalUnlock"
+      ]
+    },
+    {
+      "id": "api:messageboxw",
+      "type": "API",
+      "name": "MessageBoxW",
+      "normalized_name": "MessageBoxW",
+      "original_names": [
+        "MessageBoxW"
+      ]
+    },
+    {
+      "id": "api:pagesetupdlgw",
+      "type": "API",
+      "name": "PageSetupDlgW",
+      "normalized_name": "PageSetupDlgW",
+      "original_names": [
+        "PageSetupDlgW"
+      ]
+    },
+    {
+      "id": "api:setcursor",
+      "type": "API",
+      "name": "SetCursor",
+      "normalized_name": "SetCursor",
+      "original_names": [
+        "SetCursor"
+      ]
+    },
+    {
+      "id": "api:setthreaddpiawarenesscontext",
+      "type": "API",
+      "name": "SetThreadDpiAwarenessContext",
+      "normalized_name": "SetThreadDpiAwarenessContext",
+      "original_names": [
+        "SetThreadDpiAwarenessContext"
+      ]
+    },
+    {
+      "id": "fn:14000f5b8",
+      "type": "FUNCTION",
+      "address": "14000f5b8",
+      "external": false,
+      "internal": true,
+      "name": "FUN_14000f5b8",
+      "section": ".text",
+      "size": 80,
+      "symbol_name": "FUN_14000f5b8",
+      "thunk": false
+    },
+    {
+      "id": "fn:14002048c",
+      "type": "FUNCTION",
+      "address": "14002048c",
+      "external": false,
+      "internal": true,
+      "name": "FUN_14002048c",
+      "section": ".text",
+      "size": 258,
+      "symbol_name": "FUN_14002048c",
+      "thunk": false
+    },
+    {
+      "id": "fn:140021324",
+      "type": "FUNCTION",
+      "address": "140021324",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140021324",
+      "section": ".text",
+      "size": 329,
+      "symbol_name": "FUN_140021324",
+      "thunk": false
+    },
+    {
+      "id": "sec:140001000",
+      "type": "SECTION",
+      "end": "140027fff",
+      "entropy": 6.1732,
+      "entropy_class": "normal",
+      "entropy_sampled_bytes": 65536,
+      "execute": true,
+      "initialized": true,
+      "name": ".text",
+      "permissions": "r-x",
+      "read": true,
+      "reasons": [],
+      "size": 159744,
+      "start": "140001000",
+      "suspicious": false,
+      "write": false
+    },
+    {
+      "id": "vis:call_visibility:fn:14000f5b8",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:14000f5b8",
+      "indicator": "call_visibility",
+      "indirect_call_count": 3,
+      "indirect_callsites": [
+        "14000f5cc",
+        "14000f5de",
+        "14000f5ef"
+      ],
+      "resolved_indirect_call_count": 3,
+      "resolved_indirect_callsites": [
+        "14000f5cc",
+        "14000f5de",
+        "14000f5ef"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    },
+    {
+      "id": "vis:call_visibility:fn:14002048c",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:14002048c",
+      "indicator": "call_visibility",
+      "indirect_call_count": 6,
+      "indirect_callsites": [
+        "1400204e5",
+        "1400204f8",
+        "140020515",
+        "14002053d",
+        "140020553",
+        "14002056b"
+      ],
+      "resolved_indirect_call_count": 6,
+      "resolved_indirect_callsites": [
+        "1400204e5",
+        "1400204f8",
+        "140020515",
+        "14002053d",
+        "140020553",
+        "14002056b"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    },
+    {
+      "id": "vis:call_visibility:fn:140021324",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:140021324",
+      "indicator": "call_visibility",
+      "indirect_call_count": 4,
+      "indirect_callsites": [
+        "140021348",
+        "140021381",
+        "1400213d3",
+        "140021408"
+      ],
+      "resolved_indirect_call_count": 4,
+      "resolved_indirect_callsites": [
+        "140021348",
+        "140021381",
+        "1400213d3",
+        "140021408"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    }
+  ],
+  "edges": [
+    {
+      "type": "calls_api",
+      "source": "fn:14000f5b8",
+      "target": "api:pagesetupdlgw",
+      "api": "api:pagesetupdlgw",
+      "api_original_names": [
+        "PageSetupDlgW"
+      ],
+      "caller": "fn:14000f5b8",
+      "callsite": "14000f5de",
+      "callsites": [
+        "14000f5de"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14000f5b8",
+      "target": "api:setthreaddpiawarenesscontext",
+      "api": "api:setthreaddpiawarenesscontext",
+      "api_original_names": [
+        "SetThreadDpiAwarenessContext"
+      ],
+      "caller": "fn:14000f5b8",
+      "callsite": "14000f5cc",
+      "callsites": [
+        "14000f5cc",
+        "14000f5ef"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 2,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:14000f5b8",
+      "target": "sec:140001000",
+      "function": "fn:14000f5b8",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:14000f5b8",
+      "target": "vis:call_visibility:fn:14000f5b8",
+      "function": "fn:14000f5b8",
+      "indicator": "vis:call_visibility:fn:14000f5b8"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:14002048c",
+      "target": "fn:14000f5b8",
+      "callee": "fn:14000f5b8",
+      "caller": "fn:14002048c",
+      "callsite": "1400204b1",
+      "callsites": [
+        "1400204b1"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14002048c",
+      "target": "api:createdcw",
+      "api": "api:createdcw",
+      "api_original_names": [
+        "CreateDCW"
+      ],
+      "caller": "fn:14002048c",
+      "callsite": "14002053d",
+      "callsites": [
+        "14002053d"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14002048c",
+      "target": "api:globallock",
+      "api": "api:globallock",
+      "api_original_names": [
+        "GlobalLock"
+      ],
+      "caller": "fn:14002048c",
+      "callsite": "1400204f8",
+      "callsites": [
+        "1400204f8",
+        "140020515"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 2,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14002048c",
+      "target": "api:globalunlock",
+      "api": "api:globalunlock",
+      "api_original_names": [
+        "GlobalUnlock"
+      ],
+      "caller": "fn:14002048c",
+      "callsite": "140020553",
+      "callsites": [
+        "140020553",
+        "14002056b"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 2,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:14002048c",
+      "target": "api:messageboxw",
+      "api": "api:messageboxw",
+      "api_original_names": [
+        "MessageBoxW"
+      ],
+      "caller": "fn:14002048c",
+      "callsite": "1400204e5",
+      "callsites": [
+        "1400204e5"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:14002048c",
+      "target": "sec:140001000",
+      "function": "fn:14002048c",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:14002048c",
+      "target": "vis:call_visibility:fn:14002048c",
+      "function": "fn:14002048c",
+      "indicator": "vis:call_visibility:fn:14002048c"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140021324",
+      "target": "fn:14002048c",
+      "callee": "fn:14002048c",
+      "caller": "fn:140021324",
+      "callsite": "140021369",
+      "callsites": [
+        "140021369"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140021324",
+      "target": "api:formatmessagew",
+      "api": "api:formatmessagew",
+      "api_original_names": [
+        "FormatMessageW"
+      ],
+      "caller": "fn:140021324",
+      "callsite": "140021408",
+      "callsites": [
+        "140021408"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140021324",
+      "target": "api:getlasterror",
+      "api": "api:getlasterror",
+      "api_original_names": [
+        "GetLastError"
+      ],
+      "caller": "fn:140021324",
+      "callsite": "1400213d3",
+      "callsites": [
+        "1400213d3"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140021324",
+      "target": "api:setcursor",
+      "api": "api:setcursor",
+      "api_original_names": [
+        "SetCursor"
+      ],
+      "caller": "fn:140021324",
+      "callsite": "140021348",
+      "callsites": [
+        "140021348",
+        "140021381"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 2,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140021324",
+      "target": "sec:140001000",
+      "function": "fn:140021324",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:140021324",
+      "target": "vis:call_visibility:fn:140021324",
+      "function": "fn:140021324",
+      "indicator": "vis:call_visibility:fn:140021324"
+    }
+  ],
+  "unresolved_calls": [],
+  "truncation": {
+    "truncated": false,
+    "limits_reached": [],
+    "requested_depth": {
+      "caller_depth": 1,
+      "callee_depth": 2
+    },
+    "effective_depth": {
+      "caller_depth": 1,
+      "callee_depth": 1
+    },
+    "counts": {
+      "function_nodes": 3,
+      "evidence_nodes": 13,
+      "total_nodes": 16,
+      "edges": 17,
+      "unresolved_calls": 0
+    }
+  }
+}

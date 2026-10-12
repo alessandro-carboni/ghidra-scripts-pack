@@ -1,0 +1,334 @@
+{
+  "schema_version": "0.1.0",
+  "seed_id": "seed:fn:140021020",
+  "anchor_function_id": "fn:140021020",
+  "graph_version": "0.12.0",
+  "extraction_config": {
+    "caller_depth": 1,
+    "callee_depth": 2,
+    "max_function_nodes": null,
+    "max_evidence_nodes": null,
+    "max_total_nodes": null,
+    "max_edges": null
+  },
+  "function_selection": {
+    "anchor_function_id": "fn:140021020",
+    "function_ids": [
+      "fn:14001fd94",
+      "fn:140021020"
+    ],
+    "caller_distances": {
+      "fn:140021020": 0
+    },
+    "callee_distances": {
+      "fn:14001fd94": 1,
+      "fn:140021020": 0
+    }
+  },
+  "nodes": [
+    {
+      "id": "api:getdlgitemtextw",
+      "type": "API",
+      "name": "GetDlgItemTextW",
+      "normalized_name": "GetDlgItemTextW",
+      "original_names": [
+        "GetDlgItemTextW"
+      ]
+    },
+    {
+      "id": "api:senddlgitemmessagew",
+      "type": "API",
+      "name": "SendDlgItemMessageW",
+      "normalized_name": "SendDlgItemMessageW",
+      "original_names": [
+        "SendDlgItemMessageW"
+      ]
+    },
+    {
+      "id": "api:setdlgitemtextw",
+      "type": "API",
+      "name": "SetDlgItemTextW",
+      "normalized_name": "SetDlgItemTextW",
+      "original_names": [
+        "SetDlgItemTextW"
+      ]
+    },
+    {
+      "id": "api:shellexecute",
+      "type": "API",
+      "name": "ShellExecute",
+      "normalized_name": "ShellExecute",
+      "original_names": [
+        "ShellExecuteW"
+      ]
+    },
+    {
+      "id": "fn:14001fd94",
+      "type": "FUNCTION",
+      "address": "14001fd94",
+      "external": false,
+      "internal": true,
+      "name": "FUN_14001fd94",
+      "section": ".text",
+      "size": 45,
+      "symbol_name": "FUN_14001fd94",
+      "thunk": false
+    },
+    {
+      "id": "fn:140021020",
+      "type": "FUNCTION",
+      "address": "140021020",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140021020",
+      "section": ".text",
+      "size": 281,
+      "symbol_name": "FUN_140021020",
+      "thunk": false
+    },
+    {
+      "id": "sec:140001000",
+      "type": "SECTION",
+      "end": "140027fff",
+      "entropy": 6.1732,
+      "entropy_class": "normal",
+      "entropy_sampled_bytes": 65536,
+      "execute": true,
+      "initialized": true,
+      "name": ".text",
+      "permissions": "r-x",
+      "read": true,
+      "reasons": [],
+      "size": 159744,
+      "start": "140001000",
+      "suspicious": false,
+      "write": false
+    },
+    {
+      "id": "str:14002b8b0",
+      "type": "STRING",
+      "address": "14002b8b0",
+      "categories": [
+        "url"
+      ],
+      "category": "url",
+      "raw_value": "u\"https://go.microsoft.com/fwlink/p/?linkid=838060\"",
+      "reference_count": 1,
+      "value": "https://go.microsoft.com/fwlink/p/?linkid=838060"
+    },
+    {
+      "id": "strcat:url",
+      "type": "STRING_CATEGORY",
+      "category": "url",
+      "name": "url"
+    },
+    {
+      "id": "vis:call_visibility:fn:14001fd94",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:14001fd94",
+      "indicator": "call_visibility",
+      "indirect_call_count": 1,
+      "indirect_callsites": [
+        "14001fdb0"
+      ],
+      "resolved_indirect_call_count": 1,
+      "resolved_indirect_callsites": [
+        "14001fdb0"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    },
+    {
+      "id": "vis:call_visibility:fn:140021020",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:140021020",
+      "indicator": "call_visibility",
+      "indirect_call_count": 4,
+      "indirect_callsites": [
+        "14002107a",
+        "14002108e",
+        "1400210bc",
+        "14002110b"
+      ],
+      "resolved_indirect_call_count": 4,
+      "resolved_indirect_callsites": [
+        "14002107a",
+        "14002108e",
+        "1400210bc",
+        "14002110b"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    }
+  ],
+  "edges": [
+    {
+      "type": "calls_api",
+      "source": "fn:14001fd94",
+      "target": "api:shellexecute",
+      "api": "api:shellexecute",
+      "api_original_names": [
+        "ShellExecuteW"
+      ],
+      "caller": "fn:14001fd94",
+      "callsite": "14001fdb0",
+      "callsites": [
+        "14001fdb0"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:14001fd94",
+      "target": "sec:140001000",
+      "function": "fn:14001fd94",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:14001fd94",
+      "target": "vis:call_visibility:fn:14001fd94",
+      "function": "fn:14001fd94",
+      "indicator": "vis:call_visibility:fn:14001fd94"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140021020",
+      "target": "fn:14001fd94",
+      "callee": "fn:14001fd94",
+      "caller": "fn:140021020",
+      "callsite": "1400210ea",
+      "callsites": [
+        "1400210ea"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140021020",
+      "target": "api:getdlgitemtextw",
+      "api": "api:getdlgitemtextw",
+      "api_original_names": [
+        "GetDlgItemTextW"
+      ],
+      "caller": "fn:140021020",
+      "callsite": "14002110b",
+      "callsites": [
+        "14002110b"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140021020",
+      "target": "api:senddlgitemmessagew",
+      "api": "api:senddlgitemmessagew",
+      "api_original_names": [
+        "SendDlgItemMessageW"
+      ],
+      "caller": "fn:140021020",
+      "callsite": "14002107a",
+      "callsites": [
+        "14002107a",
+        "1400210bc"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 2,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140021020",
+      "target": "api:setdlgitemtextw",
+      "api": "api:setdlgitemtextw",
+      "api_original_names": [
+        "SetDlgItemTextW"
+      ],
+      "caller": "fn:140021020",
+      "callsite": "14002108e",
+      "callsites": [
+        "14002108e"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "references_string",
+      "source": "fn:140021020",
+      "target": "str:14002b8b0",
+      "function": "fn:140021020",
+      "reference_count": 1,
+      "reference_sites": [
+        "1400210e3"
+      ],
+      "string": "str:14002b8b0"
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140021020",
+      "target": "sec:140001000",
+      "function": "fn:140021020",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:140021020",
+      "target": "vis:call_visibility:fn:140021020",
+      "function": "fn:140021020",
+      "indicator": "vis:call_visibility:fn:140021020"
+    },
+    {
+      "type": "has_string_category",
+      "source": "str:14002b8b0",
+      "target": "strcat:url",
+      "category": "strcat:url",
+      "string": "str:14002b8b0"
+    }
+  ],
+  "unresolved_calls": [],
+  "truncation": {
+    "truncated": false,
+    "limits_reached": [],
+    "requested_depth": {
+      "caller_depth": 1,
+      "callee_depth": 2
+    },
+    "effective_depth": {
+      "caller_depth": 0,
+      "callee_depth": 1
+    },
+    "counts": {
+      "function_nodes": 2,
+      "evidence_nodes": 9,
+      "total_nodes": 11,
+      "edges": 11,
+      "unresolved_calls": 0
+    }
+  }
+}

@@ -57,11 +57,20 @@ public partial class MainViewModel : ObservableObject
   [ObservableProperty] private bool isBusy;
   [ObservableProperty] private SeedRow? selectedSeed;
   [ObservableProperty] private string samplePath = "";
+  [ObservableProperty] private InspectorField? selectedInspectorField;
+  [ObservableProperty] private bool hasAdditionalFields;
+  [ObservableProperty] private bool isWorkspaceEmpty = true;
+  [ObservableProperty] private bool showInspector;
+  [ObservableProperty] private bool showTerminal;
+  [ObservableProperty] private bool showSettings;
+  [ObservableProperty] private bool showFilters;
+  [ObservableProperty] private bool showSeedFilters;
   public ObservableCollection<SeedRow> Seeds { get; } = [];
   public ObservableCollection<string> Families { get; } = ["All families"];
   public ObservableCollection<TypeFilter> NodeTypes { get; } = [];
   public ObservableCollection<TypeFilter> EdgeTypes { get; } = [];
   public ObservableCollection<InspectorField> Fields { get; } = [];
+  public ObservableCollection<InspectorField> AdditionalFields { get; } = [];
   public ObservableCollection<string> SearchResults { get; } = [];
   public string[] Roles { get; } = ["", "caller", "callee"];
   public string SeedCount => $"{Seeds.Count} / {allSeeds.Length} seeds";
@@ -84,8 +93,17 @@ public partial class MainViewModel : ObservableObject
       allSeeds = loaded.Manifest.SeedDetection.Seeds.Select(s => new SeedRow(s, loaded.Subgraphs[s.SeedId], string.Join("\n", loaded.Manifest.RelatedSeedGroups.Where(g => g.SeedIds.Contains(s.SeedId)).Select(g => g.GroupId)))).OrderBy(s => s.Id, StringComparer.Ordinal).ToArray();
       Families.Clear(); Families.Add("All families"); foreach (var f in allSeeds.SelectMany(s => s.Seed.Families).Distinct().Order()) Families.Add(f);
       SelectedFamily = "All families"; SeedSearch = ""; GroupedOnly = false; FilterSeeds();
-      graph = null; visual = null; IsLocal = false; GraphSummary = "Choose Full Graph or a seed"; SelectedSeed = null; bridge.Send("clearGraph"); Breadcrumb = "Overview"; Status = "Dataset ready · local graphs load on demand";
+      graph = null; visual = null; IsLocal = false; GraphSummary = "Preparing first seed…"; SelectedSeed = null; bridge.Send("clearGraph"); Breadcrumb = "Overview"; Status = "Dataset ready";
+      IsWorkspaceEmpty = false;
+      ShowSettings = false;
       ClearSelection();
+
+      // Thesis-first workflow: after a dataset is loaded, go directly to a real local seed
+      // subgraph. The first seed is the deterministic canonical first seed, not a ranking.
+      if (Seeds.Count > 0)
+        SelectedSeed = Seeds[0];
+      else
+        _ = LoadGraphAsync(null);
     }
     catch (Exception ex) { Error = ex.Message; Status = "Dataset load failed"; }
     finally { if (version == generation) IsBusy = false; }
@@ -96,7 +114,28 @@ public partial class MainViewModel : ObservableObject
     var dialog = new OpenFileDialog { Title = "Open Seeded manifest", Filter = "Seeded manifest|manifest.json|JSON files|*.json" };
     if (dialog.ShowDialog() == true) await OpenPathAsync(dialog.FileName);
   }
-  [RelayCommand] private void SelectSample() { var d = new OpenFileDialog { Title = "Select sample", Filter = "Executable sample|*.exe" }; if (d.ShowDialog() == true) SamplePath = d.FileName; }
+  [RelayCommand]
+  private async Task SelectSample()
+  {
+    var dialog = new OpenFileDialog
+    {
+      Title = "Analyze executable sample",
+      Filter = "Executable sample|*.exe"
+    };
+
+    if (dialog.ShowDialog() != true)
+      return;
+
+    SamplePath = dialog.FileName;
+    await Analyze();
+  }
+  [RelayCommand] private void ToggleInspector() => ShowInspector = !ShowInspector;
+  [RelayCommand] private void ToggleTerminal() => ShowTerminal = !ShowTerminal;
+  [RelayCommand] private void ToggleSettings() => ShowSettings = !ShowSettings;
+  [RelayCommand] private void ToggleFilters() => ShowFilters = !ShowFilters;
+  [RelayCommand] private void ToggleSeedFilters() => ShowSeedFilters = !ShowSeedFilters;
+  [RelayCommand] private void CloseInspector() => ShowInspector = false;
+
   [RelayCommand] private async Task FullGraph() { SelectedSeed = null; await LoadGraphAsync(null); }
   private async Task LoadGraphAsync(SeedRow? seed)
   {
@@ -172,16 +211,68 @@ public partial class MainViewModel : ObservableObject
     if (id == null || visual == null) return;
     ResetFilters(); bridge.Send("focusNode", new { id });
   }
-  [RelayCommand] private void ClearSelection() { selection.Select(null); InspectorTitle = "Select evidence to inspect"; InspectorId = ""; Fields.Clear(); SourceId = ""; TargetId = ""; bridge.Send("setSelection"); }
-  [RelayCommand] private void CopyId() { if (InspectorId.Length > 0) System.Windows.Clipboard.SetText(InspectorId); }
-  [RelayCommand] private void CopyDetails() => System.Windows.Clipboard.SetText(Details);
+  [RelayCommand]
+  private void ClearSelection()
+  {
+    selection.Select(null);
+    InspectorTitle = "Select evidence to inspect";
+    InspectorId = "";
+    Fields.Clear();
+    AdditionalFields.Clear();
+    SelectedInspectorField = null;
+    HasAdditionalFields = false;
+    SourceId = "";
+    TargetId = "";
+    bridge.Send("setSelection");
+  }
+
+  [RelayCommand]
+  private void CopyId()
+  {
+    if (InspectorId.Length > 0)
+      System.Windows.Clipboard.SetText(InspectorId);
+  }
+
+  [RelayCommand]
+  private void CopyDetails() => System.Windows.Clipboard.SetText(Details);
+
+  [RelayCommand(CanExecute = nameof(CanCopyValue))]
+  private void CopyValue()
+  {
+    if (SelectedInspectorField is { } field)
+      System.Windows.Clipboard.SetText(field.Value);
+  }
+
+  private bool CanCopyValue() => SelectedInspectorField is not null;
+
+  partial void OnSelectedInspectorFieldChanged(InspectorField? value) =>
+    CopyValueCommand.NotifyCanExecuteChanged();
   [RelayCommand]
   private void Unresolved()
   {
-    if (graph == null) return; InspectorTitle = "Unresolved calls · no target"; InspectorId = ""; Fields.Clear(); SourceId = ""; TargetId = "";
-    Details = JsonSerializer.Serialize(graph.UnresolvedCalls, new JsonSerializerOptions { WriteIndented = true });
-    foreach (var c in graph.UnresolvedCalls) Fields.Add(new(c.Text("caller") + " @ " + c.Text("callsite"), c.Text("reason")));
-    if (graph.UnresolvedCalls.Length > 0) SourceId = graph.UnresolvedCalls[0].Text("caller");
+    if (graph == null)
+      return;
+
+    ShowInspector = true;
+    InspectorTitle = "Unresolved calls · no target";
+    InspectorId = "";
+    Fields.Clear();
+    AdditionalFields.Clear();
+    SelectedInspectorField = null;
+    HasAdditionalFields = false;
+    SourceId = "";
+    TargetId = "";
+    Details = JsonSerializer.Serialize(
+      graph.UnresolvedCalls,
+      new JsonSerializerOptions { WriteIndented = true });
+
+    foreach (var call in graph.UnresolvedCalls)
+      Fields.Add(new(
+        call.Text("caller") + " @ " + call.Text("callsite"),
+        call.Text("reason")));
+
+    if (graph.UnresolvedCalls.Length > 0)
+      SourceId = graph.UnresolvedCalls[0].Text("caller");
   }
   private void Inspect(string kind, string id)
   {
@@ -191,17 +282,43 @@ public partial class MainViewModel : ObservableObject
     else if (id.StartsWith("view-edge:", StringComparison.Ordinal) && int.TryParse(id[10..], out var index) && index >= 0 && index < graph.Edges.Length) { data = graph.Edges[index]; SourceId = data.Text("source"); TargetId = data.Text("target"); }
     else return;
     if (data.ValueKind != JsonValueKind.Object) return;
-    selection.Select(new(kind, id)); InspectorId = kind == "node" ? id : "Edge array index " + id[10..]; InspectorTitle = data.Text("type");
-    Fields.Clear(); foreach (var field in inspectors.Fields(data)) Fields.Add(field);
-    if (kind == "node" && visual != null) { var node = visual.Nodes.First(n => n.Id == id); if (node.Anchor) Fields.Insert(0, new("overlay", "◎ anchor")); if (node.Trigger) Fields.Insert(0, new("overlay", "◆ trigger evidence")); if (node.Role.Length > 0) Fields.Insert(0, new("role", node.Role)); }
-    Details = JsonSerializer.Serialize(data, new JsonSerializerOptions { WriteIndented = true });
+    selection.Select(new(kind, id));
+    ShowInspector = true;
+    InspectorId = kind == "node" ? id : "Edge array index " + id[10..];
+    InspectorTitle = data.Text("type");
+
+    Fields.Clear();
+    AdditionalFields.Clear();
+    SelectedInspectorField = null;
+
+    var inspector = inspectors.Inspect(data);
+    foreach (var field in inspector.Fields)
+      Fields.Add(field);
+    foreach (var field in inspector.AdditionalFields)
+      AdditionalFields.Add(field);
+    HasAdditionalFields = AdditionalFields.Count > 0;
+
+    if (kind == "node" && visual != null)
+    {
+      var node = visual.Nodes.First(n => n.Id == id);
+      if (node.Anchor)
+        Fields.Insert(0, new("overlay", "◎ anchor"));
+      if (node.Trigger)
+        Fields.Insert(0, new("overlay", "◆ trigger evidence"));
+      if (node.Role.Length > 0)
+        Fields.Insert(0, new("role", node.Role));
+    }
+
+    Details = JsonSerializer.Serialize(
+      data,
+      new JsonSerializerOptions { WriteIndented = true });
   }
   private void OnMessage(BridgeEnvelope message)
   {
     var p = message.Payload;
     switch (message.Type)
     {
-      case "ready": rendererReady = true; Status = dataset == null ? "Renderer ready · open a dataset" : "Dataset ready · choose Full Graph or a seed"; if (visual != null) SendGraph(); break;
+      case "ready": rendererReady = true; Status = dataset == null ? "Ready · analyze a sample" : "Dataset ready"; if (visual != null) SendGraph(); break;
       case "nodeSelected": case "edgeSelected": if (p is { } v) Inspect(message.Type == "nodeSelected" ? "node" : "edge", v.Text("id")); break;
       case "backgroundSelected": ClearSelection(); break;
       case "layoutCompleted": if (p is { } ready) Status = $"Rendered {ready.Text("nodes")} nodes · {ready.Text("edges")} edges · {ready.Text("renderMs")} ms"; break;

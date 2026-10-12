@@ -404,12 +404,59 @@ mod tests {
         let config = load_seed_rules(bundled_seed_rules_path())
             .expect("bundled seed_rules.json should load and validate");
         assert_eq!(config.schema_version, SEED_RULES_SCHEMA_VERSION);
-        assert_eq!(config.rules.len(), 44);
+        assert_eq!(config.rules.len(), 42);
         for rule in &config.rules {
             if rule.id.starts_with("api.reg") || rule.id == "string_category.registry_path" {
                 assert_eq!(rule.family, SeedTriggerFamily::RegistryInteraction);
             }
         }
+    }
+
+    #[test]
+    fn bundled_policy_excludes_observability_only_triggers() {
+        let config = load_seed_rules(bundled_seed_rules_path())
+            .expect("bundled seed_rules.json should load and validate");
+
+        assert!(config.rules.iter().all(|rule| {
+            !matches!(
+                rule.evidence_type,
+                SeedRuleType::VisibilitySignal | SeedRuleType::UnresolvedCall
+            )
+        }));
+        assert!(config
+            .rules
+            .iter()
+            .all(|rule| rule.family != SeedTriggerFamily::CallVisibility));
+
+        // The schema still supports these rule types for explicit research/custom policies.
+        // They are intentionally absent only from the bundled default policy.
+        let mut visibility = rule(
+            "visibility_signal.indirect_call",
+            SeedRuleType::VisibilitySignal,
+            SeedRuleMatch {
+                signal: Some("indirect_call".to_string()),
+                ..SeedRuleMatch::default()
+            },
+            "Function contains visibility signal {signal}",
+        );
+        visibility.family = SeedTriggerFamily::CallVisibility;
+        let mut unresolved = rule(
+            "unresolved_call.present",
+            SeedRuleType::UnresolvedCall,
+            SeedRuleMatch {
+                indicator: Some("unresolved_call".to_string()),
+                ..SeedRuleMatch::default()
+            },
+            "Function contains unresolved call evidence {indicator}",
+        );
+        unresolved.family = SeedTriggerFamily::CallVisibility;
+        let custom = SeedRulesConfig {
+            schema_version: SEED_RULES_SCHEMA_VERSION.to_string(),
+            rules: vec![visibility, unresolved],
+        };
+        custom
+            .validate()
+            .expect("explicit custom observability policy should remain valid");
     }
 
     #[test]

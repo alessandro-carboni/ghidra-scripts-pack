@@ -1,0 +1,542 @@
+{"time":"2026-09-30T15:54:58.4115612+00:00","state":"RunningGhidra","message":"[*] Batch size: 1"}
+{"time":"2026-09-30T15:54:58.4209169+00:00","state":"RunningGhidra","message":""}
+{"time":"2026-09-30T15:54:58.423659+00:00","state":"RunningGhidra","message":"[*] Scanning: C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\samples\\notepad.exe"}
+{"time":"2026-09-30T15:55:06.9732552+00:00","state":"RunningGhidra","message":"INFO  Using log config file: jar:file:/C:/Users/aless/Desktop/_/Projects/ghidra_12.0.4_PUBLIC/Ghidra/Framework/Generic/lib/Generic.jar!/generic.log4j.xml (LoggingInitialization)  "}
+{"time":"2026-09-30T15:55:06.9771063+00:00","state":"RunningGhidra","message":"INFO  Using log file: C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\application.log (LoggingInitialization)  "}
+{"time":"2026-09-30T15:55:06.9805557+00:00","state":"RunningGhidra","message":"INFO  Loading user preferences: C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\preferences (Preferences)  "}
+{"time":"2026-09-30T15:55:06.9872333+00:00","state":"RunningGhidra","message":"INFO  Searching for classes... (ClassSearcher)  "}
+{"time":"2026-09-30T15:55:08.1451876+00:00","state":"RunningGhidra","message":"INFO  Class search complete (1158 ms) (ClassSearcher)  "}
+{"time":"2026-09-30T15:55:08.2993865+00:00","state":"RunningGhidra","message":"INFO  Initializing SSL Context (DefaultSSLContextInitializer)  "}
+{"time":"2026-09-30T15:55:08.3773707+00:00","state":"RunningGhidra","message":"INFO  Initializing Random Number Generator... (SecureRandomFactory)  "}
+{"time":"2026-09-30T15:55:08.3940393+00:00","state":"RunningGhidra","message":"INFO  Random Number Generator initialization complete: SHA1PRNG (SecureRandomFactory)  "}
+{"time":"2026-09-30T15:55:08.3979651+00:00","state":"RunningGhidra","message":"INFO  Trust manager disabled, cacerts have not been set (DefaultTrustManagerFactory)  "}
+{"time":"2026-09-30T15:55:08.5241065+00:00","state":"RunningGhidra","message":"INFO  Starting cache cleanup: C:\\Users\\aless\\AppData\\Local\\ghidra\\fscache2 (FileCacheMaintenanceDaemon)  "}
+{"time":"2026-09-30T15:55:08.5285514+00:00","state":"RunningGhidra","message":"INFO  Finished cache cleanup, estimated storage used: 0 (FileCacheMaintenanceDaemon)  "}
+{"time":"2026-09-30T15:55:08.8957813+00:00","state":"RunningGhidra","message":"INFO  Headless startup complete (7042 ms) (AnalyzeHeadless)  "}
+{"time":"2026-09-30T15:55:08.900547+00:00","state":"RunningGhidra","message":"INFO  Class searcher loaded 58 extension points (18 false positives) (ClassSearcher)  "}
+{"time":"2026-09-30T15:55:09.0547855+00:00","state":"RunningGhidra","message":"WARNING: A terminally deprecated method in sun.misc.Unsafe has been called"}
+{"time":"2026-09-30T15:55:09.0588103+00:00","state":"RunningGhidra","message":"WARNING: sun.misc.Unsafe::staticFieldOffset has been called by org.apache.felix.framework.util.SecureAction (file:/C:/Users/aless/Desktop/_/Projects/ghidra_12.0.4_PUBLIC/Ghidra/Features/Base/lib/org.apache.felix.framework-7.0.5.jar)"}
+{"time":"2026-09-30T15:55:09.0624812+00:00","state":"RunningGhidra","message":"WARNING: Please consider reporting this to the maintainers of class org.apache.felix.framework.util.SecureAction"}
+{"time":"2026-09-30T15:55:09.0657983+00:00","state":"RunningGhidra","message":"WARNING: sun.misc.Unsafe::staticFieldOffset will be removed in a future release"}
+{"time":"2026-09-30T15:55:09.3414454+00:00","state":"RunningGhidra","message":"INFO  HEADLESS Script Paths:"}
+{"time":"2026-09-30T15:55:09.3458755+00:00","state":"RunningGhidra","message":"    C:\\Users\\aless\\Desktop\\_\\Projects\\ghidra_12.0.4_PUBLIC\\Ghidra\\Features\\Base\\ghidra_scripts"}
+{"time":"2026-09-30T15:55:09.3509956+00:00","state":"RunningGhidra","message":"    C:\\Users\\aless\\Desktop\\_\\Projects\\ghidra_12.0.4_PUBLIC\\Ghidra\\Features\\BSim\\ghidra_scripts"}
+{"time":"2026-09-30T15:55:09.3554624+00:00","state":"RunningGhidra","message":"    C:\\Users\\aless\\Desktop\\_\\Projects\\ghidra_12.0.4_PUBLIC\\Ghidra\\Features\\BytePatterns\\ghidra_scripts"}
+{"time":"2026-09-30T15:55:09.3606241+00:00","state":"RunningGhidra","message":"    C:\\Users\\aless\\Desktop\\_\\Projects\\ghidra_12.0.4_PUBLIC\\Ghidra\\Features\\FunctionID\\ghidra_scripts"}
+{"time":"2026-09-30T15:55:09.3661604+00:00","state":"RunningGhidra","message":"    C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\ghidra_scripts"}
+{"time":"2026-09-30T15:55:09.3717766+00:00","state":"RunningGhidra","message":"    C:\\Users\\aless\\Desktop\\_\\Projects\\ghidra_12.0.4_PUBLIC\\Ghidra\\Features\\WildcardAssembler\\ghidra_scripts"}
+{"time":"2026-09-30T15:55:09.3766155+00:00","state":"RunningGhidra","message":"    C:\\Users\\aless\\Desktop\\_\\Projects\\ghidra_12.0.4_PUBLIC\\Ghidra\\Features\\VersionTracking\\ghidra_scripts"}
+{"time":"2026-09-30T15:55:09.3822004+00:00","state":"RunningGhidra","message":"    C:\\Users\\aless\\Desktop\\_\\Projects\\ghidra_12.0.4_PUBLIC\\Ghidra\\Debug\\Debugger\\ghidra_scripts"}
+{"time":"2026-09-30T15:55:09.3873582+00:00","state":"RunningGhidra","message":"    C:\\Users\\aless\\Desktop\\_\\Projects\\ghidra_12.0.4_PUBLIC\\Ghidra\\Features\\Jython\\ghidra_scripts"}
+{"time":"2026-09-30T15:55:09.3930951+00:00","state":"RunningGhidra","message":"    C:\\Users\\aless\\Desktop\\_\\Projects\\ghidra_12.0.4_PUBLIC\\Ghidra\\Features\\SwiftDemangler\\ghidra_scripts"}
+{"time":"2026-09-30T15:55:09.3984995+00:00","state":"RunningGhidra","message":"    C:\\Users\\aless\\Desktop\\_\\Projects\\ghidra_12.0.4_PUBLIC\\Ghidra\\Features\\MicrosoftCodeAnalyzer\\ghidra_scripts"}
+{"time":"2026-09-30T15:55:09.4035449+00:00","state":"RunningGhidra","message":"    C:\\Users\\aless\\Desktop\\_\\Projects\\ghidra_12.0.4_PUBLIC\\Ghidra\\Features\\PDB\\ghidra_scripts"}
+{"time":"2026-09-30T15:55:09.4083409+00:00","state":"RunningGhidra","message":"    C:\\Users\\aless\\Desktop\\_\\Projects\\ghidra_12.0.4_PUBLIC\\Ghidra\\Features\\SystemEmulation\\ghidra_scripts"}
+{"time":"2026-09-30T15:55:09.412686+00:00","state":"RunningGhidra","message":"    C:\\Users\\aless\\Desktop\\_\\Projects\\ghidra_12.0.4_PUBLIC\\Ghidra\\Features\\Decompiler\\ghidra_scripts"}
+{"time":"2026-09-30T15:55:09.4175954+00:00","state":"RunningGhidra","message":"    C:\\Users\\aless\\Desktop\\_\\Projects\\ghidra_12.0.4_PUBLIC\\Ghidra\\Features\\PyGhidra\\ghidra_scripts"}
+{"time":"2026-09-30T15:55:09.4225111+00:00","state":"RunningGhidra","message":"    C:\\Users\\aless\\Desktop\\_\\Projects\\ghidra_12.0.4_PUBLIC\\Ghidra\\Processors\\Atmel\\ghidra_scripts"}
+{"time":"2026-09-30T15:55:09.4276384+00:00","state":"RunningGhidra","message":"    C:\\Users\\aless\\Desktop\\_\\Projects\\ghidra_12.0.4_PUBLIC\\Ghidra\\Processors\\DATA\\ghidra_scripts"}
+{"time":"2026-09-30T15:55:09.4323586+00:00","state":"RunningGhidra","message":"    C:\\Users\\aless\\Desktop\\_\\Projects\\ghidra_12.0.4_PUBLIC\\Ghidra\\Features\\GnuDemangler\\ghidra_scripts"}
+{"time":"2026-09-30T15:55:09.4376004+00:00","state":"RunningGhidra","message":"    C:\\Users\\aless\\Desktop\\_\\Projects\\ghidra_12.0.4_PUBLIC\\Ghidra\\Processors\\JVM\\ghidra_scripts"}
+{"time":"2026-09-30T15:55:09.4433432+00:00","state":"RunningGhidra","message":"    C:\\Users\\aless\\Desktop\\_\\Projects\\ghidra_12.0.4_PUBLIC\\Ghidra\\Processors\\8051\\ghidra_scripts"}
+{"time":"2026-09-30T15:55:09.4499976+00:00","state":"RunningGhidra","message":"    C:\\Users\\aless\\Desktop\\_\\Projects\\ghidra_12.0.4_PUBLIC\\Ghidra\\Features\\DecompilerDependent\\ghidra_scripts"}
+{"time":"2026-09-30T15:55:09.4560066+00:00","state":"RunningGhidra","message":"    C:\\Users\\aless\\Desktop\\_\\Projects\\ghidra_12.0.4_PUBLIC\\Ghidra\\Features\\FileFormats\\ghidra_scripts"}
+{"time":"2026-09-30T15:55:09.4611012+00:00","state":"RunningGhidra","message":"    C:\\Users\\aless\\Desktop\\_\\Projects\\ghidra_12.0.4_PUBLIC\\Ghidra\\Processors\\PIC\\ghidra_scripts"}
+{"time":"2026-09-30T15:55:09.4659632+00:00","state":"RunningGhidra","message":"    C:\\Users\\aless\\Desktop\\_\\Projects\\ghidra_12.0.4_PUBLIC\\Ghidra\\Debug\\Debugger-rmi-trace\\ghidra_scripts (HeadlessAnalyzer)  "}
+{"time":"2026-09-30T15:55:09.4822456+00:00","state":"RunningGhidra","message":"INFO  HEADLESS: execution starts (HeadlessAnalyzer)  "}
+{"time":"2026-09-30T15:55:09.487276+00:00","state":"RunningGhidra","message":"INFO  Creating project: C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\reports\\gui-20260930-155458-e5016709\\ghidra-project\\GuiAnalysis (HeadlessAnalyzer)  "}
+{"time":"2026-09-30T15:55:09.4936003+00:00","state":"RunningGhidra","message":"INFO  Creating project: C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\reports\\gui-20260930-155458-e5016709\\ghidra-project\\GuiAnalysis (DefaultProject)  "}
+{"time":"2026-09-30T15:55:09.5594694+00:00","state":"RunningGhidra","message":"INFO  REPORT: Processing input files:  (HeadlessAnalyzer)  "}
+{"time":"2026-09-30T15:55:09.5659486+00:00","state":"RunningGhidra","message":"INFO       project: C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\reports\\gui-20260930-155458-e5016709\\ghidra-project\\GuiAnalysis (HeadlessAnalyzer)  "}
+{"time":"2026-09-30T15:55:09.5718506+00:00","state":"RunningGhidra","message":"INFO  IMPORTING: file:///C:/Users/aless/Desktop/ghidra-scripts-pack/samples/notepad.exe (HeadlessAnalyzer)  "}
+{"time":"2026-09-30T15:55:13.3104824+00:00","state":"RunningGhidra","message":"INFO  Using Loader: Portable Executable (PE) (ProgramLoader)  "}
+{"time":"2026-09-30T15:55:13.3174362+00:00","state":"RunningGhidra","message":"INFO  Using Language/Compiler: x86:LE:64:default:windows (ProgramLoader)  "}
+{"time":"2026-09-30T15:55:13.3227441+00:00","state":"RunningGhidra","message":"INFO  Using Library Search Path: [., C:\\WINDOWS\\SysWOW64, C:\\Users\\aless\\AppData\\Local\\Programs\\Python\\Python311, C:\\WINDOWS\\Sun\\Java\\bin, C:\\WINDOWS\\system32, C:\\WINDOWS, C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path, C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath, C:\\Program Files\\Eclipse Adoptium\\jdk-25.0.2.10-hotspot\\bin, C:\\Program Files\\nodejs\\, C:\\Program Files\\Git\\cmd, C:\\MinGW\\bin, C:\\WINDOWS\\System32\\Wbem, C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\, C:\\WINDOWS\\System32\\OpenSSH\\, C:\\Program Files\\dotnet\\, C:\\Program Files\\Go\\bin, C:\\Program Files\\playit_gg\\bin\\, C:\\Program Files\\Tailscale\\, C:\\Users\\aless\\.local\\bin, C:\\Program Files\\Docker\\Docker\\resources\\bin, C:\\Users\\aless\\.cargo\\bin, C:\\Program Files\\Oculus\\Support\\oculus-runtime, C:\\Program Files\\Common Files\\Oracle\\Java\\javapath, C:\\Program Files\\Microsoft\\jdk-11.0.16.101-hotspot\\bin, C:\\Windows\\system32, C:\\Windows, C:\\Windows\\System32\\Wbem, C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\, C:\\Windows\\System32\\OpenSSH\\, C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common, C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\, C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\, C:\\WINDOWS\\Syste, C:\\Program Files\\SW, C:\\Program Files\\CMake\\bin, C:\\Users\\aless\\venv\\Scripts, C:\\Program Files (x86)\\include, C:\\Program Files (x86)\\include\\Leptonica, C:\\Program Files, C:\\Program Files\\leptonica, C:\\Users\\aless\\Desktop\\_\\Altro\\Installer, C:\\Program Files\\Git\\bin, C:\\Users\\aless\\tesseract-main\\build, C:\\Users\\aless\\tesseract-main, C:\\Users\\aless\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\MSYS2, C:\\Program Files\\Tesseract-OCR, C:\\Users\\aless\\AppData\\Local\\Programs\\Microsoft VS Code\\bin, C:\\Users\\aless\\AppData\\Roaming\\npm, C:\\Users\\aless\\AppData\\Local\\Microsoft\\WindowsApps, C:\\ffmpeg\\bin, C:\\Program Files (x86)\\Nmap, C:\\Program Files\\Apache\\Maven\\bin, C:\\Users\\aless\\go\\bin, C:\\Users\\aless\\AppData\\Local\\Programs\\Ollama, C:\\Users\\aless\\.dotnet\\tools] (ProgramLoader)  "}
+{"time":"2026-09-30T15:55:21.1888054+00:00","state":"RunningGhidra","message":"WARN  Invalid or missing function at 180098100 (ExportDataDirectory)  "}
+{"time":"2026-09-30T15:55:21.5619275+00:00","state":"RunningGhidra","message":"INFO  TLS callbacks at 1800c2560 (TLSDirectory)  "}
+{"time":"2026-09-30T15:55:22.7197+00:00","state":"RunningGhidra","message":"WARN  Invalid or missing function at 1800df510 (ExportDataDirectory)  "}
+{"time":"2026-09-30T15:55:23.4776244+00:00","state":"RunningGhidra","message":"INFO  TLS callbacks at 180636cc0 (TLSDirectory)  "}
+{"time":"2026-09-30T15:55:23.4971429+00:00","state":"RunningGhidra","message":"WARN  Invalid or missing function at 18071d6cc (ExportDataDirectory)  "}
+{"time":"2026-09-30T15:55:26.8573049+00:00","state":"RunningGhidra","message":"INFO  TLS callbacks at 180139d48 (TLSDirectory)  "}
+{"time":"2026-09-30T15:55:26.8649722+00:00","state":"RunningGhidra","message":"WARN  Invalid or missing function at 180165d7c (ExportDataDirectory)  "}
+{"time":"2026-09-30T15:55:27.603606+00:00","state":"RunningGhidra","message":"WARN  Invalid or missing function at 1800cf87c (ExportDataDirectory)  "}
+{"time":"2026-09-30T15:55:28.1537529+00:00","state":"RunningGhidra","message":"INFO  TLS callbacks at 18006f278 (TLSDirectory)  "}
+{"time":"2026-09-30T15:55:28.1636869+00:00","state":"RunningGhidra","message":"WARN  Invalid or missing function at 180089974 (ExportDataDirectory)  "}
+{"time":"2026-09-30T15:55:28.9964681+00:00","state":"RunningGhidra","message":"INFO  Additional info:"}
+{"time":"2026-09-30T15:55:29.0005356+00:00","state":"RunningGhidra","message":"Loading file:///C:/Users/aless/Desktop/ghidra-scripts-pack/samples/notepad.exe?MD5=8a1d8175ccca97054cdb25acbb4cc07e..."}
+{"time":"2026-09-30T15:55:29.0043371+00:00","state":"RunningGhidra","message":"------------------------------------------------"}
+{"time":"2026-09-30T15:55:29.0083416+00:00","state":"RunningGhidra","message":""}
+{"time":"2026-09-30T15:55:29.0125716+00:00","state":"RunningGhidra","message":"Searching 44 paths for library ADVAPI32.DLL..."}
+{"time":"2026-09-30T15:55:29.016593+00:00","state":"RunningGhidra","message":"Skipping library which is the wrong architecture: file:///C:/Windows/SysWOW64/advapi32.dll"}
+{"time":"2026-09-30T15:55:29.0207314+00:00","state":"RunningGhidra","message":"Loading file:///C:/Windows/System32/advapi32.dll?MD5=d62ed0cb4f11fb712094de1eeba6ddad..."}
+{"time":"2026-09-30T15:55:29.0253302+00:00","state":"RunningGhidra","message":"Using existing exports file: C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\symbols\\win64\\advapi32.exports"}
+{"time":"2026-09-30T15:55:29.0292981+00:00","state":"RunningGhidra","message":"WARNING: Existing exports file may not be an exact match."}
+{"time":"2026-09-30T15:55:29.0330589+00:00","state":"RunningGhidra","message":"Library not saved to project."}
+{"time":"2026-09-30T15:55:29.0370489+00:00","state":"RunningGhidra","message":"------------------------------------------------"}
+{"time":"2026-09-30T15:55:29.0414478+00:00","state":"RunningGhidra","message":""}
+{"time":"2026-09-30T15:55:29.0458778+00:00","state":"RunningGhidra","message":"Searching 44 paths for library API-MS-WIN-BASE-UTIL-L1-1-0.DLL..."}
+{"time":"2026-09-30T15:55:29.0500059+00:00","state":"RunningGhidra","message":"Library not found."}
+{"time":"2026-09-30T15:55:29.0538951+00:00","state":"RunningGhidra","message":"------------------------------------------------"}
+{"time":"2026-09-30T15:55:29.0579811+00:00","state":"RunningGhidra","message":""}
+{"time":"2026-09-30T15:55:29.0628315+00:00","state":"RunningGhidra","message":"Searching 44 paths for library API-MS-WIN-CORE-COM-L1-1-0.DLL..."}
+{"time":"2026-09-30T15:55:29.0676905+00:00","state":"RunningGhidra","message":"Library not found."}
+{"time":"2026-09-30T15:55:29.0718491+00:00","state":"RunningGhidra","message":"------------------------------------------------"}
+{"time":"2026-09-30T15:55:29.0761625+00:00","state":"RunningGhidra","message":""}
+{"time":"2026-09-30T15:55:29.0807628+00:00","state":"RunningGhidra","message":"Searching 44 paths for library API-MS-WIN-CORE-DATETIME-L1-1-0.DLL..."}
+{"time":"2026-09-30T15:55:29.0851617+00:00","state":"RunningGhidra","message":"Loading file:///C:/Program Files/Eclipse Adoptium/jdk-25.0.2.10-hotspot/bin/api-ms-win-core-datetime-l1-1-0.dll?MD5=8f8eb9cb9e78e3a611bc8acaec4399cb..."}
+{"time":"2026-09-30T15:55:29.08957+00:00","state":"RunningGhidra","message":"Using existing exports file: C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\symbols\\win64\\api-ms-win-core-datetime-l1-1-0.exports"}
+{"time":"2026-09-30T15:55:29.0941322+00:00","state":"RunningGhidra","message":"Library not saved to project."}
+{"time":"2026-09-30T15:55:29.0986758+00:00","state":"RunningGhidra","message":"------------------------------------------------"}
+{"time":"2026-09-30T15:55:29.1037699+00:00","state":"RunningGhidra","message":""}
+{"time":"2026-09-30T15:55:29.1080342+00:00","state":"RunningGhidra","message":"Searching 44 paths for library API-MS-WIN-CORE-DEBUG-L1-1-0.DLL..."}
+{"time":"2026-09-30T15:55:29.1124951+00:00","state":"RunningGhidra","message":"Loading file:///C:/Program Files/Eclipse Adoptium/jdk-25.0.2.10-hotspot/bin/api-ms-win-core-debug-l1-1-0.dll?MD5=226a5983ae2cbbf0c1bda85d65948abc..."}
+{"time":"2026-09-30T15:55:29.116849+00:00","state":"RunningGhidra","message":"Using existing exports file: C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\symbols\\win64\\api-ms-win-core-debug-l1-1-0.exports"}
+{"time":"2026-09-30T15:55:29.1210294+00:00","state":"RunningGhidra","message":"Library not saved to project."}
+{"time":"2026-09-30T15:55:29.1250317+00:00","state":"RunningGhidra","message":"------------------------------------------------"}
+{"time":"2026-09-30T15:55:29.1291681+00:00","state":"RunningGhidra","message":""}
+{"time":"2026-09-30T15:55:29.1333372+00:00","state":"RunningGhidra","message":"Searching 44 paths for library API-MS-WIN-CORE-DELAYLOAD-L1-1-0.DLL..."}
+{"time":"2026-09-30T15:55:29.1372615+00:00","state":"RunningGhidra","message":"Library not found."}
+{"time":"2026-09-30T15:55:29.1416401+00:00","state":"RunningGhidra","message":"------------------------------------------------"}
+{"time":"2026-09-30T15:55:29.1465524+00:00","state":"RunningGhidra","message":""}
+{"time":"2026-09-30T15:55:29.1532479+00:00","state":"RunningGhidra","message":"Searching 44 paths for library API-MS-WIN-CORE-DELAYLOAD-L1-1-1.DLL..."}
+{"time":"2026-09-30T15:55:29.1589029+00:00","state":"RunningGhidra","message":"Library not found."}
+{"time":"2026-09-30T15:55:29.1634001+00:00","state":"RunningGhidra","message":"------------------------------------------------"}
+{"time":"2026-09-30T15:55:29.1677841+00:00","state":"RunningGhidra","message":""}
+{"time":"2026-09-30T15:55:29.1718685+00:00","state":"RunningGhidra","message":"Searching 44 paths for library API-MS-WIN-CORE-ERRORHANDLING-L1-1-0.DLL..."}
+{"time":"2026-09-30T15:55:29.1763293+00:00","state":"RunningGhidra","message":"Loading file:///C:/Program Files/Eclipse Adoptium/jdk-25.0.2.10-hotspot/bin/api-ms-win-core-errorhandling-l1-1-0.dll?MD5=c2f8c03ecce9941492bfbe4b82f7d2d5..."}
+{"time":"2026-09-30T15:55:29.1814329+00:00","state":"RunningGhidra","message":"Using existing exports file: C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\symbols\\win64\\api-ms-win-core-errorhandling-l1-1-0.exports"}
+{"time":"2026-09-30T15:55:29.1859842+00:00","state":"RunningGhidra","message":"Library not saved to project."}
+{"time":"2026-09-30T15:55:29.1920591+00:00","state":"RunningGhidra","message":"------------------------------------------------"}
+{"time":"2026-09-30T15:55:29.1966413+00:00","state":"RunningGhidra","message":""}
+{"time":"2026-09-30T15:55:29.2019636+00:00","state":"RunningGhidra","message":"Searching 44 paths for library API-MS-WIN-CORE-FILE-L1-1-0.DLL..."}
+{"time":"2026-09-30T15:55:29.2070184+00:00","state":"RunningGhidra","message":"Loading file:///C:/Program Files/Eclipse Adoptium/jdk-25.0.2.10-hotspot/bin/api-ms-win-core-file-l1-1-0.dll?MD5=9f45a47ebfd9d0629f4935764243dd5a..."}
+{"time":"2026-09-30T15:55:29.2119026+00:00","state":"RunningGhidra","message":"Using existing exports file: C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\symbols\\win64\\api-ms-win-core-file-l1-1-0.exports"}
+{"time":"2026-09-30T15:55:29.2167709+00:00","state":"RunningGhidra","message":"Library not saved to project."}
+{"time":"2026-09-30T15:55:29.2216797+00:00","state":"RunningGhidra","message":"------------------------------------------------"}
+{"time":"2026-09-30T15:55:29.2291543+00:00","state":"RunningGhidra","message":""}
+{"time":"2026-09-30T15:55:29.2343132+00:00","state":"RunningGhidra","message":"Searching 44 paths for library API-MS-WIN-CORE-HANDLE-L1-1-0.DLL..."}
+{"time":"2026-09-30T15:55:29.2395419+00:00","state":"RunningGhidra","message":"Loading file:///C:/Program Files/Eclipse Adoptium/jdk-25.0.2.10-hotspot/bin/api-ms-win-core-handle-l1-1-0.dll?MD5=416aa8314222db6cbb3760856be13d46..."}
+{"time":"2026-09-30T15:55:29.2442917+00:00","state":"RunningGhidra","message":"Using existing exports file: C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\symbols\\win64\\api-ms-win-core-handle-l1-1-0.exports"}
+{"time":"2026-09-30T15:55:29.2488055+00:00","state":"RunningGhidra","message":"Library not saved to project."}
+{"time":"2026-09-30T15:55:29.2532785+00:00","state":"RunningGhidra","message":"------------------------------------------------"}
+{"time":"2026-09-30T15:55:29.2581605+00:00","state":"RunningGhidra","message":""}
+{"time":"2026-09-30T15:55:29.2636614+00:00","state":"RunningGhidra","message":"Searching 44 paths for library API-MS-WIN-CORE-HEAP-L1-1-0.DLL..."}
+{"time":"2026-09-30T15:55:29.268987+00:00","state":"RunningGhidra","message":"Loading file:///C:/Program Files/Eclipse Adoptium/jdk-25.0.2.10-hotspot/bin/api-ms-win-core-heap-l1-1-0.dll?MD5=344a09b4be069f86356a89482c156647..."}
+{"time":"2026-09-30T15:55:29.2737178+00:00","state":"RunningGhidra","message":"Using existing exports file: C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\symbols\\win64\\api-ms-win-core-heap-l1-1-0.exports"}
+{"time":"2026-09-30T15:55:29.2784428+00:00","state":"RunningGhidra","message":"Library not saved to project."}
+{"time":"2026-09-30T15:55:29.2827427+00:00","state":"RunningGhidra","message":"------------------------------------------------"}
+{"time":"2026-09-30T15:55:29.2873254+00:00","state":"RunningGhidra","message":""}
+{"time":"2026-09-30T15:55:29.2922751+00:00","state":"RunningGhidra","message":"Searching 44 paths for library API-MS-WIN-CORE-HEAP-L2-1-0.DLL..."}
+{"time":"2026-09-30T15:55:29.2971114+00:00","state":"RunningGhidra","message":"Library not found."}
+{"time":"2026-09-30T15:55:29.3015987+00:00","state":"RunningGhidra","message":"------------------------------------------------"}
+{"time":"2026-09-30T15:55:29.3060542+00:00","state":"RunningGhidra","message":""}
+{"time":"2026-09-30T15:55:29.3105787+00:00","state":"RunningGhidra","message":"Searching 44 paths for library API-MS-WIN-CORE-HEAP-OBSOLETE-L1-1-0.DLL..."}
+{"time":"2026-09-30T15:55:29.3150904+00:00","state":"RunningGhidra","message":"Library not found."}
+{"time":"2026-09-30T15:55:29.3416478+00:00","state":"RunningGhidra","message":"------------------------------------------------"}
+{"time":"2026-09-30T15:55:29.3480279+00:00","state":"RunningGhidra","message":""}
+{"time":"2026-09-30T15:55:29.3543431+00:00","state":"RunningGhidra","message":"Searching 44 paths for library API-MS-WIN-CORE-INTERLOCKED-L1-1-0.DLL..."}
+{"time":"2026-09-30T15:55:29.3597788+00:00","state":"RunningGhidra","message":"Loading file:///C:/Program Files/Eclipse Adoptium/jdk-25.0.2.10-hotspot/bin/api-ms-win-core-interlocked-l1-1-0.dll?MD5=86023497fa48ca2c7705d3f90b76ebc5..."}
+{"time":"2026-09-30T15:55:29.3650205+00:00","state":"RunningGhidra","message":"Using existing exports file: C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\symbols\\win64\\api-ms-win-core-interlocked-l1-1-0.exports"}
+{"time":"2026-09-30T15:55:29.3702544+00:00","state":"RunningGhidra","message":"Library not saved to project."}
+{"time":"2026-09-30T15:55:29.3758747+00:00","state":"RunningGhidra","message":"------------------------------------------------"}
+{"time":"2026-09-30T15:55:29.3817682+00:00","state":"RunningGhidra","message":""}
+{"time":"2026-09-30T15:55:29.3874126+00:00","state":"RunningGhidra","message":"Searching 44 paths for library API-MS-WIN-CORE-LARGEINTEGER-L1-1-0.DLL..."}
+{"time":"2026-09-30T15:55:29.3921794+00:00","state":"RunningGhidra","message":"Library not found."}
+{"time":"2026-09-30T15:55:29.3968327+00:00","state":"RunningGhidra","message":"------------------------------------------------"}
+{"time":"2026-09-30T15:55:29.4028519+00:00","state":"RunningGhidra","message":""}
+{"time":"2026-09-30T15:55:29.4086869+00:00","state":"RunningGhidra","message":"Searching 44 paths for library API-MS-WIN-CORE-LIBRARYLOADER-L1-2-0.DLL..."}
+{"time":"2026-09-30T15:55:29.4139691+00:00","state":"RunningGhidra","message":"Library not found."}
+{"time":"2026-09-30T15:55:29.4187228+00:00","state":"RunningGhidra","message":"------------------------------------------------"}
+{"time":"2026-09-30T15:55:29.4235079+00:00","state":"RunningGhidra","message":""}
+{"time":"2026-09-30T15:55:29.4286853+00:00","state":"RunningGhidra","message":"Searching 44 paths for library API-MS-WIN-CORE-LIBRARYLOADER-L1-2-1.DLL..."}
+{"time":"2026-09-30T15:55:29.4331711+00:00","state":"RunningGhidra","message":"Library not found."}
+{"time":"2026-09-30T15:55:29.439371+00:00","state":"RunningGhidra","message":"------------------------------------------------"}
+{"time":"2026-09-30T15:55:29.445178+00:00","state":"RunningGhidra","message":""}
+{"time":"2026-09-30T15:55:29.452849+00:00","state":"RunningGhidra","message":"Searching 44 paths for library API-MS-WIN-CORE-LOCALIZATION-L1-2-0.DLL..."}
+{"time":"2026-09-30T15:55:29.4589328+00:00","state":"RunningGhidra","message":"Loading file:///C:/Program Files/Eclipse Adoptium/jdk-25.0.2.10-hotspot/bin/api-ms-win-core-localization-l1-2-0.dll?MD5=5241df2e95e31e73ccfd6357ad309df0..."}
+{"time":"2026-09-30T15:55:29.4653078+00:00","state":"RunningGhidra","message":"Using existing exports file: C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\symbols\\win64\\api-ms-win-core-localization-l1-2-0.exports"}
+{"time":"2026-09-30T15:55:29.4722562+00:00","state":"RunningGhidra","message":"Library not saved to project."}
+{"time":"2026-09-30T15:55:29.479288+00:00","state":"RunningGhidra","message":"------------------------------------------------"}
+{"time":"2026-09-30T15:55:29.488251+00:00","state":"RunningGhidra","message":""}
+{"time":"2026-09-30T15:55:29.4951875+00:00","state":"RunningGhidra","message":"Searching 44 paths for library API-MS-WIN-CORE-LOCALIZATION-OBSOLETE-L1-2-0.DLL..."}
+{"time":"2026-09-30T15:55:29.5027294+00:00","state":"RunningGhidra","message":"Library not found."}
+{"time":"2026-09-30T15:55:29.5094058+00:00","state":"RunningGhidra","message":"------------------------------------------------"}
+{"time":"2026-09-30T15:55:29.5160334+00:00","state":"RunningGhidra","message":""}
+{"time":"2026-09-30T15:55:29.5229816+00:00","state":"RunningGhidra","message":"Searching 44 paths for library API-MS-WIN-CORE-MEMORY-L1-1-0.DLL..."}
+{"time":"2026-09-30T15:55:29.5299449+00:00","state":"RunningGhidra","message":"Loading file:///C:/Program Files/Eclipse Adoptium/jdk-25.0.2.10-hotspot/bin/api-ms-win-core-memory-l1-1-0.dll?MD5=8d285430e8bda6d5c9b683579adcb180..."}
+{"time":"2026-09-30T15:55:29.5369332+00:00","state":"RunningGhidra","message":"Using existing exports file: C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\symbols\\win64\\api-ms-win-core-memory-l1-1-0.exports"}
+{"time":"2026-09-30T15:55:29.5425738+00:00","state":"RunningGhidra","message":"Library not saved to project."}
+{"time":"2026-09-30T15:55:29.5485673+00:00","state":"RunningGhidra","message":"------------------------------------------------"}
+{"time":"2026-09-30T15:55:29.5538895+00:00","state":"RunningGhidra","message":""}
+{"time":"2026-09-30T15:55:29.5589213+00:00","state":"RunningGhidra","message":"Searching 44 paths for library API-MS-WIN-CORE-PROCESSENVIRONMENT-L1-1-0.DLL..."}
+{"time":"2026-09-30T15:55:29.5639041+00:00","state":"RunningGhidra","message":"Loading file:///C:/Program Files/Eclipse Adoptium/jdk-25.0.2.10-hotspot/bin/api-ms-win-core-processenvironment-l1-1-0.dll?MD5=7fd4a71085783ccfe9c289c07bcf9b04..."}
+{"time":"2026-09-30T15:55:29.5706236+00:00","state":"RunningGhidra","message":"Using existing exports file: C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\symbols\\win64\\api-ms-win-core-processenvironment-l1-1-0.exports"}
+{"time":"2026-09-30T15:55:29.5759675+00:00","state":"RunningGhidra","message":"Library not saved to project."}
+{"time":"2026-09-30T15:55:29.5814389+00:00","state":"RunningGhidra","message":"------------------------------------------------"}
+{"time":"2026-09-30T15:55:29.5874918+00:00","state":"RunningGhidra","message":""}
+{"time":"2026-09-30T15:55:29.5941025+00:00","state":"RunningGhidra","message":"Searching 44 paths for library API-MS-WIN-CORE-PROCESSTHREADS-L1-1-0.DLL..."}
+{"time":"2026-09-30T15:55:29.60095+00:00","state":"RunningGhidra","message":"Loading file:///C:/Program Files/Eclipse Adoptium/jdk-25.0.2.10-hotspot/bin/api-ms-win-core-processthreads-l1-1-0.dll?MD5=c123f2c161884fbff4f00ef1e1391266..."}
+{"time":"2026-09-30T15:55:29.6079613+00:00","state":"RunningGhidra","message":"Using existing exports file: C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\symbols\\win64\\api-ms-win-core-processthreads-l1-1-0.exports"}
+{"time":"2026-09-30T15:55:29.6152394+00:00","state":"RunningGhidra","message":"Library not saved to project."}
+{"time":"2026-09-30T15:55:29.6227357+00:00","state":"RunningGhidra","message":"------------------------------------------------"}
+{"time":"2026-09-30T15:55:29.6307446+00:00","state":"RunningGhidra","message":""}
+{"time":"2026-09-30T15:55:29.6386363+00:00","state":"RunningGhidra","message":"Searching 44 paths for library API-MS-WIN-CORE-PROCESSTHREADS-L1-1-1.DLL..."}
+{"time":"2026-09-30T15:55:29.6467767+00:00","state":"RunningGhidra","message":"Loading file:///C:/Program Files/Eclipse Adoptium/jdk-25.0.2.10-hotspot/bin/api-ms-win-core-processthreads-l1-1-1.dll?MD5=385f562bdc391ccd4f81aca3719f3236..."}
+{"time":"2026-09-30T15:55:29.6545933+00:00","state":"RunningGhidra","message":"Using existing exports file: C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\symbols\\win64\\api-ms-win-core-processthreads-l1-1-1.exports"}
+{"time":"2026-09-30T15:55:29.6628425+00:00","state":"RunningGhidra","message":"Library not saved to project."}
+{"time":"2026-09-30T15:55:29.6694828+00:00","state":"RunningGhidra","message":"------------------------------------------------"}
+{"time":"2026-09-30T15:55:29.6753945+00:00","state":"RunningGhidra","message":""}
+{"time":"2026-09-30T15:55:29.6828109+00:00","state":"RunningGhidra","message":"Searching 44 paths for library API-MS-WIN-CORE-PROFILE-L1-1-0.DLL..."}
+{"time":"2026-09-30T15:55:29.6883336+00:00","state":"RunningGhidra","message":"Loading file:///C:/Program Files/Eclipse Adoptium/jdk-25.0.2.10-hotspot/bin/api-ms-win-core-profile-l1-1-0.dll?MD5=7a629293eeb0bca5f9bdee8ade477c54..."}
+{"time":"2026-09-30T15:55:29.6934119+00:00","state":"RunningGhidra","message":"Using existing exports file: C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\symbols\\win64\\api-ms-win-core-profile-l1-1-0.exports"}
+{"time":"2026-09-30T15:55:29.6995088+00:00","state":"RunningGhidra","message":"Library not saved to project."}
+{"time":"2026-09-30T15:55:29.7051146+00:00","state":"RunningGhidra","message":"------------------------------------------------"}
+{"time":"2026-09-30T15:55:29.7114367+00:00","state":"RunningGhidra","message":""}
+{"time":"2026-09-30T15:55:29.717507+00:00","state":"RunningGhidra","message":"Searching 44 paths for library API-MS-WIN-CORE-PSAPI-L1-1-0.DLL..."}
+{"time":"2026-09-30T15:55:29.7229196+00:00","state":"RunningGhidra","message":"Library not found."}
+{"time":"2026-09-30T15:55:29.7290158+00:00","state":"RunningGhidra","message":"------------------------------------------------"}
+{"time":"2026-09-30T15:55:29.7346745+00:00","state":"RunningGhidra","message":""}
+{"time":"2026-09-30T15:55:29.7398267+00:00","state":"RunningGhidra","message":"Searching 44 paths for library API-MS-WIN-CORE-REGISTRY-L1-1-0.DLL..."}
+{"time":"2026-09-30T15:55:29.7446707+00:00","state":"RunningGhidra","message":"Library not found."}
+{"time":"2026-09-30T15:55:29.7500232+00:00","state":"RunningGhidra","message":"------------------------------------------------"}
+{"time":"2026-09-30T15:55:29.7553938+00:00","state":"RunningGhidra","message":""}
+{"time":"2026-09-30T15:55:29.8846076+00:00","state":"RunningGhidra","message":"Searching 44 paths for library API-MS-WIN-CORE-REGISTRY-L1-1-1.DLL..."}
+{"time":"2026-09-30T15:55:29.8914292+00:00","state":"RunningGhidra","message":"Library not found."}
+{"time":"2026-09-30T15:55:29.8979421+00:00","state":"RunningGhidra","message":"------------------------------------------------"}
+{"time":"2026-09-30T15:55:29.9043431+00:00","state":"RunningGhidra","message":""}
+{"time":"2026-09-30T15:55:29.9109987+00:00","state":"RunningGhidra","message":"Searching 44 paths for library API-MS-WIN-CORE-REGISTRY-L2-1-0.DLL..."}
+{"time":"2026-09-30T15:55:29.9167889+00:00","state":"RunningGhidra","message":"Library not found."}
+{"time":"2026-09-30T15:55:29.9238133+00:00","state":"RunningGhidra","message":"------------------------------------------------"}
+{"time":"2026-09-30T15:55:29.9301656+00:00","state":"RunningGhidra","message":""}
+{"time":"2026-09-30T15:55:29.9363695+00:00","state":"RunningGhidra","message":"Searching 44 paths for library API-MS-WIN-CORE-RTLSUPPORT-L1-1-0.DLL..."}
+{"time":"2026-09-30T15:55:29.9430298+00:00","state":"RunningGhidra","message":"Loading file:///C:/Program Files/Eclipse Adoptium/jdk-25.0.2.10-hotspot/bin/api-ms-win-core-rtlsupport-l1-1-0.dll?MD5=3c5c7a3130b075b2def5c413c127173f..."}
+{"time":"2026-09-30T15:55:29.9499422+00:00","state":"RunningGhidra","message":"Using existing exports file: C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\symbols\\win64\\api-ms-win-core-rtlsupport-l1-1-0.exports"}
+{"time":"2026-09-30T15:55:29.9569542+00:00","state":"RunningGhidra","message":"Library not saved to project."}
+{"time":"2026-09-30T15:55:29.9631739+00:00","state":"RunningGhidra","message":"------------------------------------------------"}
+{"time":"2026-09-30T15:55:29.9694561+00:00","state":"RunningGhidra","message":""}
+{"time":"2026-09-30T15:55:29.9761176+00:00","state":"RunningGhidra","message":"Searching 44 paths for library API-MS-WIN-CORE-SHLWAPI-LEGACY-L1-1-0.DLL..."}
+{"time":"2026-09-30T15:55:29.9831558+00:00","state":"RunningGhidra","message":"Library not found."}
+{"time":"2026-09-30T15:55:29.9889236+00:00","state":"RunningGhidra","message":"------------------------------------------------"}
+{"time":"2026-09-30T15:55:29.9973462+00:00","state":"RunningGhidra","message":""}
+{"time":"2026-09-30T15:55:30.0045464+00:00","state":"RunningGhidra","message":"Searching 44 paths for library API-MS-WIN-CORE-STRING-L1-1-0.DLL..."}
+{"time":"2026-09-30T15:55:30.0123283+00:00","state":"RunningGhidra","message":"Loading file:///C:/Program Files/Eclipse Adoptium/jdk-25.0.2.10-hotspot/bin/api-ms-win-core-string-l1-1-0.dll?MD5=28005b20fbef6e1db10912d0fdd6471c..."}
+{"time":"2026-09-30T15:55:30.0204146+00:00","state":"RunningGhidra","message":"Using existing exports file: C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\symbols\\win64\\api-ms-win-core-string-l1-1-0.exports"}
+{"time":"2026-09-30T15:55:30.0272806+00:00","state":"RunningGhidra","message":"Library not saved to project."}
+{"time":"2026-09-30T15:55:30.0800002+00:00","state":"RunningGhidra","message":"------------------------------------------------"}
+{"time":"2026-09-30T15:55:30.0864701+00:00","state":"RunningGhidra","message":""}
+{"time":"2026-09-30T15:55:30.0992027+00:00","state":"RunningGhidra","message":"Searching 44 paths for library API-MS-WIN-CORE-STRING-OBSOLETE-L1-1-0.DLL..."}
+{"time":"2026-09-30T15:55:30.1054072+00:00","state":"RunningGhidra","message":"Library not found."}
+{"time":"2026-09-30T15:55:30.1120227+00:00","state":"RunningGhidra","message":"------------------------------------------------"}
+{"time":"2026-09-30T15:55:30.118528+00:00","state":"RunningGhidra","message":""}
+{"time":"2026-09-30T15:55:30.1245403+00:00","state":"RunningGhidra","message":"Searching 44 paths for library API-MS-WIN-CORE-SYNCH-L1-1-0.DLL..."}
+{"time":"2026-09-30T15:55:30.1311733+00:00","state":"RunningGhidra","message":"Loading file:///C:/Program Files/Eclipse Adoptium/jdk-25.0.2.10-hotspot/bin/api-ms-win-core-synch-l1-1-0.dll?MD5=436ea0237ed040513ec887046418faaa..."}
+{"time":"2026-09-30T15:55:30.1379175+00:00","state":"RunningGhidra","message":"Using existing exports file: C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\symbols\\win64\\api-ms-win-core-synch-l1-1-0.exports"}
+{"time":"2026-09-30T15:55:30.14486+00:00","state":"RunningGhidra","message":"Library not saved to project."}
+{"time":"2026-09-30T15:55:30.1529482+00:00","state":"RunningGhidra","message":"------------------------------------------------"}
+{"time":"2026-09-30T15:55:30.1602855+00:00","state":"RunningGhidra","message":""}
+{"time":"2026-09-30T15:55:30.1674154+00:00","state":"RunningGhidra","message":"Searching 44 paths for library API-MS-WIN-CORE-SYSINFO-L1-1-0.DLL..."}
+{"time":"2026-09-30T15:55:30.1802357+00:00","state":"RunningGhidra","message":"Loading file:///C:/Program Files/Eclipse Adoptium/jdk-25.0.2.10-hotspot/bin/api-ms-win-core-sysinfo-l1-1-0.dll?MD5=b65bf5ef316880fd8d21e1b34eb5c8a9..."}
+{"time":"2026-09-30T15:55:30.1886921+00:00","state":"RunningGhidra","message":"Using existing exports file: C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\symbols\\win64\\api-ms-win-core-sysinfo-l1-1-0.exports"}
+{"time":"2026-09-30T15:55:30.1954312+00:00","state":"RunningGhidra","message":"Library not saved to project."}
+{"time":"2026-09-30T15:55:30.2025451+00:00","state":"RunningGhidra","message":"------------------------------------------------"}
+{"time":"2026-09-30T15:55:30.2092361+00:00","state":"RunningGhidra","message":""}
+{"time":"2026-09-30T15:55:30.2158807+00:00","state":"RunningGhidra","message":"Searching 44 paths for library API-MS-WIN-CORE-THREADPOOL-L1-2-0.DLL..."}
+{"time":"2026-09-30T15:55:30.2226008+00:00","state":"RunningGhidra","message":"Library not found."}
+{"time":"2026-09-30T15:55:30.2290046+00:00","state":"RunningGhidra","message":"------------------------------------------------"}
+{"time":"2026-09-30T15:55:30.2350001+00:00","state":"RunningGhidra","message":""}
+{"time":"2026-09-30T15:55:30.2406938+00:00","state":"RunningGhidra","message":"Searching 44 paths for library API-MS-WIN-CORE-WINDOWSERRORREPORTING-L1-1-3.DLL..."}
+{"time":"2026-09-30T15:55:30.2461946+00:00","state":"RunningGhidra","message":"Library not found."}
+{"time":"2026-09-30T15:55:30.2530587+00:00","state":"RunningGhidra","message":"------------------------------------------------"}
+{"time":"2026-09-30T15:55:30.2583437+00:00","state":"RunningGhidra","message":""}
+{"time":"2026-09-30T15:55:30.2643297+00:00","state":"RunningGhidra","message":"Searching 44 paths for library API-MS-WIN-CORE-WINRT-ERROR-L1-1-0.DLL..."}
+{"time":"2026-09-30T15:55:30.2709471+00:00","state":"RunningGhidra","message":"Library not found."}
+{"time":"2026-09-30T15:55:30.2769738+00:00","state":"RunningGhidra","message":"------------------------------------------------"}
+{"time":"2026-09-30T15:55:30.2830347+00:00","state":"RunningGhidra","message":""}
+{"time":"2026-09-30T15:55:30.2878124+00:00","state":"RunningGhidra","message":"Searching 44 paths for library API-MS-WIN-CORE-WINRT-ERROR-L1-1-1.DLL..."}
+{"time":"2026-09-30T15:55:30.2930853+00:00","state":"RunningGhidra","message":"Library not found."}
+{"time":"2026-09-30T15:55:30.2999967+00:00","state":"RunningGhidra","message":"------------------------------------------------"}
+{"time":"2026-09-30T15:55:30.3072844+00:00","state":"RunningGhidra","message":""}
+{"time":"2026-09-30T15:55:30.3141336+00:00","state":"RunningGhidra","message":"Searching 44 paths for library API-MS-WIN-CORE-WINRT-L1-1-0.DLL..."}
+{"time":"2026-09-30T15:55:30.3204719+00:00","state":"RunningGhidra","message":"Library not found."}
+{"time":"2026-09-30T15:55:30.3270537+00:00","state":"RunningGhidra","message":"------------------------------------------------"}
+{"time":"2026-09-30T15:55:30.3329832+00:00","state":"RunningGhidra","message":""}
+{"time":"2026-09-30T15:55:30.3396611+00:00","state":"RunningGhidra","message":"Searching 44 paths for library API-MS-WIN-CORE-WINRT-STRING-L1-1-0.DLL..."}
+{"time":"2026-09-30T15:55:30.3465338+00:00","state":"RunningGhidra","message":"Library not found."}
+{"time":"2026-09-30T15:55:30.3539055+00:00","state":"RunningGhidra","message":"------------------------------------------------"}
+{"time":"2026-09-30T15:55:30.3604203+00:00","state":"RunningGhidra","message":""}
+{"time":"2026-09-30T15:55:30.3670846+00:00","state":"RunningGhidra","message":"Searching 44 paths for library API-MS-WIN-CRT-PRIVATE-L1-1-0.DLL..."}
+{"time":"2026-09-30T15:55:30.3740506+00:00","state":"RunningGhidra","message":"Loading file:///C:/Program Files/Eclipse Adoptium/jdk-25.0.2.10-hotspot/bin/api-ms-win-crt-private-l1-1-0.dll?MD5=c830c6447e6de3d6a611702c591831e3..."}
+{"time":"2026-09-30T15:55:30.3809833+00:00","state":"RunningGhidra","message":"Using existing exports file: C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\symbols\\win64\\api-ms-win-crt-private-l1-1-0.exports"}
+{"time":"2026-09-30T15:55:30.3886069+00:00","state":"RunningGhidra","message":"Library not saved to project."}
+{"time":"2026-09-30T15:55:30.396111+00:00","state":"RunningGhidra","message":"------------------------------------------------"}
+{"time":"2026-09-30T15:55:30.4038049+00:00","state":"RunningGhidra","message":""}
+{"time":"2026-09-30T15:55:30.4120563+00:00","state":"RunningGhidra","message":"Searching 44 paths for library API-MS-WIN-CRT-RUNTIME-L1-1-0.DLL..."}
+{"time":"2026-09-30T15:55:30.419005+00:00","state":"RunningGhidra","message":"Loading file:///C:/Program Files/Eclipse Adoptium/jdk-25.0.2.10-hotspot/bin/api-ms-win-crt-runtime-l1-1-0.dll?MD5=bbaa58e9e1abdf7d8c4c69652d29d789..."}
+{"time":"2026-09-30T15:55:30.4270378+00:00","state":"RunningGhidra","message":"Using existing exports file: C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\symbols\\win64\\api-ms-win-crt-runtime-l1-1-0.exports"}
+{"time":"2026-09-30T15:55:30.4338558+00:00","state":"RunningGhidra","message":"Library not saved to project."}
+{"time":"2026-09-30T15:55:30.4407555+00:00","state":"RunningGhidra","message":"------------------------------------------------"}
+{"time":"2026-09-30T15:55:30.447899+00:00","state":"RunningGhidra","message":""}
+{"time":"2026-09-30T15:55:30.5805818+00:00","state":"RunningGhidra","message":"Searching 44 paths for library API-MS-WIN-CRT-STRING-L1-1-0.DLL..."}
+{"time":"2026-09-30T15:55:30.5874248+00:00","state":"RunningGhidra","message":"Loading file:///C:/Program Files/Eclipse Adoptium/jdk-25.0.2.10-hotspot/bin/api-ms-win-crt-string-l1-1-0.dll?MD5=639b1fb35cb61ba633eb1791b750631f..."}
+{"time":"2026-09-30T15:55:30.5944561+00:00","state":"RunningGhidra","message":"Using existing exports file: C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\symbols\\win64\\api-ms-win-crt-string-l1-1-0.exports"}
+{"time":"2026-09-30T15:55:30.6005012+00:00","state":"RunningGhidra","message":"Library not saved to project."}
+{"time":"2026-09-30T15:55:30.6071635+00:00","state":"RunningGhidra","message":"------------------------------------------------"}
+{"time":"2026-09-30T15:55:30.6142715+00:00","state":"RunningGhidra","message":""}
+{"time":"2026-09-30T15:55:30.619944+00:00","state":"RunningGhidra","message":"Searching 44 paths for library API-MS-WIN-EVENTING-PROVIDER-L1-1-0.DLL..."}
+{"time":"2026-09-30T15:55:30.6254584+00:00","state":"RunningGhidra","message":"Library not found."}
+{"time":"2026-09-30T15:55:30.631998+00:00","state":"RunningGhidra","message":"------------------------------------------------"}
+{"time":"2026-09-30T15:55:30.6385945+00:00","state":"RunningGhidra","message":""}
+{"time":"2026-09-30T15:55:30.6441792+00:00","state":"RunningGhidra","message":"Searching 44 paths for library API-MS-WIN-SECURITY-BASE-L1-1-0.DLL..."}
+{"time":"2026-09-30T15:55:30.6496049+00:00","state":"RunningGhidra","message":"Library not found."}
+{"time":"2026-09-30T15:55:30.6566787+00:00","state":"RunningGhidra","message":"------------------------------------------------"}
+{"time":"2026-09-30T15:55:30.6631175+00:00","state":"RunningGhidra","message":""}
+{"time":"2026-09-30T15:55:30.6721493+00:00","state":"RunningGhidra","message":"Searching 44 paths for library API-MS-WIN-SHCORE-OBSOLETE-L1-1-0.DLL..."}
+{"time":"2026-09-30T15:55:30.6779388+00:00","state":"RunningGhidra","message":"Library not found."}
+{"time":"2026-09-30T15:55:30.6833579+00:00","state":"RunningGhidra","message":"------------------------------------------------"}
+{"time":"2026-09-30T15:55:30.690818+00:00","state":"RunningGhidra","message":""}
+{"time":"2026-09-30T15:55:30.6982702+00:00","state":"RunningGhidra","message":"Searching 44 paths for library API-MS-WIN-SHCORE-PATH-L1-1-0.DLL..."}
+{"time":"2026-09-30T15:55:30.7044936+00:00","state":"RunningGhidra","message":"Library not found."}
+{"time":"2026-09-30T15:55:30.7119449+00:00","state":"RunningGhidra","message":"------------------------------------------------"}
+{"time":"2026-09-30T15:55:30.7177793+00:00","state":"RunningGhidra","message":""}
+{"time":"2026-09-30T15:55:30.7241463+00:00","state":"RunningGhidra","message":"Searching 44 paths for library API-MS-WIN-SHCORE-SCALING-L1-1-1.DLL..."}
+{"time":"2026-09-30T15:55:30.7305534+00:00","state":"RunningGhidra","message":"Library not found."}
+{"time":"2026-09-30T15:55:30.7372624+00:00","state":"RunningGhidra","message":"------------------------------------------------"}
+{"time":"2026-09-30T15:55:30.7452511+00:00","state":"RunningGhidra","message":""}
+{"time":"2026-09-30T15:55:30.7517915+00:00","state":"RunningGhidra","message":"Searching 44 paths for library COMCTL32.DLL..."}
+{"time":"2026-09-30T15:55:30.7577348+00:00","state":"RunningGhidra","message":"Skipping library which is the wrong architecture: file:///C:/Windows/SysWOW64/comctl32.dll"}
+{"time":"2026-09-30T15:55:30.7656547+00:00","state":"RunningGhidra","message":"Loading file:///C:/Windows/System32/comctl32.dll?MD5=bf5700e5b0ddda53517366b35bcb720a..."}
+{"time":"2026-09-30T15:55:30.772253+00:00","state":"RunningGhidra","message":"Using existing exports file: C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\symbols\\win64\\comctl32.exports"}
+{"time":"2026-09-30T15:55:30.778978+00:00","state":"RunningGhidra","message":"WARNING: Existing exports file may not be an exact match."}
+{"time":"2026-09-30T15:55:30.7857924+00:00","state":"RunningGhidra","message":"Library not saved to project."}
+{"time":"2026-09-30T15:55:30.793418+00:00","state":"RunningGhidra","message":"------------------------------------------------"}
+{"time":"2026-09-30T15:55:30.800319+00:00","state":"RunningGhidra","message":""}
+{"time":"2026-09-30T15:55:30.8091857+00:00","state":"RunningGhidra","message":"Searching 44 paths for library COMDLG32.DLL..."}
+{"time":"2026-09-30T15:55:30.816587+00:00","state":"RunningGhidra","message":"Skipping library which is the wrong architecture: file:///C:/Windows/SysWOW64/comdlg32.dll"}
+{"time":"2026-09-30T15:55:30.8253381+00:00","state":"RunningGhidra","message":"Loading file:///C:/Windows/System32/comdlg32.dll?MD5=3975b72da5179678e81c59ff68368f08..."}
+{"time":"2026-09-30T15:55:30.8333685+00:00","state":"RunningGhidra","message":"Using existing exports file: C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\symbols\\win64\\comdlg32.exports"}
+{"time":"2026-09-30T15:55:30.8408305+00:00","state":"RunningGhidra","message":"WARNING: Existing exports file may not be an exact match."}
+{"time":"2026-09-30T15:55:30.8487783+00:00","state":"RunningGhidra","message":"Library not saved to project."}
+{"time":"2026-09-30T15:55:30.855423+00:00","state":"RunningGhidra","message":"------------------------------------------------"}
+{"time":"2026-09-30T15:55:30.8618613+00:00","state":"RunningGhidra","message":""}
+{"time":"2026-09-30T15:55:30.8680144+00:00","state":"RunningGhidra","message":"Searching 44 paths for library GDI32.DLL..."}
+{"time":"2026-09-30T15:55:30.8744088+00:00","state":"RunningGhidra","message":"Skipping library which is the wrong architecture: file:///C:/Windows/SysWOW64/gdi32.dll"}
+{"time":"2026-09-30T15:55:30.8806065+00:00","state":"RunningGhidra","message":"Loading file:///C:/Windows/System32/gdi32.dll?MD5=15928ba7f26cf88a9ce75d713a45ce24..."}
+{"time":"2026-09-30T15:55:30.8873233+00:00","state":"RunningGhidra","message":"Using existing exports file: C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\symbols\\win64\\gdi32.exports"}
+{"time":"2026-09-30T15:55:30.8944395+00:00","state":"RunningGhidra","message":"WARNING: Existing exports file may not be an exact match."}
+{"time":"2026-09-30T15:55:30.9009782+00:00","state":"RunningGhidra","message":"Library not saved to project."}
+{"time":"2026-09-30T15:55:30.9080875+00:00","state":"RunningGhidra","message":"------------------------------------------------"}
+{"time":"2026-09-30T15:55:30.9148644+00:00","state":"RunningGhidra","message":""}
+{"time":"2026-09-30T15:55:30.9211858+00:00","state":"RunningGhidra","message":"Searching 44 paths for library PROPSYS.DLL..."}
+{"time":"2026-09-30T15:55:30.9280939+00:00","state":"RunningGhidra","message":"Skipping library which is the wrong architecture: file:///C:/Windows/SysWOW64/propsys.dll"}
+{"time":"2026-09-30T15:55:30.933676+00:00","state":"RunningGhidra","message":"Loading file:///C:/Windows/System32/propsys.dll?MD5=36f09f16ed54622d605fce89f3092c0c..."}
+{"time":"2026-09-30T15:55:30.9392466+00:00","state":"RunningGhidra","message":"Using existing exports file: C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\symbols\\win64\\propsys.exports"}
+{"time":"2026-09-30T15:55:30.9469604+00:00","state":"RunningGhidra","message":"WARNING: Existing exports file may not be an exact match."}
+{"time":"2026-09-30T15:55:30.953204+00:00","state":"RunningGhidra","message":"Library not saved to project."}
+{"time":"2026-09-30T15:55:30.9591518+00:00","state":"RunningGhidra","message":"------------------------------------------------"}
+{"time":"2026-09-30T15:55:30.9651639+00:00","state":"RunningGhidra","message":""}
+{"time":"2026-09-30T15:55:30.9713362+00:00","state":"RunningGhidra","message":"Searching 44 paths for library SHELL32.DLL..."}
+{"time":"2026-09-30T15:55:30.9775573+00:00","state":"RunningGhidra","message":"Skipping library which is the wrong architecture: file:///C:/Windows/SysWOW64/shell32.dll"}
+{"time":"2026-09-30T15:55:30.9829846+00:00","state":"RunningGhidra","message":"Loading file:///C:/Windows/System32/shell32.dll?MD5=09c85e822918ae574a1caa0f6943354a..."}
+{"time":"2026-09-30T15:55:30.9884205+00:00","state":"RunningGhidra","message":"Using existing exports file: C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\symbols\\win64\\shell32.exports"}
+{"time":"2026-09-30T15:55:30.9946233+00:00","state":"RunningGhidra","message":"WARNING: Existing exports file may not be an exact match."}
+{"time":"2026-09-30T15:55:31.0010236+00:00","state":"RunningGhidra","message":"Library not saved to project."}
+{"time":"2026-09-30T15:55:31.0076351+00:00","state":"RunningGhidra","message":"------------------------------------------------"}
+{"time":"2026-09-30T15:55:31.0149062+00:00","state":"RunningGhidra","message":""}
+{"time":"2026-09-30T15:55:31.0264133+00:00","state":"RunningGhidra","message":"Searching 44 paths for library URLMON.DLL..."}
+{"time":"2026-09-30T15:55:31.0335062+00:00","state":"RunningGhidra","message":"Skipping library which is the wrong architecture: file:///C:/Windows/SysWOW64/urlmon.dll"}
+{"time":"2026-09-30T15:55:31.0400775+00:00","state":"RunningGhidra","message":"Loading file:///C:/Windows/System32/urlmon.dll?MD5=59c178f6507bad8dd7fe11ddf3d55cf8..."}
+{"time":"2026-09-30T15:55:31.0467704+00:00","state":"RunningGhidra","message":"[urlmon.dll]: failed to create WEVTResource at 180188d50: Failed to resolve data length for WEVTResource"}
+{"time":"2026-09-30T15:55:31.0539124+00:00","state":"RunningGhidra","message":"Using existing exports file: C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\symbols\\win64\\urlmon.exports"}
+{"time":"2026-09-30T15:55:31.0614772+00:00","state":"RunningGhidra","message":"WARNING: Existing exports file may not be an exact match."}
+{"time":"2026-09-30T15:55:31.067938+00:00","state":"RunningGhidra","message":"Library not saved to project."}
+{"time":"2026-09-30T15:55:31.0746459+00:00","state":"RunningGhidra","message":"------------------------------------------------"}
+{"time":"2026-09-30T15:55:31.0812102+00:00","state":"RunningGhidra","message":""}
+{"time":"2026-09-30T15:55:31.2154928+00:00","state":"RunningGhidra","message":"Searching 44 paths for library USER32.DLL..."}
+{"time":"2026-09-30T15:55:31.2251067+00:00","state":"RunningGhidra","message":"Skipping library which is the wrong architecture: file:///C:/Windows/SysWOW64/user32.dll"}
+{"time":"2026-09-30T15:55:31.2308655+00:00","state":"RunningGhidra","message":"Loading file:///C:/Windows/System32/user32.dll?MD5=57c789795a3089648fe8e67f19661977..."}
+{"time":"2026-09-30T15:55:31.2365353+00:00","state":"RunningGhidra","message":"[user32.dll]: failed to create WEVTResource at 1800efa70: Failed to resolve data length for WEVTResource"}
+{"time":"2026-09-30T15:55:31.2427229+00:00","state":"RunningGhidra","message":"Using existing exports file: C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\symbols\\win64\\user32.exports"}
+{"time":"2026-09-30T15:55:31.2479353+00:00","state":"RunningGhidra","message":"WARNING: Existing exports file may not be an exact match."}
+{"time":"2026-09-30T15:55:31.2535499+00:00","state":"RunningGhidra","message":"Library not saved to project."}
+{"time":"2026-09-30T15:55:31.2597719+00:00","state":"RunningGhidra","message":"------------------------------------------------"}
+{"time":"2026-09-30T15:55:31.2672458+00:00","state":"RunningGhidra","message":""}
+{"time":"2026-09-30T15:55:31.2733749+00:00","state":"RunningGhidra","message":"Searching 44 paths for library WINSPOOL.DRV..."}
+{"time":"2026-09-30T15:55:31.279299+00:00","state":"RunningGhidra","message":"Skipping library which is the wrong architecture: file:///C:/Windows/SysWOW64/winspool.drv"}
+{"time":"2026-09-30T15:55:31.2849328+00:00","state":"RunningGhidra","message":"Loading file:///C:/Windows/System32/winspool.drv?MD5=d5ea510148ee4a5a3b2bdfe243e0e694..."}
+{"time":"2026-09-30T15:55:31.2903288+00:00","state":"RunningGhidra","message":"[winspool.drv]: failed to create WEVTResource at 1800984b8: Failed to resolve data length for WEVTResource"}
+{"time":"2026-09-30T15:55:31.2961581+00:00","state":"RunningGhidra","message":"Using existing exports file: C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\symbols\\win64\\winspool.exports"}
+{"time":"2026-09-30T15:55:31.3027869+00:00","state":"RunningGhidra","message":"WARNING: Existing exports file may not be an exact match."}
+{"time":"2026-09-30T15:55:31.3109744+00:00","state":"RunningGhidra","message":"Library not saved to project."}
+{"time":"2026-09-30T15:55:31.3188733+00:00","state":"RunningGhidra","message":"------------------------------------------------"}
+{"time":"2026-09-30T15:55:31.3256713+00:00","state":"RunningGhidra","message":""}
+{"time":"2026-09-30T15:55:31.3322261+00:00","state":"RunningGhidra","message":"Applying C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\symbols\\win64\\gdi32.exports"}
+{"time":"2026-09-30T15:55:31.3386496+00:00","state":"RunningGhidra","message":"Applying C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\symbols\\win64\\user32.exports"}
+{"time":"2026-09-30T15:55:31.3447664+00:00","state":"RunningGhidra","message":"Applying C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\symbols\\win64\\api-ms-win-crt-string-l1-1-0.exports"}
+{"time":"2026-09-30T15:55:31.3511825+00:00","state":"RunningGhidra","message":"Applying C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\symbols\\win64\\api-ms-win-crt-runtime-l1-1-0.exports"}
+{"time":"2026-09-30T15:55:31.3605538+00:00","state":"RunningGhidra","message":"Applying C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\symbols\\win64\\api-ms-win-crt-private-l1-1-0.exports"}
+{"time":"2026-09-30T15:55:31.3696451+00:00","state":"RunningGhidra","message":"Applying C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\symbols\\win64\\api-ms-win-core-synch-l1-1-0.exports"}
+{"time":"2026-09-30T15:55:31.377874+00:00","state":"RunningGhidra","message":"Applying C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\symbols\\win64\\api-ms-win-core-heap-l1-1-0.exports"}
+{"time":"2026-09-30T15:55:31.3865162+00:00","state":"RunningGhidra","message":"Applying C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\symbols\\win64\\api-ms-win-core-errorhandling-l1-1-0.exports"}
+{"time":"2026-09-30T15:55:31.3955391+00:00","state":"RunningGhidra","message":"Applying C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\symbols\\win64\\api-ms-win-core-processthreads-l1-1-0.exports"}
+{"time":"2026-09-30T15:55:31.4059856+00:00","state":"RunningGhidra","message":"Applying C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\symbols\\win64\\api-ms-win-core-localization-l1-2-0.exports"}
+{"time":"2026-09-30T15:55:31.4144236+00:00","state":"RunningGhidra","message":"Applying C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\symbols\\win64\\api-ms-win-core-debug-l1-1-0.exports"}
+{"time":"2026-09-30T15:55:31.4224713+00:00","state":"RunningGhidra","message":"Applying C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\symbols\\win64\\api-ms-win-core-handle-l1-1-0.exports"}
+{"time":"2026-09-30T15:55:31.4314584+00:00","state":"RunningGhidra","message":"Applying C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\symbols\\win64\\api-ms-win-core-file-l1-1-0.exports"}
+{"time":"2026-09-30T15:55:31.4399318+00:00","state":"RunningGhidra","message":"Applying C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\symbols\\win64\\api-ms-win-core-processenvironment-l1-1-0.exports"}
+{"time":"2026-09-30T15:55:31.4496713+00:00","state":"RunningGhidra","message":"Applying C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\symbols\\win64\\api-ms-win-core-string-l1-1-0.exports"}
+{"time":"2026-09-30T15:55:31.4590246+00:00","state":"RunningGhidra","message":"Applying C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\symbols\\win64\\api-ms-win-core-sysinfo-l1-1-0.exports"}
+{"time":"2026-09-30T15:55:31.4680508+00:00","state":"RunningGhidra","message":"Applying C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\symbols\\win64\\api-ms-win-core-datetime-l1-1-0.exports"}
+{"time":"2026-09-30T15:55:31.4770103+00:00","state":"RunningGhidra","message":"Applying C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\symbols\\win64\\api-ms-win-core-memory-l1-1-0.exports"}
+{"time":"2026-09-30T15:55:31.4882648+00:00","state":"RunningGhidra","message":"Applying C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\symbols\\win64\\api-ms-win-core-rtlsupport-l1-1-0.exports"}
+{"time":"2026-09-30T15:55:31.4987763+00:00","state":"RunningGhidra","message":"Applying C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\symbols\\win64\\api-ms-win-core-processthreads-l1-1-1.exports"}
+{"time":"2026-09-30T15:55:31.5074282+00:00","state":"RunningGhidra","message":"Applying C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\symbols\\win64\\api-ms-win-core-profile-l1-1-0.exports"}
+{"time":"2026-09-30T15:55:31.5151597+00:00","state":"RunningGhidra","message":"Applying C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\symbols\\win64\\api-ms-win-core-interlocked-l1-1-0.exports"}
+{"time":"2026-09-30T15:55:31.5230459+00:00","state":"RunningGhidra","message":"Applying C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\symbols\\win64\\comctl32.exports"}
+{"time":"2026-09-30T15:55:31.5307735+00:00","state":"RunningGhidra","message":"Unable to locate symbol [Ordinal_381] in [C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\symbols\\win64\\comctl32.exports]. Please verify the version is correct."}
+{"time":"2026-09-30T15:55:31.6501311+00:00","state":"RunningGhidra","message":"Unable to locate symbol [Ordinal_345] in [C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\symbols\\win64\\comctl32.exports]. Please verify the version is correct."}
+{"time":"2026-09-30T15:55:31.6579857+00:00","state":"RunningGhidra","message":"Applying C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\symbols\\win64\\advapi32.exports"}
+{"time":"2026-09-30T15:55:31.666295+00:00","state":"RunningGhidra","message":"Applying C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\symbols\\win64\\comdlg32.exports"}
+{"time":"2026-09-30T15:55:31.6738823+00:00","state":"RunningGhidra","message":"Applying C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\symbols\\win64\\propsys.exports"}
+{"time":"2026-09-30T15:55:31.6826723+00:00","state":"RunningGhidra","message":"Applying C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\symbols\\win64\\shell32.exports"}
+{"time":"2026-09-30T15:55:31.6923231+00:00","state":"RunningGhidra","message":"Applying C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\symbols\\win64\\winspool.exports"}
+{"time":"2026-09-30T15:55:31.700814+00:00","state":"RunningGhidra","message":"Applying C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\symbols\\win64\\urlmon.exports"}
+{"time":"2026-09-30T15:55:31.7094682+00:00","state":"RunningGhidra","message":"Linking the External Programs of \u0027notepad.exe\u0027 to imported libraries..."}
+{"time":"2026-09-30T15:55:31.7188981+00:00","state":"RunningGhidra","message":"  [GDI32.DLL] -\u003E not found in project"}
+{"time":"2026-09-30T15:55:31.7283891+00:00","state":"RunningGhidra","message":"  [USER32.DLL] -\u003E not found in project"}
+{"time":"2026-09-30T15:55:31.7373182+00:00","state":"RunningGhidra","message":"  [API-MS-WIN-CRT-STRING-L1-1-0.DLL] -\u003E not found in project"}
+{"time":"2026-09-30T15:55:31.7456998+00:00","state":"RunningGhidra","message":"  [API-MS-WIN-CRT-RUNTIME-L1-1-0.DLL] -\u003E not found in project"}
+{"time":"2026-09-30T15:55:31.7528814+00:00","state":"RunningGhidra","message":"  [API-MS-WIN-CRT-PRIVATE-L1-1-0.DLL] -\u003E not found in project"}
+{"time":"2026-09-30T15:55:31.7607443+00:00","state":"RunningGhidra","message":"  [API-MS-WIN-CORE-LIBRARYLOADER-L1-2-0.DLL] -\u003E not found in project"}
+{"time":"2026-09-30T15:55:31.7687358+00:00","state":"RunningGhidra","message":"  [API-MS-WIN-CORE-SYNCH-L1-1-0.DLL] -\u003E not found in project"}
+{"time":"2026-09-30T15:55:31.7769401+00:00","state":"RunningGhidra","message":"  [API-MS-WIN-CORE-HEAP-L1-1-0.DLL] -\u003E not found in project"}
+{"time":"2026-09-30T15:55:31.7846613+00:00","state":"RunningGhidra","message":"  [API-MS-WIN-CORE-ERRORHANDLING-L1-1-0.DLL] -\u003E not found in project"}
+{"time":"2026-09-30T15:55:31.7929593+00:00","state":"RunningGhidra","message":"  [API-MS-WIN-CORE-THREADPOOL-L1-2-0.DLL] -\u003E not found in project"}
+{"time":"2026-09-30T15:55:31.8010178+00:00","state":"RunningGhidra","message":"  [API-MS-WIN-CORE-PROCESSTHREADS-L1-1-0.DLL] -\u003E not found in project"}
+{"time":"2026-09-30T15:55:31.8085415+00:00","state":"RunningGhidra","message":"  [API-MS-WIN-CORE-LOCALIZATION-L1-2-0.DLL] -\u003E not found in project"}
+{"time":"2026-09-30T15:55:31.8162261+00:00","state":"RunningGhidra","message":"  [API-MS-WIN-CORE-DEBUG-L1-1-0.DLL] -\u003E not found in project"}
+{"time":"2026-09-30T15:55:31.8239916+00:00","state":"RunningGhidra","message":"  [API-MS-WIN-CORE-HANDLE-L1-1-0.DLL] -\u003E not found in project"}
+{"time":"2026-09-30T15:55:31.8315824+00:00","state":"RunningGhidra","message":"  [API-MS-WIN-CORE-COM-L1-1-0.DLL] -\u003E not found in project"}
+{"time":"2026-09-30T15:55:31.8389617+00:00","state":"RunningGhidra","message":"  [API-MS-WIN-CORE-REGISTRY-L1-1-1.DLL] -\u003E not found in project"}
+{"time":"2026-09-30T15:55:31.8458496+00:00","state":"RunningGhidra","message":"  [API-MS-WIN-CORE-LARGEINTEGER-L1-1-0.DLL] -\u003E not found in project"}
+{"time":"2026-09-30T15:55:31.8528061+00:00","state":"RunningGhidra","message":"  [API-MS-WIN-CORE-SHLWAPI-LEGACY-L1-1-0.DLL] -\u003E not found in project"}
+{"time":"2026-09-30T15:55:31.8595687+00:00","state":"RunningGhidra","message":"  [API-MS-WIN-CORE-WINRT-STRING-L1-1-0.DLL] -\u003E not found in project"}
+{"time":"2026-09-30T15:55:31.8667721+00:00","state":"RunningGhidra","message":"  [API-MS-WIN-CORE-REGISTRY-L1-1-0.DLL] -\u003E not found in project"}
+{"time":"2026-09-30T15:55:31.8740155+00:00","state":"RunningGhidra","message":"  [API-MS-WIN-CORE-WINRT-L1-1-0.DLL] -\u003E not found in project"}
+{"time":"2026-09-30T15:55:31.8811781+00:00","state":"RunningGhidra","message":"  [API-MS-WIN-CORE-HEAP-L2-1-0.DLL] -\u003E not found in project"}
+{"time":"2026-09-30T15:55:31.8883193+00:00","state":"RunningGhidra","message":"  [API-MS-WIN-CORE-FILE-L1-1-0.DLL] -\u003E not found in project"}
+{"time":"2026-09-30T15:55:31.8947213+00:00","state":"RunningGhidra","message":"  [API-MS-WIN-SHCORE-OBSOLETE-L1-1-0.DLL] -\u003E not found in project"}
+{"time":"2026-09-30T15:55:31.90268+00:00","state":"RunningGhidra","message":"  [API-MS-WIN-SECURITY-BASE-L1-1-0.DLL] -\u003E not found in project"}
+{"time":"2026-09-30T15:55:31.9100889+00:00","state":"RunningGhidra","message":"  [API-MS-WIN-CORE-PROCESSENVIRONMENT-L1-1-0.DLL] -\u003E not found in project"}
+{"time":"2026-09-30T15:55:31.9180538+00:00","state":"RunningGhidra","message":"  [API-MS-WIN-CORE-STRING-L1-1-0.DLL] -\u003E not found in project"}
+{"time":"2026-09-30T15:55:31.9254734+00:00","state":"RunningGhidra","message":"  [API-MS-WIN-CORE-PSAPI-L1-1-0.DLL] -\u003E not found in project"}
+{"time":"2026-09-30T15:55:31.9333951+00:00","state":"RunningGhidra","message":"  [API-MS-WIN-CORE-LOCALIZATION-OBSOLETE-L1-2-0.DLL] -\u003E not found in project"}
+{"time":"2026-09-30T15:55:31.9425462+00:00","state":"RunningGhidra","message":"  [API-MS-WIN-CORE-SYSINFO-L1-1-0.DLL] -\u003E not found in project"}
+{"time":"2026-09-30T15:55:31.9520311+00:00","state":"RunningGhidra","message":"  [API-MS-WIN-CORE-DATETIME-L1-1-0.DLL] -\u003E not found in project"}
+{"time":"2026-09-30T15:55:31.9618105+00:00","state":"RunningGhidra","message":"  [API-MS-WIN-SHCORE-PATH-L1-1-0.DLL] -\u003E not found in project"}
+{"time":"2026-09-30T15:55:31.9741411+00:00","state":"RunningGhidra","message":"  [API-MS-WIN-CORE-MEMORY-L1-1-0.DLL] -\u003E not found in project"}
+{"time":"2026-09-30T15:55:31.9851298+00:00","state":"RunningGhidra","message":"  [API-MS-WIN-CORE-REGISTRY-L2-1-0.DLL] -\u003E not found in project"}
+{"time":"2026-09-30T15:55:31.9963546+00:00","state":"RunningGhidra","message":"  [API-MS-WIN-CORE-HEAP-OBSOLETE-L1-1-0.DLL] -\u003E not found in project"}
+{"time":"2026-09-30T15:55:32.0073515+00:00","state":"RunningGhidra","message":"  [API-MS-WIN-SHCORE-SCALING-L1-1-1.DLL] -\u003E not found in project"}
+{"time":"2026-09-30T15:55:32.0175444+00:00","state":"RunningGhidra","message":"  [API-MS-WIN-CORE-STRING-OBSOLETE-L1-1-0.DLL] -\u003E not found in project"}
+{"time":"2026-09-30T15:55:32.0277656+00:00","state":"RunningGhidra","message":"  [API-MS-WIN-CORE-WINDOWSERRORREPORTING-L1-1-3.DLL] -\u003E not found in project"}
+{"time":"2026-09-30T15:55:32.0376356+00:00","state":"RunningGhidra","message":"  [API-MS-WIN-EVENTING-PROVIDER-L1-1-0.DLL] -\u003E not found in project"}
+{"time":"2026-09-30T15:55:32.0463387+00:00","state":"RunningGhidra","message":"  [API-MS-WIN-BASE-UTIL-L1-1-0.DLL] -\u003E not found in project"}
+{"time":"2026-09-30T15:55:32.055784+00:00","state":"RunningGhidra","message":"  [API-MS-WIN-CORE-LIBRARYLOADER-L1-2-1.DLL] -\u003E not found in project"}
+{"time":"2026-09-30T15:55:32.067866+00:00","state":"RunningGhidra","message":"  [API-MS-WIN-CORE-RTLSUPPORT-L1-1-0.DLL] -\u003E not found in project"}
+{"time":"2026-09-30T15:55:32.0799453+00:00","state":"RunningGhidra","message":"  [API-MS-WIN-CORE-PROCESSTHREADS-L1-1-1.DLL] -\u003E not found in project"}
+{"time":"2026-09-30T15:55:32.0885699+00:00","state":"RunningGhidra","message":"  [API-MS-WIN-CORE-PROFILE-L1-1-0.DLL] -\u003E not found in project"}
+{"time":"2026-09-30T15:55:32.0971309+00:00","state":"RunningGhidra","message":"  [API-MS-WIN-CORE-INTERLOCKED-L1-1-0.DLL] -\u003E not found in project"}
+{"time":"2026-09-30T15:55:32.1053352+00:00","state":"RunningGhidra","message":"  [API-MS-WIN-CORE-WINRT-ERROR-L1-1-0.DLL] -\u003E not found in project"}
+{"time":"2026-09-30T15:55:32.1132534+00:00","state":"RunningGhidra","message":"  [API-MS-WIN-CORE-WINRT-ERROR-L1-1-1.DLL] -\u003E not found in project"}
+{"time":"2026-09-30T15:55:32.1222314+00:00","state":"RunningGhidra","message":"  [COMCTL32.DLL] -\u003E not found in project"}
+{"time":"2026-09-30T15:55:32.1338196+00:00","state":"RunningGhidra","message":"  [API-MS-WIN-CORE-DELAYLOAD-L1-1-1.DLL] -\u003E not found in project"}
+{"time":"2026-09-30T15:55:32.1441745+00:00","state":"RunningGhidra","message":"  [API-MS-WIN-CORE-DELAYLOAD-L1-1-0.DLL] -\u003E not found in project"}
+{"time":"2026-09-30T15:55:32.1553795+00:00","state":"RunningGhidra","message":"  [ADVAPI32.DLL] -\u003E not found in project"}
+{"time":"2026-09-30T15:55:32.1661659+00:00","state":"RunningGhidra","message":"  [COMDLG32.DLL] -\u003E not found in project"}
+{"time":"2026-09-30T15:55:32.3045971+00:00","state":"RunningGhidra","message":"  [PROPSYS.DLL] -\u003E not found in project"}
+{"time":"2026-09-30T15:55:32.3148347+00:00","state":"RunningGhidra","message":"  [SHELL32.DLL] -\u003E not found in project"}
+{"time":"2026-09-30T15:55:32.335512+00:00","state":"RunningGhidra","message":"  [WINSPOOL.DRV] -\u003E not found in project"}
+{"time":"2026-09-30T15:55:32.3539398+00:00","state":"RunningGhidra","message":"  [URLMON.DLL] -\u003E not found in project"}
+{"time":"2026-09-30T15:55:32.3747864+00:00","state":"RunningGhidra","message":"------------------------------------------------"}
+{"time":"2026-09-30T15:55:32.3914748+00:00","state":"RunningGhidra","message":""}
+{"time":"2026-09-30T15:55:32.407404+00:00","state":"RunningGhidra","message":" (ProgramLoader)  "}
+{"time":"2026-09-30T15:55:32.420834+00:00","state":"RunningGhidra","message":"INFO  IMPORTING: Loaded 0 additional files (HeadlessAnalyzer)  "}
+{"time":"2026-09-30T15:55:32.4333882+00:00","state":"RunningGhidra","message":"INFO  ANALYZING all memory and code: file:///C:/Users/aless/Desktop/ghidra-scripts-pack/samples/notepad.exe (HeadlessAnalyzer)  "}
+{"time":"2026-09-30T15:55:32.4436436+00:00","state":"RunningGhidra","message":"WARN  Ignoring leading \u0027_\u0027 chars on no-return name \u0027___raise_securityfailure\u0027 specified in file: C:\\Users\\aless\\Desktop\\_\\Projects\\ghidra_12.0.4_PUBLIC\\Ghidra\\Features\\Base\\data\\PEFunctionsThatDoNotReturn (NoReturnFunctionAnalyzer)  "}
+{"time":"2026-09-30T15:55:32.4549721+00:00","state":"RunningGhidra","message":"WARN  Ignoring leading \u0027_\u0027 chars on no-return name \u0027___report_rangecheckfailure\u0027 specified in file: C:\\Users\\aless\\Desktop\\_\\Projects\\ghidra_12.0.4_PUBLIC\\Ghidra\\Features\\Base\\data\\PEFunctionsThatDoNotReturn (NoReturnFunctionAnalyzer)  "}
+{"time":"2026-09-30T15:55:32.4657091+00:00","state":"RunningGhidra","message":"INFO  Skipping PDB processing: failed to locate PDB file in configured locations (PdbUniversalAnalyzer)  "}
+{"time":"2026-09-30T15:55:32.4784229+00:00","state":"RunningGhidra","message":"INFO  Use a script to set the PDB file location. I.e.,"}
+{"time":"2026-09-30T15:55:32.4887489+00:00","state":"RunningGhidra","message":"    PdbAnalyzer.setPdbFileOption(currentProgram, new File(\u0022/path/to/pdb/file.pdb\u0022)); or"}
+{"time":"2026-09-30T15:55:32.4992137+00:00","state":"RunningGhidra","message":"    PdbUniversalAnalyzer.setPdbFileOption(currentProgram, new File(\u0022/path/to/pdb/file.pdb\u0022));"}
+{"time":"2026-09-30T15:55:32.5110233+00:00","state":"RunningGhidra","message":"Or set the symbol server search configuration using:    PdbPlugin.saveSymbolServerServiceConfig(...);"}
+{"time":"2026-09-30T15:55:32.5348652+00:00","state":"RunningGhidra","message":" This must be done using a pre-script (prior to analysis). (PdbUniversalAnalyzer)  "}
+{"time":"2026-09-30T15:55:32.5462463+00:00","state":"RunningGhidra","message":"INFO  Packed database cache: C:\\Users\\aless\\AppData\\Local\\ghidra\\packed-db-cache (PackedDatabaseCache)  "}
+{"time":"2026-09-30T15:55:36.3196163+00:00","state":"RunningGhidra","message":"INFO  hit non-returning function, restarting decompiler switch analyzer later (DecompilerSwitchAnalyzer)  "}
+{"time":"2026-09-30T15:56:40.0025527+00:00","state":"RunningGhidra","message":"INFO  Applied data type archive: windows_vs12_64 (ApplyDataArchiveAnalyzer)  "}
+{"time":"2026-09-30T15:58:21.0283708+00:00","state":"RunningGhidra","message":"INFO  -----------------------------------------------------"}
+{"time":"2026-09-30T15:58:21.0391652+00:00","state":"RunningGhidra","message":"    ASCII Strings                              0.645 secs"}
+{"time":"2026-09-30T15:58:21.0513983+00:00","state":"RunningGhidra","message":"    Apply Data Archives                        0.325 secs"}
+{"time":"2026-09-30T15:58:21.0625205+00:00","state":"RunningGhidra","message":"    Call Convention ID                         0.013 secs"}
+{"time":"2026-09-30T15:58:21.0744788+00:00","state":"RunningGhidra","message":"    Call-Fixup Installer                       0.024 secs"}
+{"time":"2026-09-30T15:58:21.0847327+00:00","state":"RunningGhidra","message":"    Create Address Tables                      0.054 secs"}
+{"time":"2026-09-30T15:58:21.09294+00:00","state":"RunningGhidra","message":"    Create Address Tables - One Time           0.069 secs"}
+{"time":"2026-09-30T15:58:21.1004289+00:00","state":"RunningGhidra","message":"    Create Function                            0.047 secs"}
+{"time":"2026-09-30T15:58:21.1080672+00:00","state":"RunningGhidra","message":"    Data Reference                             0.060 secs"}
+{"time":"2026-09-30T15:58:21.1157888+00:00","state":"RunningGhidra","message":"    Decompiler Parameter ID                   64.816 secs"}
+{"time":"2026-09-30T15:58:21.1230403+00:00","state":"RunningGhidra","message":"    Decompiler Switch Analysis                 0.666 secs"}
+{"time":"2026-09-30T15:58:21.1315756+00:00","state":"RunningGhidra","message":"    Decompiler Switch Analysis - One Time     59.640 secs"}
+{"time":"2026-09-30T15:58:21.1398072+00:00","state":"RunningGhidra","message":"    Demangler Microsoft                        0.034 secs"}
+{"time":"2026-09-30T15:58:21.1501126+00:00","state":"RunningGhidra","message":"    Disassemble Entry Points                   1.467 secs"}
+{"time":"2026-09-30T15:58:21.1606644+00:00","state":"RunningGhidra","message":"    Embedded Media                             0.032 secs"}
+{"time":"2026-09-30T15:58:21.1738693+00:00","state":"RunningGhidra","message":"    External Entry References                  0.000 secs"}
+{"time":"2026-09-30T15:58:21.1848575+00:00","state":"RunningGhidra","message":"    Function ID                                0.752 secs"}
+{"time":"2026-09-30T15:58:21.1949494+00:00","state":"RunningGhidra","message":"    Function Start Search                      0.015 secs"}
+{"time":"2026-09-30T15:58:21.2074391+00:00","state":"RunningGhidra","message":"    Non-Returning Functions - Discovered       0.280 secs"}
+{"time":"2026-09-30T15:58:21.2189536+00:00","state":"RunningGhidra","message":"    Non-Returning Functions - Known            0.012 secs"}
+{"time":"2026-09-30T15:58:21.2288913+00:00","state":"RunningGhidra","message":"    PDB Universal                              0.019 secs"}
+{"time":"2026-09-30T15:58:21.237316+00:00","state":"RunningGhidra","message":"    Reference                                  0.126 secs"}
+{"time":"2026-09-30T15:58:21.2449214+00:00","state":"RunningGhidra","message":"    Scalar Operand References                  0.285 secs"}
+{"time":"2026-09-30T15:58:21.2542775+00:00","state":"RunningGhidra","message":"    Shared Return Calls                        0.071 secs"}
+{"time":"2026-09-30T15:58:21.2626641+00:00","state":"RunningGhidra","message":"    Stack                                      2.475 secs"}
+{"time":"2026-09-30T15:58:21.2705857+00:00","state":"RunningGhidra","message":"    Subroutine References                      0.043 secs"}
+{"time":"2026-09-30T15:58:21.2783295+00:00","state":"RunningGhidra","message":"    Subroutine References - One Time           0.017 secs"}
+{"time":"2026-09-30T15:58:21.2866914+00:00","state":"RunningGhidra","message":"    Windows x86 PE Exception Handling          1.874 secs"}
+{"time":"2026-09-30T15:58:21.2961395+00:00","state":"RunningGhidra","message":"    Windows x86 PE RTTI Analyzer               0.269 secs"}
+{"time":"2026-09-30T15:58:21.3052679+00:00","state":"RunningGhidra","message":"    Windows x86 Thread Environment Block (TEB) Analyzer     0.027 secs"}
+{"time":"2026-09-30T15:58:21.3160594+00:00","state":"RunningGhidra","message":"    WindowsResourceReference                  32.894 secs"}
+{"time":"2026-09-30T15:58:21.3255472+00:00","state":"RunningGhidra","message":"    x86 Constant Reference Analyzer            1.890 secs"}
+{"time":"2026-09-30T15:58:21.3343531+00:00","state":"RunningGhidra","message":"-----------------------------------------------------"}
+{"time":"2026-09-30T15:58:21.3425412+00:00","state":"RunningGhidra","message":"     Total Time   168 secs"}
+{"time":"2026-09-30T15:58:21.3502338+00:00","state":"RunningGhidra","message":"-----------------------------------------------------"}
+{"time":"2026-09-30T15:58:21.3609992+00:00","state":"RunningGhidra","message":" (AutoAnalysisManager)  "}
+{"time":"2026-09-30T15:58:21.4812286+00:00","state":"RunningGhidra","message":"INFO  REPORT: Analysis succeeded for file: file:///C:/Users/aless/Desktop/ghidra-scripts-pack/samples/notepad.exe (HeadlessAnalyzer)  "}
+{"time":"2026-09-30T15:58:21.5003578+00:00","state":"RunningGhidra","message":"INFO  REPORT: Execute script: export_report.py \u0027C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\reports\\gui-20260930-155458-e5016709\u0027 \u0027C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\rules\u0027 \u0027seeded=true\u0027  (HeadlessAnalyzer)  "}
+{"time":"2026-09-30T15:58:21.5155218+00:00","state":"RunningGhidra","message":"INFO  SCRIPT: C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\ghidra_scripts\\export_report.py (HeadlessAnalyzer)  "}
+{"time":"2026-09-30T15:58:26.0408802+00:00","state":"RunningGhidra","message":"[\u002B] Report written to: C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\reports\\gui-20260930-155458-e5016709\\raw_report.json"}
+{"time":"2026-09-30T15:58:26.0503094+00:00","state":"RunningGhidra","message":"INFO  ANALYZING changes made by post scripts: file:///C:/Users/aless/Desktop/ghidra-scripts-pack/samples/notepad.exe (HeadlessAnalyzer)  "}
+{"time":"2026-09-30T15:58:26.0596521+00:00","state":"RunningGhidra","message":"INFO  REPORT: Post-analysis succeeded for file: file:///C:/Users/aless/Desktop/ghidra-scripts-pack/samples/notepad.exe (HeadlessAnalyzer)  "}
+{"time":"2026-09-30T15:58:26.1332231+00:00","state":"RunningGhidra","message":"INFO  /notepad.exe: file created (aless) (LocalFileSystem)  "}
+{"time":"2026-09-30T15:58:26.145791+00:00","state":"RunningGhidra","message":"INFO  REPORT: Save succeeded for: /notepad.exe (GuiAnalysis:/notepad.exe) (HeadlessAnalyzer)  "}
+{"time":"2026-09-30T15:58:26.1543516+00:00","state":"RunningGhidra","message":"INFO  REPORT: Import succeeded (HeadlessAnalyzer)  "}
+{"time":"2026-09-30T15:58:26.4565466+00:00","state":"RunningGhidra","message":"Last used Python executable: [\u0027C:\\\\Users\\\\aless\\\\AppData\\\\Roaming\\\\ghidra\\\\ghidra_12.0.4_PUBLIC\\\\venv\\\\Scripts\\\\python.exe\u0027]"}
+{"time":"2026-09-30T15:58:26.4641663+00:00","state":"RunningGhidra","message":"Using Python command: \u0022C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\venv\\Scripts\\python.exe\u0022"}
+{"time":"2026-09-30T15:58:26.4745777+00:00","state":"RunningGhidra","message":"Switching to Ghidra virtual environment: C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\venv"}
+{"time":"2026-09-30T15:58:26.4824676+00:00","state":"RunningGhidra","message":"Name: pyghidra"}
+{"time":"2026-09-30T15:58:26.4915666+00:00","state":"RunningGhidra","message":"Version: 3.0.2"}
+{"time":"2026-09-30T15:58:26.5011885+00:00","state":"RunningGhidra","message":"Summary: Native CPython for Ghidra"}
+{"time":"2026-09-30T15:58:26.5087897+00:00","state":"RunningGhidra","message":"Home-page:"}
+{"time":"2026-09-30T15:58:26.5190957+00:00","state":"RunningGhidra","message":"Author:"}
+{"time":"2026-09-30T15:58:26.5287893+00:00","state":"RunningGhidra","message":"Author-email: DC3 \u003Cdc3.tsd@us.af.mil\u003E"}
+{"time":"2026-09-30T15:58:26.5369086+00:00","state":"RunningGhidra","message":"License: Apache-2.0"}
+{"time":"2026-09-30T15:58:26.5450045+00:00","state":"RunningGhidra","message":"Location: C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\venv\\Lib\\site-packages"}
+{"time":"2026-09-30T15:58:26.5529121+00:00","state":"RunningGhidra","message":"Requires: Jpype1, packaging"}
+{"time":"2026-09-30T15:58:26.5626775+00:00","state":"RunningGhidra","message":"Required-by:"}
+{"time":"2026-09-30T15:58:26.9841739+00:00","state":"RunningGhidra","message":"[\u002B] Enriched report written to: C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\reports\\gui-20260930-155458-e5016709\\notepad_20260930_175826.json"}
+{"time":"2026-09-30T15:58:27.0061822+00:00","state":"RunningGhidra","message":"[\u002B] Raw report: C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\reports\\gui-20260930-155458-e5016709\\notepad_20260930_175826_raw.json"}
+{"time":"2026-09-30T15:58:27.0168223+00:00","state":"RunningGhidra","message":"[\u002B] Enriched report: C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\reports\\gui-20260930-155458-e5016709\\notepad_20260930_175826.json"}
+{"time":"2026-09-30T15:58:27.0332838+00:00","state":"RunningGhidra","message":"[\u002B] Summary: sample=notepad.exe risk=low score=7 capabilities=2 suspicious_apis=11"}
+{"time":"2026-09-30T15:58:30.4225031+00:00","state":"RunningRustExport","message":"[\u002B] Seeded local subgraphs exported to: C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\reports\\gui-20260930-155458-e5016709\\seeded"}
+{"time":"2026-09-30T15:58:30.4334947+00:00","state":"RunningRustExport","message":"[\u002B] Seeds: 264 returned / 264 detected"}
+{"time":"2026-09-30T15:58:30.4421997+00:00","state":"RunningRustExport","message":"[\u002B] Local subgraphs: 264"}
+{"time":"2026-09-30T15:58:30.4511281+00:00","state":"RunningRustExport","message":"[\u002B] Related seed groups: 21"}
+{"time":"2026-09-30T15:58:30.4585826+00:00","state":"RunningRustExport","message":"[\u002B] Manifest: C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\reports\\gui-20260930-155458-e5016709\\seeded\\manifest.json"}

@@ -263,7 +263,10 @@ mod tests {
     use crate::schema::build_seed_id;
     use crate::seed_detection::{detect_seed_candidates, detect_seeds};
     use crate::seed_limits::SeedDetectionConfig;
-    use crate::seed_rules::{bundled_seed_rules_path, load_seed_rules};
+    use crate::seed_rules::{
+        bundled_seed_rules_path, load_seed_rules, SeedRule, SeedRuleMatch, SeedRuleType,
+        SeedRulesConfig, SEED_RULES_SCHEMA_VERSION,
+    };
 
     fn fixture() -> (TypedGraph, Vec<SeedCandidate>) {
         let value: Value =
@@ -347,12 +350,25 @@ mod tests {
 
     #[test]
     fn unresolved_provenance_must_match_record_and_never_invents_node() {
-        let (graph, candidates) = fixture();
+        let (graph, _) = fixture();
         let index = GraphIndexes::new(&graph);
-        let seed = candidates
-            .iter()
-            .find(|s| s.trigger_id == "unresolved_call.present")
-            .unwrap();
+        let config = SeedRulesConfig {
+            schema_version: SEED_RULES_SCHEMA_VERSION.to_string(),
+            rules: vec![SeedRule {
+                id: "unresolved_call.present".to_string(),
+                evidence_type: SeedRuleType::UnresolvedCall,
+                match_condition: SeedRuleMatch {
+                    indicator: Some("unresolved_call".to_string()),
+                    ..SeedRuleMatch::default()
+                },
+                reason_template: "Function contains unresolved call evidence {indicator}"
+                    .to_string(),
+                family: crate::schema::SeedTriggerFamily::CallVisibility,
+            }],
+        };
+        let value = serde_json::to_value(&graph).unwrap();
+        let seed = detect_seed_candidates(&value, &config).unwrap().remove(0);
+
         let mut wrong = seed.clone();
         wrong.evidence[0].value = "invented reason".into();
         assert!(validate_seed_candidate(&index, &wrong).is_err());

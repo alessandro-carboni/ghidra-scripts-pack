@@ -1,0 +1,360 @@
+{
+  "schema_version": "0.1.0",
+  "seed_id": "seed:fn:1400272d0",
+  "anchor_function_id": "fn:1400272d0",
+  "graph_version": "0.12.0",
+  "extraction_config": {
+    "caller_depth": 1,
+    "callee_depth": 2,
+    "max_function_nodes": null,
+    "max_evidence_nodes": null,
+    "max_total_nodes": null,
+    "max_edges": null
+  },
+  "function_selection": {
+    "anchor_function_id": "fn:1400272d0",
+    "function_ids": [
+      "fn:140002aa3",
+      "fn:140002b40",
+      "fn:140002c5b",
+      "fn:140002cf8",
+      "fn:140002e01",
+      "fn:140002eb0",
+      "fn:1400272d0"
+    ],
+    "caller_distances": {
+      "fn:140002aa3": 1,
+      "fn:140002b40": 1,
+      "fn:140002c5b": 1,
+      "fn:140002cf8": 1,
+      "fn:140002e01": 1,
+      "fn:140002eb0": 1,
+      "fn:1400272d0": 0
+    },
+    "callee_distances": {
+      "fn:1400272d0": 0
+    }
+  },
+  "nodes": [
+    {
+      "id": "api:resolvedelayloadedapi",
+      "type": "API",
+      "name": "ResolveDelayLoadedAPI",
+      "normalized_name": "ResolveDelayLoadedAPI",
+      "original_names": [
+        "ResolveDelayLoadedAPI"
+      ]
+    },
+    {
+      "id": "fn:140002aa3",
+      "type": "FUNCTION",
+      "address": "140002aa3",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140002aa3",
+      "section": ".text",
+      "size": 121,
+      "symbol_name": "FUN_140002aa3",
+      "thunk": false
+    },
+    {
+      "id": "fn:140002b40",
+      "type": "FUNCTION",
+      "address": "140002b40",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140002b40",
+      "section": ".text",
+      "size": 121,
+      "symbol_name": "FUN_140002b40",
+      "thunk": false
+    },
+    {
+      "id": "fn:140002c5b",
+      "type": "FUNCTION",
+      "address": "140002c5b",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140002c5b",
+      "section": ".text",
+      "size": 121,
+      "symbol_name": "FUN_140002c5b",
+      "thunk": false
+    },
+    {
+      "id": "fn:140002cf8",
+      "type": "FUNCTION",
+      "address": "140002cf8",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140002cf8",
+      "section": ".text",
+      "size": 121,
+      "symbol_name": "FUN_140002cf8",
+      "thunk": false
+    },
+    {
+      "id": "fn:140002e01",
+      "type": "FUNCTION",
+      "address": "140002e01",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140002e01",
+      "section": ".text",
+      "size": 121,
+      "symbol_name": "FUN_140002e01",
+      "thunk": false
+    },
+    {
+      "id": "fn:140002eb0",
+      "type": "FUNCTION",
+      "address": "140002eb0",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140002eb0",
+      "section": ".text",
+      "size": 121,
+      "symbol_name": "FUN_140002eb0",
+      "thunk": false
+    },
+    {
+      "id": "fn:1400272d0",
+      "type": "FUNCTION",
+      "address": "1400272d0",
+      "external": false,
+      "internal": true,
+      "name": "FUN_1400272d0",
+      "section": ".text",
+      "size": 60,
+      "symbol_name": "FUN_1400272d0",
+      "thunk": false
+    },
+    {
+      "id": "sec:140001000",
+      "type": "SECTION",
+      "end": "140027fff",
+      "entropy": 6.1732,
+      "entropy_class": "normal",
+      "entropy_sampled_bytes": 65536,
+      "execute": true,
+      "initialized": true,
+      "name": ".text",
+      "permissions": "r-x",
+      "read": true,
+      "reasons": [],
+      "size": 159744,
+      "start": "140001000",
+      "suspicious": false,
+      "write": false
+    },
+    {
+      "id": "vis:call_visibility:fn:1400272d0",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:1400272d0",
+      "indicator": "call_visibility",
+      "indirect_call_count": 1,
+      "indirect_callsites": [
+        "1400272fb"
+      ],
+      "resolved_indirect_call_count": 1,
+      "resolved_indirect_callsites": [
+        "1400272fb"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    }
+  ],
+  "edges": [
+    {
+      "type": "calls_function",
+      "source": "fn:140002aa3",
+      "target": "fn:1400272d0",
+      "callee": "fn:1400272d0",
+      "caller": "fn:140002aa3",
+      "callsite": "140002add",
+      "callsites": [
+        "140002add"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140002aa3",
+      "target": "sec:140001000",
+      "function": "fn:140002aa3",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140002b40",
+      "target": "fn:1400272d0",
+      "callee": "fn:1400272d0",
+      "caller": "fn:140002b40",
+      "callsite": "140002b7a",
+      "callsites": [
+        "140002b7a"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140002b40",
+      "target": "sec:140001000",
+      "function": "fn:140002b40",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140002c5b",
+      "target": "fn:1400272d0",
+      "callee": "fn:1400272d0",
+      "caller": "fn:140002c5b",
+      "callsite": "140002c95",
+      "callsites": [
+        "140002c95"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140002c5b",
+      "target": "sec:140001000",
+      "function": "fn:140002c5b",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140002cf8",
+      "target": "fn:1400272d0",
+      "callee": "fn:1400272d0",
+      "caller": "fn:140002cf8",
+      "callsite": "140002d32",
+      "callsites": [
+        "140002d32"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140002cf8",
+      "target": "sec:140001000",
+      "function": "fn:140002cf8",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140002e01",
+      "target": "fn:1400272d0",
+      "callee": "fn:1400272d0",
+      "caller": "fn:140002e01",
+      "callsite": "140002e3b",
+      "callsites": [
+        "140002e3b"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140002e01",
+      "target": "sec:140001000",
+      "function": "fn:140002e01",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140002eb0",
+      "target": "fn:1400272d0",
+      "callee": "fn:1400272d0",
+      "caller": "fn:140002eb0",
+      "callsite": "140002eea",
+      "callsites": [
+        "140002eea"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140002eb0",
+      "target": "sec:140001000",
+      "function": "fn:140002eb0",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:1400272d0",
+      "target": "api:resolvedelayloadedapi",
+      "api": "api:resolvedelayloadedapi",
+      "api_original_names": [
+        "ResolveDelayLoadedAPI"
+      ],
+      "caller": "fn:1400272d0",
+      "callsite": "1400272fb",
+      "callsites": [
+        "1400272fb"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:1400272d0",
+      "target": "sec:140001000",
+      "function": "fn:1400272d0",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:1400272d0",
+      "target": "vis:call_visibility:fn:1400272d0",
+      "function": "fn:1400272d0",
+      "indicator": "vis:call_visibility:fn:1400272d0"
+    }
+  ],
+  "unresolved_calls": [],
+  "truncation": {
+    "truncated": false,
+    "limits_reached": [],
+    "requested_depth": {
+      "caller_depth": 1,
+      "callee_depth": 2
+    },
+    "effective_depth": {
+      "caller_depth": 1,
+      "callee_depth": 0
+    },
+    "counts": {
+      "function_nodes": 7,
+      "evidence_nodes": 3,
+      "total_nodes": 10,
+      "edges": 15,
+      "unresolved_calls": 0
+    }
+  }
+}

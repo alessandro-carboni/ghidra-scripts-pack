@@ -1,0 +1,318 @@
+{
+  "schema_version": "0.1.0",
+  "seed_id": "seed:fn:140020110",
+  "anchor_function_id": "fn:140020110",
+  "graph_version": "0.12.0",
+  "extraction_config": {
+    "caller_depth": 1,
+    "callee_depth": 2,
+    "max_function_nodes": null,
+    "max_evidence_nodes": null,
+    "max_total_nodes": null,
+    "max_edges": null
+  },
+  "function_selection": {
+    "anchor_function_id": "fn:140020110",
+    "function_ids": [
+      "fn:140020110"
+    ],
+    "caller_distances": {
+      "fn:140020110": 0
+    },
+    "callee_distances": {
+      "fn:140020110": 0
+    }
+  },
+  "nodes": [
+    {
+      "id": "api:charnextw",
+      "type": "API",
+      "name": "CharNextW",
+      "normalized_name": "CharNextW",
+      "original_names": [
+        "CharNextW"
+      ]
+    },
+    {
+      "id": "api:destroywindow",
+      "type": "API",
+      "name": "DestroyWindow",
+      "normalized_name": "DestroyWindow",
+      "original_names": [
+        "DestroyWindow"
+      ]
+    },
+    {
+      "id": "api:enablemenuitem",
+      "type": "API",
+      "name": "EnableMenuItem",
+      "normalized_name": "EnableMenuItem",
+      "original_names": [
+        "EnableMenuItem"
+      ]
+    },
+    {
+      "id": "api:enablewindow",
+      "type": "API",
+      "name": "EnableWindow",
+      "normalized_name": "EnableWindow",
+      "original_names": [
+        "EnableWindow"
+      ]
+    },
+    {
+      "id": "api:getsystemmenu",
+      "type": "API",
+      "name": "GetSystemMenu",
+      "normalized_name": "GetSystemMenu",
+      "original_names": [
+        "GetSystemMenu"
+      ]
+    },
+    {
+      "id": "api:setdlgitemtextw",
+      "type": "API",
+      "name": "SetDlgItemTextW",
+      "normalized_name": "SetDlgItemTextW",
+      "original_names": [
+        "SetDlgItemTextW"
+      ]
+    },
+    {
+      "id": "api:setfocus",
+      "type": "API",
+      "name": "SetFocus",
+      "normalized_name": "SetFocus",
+      "original_names": [
+        "SetFocus"
+      ]
+    },
+    {
+      "id": "fn:140020110",
+      "type": "FUNCTION",
+      "address": "140020110",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140020110",
+      "section": ".text",
+      "size": 318,
+      "symbol_name": "FUN_140020110",
+      "thunk": false
+    },
+    {
+      "id": "sec:140001000",
+      "type": "SECTION",
+      "end": "140027fff",
+      "entropy": 6.1732,
+      "entropy_class": "normal",
+      "entropy_sampled_bytes": 65536,
+      "execute": true,
+      "initialized": true,
+      "name": ".text",
+      "permissions": "r-x",
+      "read": true,
+      "reasons": [],
+      "size": 159744,
+      "start": "140001000",
+      "suspicious": false,
+      "write": false
+    },
+    {
+      "id": "vis:call_visibility:fn:140020110",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:140020110",
+      "indicator": "call_visibility",
+      "indirect_call_count": 7,
+      "indirect_callsites": [
+        "140020154",
+        "140020176",
+        "140020189",
+        "1400201a8",
+        "1400201ef",
+        "140020219",
+        "140020228"
+      ],
+      "resolved_indirect_call_count": 7,
+      "resolved_indirect_callsites": [
+        "140020154",
+        "140020176",
+        "140020189",
+        "1400201a8",
+        "1400201ef",
+        "140020219",
+        "140020228"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    }
+  ],
+  "edges": [
+    {
+      "type": "calls_api",
+      "source": "fn:140020110",
+      "target": "api:charnextw",
+      "api": "api:charnextw",
+      "api_original_names": [
+        "CharNextW"
+      ],
+      "caller": "fn:140020110",
+      "callsite": "1400201ef",
+      "callsites": [
+        "1400201ef"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140020110",
+      "target": "api:destroywindow",
+      "api": "api:destroywindow",
+      "api_original_names": [
+        "DestroyWindow"
+      ],
+      "caller": "fn:140020110",
+      "callsite": "140020189",
+      "callsites": [
+        "140020189"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140020110",
+      "target": "api:enablemenuitem",
+      "api": "api:enablemenuitem",
+      "api_original_names": [
+        "EnableMenuItem"
+      ],
+      "caller": "fn:140020110",
+      "callsite": "140020154",
+      "callsites": [
+        "140020154"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140020110",
+      "target": "api:enablewindow",
+      "api": "api:enablewindow",
+      "api_original_names": [
+        "EnableWindow"
+      ],
+      "caller": "fn:140020110",
+      "callsite": "140020176",
+      "callsites": [
+        "140020176"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140020110",
+      "target": "api:getsystemmenu",
+      "api": "api:getsystemmenu",
+      "api_original_names": [
+        "GetSystemMenu"
+      ],
+      "caller": "fn:140020110",
+      "callsite": "1400201a8",
+      "callsites": [
+        "1400201a8"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140020110",
+      "target": "api:setdlgitemtextw",
+      "api": "api:setdlgitemtextw",
+      "api_original_names": [
+        "SetDlgItemTextW"
+      ],
+      "caller": "fn:140020110",
+      "callsite": "140020219",
+      "callsites": [
+        "140020219"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140020110",
+      "target": "api:setfocus",
+      "api": "api:setfocus",
+      "api_original_names": [
+        "SetFocus"
+      ],
+      "caller": "fn:140020110",
+      "callsite": "140020228",
+      "callsites": [
+        "140020228"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140020110",
+      "target": "sec:140001000",
+      "function": "fn:140020110",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:140020110",
+      "target": "vis:call_visibility:fn:140020110",
+      "function": "fn:140020110",
+      "indicator": "vis:call_visibility:fn:140020110"
+    }
+  ],
+  "unresolved_calls": [],
+  "truncation": {
+    "truncated": false,
+    "limits_reached": [],
+    "requested_depth": {
+      "caller_depth": 1,
+      "callee_depth": 2
+    },
+    "effective_depth": {
+      "caller_depth": 0,
+      "callee_depth": 0
+    },
+    "counts": {
+      "function_nodes": 1,
+      "evidence_nodes": 9,
+      "total_nodes": 10,
+      "edges": 9,
+      "unresolved_calls": 0
+    }
+  }
+}

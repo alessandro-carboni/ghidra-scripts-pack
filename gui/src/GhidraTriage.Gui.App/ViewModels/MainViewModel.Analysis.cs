@@ -20,39 +20,134 @@ public partial class MainViewModel
   [ObservableProperty] private string liveLog = "";
   [ObservableProperty] private string runStatus = "Idle";
   [ObservableProperty] private bool isAnalyzing;
+
   private void ConfigureRunner(IAnalysisRunner runner, GuiSettingsStore store)
   {
-    this.runner = runner; settingsStore = store;
-    try { Settings = store.Load(); } catch (Exception ex) { Error = "Settings could not be read: " + ex.Message; }
-    TriageExecutable = Settings.TriageExecutable; GhidraDirectory = Settings.GhidraDirectory; RuleDirectory = Settings.RuleDirectory; RustExecutable = Settings.RustExecutable; OutputRoot = Settings.OutputRoot; WorkingDirectory = Settings.WorkingDirectory;
+    this.runner = runner;
+    settingsStore = store;
+    try { Settings = store.Load(); }
+    catch (Exception ex) { Error = "Settings could not be read: " + ex.Message; }
+
+    TriageExecutable = Settings.TriageExecutable;
+    GhidraDirectory = Settings.GhidraDirectory;
+    RuleDirectory = Settings.RuleDirectory;
+    RustExecutable = Settings.RustExecutable;
+    OutputRoot = Settings.OutputRoot;
+    WorkingDirectory = Settings.WorkingDirectory;
   }
+
   [RelayCommand]
   private void SaveSettings()
   {
-    try { Settings = Settings with { TriageExecutable = TriageExecutable, GhidraDirectory = GhidraDirectory, RuleDirectory = RuleDirectory, RustExecutable = RustExecutable, OutputRoot = OutputRoot, WorkingDirectory = WorkingDirectory }; settingsStore.Save(Settings); Status = "Settings saved locally."; } catch (Exception ex) { Error = ex.Message; }
+    try
+    {
+      Settings = Settings with
+      {
+        TriageExecutable = TriageExecutable,
+        GhidraDirectory = GhidraDirectory,
+        RuleDirectory = RuleDirectory,
+        RustExecutable = RustExecutable,
+        OutputRoot = OutputRoot,
+        WorkingDirectory = WorkingDirectory
+      };
+      settingsStore.Save(Settings);
+      Status = "Settings saved locally.";
+      ShowSettings = false;
+    }
+    catch (Exception ex) { Error = ex.Message; }
   }
+
   public void SavePanelWidths(double left, double right)
   {
-    try { Settings = Settings with { LeftWidth = left, RightWidth = right }; settingsStore.Save(Settings); } catch (Exception ex) { Error = ex.Message; }
+    try
+    {
+      Settings = Settings with { LeftWidth = left, RightWidth = right };
+      settingsStore.Save(Settings);
+    }
+    catch (Exception ex) { Error = ex.Message; }
   }
+
+  [RelayCommand]
+  private void ClearTerminal() => LiveLog = "";
+
   [RelayCommand]
   private async Task Analyze()
   {
-    if (IsAnalyzing) return;
-    if (string.IsNullOrWhiteSpace(SamplePath)) { Error = "Select an executable sample first."; return; }
-    SaveSettings(); IsAnalyzing = true; LiveLog = ""; Error = ""; analysisCancellation = new(); var sw = Stopwatch.StartNew();
-    var progress = new Progress<AnalysisProgress>(p => { RunStatus = $"{p.State} · {sw.Elapsed:mm\\:ss}"; LiveLog += p.Message + Environment.NewLine; if (LiveLog.Length > 60000) LiveLog = LiveLog[^50000..]; });
+    if (IsAnalyzing)
+      return;
+
+    if (string.IsNullOrWhiteSpace(SamplePath))
+    {
+      Error = "Choose an executable sample first.";
+      return;
+    }
+
+    SaveSettings();
+    IsAnalyzing = true;
+    ShowTerminal = true;
+    ShowSettings = false;
+    LiveLog = "";
+    Error = "";
+    Status = "Starting analysis…";
+    RunStatus = "Starting";
+    analysisCancellation = new();
+    var sw = Stopwatch.StartNew();
+
+    var progress = new Progress<AnalysisProgress>(p =>
+    {
+      RunStatus = $"{p.State} · {sw.Elapsed:mm\\:ss}";
+      LiveLog += p.Message + Environment.NewLine;
+      if (LiveLog.Length > 60000)
+        LiveLog = LiveLog[^50000..];
+    });
+
     try
     {
-      var result = await runner.RunAsync(new(SamplePath, TriageExecutable, GhidraDirectory, RuleDirectory, RustExecutable, OutputRoot, WorkingDirectory), progress, analysisCancellation.Token);
-      await OpenPathAsync(result.Manifest);
-      if (Error.Length > 0) throw new InvalidOperationException(Error);
-      RunStatus = $"Ready · {sw.Elapsed:mm\\:ss}"; Status = "Analysis ready · " + result.Manifest;
-    }
-    catch (OperationCanceledException) { RunStatus = "Cancelled"; }
-    catch (Exception ex) { RunStatus = "Failed"; Error = ex.Message; }
-    finally { IsAnalyzing = false; analysisCancellation.Dispose(); analysisCancellation = null; }
-  }
-  [RelayCommand] private void CancelAnalysis() => analysisCancellation?.Cancel();
-}
+      var result = await runner.RunAsync(
+        new(
+          SamplePath,
+          TriageExecutable,
+          GhidraDirectory,
+          RuleDirectory,
+          RustExecutable,
+          OutputRoot,
+          WorkingDirectory),
+        progress,
+        analysisCancellation.Token);
 
+      await OpenPathAsync(result.Manifest);
+      if (Error.Length > 0)
+        throw new InvalidOperationException(Error);
+
+      RunStatus = $"Ready · {sw.Elapsed:mm\\:ss}";
+      Status = "Analysis ready";
+
+      // The terminal is a debug surface, not part of the normal thesis workflow.
+      // Collapse it on success so the first local seeded subgraph is immediately visible.
+      ShowTerminal = false;
+    }
+    catch (OperationCanceledException)
+    {
+      RunStatus = "Cancelled";
+      Status = "Analysis cancelled";
+      ShowTerminal = true;
+    }
+    catch (Exception ex)
+    {
+      RunStatus = "Failed";
+      Error = ex.Message;
+      Status = "Analysis failed";
+      ShowTerminal = true;
+      ShowSettings = true;
+    }
+    finally
+    {
+      IsAnalyzing = false;
+      analysisCancellation.Dispose();
+      analysisCancellation = null;
+    }
+  }
+
+  [RelayCommand]
+  private void CancelAnalysis() => analysisCancellation?.Cancel();
+}

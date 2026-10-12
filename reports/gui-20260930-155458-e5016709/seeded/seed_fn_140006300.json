@@ -1,0 +1,269 @@
+{
+  "schema_version": "0.1.0",
+  "seed_id": "seed:fn:140006300",
+  "anchor_function_id": "fn:140006300",
+  "graph_version": "0.12.0",
+  "extraction_config": {
+    "caller_depth": 1,
+    "callee_depth": 2,
+    "max_function_nodes": null,
+    "max_evidence_nodes": null,
+    "max_total_nodes": null,
+    "max_edges": null
+  },
+  "function_selection": {
+    "anchor_function_id": "fn:140006300",
+    "function_ids": [
+      "fn:140006300",
+      "fn:140028010"
+    ],
+    "caller_distances": {
+      "fn:140006300": 0
+    },
+    "callee_distances": {
+      "fn:140006300": 0,
+      "fn:140028010": 1
+    }
+  },
+  "nodes": [
+    {
+      "id": "api:getmodulehandlew",
+      "type": "API",
+      "name": "GetModuleHandleW",
+      "normalized_name": "GetModuleHandleW",
+      "original_names": [
+        "GetModuleHandleW"
+      ]
+    },
+    {
+      "id": "api:getprocaddress",
+      "type": "API",
+      "name": "GetProcAddress",
+      "normalized_name": "GetProcAddress",
+      "original_names": [
+        "GetProcAddress"
+      ]
+    },
+    {
+      "id": "fn:140006300",
+      "type": "FUNCTION",
+      "address": "140006300",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140006300",
+      "section": ".text",
+      "size": 280,
+      "symbol_name": "FUN_140006300",
+      "thunk": false
+    },
+    {
+      "id": "fn:140028010",
+      "type": "FUNCTION",
+      "address": "140028010",
+      "external": false,
+      "internal": true,
+      "name": "_guard_dispatch_icall",
+      "section": "fothk",
+      "size": 5,
+      "symbol_name": "_guard_dispatch_icall",
+      "thunk": true
+    },
+    {
+      "id": "sec:140001000",
+      "type": "SECTION",
+      "end": "140027fff",
+      "entropy": 6.1732,
+      "entropy_class": "normal",
+      "entropy_sampled_bytes": 65536,
+      "execute": true,
+      "initialized": true,
+      "name": ".text",
+      "permissions": "r-x",
+      "read": true,
+      "reasons": [],
+      "size": 159744,
+      "start": "140001000",
+      "suspicious": false,
+      "write": false
+    },
+    {
+      "id": "sec:140028000",
+      "type": "SECTION",
+      "end": "140028fff",
+      "entropy": 0.0159,
+      "entropy_class": "normal",
+      "entropy_sampled_bytes": 4096,
+      "execute": true,
+      "initialized": true,
+      "name": "fothk",
+      "permissions": "r-x",
+      "read": true,
+      "reasons": [],
+      "size": 4096,
+      "start": "140028000",
+      "suspicious": false,
+      "write": false
+    },
+    {
+      "id": "str:14002aa50",
+      "type": "STRING",
+      "address": "14002aa50",
+      "categories": [],
+      "category": null,
+      "raw_value": "u\"kernelbase.dll\"",
+      "reference_count": 3,
+      "value": "kernelbase.dll"
+    },
+    {
+      "id": "str:14002ab28",
+      "type": "STRING",
+      "address": "14002ab28",
+      "categories": [],
+      "category": null,
+      "raw_value": "\"WilFailureNotifyWatchers\"",
+      "reference_count": 1,
+      "value": "WilFailureNotifyWatchers"
+    },
+    {
+      "id": "vis:call_visibility:fn:140006300",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:140006300",
+      "indicator": "call_visibility",
+      "indirect_call_count": 2,
+      "indirect_callsites": [
+        "14000638b",
+        "1400063ad"
+      ],
+      "resolved_indirect_call_count": 2,
+      "resolved_indirect_callsites": [
+        "14000638b",
+        "1400063ad"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    }
+  ],
+  "edges": [
+    {
+      "type": "calls_function",
+      "source": "fn:140006300",
+      "target": "fn:140028010",
+      "callee": "fn:140028010",
+      "caller": "fn:140006300",
+      "callsite": "1400063d5",
+      "callsites": [
+        "1400063d5"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140006300",
+      "target": "api:getmodulehandlew",
+      "api": "api:getmodulehandlew",
+      "api_original_names": [
+        "GetModuleHandleW"
+      ],
+      "caller": "fn:140006300",
+      "callsite": "14000638b",
+      "callsites": [
+        "14000638b"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140006300",
+      "target": "api:getprocaddress",
+      "api": "api:getprocaddress",
+      "api_original_names": [
+        "GetProcAddress"
+      ],
+      "caller": "fn:140006300",
+      "callsite": "1400063ad",
+      "callsites": [
+        "1400063ad"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "references_string",
+      "source": "fn:140006300",
+      "target": "str:14002aa50",
+      "function": "fn:140006300",
+      "reference_count": 1,
+      "reference_sites": [
+        "140006384"
+      ],
+      "string": "str:14002aa50"
+    },
+    {
+      "type": "references_string",
+      "source": "fn:140006300",
+      "target": "str:14002ab28",
+      "function": "fn:140006300",
+      "reference_count": 1,
+      "reference_sites": [
+        "1400063a3"
+      ],
+      "string": "str:14002ab28"
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140006300",
+      "target": "sec:140001000",
+      "function": "fn:140006300",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:140006300",
+      "target": "vis:call_visibility:fn:140006300",
+      "function": "fn:140006300",
+      "indicator": "vis:call_visibility:fn:140006300"
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140028010",
+      "target": "sec:140028000",
+      "function": "fn:140028010",
+      "section": "sec:140028000"
+    }
+  ],
+  "unresolved_calls": [],
+  "truncation": {
+    "truncated": false,
+    "limits_reached": [],
+    "requested_depth": {
+      "caller_depth": 1,
+      "callee_depth": 2
+    },
+    "effective_depth": {
+      "caller_depth": 0,
+      "callee_depth": 1
+    },
+    "counts": {
+      "function_nodes": 2,
+      "evidence_nodes": 7,
+      "total_nodes": 9,
+      "edges": 8,
+      "unresolved_calls": 0
+    }
+  }
+}

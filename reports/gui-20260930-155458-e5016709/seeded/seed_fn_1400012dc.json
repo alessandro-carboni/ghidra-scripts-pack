@@ -1,0 +1,368 @@
+{
+  "schema_version": "0.1.0",
+  "seed_id": "seed:fn:1400012dc",
+  "anchor_function_id": "fn:1400012dc",
+  "graph_version": "0.12.0",
+  "extraction_config": {
+    "caller_depth": 1,
+    "callee_depth": 2,
+    "max_function_nodes": null,
+    "max_evidence_nodes": null,
+    "max_total_nodes": null,
+    "max_edges": null
+  },
+  "function_selection": {
+    "anchor_function_id": "fn:1400012dc",
+    "function_ids": [
+      "fn:140001008",
+      "fn:140001094",
+      "fn:1400011bc",
+      "fn:1400012dc",
+      "fn:140022fe8",
+      "fn:140023890"
+    ],
+    "caller_distances": {
+      "fn:140001008": 1,
+      "fn:140001094": 1,
+      "fn:1400011bc": 1,
+      "fn:1400012dc": 0,
+      "fn:140022fe8": 1,
+      "fn:140023890": 1
+    },
+    "callee_distances": {
+      "fn:1400012dc": 0
+    }
+  },
+  "nodes": [
+    {
+      "id": "api:eventwritetransfer",
+      "type": "API",
+      "name": "EventWriteTransfer",
+      "normalized_name": "EventWriteTransfer",
+      "original_names": [
+        "EventWriteTransfer"
+      ]
+    },
+    {
+      "id": "fn:140001008",
+      "type": "FUNCTION",
+      "address": "140001008",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140001008",
+      "section": ".text",
+      "size": 133,
+      "symbol_name": "FUN_140001008",
+      "thunk": false
+    },
+    {
+      "id": "fn:140001094",
+      "type": "FUNCTION",
+      "address": "140001094",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140001094",
+      "section": ".text",
+      "size": 288,
+      "symbol_name": "FUN_140001094",
+      "thunk": false
+    },
+    {
+      "id": "fn:1400011bc",
+      "type": "FUNCTION",
+      "address": "1400011bc",
+      "external": false,
+      "internal": true,
+      "name": "FUN_1400011bc",
+      "section": ".text",
+      "size": 149,
+      "symbol_name": "FUN_1400011bc",
+      "thunk": false
+    },
+    {
+      "id": "fn:1400012dc",
+      "type": "FUNCTION",
+      "address": "1400012dc",
+      "external": false,
+      "internal": true,
+      "name": "FUN_1400012dc",
+      "section": ".text",
+      "size": 157,
+      "symbol_name": "FUN_1400012dc",
+      "thunk": false
+    },
+    {
+      "id": "fn:140022fe8",
+      "type": "FUNCTION",
+      "address": "140022fe8",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140022fe8",
+      "section": ".text",
+      "size": 791,
+      "symbol_name": "FUN_140022fe8",
+      "thunk": false
+    },
+    {
+      "id": "fn:140023890",
+      "type": "FUNCTION",
+      "address": "140023890",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140023890",
+      "section": ".text",
+      "size": 304,
+      "symbol_name": "FUN_140023890",
+      "thunk": false
+    },
+    {
+      "id": "sec:140001000",
+      "type": "SECTION",
+      "end": "140027fff",
+      "entropy": 6.1732,
+      "entropy_class": "normal",
+      "entropy_sampled_bytes": 65536,
+      "execute": true,
+      "initialized": true,
+      "name": ".text",
+      "permissions": "r-x",
+      "read": true,
+      "reasons": [],
+      "size": 159744,
+      "start": "140001000",
+      "suspicious": false,
+      "write": false
+    },
+    {
+      "id": "str:14002ba98",
+      "type": "STRING",
+      "address": "14002ba98",
+      "categories": [],
+      "category": null,
+      "raw_value": "u\"EditMenu\"",
+      "reference_count": 1,
+      "value": "EditMenu"
+    },
+    {
+      "id": "str:14002bab0",
+      "type": "STRING",
+      "address": "14002bab0",
+      "categories": [],
+      "category": null,
+      "raw_value": "u\"ContextMenu\"",
+      "reference_count": 3,
+      "value": "ContextMenu"
+    },
+    {
+      "id": "vis:call_visibility:fn:1400012dc",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:1400012dc",
+      "indicator": "call_visibility",
+      "indirect_call_count": 1,
+      "indirect_callsites": [
+        "140001368"
+      ],
+      "resolved_indirect_call_count": 1,
+      "resolved_indirect_callsites": [
+        "140001368"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    }
+  ],
+  "edges": [
+    {
+      "type": "calls_function",
+      "source": "fn:140001008",
+      "target": "fn:1400012dc",
+      "callee": "fn:1400012dc",
+      "caller": "fn:140001008",
+      "callsite": "140001073",
+      "callsites": [
+        "140001073"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140001008",
+      "target": "sec:140001000",
+      "function": "fn:140001008",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140001094",
+      "target": "fn:1400012dc",
+      "callee": "fn:1400012dc",
+      "caller": "fn:140001094",
+      "callsite": "14000119a",
+      "callsites": [
+        "14000119a"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140001094",
+      "target": "sec:140001000",
+      "function": "fn:140001094",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:1400011bc",
+      "target": "fn:1400012dc",
+      "callee": "fn:1400012dc",
+      "caller": "fn:1400011bc",
+      "callsite": "140001234",
+      "callsites": [
+        "140001234"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:1400011bc",
+      "target": "sec:140001000",
+      "function": "fn:1400011bc",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:1400012dc",
+      "target": "api:eventwritetransfer",
+      "api": "api:eventwritetransfer",
+      "api_original_names": [
+        "EventWriteTransfer"
+      ],
+      "caller": "fn:1400012dc",
+      "callsite": "140001368",
+      "callsites": [
+        "140001368"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:1400012dc",
+      "target": "sec:140001000",
+      "function": "fn:1400012dc",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:1400012dc",
+      "target": "vis:call_visibility:fn:1400012dc",
+      "function": "fn:1400012dc",
+      "indicator": "vis:call_visibility:fn:1400012dc"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140022fe8",
+      "target": "fn:1400012dc",
+      "callee": "fn:1400012dc",
+      "caller": "fn:140022fe8",
+      "callsite": "1400232ca",
+      "callsites": [
+        "1400232ca"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140022fe8",
+      "target": "sec:140001000",
+      "function": "fn:140022fe8",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140023890",
+      "target": "fn:1400012dc",
+      "callee": "fn:1400012dc",
+      "caller": "fn:140023890",
+      "callsite": "1400239a6",
+      "callsites": [
+        "1400239a6"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "references_string",
+      "source": "fn:140023890",
+      "target": "str:14002ba98",
+      "function": "fn:140023890",
+      "reference_count": 1,
+      "reference_sites": [
+        "1400238c4"
+      ],
+      "string": "str:14002ba98"
+    },
+    {
+      "type": "references_string",
+      "source": "fn:140023890",
+      "target": "str:14002bab0",
+      "function": "fn:140023890",
+      "reference_count": 3,
+      "reference_sites": [
+        "1400238bb",
+        "14002393a",
+        "140023964"
+      ],
+      "string": "str:14002bab0"
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140023890",
+      "target": "sec:140001000",
+      "function": "fn:140023890",
+      "section": "sec:140001000"
+    }
+  ],
+  "unresolved_calls": [],
+  "truncation": {
+    "truncated": false,
+    "limits_reached": [],
+    "requested_depth": {
+      "caller_depth": 1,
+      "callee_depth": 2
+    },
+    "effective_depth": {
+      "caller_depth": 1,
+      "callee_depth": 0
+    },
+    "counts": {
+      "function_nodes": 6,
+      "evidence_nodes": 5,
+      "total_nodes": 11,
+      "edges": 15,
+      "unresolved_calls": 0
+    }
+  }
+}
