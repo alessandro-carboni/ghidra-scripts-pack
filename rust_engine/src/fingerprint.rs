@@ -170,7 +170,10 @@ impl OsgfFingerprint {
         {
             self.add_feature(
                 FingerprintView::RootedTopology,
-                json!({"kind":"root_role", "function":node.facts}),
+                json!({
+                    "kind": "root_role",
+                    "role": node.facts["role"]
+                }),
                 1,
                 vec![node.id.clone()],
             )?;
@@ -232,7 +235,7 @@ impl OsgfFingerprint {
                     json!({"kind":"category_chain", "function":nodes[&reference.source].facts,
                         "relations":["references_string", "has_string_category"],
                         "intermediate_type":"STRING", "category":nodes[&category.target].facts}),
-                    edge_product(reference, category)?,
+                    1,
                     edge_support(reference, category),
                 )?;
             }
@@ -257,11 +260,19 @@ impl OsgfFingerprint {
                 .iter()
                 .filter(|e| e.source == call.target && is_evidence_edge(e.kind))
             {
-                candidates.add(json!({"kind":"call_evidence", "caller":nodes[&call.source].facts,
-                        "callee":nodes[&call.target].facts, "recursive":call.source == call.target,
-                        "relations":["calls_function", evidence.kind], "evidence_type":nodes[&evidence.target].kind,
-                        "evidence":nodes[&evidence.target].facts}),
-                    edge_product(call, evidence)?, edge_support(call, evidence))?;
+                candidates.add(
+                    json!({
+                        "kind": "call_evidence",
+                        "caller": nodes[&call.source].facts,
+                        "callee": nodes[&call.target].facts,
+                        "recursive": call.source == call.target,
+                        "relations": ["calls_function", evidence.kind],
+                        "evidence_type": nodes[&evidence.target].kind,
+                        "evidence": nodes[&evidence.target].facts
+                    }),
+                    1,
+                    edge_support(call, evidence),
+                )?;
                 if evidence.kind == EdgeType::ReferencesString {
                     for _ in &c.edges {
                         candidates.check()?;
@@ -269,19 +280,26 @@ impl OsgfFingerprint {
                     for category in c.edges.iter().filter(|e| {
                         e.kind == EdgeType::HasStringCategory && e.source == evidence.target
                     }) {
-                        let count = edge_product(call, evidence)?
-                            .checked_mul(
-                                category.facts["occurrences"]
-                                    .as_u64()
-                                    .ok_or("invalid category count")?,
-                            )
-                            .ok_or("category motif occurrence overflow")?;
+                        let count = 1;
                         let mut support = edge_support(call, evidence);
                         support.extend([category.id.clone(), category.target.clone()]);
-                        candidates.add(json!({"kind":"call_category_chain", "caller":nodes[&call.source].facts,
-                                "callee":nodes[&call.target].facts, "recursive":call.source == call.target,
-                                "relations":["calls_function", "references_string", "has_string_category"],
-                                "category":nodes[&category.target].facts}), count, support)?;
+
+                        candidates.add(
+                            json!({
+                                "kind": "call_category_chain",
+                                "caller": nodes[&call.source].facts,
+                                "callee": nodes[&call.target].facts,
+                                "recursive": call.source == call.target,
+                                "relations": [
+                                    "calls_function",
+                                    "references_string",
+                                    "has_string_category"
+                                ],
+                                "category": nodes[&category.target].facts
+                            }),
+                            count,
+                            support,
+                        )?;
                     }
                 }
             }
@@ -319,8 +337,18 @@ impl OsgfFingerprint {
                         .iter()
                         .map(|id| path.iter().position(|p| p == id).unwrap())
                         .collect();
-                    candidates.add(json!({"kind":"rooted_path", "functions":path.iter().map(|id| &nodes[*id].facts).collect::<Vec<_>>(), "node_pattern":pattern}),
-                        edge_product(first, second)?, edge_support(first, second))?;
+                    candidates.add(
+                        json!({
+                            "kind": "rooted_path",
+                            "functions": path
+                                .iter()
+                                .map(|id| &nodes[*id].facts)
+                                .collect::<Vec<_>>(),
+                            "node_pattern": pattern
+                        }),
+                        1,
+                        edge_support(first, second),
+                    )?;
                 }
                 if i >= j {
                     continue;
@@ -341,8 +369,16 @@ impl OsgfFingerprint {
                 if let Some((direction, a, b)) = fork {
                     let mut branches = vec![nodes[a].facts.clone(), nodes[b].facts.clone()];
                     branches.sort_by_key(Value::to_string);
-                    candidates.add(json!({"kind":"rooted_fork", "direction":direction, "anchor":nodes[anchor].facts, "branches":branches}),
-                        edge_product(first, second)?, edge_support(first, second))?;
+                    candidates.add(
+                        json!({
+                            "kind": "rooted_fork",
+                            "direction": direction,
+                            "anchor": nodes[anchor].facts,
+                            "branches": branches
+                        }),
+                        1,
+                        edge_support(first, second),
+                    )?;
                 }
             }
         }
@@ -358,17 +394,6 @@ fn is_evidence_edge(kind: EdgeType) -> bool {
             | EdgeType::UsesConstant
             | EdgeType::BelongsToSection
     )
-}
-
-fn edge_product(a: &CanonicalEdge, b: &CanonicalEdge) -> Result<u64, String> {
-    a.facts["occurrences"]
-        .as_u64()
-        .and_then(|a| {
-            b.facts["occurrences"]
-                .as_u64()
-                .and_then(|b| a.checked_mul(b))
-        })
-        .ok_or_else(|| "motif occurrence overflow".to_string())
 }
 
 fn edge_support(a: &CanonicalEdge, b: &CanonicalEdge) -> Vec<String> {
@@ -432,6 +457,60 @@ mod tests {
     }
 
     #[test]
+    fn step_6_8_motif_counts_are_structural_not_edge_occurrence_products() {
+        let c = canonical();
+        let baseline = OsgfFingerprint::from_canonical(&c).unwrap();
+
+        let mut source = c.source_document.clone();
+
+        for edge in &mut source.edges {
+            edge.properties.insert("occurrences".into(), json!(1000));
+        }
+
+        let changed_canonical = CanonicalSubgraph::from_source(&source).unwrap();
+        let changed = OsgfFingerprint::from_canonical(&changed_canonical).unwrap();
+
+        for feature in baseline.rooted_topology_view.iter().filter(|feature| {
+            matches!(
+                feature.descriptor["kind"].as_str(),
+                Some("rooted_path") | Some("rooted_fork")
+            )
+        }) {
+            let corresponding = changed
+                .rooted_topology_view
+                .iter()
+                .find(|candidate| candidate.descriptor == feature.descriptor)
+                .expect("missing corresponding topology motif");
+
+            assert_eq!(corresponding.count, feature.count);
+        }
+
+        for feature in baseline
+            .typed_evidence_view
+            .iter()
+            .filter(|feature| feature.descriptor["kind"] == "category_chain")
+        {
+            let corresponding = changed
+                .typed_evidence_view
+                .iter()
+                .find(|candidate| candidate.descriptor == feature.descriptor)
+                .expect("missing corresponding category-chain motif");
+
+            assert_eq!(corresponding.count, feature.count);
+        }
+
+        for feature in &baseline.interaction_motif_view {
+            let corresponding = changed
+                .interaction_motif_view
+                .iter()
+                .find(|candidate| candidate.descriptor == feature.descriptor)
+                .expect("missing corresponding interaction motif");
+
+            assert_eq!(corresponding.count, feature.count);
+        }
+    }
+
+    #[test]
     fn step_6_7_interaction_requires_connected_call_and_evidence() {
         let c = canonical();
         let f = OsgfFingerprint::from_canonical(&c).unwrap();
@@ -442,6 +521,7 @@ mod tests {
             .unwrap();
         assert_eq!(api.descriptor["caller"]["role"], "ANCHOR");
         assert_eq!(api.descriptor["callee"]["role"], "BOTH");
+        assert_eq!(api.count, 1);
         assert_eq!(f.provenance_index[&api.id][0].canonical_elements.len(), 5);
         assert!(f
             .interaction_motif_view
@@ -468,6 +548,7 @@ mod tests {
             .collect();
         assert_eq!(chains.len(), 1);
         assert_eq!(chains[0].descriptor["category"]["category"], "powershell");
+        assert_eq!(chains[0].count, 1);
         assert_eq!(
             f.provenance_index[&chains[0].id][0]
                 .canonical_elements
@@ -587,10 +668,16 @@ mod tests {
         assert_eq!(roles.iter().map(|f| f.count).sum::<u64>(), 2);
         assert!(roles
             .iter()
-            .any(|f| f.descriptor["function"]["role"] == "ANCHOR" && f.count == 1));
+            .any(|f| f.descriptor["role"] == "ANCHOR" && f.count == 1));
+
+        assert!(roles.iter().any(|f| f.descriptor["role"] == "BOTH"));
+        assert!(roles.iter().all(|f| f.descriptor.get("function").is_none()));
         assert!(roles
             .iter()
-            .any(|f| f.descriptor["function"]["role"] == "BOTH"));
+            .all(|f| f.descriptor.get("caller_distance").is_none()));
+        assert!(roles
+            .iter()
+            .all(|f| f.descriptor.get("callee_distance").is_none()));
         for direction in ["caller", "callee"] {
             assert_eq!(
                 f.rooted_topology_view

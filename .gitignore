@@ -15,3 +15,5 @@ Thumbs.db
 .build-cache/
 node_modules/
 obj/
+
+reports/canonical-*/
