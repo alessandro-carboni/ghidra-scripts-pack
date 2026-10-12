@@ -1,0 +1,126 @@
+{
+  "schema_version": "0.1.0",
+  "seed_id": "seed:fn:1400013a0",
+  "anchor_function_id": "fn:1400013a0",
+  "graph_version": "0.12.0",
+  "extraction_config": {
+    "caller_depth": 1,
+    "callee_depth": 2,
+    "max_function_nodes": null,
+    "max_evidence_nodes": null,
+    "max_total_nodes": 3,
+    "max_edges": null
+  },
+  "function_selection": {
+    "anchor_function_id": "fn:1400013a0",
+    "function_ids": [
+      "fn:1400013a0",
+      "fn:140001c24",
+      "fn:140001c64"
+    ],
+    "caller_distances": {
+      "fn:1400013a0": 0
+    },
+    "callee_distances": {
+      "fn:1400013a0": 0,
+      "fn:140001c24": 2,
+      "fn:140001c64": 1
+    }
+  },
+  "nodes": [
+    {
+      "id": "fn:1400013a0",
+      "type": "FUNCTION",
+      "address": "1400013a0",
+      "external": false,
+      "internal": true,
+      "name": "FUN_1400013a0",
+      "section": ".text",
+      "size": 151,
+      "symbol_name": "FUN_1400013a0",
+      "thunk": false
+    },
+    {
+      "id": "fn:140001c24",
+      "type": "FUNCTION",
+      "address": "140001c24",
+      "external": false,
+      "internal": true,
+      "name": "_onexit",
+      "section": ".text",
+      "size": 58,
+      "symbol_name": "_onexit",
+      "thunk": false
+    },
+    {
+      "id": "fn:140001c64",
+      "type": "FUNCTION",
+      "address": "140001c64",
+      "external": false,
+      "internal": true,
+      "name": "atexit",
+      "section": ".text",
+      "size": 23,
+      "symbol_name": "atexit",
+      "thunk": false
+    }
+  ],
+  "edges": [
+    {
+      "type": "calls_function",
+      "source": "fn:1400013a0",
+      "target": "fn:140001c64",
+      "callee": "fn:140001c64",
+      "caller": "fn:1400013a0",
+      "callsite": "140001432",
+      "callsites": [
+        "140001432"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140001c64",
+      "target": "fn:140001c24",
+      "callee": "fn:140001c24",
+      "caller": "fn:140001c64",
+      "callsite": "140001c68",
+      "callsites": [
+        "140001c68"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    }
+  ],
+  "unresolved_calls": [],
+  "truncation": {
+    "truncated": true,
+    "limits_reached": [
+      {
+        "kind": "total_nodes",
+        "configured_limit": 3
+      }
+    ],
+    "requested_depth": {
+      "caller_depth": 1,
+      "callee_depth": 2
+    },
+    "effective_depth": {
+      "caller_depth": 0,
+      "callee_depth": 2
+    },
+    "counts": {
+      "function_nodes": 3,
+      "evidence_nodes": 0,
+      "total_nodes": 3,
+      "edges": 2,
+      "unresolved_calls": 0
+    },
+    "reason": "resource_limit"
+  }
+}

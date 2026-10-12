@@ -1,0 +1,1326 @@
+{
+  "schema_version": "0.1.0",
+  "seed_id": "seed:fn:140023f90",
+  "anchor_function_id": "fn:140023f90",
+  "graph_version": "0.12.0",
+  "extraction_config": {
+    "caller_depth": 1,
+    "callee_depth": 2,
+    "max_function_nodes": null,
+    "max_evidence_nodes": null,
+    "max_total_nodes": null,
+    "max_edges": null
+  },
+  "function_selection": {
+    "anchor_function_id": "fn:140023f90",
+    "function_ids": [
+      "fn:1400019f0",
+      "fn:140023f90",
+      "fn:140024500",
+      "fn:1400248d4",
+      "fn:1400249b0",
+      "fn:140024aec",
+      "fn:140028010"
+    ],
+    "caller_distances": {
+      "fn:140023f90": 0
+    },
+    "callee_distances": {
+      "fn:1400019f0": 2,
+      "fn:140023f90": 0,
+      "fn:140024500": 1,
+      "fn:1400248d4": 1,
+      "fn:1400249b0": 1,
+      "fn:140024aec": 1,
+      "fn:140028010": 1
+    }
+  },
+  "nodes": [
+    {
+      "id": "api:checkdlgbutton",
+      "type": "API",
+      "name": "CheckDlgButton",
+      "normalized_name": "CheckDlgButton",
+      "original_names": [
+        "CheckDlgButton"
+      ]
+    },
+    {
+      "id": "api:checkradiobutton",
+      "type": "API",
+      "name": "CheckRadioButton",
+      "normalized_name": "CheckRadioButton",
+      "original_names": [
+        "CheckRadioButton"
+      ]
+    },
+    {
+      "id": "api:destroywindow",
+      "type": "API",
+      "name": "DestroyWindow",
+      "normalized_name": "DestroyWindow",
+      "original_names": [
+        "DestroyWindow"
+      ]
+    },
+    {
+      "id": "api:enablewindow",
+      "type": "API",
+      "name": "EnableWindow",
+      "normalized_name": "EnableWindow",
+      "original_names": [
+        "EnableWindow"
+      ]
+    },
+    {
+      "id": "api:getdlgitem",
+      "type": "API",
+      "name": "GetDlgItem",
+      "normalized_name": "GetDlgItem",
+      "original_names": [
+        "GetDlgItem"
+      ]
+    },
+    {
+      "id": "api:getdlgitemtextw",
+      "type": "API",
+      "name": "GetDlgItemTextW",
+      "normalized_name": "GetDlgItemTextW",
+      "original_names": [
+        "GetDlgItemTextW"
+      ]
+    },
+    {
+      "id": "api:getpropw",
+      "type": "API",
+      "name": "GetPropW",
+      "normalized_name": "GetPropW",
+      "original_names": [
+        "GetPropW"
+      ]
+    },
+    {
+      "id": "api:isdlgbuttonchecked",
+      "type": "API",
+      "name": "IsDlgButtonChecked",
+      "normalized_name": "IsDlgButtonChecked",
+      "original_names": [
+        "IsDlgButtonChecked"
+      ]
+    },
+    {
+      "id": "api:loadstringw",
+      "type": "API",
+      "name": "LoadStringW",
+      "normalized_name": "LoadStringW",
+      "original_names": [
+        "LoadStringW"
+      ]
+    },
+    {
+      "id": "api:localfree",
+      "type": "API",
+      "name": "LocalFree",
+      "normalized_name": "LocalFree",
+      "original_names": [
+        "LocalFree"
+      ]
+    },
+    {
+      "id": "api:memset",
+      "type": "API",
+      "name": "memset",
+      "normalized_name": "memset",
+      "original_names": [
+        "memset"
+      ]
+    },
+    {
+      "id": "api:notifywinevent",
+      "type": "API",
+      "name": "NotifyWinEvent",
+      "normalized_name": "NotifyWinEvent",
+      "original_names": [
+        "NotifyWinEvent"
+      ]
+    },
+    {
+      "id": "api:removepropw",
+      "type": "API",
+      "name": "RemovePropW",
+      "normalized_name": "RemovePropW",
+      "original_names": [
+        "RemovePropW"
+      ]
+    },
+    {
+      "id": "api:senddlgitemmessagew",
+      "type": "API",
+      "name": "SendDlgItemMessageW",
+      "normalized_name": "SendDlgItemMessageW",
+      "original_names": [
+        "SendDlgItemMessageW"
+      ]
+    },
+    {
+      "id": "api:sendmessagew",
+      "type": "API",
+      "name": "SendMessageW",
+      "normalized_name": "SendMessageW",
+      "original_names": [
+        "SendMessageW"
+      ]
+    },
+    {
+      "id": "api:setdlgitemtextw",
+      "type": "API",
+      "name": "SetDlgItemTextW",
+      "normalized_name": "SetDlgItemTextW",
+      "original_names": [
+        "SetDlgItemTextW"
+      ]
+    },
+    {
+      "id": "api:setpropw",
+      "type": "API",
+      "name": "SetPropW",
+      "normalized_name": "SetPropW",
+      "original_names": [
+        "SetPropW"
+      ]
+    },
+    {
+      "id": "api:setwindowtextw",
+      "type": "API",
+      "name": "SetWindowTextW",
+      "normalized_name": "SetWindowTextW",
+      "original_names": [
+        "SetWindowTextW"
+      ]
+    },
+    {
+      "id": "api:showwindow",
+      "type": "API",
+      "name": "ShowWindow",
+      "normalized_name": "ShowWindow",
+      "original_names": [
+        "ShowWindow"
+      ]
+    },
+    {
+      "id": "api:updatewindow",
+      "type": "API",
+      "name": "UpdateWindow",
+      "normalized_name": "UpdateWindow",
+      "original_names": [
+        "UpdateWindow"
+      ]
+    },
+    {
+      "id": "fn:1400019f0",
+      "type": "FUNCTION",
+      "address": "1400019f0",
+      "external": false,
+      "internal": true,
+      "name": "__security_check_cookie",
+      "section": ".text",
+      "size": 30,
+      "symbol_name": "__security_check_cookie",
+      "thunk": false
+    },
+    {
+      "id": "fn:140023f90",
+      "type": "FUNCTION",
+      "address": "140023f90",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140023f90",
+      "section": ".text",
+      "size": 1073,
+      "symbol_name": "FUN_140023f90",
+      "thunk": false
+    },
+    {
+      "id": "fn:140024500",
+      "type": "FUNCTION",
+      "address": "140024500",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140024500",
+      "section": ".text",
+      "size": 971,
+      "symbol_name": "FUN_140024500",
+      "thunk": false
+    },
+    {
+      "id": "fn:1400248d4",
+      "type": "FUNCTION",
+      "address": "1400248d4",
+      "external": false,
+      "internal": true,
+      "name": "FUN_1400248d4",
+      "section": ".text",
+      "size": 213,
+      "symbol_name": "FUN_1400248d4",
+      "thunk": false
+    },
+    {
+      "id": "fn:1400249b0",
+      "type": "FUNCTION",
+      "address": "1400249b0",
+      "external": false,
+      "internal": true,
+      "name": "FUN_1400249b0",
+      "section": ".text",
+      "size": 108,
+      "symbol_name": "FUN_1400249b0",
+      "thunk": false
+    },
+    {
+      "id": "fn:140024aec",
+      "type": "FUNCTION",
+      "address": "140024aec",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140024aec",
+      "section": ".text",
+      "size": 260,
+      "symbol_name": "FUN_140024aec",
+      "thunk": false
+    },
+    {
+      "id": "fn:140028010",
+      "type": "FUNCTION",
+      "address": "140028010",
+      "external": false,
+      "internal": true,
+      "name": "_guard_dispatch_icall",
+      "section": "fothk",
+      "size": 5,
+      "symbol_name": "_guard_dispatch_icall",
+      "thunk": true
+    },
+    {
+      "id": "sec:140001000",
+      "type": "SECTION",
+      "end": "140027fff",
+      "entropy": 6.1732,
+      "entropy_class": "normal",
+      "entropy_sampled_bytes": 65536,
+      "execute": true,
+      "initialized": true,
+      "name": ".text",
+      "permissions": "r-x",
+      "read": true,
+      "reasons": [],
+      "size": 159744,
+      "start": "140001000",
+      "suspicious": false,
+      "write": false
+    },
+    {
+      "id": "sec:140028000",
+      "type": "SECTION",
+      "end": "140028fff",
+      "entropy": 0.0159,
+      "entropy_class": "normal",
+      "entropy_sampled_bytes": 4096,
+      "execute": true,
+      "initialized": true,
+      "name": "fothk",
+      "permissions": "r-x",
+      "read": true,
+      "reasons": [],
+      "size": 4096,
+      "start": "140028000",
+      "suspicious": false,
+      "write": false
+    },
+    {
+      "id": "vis:call_visibility:fn:140023f90",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:140023f90",
+      "indicator": "call_visibility",
+      "indirect_call_count": 23,
+      "indirect_callsites": [
+        "140023fba",
+        "140024064",
+        "14002415a",
+        "14002416e",
+        "14002417f",
+        "140024196",
+        "1400241a7",
+        "1400241b9",
+        "1400241ca",
+        "1400241e8",
+        "1400241fc",
+        "14002420d",
+        "140024273",
+        "140024290",
+        "1400242a6",
+        "1400242d3",
+        "1400242e7",
+        "1400242f6",
+        "140024305",
+        "140024337",
+        "140024350",
+        "14002435f",
+        "140024393"
+      ],
+      "resolved_indirect_call_count": 23,
+      "resolved_indirect_callsites": [
+        "140023fba",
+        "140024064",
+        "14002415a",
+        "14002416e",
+        "14002417f",
+        "140024196",
+        "1400241a7",
+        "1400241b9",
+        "1400241ca",
+        "1400241e8",
+        "1400241fc",
+        "14002420d",
+        "140024273",
+        "140024290",
+        "1400242a6",
+        "1400242d3",
+        "1400242e7",
+        "1400242f6",
+        "140024305",
+        "140024337",
+        "140024350",
+        "14002435f",
+        "140024393"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    },
+    {
+      "id": "vis:call_visibility:fn:140024500",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:140024500",
+      "indicator": "call_visibility",
+      "indirect_call_count": 36,
+      "indirect_callsites": [
+        "14002452d",
+        "140024552",
+        "14002456f",
+        "140024587",
+        "14002459b",
+        "1400245ac",
+        "1400245cd",
+        "1400245e1",
+        "140024601",
+        "140024612",
+        "14002462f",
+        "140024650",
+        "140024664",
+        "140024684",
+        "140024695",
+        "1400246b3",
+        "1400246d4",
+        "1400246e8",
+        "140024708",
+        "140024719",
+        "140024737",
+        "14002475d",
+        "14002476e",
+        "140024780",
+        "140024794",
+        "1400247a5",
+        "1400247b8",
+        "1400247cc",
+        "1400247ec",
+        "1400247fd",
+        "140024811",
+        "140024822",
+        "140024849",
+        "140024862",
+        "140024887",
+        "1400248a4"
+      ],
+      "resolved_indirect_call_count": 36,
+      "resolved_indirect_callsites": [
+        "14002452d",
+        "140024552",
+        "14002456f",
+        "140024587",
+        "14002459b",
+        "1400245ac",
+        "1400245cd",
+        "1400245e1",
+        "140024601",
+        "140024612",
+        "14002462f",
+        "140024650",
+        "140024664",
+        "140024684",
+        "140024695",
+        "1400246b3",
+        "1400246d4",
+        "1400246e8",
+        "140024708",
+        "140024719",
+        "140024737",
+        "14002475d",
+        "14002476e",
+        "140024780",
+        "140024794",
+        "1400247a5",
+        "1400247b8",
+        "1400247cc",
+        "1400247ec",
+        "1400247fd",
+        "140024811",
+        "140024822",
+        "140024849",
+        "140024862",
+        "140024887",
+        "1400248a4"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    },
+    {
+      "id": "vis:call_visibility:fn:1400248d4",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:1400248d4",
+      "indicator": "call_visibility",
+      "indirect_call_count": 1,
+      "indirect_callsites": [
+        "14002496b"
+      ],
+      "resolved_indirect_call_count": 1,
+      "resolved_indirect_callsites": [
+        "14002496b"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    },
+    {
+      "id": "vis:call_visibility:fn:1400249b0",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:1400249b0",
+      "indicator": "call_visibility",
+      "indirect_call_count": 3,
+      "indirect_callsites": [
+        "1400249c2",
+        "1400249ea",
+        "140024a05"
+      ],
+      "resolved_indirect_call_count": 3,
+      "resolved_indirect_callsites": [
+        "1400249c2",
+        "1400249ea",
+        "140024a05"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    },
+    {
+      "id": "vis:call_visibility:fn:140024aec",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:140024aec",
+      "indicator": "call_visibility",
+      "indirect_call_count": 6,
+      "indirect_callsites": [
+        "140024b1f",
+        "140024b43",
+        "140024b63",
+        "140024b8f",
+        "140024ba8",
+        "140024bc8"
+      ],
+      "resolved_indirect_call_count": 6,
+      "resolved_indirect_callsites": [
+        "140024b1f",
+        "140024b43",
+        "140024b63",
+        "140024b8f",
+        "140024ba8",
+        "140024bc8"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    }
+  ],
+  "edges": [
+    {
+      "type": "belongs_to_section",
+      "source": "fn:1400019f0",
+      "target": "sec:140001000",
+      "function": "fn:1400019f0",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140023f90",
+      "target": "fn:140024500",
+      "callee": "fn:140024500",
+      "caller": "fn:140023f90",
+      "callsite": "140024085",
+      "callsites": [
+        "140024085"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140023f90",
+      "target": "fn:1400248d4",
+      "callee": "fn:1400248d4",
+      "caller": "fn:140023f90",
+      "callsite": "1400240cd",
+      "callsites": [
+        "1400240cd"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140023f90",
+      "target": "fn:1400249b0",
+      "callee": "fn:1400249b0",
+      "caller": "fn:140023f90",
+      "callsite": "14002403b",
+      "callsites": [
+        "14002403b"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140023f90",
+      "target": "fn:140024aec",
+      "callee": "fn:140024aec",
+      "caller": "fn:140023f90",
+      "callsite": "14002425e",
+      "callsites": [
+        "14002425e",
+        "140024322",
+        "14002437f"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 3,
+      "unresolved": false
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140023f90",
+      "target": "fn:140028010",
+      "callee": "fn:140028010",
+      "caller": "fn:140023f90",
+      "callsite": "140023fef",
+      "callsites": [
+        "140023fef",
+        "1400240ae"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 2,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140023f90",
+      "target": "api:destroywindow",
+      "api": "api:destroywindow",
+      "api_original_names": [
+        "DestroyWindow"
+      ],
+      "caller": "fn:140023f90",
+      "callsite": "1400242f6",
+      "callsites": [
+        "1400242f6"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140023f90",
+      "target": "api:enablewindow",
+      "api": "api:enablewindow",
+      "api_original_names": [
+        "EnableWindow"
+      ],
+      "caller": "fn:140023f90",
+      "callsite": "14002417f",
+      "callsites": [
+        "14002417f",
+        "1400241a7",
+        "1400241ca",
+        "14002420d"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 4,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140023f90",
+      "target": "api:getdlgitem",
+      "api": "api:getdlgitem",
+      "api_original_names": [
+        "GetDlgItem"
+      ],
+      "caller": "fn:140023f90",
+      "callsite": "14002416e",
+      "callsites": [
+        "14002416e",
+        "140024196",
+        "1400241b9",
+        "1400241fc",
+        "140024290"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 5,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140023f90",
+      "target": "api:getpropw",
+      "api": "api:getpropw",
+      "api_original_names": [
+        "GetPropW"
+      ],
+      "caller": "fn:140023f90",
+      "callsite": "140023fba",
+      "callsites": [
+        "140023fba"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140023f90",
+      "target": "api:localfree",
+      "api": "api:localfree",
+      "api_original_names": [
+        "LocalFree"
+      ],
+      "caller": "fn:140023f90",
+      "callsite": "140024305",
+      "callsites": [
+        "140024305"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140023f90",
+      "target": "api:removepropw",
+      "api": "api:removepropw",
+      "api_original_names": [
+        "RemovePropW"
+      ],
+      "caller": "fn:140023f90",
+      "callsite": "1400242e7",
+      "callsites": [
+        "1400242e7"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140023f90",
+      "target": "api:senddlgitemmessagew",
+      "api": "api:senddlgitemmessagew",
+      "api_original_names": [
+        "SendDlgItemMessageW"
+      ],
+      "caller": "fn:140023f90",
+      "callsite": "14002415a",
+      "callsites": [
+        "14002415a",
+        "1400241e8"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 2,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140023f90",
+      "target": "api:sendmessagew",
+      "api": "api:sendmessagew",
+      "api_original_names": [
+        "SendMessageW"
+      ],
+      "caller": "fn:140023f90",
+      "callsite": "140024273",
+      "callsites": [
+        "140024273",
+        "1400242d3",
+        "140024337",
+        "140024393"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 4,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140023f90",
+      "target": "api:setpropw",
+      "api": "api:setpropw",
+      "api_original_names": [
+        "SetPropW"
+      ],
+      "caller": "fn:140023f90",
+      "callsite": "140024064",
+      "callsites": [
+        "140024064"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140023f90",
+      "target": "api:setwindowtextw",
+      "api": "api:setwindowtextw",
+      "api_original_names": [
+        "SetWindowTextW"
+      ],
+      "caller": "fn:140023f90",
+      "callsite": "1400242a6",
+      "callsites": [
+        "1400242a6"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140023f90",
+      "target": "api:showwindow",
+      "api": "api:showwindow",
+      "api_original_names": [
+        "ShowWindow"
+      ],
+      "caller": "fn:140023f90",
+      "callsite": "140024350",
+      "callsites": [
+        "140024350"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140023f90",
+      "target": "api:updatewindow",
+      "api": "api:updatewindow",
+      "api_original_names": [
+        "UpdateWindow"
+      ],
+      "caller": "fn:140023f90",
+      "callsite": "14002435f",
+      "callsites": [
+        "14002435f"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140023f90",
+      "target": "sec:140001000",
+      "function": "fn:140023f90",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:140023f90",
+      "target": "vis:call_visibility:fn:140023f90",
+      "function": "fn:140023f90",
+      "indicator": "vis:call_visibility:fn:140023f90"
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140024500",
+      "target": "api:checkdlgbutton",
+      "api": "api:checkdlgbutton",
+      "api_original_names": [
+        "CheckDlgButton"
+      ],
+      "caller": "fn:140024500",
+      "callsite": "14002462f",
+      "callsites": [
+        "14002462f",
+        "1400246b3",
+        "140024737"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 3,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140024500",
+      "target": "api:checkradiobutton",
+      "api": "api:checkradiobutton",
+      "api_original_names": [
+        "CheckRadioButton"
+      ],
+      "caller": "fn:140024500",
+      "callsite": "140024849",
+      "callsites": [
+        "140024849"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140024500",
+      "target": "api:enablewindow",
+      "api": "api:enablewindow",
+      "api_original_names": [
+        "EnableWindow"
+      ],
+      "caller": "fn:140024500",
+      "callsite": "1400245ac",
+      "callsites": [
+        "1400245ac",
+        "140024612",
+        "140024695",
+        "140024719",
+        "1400247a5",
+        "1400247fd",
+        "140024822"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 7,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140024500",
+      "target": "api:getdlgitem",
+      "api": "api:getdlgitem",
+      "api_original_names": [
+        "GetDlgItem"
+      ],
+      "caller": "fn:140024500",
+      "callsite": "140024587",
+      "callsites": [
+        "140024587",
+        "1400245cd",
+        "140024601",
+        "140024650",
+        "140024684",
+        "1400246d4",
+        "140024708",
+        "14002475d",
+        "140024780",
+        "1400247b8",
+        "1400247ec",
+        "140024811"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 12,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140024500",
+      "target": "api:senddlgitemmessagew",
+      "api": "api:senddlgitemmessagew",
+      "api_original_names": [
+        "SendDlgItemMessageW"
+      ],
+      "caller": "fn:140024500",
+      "callsite": "140024552",
+      "callsites": [
+        "140024552",
+        "140024887"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 2,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140024500",
+      "target": "api:sendmessagew",
+      "api": "api:sendmessagew",
+      "api_original_names": [
+        "SendMessageW"
+      ],
+      "caller": "fn:140024500",
+      "callsite": "14002456f",
+      "callsites": [
+        "14002456f",
+        "1400248a4"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 2,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140024500",
+      "target": "api:setdlgitemtextw",
+      "api": "api:setdlgitemtextw",
+      "api_original_names": [
+        "SetDlgItemTextW"
+      ],
+      "caller": "fn:140024500",
+      "callsite": "14002452d",
+      "callsites": [
+        "14002452d",
+        "140024862"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 2,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140024500",
+      "target": "api:showwindow",
+      "api": "api:showwindow",
+      "api_original_names": [
+        "ShowWindow"
+      ],
+      "caller": "fn:140024500",
+      "callsite": "14002459b",
+      "callsites": [
+        "14002459b",
+        "1400245e1",
+        "140024664",
+        "1400246e8",
+        "14002476e",
+        "140024794",
+        "1400247cc"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 7,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140024500",
+      "target": "sec:140001000",
+      "function": "fn:140024500",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:140024500",
+      "target": "vis:call_visibility:fn:140024500",
+      "function": "fn:140024500",
+      "indicator": "vis:call_visibility:fn:140024500"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:1400248d4",
+      "target": "fn:1400019f0",
+      "callee": "fn:1400019f0",
+      "caller": "fn:1400248d4",
+      "callsite": "14002498f",
+      "callsites": [
+        "14002498f"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:1400248d4",
+      "target": "fn:1400249b0",
+      "callee": "fn:1400249b0",
+      "caller": "fn:1400248d4",
+      "callsite": "14002497f",
+      "callsites": [
+        "14002497f"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:1400248d4",
+      "target": "api:loadstringw",
+      "api": "api:loadstringw",
+      "api_original_names": [
+        "LoadStringW"
+      ],
+      "caller": "fn:1400248d4",
+      "callsite": "14002496b",
+      "callsites": [
+        "14002496b"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:1400248d4",
+      "target": "api:memset",
+      "api": "api:memset",
+      "api_original_names": [
+        "memset"
+      ],
+      "caller": "fn:1400248d4",
+      "callsite": "14002490d",
+      "callsites": [
+        "14002490d"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:1400248d4",
+      "target": "sec:140001000",
+      "function": "fn:1400248d4",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:1400248d4",
+      "target": "vis:call_visibility:fn:1400248d4",
+      "function": "fn:1400248d4",
+      "indicator": "vis:call_visibility:fn:1400248d4"
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:1400249b0",
+      "target": "api:getdlgitem",
+      "api": "api:getdlgitem",
+      "api_original_names": [
+        "GetDlgItem"
+      ],
+      "caller": "fn:1400249b0",
+      "callsite": "1400249c2",
+      "callsites": [
+        "1400249c2"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:1400249b0",
+      "target": "api:notifywinevent",
+      "api": "api:notifywinevent",
+      "api_original_names": [
+        "NotifyWinEvent"
+      ],
+      "caller": "fn:1400249b0",
+      "callsite": "140024a05",
+      "callsites": [
+        "140024a05"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:1400249b0",
+      "target": "api:setwindowtextw",
+      "api": "api:setwindowtextw",
+      "api_original_names": [
+        "SetWindowTextW"
+      ],
+      "caller": "fn:1400249b0",
+      "callsite": "1400249ea",
+      "callsites": [
+        "1400249ea"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:1400249b0",
+      "target": "sec:140001000",
+      "function": "fn:1400249b0",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:1400249b0",
+      "target": "vis:call_visibility:fn:1400249b0",
+      "function": "fn:1400249b0",
+      "indicator": "vis:call_visibility:fn:1400249b0"
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140024aec",
+      "target": "api:getdlgitemtextw",
+      "api": "api:getdlgitemtextw",
+      "api_original_names": [
+        "GetDlgItemTextW"
+      ],
+      "caller": "fn:140024aec",
+      "callsite": "140024b8f",
+      "callsites": [
+        "140024b8f",
+        "140024bc8"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 2,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140024aec",
+      "target": "api:isdlgbuttonchecked",
+      "api": "api:isdlgbuttonchecked",
+      "api_original_names": [
+        "IsDlgButtonChecked"
+      ],
+      "caller": "fn:140024aec",
+      "callsite": "140024b1f",
+      "callsites": [
+        "140024b1f",
+        "140024b43",
+        "140024b63",
+        "140024ba8"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 4,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140024aec",
+      "target": "sec:140001000",
+      "function": "fn:140024aec",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:140024aec",
+      "target": "vis:call_visibility:fn:140024aec",
+      "function": "fn:140024aec",
+      "indicator": "vis:call_visibility:fn:140024aec"
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140028010",
+      "target": "sec:140028000",
+      "function": "fn:140028010",
+      "section": "sec:140028000"
+    }
+  ],
+  "unresolved_calls": [],
+  "truncation": {
+    "truncated": false,
+    "limits_reached": [],
+    "requested_depth": {
+      "caller_depth": 1,
+      "callee_depth": 2
+    },
+    "effective_depth": {
+      "caller_depth": 0,
+      "callee_depth": 2
+    },
+    "counts": {
+      "function_nodes": 7,
+      "evidence_nodes": 27,
+      "total_nodes": 34,
+      "edges": 46,
+      "unresolved_calls": 0
+    }
+  }
+}

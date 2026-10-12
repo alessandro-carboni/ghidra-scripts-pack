@@ -1,0 +1,561 @@
+{
+  "schema_version": "0.1.0",
+  "seed_id": "seed:fn:140010798",
+  "anchor_function_id": "fn:140010798",
+  "graph_version": "0.12.0",
+  "extraction_config": {
+    "caller_depth": 1,
+    "callee_depth": 2,
+    "max_function_nodes": null,
+    "max_evidence_nodes": null,
+    "max_total_nodes": null,
+    "max_edges": null
+  },
+  "function_selection": {
+    "anchor_function_id": "fn:140010798",
+    "function_ids": [
+      "fn:1400019f0",
+      "fn:140001cf0",
+      "fn:140010580",
+      "fn:140010798"
+    ],
+    "caller_distances": {
+      "fn:140010580": 1,
+      "fn:140010798": 0
+    },
+    "callee_distances": {
+      "fn:1400019f0": 1,
+      "fn:140001cf0": 2,
+      "fn:140010798": 0
+    }
+  },
+  "nodes": [
+    {
+      "id": "api:getdateformatw",
+      "type": "API",
+      "name": "GetDateFormatW",
+      "normalized_name": "GetDateFormatW",
+      "original_names": [
+        "GetDateFormatW"
+      ]
+    },
+    {
+      "id": "api:getlocaleinfow",
+      "type": "API",
+      "name": "GetLocaleInfoW",
+      "normalized_name": "GetLocaleInfoW",
+      "original_names": [
+        "GetLocaleInfoW"
+      ]
+    },
+    {
+      "id": "api:getlocaltime",
+      "type": "API",
+      "name": "GetLocalTime",
+      "normalized_name": "GetLocalTime",
+      "original_names": [
+        "GetLocalTime"
+      ]
+    },
+    {
+      "id": "api:gettimeformatw",
+      "type": "API",
+      "name": "GetTimeFormatW",
+      "normalized_name": "GetTimeFormatW",
+      "original_names": [
+        "GetTimeFormatW"
+      ]
+    },
+    {
+      "id": "api:getuserdefaultuilanguage",
+      "type": "API",
+      "name": "GetUserDefaultUILanguage",
+      "normalized_name": "GetUserDefaultUILanguage",
+      "original_names": [
+        "GetUserDefaultUILanguage"
+      ]
+    },
+    {
+      "id": "api:isprocessorfeaturepresent",
+      "type": "API",
+      "name": "IsProcessorFeaturePresent",
+      "normalized_name": "IsProcessorFeaturePresent",
+      "original_names": [
+        "IsProcessorFeaturePresent"
+      ]
+    },
+    {
+      "id": "api:memset",
+      "type": "API",
+      "name": "memset",
+      "normalized_name": "memset",
+      "original_names": [
+        "memset"
+      ]
+    },
+    {
+      "id": "api:sendmessagew",
+      "type": "API",
+      "name": "SendMessageW",
+      "normalized_name": "SendMessageW",
+      "original_names": [
+        "SendMessageW"
+      ]
+    },
+    {
+      "id": "fn:1400019f0",
+      "type": "FUNCTION",
+      "address": "1400019f0",
+      "external": false,
+      "internal": true,
+      "name": "__security_check_cookie",
+      "section": ".text",
+      "size": 30,
+      "symbol_name": "__security_check_cookie",
+      "thunk": false
+    },
+    {
+      "id": "fn:140001cf0",
+      "type": "FUNCTION",
+      "address": "140001cf0",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140001cf0",
+      "section": ".text",
+      "size": 210,
+      "symbol_name": "FUN_140001cf0",
+      "thunk": false
+    },
+    {
+      "id": "fn:140010580",
+      "type": "FUNCTION",
+      "address": "140010580",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140010580",
+      "section": ".text",
+      "size": 528,
+      "symbol_name": "FUN_140010580",
+      "thunk": false
+    },
+    {
+      "id": "fn:140010798",
+      "type": "FUNCTION",
+      "address": "140010798",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140010798",
+      "section": ".text",
+      "size": 89,
+      "symbol_name": "FUN_140010798",
+      "thunk": false
+    },
+    {
+      "id": "sec:140001000",
+      "type": "SECTION",
+      "end": "140027fff",
+      "entropy": 6.1732,
+      "entropy_class": "normal",
+      "entropy_sampled_bytes": 65536,
+      "execute": true,
+      "initialized": true,
+      "name": ".text",
+      "permissions": "r-x",
+      "read": true,
+      "reasons": [],
+      "size": 159744,
+      "start": "140001000",
+      "suspicious": false,
+      "write": false
+    },
+    {
+      "id": "vis:call_visibility:fn:140001cf0",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:140001cf0",
+      "indicator": "call_visibility",
+      "indirect_call_count": 2,
+      "indirect_callsites": [
+        "140001cfe",
+        "140001d0d"
+      ],
+      "resolved_indirect_call_count": 1,
+      "resolved_indirect_callsites": [
+        "140001cfe"
+      ],
+      "signals": [
+        "indirect_call",
+        "unresolved_call"
+      ],
+      "unresolved_indirect_call_count": 1,
+      "unresolved_indirect_callsites": [
+        "140001d0d"
+      ]
+    },
+    {
+      "id": "vis:call_visibility:fn:140010580",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:140010580",
+      "indicator": "call_visibility",
+      "indirect_call_count": 6,
+      "indirect_callsites": [
+        "1400105e1",
+        "140010612",
+        "14001062a",
+        "14001066b",
+        "14001069a",
+        "140010734"
+      ],
+      "resolved_indirect_call_count": 6,
+      "resolved_indirect_callsites": [
+        "1400105e1",
+        "140010612",
+        "14001062a",
+        "14001066b",
+        "14001069a",
+        "140010734"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    },
+    {
+      "id": "vis:call_visibility:fn:140010798",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:140010798",
+      "indicator": "call_visibility",
+      "indirect_call_count": 1,
+      "indirect_callsites": [
+        "1400107ba"
+      ],
+      "resolved_indirect_call_count": 1,
+      "resolved_indirect_callsites": [
+        "1400107ba"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    }
+  ],
+  "edges": [
+    {
+      "type": "calls_function",
+      "source": "fn:1400019f0",
+      "target": "fn:140001cf0",
+      "callee": "fn:140001cf0",
+      "caller": "fn:1400019f0",
+      "callsite": "140001a09",
+      "callsites": [
+        "140001a09"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:1400019f0",
+      "target": "sec:140001000",
+      "function": "fn:1400019f0",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140001cf0",
+      "target": "api:isprocessorfeaturepresent",
+      "api": "api:isprocessorfeaturepresent",
+      "api_original_names": [
+        "IsProcessorFeaturePresent"
+      ],
+      "caller": "fn:140001cf0",
+      "callsite": "140001cfe",
+      "callsites": [
+        "140001cfe"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140001cf0",
+      "target": "sec:140001000",
+      "function": "fn:140001cf0",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:140001cf0",
+      "target": "vis:call_visibility:fn:140001cf0",
+      "function": "fn:140001cf0",
+      "indicator": "vis:call_visibility:fn:140001cf0"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140010580",
+      "target": "fn:1400019f0",
+      "callee": "fn:1400019f0",
+      "caller": "fn:140010580",
+      "callsite": "140010751",
+      "callsites": [
+        "140010751"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140010580",
+      "target": "fn:140010798",
+      "callee": "fn:140010798",
+      "caller": "fn:140010580",
+      "callsite": "1400105f6",
+      "callsites": [
+        "1400105f6",
+        "140010639"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 2,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140010580",
+      "target": "api:getdateformatw",
+      "api": "api:getdateformatw",
+      "api_original_names": [
+        "GetDateFormatW"
+      ],
+      "caller": "fn:140010580",
+      "callsite": "14001066b",
+      "callsites": [
+        "14001066b"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140010580",
+      "target": "api:getlocaleinfow",
+      "api": "api:getlocaleinfow",
+      "api_original_names": [
+        "GetLocaleInfoW"
+      ],
+      "caller": "fn:140010580",
+      "callsite": "140010612",
+      "callsites": [
+        "140010612"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140010580",
+      "target": "api:getlocaltime",
+      "api": "api:getlocaltime",
+      "api_original_names": [
+        "GetLocalTime"
+      ],
+      "caller": "fn:140010580",
+      "callsite": "1400105e1",
+      "callsites": [
+        "1400105e1"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140010580",
+      "target": "api:gettimeformatw",
+      "api": "api:gettimeformatw",
+      "api_original_names": [
+        "GetTimeFormatW"
+      ],
+      "caller": "fn:140010580",
+      "callsite": "14001069a",
+      "callsites": [
+        "14001069a"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140010580",
+      "target": "api:getuserdefaultuilanguage",
+      "api": "api:getuserdefaultuilanguage",
+      "api_original_names": [
+        "GetUserDefaultUILanguage"
+      ],
+      "caller": "fn:140010580",
+      "callsite": "14001062a",
+      "callsites": [
+        "14001062a"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140010580",
+      "target": "api:memset",
+      "api": "api:memset",
+      "api_original_names": [
+        "memset"
+      ],
+      "caller": "fn:140010580",
+      "callsite": "1400105d3",
+      "callsites": [
+        "1400105d3"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140010580",
+      "target": "api:sendmessagew",
+      "api": "api:sendmessagew",
+      "api_original_names": [
+        "SendMessageW"
+      ],
+      "caller": "fn:140010580",
+      "callsite": "140010734",
+      "callsites": [
+        "140010734"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140010580",
+      "target": "sec:140001000",
+      "function": "fn:140010580",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:140010580",
+      "target": "vis:call_visibility:fn:140010580",
+      "function": "fn:140010580",
+      "indicator": "vis:call_visibility:fn:140010580"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140010798",
+      "target": "fn:1400019f0",
+      "callee": "fn:1400019f0",
+      "caller": "fn:140010798",
+      "callsite": "1400107e7",
+      "callsites": [
+        "1400107e7"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140010798",
+      "target": "api:getlocaleinfow",
+      "api": "api:getlocaleinfow",
+      "api_original_names": [
+        "GetLocaleInfoW"
+      ],
+      "caller": "fn:140010798",
+      "callsite": "1400107ba",
+      "callsites": [
+        "1400107ba"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140010798",
+      "target": "sec:140001000",
+      "function": "fn:140010798",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:140010798",
+      "target": "vis:call_visibility:fn:140010798",
+      "function": "fn:140010798",
+      "indicator": "vis:call_visibility:fn:140010798"
+    }
+  ],
+  "unresolved_calls": [
+    {
+      "indicator": "unresolved_call",
+      "caller": "fn:140001cf0",
+      "callee": null,
+      "callsite": "140001d0d",
+      "unresolved": true,
+      "reason": "no_resolved_function_or_api_target",
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1
+    }
+  ],
+  "truncation": {
+    "truncated": false,
+    "limits_reached": [],
+    "requested_depth": {
+      "caller_depth": 1,
+      "callee_depth": 2
+    },
+    "effective_depth": {
+      "caller_depth": 1,
+      "callee_depth": 2
+    },
+    "counts": {
+      "function_nodes": 4,
+      "evidence_nodes": 12,
+      "total_nodes": 16,
+      "edges": 20,
+      "unresolved_calls": 1
+    }
+  }
+}

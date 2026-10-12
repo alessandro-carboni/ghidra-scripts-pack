@@ -11,3 +11,7 @@ dist/
 *.tmp
 Thumbs.db
 .DS_Store
+
+.build-cache/
+node_modules/
+obj/

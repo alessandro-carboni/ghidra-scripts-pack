@@ -1,0 +1,586 @@
+{
+  "schema_version": "0.1.0",
+  "seed_id": "seed:fn:140008078",
+  "anchor_function_id": "fn:140008078",
+  "graph_version": "0.12.0",
+  "extraction_config": {
+    "caller_depth": 1,
+    "callee_depth": 2,
+    "max_function_nodes": null,
+    "max_evidence_nodes": null,
+    "max_total_nodes": null,
+    "max_edges": null
+  },
+  "function_selection": {
+    "anchor_function_id": "fn:140008078",
+    "function_ids": [
+      "fn:140003350",
+      "fn:140007004",
+      "fn:140007570",
+      "fn:140008078",
+      "fn:140009200"
+    ],
+    "caller_distances": {
+      "fn:140007004": 1,
+      "fn:140007570": 1,
+      "fn:140008078": 0
+    },
+    "callee_distances": {
+      "fn:140003350": 2,
+      "fn:140008078": 0,
+      "fn:140009200": 1
+    }
+  },
+  "nodes": [
+    {
+      "id": "api:getprocessheap",
+      "type": "API",
+      "name": "GetProcessHeap",
+      "normalized_name": "GetProcessHeap",
+      "original_names": [
+        "GetProcessHeap"
+      ]
+    },
+    {
+      "id": "api:heapfree",
+      "type": "API",
+      "name": "HeapFree",
+      "normalized_name": "HeapFree",
+      "original_names": [
+        "HeapFree"
+      ]
+    },
+    {
+      "id": "fn:140003350",
+      "type": "FUNCTION",
+      "address": "140003350",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140003350",
+      "section": ".text",
+      "size": 83,
+      "symbol_name": "FUN_140003350",
+      "thunk": false
+    },
+    {
+      "id": "fn:140007004",
+      "type": "FUNCTION",
+      "address": "140007004",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140007004",
+      "section": ".text",
+      "size": 366,
+      "symbol_name": "FUN_140007004",
+      "thunk": false
+    },
+    {
+      "id": "fn:140007570",
+      "type": "FUNCTION",
+      "address": "140007570",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140007570",
+      "section": ".text",
+      "size": 939,
+      "symbol_name": "FUN_140007570",
+      "thunk": false
+    },
+    {
+      "id": "fn:140008078",
+      "type": "FUNCTION",
+      "address": "140008078",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140008078",
+      "section": ".text",
+      "size": 298,
+      "symbol_name": "FUN_140008078",
+      "thunk": false
+    },
+    {
+      "id": "fn:140009200",
+      "type": "FUNCTION",
+      "address": "140009200",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140009200",
+      "section": ".text",
+      "size": 20,
+      "symbol_name": "FUN_140009200",
+      "thunk": false
+    },
+    {
+      "id": "sec:140001000",
+      "type": "SECTION",
+      "end": "140027fff",
+      "entropy": 6.1732,
+      "entropy_class": "normal",
+      "entropy_sampled_bytes": 65536,
+      "execute": true,
+      "initialized": true,
+      "name": ".text",
+      "permissions": "r-x",
+      "read": true,
+      "reasons": [],
+      "size": 159744,
+      "start": "140001000",
+      "suspicious": false,
+      "write": false
+    },
+    {
+      "id": "str:14002ac38",
+      "type": "STRING",
+      "address": "14002ac38",
+      "categories": [
+        "file_path"
+      ],
+      "category": "file_path",
+      "raw_value": "\"onecore\\\\internal\\\\sdk\\\\inc\\\\wil/Staging.h\"",
+      "reference_count": 1,
+      "value": "onecore\\\\internal\\\\sdk\\\\inc\\\\wil/Staging.h"
+    },
+    {
+      "id": "strcat:file_path",
+      "type": "STRING_CATEGORY",
+      "category": "file_path",
+      "name": "file_path"
+    },
+    {
+      "id": "vis:call_visibility:fn:140003350",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:140003350",
+      "indicator": "call_visibility",
+      "indirect_call_count": 1,
+      "indirect_callsites": [
+        "1400033a2"
+      ],
+      "resolved_indirect_call_count": 0,
+      "resolved_indirect_callsites": [],
+      "signals": [
+        "indirect_call",
+        "unresolved_call"
+      ],
+      "unresolved_indirect_call_count": 1,
+      "unresolved_indirect_callsites": [
+        "1400033a2"
+      ]
+    },
+    {
+      "id": "vis:call_visibility:fn:140007004",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:140007004",
+      "indicator": "call_visibility",
+      "indirect_call_count": 4,
+      "indirect_callsites": [
+        "1400070bc",
+        "1400070d0",
+        "1400070ec",
+        "140007100"
+      ],
+      "resolved_indirect_call_count": 4,
+      "resolved_indirect_callsites": [
+        "1400070bc",
+        "1400070d0",
+        "1400070ec",
+        "140007100"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    },
+    {
+      "id": "vis:call_visibility:fn:140007570",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:140007570",
+      "indicator": "call_visibility",
+      "indirect_call_count": 4,
+      "indirect_callsites": [
+        "14000788a",
+        "14000789e",
+        "1400078cc",
+        "1400078e0"
+      ],
+      "resolved_indirect_call_count": 4,
+      "resolved_indirect_callsites": [
+        "14000788a",
+        "14000789e",
+        "1400078cc",
+        "1400078e0"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    },
+    {
+      "id": "vis:call_visibility:fn:140008078",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:140008078",
+      "indicator": "call_visibility",
+      "indirect_call_count": 2,
+      "indirect_callsites": [
+        "1400080b6",
+        "1400080ca"
+      ],
+      "resolved_indirect_call_count": 2,
+      "resolved_indirect_callsites": [
+        "1400080b6",
+        "1400080ca"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    },
+    {
+      "id": "vis:call_visibility:fn:140009200",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:140009200",
+      "indicator": "call_visibility",
+      "indirect_call_count": 1,
+      "indirect_callsites": [
+        "140009213"
+      ],
+      "resolved_indirect_call_count": 0,
+      "resolved_indirect_callsites": [],
+      "signals": [
+        "indirect_call",
+        "unresolved_call"
+      ],
+      "unresolved_indirect_call_count": 1,
+      "unresolved_indirect_callsites": [
+        "140009213"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140003350",
+      "target": "sec:140001000",
+      "function": "fn:140003350",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:140003350",
+      "target": "vis:call_visibility:fn:140003350",
+      "function": "fn:140003350",
+      "indicator": "vis:call_visibility:fn:140003350"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140007004",
+      "target": "fn:140008078",
+      "callee": "fn:140008078",
+      "caller": "fn:140007004",
+      "callsite": "1400070a3",
+      "callsites": [
+        "1400070a3"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140007004",
+      "target": "api:getprocessheap",
+      "api": "api:getprocessheap",
+      "api_original_names": [
+        "GetProcessHeap"
+      ],
+      "caller": "fn:140007004",
+      "callsite": "1400070bc",
+      "callsites": [
+        "1400070bc",
+        "1400070ec"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 2,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140007004",
+      "target": "api:heapfree",
+      "api": "api:heapfree",
+      "api_original_names": [
+        "HeapFree"
+      ],
+      "caller": "fn:140007004",
+      "callsite": "1400070d0",
+      "callsites": [
+        "1400070d0",
+        "140007100"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 2,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140007004",
+      "target": "sec:140001000",
+      "function": "fn:140007004",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:140007004",
+      "target": "vis:call_visibility:fn:140007004",
+      "function": "fn:140007004",
+      "indicator": "vis:call_visibility:fn:140007004"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140007570",
+      "target": "fn:140008078",
+      "callee": "fn:140008078",
+      "caller": "fn:140007570",
+      "callsite": "14000767e",
+      "callsites": [
+        "14000767e"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140007570",
+      "target": "api:getprocessheap",
+      "api": "api:getprocessheap",
+      "api_original_names": [
+        "GetProcessHeap"
+      ],
+      "caller": "fn:140007570",
+      "callsite": "14000788a",
+      "callsites": [
+        "14000788a",
+        "1400078cc"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 2,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140007570",
+      "target": "api:heapfree",
+      "api": "api:heapfree",
+      "api_original_names": [
+        "HeapFree"
+      ],
+      "caller": "fn:140007570",
+      "callsite": "14000789e",
+      "callsites": [
+        "14000789e",
+        "1400078e0"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 2,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140007570",
+      "target": "sec:140001000",
+      "function": "fn:140007570",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:140007570",
+      "target": "vis:call_visibility:fn:140007570",
+      "function": "fn:140007570",
+      "indicator": "vis:call_visibility:fn:140007570"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140008078",
+      "target": "fn:140009200",
+      "callee": "fn:140009200",
+      "caller": "fn:140008078",
+      "callsite": "14000819e",
+      "callsites": [
+        "14000819e"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140008078",
+      "target": "api:getprocessheap",
+      "api": "api:getprocessheap",
+      "api_original_names": [
+        "GetProcessHeap"
+      ],
+      "caller": "fn:140008078",
+      "callsite": "1400080b6",
+      "callsites": [
+        "1400080b6"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140008078",
+      "target": "api:heapfree",
+      "api": "api:heapfree",
+      "api_original_names": [
+        "HeapFree"
+      ],
+      "caller": "fn:140008078",
+      "callsite": "1400080ca",
+      "callsites": [
+        "1400080ca"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "references_string",
+      "source": "fn:140008078",
+      "target": "str:14002ac38",
+      "function": "fn:140008078",
+      "reference_count": 1,
+      "reference_sites": [
+        "140008192"
+      ],
+      "string": "str:14002ac38"
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140008078",
+      "target": "sec:140001000",
+      "function": "fn:140008078",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:140008078",
+      "target": "vis:call_visibility:fn:140008078",
+      "function": "fn:140008078",
+      "indicator": "vis:call_visibility:fn:140008078"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140009200",
+      "target": "fn:140003350",
+      "callee": "fn:140003350",
+      "caller": "fn:140009200",
+      "callsite": "14000920e",
+      "callsites": [
+        "14000920e"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140009200",
+      "target": "sec:140001000",
+      "function": "fn:140009200",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:140009200",
+      "target": "vis:call_visibility:fn:140009200",
+      "function": "fn:140009200",
+      "indicator": "vis:call_visibility:fn:140009200"
+    },
+    {
+      "type": "has_string_category",
+      "source": "str:14002ac38",
+      "target": "strcat:file_path",
+      "category": "strcat:file_path",
+      "string": "str:14002ac38"
+    }
+  ],
+  "unresolved_calls": [
+    {
+      "indicator": "unresolved_call",
+      "caller": "fn:140003350",
+      "callee": null,
+      "callsite": "1400033a2",
+      "unresolved": true,
+      "reason": "no_resolved_function_or_api_target",
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1
+    },
+    {
+      "indicator": "unresolved_call",
+      "caller": "fn:140009200",
+      "callee": null,
+      "callsite": "140009213",
+      "unresolved": true,
+      "reason": "no_resolved_function_or_api_target",
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1
+    }
+  ],
+  "truncation": {
+    "truncated": false,
+    "limits_reached": [],
+    "requested_depth": {
+      "caller_depth": 1,
+      "callee_depth": 2
+    },
+    "effective_depth": {
+      "caller_depth": 1,
+      "callee_depth": 2
+    },
+    "counts": {
+      "function_nodes": 5,
+      "evidence_nodes": 10,
+      "total_nodes": 15,
+      "edges": 22,
+      "unresolved_calls": 2
+    }
+  }
+}

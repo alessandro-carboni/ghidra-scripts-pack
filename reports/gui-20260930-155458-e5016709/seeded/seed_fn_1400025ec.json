@@ -1,0 +1,466 @@
+{
+  "schema_version": "0.1.0",
+  "seed_id": "seed:fn:1400025ec",
+  "anchor_function_id": "fn:1400025ec",
+  "graph_version": "0.12.0",
+  "extraction_config": {
+    "caller_depth": 1,
+    "callee_depth": 2,
+    "max_function_nodes": null,
+    "max_evidence_nodes": null,
+    "max_total_nodes": null,
+    "max_edges": null
+  },
+  "function_selection": {
+    "anchor_function_id": "fn:1400025ec",
+    "function_ids": [
+      "fn:140001c90",
+      "fn:1400025ec",
+      "fn:140002674",
+      "fn:1400026dc",
+      "fn:1400027a4",
+      "fn:1400027cc"
+    ],
+    "caller_distances": {
+      "fn:140001c90": 1,
+      "fn:1400025ec": 0
+    },
+    "callee_distances": {
+      "fn:1400025ec": 0,
+      "fn:140002674": 2,
+      "fn:1400026dc": 2,
+      "fn:1400027a4": 1,
+      "fn:1400027cc": 1
+    }
+  },
+  "nodes": [
+    {
+      "id": "api:_cxxthrowexception",
+      "type": "API",
+      "name": "_CxxThrowException",
+      "normalized_name": "_CxxThrowException",
+      "original_names": [
+        "_CxxThrowException"
+      ]
+    },
+    {
+      "id": "api:_o__callnewh",
+      "type": "API",
+      "name": "_o__callnewh",
+      "normalized_name": "_o__callnewh",
+      "original_names": [
+        "_o__callnewh"
+      ]
+    },
+    {
+      "id": "api:_o_malloc",
+      "type": "API",
+      "name": "_o_malloc",
+      "normalized_name": "_o_malloc",
+      "original_names": [
+        "_o_malloc"
+      ]
+    },
+    {
+      "id": "fn:140001c90",
+      "type": "FUNCTION",
+      "address": "140001c90",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140001c90",
+      "section": ".text",
+      "size": 25,
+      "symbol_name": "FUN_140001c90",
+      "thunk": false
+    },
+    {
+      "id": "fn:1400025ec",
+      "type": "FUNCTION",
+      "address": "1400025ec",
+      "external": false,
+      "internal": true,
+      "name": "operator_new",
+      "section": ".text",
+      "size": 60,
+      "symbol_name": "operator_new",
+      "thunk": false
+    },
+    {
+      "id": "fn:140002674",
+      "type": "FUNCTION",
+      "address": "140002674",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140002674",
+      "section": ".text",
+      "size": 30,
+      "symbol_name": "FUN_140002674",
+      "thunk": false
+    },
+    {
+      "id": "fn:1400026dc",
+      "type": "FUNCTION",
+      "address": "1400026dc",
+      "external": false,
+      "internal": true,
+      "name": "FUN_1400026dc",
+      "section": ".text",
+      "size": 30,
+      "symbol_name": "FUN_1400026dc",
+      "thunk": false
+    },
+    {
+      "id": "fn:1400027a4",
+      "type": "FUNCTION",
+      "address": "1400027a4",
+      "external": false,
+      "internal": true,
+      "name": "FUN_1400027a4",
+      "section": ".text",
+      "size": 31,
+      "symbol_name": "FUN_1400027a4",
+      "thunk": false
+    },
+    {
+      "id": "fn:1400027cc",
+      "type": "FUNCTION",
+      "address": "1400027cc",
+      "external": false,
+      "internal": true,
+      "name": "FUN_1400027cc",
+      "section": ".text",
+      "size": 31,
+      "symbol_name": "FUN_1400027cc",
+      "thunk": false
+    },
+    {
+      "id": "sec:140001000",
+      "type": "SECTION",
+      "end": "140027fff",
+      "entropy": 6.1732,
+      "entropy_class": "normal",
+      "entropy_sampled_bytes": 65536,
+      "execute": true,
+      "initialized": true,
+      "name": ".text",
+      "permissions": "r-x",
+      "read": true,
+      "reasons": [],
+      "size": 159744,
+      "start": "140001000",
+      "suspicious": false,
+      "write": false
+    },
+    {
+      "id": "str:14002a7d8",
+      "type": "STRING",
+      "address": "14002a7d8",
+      "categories": [],
+      "category": null,
+      "raw_value": "\"bad allocation\"",
+      "reference_count": 2,
+      "value": "bad allocation"
+    },
+    {
+      "id": "str:14002a7e8",
+      "type": "STRING",
+      "address": "14002a7e8",
+      "categories": [],
+      "category": null,
+      "raw_value": "\"bad array new length\"",
+      "reference_count": 2,
+      "value": "bad array new length"
+    },
+    {
+      "id": "vis:call_visibility:fn:1400025ec",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:1400025ec",
+      "indicator": "call_visibility",
+      "indirect_call_count": 2,
+      "indirect_callsites": [
+        "140002621",
+        "140002627"
+      ],
+      "resolved_indirect_call_count": 0,
+      "resolved_indirect_callsites": [],
+      "signals": [
+        "indirect_call",
+        "unresolved_call"
+      ],
+      "unresolved_indirect_call_count": 2,
+      "unresolved_indirect_callsites": [
+        "140002621",
+        "140002627"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "type": "calls_function",
+      "source": "fn:140001c90",
+      "target": "fn:1400025ec",
+      "callee": "fn:1400025ec",
+      "caller": "fn:140001c90",
+      "callsite": "140001c9d",
+      "callsites": [
+        "140001c9d"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140001c90",
+      "target": "sec:140001000",
+      "function": "fn:140001c90",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:1400025ec",
+      "target": "fn:1400027a4",
+      "callee": "fn:1400027a4",
+      "caller": "fn:1400025ec",
+      "callsite": "14000261c",
+      "callsites": [
+        "14000261c"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:1400025ec",
+      "target": "fn:1400027cc",
+      "callee": "fn:1400027cc",
+      "caller": "fn:1400025ec",
+      "callsite": "140002622",
+      "callsites": [
+        "140002622"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:1400025ec",
+      "target": "api:_o__callnewh",
+      "api": "api:_o__callnewh",
+      "api_original_names": [
+        "_o__callnewh"
+      ],
+      "caller": "fn:1400025ec",
+      "callsite": "1400025fa",
+      "callsites": [
+        "1400025fa"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:1400025ec",
+      "target": "api:_o_malloc",
+      "api": "api:_o_malloc",
+      "api_original_names": [
+        "_o_malloc"
+      ],
+      "caller": "fn:1400025ec",
+      "callsite": "140002606",
+      "callsites": [
+        "140002606"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:1400025ec",
+      "target": "sec:140001000",
+      "function": "fn:1400025ec",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:1400025ec",
+      "target": "vis:call_visibility:fn:1400025ec",
+      "function": "fn:1400025ec",
+      "indicator": "vis:call_visibility:fn:1400025ec"
+    },
+    {
+      "type": "references_string",
+      "source": "fn:140002674",
+      "target": "str:14002a7d8",
+      "function": "fn:140002674",
+      "reference_count": 2,
+      "reference_sites": [
+        "140002679",
+        "140002680"
+      ],
+      "string": "str:14002a7d8"
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140002674",
+      "target": "sec:140001000",
+      "function": "fn:140002674",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "references_string",
+      "source": "fn:1400026dc",
+      "target": "str:14002a7e8",
+      "function": "fn:1400026dc",
+      "reference_count": 2,
+      "reference_sites": [
+        "1400026e1",
+        "1400026e8"
+      ],
+      "string": "str:14002a7e8"
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:1400026dc",
+      "target": "sec:140001000",
+      "function": "fn:1400026dc",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:1400027a4",
+      "target": "fn:140002674",
+      "callee": "fn:140002674",
+      "caller": "fn:1400027a4",
+      "callsite": "1400027ad",
+      "callsites": [
+        "1400027ad"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:1400027a4",
+      "target": "api:_cxxthrowexception",
+      "api": "api:_cxxthrowexception",
+      "api_original_names": [
+        "_CxxThrowException"
+      ],
+      "caller": "fn:1400027a4",
+      "callsite": "1400027be",
+      "callsites": [
+        "1400027be"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:1400027a4",
+      "target": "sec:140001000",
+      "function": "fn:1400027a4",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:1400027cc",
+      "target": "fn:1400026dc",
+      "callee": "fn:1400026dc",
+      "caller": "fn:1400027cc",
+      "callsite": "1400027d5",
+      "callsites": [
+        "1400027d5"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:1400027cc",
+      "target": "api:_cxxthrowexception",
+      "api": "api:_cxxthrowexception",
+      "api_original_names": [
+        "_CxxThrowException"
+      ],
+      "caller": "fn:1400027cc",
+      "callsite": "1400027e6",
+      "callsites": [
+        "1400027e6"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:1400027cc",
+      "target": "sec:140001000",
+      "function": "fn:1400027cc",
+      "section": "sec:140001000"
+    }
+  ],
+  "unresolved_calls": [
+    {
+      "indicator": "unresolved_call",
+      "caller": "fn:1400025ec",
+      "callee": null,
+      "callsite": "140002621",
+      "unresolved": true,
+      "reason": "no_resolved_function_or_api_target",
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1
+    },
+    {
+      "indicator": "unresolved_call",
+      "caller": "fn:1400025ec",
+      "callee": null,
+      "callsite": "140002627",
+      "unresolved": true,
+      "reason": "no_resolved_function_or_api_target",
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1
+    }
+  ],
+  "truncation": {
+    "truncated": false,
+    "limits_reached": [],
+    "requested_depth": {
+      "caller_depth": 1,
+      "callee_depth": 2
+    },
+    "effective_depth": {
+      "caller_depth": 1,
+      "callee_depth": 2
+    },
+    "counts": {
+      "function_nodes": 6,
+      "evidence_nodes": 7,
+      "total_nodes": 13,
+      "edges": 18,
+      "unresolved_calls": 2
+    }
+  }
+}

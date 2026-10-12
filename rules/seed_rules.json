@@ -378,24 +378,6 @@
       },
       "reason_template": "Function belongs to suspicious section {section_name}",
       "family": "section_context"
-    },
-    {
-      "id": "visibility_signal.indirect_call",
-      "type": "visibility_signal",
-      "match": {
-        "signal": "indirect_call"
-      },
-      "reason_template": "Function contains visibility signal {signal}",
-      "family": "call_visibility"
-    },
-    {
-      "id": "unresolved_call.present",
-      "type": "unresolved_call",
-      "match": {
-        "indicator": "unresolved_call"
-      },
-      "reason_template": "Function contains unresolved call evidence {indicator}",
-      "family": "call_visibility"
     }
   ]
 }

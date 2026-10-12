@@ -1,0 +1,1189 @@
+{
+  "schema_version": "0.1.0",
+  "local_subgraph_schema_version": "0.1.0",
+  "source_report": "notepad_20260930_175826_raw.json",
+  "sample_name": "notepad.exe",
+  "graph_version": "0.12.0",
+  "seed_rules_version": "0.4.0",
+  "seed_detection": {
+    "model_version": "0.4.0",
+    "config": {
+      "max_seeds": null
+    },
+    "seeds": [
+      {
+        "seed_id": "seed:fn:140002100",
+        "anchor_function_id": "fn:140002100",
+        "trigger_ids": [
+          "api.isdebuggerpresent"
+        ],
+        "families": [
+          "anti_analysis"
+        ],
+        "source_candidate_ids": [
+          "seed:fn:140002100:api.isdebuggerpresent"
+        ],
+        "evidence": [
+          {
+            "kind": "api",
+            "value": "IsDebuggerPresent",
+            "node_id": "api:isdebuggerpresent",
+            "edge_type": "calls_api",
+            "callsite": "140002210"
+          }
+        ],
+        "reasons": [
+          "Function calls API IsDebuggerPresent"
+        ]
+      },
+      {
+        "seed_id": "seed:fn:1400033ac",
+        "anchor_function_id": "fn:1400033ac",
+        "trigger_ids": [
+          "api.isdebuggerpresent",
+          "api.outputdebugstring"
+        ],
+        "families": [
+          "anti_analysis"
+        ],
+        "source_candidate_ids": [
+          "seed:fn:1400033ac:api.isdebuggerpresent",
+          "seed:fn:1400033ac:api.outputdebugstring"
+        ],
+        "evidence": [
+          {
+            "kind": "api",
+            "value": "IsDebuggerPresent",
+            "node_id": "api:isdebuggerpresent",
+            "edge_type": "calls_api",
+            "callsite": "140003556"
+          },
+          {
+            "kind": "api",
+            "value": "OutputDebugString",
+            "node_id": "api:outputdebugstring",
+            "edge_type": "calls_api",
+            "callsite": "1400035e6"
+          }
+        ],
+        "reasons": [
+          "Function calls API IsDebuggerPresent",
+          "Function calls API OutputDebugString"
+        ]
+      },
+      {
+        "seed_id": "seed:fn:140003624",
+        "anchor_function_id": "fn:140003624",
+        "trigger_ids": [
+          "api.isdebuggerpresent",
+          "api.outputdebugstring"
+        ],
+        "families": [
+          "anti_analysis"
+        ],
+        "source_candidate_ids": [
+          "seed:fn:140003624:api.isdebuggerpresent",
+          "seed:fn:140003624:api.outputdebugstring"
+        ],
+        "evidence": [
+          {
+            "kind": "api",
+            "value": "IsDebuggerPresent",
+            "node_id": "api:isdebuggerpresent",
+            "edge_type": "calls_api",
+            "callsite": "1400037cb"
+          },
+          {
+            "kind": "api",
+            "value": "OutputDebugString",
+            "node_id": "api:outputdebugstring",
+            "edge_type": "calls_api",
+            "callsite": "14000385b"
+          }
+        ],
+        "reasons": [
+          "Function calls API IsDebuggerPresent",
+          "Function calls API OutputDebugString"
+        ]
+      },
+      {
+        "seed_id": "seed:fn:140005f6c",
+        "anchor_function_id": "fn:140005f6c",
+        "trigger_ids": [
+          "api.isdebuggerpresent",
+          "api.outputdebugstring"
+        ],
+        "families": [
+          "anti_analysis"
+        ],
+        "source_candidate_ids": [
+          "seed:fn:140005f6c:api.isdebuggerpresent",
+          "seed:fn:140005f6c:api.outputdebugstring"
+        ],
+        "evidence": [
+          {
+            "kind": "api",
+            "value": "IsDebuggerPresent",
+            "node_id": "api:isdebuggerpresent",
+            "edge_type": "calls_api",
+            "callsite": "1400061af"
+          },
+          {
+            "kind": "api",
+            "value": "OutputDebugString",
+            "node_id": "api:outputdebugstring",
+            "edge_type": "calls_api",
+            "callsite": "140006228"
+          }
+        ],
+        "reasons": [
+          "Function calls API IsDebuggerPresent",
+          "Function calls API OutputDebugString"
+        ]
+      },
+      {
+        "seed_id": "seed:fn:140006300",
+        "anchor_function_id": "fn:140006300",
+        "trigger_ids": [
+          "api.getprocaddress"
+        ],
+        "families": [
+          "dynamic_api_resolution"
+        ],
+        "source_candidate_ids": [
+          "seed:fn:140006300:api.getprocaddress"
+        ],
+        "evidence": [
+          {
+            "kind": "api",
+            "value": "GetProcAddress",
+            "node_id": "api:getprocaddress",
+            "edge_type": "calls_api",
+            "callsite": "1400063ad"
+          }
+        ],
+        "reasons": [
+          "Function calls API GetProcAddress"
+        ]
+      },
+      {
+        "seed_id": "seed:fn:140006634",
+        "anchor_function_id": "fn:140006634",
+        "trigger_ids": [
+          "api.getprocaddress"
+        ],
+        "families": [
+          "dynamic_api_resolution"
+        ],
+        "source_candidate_ids": [
+          "seed:fn:140006634:api.getprocaddress"
+        ],
+        "evidence": [
+          {
+            "kind": "api",
+            "value": "GetProcAddress",
+            "node_id": "api:getprocaddress",
+            "edge_type": "calls_api",
+            "callsite": "1400066a4"
+          }
+        ],
+        "reasons": [
+          "Function calls API GetProcAddress"
+        ]
+      },
+      {
+        "seed_id": "seed:fn:140007d20",
+        "anchor_function_id": "fn:140007d20",
+        "trigger_ids": [
+          "api.getprocaddress"
+        ],
+        "families": [
+          "dynamic_api_resolution"
+        ],
+        "source_candidate_ids": [
+          "seed:fn:140007d20:api.getprocaddress"
+        ],
+        "evidence": [
+          {
+            "kind": "api",
+            "value": "GetProcAddress",
+            "node_id": "api:getprocaddress",
+            "edge_type": "calls_api",
+            "callsite": "140007d64"
+          }
+        ],
+        "reasons": [
+          "Function calls API GetProcAddress"
+        ]
+      },
+      {
+        "seed_id": "seed:fn:140007da0",
+        "anchor_function_id": "fn:140007da0",
+        "trigger_ids": [
+          "api.getprocaddress"
+        ],
+        "families": [
+          "dynamic_api_resolution"
+        ],
+        "source_candidate_ids": [
+          "seed:fn:140007da0:api.getprocaddress"
+        ],
+        "evidence": [
+          {
+            "kind": "api",
+            "value": "GetProcAddress",
+            "node_id": "api:getprocaddress",
+            "edge_type": "calls_api",
+            "callsite": "140007dea"
+          }
+        ],
+        "reasons": [
+          "Function calls API GetProcAddress"
+        ]
+      },
+      {
+        "seed_id": "seed:fn:140008514",
+        "anchor_function_id": "fn:140008514",
+        "trigger_ids": [
+          "api.getprocaddress"
+        ],
+        "families": [
+          "dynamic_api_resolution"
+        ],
+        "source_candidate_ids": [
+          "seed:fn:140008514:api.getprocaddress"
+        ],
+        "evidence": [
+          {
+            "kind": "api",
+            "value": "GetProcAddress",
+            "node_id": "api:getprocaddress",
+            "edge_type": "calls_api",
+            "callsite": "1400085a5"
+          }
+        ],
+        "reasons": [
+          "Function calls API GetProcAddress"
+        ]
+      },
+      {
+        "seed_id": "seed:fn:140008bb8",
+        "anchor_function_id": "fn:140008bb8",
+        "trigger_ids": [
+          "api.getprocaddress"
+        ],
+        "families": [
+          "dynamic_api_resolution"
+        ],
+        "source_candidate_ids": [
+          "seed:fn:140008bb8:api.getprocaddress"
+        ],
+        "evidence": [
+          {
+            "kind": "api",
+            "value": "GetProcAddress",
+            "node_id": "api:getprocaddress",
+            "edge_type": "calls_api",
+            "callsite": "140008bfd"
+          }
+        ],
+        "reasons": [
+          "Function calls API GetProcAddress"
+        ]
+      },
+      {
+        "seed_id": "seed:fn:140008d40",
+        "anchor_function_id": "fn:140008d40",
+        "trigger_ids": [
+          "api.getprocaddress"
+        ],
+        "families": [
+          "dynamic_api_resolution"
+        ],
+        "source_candidate_ids": [
+          "seed:fn:140008d40:api.getprocaddress"
+        ],
+        "evidence": [
+          {
+            "kind": "api",
+            "value": "GetProcAddress",
+            "node_id": "api:getprocaddress",
+            "edge_type": "calls_api",
+            "callsite": "140008e38"
+          }
+        ],
+        "reasons": [
+          "Function calls API GetProcAddress"
+        ]
+      },
+      {
+        "seed_id": "seed:fn:140008f80",
+        "anchor_function_id": "fn:140008f80",
+        "trigger_ids": [
+          "api.getprocaddress"
+        ],
+        "families": [
+          "dynamic_api_resolution"
+        ],
+        "source_candidate_ids": [
+          "seed:fn:140008f80:api.getprocaddress"
+        ],
+        "evidence": [
+          {
+            "kind": "api",
+            "value": "GetProcAddress",
+            "node_id": "api:getprocaddress",
+            "edge_type": "calls_api",
+            "callsite": "140008fb5"
+          }
+        ],
+        "reasons": [
+          "Function calls API GetProcAddress"
+        ]
+      },
+      {
+        "seed_id": "seed:fn:140009798",
+        "anchor_function_id": "fn:140009798",
+        "trigger_ids": [
+          "api.getprocaddress"
+        ],
+        "families": [
+          "dynamic_api_resolution"
+        ],
+        "source_candidate_ids": [
+          "seed:fn:140009798:api.getprocaddress"
+        ],
+        "evidence": [
+          {
+            "kind": "api",
+            "value": "GetProcAddress",
+            "node_id": "api:getprocaddress",
+            "edge_type": "calls_api",
+            "callsite": "140009834"
+          }
+        ],
+        "reasons": [
+          "Function calls API GetProcAddress"
+        ]
+      },
+      {
+        "seed_id": "seed:fn:140009910",
+        "anchor_function_id": "fn:140009910",
+        "trigger_ids": [
+          "api.getprocaddress"
+        ],
+        "families": [
+          "dynamic_api_resolution"
+        ],
+        "source_candidate_ids": [
+          "seed:fn:140009910:api.getprocaddress"
+        ],
+        "evidence": [
+          {
+            "kind": "api",
+            "value": "GetProcAddress",
+            "node_id": "api:getprocaddress",
+            "edge_type": "calls_api",
+            "callsite": "14000996c"
+          }
+        ],
+        "reasons": [
+          "Function calls API GetProcAddress"
+        ]
+      },
+      {
+        "seed_id": "seed:fn:1400099b4",
+        "anchor_function_id": "fn:1400099b4",
+        "trigger_ids": [
+          "api.getprocaddress"
+        ],
+        "families": [
+          "dynamic_api_resolution"
+        ],
+        "source_candidate_ids": [
+          "seed:fn:1400099b4:api.getprocaddress"
+        ],
+        "evidence": [
+          {
+            "kind": "api",
+            "value": "GetProcAddress",
+            "node_id": "api:getprocaddress",
+            "edge_type": "calls_api",
+            "callsite": "140009a00"
+          }
+        ],
+        "reasons": [
+          "Function calls API GetProcAddress"
+        ]
+      },
+      {
+        "seed_id": "seed:fn:140009a5c",
+        "anchor_function_id": "fn:140009a5c",
+        "trigger_ids": [
+          "api.getprocaddress"
+        ],
+        "families": [
+          "dynamic_api_resolution"
+        ],
+        "source_candidate_ids": [
+          "seed:fn:140009a5c:api.getprocaddress"
+        ],
+        "evidence": [
+          {
+            "kind": "api",
+            "value": "GetProcAddress",
+            "node_id": "api:getprocaddress",
+            "edge_type": "calls_api",
+            "callsite": "140009ab0"
+          }
+        ],
+        "reasons": [
+          "Function calls API GetProcAddress"
+        ]
+      },
+      {
+        "seed_id": "seed:fn:14000da7c",
+        "anchor_function_id": "fn:14000da7c",
+        "trigger_ids": [
+          "string_category.url"
+        ],
+        "families": [
+          "networking"
+        ],
+        "source_candidate_ids": [
+          "seed:fn:14000da7c:string_category.url"
+        ],
+        "evidence": [
+          {
+            "kind": "string_category",
+            "value": "url",
+            "node_id": "strcat:url",
+            "edge_type": "has_string_category"
+          },
+          {
+            "kind": "string",
+            "value": "https://go.microsoft.com/fwlink/?LinkId=834783",
+            "node_id": "str:14002b130",
+            "edge_type": "references_string",
+            "callsite": "14000e5dd"
+          }
+        ],
+        "reasons": [
+          "Function references string categorized as url"
+        ]
+      },
+      {
+        "seed_id": "seed:fn:140012a2c",
+        "anchor_function_id": "fn:140012a2c",
+        "trigger_ids": [
+          "api.regopenkeyex",
+          "constant_category.registry_flags"
+        ],
+        "families": [
+          "registry_interaction"
+        ],
+        "source_candidate_ids": [
+          "seed:fn:140012a2c:api.regopenkeyex",
+          "seed:fn:140012a2c:constant_category.registry_flags"
+        ],
+        "evidence": [
+          {
+            "kind": "constant",
+            "value": "KEY_CREATE_SUB_KEY|KEY_QUERY_VALUE|KEY_SET_VALUE",
+            "node_id": "const:registry_flags:0x7",
+            "edge_type": "uses_constant",
+            "callsite": "140012aa5"
+          },
+          {
+            "kind": "constant",
+            "value": "KEY_CREATE_LINK|KEY_CREATE_SUB_KEY|KEY_NOTIFY|KEY_QUERY_VALUE",
+            "node_id": "const:registry_flags:0x35",
+            "edge_type": "uses_constant",
+            "callsite": "140012ab0"
+          },
+          {
+            "kind": "constant",
+            "value": "KEY_CREATE_LINK",
+            "node_id": "const:registry_flags:0x20",
+            "edge_type": "uses_constant",
+            "callsite": "140012ab7"
+          },
+          {
+            "kind": "constant",
+            "value": "KEY_CREATE_SUB_KEY|KEY_NOTIFY|KEY_QUERY_VALUE",
+            "node_id": "const:registry_flags:0x15",
+            "edge_type": "uses_constant",
+            "callsite": "140012abc"
+          },
+          {
+            "kind": "constant",
+            "value": "KEY_CREATE_LINK|KEY_CREATE_SUB_KEY|KEY_QUERY_VALUE",
+            "node_id": "const:registry_flags:0x25",
+            "edge_type": "uses_constant",
+            "callsite": "140012ac0"
+          },
+          {
+            "kind": "api",
+            "value": "RegOpenKeyEx",
+            "node_id": "api:regopenkeyex",
+            "edge_type": "calls_api",
+            "callsite": "140012ac4"
+          },
+          {
+            "kind": "constant",
+            "value": "KEY_READ",
+            "node_id": "const:registry_flags:0x20019",
+            "edge_type": "uses_constant",
+            "callsite": "140012c04"
+          },
+          {
+            "kind": "constant",
+            "value": "KEY_CREATE_LINK",
+            "node_id": "const:registry_flags:0x20",
+            "edge_type": "uses_constant",
+            "callsite": "140012c0d"
+          },
+          {
+            "kind": "api",
+            "value": "RegOpenKeyEx",
+            "node_id": "api:regopenkeyex",
+            "edge_type": "calls_api",
+            "callsite": "140012c19"
+          }
+        ],
+        "reasons": [
+          "Function calls API RegOpenKeyEx",
+          "Function uses constant evidence from category registry_flags"
+        ]
+      },
+      {
+        "seed_id": "seed:fn:140013154",
+        "anchor_function_id": "fn:140013154",
+        "trigger_ids": [
+          "api.getprocaddress"
+        ],
+        "families": [
+          "dynamic_api_resolution"
+        ],
+        "source_candidate_ids": [
+          "seed:fn:140013154:api.getprocaddress"
+        ],
+        "evidence": [
+          {
+            "kind": "api",
+            "value": "GetProcAddress",
+            "node_id": "api:getprocaddress",
+            "edge_type": "calls_api",
+            "callsite": "1400142ea"
+          },
+          {
+            "kind": "api",
+            "value": "GetProcAddress",
+            "node_id": "api:getprocaddress",
+            "edge_type": "calls_api",
+            "callsite": "1400160b6"
+          },
+          {
+            "kind": "api",
+            "value": "GetProcAddress",
+            "node_id": "api:getprocaddress",
+            "edge_type": "calls_api",
+            "callsite": "140017b0b"
+          },
+          {
+            "kind": "api",
+            "value": "GetProcAddress",
+            "node_id": "api:getprocaddress",
+            "edge_type": "calls_api",
+            "callsite": "1400181a1"
+          },
+          {
+            "kind": "api",
+            "value": "GetProcAddress",
+            "node_id": "api:getprocaddress",
+            "edge_type": "calls_api",
+            "callsite": "14001bab1"
+          },
+          {
+            "kind": "api",
+            "value": "GetProcAddress",
+            "node_id": "api:getprocaddress",
+            "edge_type": "calls_api",
+            "callsite": "14001cfcb"
+          }
+        ],
+        "reasons": [
+          "Function calls API GetProcAddress"
+        ]
+      },
+      {
+        "seed_id": "seed:fn:14001ea18",
+        "anchor_function_id": "fn:14001ea18",
+        "trigger_ids": [
+          "api.regsetvalueex"
+        ],
+        "families": [
+          "registry_interaction"
+        ],
+        "source_candidate_ids": [
+          "seed:fn:14001ea18:api.regsetvalueex"
+        ],
+        "evidence": [
+          {
+            "kind": "api",
+            "value": "RegSetValueEx",
+            "node_id": "api:regsetvalueex",
+            "edge_type": "calls_api",
+            "callsite": "14001eac3"
+          }
+        ],
+        "reasons": [
+          "Function calls API RegSetValueEx"
+        ]
+      },
+      {
+        "seed_id": "seed:fn:14001eb80",
+        "anchor_function_id": "fn:14001eb80",
+        "trigger_ids": [
+          "api.regsetvalueex"
+        ],
+        "families": [
+          "registry_interaction"
+        ],
+        "source_candidate_ids": [
+          "seed:fn:14001eb80:api.regsetvalueex"
+        ],
+        "evidence": [
+          {
+            "kind": "api",
+            "value": "RegSetValueEx",
+            "node_id": "api:regsetvalueex",
+            "edge_type": "calls_api",
+            "callsite": "14001eba0"
+          }
+        ],
+        "reasons": [
+          "Function calls API RegSetValueEx"
+        ]
+      },
+      {
+        "seed_id": "seed:fn:14001ebb8",
+        "anchor_function_id": "fn:14001ebb8",
+        "trigger_ids": [
+          "api.regsetvalueex"
+        ],
+        "families": [
+          "registry_interaction"
+        ],
+        "source_candidate_ids": [
+          "seed:fn:14001ebb8:api.regsetvalueex"
+        ],
+        "evidence": [
+          {
+            "kind": "api",
+            "value": "RegSetValueEx",
+            "node_id": "api:regsetvalueex",
+            "edge_type": "calls_api",
+            "callsite": "14001ec08"
+          }
+        ],
+        "reasons": [
+          "Function calls API RegSetValueEx"
+        ]
+      },
+      {
+        "seed_id": "seed:fn:140021020",
+        "anchor_function_id": "fn:140021020",
+        "trigger_ids": [
+          "string_category.url"
+        ],
+        "families": [
+          "networking"
+        ],
+        "source_candidate_ids": [
+          "seed:fn:140021020:string_category.url"
+        ],
+        "evidence": [
+          {
+            "kind": "string_category",
+            "value": "url",
+            "node_id": "strcat:url",
+            "edge_type": "has_string_category"
+          },
+          {
+            "kind": "string",
+            "value": "https://go.microsoft.com/fwlink/p/?linkid=838060",
+            "node_id": "str:14002b8b0",
+            "edge_type": "references_string",
+            "callsite": "1400210e3"
+          }
+        ],
+        "reasons": [
+          "Function references string categorized as url"
+        ]
+      },
+      {
+        "seed_id": "seed:fn:1400225a4",
+        "anchor_function_id": "fn:1400225a4",
+        "trigger_ids": [
+          "api.regcreatekeyex",
+          "api.regsetvalueex",
+          "constant_category.registry_flags"
+        ],
+        "families": [
+          "registry_interaction"
+        ],
+        "source_candidate_ids": [
+          "seed:fn:1400225a4:api.regcreatekeyex",
+          "seed:fn:1400225a4:api.regsetvalueex",
+          "seed:fn:1400225a4:constant_category.registry_flags"
+        ],
+        "evidence": [
+          {
+            "kind": "constant",
+            "value": "KEY_ALL_ACCESS",
+            "node_id": "const:registry_flags:0xf003f",
+            "edge_type": "uses_constant",
+            "callsite": "1400225e0"
+          },
+          {
+            "kind": "constant",
+            "value": "KEY_CREATE_LINK|KEY_ENUMERATE_SUB_KEYS",
+            "node_id": "const:registry_flags:0x28",
+            "edge_type": "uses_constant",
+            "callsite": "1400225ec"
+          },
+          {
+            "kind": "constant",
+            "value": "KEY_CREATE_LINK",
+            "node_id": "const:registry_flags:0x20",
+            "edge_type": "uses_constant",
+            "callsite": "1400225fa"
+          },
+          {
+            "kind": "api",
+            "value": "RegCreateKeyEx",
+            "node_id": "api:regcreatekeyex",
+            "edge_type": "calls_api",
+            "callsite": "140022603"
+          },
+          {
+            "kind": "constant",
+            "value": "KEY_CREATE_LINK|KEY_ENUMERATE_SUB_KEYS|KEY_NOTIFY",
+            "node_id": "const:registry_flags:0x38",
+            "edge_type": "uses_constant",
+            "callsite": "14002262b"
+          },
+          {
+            "kind": "constant",
+            "value": "KEY_CREATE_LINK|KEY_NOTIFY",
+            "node_id": "const:registry_flags:0x30",
+            "edge_type": "uses_constant",
+            "callsite": "140022633"
+          },
+          {
+            "kind": "constant",
+            "value": "KEY_CREATE_LINK|KEY_ENUMERATE_SUB_KEYS",
+            "node_id": "const:registry_flags:0x28",
+            "edge_type": "uses_constant",
+            "callsite": "140022638"
+          },
+          {
+            "kind": "constant",
+            "value": "KEY_CREATE_LINK",
+            "node_id": "const:registry_flags:0x20",
+            "edge_type": "uses_constant",
+            "callsite": "14002263c"
+          },
+          {
+            "kind": "api",
+            "value": "RegCreateKeyEx",
+            "node_id": "api:regcreatekeyex",
+            "edge_type": "calls_api",
+            "callsite": "140022645"
+          },
+          {
+            "kind": "api",
+            "value": "RegSetValueEx",
+            "node_id": "api:regsetvalueex",
+            "edge_type": "calls_api",
+            "callsite": "140022828"
+          }
+        ],
+        "reasons": [
+          "Function calls API RegCreateKeyEx",
+          "Function calls API RegSetValueEx",
+          "Function uses constant evidence from category registry_flags"
+        ]
+      },
+      {
+        "seed_id": "seed:fn:1400229e8",
+        "anchor_function_id": "fn:1400229e8",
+        "trigger_ids": [
+          "api.regopenkeyex",
+          "constant_category.registry_flags"
+        ],
+        "families": [
+          "registry_interaction"
+        ],
+        "source_candidate_ids": [
+          "seed:fn:1400229e8:api.regopenkeyex",
+          "seed:fn:1400229e8:constant_category.registry_flags"
+        ],
+        "evidence": [
+          {
+            "kind": "constant",
+            "value": "KEY_ALL_ACCESS",
+            "node_id": "const:registry_flags:0xf003f",
+            "edge_type": "uses_constant",
+            "callsite": "140022a13"
+          },
+          {
+            "kind": "constant",
+            "value": "KEY_CREATE_LINK",
+            "node_id": "const:registry_flags:0x20",
+            "edge_type": "uses_constant",
+            "callsite": "140022a1f"
+          },
+          {
+            "kind": "api",
+            "value": "RegOpenKeyEx",
+            "node_id": "api:regopenkeyex",
+            "edge_type": "calls_api",
+            "callsite": "140022a35"
+          },
+          {
+            "kind": "constant",
+            "value": "KEY_NOTIFY",
+            "node_id": "const:registry_flags:0x10",
+            "edge_type": "uses_constant",
+            "callsite": "140022a4d"
+          },
+          {
+            "kind": "constant",
+            "value": "KEY_CREATE_LINK",
+            "node_id": "const:registry_flags:0x20",
+            "edge_type": "uses_constant",
+            "callsite": "140022a58"
+          },
+          {
+            "kind": "api",
+            "value": "RegOpenKeyEx",
+            "node_id": "api:regopenkeyex",
+            "edge_type": "calls_api",
+            "callsite": "140022a64"
+          }
+        ],
+        "reasons": [
+          "Function calls API RegOpenKeyEx",
+          "Function uses constant evidence from category registry_flags"
+        ]
+      }
+    ],
+    "total_detected": 25,
+    "returned": 25,
+    "truncated": false,
+    "truncation_reason": null
+  },
+  "extraction_config": {
+    "caller_depth": 1,
+    "callee_depth": 2,
+    "max_function_nodes": null,
+    "max_evidence_nodes": null,
+    "max_total_nodes": null,
+    "max_edges": null
+  },
+  "subgraphs": [
+    {
+      "seed_id": "seed:fn:140002100",
+      "anchor_function_id": "fn:140002100",
+      "file": "seed_fn_140002100.json",
+      "truncated": false,
+      "function_nodes": 5,
+      "evidence_nodes": 27,
+      "total_nodes": 32,
+      "edges": 36,
+      "unresolved_calls": 4
+    },
+    {
+      "seed_id": "seed:fn:1400033ac",
+      "anchor_function_id": "fn:1400033ac",
+      "file": "seed_fn_1400033ac.json",
+      "truncated": false,
+      "function_nodes": 11,
+      "evidence_nodes": 27,
+      "total_nodes": 38,
+      "edges": 52,
+      "unresolved_calls": 4
+    },
+    {
+      "seed_id": "seed:fn:140003624",
+      "anchor_function_id": "fn:140003624",
+      "file": "seed_fn_140003624.json",
+      "truncated": false,
+      "function_nodes": 11,
+      "evidence_nodes": 29,
+      "total_nodes": 40,
+      "edges": 55,
+      "unresolved_calls": 5
+    },
+    {
+      "seed_id": "seed:fn:140005f6c",
+      "anchor_function_id": "fn:140005f6c",
+      "file": "seed_fn_140005f6c.json",
+      "truncated": false,
+      "function_nodes": 14,
+      "evidence_nodes": 25,
+      "total_nodes": 39,
+      "edges": 56,
+      "unresolved_calls": 1
+    },
+    {
+      "seed_id": "seed:fn:140006300",
+      "anchor_function_id": "fn:140006300",
+      "file": "seed_fn_140006300.json",
+      "truncated": false,
+      "function_nodes": 2,
+      "evidence_nodes": 7,
+      "total_nodes": 9,
+      "edges": 8,
+      "unresolved_calls": 0
+    },
+    {
+      "seed_id": "seed:fn:140006634",
+      "anchor_function_id": "fn:140006634",
+      "file": "seed_fn_140006634.json",
+      "truncated": false,
+      "function_nodes": 7,
+      "evidence_nodes": 25,
+      "total_nodes": 32,
+      "edges": 52,
+      "unresolved_calls": 0
+    },
+    {
+      "seed_id": "seed:fn:140007d20",
+      "anchor_function_id": "fn:140007d20",
+      "file": "seed_fn_140007d20.json",
+      "truncated": false,
+      "function_nodes": 2,
+      "evidence_nodes": 7,
+      "total_nodes": 9,
+      "edges": 8,
+      "unresolved_calls": 0
+    },
+    {
+      "seed_id": "seed:fn:140007da0",
+      "anchor_function_id": "fn:140007da0",
+      "file": "seed_fn_140007da0.json",
+      "truncated": false,
+      "function_nodes": 2,
+      "evidence_nodes": 7,
+      "total_nodes": 9,
+      "edges": 8,
+      "unresolved_calls": 0
+    },
+    {
+      "seed_id": "seed:fn:140008514",
+      "anchor_function_id": "fn:140008514",
+      "file": "seed_fn_140008514.json",
+      "truncated": false,
+      "function_nodes": 5,
+      "evidence_nodes": 9,
+      "total_nodes": 14,
+      "edges": 16,
+      "unresolved_calls": 0
+    },
+    {
+      "seed_id": "seed:fn:140008bb8",
+      "anchor_function_id": "fn:140008bb8",
+      "file": "seed_fn_140008bb8.json",
+      "truncated": false,
+      "function_nodes": 3,
+      "evidence_nodes": 14,
+      "total_nodes": 17,
+      "edges": 17,
+      "unresolved_calls": 0
+    },
+    {
+      "seed_id": "seed:fn:140008d40",
+      "anchor_function_id": "fn:140008d40",
+      "file": "seed_fn_140008d40.json",
+      "truncated": false,
+      "function_nodes": 17,
+      "evidence_nodes": 40,
+      "total_nodes": 57,
+      "edges": 99,
+      "unresolved_calls": 0
+    },
+    {
+      "seed_id": "seed:fn:140008f80",
+      "anchor_function_id": "fn:140008f80",
+      "file": "seed_fn_140008f80.json",
+      "truncated": false,
+      "function_nodes": 2,
+      "evidence_nodes": 7,
+      "total_nodes": 9,
+      "edges": 8,
+      "unresolved_calls": 0
+    },
+    {
+      "seed_id": "seed:fn:140009798",
+      "anchor_function_id": "fn:140009798",
+      "file": "seed_fn_140009798.json",
+      "truncated": false,
+      "function_nodes": 5,
+      "evidence_nodes": 9,
+      "total_nodes": 14,
+      "edges": 16,
+      "unresolved_calls": 1
+    },
+    {
+      "seed_id": "seed:fn:140009910",
+      "anchor_function_id": "fn:140009910",
+      "file": "seed_fn_140009910.json",
+      "truncated": false,
+      "function_nodes": 2,
+      "evidence_nodes": 7,
+      "total_nodes": 9,
+      "edges": 8,
+      "unresolved_calls": 0
+    },
+    {
+      "seed_id": "seed:fn:1400099b4",
+      "anchor_function_id": "fn:1400099b4",
+      "file": "seed_fn_1400099b4.json",
+      "truncated": false,
+      "function_nodes": 4,
+      "evidence_nodes": 11,
+      "total_nodes": 15,
+      "edges": 17,
+      "unresolved_calls": 0
+    },
+    {
+      "seed_id": "seed:fn:140009a5c",
+      "anchor_function_id": "fn:140009a5c",
+      "file": "seed_fn_140009a5c.json",
+      "truncated": false,
+      "function_nodes": 4,
+      "evidence_nodes": 11,
+      "total_nodes": 15,
+      "edges": 17,
+      "unresolved_calls": 0
+    },
+    {
+      "seed_id": "seed:fn:14000da7c",
+      "anchor_function_id": "fn:14000da7c",
+      "file": "seed_fn_14000da7c.json",
+      "truncated": false,
+      "function_nodes": 97,
+      "evidence_nodes": 247,
+      "total_nodes": 344,
+      "edges": 785,
+      "unresolved_calls": 2
+    },
+    {
+      "seed_id": "seed:fn:140012a2c",
+      "anchor_function_id": "fn:140012a2c",
+      "file": "seed_fn_140012a2c.json",
+      "truncated": false,
+      "function_nodes": 7,
+      "evidence_nodes": 119,
+      "total_nodes": 126,
+      "edges": 141,
+      "unresolved_calls": 1
+    },
+    {
+      "seed_id": "seed:fn:140013154",
+      "anchor_function_id": "fn:140013154",
+      "file": "seed_fn_140013154.json",
+      "truncated": false,
+      "function_nodes": 80,
+      "evidence_nodes": 267,
+      "total_nodes": 347,
+      "edges": 639,
+      "unresolved_calls": 8
+    },
+    {
+      "seed_id": "seed:fn:14001ea18",
+      "anchor_function_id": "fn:14001ea18",
+      "file": "seed_fn_14001ea18.json",
+      "truncated": false,
+      "function_nodes": 2,
+      "evidence_nodes": 54,
+      "total_nodes": 56,
+      "edges": 59,
+      "unresolved_calls": 0
+    },
+    {
+      "seed_id": "seed:fn:14001eb80",
+      "anchor_function_id": "fn:14001eb80",
+      "file": "seed_fn_14001eb80.json",
+      "truncated": false,
+      "function_nodes": 2,
+      "evidence_nodes": 40,
+      "total_nodes": 42,
+      "edges": 42,
+      "unresolved_calls": 0
+    },
+    {
+      "seed_id": "seed:fn:14001ebb8",
+      "anchor_function_id": "fn:14001ebb8",
+      "file": "seed_fn_14001ebb8.json",
+      "truncated": false,
+      "function_nodes": 2,
+      "evidence_nodes": 41,
+      "total_nodes": 43,
+      "edges": 43,
+      "unresolved_calls": 0
+    },
+    {
+      "seed_id": "seed:fn:140021020",
+      "anchor_function_id": "fn:140021020",
+      "file": "seed_fn_140021020.json",
+      "truncated": false,
+      "function_nodes": 2,
+      "evidence_nodes": 9,
+      "total_nodes": 11,
+      "edges": 11,
+      "unresolved_calls": 0
+    },
+    {
+      "seed_id": "seed:fn:1400225a4",
+      "anchor_function_id": "fn:1400225a4",
+      "file": "seed_fn_1400225a4.json",
+      "truncated": false,
+      "function_nodes": 33,
+      "evidence_nodes": 123,
+      "total_nodes": 156,
+      "edges": 263,
+      "unresolved_calls": 1
+    },
+    {
+      "seed_id": "seed:fn:1400229e8",
+      "anchor_function_id": "fn:1400229e8",
+      "file": "seed_fn_1400229e8.json",
+      "truncated": false,
+      "function_nodes": 28,
+      "evidence_nodes": 89,
+      "total_nodes": 117,
+      "edges": 209,
+      "unresolved_calls": 1
+    }
+  ],
+  "related_seed_groups": [
+    {
+      "group_id": "related-seed-group:seed:fn:140012a2c",
+      "seed_ids": [
+        "seed:fn:140012a2c",
+        "seed:fn:14001ea18"
+      ],
+      "anchor_function_ids": [
+        "fn:140012a2c",
+        "fn:14001ea18"
+      ],
+      "reasons": [
+        "contained_local_context_with_correlated_evidence"
+      ]
+    }
+  ]
+}

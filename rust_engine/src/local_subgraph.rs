@@ -1,5 +1,5 @@
 //! Deterministic function traversal for local seed context. No ranking or scoring.
-use crate::graph::{GraphEdge, GraphNode, UnresolvedCall};
+use crate::graph::{GraphEdge, GraphNode, NodeType, UnresolvedCall};
 use crate::graph_indexes::GraphIndexes;
 use crate::schema::ConsolidatedSeed;
 use crate::seed_validation::validate_consolidated_seed;
@@ -23,7 +23,7 @@ impl Default for LocalExtractionConfig {
             caller_depth: 1,
             callee_depth: 2,
             // Step 4.9: resource limits are opt-in.
-            // None preserves the Step 4.8 behavior.
+            // None preserves the unlimited behavior from Steps 4.1-4.8.
             max_function_nodes: None,
             max_evidence_nodes: None,
             max_total_nodes: None,
@@ -62,10 +62,118 @@ impl LocalExtractionConfig {
             .flatten()
             .min()
     }
+
+    fn configured_limit(&self, kind: LocalGraphLimitKind) -> Option<usize> {
+        match kind {
+            LocalGraphLimitKind::FunctionNodes => self.max_function_nodes,
+            LocalGraphLimitKind::EvidenceNodes => self.max_evidence_nodes,
+            LocalGraphLimitKind::TotalNodes => self.max_total_nodes,
+            LocalGraphLimitKind::Edges => self.max_edges,
+        }
+    }
 }
 
-/// Internal selection, not the final versioned local-subgraph export contract.
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+#[serde(rename_all = "snake_case")]
+pub enum LocalGraphLimitKind {
+    FunctionNodes,
+    EvidenceNodes,
+    TotalNodes,
+    Edges,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct ReachedLocalGraphLimit {
+    pub kind: LocalGraphLimitKind,
+    pub configured_limit: usize,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct TraversalDepth {
+    pub caller_depth: usize,
+    pub callee_depth: usize,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct LocalGraphCounts {
+    pub function_nodes: usize,
+    pub evidence_nodes: usize,
+    pub total_nodes: usize,
+    pub edges: usize,
+    pub unresolved_calls: usize,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(rename_all = "snake_case")]
+pub enum TruncationReason {
+    ResourceLimit,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct LocalTruncationMetadata {
+    pub truncated: bool,
+    #[serde(default)]
+    pub limits_reached: Vec<ReachedLocalGraphLimit>,
+    pub requested_depth: TraversalDepth,
+    pub effective_depth: TraversalDepth,
+    pub counts: LocalGraphCounts,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub reason: Option<TruncationReason>,
+}
+
+impl LocalTruncationMetadata {
+    pub fn validate(&self, config: &LocalExtractionConfig) -> Result<(), String> {
+        if self.requested_depth.caller_depth != config.caller_depth
+            || self.requested_depth.callee_depth != config.callee_depth
+        {
+            return Err("truncation requested_depth must match extraction config".to_string());
+        }
+        if self.effective_depth.caller_depth > self.requested_depth.caller_depth
+            || self.effective_depth.callee_depth > self.requested_depth.callee_depth
+        {
+            return Err("effective depth cannot exceed requested depth".to_string());
+        }
+        if self.counts.total_nodes != self.counts.function_nodes + self.counts.evidence_nodes {
+            return Err("total_nodes must equal function_nodes + evidence_nodes".to_string());
+        }
+        if self.truncated {
+            if self.limits_reached.is_empty()
+                || self.reason != Some(TruncationReason::ResourceLimit)
+            {
+                return Err(
+                    "truncated local graph requires reached limits and resource_limit reason"
+                        .to_string(),
+                );
+            }
+        } else if !self.limits_reached.is_empty() || self.reason.is_some() {
+            return Err(
+                "complete local graph cannot declare reached limits or a truncation reason"
+                    .to_string(),
+            );
+        }
+        if self
+            .limits_reached
+            .windows(2)
+            .any(|pair| pair[0].kind >= pair[1].kind)
+        {
+            return Err("limits_reached must be sorted and unique by kind".to_string());
+        }
+        for reached in &self.limits_reached {
+            if config.configured_limit(reached.kind) != Some(reached.configured_limit) {
+                return Err("reached limit does not match extraction config".to_string());
+            }
+        }
+        Ok(())
+    }
+}
+
+/// Deterministic function selection around one seed anchor.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
 pub struct FunctionSelection {
     pub anchor_function_id: String,
     pub function_ids: BTreeSet<String>,
@@ -73,26 +181,40 @@ pub struct FunctionSelection {
     pub callee_distances: BTreeMap<String, usize>,
 }
 
+#[derive(Debug)]
+struct SelectionOutcome {
+    selection: FunctionSelection,
+    reached_limits: BTreeSet<LocalGraphLimitKind>,
+}
+
 pub fn select_seed_functions(
     index: &GraphIndexes<'_>,
     seed: &ConsolidatedSeed,
     config: &LocalExtractionConfig,
 ) -> Result<FunctionSelection, String> {
+    Ok(select_seed_functions_with_limits(index, seed, config)?.selection)
+}
+
+fn select_seed_functions_with_limits(
+    index: &GraphIndexes<'_>,
+    seed: &ConsolidatedSeed,
+    config: &LocalExtractionConfig,
+) -> Result<SelectionOutcome, String> {
     config.validate()?;
     validate_consolidated_seed(index, seed)?;
 
     let function_limit = config.effective_function_limit();
 
-    // Separate traversals from the anchor: no implicit caller->callee or callee->caller turns.
-    // Each traversal is resource-bounded independently; their union is then capped globally.
-    let mut caller_distances = function_distances(
+    // Caller and callee traversals remain independent. Resource limiting does not
+    // introduce caller->callee or callee->caller turns.
+    let mut callers = function_distances(
         index,
         &seed.anchor_function_id,
         Direction::Callers,
         config.caller_depth,
         function_limit,
     );
-    let mut callee_distances = function_distances(
+    let mut callees = function_distances(
         index,
         &seed.anchor_function_id,
         Direction::Callees,
@@ -100,38 +222,54 @@ pub fn select_seed_functions(
         function_limit,
     );
 
-    let mut ordered_functions: Vec<String> = caller_distances
+    let mut ordered_functions: Vec<String> = callers
+        .distances
         .keys()
-        .chain(callee_distances.keys())
+        .chain(callees.distances.keys())
         .cloned()
         .collect::<BTreeSet<_>>()
         .into_iter()
         .collect();
 
     ordered_functions.sort_by(|left, right| {
-        let left_distance = combined_function_distance(left, &caller_distances, &callee_distances);
+        let left_distance =
+            combined_function_distance(left, &callers.distances, &callees.distances);
         let right_distance =
-            combined_function_distance(right, &caller_distances, &callee_distances);
-
+            combined_function_distance(right, &callers.distances, &callees.distances);
         left_distance
             .cmp(&right_distance)
             .then_with(|| left.cmp(right))
     });
 
+    let union_exceeded_limit = function_limit.is_some_and(|limit| ordered_functions.len() > limit);
     if let Some(limit) = function_limit {
         ordered_functions.truncate(limit);
     }
 
     let function_ids: BTreeSet<String> = ordered_functions.into_iter().collect();
+    callers.distances.retain(|id, _| function_ids.contains(id));
+    callees.distances.retain(|id, _| function_ids.contains(id));
 
-    caller_distances.retain(|id, _| function_ids.contains(id));
-    callee_distances.retain(|id, _| function_ids.contains(id));
+    let function_truncated = callers.limit_reached || callees.limit_reached || union_exceeded_limit;
+    let mut reached_limits = BTreeSet::new();
+    if function_truncated {
+        if config.max_function_nodes == function_limit && config.max_function_nodes.is_some() {
+            reached_limits.insert(LocalGraphLimitKind::FunctionNodes);
+        }
 
-    Ok(FunctionSelection {
-        anchor_function_id: seed.anchor_function_id.clone(),
-        function_ids,
-        caller_distances,
-        callee_distances,
+        if config.max_total_nodes == function_limit && config.max_total_nodes.is_some() {
+            reached_limits.insert(LocalGraphLimitKind::TotalNodes);
+        }
+    }
+
+    Ok(SelectionOutcome {
+        selection: FunctionSelection {
+            anchor_function_id: seed.anchor_function_id.clone(),
+            function_ids,
+            caller_distances: callers.distances,
+            callee_distances: callees.distances,
+        },
+        reached_limits,
     })
 }
 
@@ -149,7 +287,7 @@ fn combined_function_distance(
         .unwrap_or(usize::MAX)
 }
 
-/// Local context with observed unresolved records; never infer missing targets.
+/// Internal local context. Step 4.12 gives this data an explicit versioned export contract.
 #[derive(Debug, Clone, PartialEq)]
 pub struct LocalSubgraph {
     pub seed_id: String,
@@ -159,6 +297,7 @@ pub struct LocalSubgraph {
     pub nodes: Vec<GraphNode>,
     pub edges: Vec<GraphEdge>,
     pub unresolved_calls: Vec<UnresolvedCall>,
+    pub truncation: LocalTruncationMetadata,
 }
 
 pub fn unresolved_sort_key(call: &UnresolvedCall) -> String {
@@ -170,7 +309,9 @@ pub fn extract_local_subgraph(
     seed: &ConsolidatedSeed,
     config: &LocalExtractionConfig,
 ) -> Result<LocalSubgraph, String> {
-    let selection = select_seed_functions(index, seed, config)?;
+    let selection_outcome = select_seed_functions_with_limits(index, seed, config)?;
+    let selection = selection_outcome.selection;
+    let mut reached_limits = selection_outcome.reached_limits;
 
     let evidence_limit = config
         .effective_evidence_limit(selection.function_ids.len())
@@ -188,13 +329,13 @@ pub fn extract_local_subgraph(
             &selection.caller_distances,
             &selection.callee_distances,
         );
-
         left_distance
             .cmp(&right_distance)
             .then_with(|| left.cmp(right))
     });
 
     let mut evidence_ids = BTreeSet::new();
+    let mut evidence_limit_reached = false;
 
     'evidence_selection: for function in &ordered_functions {
         for evidence_id in index.evidence(function) {
@@ -202,9 +343,23 @@ pub fn extract_local_subgraph(
                 continue;
             }
             if evidence_ids.len() >= evidence_limit {
+                evidence_limit_reached = true;
                 break 'evidence_selection;
             }
             evidence_ids.insert(evidence_id.to_string());
+        }
+    }
+
+    if evidence_limit_reached {
+        let effective = config.effective_evidence_limit(selection.function_ids.len());
+        if config.max_evidence_nodes == effective && config.max_evidence_nodes.is_some() {
+            reached_limits.insert(LocalGraphLimitKind::EvidenceNodes);
+        }
+        let remaining_total = config
+            .max_total_nodes
+            .map(|limit| limit.saturating_sub(selection.function_ids.len()));
+        if remaining_total == effective && config.max_total_nodes.is_some() {
+            reached_limits.insert(LocalGraphLimitKind::TotalNodes);
         }
     }
 
@@ -223,28 +378,29 @@ pub fn extract_local_subgraph(
 
     let edge_limit = config.max_edges.unwrap_or(usize::MAX);
     let mut edges: Vec<GraphEdge> = Vec::new();
+    let mut edge_limit_reached = false;
 
-    // `included` is a BTreeSet and each outgoing list is canonically sorted by GraphIndexes.
-    // Therefore this iteration is deterministic and matches the existing source-first edge order.
+    // `included` is ordered and every outgoing list is canonically sorted.
     'edge_sources: for source_id in &included {
         for edge in index.outgoing(source_id).iter().copied() {
             if !included.contains(&edge.target) {
                 continue;
             }
-
-            // Identical records are adjacent within one sorted outgoing list.
             if edges.last().is_some_and(|previous| previous == edge) {
                 continue;
             }
-
             if edges.len() >= edge_limit {
+                edge_limit_reached = true;
                 break 'edge_sources;
             }
-
             edges.push(edge.clone());
         }
     }
+    if edge_limit_reached {
+        reached_limits.insert(LocalGraphLimitKind::Edges);
+    }
 
+    // Step 4.8 records remain separate from the four node/edge resource limits.
     let mut unresolved_calls: Vec<_> = index
         .graph()
         .unresolved_calls()
@@ -255,6 +411,56 @@ pub fn extract_local_subgraph(
     unresolved_calls.sort_by_cached_key(unresolved_sort_key);
     unresolved_calls.dedup();
 
+    let function_nodes = nodes
+        .iter()
+        .filter(|node| node.node_type == NodeType::Function)
+        .count();
+    let evidence_nodes = nodes.len().saturating_sub(function_nodes);
+    let requested_depth = TraversalDepth {
+        caller_depth: config.caller_depth,
+        callee_depth: config.callee_depth,
+    };
+    let effective_depth = TraversalDepth {
+        caller_depth: selection
+            .caller_distances
+            .values()
+            .copied()
+            .max()
+            .unwrap_or(0),
+        callee_depth: selection
+            .callee_distances
+            .values()
+            .copied()
+            .max()
+            .unwrap_or(0),
+    };
+
+    let limits_reached: Vec<ReachedLocalGraphLimit> = reached_limits
+        .into_iter()
+        .map(|kind| ReachedLocalGraphLimit {
+            kind,
+            configured_limit: config
+                .configured_limit(kind)
+                .expect("reached limit must be configured"),
+        })
+        .collect();
+    let truncated = !limits_reached.is_empty();
+    let truncation = LocalTruncationMetadata {
+        truncated,
+        limits_reached,
+        requested_depth,
+        effective_depth,
+        counts: LocalGraphCounts {
+            function_nodes,
+            evidence_nodes,
+            total_nodes: nodes.len(),
+            edges: edges.len(),
+            unresolved_calls: unresolved_calls.len(),
+        },
+        reason: truncated.then_some(TruncationReason::ResourceLimit),
+    };
+    truncation.validate(config)?;
+
     Ok(LocalSubgraph {
         seed_id: seed.seed_id.clone(),
         source_graph_version: index.graph().model_version().into(),
@@ -263,6 +469,7 @@ pub fn extract_local_subgraph(
         nodes,
         edges,
         unresolved_calls,
+        truncation,
     })
 }
 
@@ -281,13 +488,13 @@ pub fn seed_centered_bfs(
     max_depth: usize,
 ) -> Result<BTreeMap<String, usize>, String> {
     validate_consolidated_seed(index, seed)?;
-    Ok(function_distances(
-        index,
-        &seed.anchor_function_id,
-        direction,
-        max_depth,
-        None,
-    ))
+    Ok(function_distances(index, &seed.anchor_function_id, direction, max_depth, None).distances)
+}
+
+#[derive(Debug)]
+struct TraversalResult {
+    distances: BTreeMap<String, usize>,
+    limit_reached: bool,
 }
 
 fn function_distances(
@@ -296,17 +503,15 @@ fn function_distances(
     direction: Direction,
     max_depth: usize,
     max_nodes: Option<usize>,
-) -> BTreeMap<String, usize> {
+) -> TraversalResult {
     let node_limit = max_nodes.unwrap_or(usize::MAX).max(1);
     let mut distances = BTreeMap::from([(anchor.to_string(), 0)]);
     let mut queue = VecDeque::from([(anchor.to_string(), 0)]);
+    let mut limit_reached = false;
 
     while let Some((function, depth)) = queue.pop_front() {
         if depth >= max_depth {
             continue;
-        }
-        if distances.len() >= node_limit {
-            break;
         }
 
         let neighbors: Vec<_> = match direction {
@@ -319,15 +524,18 @@ fn function_distances(
                 continue;
             }
             if distances.len() >= node_limit {
-                return distances;
+                limit_reached = true;
+                continue;
             }
-
             distances.insert(next.to_string(), depth + 1);
             queue.push_back((next.to_string(), depth + 1));
         }
     }
 
-    distances
+    TraversalResult {
+        distances,
+        limit_reached,
+    }
 }
 
 #[cfg(test)]

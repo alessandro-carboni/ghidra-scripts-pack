@@ -72,6 +72,27 @@ mod tests {
     use super::*;
     use crate::schema::build_seed_id;
 
+    fn family_for_test_trigger(trigger: &str) -> SeedTriggerFamily {
+        match trigger {
+            // Step 3R: these detector types remain supported by the engine, but they are
+            // intentionally absent from the bundled default seed-generating policy.
+            // Consolidation tests must therefore not assume every valid trigger lives in
+            // bundled seed_rules.json.
+            "visibility_signal.indirect_call" | "unresolved_call.present" => {
+                SeedTriggerFamily::CallVisibility
+            }
+            _ => {
+                crate::seed_rules::load_seed_rules(crate::seed_rules::bundled_seed_rules_path())
+                    .unwrap()
+                    .rules
+                    .into_iter()
+                    .find(|rule| rule.id == trigger)
+                    .unwrap_or_else(|| panic!("missing test seed rule for trigger '{trigger}'"))
+                    .family
+            }
+        }
+    }
+
     fn candidate(
         anchor: &str,
         trigger: &str,
@@ -82,14 +103,7 @@ mod tests {
             seed_id: build_seed_id(anchor, trigger).expect("test seed id should be valid"),
             anchor_function_id: anchor.to_string(),
             trigger_id: trigger.to_string(),
-            family:
-                crate::seed_rules::load_seed_rules(crate::seed_rules::bundled_seed_rules_path())
-                    .unwrap()
-                    .rules
-                    .into_iter()
-                    .find(|rule| rule.id == trigger)
-                    .unwrap()
-                    .family,
+            family: family_for_test_trigger(trigger),
             evidence,
             reason: reason.to_string(),
         }

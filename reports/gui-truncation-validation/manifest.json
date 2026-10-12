@@ -1,0 +1,110 @@
+{
+  "schema_version": "0.1.0",
+  "local_subgraph_schema_version": "0.1.0",
+  "source_report": "notepad_20260929_184824_raw.json",
+  "sample_name": "notepad.exe",
+  "graph_version": "0.12.0",
+  "seed_rules_version": "0.4.0",
+  "seed_detection": {
+    "model_version": "0.4.0",
+    "config": {
+      "max_seeds": 2
+    },
+    "seeds": [
+      {
+        "seed_id": "seed:fn:1400012dc",
+        "anchor_function_id": "fn:1400012dc",
+        "trigger_ids": [
+          "visibility_signal.indirect_call"
+        ],
+        "families": [
+          "call_visibility"
+        ],
+        "source_candidate_ids": [
+          "seed:fn:1400012dc:visibility_signal.indirect_call"
+        ],
+        "evidence": [
+          {
+            "kind": "visibility_signal",
+            "value": "indirect_call",
+            "node_id": "vis:call_visibility:fn:1400012dc",
+            "edge_type": "contains_indirect_call",
+            "callsite": "140001368"
+          }
+        ],
+        "reasons": [
+          "Function contains visibility signal indirect_call"
+        ]
+      },
+      {
+        "seed_id": "seed:fn:1400013a0",
+        "anchor_function_id": "fn:1400013a0",
+        "trigger_ids": [
+          "visibility_signal.indirect_call"
+        ],
+        "families": [
+          "call_visibility"
+        ],
+        "source_candidate_ids": [
+          "seed:fn:1400013a0:visibility_signal.indirect_call"
+        ],
+        "evidence": [
+          {
+            "kind": "visibility_signal",
+            "value": "indirect_call",
+            "node_id": "vis:call_visibility:fn:1400013a0",
+            "edge_type": "contains_indirect_call",
+            "callsite": "1400013b0"
+          },
+          {
+            "kind": "visibility_signal",
+            "value": "indirect_call",
+            "node_id": "vis:call_visibility:fn:1400013a0",
+            "edge_type": "contains_indirect_call",
+            "callsite": "1400013e6"
+          }
+        ],
+        "reasons": [
+          "Function contains visibility signal indirect_call"
+        ]
+      }
+    ],
+    "total_detected": 264,
+    "returned": 2,
+    "truncated": true,
+    "truncation_reason": "max_seeds"
+  },
+  "extraction_config": {
+    "caller_depth": 1,
+    "callee_depth": 2,
+    "max_function_nodes": null,
+    "max_evidence_nodes": null,
+    "max_total_nodes": 3,
+    "max_edges": null
+  },
+  "subgraphs": [
+    {
+      "seed_id": "seed:fn:1400012dc",
+      "anchor_function_id": "fn:1400012dc",
+      "file": "seed_fn_1400012dc.json",
+      "truncated": true,
+      "function_nodes": 3,
+      "evidence_nodes": 0,
+      "total_nodes": 3,
+      "edges": 2,
+      "unresolved_calls": 0
+    },
+    {
+      "seed_id": "seed:fn:1400013a0",
+      "anchor_function_id": "fn:1400013a0",
+      "file": "seed_fn_1400013a0.json",
+      "truncated": true,
+      "function_nodes": 3,
+      "evidence_nodes": 0,
+      "total_nodes": 3,
+      "edges": 2,
+      "unresolved_calls": 0
+    }
+  ],
+  "related_seed_groups": []
+}

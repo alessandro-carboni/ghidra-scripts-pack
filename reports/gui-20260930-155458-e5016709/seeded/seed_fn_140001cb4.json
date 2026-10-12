@@ -1,0 +1,410 @@
+{
+  "schema_version": "0.1.0",
+  "seed_id": "seed:fn:140001cb4",
+  "anchor_function_id": "fn:140001cb4",
+  "graph_version": "0.12.0",
+  "extraction_config": {
+    "caller_depth": 1,
+    "callee_depth": 2,
+    "max_function_nodes": null,
+    "max_evidence_nodes": null,
+    "max_total_nodes": null,
+    "max_edges": null
+  },
+  "function_selection": {
+    "anchor_function_id": "fn:140001cb4",
+    "function_ids": [
+      "fn:140001cb4",
+      "fn:140001cf0",
+      "fn:140001de4"
+    ],
+    "caller_distances": {
+      "fn:140001cb4": 0,
+      "fn:140001cf0": 1,
+      "fn:140001de4": 1
+    },
+    "callee_distances": {
+      "fn:140001cb4": 0
+    }
+  },
+  "nodes": [
+    {
+      "id": "api:getcurrentprocess",
+      "type": "API",
+      "name": "GetCurrentProcess",
+      "normalized_name": "GetCurrentProcess",
+      "original_names": [
+        "GetCurrentProcess"
+      ]
+    },
+    {
+      "id": "api:isprocessorfeaturepresent",
+      "type": "API",
+      "name": "IsProcessorFeaturePresent",
+      "normalized_name": "IsProcessorFeaturePresent",
+      "original_names": [
+        "IsProcessorFeaturePresent"
+      ]
+    },
+    {
+      "id": "api:setunhandledexceptionfilter",
+      "type": "API",
+      "name": "SetUnhandledExceptionFilter",
+      "normalized_name": "SetUnhandledExceptionFilter",
+      "original_names": [
+        "SetUnhandledExceptionFilter"
+      ]
+    },
+    {
+      "id": "api:unhandledexceptionfilter",
+      "type": "API",
+      "name": "UnhandledExceptionFilter",
+      "normalized_name": "UnhandledExceptionFilter",
+      "original_names": [
+        "UnhandledExceptionFilter"
+      ]
+    },
+    {
+      "id": "fn:140001cb4",
+      "type": "FUNCTION",
+      "address": "140001cb4",
+      "external": false,
+      "internal": true,
+      "name": "__raise_securityfailure",
+      "section": ".text",
+      "size": 52,
+      "symbol_name": "__raise_securityfailure",
+      "thunk": false
+    },
+    {
+      "id": "fn:140001cf0",
+      "type": "FUNCTION",
+      "address": "140001cf0",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140001cf0",
+      "section": ".text",
+      "size": 210,
+      "symbol_name": "FUN_140001cf0",
+      "thunk": false
+    },
+    {
+      "id": "fn:140001de4",
+      "type": "FUNCTION",
+      "address": "140001de4",
+      "external": false,
+      "internal": true,
+      "name": "FUN_140001de4",
+      "section": ".text",
+      "size": 156,
+      "symbol_name": "FUN_140001de4",
+      "thunk": false
+    },
+    {
+      "id": "sec:140001000",
+      "type": "SECTION",
+      "end": "140027fff",
+      "entropy": 6.1732,
+      "entropy_class": "normal",
+      "entropy_sampled_bytes": 65536,
+      "execute": true,
+      "initialized": true,
+      "name": ".text",
+      "permissions": "r-x",
+      "read": true,
+      "reasons": [],
+      "size": 159744,
+      "start": "140001000",
+      "suspicious": false,
+      "write": false
+    },
+    {
+      "id": "vis:call_visibility:fn:140001cb4",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:140001cb4",
+      "indicator": "call_visibility",
+      "indirect_call_count": 3,
+      "indirect_callsites": [
+        "140001cbf",
+        "140001cc8",
+        "140001cce"
+      ],
+      "resolved_indirect_call_count": 3,
+      "resolved_indirect_callsites": [
+        "140001cbf",
+        "140001cc8",
+        "140001cce"
+      ],
+      "signals": [
+        "indirect_call"
+      ],
+      "unresolved_indirect_call_count": 0,
+      "unresolved_indirect_callsites": []
+    },
+    {
+      "id": "vis:call_visibility:fn:140001cf0",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:140001cf0",
+      "indicator": "call_visibility",
+      "indirect_call_count": 2,
+      "indirect_callsites": [
+        "140001cfe",
+        "140001d0d"
+      ],
+      "resolved_indirect_call_count": 1,
+      "resolved_indirect_callsites": [
+        "140001cfe"
+      ],
+      "signals": [
+        "indirect_call",
+        "unresolved_call"
+      ],
+      "unresolved_indirect_call_count": 1,
+      "unresolved_indirect_callsites": [
+        "140001d0d"
+      ]
+    },
+    {
+      "id": "vis:call_visibility:fn:140001de4",
+      "type": "VISIBILITY_INDICATOR",
+      "dynamic_dispatch_callsites": [],
+      "dynamic_dispatch_count": 0,
+      "dynamic_dispatch_recognition": null,
+      "dynamic_dispatch_targets": [],
+      "function": "fn:140001de4",
+      "indicator": "call_visibility",
+      "indirect_call_count": 2,
+      "indirect_callsites": [
+        "140001df1",
+        "140001e01"
+      ],
+      "resolved_indirect_call_count": 1,
+      "resolved_indirect_callsites": [
+        "140001df1"
+      ],
+      "signals": [
+        "indirect_call",
+        "unresolved_call"
+      ],
+      "unresolved_indirect_call_count": 1,
+      "unresolved_indirect_callsites": [
+        "140001e01"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "type": "calls_api",
+      "source": "fn:140001cb4",
+      "target": "api:getcurrentprocess",
+      "api": "api:getcurrentprocess",
+      "api_original_names": [
+        "GetCurrentProcess"
+      ],
+      "caller": "fn:140001cb4",
+      "callsite": "140001cce",
+      "callsites": [
+        "140001cce"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140001cb4",
+      "target": "api:setunhandledexceptionfilter",
+      "api": "api:setunhandledexceptionfilter",
+      "api_original_names": [
+        "SetUnhandledExceptionFilter"
+      ],
+      "caller": "fn:140001cb4",
+      "callsite": "140001cbf",
+      "callsites": [
+        "140001cbf"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140001cb4",
+      "target": "api:unhandledexceptionfilter",
+      "api": "api:unhandledexceptionfilter",
+      "api_original_names": [
+        "UnhandledExceptionFilter"
+      ],
+      "caller": "fn:140001cb4",
+      "callsite": "140001cc8",
+      "callsites": [
+        "140001cc8"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140001cb4",
+      "target": "sec:140001000",
+      "function": "fn:140001cb4",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:140001cb4",
+      "target": "vis:call_visibility:fn:140001cb4",
+      "function": "fn:140001cb4",
+      "indicator": "vis:call_visibility:fn:140001cb4"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140001cf0",
+      "target": "fn:140001cb4",
+      "callee": "fn:140001cb4",
+      "caller": "fn:140001cf0",
+      "callsite": "140001db8",
+      "callsites": [
+        "140001db8"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140001cf0",
+      "target": "api:isprocessorfeaturepresent",
+      "api": "api:isprocessorfeaturepresent",
+      "api_original_names": [
+        "IsProcessorFeaturePresent"
+      ],
+      "caller": "fn:140001cf0",
+      "callsite": "140001cfe",
+      "callsites": [
+        "140001cfe"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140001cf0",
+      "target": "sec:140001000",
+      "function": "fn:140001cf0",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:140001cf0",
+      "target": "vis:call_visibility:fn:140001cf0",
+      "function": "fn:140001cf0",
+      "indicator": "vis:call_visibility:fn:140001cf0"
+    },
+    {
+      "type": "calls_function",
+      "source": "fn:140001de4",
+      "target": "fn:140001cb4",
+      "callee": "fn:140001cb4",
+      "caller": "fn:140001de4",
+      "callsite": "140001e76",
+      "callsites": [
+        "140001e76"
+      ],
+      "direct": true,
+      "indirect": false,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "calls_api",
+      "source": "fn:140001de4",
+      "target": "api:isprocessorfeaturepresent",
+      "api": "api:isprocessorfeaturepresent",
+      "api_original_names": [
+        "IsProcessorFeaturePresent"
+      ],
+      "caller": "fn:140001de4",
+      "callsite": "140001df1",
+      "callsites": [
+        "140001df1"
+      ],
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1,
+      "unresolved": false
+    },
+    {
+      "type": "belongs_to_section",
+      "source": "fn:140001de4",
+      "target": "sec:140001000",
+      "function": "fn:140001de4",
+      "section": "sec:140001000"
+    },
+    {
+      "type": "contains_indirect_call",
+      "source": "fn:140001de4",
+      "target": "vis:call_visibility:fn:140001de4",
+      "function": "fn:140001de4",
+      "indicator": "vis:call_visibility:fn:140001de4"
+    }
+  ],
+  "unresolved_calls": [
+    {
+      "indicator": "unresolved_call",
+      "caller": "fn:140001cf0",
+      "callee": null,
+      "callsite": "140001d0d",
+      "unresolved": true,
+      "reason": "no_resolved_function_or_api_target",
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1
+    },
+    {
+      "indicator": "unresolved_call",
+      "caller": "fn:140001de4",
+      "callee": null,
+      "callsite": "140001e01",
+      "unresolved": true,
+      "reason": "no_resolved_function_or_api_target",
+      "direct": false,
+      "indirect": true,
+      "occurrences": 1
+    }
+  ],
+  "truncation": {
+    "truncated": false,
+    "limits_reached": [],
+    "requested_depth": {
+      "caller_depth": 1,
+      "callee_depth": 2
+    },
+    "effective_depth": {
+      "caller_depth": 1,
+      "callee_depth": 0
+    },
+    "counts": {
+      "function_nodes": 3,
+      "evidence_nodes": 8,
+      "total_nodes": 11,
+      "edges": 13,
+      "unresolved_calls": 2
+    }
+  }
+}

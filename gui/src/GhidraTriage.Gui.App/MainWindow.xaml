@@ -1,0 +1,553 @@
+<Window x:Class="GhidraTriage.Gui.App.MainWindow"
+        x:Name="RootWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:wv="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
+        xmlns:conv="clr-namespace:GhidraTriage.Gui.App.Converters"
+        Title="Seeded Graph Explorer"
+        Width="1500"
+        Height="930"
+        MinWidth="1050"
+        MinHeight="680"
+        Background="{StaticResource BackgroundBrush}"
+        WindowStartupLocation="CenterScreen"
+        AllowDrop="True"
+        Drop="OnDrop"
+        PreviewKeyDown="OnKey">
+
+    <Window.Resources>
+        <conv:NonEmptyVisibilityConverter x:Key="NonEmpty" />
+        <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
+    </Window.Resources>
+
+    <Window.InputBindings>
+        <KeyBinding Key="R" Modifiers="Control" Command="{Binding AnalyzeCommand}" />
+        <KeyBinding Key="O" Modifiers="Control" Command="{Binding OpenDatasetCommand}" />
+        <KeyBinding Key="Escape" Command="{Binding ClearSelectionCommand}" />
+    </Window.InputBindings>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="72" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="30" />
+        </Grid.RowDefinitions>
+
+        <!-- Compact desktop menu: secondary actions live here instead of occupying the workspace. -->
+        <Menu Grid.Row="0" Background="{StaticResource PanelBrush}" Foreground="{StaticResource TextBrush}">
+            <MenuItem Header="File">
+                <MenuItem Header="Analyze sample…" Command="{Binding SelectSampleCommand}" InputGestureText="Ctrl+N" />
+                <MenuItem Header="Open existing dataset…" Command="{Binding OpenDatasetCommand}" InputGestureText="Ctrl+O" />
+                <Separator />
+                <MenuItem Header="Re-run current sample" Command="{Binding AnalyzeCommand}" InputGestureText="Ctrl+R" />
+                <Separator />
+                <MenuItem Header="Open dataset folder" Command="{Binding OpenFolderCommand}" />
+                <MenuItem Header="Open source JSON" Command="{Binding OpenJsonCommand}" />
+                <Separator />
+                <MenuItem Header="Export PNG 2×" Command="{Binding ExportPngCommand}" />
+                <MenuItem Header="Export DOT" Command="{Binding ExportDotCommand}" CommandParameter="all" />
+                <MenuItem Header="Export visible DOT" Command="{Binding ExportDotCommand}" CommandParameter="visible" />
+            </MenuItem>
+
+            <MenuItem Header="View">
+                <MenuItem Header="Inspector" IsCheckable="True" IsChecked="{Binding ShowInspector,Mode=TwoWay}" />
+                <MenuItem Header="Terminal" IsCheckable="True" IsChecked="{Binding ShowTerminal,Mode=TwoWay}" />
+                <MenuItem Header="Backend settings" IsCheckable="True" IsChecked="{Binding ShowSettings,Mode=TwoWay}" />
+                <Separator />
+                <MenuItem Header="Full typed graph" Command="{Binding FullGraphCommand}" />
+            </MenuItem>
+
+            <MenuItem Header="Graph">
+                <MenuItem Header="Fit" Command="{Binding FitCommand}" />
+                <MenuItem Header="Layout">
+                    <MenuItem Header="Radial" Command="{Binding LayoutCommand}" CommandParameter="concentric" />
+                    <MenuItem Header="Force" Command="{Binding LayoutCommand}" CommandParameter="cose" />
+                    <MenuItem Header="Grid" Command="{Binding LayoutCommand}" CommandParameter="grid" />
+                </MenuItem>
+                <MenuItem Header="Labels">
+                    <MenuItem Header="Progressive" Command="{Binding LabelsCommand}" CommandParameter="progressive" />
+                    <MenuItem Header="Always visible" Command="{Binding LabelsCommand}" CommandParameter="all" />
+                </MenuItem>
+                <MenuItem Header="Filters" Command="{Binding ToggleFiltersCommand}" />
+            </MenuItem>
+        </Menu>
+
+        <!-- Thesis-first command bar. One primary action: choose a sample and analyze it. -->
+        <Border Grid.Row="1"
+                Background="{StaticResource PanelBrush}"
+                BorderBrush="{StaticResource BorderBrush}"
+                BorderThickness="0,0,0,1"
+                Padding="18,10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <StackPanel VerticalAlignment="Center">
+                    <TextBlock Text="SEEDED / GRAPH EXPLORER"
+                               Foreground="{StaticResource AccentBrush}"
+                               FontSize="10" />
+                    <TextBlock Text="{Binding Sample}"
+                               FontSize="22"
+                               FontWeight="SemiBold"
+                               Margin="0,2,0,0" />
+                    <TextBlock Text="{Binding Versions}"
+                               Foreground="{StaticResource MutedBrush}"
+                               FontSize="10"
+                               Margin="0,2,0,0" />
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                    <TextBlock Text="{Binding RunStatus}"
+                               Foreground="{StaticResource MutedBrush}"
+                               VerticalAlignment="Center"
+                               Margin="0,0,12,0" />
+                    <Button Content="Analyze sample…"
+                            Command="{Binding SelectSampleCommand}"
+                            Style="{StaticResource PrimaryButton}"
+                            ToolTip="Choose an executable and run the complete current Seeded pipeline" />
+                    <Button x:Name="SettingsButton"
+                            Content="⚙"
+                            Command="{Binding ToggleSettingsCommand}"
+                            Style="{StaticResource ToolbarButton}"
+                            ToolTip="Backend settings" />
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <StackPanel Grid.Row="2">
+            <TextBlock Text="{Binding Error}"
+                       Visibility="{Binding Error,Converter={StaticResource NonEmpty}}"
+                       Foreground="#FFA7A7"
+                       TextWrapping="Wrap"
+                       Margin="18,4" />
+            <TextBlock Text="{Binding Warning}"
+                       Visibility="{Binding Warning,Converter={StaticResource NonEmpty}}"
+                       Foreground="{StaticResource WarningBrush}"
+                       TextWrapping="Wrap"
+                       MaxHeight="80"
+                       Margin="18,0,18,4" />
+            <ProgressBar Height="2"
+                         IsIndeterminate="{Binding IsBusy}"
+                         Foreground="{StaticResource AccentBrush}"
+                         Background="{StaticResource BackgroundBrush}" />
+        </StackPanel>
+
+        <!-- Main workspace: seed navigator + graph. Details are drawers, not permanent columns. -->
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition x:Name="LeftColumn" Width="280" MinWidth="220" MaxWidth="420" />
+                <ColumnDefinition Width="5" />
+                <ColumnDefinition Width="*" MinWidth="500" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Seeds: the only persistent side panel because this is the primary thesis navigation. -->
+            <Border Grid.Column="0" Background="{StaticResource PanelBrush}" Padding="12">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <DockPanel Margin="0,0,0,8">
+                        <Button DockPanel.Dock="Right"
+                                Content="Full graph"
+                                Command="{Binding FullGraphCommand}"
+                                Style="{StaticResource ToolbarButton}" />
+                        <StackPanel>
+                            <TextBlock Text="SEEDS" Style="{StaticResource SectionTitle}" />
+                            <TextBlock Text="{Binding SeedCount}" Foreground="{StaticResource MutedBrush}" FontSize="10" />
+                        </StackPanel>
+                    </DockPanel>
+
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBox Text="{Binding SeedSearch,UpdateSourceTrigger=PropertyChanged}"
+                                 ToolTip="Search seed ID, anchor or trigger"
+                                 Margin="0,0,6,6" />
+                        <Button Grid.Column="1"
+                                Content="Filter"
+                                Command="{Binding ToggleSeedFiltersCommand}"
+                                Style="{StaticResource ToolbarButton}"
+                                Margin="0,0,0,6" />
+                    </Grid>
+
+                    <Border Grid.Row="2"
+                            Visibility="{Binding ShowSeedFilters,Converter={StaticResource BoolToVisibility}}"
+                            Background="{StaticResource BackgroundBrush}"
+                            BorderBrush="{StaticResource BorderBrush}"
+                            BorderThickness="1"
+                            CornerRadius="5"
+                            Padding="9"
+                            Margin="0,0,0,8">
+                        <StackPanel>
+                            <ComboBox ItemsSource="{Binding Families}" SelectedItem="{Binding SelectedFamily}" />
+                            <CheckBox Content="Only grouped seeds" IsChecked="{Binding GroupedOnly}" />
+                            <WrapPanel Margin="0,4,0,0">
+                                <Button Content="Reset" Command="{Binding ResetSeedFiltersCommand}" Style="{StaticResource ToolbarButton}" />
+                                <Button Content="Group members" Command="{Binding RelatedGroupCommand}" Style="{StaticResource ToolbarButton}" />
+                            </WrapPanel>
+                        </StackPanel>
+                    </Border>
+
+                    <ListBox Grid.Row="3"
+                             ItemsSource="{Binding Seeds}"
+                             SelectedItem="{Binding SelectedSeed}"
+                             ScrollViewer.CanContentScroll="True">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding Anchor}" FontWeight="SemiBold" />
+                                    <TextBlock Text="{Binding Families}"
+                                               Foreground="{StaticResource AccentBrush}"
+                                               FontSize="10"
+                                               Margin="0,2,0,0" />
+                                    <TextBlock Text="{Binding Triggers}"
+                                               TextTrimming="CharacterEllipsis"
+                                               FontSize="10"
+                                               Foreground="{StaticResource MutedBrush}"
+                                               ToolTip="{Binding Triggers}" />
+                                    <TextBlock Text="{Binding Summary}" FontSize="10" Margin="0,3,0,0" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
+            </Border>
+
+            <GridSplitter Grid.Column="1"
+                          Width="5"
+                          HorizontalAlignment="Stretch"
+                          Background="{StaticResource BorderBrush}" />
+
+            <!-- Graph workspace -->
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Border Grid.Row="0"
+                        Background="{StaticResource BackgroundBrush}"
+                        BorderBrush="{StaticResource BorderBrush}"
+                        BorderThickness="0,0,0,1"
+                        Padding="12,8">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel VerticalAlignment="Center" Margin="0,0,14,0">
+                            <TextBlock Text="{Binding Breadcrumb}" FontWeight="SemiBold" />
+                            <TextBlock Text="{Binding GraphSummary}"
+                                       Foreground="{StaticResource MutedBrush}"
+                                       FontSize="10"
+                                       MaxWidth="420"
+                                       TextTrimming="CharacterEllipsis" />
+                        </StackPanel>
+
+                        <Grid Grid.Column="1" VerticalAlignment="Center">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <TextBox x:Name="NodeSearchBox"
+                                     Text="{Binding NodeSearch,UpdateSourceTrigger=PropertyChanged}"
+                                     ToolTip="Find node by ID, name or value · Ctrl+F"
+                                     Margin="0,0,6,0">
+                                <TextBox.InputBindings>
+                                    <KeyBinding Key="Enter" Command="{Binding SearchCommand}" />
+                                </TextBox.InputBindings>
+                            </TextBox>
+                            <Button Grid.Column="1"
+                                    Content="Find"
+                                    Command="{Binding SearchCommand}"
+                                    Style="{StaticResource ToolbarButton}" />
+                        </Grid>
+
+                        <StackPanel Grid.Column="2" Orientation="Horizontal" Margin="12,0,0,0" VerticalAlignment="Center">
+                            <Button Content="Fit" Command="{Binding FitCommand}" Style="{StaticResource ToolbarButton}" />
+                            <Button x:Name="FilterButton" Content="Filters" Command="{Binding ToggleFiltersCommand}" Style="{StaticResource ToolbarButton}" />
+                            <Button Content="Details" Command="{Binding ToggleInspectorCommand}" Style="{StaticResource ToolbarButton}" />
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <Grid Grid.Row="1">
+                    <wv:WebView2 x:Name="GraphHost" DefaultBackgroundColor="#101722" />
+
+                    <!-- Empty workspace: no fake graph, just one obvious action. -->
+                    <Border Visibility="{Binding IsWorkspaceEmpty,Converter={StaticResource BoolToVisibility}}"
+                            Background="#EE101722"
+                            Panel.ZIndex="20">
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="480">
+                            <TextBlock Text="SEED-FIRST WORKFLOW"
+                                       Foreground="{StaticResource AccentBrush}"
+                                       FontSize="11"
+                                       HorizontalAlignment="Center" />
+                            <TextBlock Text="Analyze a sample. Explore the seed."
+                                       FontSize="30"
+                                       FontWeight="SemiBold"
+                                       HorizontalAlignment="Center"
+                                       Margin="0,16,0,10" />
+                            <TextBlock Text="Choose an executable and the GUI will run the current local pipeline, detect observable seeds, export their local subgraphs and open the first canonical seed automatically."
+                                       Foreground="{StaticResource MutedBrush}"
+                                       TextWrapping="Wrap"
+                                       TextAlignment="Center"
+                                       FontSize="14"
+                                       LineHeight="22" />
+                            <Button Content="Analyze sample…"
+                                    Command="{Binding SelectSampleCommand}"
+                                    Style="{StaticResource PrimaryButton}"
+                                    HorizontalAlignment="Center"
+                                    Margin="0,22,0,0"
+                                    Padding="22,10" />
+                            <Button Content="Open existing dataset"
+                                    Command="{Binding OpenDatasetCommand}"
+                                    Style="{StaticResource GhostButton}"
+                                    HorizontalAlignment="Center"
+                                    Margin="0,8,0,0" />
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Graph filters: hidden until requested. -->
+                    <Border Visibility="{Binding ShowFilters,Converter={StaticResource BoolToVisibility}}"
+                            Width="300"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Margin="0,10,10,0"
+                            Background="{StaticResource PanelBrush}"
+                            BorderBrush="{StaticResource BorderBrush}"
+                            BorderThickness="1"
+                            CornerRadius="7"
+                            Padding="12"
+                            Panel.ZIndex="60">
+                        <ScrollViewer MaxHeight="580" VerticalScrollBarVisibility="Auto">
+                            <StackPanel>
+                                <DockPanel Margin="0,0,0,8">
+                                    <Button DockPanel.Dock="Right" Content="×" Command="{Binding ToggleFiltersCommand}" Style="{StaticResource CloseButton}" />
+                                    <TextBlock Text="GRAPH FILTERS" Style="{StaticResource SectionTitle}" VerticalAlignment="Center" />
+                                </DockPanel>
+
+                                <TextBlock Text="Node types" Foreground="{StaticResource MutedBrush}" FontSize="10" />
+                                <ItemsControl ItemsSource="{Binding NodeTypes}">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <CheckBox Content="{Binding Name}" IsChecked="{Binding Enabled}" />
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+
+                                <TextBlock Text="Edge types" Foreground="{StaticResource MutedBrush}" FontSize="10" Margin="0,10,0,0" />
+                                <ItemsControl ItemsSource="{Binding EdgeTypes}">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <CheckBox Content="{Binding Name}" IsChecked="{Binding Enabled}" />
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+
+                                <Separator Margin="0,8" />
+                                <CheckBox Content="Trigger evidence + anchor" IsChecked="{Binding TriggerOnly}" IsEnabled="{Binding IsLocal}" />
+                                <CheckBox Content="Anchor neighborhood" IsChecked="{Binding AnchorNeighborhood}" IsEnabled="{Binding IsLocal}" />
+                                <TextBlock Text="Local role" Foreground="{StaticResource MutedBrush}" FontSize="10" Margin="0,6,0,3" />
+                                <ComboBox ItemsSource="{Binding Roles}" SelectedItem="{Binding Role}" IsEnabled="{Binding IsLocal}" />
+                                <Button Content="Reset filters" Command="{Binding ResetFiltersCommand}" Margin="0,8,0,0" />
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Border>
+
+                    <!-- Inspector drawer: opens automatically when a node/edge is selected. -->
+                    <Border Visibility="{Binding ShowInspector,Converter={StaticResource BoolToVisibility}}"
+                            Width="350"
+                            HorizontalAlignment="Right"
+                            Background="#F3141E2B"
+                            BorderBrush="{StaticResource BorderBrush}"
+                            BorderThickness="1,0,0,0"
+                            Padding="14"
+                            Panel.ZIndex="50">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+
+                            <DockPanel Margin="0,0,0,10">
+                                <Button DockPanel.Dock="Right" Content="×" Command="{Binding CloseInspectorCommand}" Style="{StaticResource CloseButton}" />
+                                <StackPanel>
+                                    <TextBlock Text="INSPECTOR" Style="{StaticResource SectionTitle}" />
+                                    <TextBlock Text="{Binding InspectorTitle}" FontSize="17" FontWeight="SemiBold" TextWrapping="Wrap" />
+                                    <TextBlock Text="{Binding InspectorId}" Foreground="{StaticResource MutedBrush}" FontSize="10" TextWrapping="Wrap" />
+                                </StackPanel>
+                            </DockPanel>
+
+                            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                                <StackPanel>
+                                    <WrapPanel Margin="0,0,0,8">
+                                        <Button Content="Copy ID" Command="{Binding CopyIdCommand}" Style="{StaticResource ToolbarButton}" />
+                                        <Button Content="Copy value" Command="{Binding CopyValueCommand}" Style="{StaticResource ToolbarButton}" />
+                                        <Button Content="JSON" Command="{Binding CopyDetailsCommand}" Style="{StaticResource ToolbarButton}" />
+                                    </WrapPanel>
+
+                                    <WrapPanel Margin="0,0,0,8">
+                                        <Button Content="Unresolved" Command="{Binding UnresolvedCommand}" Style="{StaticResource ToolbarButton}" />
+                                        <Button Content="Focus source" Command="{Binding FocusCommand}" CommandParameter="{Binding SourceId}" Style="{StaticResource ToolbarButton}" />
+                                        <Button Content="Focus target" Command="{Binding FocusCommand}" CommandParameter="{Binding TargetId}" Style="{StaticResource ToolbarButton}" />
+                                    </WrapPanel>
+
+                                    <ListBox ItemsSource="{Binding Fields}" SelectedItem="{Binding SelectedInspectorField,Mode=OneWayToSource}" Margin="0,4,0,0">
+                                        <ListBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackPanel>
+                                                    <TextBlock Text="{Binding Name}" Foreground="{StaticResource AccentBrush}" FontSize="10" />
+                                                    <TextBlock Text="{Binding Value}" TextWrapping="Wrap" Margin="0,2,0,0" MaxHeight="110" />
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ListBox.ItemTemplate>
+                                    </ListBox>
+
+                                    <StackPanel Visibility="{Binding HasAdditionalFields,Converter={StaticResource BoolToVisibility}}" Margin="0,10,0,0">
+                                        <TextBlock Text="ADDITIONAL PROPERTIES" Style="{StaticResource SectionTitle}" />
+                                        <ListBox ItemsSource="{Binding AdditionalFields}" SelectedItem="{Binding SelectedInspectorField,Mode=OneWayToSource}">
+                                            <ListBox.ItemTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel>
+                                                        <TextBlock Text="{Binding Name}" Foreground="{StaticResource AccentBrush}" FontSize="10" />
+                                                        <TextBlock Text="{Binding Value}" TextWrapping="Wrap" Margin="0,2,0,0" MaxHeight="110" />
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </ListBox.ItemTemplate>
+                                        </ListBox>
+                                    </StackPanel>
+
+                                    <Expander Header="Source JSON" Foreground="{StaticResource TextBrush}" Margin="0,10,0,0">
+                                        <TextBox Text="{Binding Details,Mode=OneWay}"
+                                                 IsReadOnly="True"
+                                                 TextWrapping="Wrap"
+                                                 FontFamily="Consolas"
+                                                 FontSize="10"
+                                                 MaxHeight="260"
+                                                 VerticalScrollBarVisibility="Auto" />
+                                    </Expander>
+                                </StackPanel>
+                            </ScrollViewer>
+                        </Grid>
+                    </Border>
+
+                    <!-- Settings are deliberately hidden from the normal workflow. -->
+                    <Border Visibility="{Binding ShowSettings,Converter={StaticResource BoolToVisibility}}"
+                            Width="410"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Margin="0,10,10,0"
+                            Background="{StaticResource PanelBrush}"
+                            BorderBrush="{StaticResource BorderBrush}"
+                            BorderThickness="1"
+                            CornerRadius="7"
+                            Padding="14"
+                            Panel.ZIndex="100">
+                        <ScrollViewer MaxHeight="650" VerticalScrollBarVisibility="Auto">
+                            <StackPanel>
+                                <DockPanel Margin="0,0,0,10">
+                                    <Button DockPanel.Dock="Right" Content="×" Command="{Binding ToggleSettingsCommand}" Style="{StaticResource CloseButton}" />
+                                    <StackPanel>
+                                        <TextBlock Text="BACKEND SETTINGS" Style="{StaticResource SectionTitle}" />
+                                        <TextBlock Text="Advanced · normally configure once" Foreground="{StaticResource MutedBrush}" FontSize="10" />
+                                    </StackPanel>
+                                </DockPanel>
+
+                                <TextBlock Text="Triage executable" />
+                                <TextBox Text="{Binding TriageExecutable,UpdateSourceTrigger=PropertyChanged}" />
+                                <TextBlock Text="Ghidra directory" />
+                                <TextBox Text="{Binding GhidraDirectory,UpdateSourceTrigger=PropertyChanged}" />
+                                <TextBlock Text="Rule directory" />
+                                <TextBox Text="{Binding RuleDirectory,UpdateSourceTrigger=PropertyChanged}" />
+                                <TextBlock Text="Rust executable" />
+                                <TextBox Text="{Binding RustExecutable,UpdateSourceTrigger=PropertyChanged}" />
+                                <TextBlock Text="Reports directory" />
+                                <TextBox Text="{Binding OutputRoot,UpdateSourceTrigger=PropertyChanged}" />
+                                <TextBlock Text="Repository directory" />
+                                <TextBox Text="{Binding WorkingDirectory,UpdateSourceTrigger=PropertyChanged}" />
+                                <Button Content="Save settings" Command="{Binding SaveSettingsCommand}" Style="{StaticResource PrimaryButton}" Margin="0,6,0,0" />
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Border>
+                </Grid>
+            </Grid>
+        </Grid>
+
+        <!-- Collapsible debug terminal. It opens automatically while analysis runs. -->
+        <Border Grid.Row="4"
+                Visibility="{Binding ShowTerminal,Converter={StaticResource BoolToVisibility}}"
+                Background="#0C121B"
+                BorderBrush="{StaticResource BorderBrush}"
+                BorderThickness="0,1,0,0"
+                Height="190">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="34" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <DockPanel Grid.Row="0" Margin="12,5">
+                    <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
+                        <Button Content="Clear" Command="{Binding ClearTerminalCommand}" Style="{StaticResource ToolbarButton}" />
+                        <Button Content="Cancel" Command="{Binding CancelAnalysisCommand}" IsEnabled="{Binding IsAnalyzing}" Style="{StaticResource ToolbarButton}" />
+                        <Button Content="×" Command="{Binding ToggleTerminalCommand}" Style="{StaticResource CloseButton}" />
+                    </StackPanel>
+                    <TextBlock Text="TERMINAL"
+                               Foreground="{StaticResource AccentBrush}"
+                               FontSize="10"
+                               FontWeight="SemiBold"
+                               VerticalAlignment="Center" />
+                    <TextBlock Text="{Binding RunStatus}"
+                               Foreground="{StaticResource MutedBrush}"
+                               FontSize="10"
+                               VerticalAlignment="Center"
+                               Margin="12,0,0,0" />
+                </DockPanel>
+
+                <TextBox Grid.Row="1"
+                         Text="{Binding LiveLog,Mode=OneWay}"
+                         IsReadOnly="True"
+                         FontFamily="Consolas"
+                         FontSize="10"
+                         Background="#0C121B"
+                         BorderThickness="0"
+                         Padding="12,6"
+                         TextWrapping="NoWrap"
+                         HorizontalScrollBarVisibility="Auto"
+                         VerticalScrollBarVisibility="Auto" />
+            </Grid>
+        </Border>
+
+        <Border Grid.Row="5"
+                BorderBrush="{StaticResource BorderBrush}"
+                BorderThickness="0,1,0,0"
+                Padding="12,6">
+            <DockPanel>
+                <Button DockPanel.Dock="Right"
+                        Content="Terminal"
+                        Command="{Binding ToggleTerminalCommand}"
+                        Style="{StaticResource StatusButton}" />
+                <TextBlock Text="{Binding Status}"
+                           Foreground="{StaticResource MutedBrush}"
+                           FontSize="10"
+                           TextTrimming="CharacterEllipsis"
+                           ToolTip="{Binding Status}"
+                           VerticalAlignment="Center" />
+            </DockPanel>
+        </Border>
+    </Grid>
+</Window>

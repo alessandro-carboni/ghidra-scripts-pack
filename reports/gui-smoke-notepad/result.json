@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "manifest": "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\reports\\notepad_20260929_184824_raw_seeded_subgraphs_20260929_221010\\manifest.json",
+  "sample": "notepad.exe",
+  "seedCount": 264,
+  "checks": [
+    "dataset loaded",
+    "full topology counts preserved",
+    "node inspector FUNCTION",
+    "node inspector API",
+    "node inspector STRING",
+    "node inspector STRING_CATEGORY",
+    "node inspector CONSTANT",
+    "node inspector SECTION",
+    "node inspector VISIBILITY_INDICATOR",
+    "edge inspector source/target preserved",
+    "filter/reset source immutability",
+    "node search results",
+    "unresolved has no focus target",
+    "one real anchor",
+    "trigger uses backend evidence IDs",
+    "stale load protection",
+    "related group uses manifest membership",
+    "return to full graph",
+    "no UI error"
+  ]
+}

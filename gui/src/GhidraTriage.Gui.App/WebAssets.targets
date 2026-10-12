@@ -1,0 +1,1 @@
+<Project><ItemGroup><Content Include="../../web/dist/**/*"><Link>web/%(RecursiveDir)%(Filename)%(Extension)</Link><CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory></Content></ItemGroup></Project>

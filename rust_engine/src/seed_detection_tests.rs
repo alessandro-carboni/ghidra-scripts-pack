@@ -2,7 +2,10 @@
 use crate::schema::{build_seed_id, Report, SeedCandidate, SeedEvidence, SeedTriggerFamily};
 use crate::seed_detection::{detect_seed_candidates, detect_seeds, detect_seeds_from_report};
 use crate::seed_limits::{SeedDetectionConfig, SeedDetectionResult, SeedTruncationReason};
-use crate::seed_rules::{bundled_seed_rules_path, load_seed_rules, SeedRulesConfig};
+use crate::seed_rules::{
+    bundled_seed_rules_path, load_seed_rules, SeedRule, SeedRuleMatch, SeedRuleType,
+    SeedRulesConfig, SEED_RULES_SCHEMA_VERSION,
+};
 use serde_json::{json, Value};
 
 fn graph() -> Value {
@@ -19,9 +22,13 @@ fn run(graph: &Value, max_seeds: Option<usize>) -> SeedDetectionResult {
     result
 }
 
-fn check_single_trigger(id: &str, family: SeedTriggerFamily, kind: &str, count: usize) {
-    let mut config = rules();
-    config.rules.retain(|rule| rule.id == id);
+fn check_single_trigger_with_config(
+    config: SeedRulesConfig,
+    id: &str,
+    family: SeedTriggerFamily,
+    kind: &str,
+    count: usize,
+) {
     let candidates = detect_seed_candidates(&graph(), &config).unwrap();
     assert_eq!(candidates.len(), 1);
     assert_eq!(candidates[0].trigger_id, id);
@@ -37,6 +44,42 @@ fn check_single_trigger(id: &str, family: SeedTriggerFamily, kind: &str, count: 
         result.seeds[0].source_candidate_ids,
         vec![candidates[0].seed_id.clone()]
     );
+}
+
+fn check_single_trigger(id: &str, family: SeedTriggerFamily, kind: &str, count: usize) {
+    let mut config = rules();
+    config.rules.retain(|rule| rule.id == id);
+    check_single_trigger_with_config(config, id, family, kind, count);
+}
+
+fn explicit_observability_rule(id: &str) -> SeedRulesConfig {
+    let rule = match id {
+        "visibility_signal.indirect_call" => SeedRule {
+            id: id.to_string(),
+            evidence_type: SeedRuleType::VisibilitySignal,
+            match_condition: SeedRuleMatch {
+                signal: Some("indirect_call".to_string()),
+                ..SeedRuleMatch::default()
+            },
+            reason_template: "Function contains visibility signal {signal}".to_string(),
+            family: SeedTriggerFamily::CallVisibility,
+        },
+        "unresolved_call.present" => SeedRule {
+            id: id.to_string(),
+            evidence_type: SeedRuleType::UnresolvedCall,
+            match_condition: SeedRuleMatch {
+                indicator: Some("unresolved_call".to_string()),
+                ..SeedRuleMatch::default()
+            },
+            reason_template: "Function contains unresolved call evidence {indicator}".to_string(),
+            family: SeedTriggerFamily::CallVisibility,
+        },
+        other => panic!("unsupported observability rule fixture: {other}"),
+    };
+    SeedRulesConfig {
+        schema_version: SEED_RULES_SCHEMA_VERSION.to_string(),
+        rules: vec![rule],
+    }
 }
 
 #[test]
@@ -80,8 +123,9 @@ fn section_trigger_through_complete_seed_stage() {
 }
 
 #[test]
-fn visibility_trigger_through_complete_seed_stage() {
-    check_single_trigger(
+fn visibility_detector_remains_available_for_explicit_custom_policy() {
+    check_single_trigger_with_config(
+        explicit_observability_rule("visibility_signal.indirect_call"),
         "visibility_signal.indirect_call",
         SeedTriggerFamily::CallVisibility,
         "visibility_signal",
@@ -90,8 +134,9 @@ fn visibility_trigger_through_complete_seed_stage() {
 }
 
 #[test]
-fn unresolved_trigger_through_complete_seed_stage() {
-    check_single_trigger(
+fn unresolved_detector_remains_available_for_explicit_custom_policy() {
+    check_single_trigger_with_config(
+        explicit_observability_rule("unresolved_call.present"),
         "unresolved_call.present",
         SeedTriggerFamily::CallVisibility,
         "unresolved_call",
@@ -123,7 +168,7 @@ fn no_observed_edges_or_calls_yields_no_seed() {
 fn mixed_triggers_consolidate_by_anchor_with_complete_provenance() {
     let input = graph();
     let candidates = detect_seed_candidates(&input, &rules()).unwrap();
-    assert_eq!(candidates.len(), 7);
+    assert_eq!(candidates.len(), 5);
     let result = run(&input, None);
     assert_eq!(result.seeds.len(), 2);
     let first = &result.seeds[0];
@@ -134,20 +179,17 @@ fn mixed_triggers_consolidate_by_anchor_with_complete_provenance() {
             "api.virtualalloc",
             "constant_category.memory_protection",
             "section_property.suspicious",
-            "string_category.powershell",
-            "unresolved_call.present",
-            "visibility_signal.indirect_call"
+            "string_category.powershell"
         ]
     );
-    assert_eq!(first.evidence.len(), 9);
-    assert_eq!(first.reasons.len(), 6);
+    assert_eq!(first.evidence.len(), 6);
+    assert_eq!(first.reasons.len(), 4);
     assert_eq!(
         first.families,
         vec![
             SeedTriggerFamily::MemoryManagement,
             SeedTriggerFamily::CommandExecution,
-            SeedTriggerFamily::SectionContext,
-            SeedTriggerFamily::CallVisibility
+            SeedTriggerFamily::SectionContext
         ]
     );
     for candidate in candidates
@@ -246,40 +288,46 @@ fn seed_ids_are_stable_and_independent_of_provenance_order() {
 }
 
 #[test]
-fn unknown_callsites_and_distinct_unresolved_reasons_remain_provenance() {
+fn unknown_api_callsites_remain_seed_provenance() {
     let mut input = graph();
     input["edges"]
         .as_array_mut()
         .unwrap()
         .push(json!({"type": "calls_api", "source": "fn:00401000", "target": "api:virtualalloc"}));
-    let mut unresolved = input["unresolved_calls"][0].clone();
-    unresolved["reason"] = json!("target_not_in_program");
-    input["unresolved_calls"]
-        .as_array_mut()
-        .unwrap()
-        .push(unresolved.clone());
-    unresolved["callsite"] = Value::Null;
-    input["unresolved_calls"]
-        .as_array_mut()
-        .unwrap()
-        .push(unresolved);
     let result = run(&input, None);
     let evidence = &result.seeds[0].evidence;
     assert!(evidence
         .iter()
-        .any(|e| e.kind == "api" && e.callsite.is_none()));
-    let unresolved: Vec<_> = evidence
-        .iter()
-        .filter(|e| e.kind == "unresolved_call")
-        .collect();
-    assert_eq!(unresolved.len(), 3);
-    assert!(unresolved
-        .iter()
-        .all(|e| e.node_id.is_none() && e.edge_type.is_none()));
-    assert!(unresolved.iter().any(|e| e.callsite.is_none()));
-    assert!(unresolved
-        .iter()
-        .any(|e| e.value == "no_resolved_function_or_api_target"));
+        .any(|e| e.kind == "api" && e.value == "VirtualAlloc" && e.callsite.is_none()));
+}
+
+#[test]
+fn observability_records_do_not_create_or_modify_bundled_default_seeds() {
+    let original = graph();
+    let expected = run(&original, None);
+
+    assert!(expected.seeds.iter().all(|seed| {
+        !seed.families.contains(&SeedTriggerFamily::CallVisibility)
+            && !seed.trigger_ids.iter().any(|trigger| {
+                matches!(
+                    trigger.as_str(),
+                    "visibility_signal.indirect_call" | "unresolved_call.present"
+                )
+            })
+    }));
+
+    let mut without_observability = original;
+    without_observability["nodes"]
+        .as_array_mut()
+        .unwrap()
+        .retain(|node| node.get("type").and_then(Value::as_str) != Some("VISIBILITY_INDICATOR"));
+    without_observability["edges"]
+        .as_array_mut()
+        .unwrap()
+        .retain(|edge| edge.get("type").and_then(Value::as_str) != Some("contains_indirect_call"));
+    without_observability["unresolved_calls"] = json!([]);
+
+    assert_eq!(expected, run(&without_observability, None));
 }
 
 #[test]
