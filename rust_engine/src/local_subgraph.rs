@@ -539,7 +539,6 @@ fn function_distances(
 }
 
 #[cfg(test)]
-
 mod tests {
 
     use super::*;

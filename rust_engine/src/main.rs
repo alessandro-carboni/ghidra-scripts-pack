@@ -1,4 +1,9 @@
 #[allow(dead_code)]
+mod canonical;
+#[allow(dead_code)]
+mod canonical_order;
+
+#[allow(dead_code)]
 mod local_subgraph;
 
 #[allow(dead_code)]
@@ -76,6 +81,7 @@ struct RuntimeOptions {
 enum RuntimeCommand {
     Enrich(RuntimeOptions),
     ExportLocalSubgraphs(LocalSubgraphExportOptions),
+    CanonicalizeLocalSubgraph { input: String, output: String },
 }
 
 /// Parses the engine's command-line arguments (excluding the program name).
@@ -133,6 +139,18 @@ where
     S: Into<String>,
 {
     let args: Vec<String> = args.into_iter().map(Into::into).collect();
+    if args.first().map(String::as_str) == Some("canonicalize-local-subgraph") {
+        if args.len() != 3 || args[1..].iter().any(|a| a.starts_with('-')) {
+            return Err(
+                "usage: rust_engine canonicalize-local-subgraph <local.json> <canonical.json>"
+                    .into(),
+            );
+        }
+        return Ok(RuntimeCommand::CanonicalizeLocalSubgraph {
+            input: args[1].clone(),
+            output: args[2].clone(),
+        });
+    }
     if args.first().map(String::as_str) == Some("export-local-subgraphs") {
         return parse_local_subgraph_export_args(args.into_iter().skip(1))
             .map(RuntimeCommand::ExportLocalSubgraphs);
@@ -151,6 +169,33 @@ fn run() -> Result<(), String> {
     match parse_command(env::args().skip(1))? {
         RuntimeCommand::Enrich(options) => run_enrichment(options),
         RuntimeCommand::ExportLocalSubgraphs(options) => run_local_subgraph_export(options),
+        RuntimeCommand::CanonicalizeLocalSubgraph { input, output } => {
+            if input == output
+                || fs::canonicalize(&input)
+                    .ok()
+                    .zip(fs::canonicalize(&output).ok())
+                    .is_some_and(|(a, b)| a == b)
+            {
+                return Err("canonical output must differ from source path".into());
+            }
+            let text =
+                fs::read_to_string(&input).map_err(|e| format!("read local subgraph: {e}"))?;
+            let source: local_subgraph_schema::LocalSubgraphDocument =
+                serde_json::from_str(&text).map_err(|e| format!("invalid local JSON: {e}"))?;
+            let canonical = canonical::CanonicalSubgraph::from_source(&source)?;
+            let text = canonical.to_json_pretty()?;
+            fs::write(&output, text).map_err(|e| format!("write canonical subgraph: {e}"))?;
+            println!(
+                "[+] Canonicalization Baseline v0.1: {}",
+                canonical.canonical_digest
+            );
+            println!(
+                "[+] Coverage: {} represented / {} explicitly excluded",
+                canonical.coverage_ledger.represented, canonical.coverage_ledger.excluded
+            );
+            println!("[+] Canonical subgraph: {output}");
+            Ok(())
+        }
     }
 }
 
@@ -282,7 +327,7 @@ mod tests {
                 assert_eq!(options.output_dir, "out");
                 assert_eq!(options.seed_config.max_seeds, Some(3));
             }
-            RuntimeCommand::Enrich(_) => panic!("expected export command"),
+            _ => panic!("expected export command"),
         }
     }
 
@@ -296,5 +341,21 @@ mod tests {
                 seeded_enabled: true,
             })
         );
+    }
+
+    #[test]
+    fn canonical_command_requires_exact_paths() {
+        assert!(matches!(
+            parse_command(["canonicalize-local-subgraph", "in.json", "out.json"]).unwrap(),
+            RuntimeCommand::CanonicalizeLocalSubgraph { .. }
+        ));
+        assert!(parse_command(["canonicalize-local-subgraph", "in.json"]).is_err());
+        assert!(parse_command([
+            "canonicalize-local-subgraph",
+            "in.json",
+            "out.json",
+            "extra"
+        ])
+        .is_err());
     }
 }

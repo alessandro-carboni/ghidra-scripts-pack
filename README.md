@@ -240,6 +240,21 @@ cargo build --manifest-path .\rust_engine\Cargo.toml
 
 ---
 
+## Canonical local subgraphs (OSGF step 5)
+
+The deterministic **Canonicalization Baseline v0.1** converts an exported local
+subgraph into an address-independent scientific representation with a SHA-256
+digest, complete source provenance and a Coverage Ledger.
+
+```powershell
+cargo build --locked --manifest-path rust_engine/Cargo.toml
+.\rust_engine\target\debug\rust_engine.exe canonicalize-local-subgraph local.json canonical.json
+python scripts/test_canonical_baseline.py
+```
+
+See [the frozen contract and acceptance suite](docs/canonicalization_baseline_v0_1.md)
+for normalization rules, provenance semantics and technical limits.
+
 ## AI-assisted analysis
 
 The project includes an optional local AI-assisted analysis layer that works on top of the structured enriched report.
