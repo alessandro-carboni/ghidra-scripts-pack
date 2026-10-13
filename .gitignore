@@ -17,3 +17,5 @@ node_modules/
 obj/
 
 reports/canonical-*/
+__pycache__/
+*.py[cod]

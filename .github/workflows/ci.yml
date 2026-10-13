@@ -19,13 +19,11 @@ jobs:
 
       - run: pip install ruff pytest
 
-      - run: pip install -e ".[dev]" || true
-
       - run: ruff check .
 
       - run: ruff format --check .
 
-      - run: pytest -q || true
+      - run: pytest -q tests
 
   canonical-baseline:
     runs-on: ubuntu-latest
