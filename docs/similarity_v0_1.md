@@ -1,13 +1,13 @@
-# OSGF similarity: steps 7.1–7.7
+# OSGF Baseline Similarity v0.1
 
-The separate `SimilarityResult` schema is version `0.1.0`. This implements the
-three semantic comparisons and separate observability diagnostics. Missing-evidence
-qualification, aggregate computation and the final baseline freeze remain future steps.
+The separate `SimilarityResult` schema is version `0.1.0`, frozen on 2026-10-13
+after completing steps 7.1–7.10. It includes three semantic comparisons, separate
+observability diagnostics, qualified missing evidence and an optional aggregate.
 
 ```powershell
 cargo build --locked --manifest-path rust_engine/Cargo.toml
-rust_engine/target/debug/rust_engine.exe compare-fingerprints query query-canonical.json query-fingerprint.json reference reference-canonical.json reference-fingerprint.json new-result.json
-python scripts/test_similarity_cli.py --engine rust_engine/target/debug/rust_engine.exe
+rust_engine/target/debug/rust_engine.exe compare-fingerprints query query-canonical.json query-fingerprint.json reference reference-canonical.json reference-fingerprint.json new-result.json --aggregate
+python scripts/test_similarity_baseline.py --engine rust_engine/target/debug/rust_engine.exe
 ```
 
 Output must be a new file. Both fingerprints are validated against their canonical
@@ -39,5 +39,44 @@ and possible-incompleteness flags. An unknown count is not zero. Observed indire
 or explicit dynamic calls alone do not imply incompleteness. Lower effective depth
 alone may indicate that the reachable graph ended, rather than truncation.
 
-Observability never changes either semantic similarity. Aggregate fields remain
-`null`. The output is similarity evidence, not a malware score or probability.
+Each missing feature carries `qualification` and `warnings`. The states are
+`observed_absent` and `observed_absent_with_incomplete_observability`. Qualification
+uses the absent side's global possible-incompleteness flag, including unresolved
+calls, local/motif truncation and unavailable observations. It is deliberately
+conservative across views. Feature descriptors and provenance always come from the
+side where evidence is actually present. No missing feature is assigned to an
+unresolved call, and qualification does not create matches or change metrics.
+
+Observability never changes either semantic similarity. `--aggregate` enables
+separate arithmetic means for Set and Multiset across comparable semantic views.
+`aggregate_components` lists the selected views in topology/evidence/interaction
+order. Empty views are excluded; when no view is comparable both means are `null`.
+Without the flag, both means are `null`, the component list is empty and
+`aggregate_requested=false`. With the flag it is true even when no view is comparable.
+Truncated but nonempty views remain comparable; their warnings remain visible.
+The output is OSGF similarity evidence, not a malware score or probability.
+
+## Determinism and freeze verification
+
+The same validated inputs, IDs and aggregate setting produce byte-identical pretty
+JSON. BTreeMap descriptor order stabilizes matched/missing feature lists; the
+aggregate has a fixed component order. The checked-in
+`rust_engine/tests/fixtures/similarity_v0_1_golden.json` freezes the SHA-256 of the
+complete identical-fixture result with aggregate enabled and IDs `query`/`reference`.
+Tests never regenerate this golden reference.
+
+Relocation and source reordering preserve scientific descriptors, metrics, missing
+qualification and aggregate. Raw snapshots and source indices in provenance must
+still reflect their actual inputs, so the full source-bearing report is not expected
+to have identical bytes across different source documents. Repeated runs of each
+same input are byte-identical. Unrelated evidence can still share generic root-role
+features; the baseline does not force the topology similarity to zero.
+
+The acceptance suite covers identical, relocated, reordered, partial-overlap,
+extra-evidence, topology-only, evidence-only, unrelated, count-only, degraded
+observability, qualified absence, local/motif truncation, empty-view, invalid-version,
+provenance and deterministic-output cases. An independent Python oracle checks
+both Jaccard formulas, matched counts and missing partitions against input features.
+CI runs it together with the canonical and fingerprint regression suites and Rust
+tests/Clippy. Scientific changes after this freeze require explicit version and
+golden-reference review rather than silently updating expected output.

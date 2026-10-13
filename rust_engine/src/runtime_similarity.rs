@@ -5,10 +5,14 @@ use crate::similarity::SimilarityComparison;
 use std::fs;
 use std::io::Write;
 
-pub const USAGE: &str = "usage: rust_engine compare-fingerprints <query-id> <query-canonical.json> <query-fingerprint.json> <reference-id> <reference-canonical.json> <reference-fingerprint.json> <new-result.json>";
+pub const USAGE: &str = "usage: rust_engine compare-fingerprints <query-id> <query-canonical.json> <query-fingerprint.json> <reference-id> <reference-canonical.json> <reference-fingerprint.json> <new-result.json> [--aggregate]";
+
+pub fn valid_args(args: &[String]) -> bool {
+    args.len() == 7 || (args.len() == 8 && args[7] == "--aggregate")
+}
 
 pub fn run(args: Vec<String>) -> Result<(), String> {
-    if args.len() != 7 {
+    if !valid_args(&args) {
         return Err(USAGE.into());
     }
     let load = |canonical_path: &str,
@@ -24,7 +28,8 @@ pub fn run(args: Vec<String>) -> Result<(), String> {
     };
     let (qc, q) = load(&args[1], &args[2])?;
     let (rc, r) = load(&args[4], &args[5])?;
-    let result = SimilarityComparison::new(&args[0], &q, &qc, &args[3], &r, &rc)?.finish();
+    let result = SimilarityComparison::new(&args[0], &q, &qc, &args[3], &r, &rc)?
+        .finish_with_aggregate(args.len() == 8);
     let bytes = serde_json::to_vec_pretty(&result).map_err(|e| e.to_string())?;
     // A new file is required, also protecting source paths and aliases.
     let mut output = fs::OpenOptions::new()
@@ -45,6 +50,9 @@ pub fn run(args: Vec<String>) -> Result<(), String> {
         for warning in view.warnings {
             println!("[!] {warning}");
         }
+    }
+    if result.aggregate_requested {
+        println!("[+] OSGF similarity aggregate: set={:?} multiset={:?} components={:?}; not a malware probability",result.aggregate_set_similarity,result.aggregate_multiset_similarity,result.aggregate_components);
     }
     for warning in result.observability_warnings {
         println!("[!] {warning}");

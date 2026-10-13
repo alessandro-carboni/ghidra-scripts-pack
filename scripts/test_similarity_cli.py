@@ -1,4 +1,4 @@
-"""Focused CLI checks for similarity steps 7.1-7.7 (not the final freeze suite)."""
+"""CLI contract checks, also included in test_similarity_baseline.py."""
 
 import argparse
 import json
@@ -73,6 +73,19 @@ class SimilarityCLI(unittest.TestCase):
     def test_usage_rejects_missing_arguments(self):
         result = self.run_engine("compare-fingerprints", success=False)
         self.assertIn("usage:", result.stderr)
+
+    def test_optional_aggregate_and_invalid_flags(self):
+        base = ("compare-fingerprints", "query", self.canonical, self.fingerprint, "reference", self.canonical, self.fingerprint, self.output)
+        for flags in (("--unknown",), ("--aggregate", "--aggregate")):
+            self.run_engine(*base, *flags, success=False)
+            self.assertFalse(self.output.exists())
+        result = self.run_engine(*base, "--aggregate")
+        data = json.loads(self.output.read_text(encoding="utf-8"))
+        self.assertTrue(data["aggregate_requested"])
+        self.assertEqual(data["aggregate_set_similarity"], 1)
+        self.assertEqual(data["aggregate_multiset_similarity"], 1)
+        self.assertEqual(data["aggregate_components"], ["rooted_topology", "typed_evidence", "interaction_motif"])
+        self.assertIn("not a malware probability", result.stdout)
 
 
 if __name__ == "__main__":

@@ -453,8 +453,9 @@ Capabilities are inferred through a combination of:
 ## OSGF similarity
 
 OSGF fingerprint comparison is available through `compare-fingerprints`; see
-[similarity steps 7.1–7.7](docs/similarity_v0_1.md) for the CLI, two Jaccard metrics,
-source provenance and separate observability diagnostics.
+[OSGF Baseline Similarity v0.1](docs/similarity_v0_1.md) for the CLI, two Jaccard metrics,
+source provenance, qualified missing evidence, separate observability diagnostics and
+optional semantic aggregate (`--aggregate`).
 
 ## Packer analysis model
 

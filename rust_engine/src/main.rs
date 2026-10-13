@@ -165,7 +165,7 @@ where
         });
     }
     if args.first().map(String::as_str) == Some("compare-fingerprints") {
-        if args.len() != 8 {
+        if !runtime_similarity::valid_args(&args[1..]) {
             return Err(runtime_similarity::USAGE.into());
         }
         return Ok(RuntimeCommand::Similarity(args[1..].to_vec()));

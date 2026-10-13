@@ -82,6 +82,39 @@ pub struct MissingFeature {
     pub descriptor: Value,
     pub count: u64,
     pub provenance: Vec<ResolvedOccurrence>,
+    pub qualification: MissingQualification,
+    pub warnings: Vec<String>,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(rename_all = "snake_case")]
+pub enum MissingQualification {
+    ObservedAbsent,
+    ObservedAbsentWithIncompleteObservability,
+}
+
+impl MissingFeature {
+    fn new(
+        feature: &FingerprintFeature,
+        provenance: &FingerprintProvenance,
+        absent_side_incomplete: bool,
+    ) -> Self {
+        Self {
+            descriptor: feature.descriptor.clone(),
+            count: feature.count,
+            provenance: provenance.features[&feature.id].clone(),
+            qualification: if absent_side_incomplete {
+                MissingQualification::ObservedAbsentWithIncompleteObservability
+            } else {
+                MissingQualification::ObservedAbsent
+            },
+            warnings: if absent_side_incomplete {
+                vec!["Absence may reflect incomplete observability on the absent side; no unresolved target or feature correspondence is inferred.".into()]
+            } else {
+                vec![]
+            },
+        }
+    }
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, Default)]
@@ -110,6 +143,34 @@ pub struct SimilarityResult {
     pub observability_warnings: Vec<String>,
     pub aggregate_set_similarity: Option<f64>,
     pub aggregate_multiset_similarity: Option<f64>,
+    pub aggregate_requested: bool,
+    pub aggregate_components: Vec<String>,
+}
+
+impl SimilarityResult {
+    fn compute_aggregate(&mut self) {
+        self.aggregate_requested = true;
+        self.aggregate_components.clear();
+        let mut set_sum = 0.0;
+        let mut multiset_sum = 0.0;
+        for (name, view) in [
+            ("rooted_topology", &self.rooted_topology),
+            ("typed_evidence", &self.typed_evidence),
+            ("interaction_motif", &self.interaction_motif),
+        ] {
+            if let Some(view) = view.as_ref().filter(|v| v.comparable) {
+                if let (Some(set), Some(multiset)) = (view.set_similarity, view.multiset_similarity)
+                {
+                    self.aggregate_components.push(name.into());
+                    set_sum += set;
+                    multiset_sum += multiset;
+                }
+            }
+        }
+        let n = self.aggregate_components.len();
+        self.aggregate_set_similarity = (n > 0).then(|| set_sum / n as f64);
+        self.aggregate_multiset_similarity = (n > 0).then(|| multiset_sum / n as f64);
+    }
 }
 
 /// Private verified inputs prevent comparisons against forged counts or provenance.
@@ -143,13 +204,20 @@ impl<'a> SimilarityComparison<'a> {
         )
     }
 
-    pub fn finish(mut self) -> SimilarityResult {
+    pub fn finish(self) -> SimilarityResult {
+        self.finish_with_aggregate(false)
+    }
+
+    pub fn finish_with_aggregate(mut self, aggregate: bool) -> SimilarityResult {
         self.result.rooted_topology = Some(self.rooted_topology());
         self.result.typed_evidence = Some(self.typed_evidence());
         self.result.interaction_motif = Some(self.interaction_motif());
         let obs = self.observability();
         self.result.observability_warnings = obs.warnings.clone();
         self.result.observability = Some(obs);
+        if aggregate {
+            self.result.compute_aggregate();
+        }
         self.result
     }
     pub fn interaction_motif(&self) -> ViewSimilarity {
@@ -185,24 +253,25 @@ impl<'a> SimilarityComparison<'a> {
         let r = feature_map(reference);
         let qp = &self.result.query.provenance;
         let rp = &self.result.reference.provenance;
+        let observability = self.observability();
         for (key, feature) in &q {
             if let Some(other) = r.get(key) {
                 view.matched.push(matched(feature, other, qp, rp));
             } else {
-                view.missing_from_reference.push(MissingFeature {
-                    descriptor: feature.descriptor.clone(),
-                    count: feature.count,
-                    provenance: qp.features[&feature.id].clone(),
-                });
+                view.missing_from_reference.push(MissingFeature::new(
+                    feature,
+                    qp,
+                    observability.reference_possibly_incomplete,
+                ));
             }
         }
         for (key, feature) in &r {
             if !q.contains_key(key) {
-                view.missing_from_query.push(MissingFeature {
-                    descriptor: feature.descriptor.clone(),
-                    count: feature.count,
-                    provenance: rp.features[&feature.id].clone(),
-                });
+                view.missing_from_query.push(MissingFeature::new(
+                    feature,
+                    rp,
+                    observability.query_possibly_incomplete,
+                ));
             }
         }
         if let Some(family) = motif_family {
@@ -260,6 +329,8 @@ impl<'a> SimilarityComparison<'a> {
                 observability_warnings: vec![],
                 aggregate_set_similarity: None,
                 aggregate_multiset_similarity: None,
+                aggregate_requested: false,
+                aggregate_components: vec![],
             },
         })
     }
@@ -284,6 +355,81 @@ fn matched(
 #[cfg(test)]
 mod tests {
     use super::*;
+    #[test]
+    fn aggregate_is_optional_unweighted_and_excludes_unavailable_views() {
+        let (c, fp) = fixture();
+        let plain = SimilarityComparison::new("q", &fp, &c, "r", &fp, &c)
+            .unwrap()
+            .finish();
+        assert!(!plain.aggregate_requested);
+        assert!(plain.aggregate_components.is_empty());
+        let mut result = SimilarityComparison::new("q", &fp, &c, "r", &fp, &c)
+            .unwrap()
+            .finish_with_aggregate(true);
+        assert_eq!(result.aggregate_set_similarity, Some(1.0));
+        assert_eq!(result.aggregate_components.len(), 3);
+        assert!(result.observability.as_ref().unwrap().possibly_incomplete);
+        result.rooted_topology = Some(metrics(&features(&[("A", 5)]), &features(&[("A", 1)])));
+        result.typed_evidence = Some(metrics(&features(&[("A", 1)]), &features(&[("B", 1)])));
+        result.interaction_motif = Some(metrics(&[], &[]));
+        result.compute_aggregate();
+        assert_eq!(result.aggregate_set_similarity, Some(0.5));
+        assert_eq!(result.aggregate_multiset_similarity, Some(0.1));
+        assert_eq!(
+            result.aggregate_components,
+            vec!["rooted_topology", "typed_evidence"]
+        );
+        result.rooted_topology = Some(metrics(&[], &[]));
+        result.typed_evidence = Some(metrics(&[], &[]));
+        result.compute_aggregate();
+        assert!(result.aggregate_set_similarity.is_none());
+        assert!(result.aggregate_multiset_similarity.is_none());
+        assert!(result.aggregate_components.is_empty());
+    }
+    #[test]
+    fn missing_qualification_uses_absent_side_and_never_invents_matches() {
+        let (c, q) = fixture();
+        let (rc, r) = altered_fixture(|raw| {
+            raw["unresolved_calls"] = serde_json::json!([]);
+            raw["truncation"]["counts"]["unresolved_calls"] = serde_json::json!(0);
+            for node in raw["nodes"].as_array_mut().unwrap() {
+                if node["type"] == "VISIBILITY_INDICATOR" {
+                    node["unresolved_indirect_callsites"] = serde_json::json!([]);
+                }
+            }
+            for edge in raw["edges"].as_array_mut().unwrap() {
+                if edge["target"] == "api:virtualalloc" {
+                    edge["source"] = serde_json::json!("fn:00402000");
+                }
+            }
+        });
+        let view = SimilarityComparison::new("q", &q, &c, "r", &r, &rc)
+            .unwrap()
+            .typed_evidence();
+        assert_eq!(view.missing_from_query.len(), 1);
+        assert_eq!(view.missing_from_reference.len(), 1);
+        assert_eq!(
+            view.missing_from_query[0].qualification,
+            MissingQualification::ObservedAbsentWithIncompleteObservability
+        );
+        assert_eq!(
+            view.missing_from_reference[0].qualification,
+            MissingQualification::ObservedAbsent
+        );
+        assert_eq!(view.missing_from_query[0].warnings.len(), 1);
+        assert!(view.missing_from_reference[0].warnings.is_empty());
+        assert_eq!(view.matched.len() + 1, q.typed_evidence_view.len());
+        assert!(r
+            .typed_evidence_view
+            .iter()
+            .any(|f| f.descriptor == view.missing_from_query[0].descriptor));
+        let reverse = SimilarityComparison::new("r", &r, &rc, "q", &q, &c)
+            .unwrap()
+            .typed_evidence();
+        assert_eq!(view.missing_from_query, reverse.missing_from_reference);
+        assert_eq!(view.missing_from_reference, reverse.missing_from_query);
+        assert_eq!(view.set_similarity, reverse.set_similarity);
+    }
     #[test]
     fn observability_is_separate_and_indirect_does_not_mean_unresolved() {
         let (c, q) = fixture();
