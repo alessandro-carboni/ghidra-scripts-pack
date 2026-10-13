@@ -6,6 +6,13 @@ mod canonical_order;
 mod fingerprint;
 #[allow(dead_code)]
 mod fingerprint_motifs;
+#[allow(dead_code)]
+mod fingerprint_provenance;
+mod runtime_fingerprint;
+mod runtime_similarity;
+#[allow(dead_code)]
+mod similarity;
+mod similarity_observability;
 
 #[allow(dead_code)]
 mod local_subgraph;
@@ -86,6 +93,8 @@ enum RuntimeCommand {
     Enrich(RuntimeOptions),
     ExportLocalSubgraphs(LocalSubgraphExportOptions),
     CanonicalizeLocalSubgraph { input: String, output: String },
+    Fingerprint(runtime_fingerprint::FingerprintOptions),
+    Similarity(Vec<String>),
 }
 
 /// Parses the engine's command-line arguments (excluding the program name).
@@ -155,6 +164,15 @@ where
             output: args[2].clone(),
         });
     }
+    if args.first().map(String::as_str) == Some("compare-fingerprints") {
+        if args.len() != 8 {
+            return Err(runtime_similarity::USAGE.into());
+        }
+        return Ok(RuntimeCommand::Similarity(args[1..].to_vec()));
+    }
+    if args.first().map(String::as_str) == Some("fingerprint-canonical") {
+        return runtime_fingerprint::parse_args(&args[1..]).map(RuntimeCommand::Fingerprint);
+    }
     if args.first().map(String::as_str) == Some("export-local-subgraphs") {
         return parse_local_subgraph_export_args(args.into_iter().skip(1))
             .map(RuntimeCommand::ExportLocalSubgraphs);
@@ -171,6 +189,8 @@ fn main() {
 
 fn run() -> Result<(), String> {
     match parse_command(env::args().skip(1))? {
+        RuntimeCommand::Similarity(args) => runtime_similarity::run(args),
+        RuntimeCommand::Fingerprint(options) => runtime_fingerprint::run(options),
         RuntimeCommand::Enrich(options) => run_enrichment(options),
         RuntimeCommand::ExportLocalSubgraphs(options) => run_local_subgraph_export(options),
         RuntimeCommand::CanonicalizeLocalSubgraph { input, output } => {

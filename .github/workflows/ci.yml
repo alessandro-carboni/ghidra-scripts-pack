@@ -40,3 +40,5 @@ jobs:
       - run: cargo clippy --locked --manifest-path rust_engine/Cargo.toml --all-targets -- -D warnings
       - run: cargo build --locked --manifest-path rust_engine/Cargo.toml
       - run: python scripts/test_canonical_baseline.py --engine rust_engine/target/debug/rust_engine
+      - run: python scripts/test_fingerprint_baseline.py --engine rust_engine/target/debug/rust_engine
+      - run: python scripts/test_similarity_cli.py --engine rust_engine/target/debug/rust_engine

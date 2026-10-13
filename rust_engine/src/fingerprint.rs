@@ -1,6 +1,7 @@
 //! OSGF Fingerprint Baseline v0.1: deterministic views, no scoring or classification.
 use crate::canonical::{CanonicalEdge, CanonicalSubgraph};
 use crate::fingerprint_motifs::{MotifBuffer, MotifTruncation};
+use crate::fingerprint_provenance::{FeatureCoverage, SourceCoverageTotals};
 use crate::graph::{EdgeType, NodeType};
 use serde::{Deserialize, Serialize};
 use serde_json::{json, Value};
@@ -63,6 +64,10 @@ pub struct OsgfFingerprint {
     pub provenance_index: BTreeMap<String, Vec<FeatureOccurrence>>,
     pub config: FingerprintConfig,
     pub motif_truncation: BTreeMap<String, MotifTruncation>,
+    pub canonical_coverage: BTreeMap<String, FeatureCoverage>,
+    pub source_coverage_totals: SourceCoverageTotals,
+    pub semantic_digest: String,
+    pub fingerprint_digest: String,
 }
 
 impl OsgfFingerprint {
@@ -74,7 +79,8 @@ impl OsgfFingerprint {
         canonical: &CanonicalSubgraph,
         config: FingerprintConfig,
     ) -> Result<Self, String> {
-        canonical.validate()?;
+        let canonical = normalized_canonical(canonical)?;
+        let canonical = &canonical;
         if config.max_topology_motifs > 100_000 || config.max_interaction_motifs > 100_000 {
             return Err("motif retention limits must be between 0 and 100000".into());
         }
@@ -90,6 +96,10 @@ impl OsgfFingerprint {
             provenance_index: BTreeMap::new(),
             config,
             motif_truncation: BTreeMap::new(),
+            canonical_coverage: BTreeMap::new(),
+            source_coverage_totals: SourceCoverageTotals::default(),
+            semantic_digest: String::new(),
+            fingerprint_digest: String::new(),
         };
         fingerprint.root_roles(canonical)?;
         fingerprint.function_relations(canonical)?;
@@ -97,7 +107,149 @@ impl OsgfFingerprint {
         fingerprint.typed_evidence(canonical)?;
         fingerprint.category_chains(canonical)?;
         fingerprint.interaction_motifs(canonical)?;
+        fingerprint.observability(canonical)?;
+        fingerprint.index_coverage(canonical);
+        fingerprint.finalize();
         Ok(fingerprint)
+    }
+
+    fn finalize(&mut self) {
+        for view in [
+            &mut self.rooted_topology_view,
+            &mut self.typed_evidence_view,
+            &mut self.interaction_motif_view,
+            &mut self.observability_view,
+        ] {
+            view.sort_by(|a, b| a.id.cmp(&b.id));
+        }
+        for occurrences in self.provenance_index.values_mut() {
+            occurrences.sort_by_key(|o| serde_json::to_string(o).unwrap());
+        }
+        self.semantic_digest = digest(&self.semantic_value());
+        let mut payload = serde_json::to_value(&self).unwrap();
+        payload
+            .as_object_mut()
+            .unwrap()
+            .remove("fingerprint_digest");
+        self.fingerprint_digest = digest(&payload);
+    }
+
+    pub fn to_json_pretty(&self, canonical: &CanonicalSubgraph) -> Result<String, String> {
+        self.validate_against(canonical)?;
+        serde_json::to_string_pretty(self).map_err(|e| e.to_string())
+    }
+
+    pub fn from_json(text: &str, canonical: &CanonicalSubgraph) -> Result<Self, String> {
+        let fingerprint: Self =
+            serde_json::from_str(text).map_err(|e| format!("invalid fingerprint JSON: {e}"))?;
+        fingerprint.validate_against(canonical)?;
+        Ok(fingerprint)
+    }
+
+    fn index_coverage(&mut self, c: &CanonicalSubgraph) {
+        let ids = c
+            .nodes
+            .iter()
+            .map(|n| n.id.as_str())
+            .chain(c.edges.iter().map(|e| e.id.as_str()))
+            .chain(c.unresolved_calls.iter().map(|u| u.id.as_str()))
+            .chain(["@local_graph_truncation", "@coverage_ledger"]);
+        for element in ids {
+            let feature_ids: Vec<_> = self
+                .provenance_index
+                .iter()
+                .filter(|(_, occurrences)| {
+                    occurrences
+                        .iter()
+                        .any(|o| o.canonical_elements.iter().any(|id| id == element))
+                })
+                .map(|(id, _)| id.clone())
+                .collect();
+            let disposition = if feature_ids.is_empty() {
+                FeatureCoverage::Excluded {
+                    reason: "not_part_of_a_supported_feature; retained_in_canonical_source".into(),
+                }
+            } else {
+                FeatureCoverage::Represented { feature_ids }
+            };
+            self.canonical_coverage.insert(element.into(), disposition);
+        }
+        self.source_coverage_totals = SourceCoverageTotals {
+            nodes: c.coverage_ledger.source_nodes,
+            edges: c.coverage_ledger.source_edges,
+            unresolved_records: c.coverage_ledger.source_unresolved_records,
+            represented: c.coverage_ledger.represented,
+            excluded: c.coverage_ledger.excluded,
+        };
+    }
+
+    /// Source identity, observability and provenance are outside semantic comparison.
+    pub fn semantic_value(&self) -> Value {
+        let sorted = |features: &[FingerprintFeature]| {
+            let mut features = features.to_vec();
+            features.sort_by(|a, b| a.id.cmp(&b.id));
+            features
+        };
+        json!({"schema_version":self.schema_version, "canonicalization_version":self.canonicalization_version,
+            "rooted_topology_view":sorted(&self.rooted_topology_view),
+            "typed_evidence_view":sorted(&self.typed_evidence_view),
+            "interaction_motif_view":sorted(&self.interaction_motif_view)})
+    }
+
+    fn observability(&mut self, c: &CanonicalSubgraph) -> Result<(), String> {
+        let nodes: BTreeMap<_, _> = c.nodes.iter().map(|n| (&n.id, n)).collect();
+        for node in c
+            .nodes
+            .iter()
+            .filter(|n| n.kind == NodeType::VisibilityIndicator)
+        {
+            let mut owners: BTreeMap<String, Vec<String>> = BTreeMap::new();
+            for edge in c
+                .edges
+                .iter()
+                .filter(|e| e.kind == EdgeType::ContainsIndirectCall && e.target == node.id)
+            {
+                owners
+                    .entry(edge.source.clone())
+                    .or_default()
+                    .push(edge.id.clone());
+            }
+            if owners.is_empty() {
+                owners.insert(String::new(), Vec::new());
+            }
+            for (owner, edges) in owners {
+                let function = nodes.get(&owner).map(|n| n.facts.clone());
+                let mut support = edges;
+                support.push(node.id.clone());
+                if !owner.is_empty() {
+                    support.push(owner);
+                }
+                for kind in [
+                    "indirect_calls",
+                    "unresolved_indirect_calls",
+                    "explicit_dynamic_dispatch",
+                ] {
+                    self.add_feature(FingerprintView::Observability,
+                        json!({"kind":kind, "function":function, "observed_count":node.facts[kind]}), 1, support.clone())?;
+                }
+            }
+        }
+        for call in &c.unresolved_calls {
+            self.add_feature(
+                FingerprintView::Observability,
+                json!({"kind":"unresolved_call", "function":nodes[&call.caller].facts,
+                    "direct":call.facts["direct"], "indirect":call.facts["indirect"]}),
+                call.facts["occurrences"]
+                    .as_u64()
+                    .ok_or("invalid unresolved occurrence count")?,
+                vec![call.caller.clone(), call.id.clone()],
+            )?;
+        }
+        self.add_feature(FingerprintView::Observability,
+            json!({"kind":"extraction_completeness", "local_graph":c.local_graph_truncation,
+                "canonical_coverage":{"represented":c.coverage_ledger.represented, "excluded":c.coverage_ledger.excluded}}),
+            1, vec!["@local_graph_truncation".into(), "@coverage_ledger".into()])?;
+        Ok(())
     }
 
     fn finish_motifs(
@@ -386,6 +538,29 @@ impl OsgfFingerprint {
     }
 }
 
+fn digest(value: &Value) -> String {
+    format!("sha256:{:x}", Sha256::digest(value.to_string().as_bytes()))
+}
+
+/// Canonical arrays are unordered input collections. All other source/provenance
+/// contracts must still match; rebuilding alone must never conceal tampering.
+fn normalized_canonical(input: &CanonicalSubgraph) -> Result<CanonicalSubgraph, String> {
+    let expected = CanonicalSubgraph::from_source(&input.source_document)?;
+    let sort = |c: &mut CanonicalSubgraph| {
+        c.nodes.sort_by(|a, b| a.id.cmp(&b.id));
+        c.edges.sort_by(|a, b| a.id.cmp(&b.id));
+        c.unresolved_calls.sort_by(|a, b| a.id.cmp(&b.id));
+    };
+    let mut candidate = input.clone();
+    let mut comparison = expected.clone();
+    sort(&mut candidate);
+    sort(&mut comparison);
+    if candidate != comparison {
+        return Err("canonical input does not match its verified source".into());
+    }
+    Ok(expected)
+}
+
 fn is_evidence_edge(kind: EdgeType) -> bool {
     matches!(
         kind,
@@ -417,6 +592,244 @@ mod tests {
             serde_json::from_str(include_str!("../tests/fixtures/canonical_local_v0_1.json"))
                 .unwrap();
         CanonicalSubgraph::from_source(&local).unwrap()
+    }
+
+    #[test]
+    fn step_6_12_frozen_digests_and_sidecar_validation() {
+        let c = canonical();
+        let f = OsgfFingerprint::from_canonical(&c).unwrap();
+        let golden: Value = serde_json::from_str(include_str!(
+            "../tests/fixtures/fingerprint_v0_1_digests.json"
+        ))
+        .unwrap();
+        assert_eq!(f.semantic_digest, golden["semantic_digest"]);
+        assert_eq!(f.fingerprint_digest, golden["fingerprint_digest"]);
+        let mut sidecar = f.resolve_provenance(&c).unwrap();
+        sidecar.validate_against(&f, &c).unwrap();
+        sidecar.features.values_mut().next().unwrap()[0].multiplicity += 1;
+        assert!(sidecar.validate_against(&f, &c).is_err());
+    }
+
+    #[test]
+    fn step_6_12_observability_and_completeness_stay_separate_under_limits() {
+        use crate::local_subgraph::{
+            LocalGraphLimitKind, ReachedLocalGraphLimit, TruncationReason,
+        };
+        let c = canonical();
+        let config = FingerprintConfig {
+            max_topology_motifs: 1,
+            max_interaction_motifs: 1,
+        };
+        let baseline = OsgfFingerprint::with_config(&c, config.clone()).unwrap();
+        let mut source = c.source_document.clone();
+        source
+            .nodes
+            .iter_mut()
+            .find(|n| n.node_type == NodeType::VisibilityIndicator)
+            .unwrap()
+            .properties
+            .insert("dynamic_dispatch_callsites".into(), json!(["004010aa"]));
+        source.extraction_config.max_edges = Some(source.edges.len());
+        source.truncation.truncated = true;
+        source.truncation.reason = Some(TruncationReason::ResourceLimit);
+        source.truncation.limits_reached = vec![ReachedLocalGraphLimit {
+            kind: LocalGraphLimitKind::Edges,
+            configured_limit: source.edges.len(),
+        }];
+        let changed =
+            OsgfFingerprint::with_config(&CanonicalSubgraph::from_source(&source).unwrap(), config)
+                .unwrap();
+        assert_eq!(baseline.semantic_digest, changed.semantic_digest);
+        assert_eq!(baseline.semantic_value(), changed.semantic_value());
+        assert_ne!(baseline.fingerprint_digest, changed.fingerprint_digest);
+    }
+
+    #[test]
+    fn step_6_12_evidence_attachment_changes_semantics() {
+        let c = canonical();
+        let baseline = OsgfFingerprint::from_canonical(&c).unwrap();
+        let mut source = c.source_document.clone();
+        let edge = source
+            .edges
+            .iter_mut()
+            .find(|e| e.edge_type == EdgeType::CallsApi && e.source == "fn:00402000")
+            .unwrap();
+        edge.source = "fn:00401000".into();
+        let changed =
+            OsgfFingerprint::from_canonical(&CanonicalSubgraph::from_source(&source).unwrap())
+                .unwrap();
+        assert_ne!(baseline.semantic_digest, changed.semantic_digest);
+        assert_ne!(
+            baseline.interaction_motif_view,
+            changed.interaction_motif_view
+        );
+    }
+
+    #[test]
+    fn step_6_11_serialization_and_digests_are_order_invariant() {
+        let c = canonical();
+        let f = OsgfFingerprint::from_canonical(&c).unwrap();
+        let bytes = f.to_json_pretty(&c).unwrap();
+        let mut permuted = c.clone();
+        permuted.nodes.reverse();
+        permuted.edges.reverse();
+        permuted.unresolved_calls.reverse();
+        let other = OsgfFingerprint::from_canonical(&permuted).unwrap();
+        assert_eq!(bytes, other.to_json_pretty(&permuted).unwrap());
+        assert_eq!(f, OsgfFingerprint::from_json(&bytes, &c).unwrap());
+        let mut tampered = f.clone();
+        tampered.semantic_digest = "sha256:fake".into();
+        assert!(tampered.validate_against(&c).is_err());
+        let mut tampered = f;
+        tampered.rooted_topology_view[0].count += 1;
+        assert!(tampered.validate_against(&c).is_err());
+        permuted.nodes[0].facts["score"] = json!(99);
+        assert!(OsgfFingerprint::from_canonical(&permuted).is_err());
+    }
+
+    #[test]
+    fn step_6_11_relocation_preserves_complete_fingerprint_bytes() {
+        let c = canonical();
+        let f = OsgfFingerprint::from_canonical(&c).unwrap();
+        let raw = serde_json::to_string(&c.source_document)
+            .unwrap()
+            .replace("004010", "00f010")
+            .replace("004020", "001020")
+            .replace("004030", "002030");
+        let local = serde_json::from_str(&raw).unwrap();
+        let relocated = CanonicalSubgraph::from_source(&local).unwrap();
+        let other = OsgfFingerprint::from_canonical(&relocated).unwrap();
+        assert_eq!(
+            f.to_json_pretty(&c).unwrap(),
+            other.to_json_pretty(&relocated).unwrap()
+        );
+        assert_ne!(
+            f.resolve_provenance(&c).unwrap().source_document,
+            other
+                .resolve_provenance(&relocated)
+                .unwrap()
+                .source_document
+        );
+    }
+
+    #[test]
+    fn step_6_10_all_feature_provenance_resolves_to_source() {
+        let c = canonical();
+        let f = OsgfFingerprint::from_canonical(&c).unwrap();
+        let resolved = f.resolve_provenance(&c).unwrap();
+        let source = serde_json::to_value(&resolved.source_document).unwrap();
+        assert_eq!(resolved.features.len(), f.provenance_index.len());
+        for occurrences in resolved.features.values() {
+            for occurrence in occurrences {
+                for origin in &occurrence.origins {
+                    assert!(
+                        !origin.source_references.is_empty()
+                            || !origin.source_metadata_paths.is_empty()
+                    );
+                    for path in origin
+                        .source_references
+                        .iter()
+                        .flat_map(|r| &r.property_paths)
+                        .chain(&origin.source_metadata_paths)
+                    {
+                        assert!(source.pointer(path).is_some(), "missing {path}");
+                    }
+                }
+            }
+        }
+        assert_eq!(
+            f.canonical_coverage.len(),
+            c.nodes.len() + c.edges.len() + c.unresolved_calls.len() + 2
+        );
+        assert!(f
+            .canonical_coverage
+            .values()
+            .all(|v| matches!(v, FeatureCoverage::Represented { .. })));
+        let mut broken = f;
+        broken.provenance_index.values_mut().next().unwrap()[0]
+            .canonical_elements
+            .push("fake".into());
+        assert!(broken.resolve_provenance(&c).is_err());
+    }
+
+    #[test]
+    fn step_6_10_orphan_evidence_is_explicitly_accounted_for() {
+        let mut source = canonical().source_document;
+        source.nodes.push(crate::graph::GraphNode {
+            id: "api:orphan".into(),
+            node_type: NodeType::Api,
+            properties: BTreeMap::from([("name".into(), json!("OrphanApi"))]),
+        });
+        source.truncation.counts.total_nodes += 1;
+        source.truncation.counts.evidence_nodes += 1;
+        let c = CanonicalSubgraph::from_source(&source).unwrap();
+        let f = OsgfFingerprint::from_canonical(&c).unwrap();
+        assert_eq!(
+            f.canonical_coverage
+                .values()
+                .filter(|v| matches!(v, FeatureCoverage::Excluded { .. }))
+                .count(),
+            1
+        );
+        f.resolve_provenance(&c).unwrap();
+    }
+
+    #[test]
+    fn step_6_9_observability_does_not_change_semantic_views() {
+        let c = canonical();
+        let baseline = OsgfFingerprint::from_canonical(&c).unwrap();
+        let mut source = c.source_document.clone();
+        source
+            .nodes
+            .iter_mut()
+            .find(|n| n.node_type == NodeType::VisibilityIndicator)
+            .unwrap()
+            .properties
+            .insert("dynamic_dispatch_callsites".into(), json!(["004010aa"]));
+        source.unresolved_calls[0]
+            .properties
+            .insert("occurrences".into(), json!(7));
+        let changed =
+            OsgfFingerprint::from_canonical(&CanonicalSubgraph::from_source(&source).unwrap())
+                .unwrap();
+        assert_eq!(baseline.semantic_value(), changed.semantic_value());
+        assert_ne!(baseline.observability_view, changed.observability_view);
+        assert_ne!(
+            baseline.source_canonical_digest,
+            changed.source_canonical_digest
+        );
+        assert!(changed
+            .observability_view
+            .iter()
+            .any(|f| f.descriptor["kind"] == "explicit_dynamic_dispatch"
+                && f.descriptor["observed_count"] == 1));
+        assert!(changed
+            .observability_view
+            .iter()
+            .any(|f| f.descriptor["kind"] == "unresolved_call" && f.count == 7));
+        for feature in &changed.observability_view {
+            assert!(feature.descriptor.get("callee").is_none());
+            assert!(feature.descriptor.get("target").is_none());
+        }
+    }
+
+    #[test]
+    fn step_6_9_missing_visibility_is_unknown_not_zero() {
+        let mut source = canonical().source_document;
+        source
+            .nodes
+            .iter_mut()
+            .find(|n| n.node_type == NodeType::VisibilityIndicator)
+            .unwrap()
+            .properties
+            .remove("dynamic_dispatch_callsites");
+        let c = CanonicalSubgraph::from_source(&source).unwrap();
+        let f = OsgfFingerprint::from_canonical(&c).unwrap();
+        assert!(f
+            .observability_view
+            .iter()
+            .any(|f| f.descriptor["kind"] == "explicit_dynamic_dispatch"
+                && f.descriptor["observed_count"].is_null()));
     }
 
     #[test]
