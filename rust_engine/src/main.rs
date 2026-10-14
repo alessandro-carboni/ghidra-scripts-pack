@@ -95,6 +95,7 @@ enum RuntimeCommand {
     CanonicalizeLocalSubgraph { input: String, output: String },
     Fingerprint(runtime_fingerprint::FingerprintOptions),
     Similarity(Vec<String>),
+    ResearchAnchor(Vec<String>),
 }
 
 /// Parses the engine's command-line arguments (excluding the program name).
@@ -164,6 +165,12 @@ where
             output: args[2].clone(),
         });
     }
+    if args.first().map(String::as_str) == Some("canonicalize-research-anchor") {
+        if args.len() != 4 {
+            return Err("usage: canonicalize-research-anchor <typed-graph.json> <function-id> <new-canonical.json>".into());
+        }
+        return Ok(RuntimeCommand::ResearchAnchor(args[1..].to_vec()));
+    }
     if args.first().map(String::as_str) == Some("compare-fingerprints") {
         if !runtime_similarity::valid_args(&args[1..]) {
             return Err(runtime_similarity::USAGE.into());
@@ -189,6 +196,36 @@ fn main() {
 
 fn run() -> Result<(), String> {
     match parse_command(env::args().skip(1))? {
+        RuntimeCommand::ResearchAnchor(args) => {
+            let graph = graph::TypedGraph::load(&args[0])?;
+            let index = graph_indexes::GraphIndexes::new(&graph);
+            let config = local_subgraph::LocalExtractionConfig {
+                caller_depth: 0,
+                callee_depth: 3,
+                ..Default::default()
+            };
+            let local = local_subgraph::extract_anchor_subgraph(&index, &args[1], &config)?;
+            let source = local_subgraph_schema::LocalSubgraphDocument::from_local(&local)?;
+            let canonical = canonical::CanonicalSubgraph::from_source(&source)?;
+            let mut output = fs::OpenOptions::new()
+                .write(true)
+                .create_new(true)
+                .open(&args[2])
+                .map_err(|e| e.to_string())?;
+            use std::io::Write;
+            output
+                .write_all(
+                    serde_json::to_string_pretty(&canonical)
+                        .map_err(|e| e.to_string())?
+                        .as_bytes(),
+                )
+                .map_err(|e| e.to_string())?;
+            println!(
+                "[+] Research anchor {} canonicalized: {}",
+                args[1], canonical.canonical_digest
+            );
+            Ok(())
+        }
         RuntimeCommand::Similarity(args) => runtime_similarity::run(args),
         RuntimeCommand::Fingerprint(options) => runtime_fingerprint::run(options),
         RuntimeCommand::Enrich(options) => run_enrichment(options),

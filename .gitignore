@@ -19,3 +19,6 @@ obj/
 reports/canonical-*/
 __pycache__/
 *.py[cod]
+!samples/controlled/
+samples/controlled/*
+!samples/controlled/source/

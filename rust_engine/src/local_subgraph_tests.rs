@@ -16,6 +16,40 @@ fn rules() -> crate::seed_rules::SeedRulesConfig {
     load_seed_rules(bundled_seed_rules_path()).unwrap()
 }
 
+#[test]
+fn research_anchor_reuses_seeded_extraction_without_changing_science() {
+    let (graph, seed) = topology_fixture(&[("a", "b"), ("b", "c"), ("c", "a")]);
+    let index = GraphIndexes::new(&graph);
+    for config in [
+        LocalExtractionConfig::default(),
+        LocalExtractionConfig {
+            max_function_nodes: Some(2),
+            ..Default::default()
+        },
+    ] {
+        let seeded = extract_local_subgraph(&index, &seed, &config).unwrap();
+        let anchored = crate::local_subgraph::extract_anchor_subgraph(
+            &index,
+            &seed.anchor_function_id,
+            &config,
+        )
+        .unwrap();
+        assert_eq!(seeded, anchored);
+    }
+    assert!(crate::local_subgraph::extract_anchor_subgraph(
+        &index,
+        "fn:missing",
+        &Default::default()
+    )
+    .is_err());
+    assert!(crate::local_subgraph::extract_anchor_subgraph(
+        &index,
+        "api:virtualalloc",
+        &Default::default()
+    )
+    .is_err());
+}
+
 fn seed_for(value: &Value) -> ConsolidatedSeed {
     detect_seeds(value, &rules(), &SeedDetectionConfig::default())
         .unwrap()

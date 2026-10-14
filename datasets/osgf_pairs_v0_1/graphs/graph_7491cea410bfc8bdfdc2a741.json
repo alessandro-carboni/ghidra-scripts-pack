@@ -1,0 +1,1108 @@
+{
+  "schema_version": "0.1.0",
+  "source_local_subgraph_schema_version": "0.1.0",
+  "graph_version": "0.12.0",
+  "seed_id": "seed:fn:004010e0",
+  "anchor_function_id": "fn:004010e0",
+  "canonicalization_version": "0.1.0",
+  "nodes": [
+    {
+      "id": "N0",
+      "kind": "API",
+      "facts": {
+        "canonical_value": "regclosekey"
+      }
+    },
+    {
+      "id": "N1",
+      "kind": "API",
+      "facts": {
+        "canonical_value": "regopenkeyex"
+      }
+    },
+    {
+      "id": "N2",
+      "kind": "CONSTANT",
+      "facts": {
+        "literal": 12,
+        "semantic": null
+      }
+    },
+    {
+      "id": "N3",
+      "kind": "CONSTANT",
+      "facts": {
+        "literal": 131097,
+        "semantic": null
+      }
+    },
+    {
+      "id": "N4",
+      "kind": "FUNCTION",
+      "facts": {
+        "callee_distance": 0,
+        "caller_distance": 0,
+        "role": "ANCHOR"
+      }
+    },
+    {
+      "id": "N5",
+      "kind": "STRING",
+      "facts": {
+        "normalized": "Software"
+      }
+    },
+    {
+      "id": "N6",
+      "kind": "VISIBILITY_INDICATOR",
+      "facts": {
+        "explicit_dynamic_dispatch": 0,
+        "indirect_calls": 2,
+        "unresolved_indirect_calls": 0
+      }
+    }
+  ],
+  "node_sources": {
+    "N0": [
+      {
+        "id": "api:regclosekey",
+        "type": "API",
+        "name": "RegCloseKey",
+        "normalized_name": "RegCloseKey",
+        "original_names": [
+          "RegCloseKey"
+        ]
+      }
+    ],
+    "N1": [
+      {
+        "id": "api:regopenkeyex",
+        "type": "API",
+        "name": "RegOpenKeyEx",
+        "normalized_name": "RegOpenKeyEx",
+        "original_names": [
+          "RegOpenKeyExA"
+        ]
+      }
+    ],
+    "N2": [
+      {
+        "id": "const:registry_flags:0xc",
+        "type": "CONSTANT",
+        "bit_lengths": [
+          32
+        ],
+        "category": "registry_flags",
+        "symbolic_names": [
+          "KEY_CREATE_SUB_KEY",
+          "KEY_ENUMERATE_SUB_KEYS"
+        ],
+        "value": 12,
+        "value_hex": "0xc"
+      }
+    ],
+    "N3": [
+      {
+        "id": "const:registry_flags:0x20019",
+        "type": "CONSTANT",
+        "bit_lengths": [
+          32
+        ],
+        "category": "registry_flags",
+        "symbolic_names": [
+          "KEY_READ"
+        ],
+        "value": 131097,
+        "value_hex": "0x20019"
+      }
+    ],
+    "N4": [
+      {
+        "id": "fn:004010e0",
+        "type": "FUNCTION",
+        "address": "004010e0",
+        "external": false,
+        "internal": true,
+        "name": "read_registry_value",
+        "section": ".text",
+        "size": 82,
+        "symbol_name": "read_registry_value",
+        "thunk": false
+      }
+    ],
+    "N5": [
+      {
+        "id": "str:0041d024",
+        "type": "STRING",
+        "address": "0041d024",
+        "categories": [],
+        "category": null,
+        "raw_value": "\"Software\"",
+        "reference_count": 1,
+        "value": "Software"
+      }
+    ],
+    "N6": [
+      {
+        "id": "vis:call_visibility:fn:004010e0",
+        "type": "VISIBILITY_INDICATOR",
+        "dynamic_dispatch_callsites": [],
+        "dynamic_dispatch_count": 0,
+        "dynamic_dispatch_recognition": null,
+        "dynamic_dispatch_targets": [],
+        "function": "fn:004010e0",
+        "indicator": "call_visibility",
+        "indirect_call_count": 2,
+        "indirect_callsites": [
+          "004010fb",
+          "0040110e"
+        ],
+        "resolved_indirect_call_count": 2,
+        "resolved_indirect_callsites": [
+          "004010fb",
+          "0040110e"
+        ],
+        "signals": [
+          "indirect_call"
+        ],
+        "unresolved_indirect_call_count": 0,
+        "unresolved_indirect_callsites": []
+      }
+    ]
+  },
+  "unresolved_calls": [],
+  "unresolved_sources": {},
+  "local_graph_truncation": {
+    "truncated": false,
+    "limits_reached": [],
+    "requested_depth": {
+      "caller_depth": 0,
+      "callee_depth": 3
+    },
+    "effective_depth": {
+      "caller_depth": 0,
+      "callee_depth": 0
+    },
+    "counts": {
+      "function_nodes": 1,
+      "evidence_nodes": 6,
+      "total_nodes": 7,
+      "edges": 6,
+      "unresolved_calls": 0
+    }
+  },
+  "edges": [
+    {
+      "id": "E0",
+      "kind": "calls_api",
+      "source": "N4",
+      "target": "N0",
+      "facts": {
+        "context_apis": [],
+        "direct": false,
+        "indirect": true,
+        "occurrences": 1
+      }
+    },
+    {
+      "id": "E1",
+      "kind": "calls_api",
+      "source": "N4",
+      "target": "N1",
+      "facts": {
+        "context_apis": [],
+        "direct": false,
+        "indirect": true,
+        "occurrences": 1
+      }
+    },
+    {
+      "id": "E2",
+      "kind": "contains_indirect_call",
+      "source": "N4",
+      "target": "N6",
+      "facts": {
+        "context_apis": [],
+        "direct": null,
+        "indirect": null,
+        "occurrences": 1
+      }
+    },
+    {
+      "id": "E3",
+      "kind": "references_string",
+      "source": "N4",
+      "target": "N5",
+      "facts": {
+        "context_apis": [],
+        "direct": null,
+        "indirect": null,
+        "occurrences": 1
+      }
+    },
+    {
+      "id": "E4",
+      "kind": "uses_constant",
+      "source": "N4",
+      "target": "N2",
+      "facts": {
+        "context_apis": [
+          "regopenkeyex"
+        ],
+        "direct": null,
+        "indirect": null,
+        "occurrences": 1
+      }
+    },
+    {
+      "id": "E5",
+      "kind": "uses_constant",
+      "source": "N4",
+      "target": "N3",
+      "facts": {
+        "context_apis": [
+          "regopenkeyex"
+        ],
+        "direct": null,
+        "indirect": null,
+        "occurrences": 1
+      }
+    }
+  ],
+  "edge_sources": {
+    "E0": [
+      {
+        "type": "calls_api",
+        "source": "fn:004010e0",
+        "target": "api:regclosekey",
+        "api": "api:regclosekey",
+        "api_original_names": [
+          "RegCloseKey"
+        ],
+        "caller": "fn:004010e0",
+        "callsite": "0040110e",
+        "callsites": [
+          "0040110e"
+        ],
+        "direct": false,
+        "indirect": true,
+        "occurrences": 1,
+        "unresolved": false
+      }
+    ],
+    "E1": [
+      {
+        "type": "calls_api",
+        "source": "fn:004010e0",
+        "target": "api:regopenkeyex",
+        "api": "api:regopenkeyex",
+        "api_original_names": [
+          "RegOpenKeyExA"
+        ],
+        "caller": "fn:004010e0",
+        "callsite": "004010fb",
+        "callsites": [
+          "004010fb"
+        ],
+        "direct": false,
+        "indirect": true,
+        "occurrences": 1,
+        "unresolved": false
+      }
+    ],
+    "E2": [
+      {
+        "type": "contains_indirect_call",
+        "source": "fn:004010e0",
+        "target": "vis:call_visibility:fn:004010e0",
+        "function": "fn:004010e0",
+        "indicator": "vis:call_visibility:fn:004010e0"
+      }
+    ],
+    "E3": [
+      {
+        "type": "references_string",
+        "source": "fn:004010e0",
+        "target": "str:0041d024",
+        "function": "fn:004010e0",
+        "reference_count": 1,
+        "reference_sites": [
+          "004010f1"
+        ],
+        "string": "str:0041d024"
+      }
+    ],
+    "E4": [
+      {
+        "type": "uses_constant",
+        "source": "fn:004010e0",
+        "target": "const:registry_flags:0xc",
+        "constant": "const:registry_flags:0xc",
+        "context_apis": [
+          "RegOpenKeyEx"
+        ],
+        "function": "fn:004010e0",
+        "occurrences": 1,
+        "use_sites": [
+          "004010e3"
+        ]
+      }
+    ],
+    "E5": [
+      {
+        "type": "uses_constant",
+        "source": "fn:004010e0",
+        "target": "const:registry_flags:0x20019",
+        "constant": "const:registry_flags:0x20019",
+        "context_apis": [
+          "RegOpenKeyEx"
+        ],
+        "function": "fn:004010e0",
+        "occurrences": 1,
+        "use_sites": [
+          "004010ea"
+        ]
+      }
+    ]
+  },
+  "provenance_map": {
+    "E0": [
+      {
+        "collection": "edges",
+        "index": 0,
+        "property_paths": [
+          "/edges/0/api",
+          "/edges/0/api_original_names",
+          "/edges/0/caller",
+          "/edges/0/callsite",
+          "/edges/0/callsites",
+          "/edges/0/direct",
+          "/edges/0/indirect",
+          "/edges/0/occurrences",
+          "/edges/0/source",
+          "/edges/0/target",
+          "/edges/0/type",
+          "/edges/0/unresolved"
+        ]
+      }
+    ],
+    "E1": [
+      {
+        "collection": "edges",
+        "index": 1,
+        "property_paths": [
+          "/edges/1/api",
+          "/edges/1/api_original_names",
+          "/edges/1/caller",
+          "/edges/1/callsite",
+          "/edges/1/callsites",
+          "/edges/1/direct",
+          "/edges/1/indirect",
+          "/edges/1/occurrences",
+          "/edges/1/source",
+          "/edges/1/target",
+          "/edges/1/type",
+          "/edges/1/unresolved"
+        ]
+      }
+    ],
+    "E2": [
+      {
+        "collection": "edges",
+        "index": 5,
+        "property_paths": [
+          "/edges/5/function",
+          "/edges/5/indicator",
+          "/edges/5/source",
+          "/edges/5/target",
+          "/edges/5/type"
+        ]
+      }
+    ],
+    "E3": [
+      {
+        "collection": "edges",
+        "index": 2,
+        "property_paths": [
+          "/edges/2/function",
+          "/edges/2/reference_count",
+          "/edges/2/reference_sites",
+          "/edges/2/source",
+          "/edges/2/string",
+          "/edges/2/target",
+          "/edges/2/type"
+        ]
+      }
+    ],
+    "E4": [
+      {
+        "collection": "edges",
+        "index": 4,
+        "property_paths": [
+          "/edges/4/constant",
+          "/edges/4/context_apis",
+          "/edges/4/function",
+          "/edges/4/occurrences",
+          "/edges/4/source",
+          "/edges/4/target",
+          "/edges/4/type",
+          "/edges/4/use_sites"
+        ]
+      }
+    ],
+    "E5": [
+      {
+        "collection": "edges",
+        "index": 3,
+        "property_paths": [
+          "/edges/3/constant",
+          "/edges/3/context_apis",
+          "/edges/3/function",
+          "/edges/3/occurrences",
+          "/edges/3/source",
+          "/edges/3/target",
+          "/edges/3/type",
+          "/edges/3/use_sites"
+        ]
+      }
+    ],
+    "N0": [
+      {
+        "collection": "nodes",
+        "index": 0,
+        "property_paths": [
+          "/nodes/0/id",
+          "/nodes/0/name",
+          "/nodes/0/normalized_name",
+          "/nodes/0/original_names",
+          "/nodes/0/type"
+        ]
+      }
+    ],
+    "N1": [
+      {
+        "collection": "nodes",
+        "index": 1,
+        "property_paths": [
+          "/nodes/1/id",
+          "/nodes/1/name",
+          "/nodes/1/normalized_name",
+          "/nodes/1/original_names",
+          "/nodes/1/type"
+        ]
+      }
+    ],
+    "N2": [
+      {
+        "collection": "nodes",
+        "index": 3,
+        "property_paths": [
+          "/nodes/3/bit_lengths",
+          "/nodes/3/category",
+          "/nodes/3/id",
+          "/nodes/3/symbolic_names",
+          "/nodes/3/type",
+          "/nodes/3/value",
+          "/nodes/3/value_hex"
+        ]
+      }
+    ],
+    "N3": [
+      {
+        "collection": "nodes",
+        "index": 2,
+        "property_paths": [
+          "/nodes/2/bit_lengths",
+          "/nodes/2/category",
+          "/nodes/2/id",
+          "/nodes/2/symbolic_names",
+          "/nodes/2/type",
+          "/nodes/2/value",
+          "/nodes/2/value_hex"
+        ]
+      }
+    ],
+    "N4": [
+      {
+        "collection": "nodes",
+        "index": 4,
+        "property_paths": [
+          "/nodes/4/address",
+          "/nodes/4/external",
+          "/nodes/4/id",
+          "/nodes/4/internal",
+          "/nodes/4/name",
+          "/nodes/4/section",
+          "/nodes/4/size",
+          "/nodes/4/symbol_name",
+          "/nodes/4/thunk",
+          "/nodes/4/type"
+        ]
+      }
+    ],
+    "N5": [
+      {
+        "collection": "nodes",
+        "index": 5,
+        "property_paths": [
+          "/nodes/5/address",
+          "/nodes/5/categories",
+          "/nodes/5/category",
+          "/nodes/5/id",
+          "/nodes/5/raw_value",
+          "/nodes/5/reference_count",
+          "/nodes/5/type",
+          "/nodes/5/value"
+        ]
+      }
+    ],
+    "N6": [
+      {
+        "collection": "nodes",
+        "index": 6,
+        "property_paths": [
+          "/nodes/6/dynamic_dispatch_callsites",
+          "/nodes/6/dynamic_dispatch_count",
+          "/nodes/6/dynamic_dispatch_recognition",
+          "/nodes/6/dynamic_dispatch_targets",
+          "/nodes/6/function",
+          "/nodes/6/id",
+          "/nodes/6/indicator",
+          "/nodes/6/indirect_call_count",
+          "/nodes/6/indirect_callsites",
+          "/nodes/6/resolved_indirect_call_count",
+          "/nodes/6/resolved_indirect_callsites",
+          "/nodes/6/signals",
+          "/nodes/6/type",
+          "/nodes/6/unresolved_indirect_call_count",
+          "/nodes/6/unresolved_indirect_callsites"
+        ]
+      }
+    ]
+  },
+  "source_document": {
+    "schema_version": "0.1.0",
+    "seed_id": "seed:fn:004010e0",
+    "anchor_function_id": "fn:004010e0",
+    "graph_version": "0.12.0",
+    "extraction_config": {
+      "caller_depth": 0,
+      "callee_depth": 3,
+      "max_function_nodes": null,
+      "max_evidence_nodes": null,
+      "max_total_nodes": null,
+      "max_edges": null
+    },
+    "function_selection": {
+      "anchor_function_id": "fn:004010e0",
+      "function_ids": [
+        "fn:004010e0"
+      ],
+      "caller_distances": {
+        "fn:004010e0": 0
+      },
+      "callee_distances": {
+        "fn:004010e0": 0
+      }
+    },
+    "nodes": [
+      {
+        "id": "api:regclosekey",
+        "type": "API",
+        "name": "RegCloseKey",
+        "normalized_name": "RegCloseKey",
+        "original_names": [
+          "RegCloseKey"
+        ]
+      },
+      {
+        "id": "api:regopenkeyex",
+        "type": "API",
+        "name": "RegOpenKeyEx",
+        "normalized_name": "RegOpenKeyEx",
+        "original_names": [
+          "RegOpenKeyExA"
+        ]
+      },
+      {
+        "id": "const:registry_flags:0x20019",
+        "type": "CONSTANT",
+        "bit_lengths": [
+          32
+        ],
+        "category": "registry_flags",
+        "symbolic_names": [
+          "KEY_READ"
+        ],
+        "value": 131097,
+        "value_hex": "0x20019"
+      },
+      {
+        "id": "const:registry_flags:0xc",
+        "type": "CONSTANT",
+        "bit_lengths": [
+          32
+        ],
+        "category": "registry_flags",
+        "symbolic_names": [
+          "KEY_CREATE_SUB_KEY",
+          "KEY_ENUMERATE_SUB_KEYS"
+        ],
+        "value": 12,
+        "value_hex": "0xc"
+      },
+      {
+        "id": "fn:004010e0",
+        "type": "FUNCTION",
+        "address": "004010e0",
+        "external": false,
+        "internal": true,
+        "name": "read_registry_value",
+        "section": ".text",
+        "size": 82,
+        "symbol_name": "read_registry_value",
+        "thunk": false
+      },
+      {
+        "id": "str:0041d024",
+        "type": "STRING",
+        "address": "0041d024",
+        "categories": [],
+        "category": null,
+        "raw_value": "\"Software\"",
+        "reference_count": 1,
+        "value": "Software"
+      },
+      {
+        "id": "vis:call_visibility:fn:004010e0",
+        "type": "VISIBILITY_INDICATOR",
+        "dynamic_dispatch_callsites": [],
+        "dynamic_dispatch_count": 0,
+        "dynamic_dispatch_recognition": null,
+        "dynamic_dispatch_targets": [],
+        "function": "fn:004010e0",
+        "indicator": "call_visibility",
+        "indirect_call_count": 2,
+        "indirect_callsites": [
+          "004010fb",
+          "0040110e"
+        ],
+        "resolved_indirect_call_count": 2,
+        "resolved_indirect_callsites": [
+          "004010fb",
+          "0040110e"
+        ],
+        "signals": [
+          "indirect_call"
+        ],
+        "unresolved_indirect_call_count": 0,
+        "unresolved_indirect_callsites": []
+      }
+    ],
+    "edges": [
+      {
+        "type": "calls_api",
+        "source": "fn:004010e0",
+        "target": "api:regclosekey",
+        "api": "api:regclosekey",
+        "api_original_names": [
+          "RegCloseKey"
+        ],
+        "caller": "fn:004010e0",
+        "callsite": "0040110e",
+        "callsites": [
+          "0040110e"
+        ],
+        "direct": false,
+        "indirect": true,
+        "occurrences": 1,
+        "unresolved": false
+      },
+      {
+        "type": "calls_api",
+        "source": "fn:004010e0",
+        "target": "api:regopenkeyex",
+        "api": "api:regopenkeyex",
+        "api_original_names": [
+          "RegOpenKeyExA"
+        ],
+        "caller": "fn:004010e0",
+        "callsite": "004010fb",
+        "callsites": [
+          "004010fb"
+        ],
+        "direct": false,
+        "indirect": true,
+        "occurrences": 1,
+        "unresolved": false
+      },
+      {
+        "type": "references_string",
+        "source": "fn:004010e0",
+        "target": "str:0041d024",
+        "function": "fn:004010e0",
+        "reference_count": 1,
+        "reference_sites": [
+          "004010f1"
+        ],
+        "string": "str:0041d024"
+      },
+      {
+        "type": "uses_constant",
+        "source": "fn:004010e0",
+        "target": "const:registry_flags:0x20019",
+        "constant": "const:registry_flags:0x20019",
+        "context_apis": [
+          "RegOpenKeyEx"
+        ],
+        "function": "fn:004010e0",
+        "occurrences": 1,
+        "use_sites": [
+          "004010ea"
+        ]
+      },
+      {
+        "type": "uses_constant",
+        "source": "fn:004010e0",
+        "target": "const:registry_flags:0xc",
+        "constant": "const:registry_flags:0xc",
+        "context_apis": [
+          "RegOpenKeyEx"
+        ],
+        "function": "fn:004010e0",
+        "occurrences": 1,
+        "use_sites": [
+          "004010e3"
+        ]
+      },
+      {
+        "type": "contains_indirect_call",
+        "source": "fn:004010e0",
+        "target": "vis:call_visibility:fn:004010e0",
+        "function": "fn:004010e0",
+        "indicator": "vis:call_visibility:fn:004010e0"
+      }
+    ],
+    "unresolved_calls": [],
+    "truncation": {
+      "truncated": false,
+      "limits_reached": [],
+      "requested_depth": {
+        "caller_depth": 0,
+        "callee_depth": 3
+      },
+      "effective_depth": {
+        "caller_depth": 0,
+        "callee_depth": 0
+      },
+      "counts": {
+        "function_nodes": 1,
+        "evidence_nodes": 6,
+        "total_nodes": 7,
+        "edges": 6,
+        "unresolved_calls": 0
+      }
+    }
+  },
+  "coverage_ledger": {
+    "entries": [
+      {
+        "source": {
+          "collection": "nodes",
+          "index": 0,
+          "property_paths": [
+            "/nodes/0/id",
+            "/nodes/0/name",
+            "/nodes/0/normalized_name",
+            "/nodes/0/original_names",
+            "/nodes/0/type"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "N0"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "nodes",
+          "index": 1,
+          "property_paths": [
+            "/nodes/1/id",
+            "/nodes/1/name",
+            "/nodes/1/normalized_name",
+            "/nodes/1/original_names",
+            "/nodes/1/type"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "N1"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "nodes",
+          "index": 2,
+          "property_paths": [
+            "/nodes/2/bit_lengths",
+            "/nodes/2/category",
+            "/nodes/2/id",
+            "/nodes/2/symbolic_names",
+            "/nodes/2/type",
+            "/nodes/2/value",
+            "/nodes/2/value_hex"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "N3"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "nodes",
+          "index": 3,
+          "property_paths": [
+            "/nodes/3/bit_lengths",
+            "/nodes/3/category",
+            "/nodes/3/id",
+            "/nodes/3/symbolic_names",
+            "/nodes/3/type",
+            "/nodes/3/value",
+            "/nodes/3/value_hex"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "N2"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "nodes",
+          "index": 4,
+          "property_paths": [
+            "/nodes/4/address",
+            "/nodes/4/external",
+            "/nodes/4/id",
+            "/nodes/4/internal",
+            "/nodes/4/name",
+            "/nodes/4/section",
+            "/nodes/4/size",
+            "/nodes/4/symbol_name",
+            "/nodes/4/thunk",
+            "/nodes/4/type"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "N4"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "nodes",
+          "index": 5,
+          "property_paths": [
+            "/nodes/5/address",
+            "/nodes/5/categories",
+            "/nodes/5/category",
+            "/nodes/5/id",
+            "/nodes/5/raw_value",
+            "/nodes/5/reference_count",
+            "/nodes/5/type",
+            "/nodes/5/value"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "N5"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "nodes",
+          "index": 6,
+          "property_paths": [
+            "/nodes/6/dynamic_dispatch_callsites",
+            "/nodes/6/dynamic_dispatch_count",
+            "/nodes/6/dynamic_dispatch_recognition",
+            "/nodes/6/dynamic_dispatch_targets",
+            "/nodes/6/function",
+            "/nodes/6/id",
+            "/nodes/6/indicator",
+            "/nodes/6/indirect_call_count",
+            "/nodes/6/indirect_callsites",
+            "/nodes/6/resolved_indirect_call_count",
+            "/nodes/6/resolved_indirect_callsites",
+            "/nodes/6/signals",
+            "/nodes/6/type",
+            "/nodes/6/unresolved_indirect_call_count",
+            "/nodes/6/unresolved_indirect_callsites"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "N6"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "edges",
+          "index": 0,
+          "property_paths": [
+            "/edges/0/api",
+            "/edges/0/api_original_names",
+            "/edges/0/caller",
+            "/edges/0/callsite",
+            "/edges/0/callsites",
+            "/edges/0/direct",
+            "/edges/0/indirect",
+            "/edges/0/occurrences",
+            "/edges/0/source",
+            "/edges/0/target",
+            "/edges/0/type",
+            "/edges/0/unresolved"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "E0"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "edges",
+          "index": 1,
+          "property_paths": [
+            "/edges/1/api",
+            "/edges/1/api_original_names",
+            "/edges/1/caller",
+            "/edges/1/callsite",
+            "/edges/1/callsites",
+            "/edges/1/direct",
+            "/edges/1/indirect",
+            "/edges/1/occurrences",
+            "/edges/1/source",
+            "/edges/1/target",
+            "/edges/1/type",
+            "/edges/1/unresolved"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "E1"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "edges",
+          "index": 2,
+          "property_paths": [
+            "/edges/2/function",
+            "/edges/2/reference_count",
+            "/edges/2/reference_sites",
+            "/edges/2/source",
+            "/edges/2/string",
+            "/edges/2/target",
+            "/edges/2/type"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "E3"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "edges",
+          "index": 3,
+          "property_paths": [
+            "/edges/3/constant",
+            "/edges/3/context_apis",
+            "/edges/3/function",
+            "/edges/3/occurrences",
+            "/edges/3/source",
+            "/edges/3/target",
+            "/edges/3/type",
+            "/edges/3/use_sites"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "E5"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "edges",
+          "index": 4,
+          "property_paths": [
+            "/edges/4/constant",
+            "/edges/4/context_apis",
+            "/edges/4/function",
+            "/edges/4/occurrences",
+            "/edges/4/source",
+            "/edges/4/target",
+            "/edges/4/type",
+            "/edges/4/use_sites"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "E4"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "edges",
+          "index": 5,
+          "property_paths": [
+            "/edges/5/function",
+            "/edges/5/indicator",
+            "/edges/5/source",
+            "/edges/5/target",
+            "/edges/5/type"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "E2"
+          ]
+        }
+      }
+    ],
+    "source_nodes": 7,
+    "source_edges": 6,
+    "source_unresolved_records": 0,
+    "represented": 13,
+    "excluded": 0
+  },
+  "canonical_digest": "sha256:c8932ea291622db035d90e2fba5facf936b2663c572a1fc0761c510b20633b89"
+}

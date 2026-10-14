@@ -1,0 +1,585 @@
+{
+  "schema_version": "0.1.0",
+  "source_local_subgraph_schema_version": "0.1.0",
+  "graph_version": "0.12.0",
+  "seed_id": "seed:fn:00401460",
+  "anchor_function_id": "fn:00401460",
+  "canonicalization_version": "0.1.0",
+  "nodes": [
+    {
+      "id": "N0",
+      "kind": "API",
+      "facts": {
+        "canonical_value": "getfileattributesa"
+      }
+    },
+    {
+      "id": "N1",
+      "kind": "FUNCTION",
+      "facts": {
+        "callee_distance": 0,
+        "caller_distance": 0,
+        "role": "ANCHOR"
+      }
+    },
+    {
+      "id": "N2",
+      "kind": "STRING",
+      "facts": {
+        "normalized": "C:\\\\Windows\\\\System32\\\\kernel32.dll"
+      }
+    },
+    {
+      "id": "N3",
+      "kind": "STRING_CATEGORY",
+      "facts": {
+        "category": "file_path"
+      }
+    }
+  ],
+  "node_sources": {
+    "N0": [
+      {
+        "id": "api:getfileattributesa",
+        "type": "API",
+        "name": "GetFileAttributesA",
+        "normalized_name": "GetFileAttributesA",
+        "original_names": [
+          "GetFileAttributesA"
+        ]
+      }
+    ],
+    "N1": [
+      {
+        "id": "fn:00401460",
+        "type": "FUNCTION",
+        "address": "00401460",
+        "external": false,
+        "internal": true,
+        "name": "read_file",
+        "section": ".text",
+        "size": 36,
+        "symbol_name": "read_file",
+        "thunk": false
+      }
+    ],
+    "N2": [
+      {
+        "id": "str:00405064",
+        "type": "STRING",
+        "address": "00405064",
+        "categories": [
+          "file_path"
+        ],
+        "category": "file_path",
+        "raw_value": "\"C:\\\\Windows\\\\System32\\\\kernel32.dll\"",
+        "reference_count": 1,
+        "value": "C:\\\\Windows\\\\System32\\\\kernel32.dll"
+      }
+    ],
+    "N3": [
+      {
+        "id": "strcat:file_path",
+        "type": "STRING_CATEGORY",
+        "category": "file_path",
+        "name": "file_path"
+      }
+    ]
+  },
+  "unresolved_calls": [],
+  "unresolved_sources": {},
+  "local_graph_truncation": {
+    "truncated": false,
+    "limits_reached": [],
+    "requested_depth": {
+      "caller_depth": 0,
+      "callee_depth": 3
+    },
+    "effective_depth": {
+      "caller_depth": 0,
+      "callee_depth": 0
+    },
+    "counts": {
+      "function_nodes": 1,
+      "evidence_nodes": 3,
+      "total_nodes": 4,
+      "edges": 3,
+      "unresolved_calls": 0
+    }
+  },
+  "edges": [
+    {
+      "id": "E0",
+      "kind": "calls_api",
+      "source": "N1",
+      "target": "N0",
+      "facts": {
+        "context_apis": [],
+        "direct": true,
+        "indirect": false,
+        "occurrences": 1
+      }
+    },
+    {
+      "id": "E1",
+      "kind": "has_string_category",
+      "source": "N2",
+      "target": "N3",
+      "facts": {
+        "context_apis": [],
+        "direct": null,
+        "indirect": null,
+        "occurrences": 1
+      }
+    },
+    {
+      "id": "E2",
+      "kind": "references_string",
+      "source": "N1",
+      "target": "N2",
+      "facts": {
+        "context_apis": [],
+        "direct": null,
+        "indirect": null,
+        "occurrences": 1
+      }
+    }
+  ],
+  "edge_sources": {
+    "E0": [
+      {
+        "type": "calls_api",
+        "source": "fn:00401460",
+        "target": "api:getfileattributesa",
+        "api": "api:getfileattributesa",
+        "api_original_names": [
+          "GetFileAttributesA"
+        ],
+        "caller": "fn:00401460",
+        "callsite": "0040146d",
+        "callsites": [
+          "0040146d"
+        ],
+        "direct": true,
+        "indirect": false,
+        "occurrences": 1,
+        "unresolved": false
+      }
+    ],
+    "E1": [
+      {
+        "type": "has_string_category",
+        "source": "str:00405064",
+        "target": "strcat:file_path",
+        "category": "strcat:file_path",
+        "string": "str:00405064"
+      }
+    ],
+    "E2": [
+      {
+        "type": "references_string",
+        "source": "fn:00401460",
+        "target": "str:00405064",
+        "function": "fn:00401460",
+        "reference_count": 1,
+        "reference_sites": [
+          "00401466"
+        ],
+        "string": "str:00405064"
+      }
+    ]
+  },
+  "provenance_map": {
+    "E0": [
+      {
+        "collection": "edges",
+        "index": 0,
+        "property_paths": [
+          "/edges/0/api",
+          "/edges/0/api_original_names",
+          "/edges/0/caller",
+          "/edges/0/callsite",
+          "/edges/0/callsites",
+          "/edges/0/direct",
+          "/edges/0/indirect",
+          "/edges/0/occurrences",
+          "/edges/0/source",
+          "/edges/0/target",
+          "/edges/0/type",
+          "/edges/0/unresolved"
+        ]
+      }
+    ],
+    "E1": [
+      {
+        "collection": "edges",
+        "index": 2,
+        "property_paths": [
+          "/edges/2/category",
+          "/edges/2/source",
+          "/edges/2/string",
+          "/edges/2/target",
+          "/edges/2/type"
+        ]
+      }
+    ],
+    "E2": [
+      {
+        "collection": "edges",
+        "index": 1,
+        "property_paths": [
+          "/edges/1/function",
+          "/edges/1/reference_count",
+          "/edges/1/reference_sites",
+          "/edges/1/source",
+          "/edges/1/string",
+          "/edges/1/target",
+          "/edges/1/type"
+        ]
+      }
+    ],
+    "N0": [
+      {
+        "collection": "nodes",
+        "index": 0,
+        "property_paths": [
+          "/nodes/0/id",
+          "/nodes/0/name",
+          "/nodes/0/normalized_name",
+          "/nodes/0/original_names",
+          "/nodes/0/type"
+        ]
+      }
+    ],
+    "N1": [
+      {
+        "collection": "nodes",
+        "index": 1,
+        "property_paths": [
+          "/nodes/1/address",
+          "/nodes/1/external",
+          "/nodes/1/id",
+          "/nodes/1/internal",
+          "/nodes/1/name",
+          "/nodes/1/section",
+          "/nodes/1/size",
+          "/nodes/1/symbol_name",
+          "/nodes/1/thunk",
+          "/nodes/1/type"
+        ]
+      }
+    ],
+    "N2": [
+      {
+        "collection": "nodes",
+        "index": 2,
+        "property_paths": [
+          "/nodes/2/address",
+          "/nodes/2/categories",
+          "/nodes/2/category",
+          "/nodes/2/id",
+          "/nodes/2/raw_value",
+          "/nodes/2/reference_count",
+          "/nodes/2/type",
+          "/nodes/2/value"
+        ]
+      }
+    ],
+    "N3": [
+      {
+        "collection": "nodes",
+        "index": 3,
+        "property_paths": [
+          "/nodes/3/category",
+          "/nodes/3/id",
+          "/nodes/3/name",
+          "/nodes/3/type"
+        ]
+      }
+    ]
+  },
+  "source_document": {
+    "schema_version": "0.1.0",
+    "seed_id": "seed:fn:00401460",
+    "anchor_function_id": "fn:00401460",
+    "graph_version": "0.12.0",
+    "extraction_config": {
+      "caller_depth": 0,
+      "callee_depth": 3,
+      "max_function_nodes": null,
+      "max_evidence_nodes": null,
+      "max_total_nodes": null,
+      "max_edges": null
+    },
+    "function_selection": {
+      "anchor_function_id": "fn:00401460",
+      "function_ids": [
+        "fn:00401460"
+      ],
+      "caller_distances": {
+        "fn:00401460": 0
+      },
+      "callee_distances": {
+        "fn:00401460": 0
+      }
+    },
+    "nodes": [
+      {
+        "id": "api:getfileattributesa",
+        "type": "API",
+        "name": "GetFileAttributesA",
+        "normalized_name": "GetFileAttributesA",
+        "original_names": [
+          "GetFileAttributesA"
+        ]
+      },
+      {
+        "id": "fn:00401460",
+        "type": "FUNCTION",
+        "address": "00401460",
+        "external": false,
+        "internal": true,
+        "name": "read_file",
+        "section": ".text",
+        "size": 36,
+        "symbol_name": "read_file",
+        "thunk": false
+      },
+      {
+        "id": "str:00405064",
+        "type": "STRING",
+        "address": "00405064",
+        "categories": [
+          "file_path"
+        ],
+        "category": "file_path",
+        "raw_value": "\"C:\\\\Windows\\\\System32\\\\kernel32.dll\"",
+        "reference_count": 1,
+        "value": "C:\\\\Windows\\\\System32\\\\kernel32.dll"
+      },
+      {
+        "id": "strcat:file_path",
+        "type": "STRING_CATEGORY",
+        "category": "file_path",
+        "name": "file_path"
+      }
+    ],
+    "edges": [
+      {
+        "type": "calls_api",
+        "source": "fn:00401460",
+        "target": "api:getfileattributesa",
+        "api": "api:getfileattributesa",
+        "api_original_names": [
+          "GetFileAttributesA"
+        ],
+        "caller": "fn:00401460",
+        "callsite": "0040146d",
+        "callsites": [
+          "0040146d"
+        ],
+        "direct": true,
+        "indirect": false,
+        "occurrences": 1,
+        "unresolved": false
+      },
+      {
+        "type": "references_string",
+        "source": "fn:00401460",
+        "target": "str:00405064",
+        "function": "fn:00401460",
+        "reference_count": 1,
+        "reference_sites": [
+          "00401466"
+        ],
+        "string": "str:00405064"
+      },
+      {
+        "type": "has_string_category",
+        "source": "str:00405064",
+        "target": "strcat:file_path",
+        "category": "strcat:file_path",
+        "string": "str:00405064"
+      }
+    ],
+    "unresolved_calls": [],
+    "truncation": {
+      "truncated": false,
+      "limits_reached": [],
+      "requested_depth": {
+        "caller_depth": 0,
+        "callee_depth": 3
+      },
+      "effective_depth": {
+        "caller_depth": 0,
+        "callee_depth": 0
+      },
+      "counts": {
+        "function_nodes": 1,
+        "evidence_nodes": 3,
+        "total_nodes": 4,
+        "edges": 3,
+        "unresolved_calls": 0
+      }
+    }
+  },
+  "coverage_ledger": {
+    "entries": [
+      {
+        "source": {
+          "collection": "nodes",
+          "index": 0,
+          "property_paths": [
+            "/nodes/0/id",
+            "/nodes/0/name",
+            "/nodes/0/normalized_name",
+            "/nodes/0/original_names",
+            "/nodes/0/type"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "N0"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "nodes",
+          "index": 1,
+          "property_paths": [
+            "/nodes/1/address",
+            "/nodes/1/external",
+            "/nodes/1/id",
+            "/nodes/1/internal",
+            "/nodes/1/name",
+            "/nodes/1/section",
+            "/nodes/1/size",
+            "/nodes/1/symbol_name",
+            "/nodes/1/thunk",
+            "/nodes/1/type"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "N1"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "nodes",
+          "index": 2,
+          "property_paths": [
+            "/nodes/2/address",
+            "/nodes/2/categories",
+            "/nodes/2/category",
+            "/nodes/2/id",
+            "/nodes/2/raw_value",
+            "/nodes/2/reference_count",
+            "/nodes/2/type",
+            "/nodes/2/value"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "N2"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "nodes",
+          "index": 3,
+          "property_paths": [
+            "/nodes/3/category",
+            "/nodes/3/id",
+            "/nodes/3/name",
+            "/nodes/3/type"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "N3"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "edges",
+          "index": 0,
+          "property_paths": [
+            "/edges/0/api",
+            "/edges/0/api_original_names",
+            "/edges/0/caller",
+            "/edges/0/callsite",
+            "/edges/0/callsites",
+            "/edges/0/direct",
+            "/edges/0/indirect",
+            "/edges/0/occurrences",
+            "/edges/0/source",
+            "/edges/0/target",
+            "/edges/0/type",
+            "/edges/0/unresolved"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "E0"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "edges",
+          "index": 1,
+          "property_paths": [
+            "/edges/1/function",
+            "/edges/1/reference_count",
+            "/edges/1/reference_sites",
+            "/edges/1/source",
+            "/edges/1/string",
+            "/edges/1/target",
+            "/edges/1/type"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "E2"
+          ]
+        }
+      },
+      {
+        "source": {
+          "collection": "edges",
+          "index": 2,
+          "property_paths": [
+            "/edges/2/category",
+            "/edges/2/source",
+            "/edges/2/string",
+            "/edges/2/target",
+            "/edges/2/type"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "E1"
+          ]
+        }
+      }
+    ],
+    "source_nodes": 4,
+    "source_edges": 3,
+    "source_unresolved_records": 0,
+    "represented": 7,
+    "excluded": 0
+  },
+  "canonical_digest": "sha256:83a07122a32e4574aa1f6f6cdc84e35db37359d6856b72b1e61c9325ca9b6363"
+}
