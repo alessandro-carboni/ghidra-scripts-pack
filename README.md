@@ -240,6 +240,33 @@ cargo build --manifest-path .\rust_engine\Cargo.toml
 
 ---
 
+## Canonical local subgraphs (OSGF step 5)
+
+The deterministic **Canonicalization Baseline v0.1** converts an exported local
+subgraph into an address-independent scientific representation with a SHA-256
+digest, complete source provenance and a Coverage Ledger.
+
+```powershell
+cargo build --locked --manifest-path rust_engine/Cargo.toml
+.\rust_engine\target\debug\rust_engine.exe canonicalize-local-subgraph local.json canonical.json
+python scripts/test_canonical_baseline.py
+```
+
+See [the frozen contract and acceptance suite](docs/canonicalization_baseline_v0_1.md)
+for normalization rules, provenance semantics and technical limits.
+
+## OSGF fingerprints (step 6)
+
+Generate the versioned multi-view fingerprint and its source-provenance sidecar:
+
+```powershell
+.\rust_engine\target\debug\rust_engine.exe fingerprint-canonical canonical.json fingerprint.json
+python scripts/test_fingerprint_baseline.py
+```
+
+See [OSGF Fingerprint Baseline v0.1](docs/fingerprint_baseline_v0_1.md) for view
+definitions, structural counting, limits and the separate semantic/full digests.
+
 ## AI-assisted analysis
 
 The project includes an optional local AI-assisted analysis layer that works on top of the structured enriched report.
@@ -422,6 +449,13 @@ Capabilities are inferred through a combination of:
 - Rust-side calibration and reasoning
 
 ---
+
+## OSGF similarity
+
+OSGF fingerprint comparison is available through `compare-fingerprints`; see
+[OSGF Baseline Similarity v0.1](docs/similarity_v0_1.md) for the CLI, two Jaccard metrics,
+source provenance, qualified missing evidence, separate observability diagnostics and
+optional semantic aggregate (`--aggregate`).
 
 ## Packer analysis model
 

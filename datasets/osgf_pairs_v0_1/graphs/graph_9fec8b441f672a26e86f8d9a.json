@@ -1,0 +1,173 @@
+{
+  "schema_version": "0.1.0",
+  "source_local_subgraph_schema_version": "0.1.0",
+  "graph_version": "0.12.0",
+  "seed_id": "seed:fn:004014f2",
+  "anchor_function_id": "fn:004014f2",
+  "canonicalization_version": "0.1.0",
+  "nodes": [
+    {
+      "id": "N0",
+      "kind": "FUNCTION",
+      "facts": {
+        "callee_distance": 0,
+        "caller_distance": 0,
+        "role": "ANCHOR"
+      }
+    }
+  ],
+  "node_sources": {
+    "N0": [
+      {
+        "id": "fn:004014f2",
+        "type": "FUNCTION",
+        "address": "004014f2",
+        "external": false,
+        "internal": true,
+        "name": "search_string",
+        "section": ".text",
+        "size": 78,
+        "symbol_name": "search_string",
+        "thunk": false
+      }
+    ]
+  },
+  "unresolved_calls": [],
+  "unresolved_sources": {},
+  "local_graph_truncation": {
+    "truncated": false,
+    "limits_reached": [],
+    "requested_depth": {
+      "caller_depth": 0,
+      "callee_depth": 3
+    },
+    "effective_depth": {
+      "caller_depth": 0,
+      "callee_depth": 0
+    },
+    "counts": {
+      "function_nodes": 1,
+      "evidence_nodes": 0,
+      "total_nodes": 1,
+      "edges": 0,
+      "unresolved_calls": 0
+    }
+  },
+  "edges": [],
+  "edge_sources": {},
+  "provenance_map": {
+    "N0": [
+      {
+        "collection": "nodes",
+        "index": 0,
+        "property_paths": [
+          "/nodes/0/address",
+          "/nodes/0/external",
+          "/nodes/0/id",
+          "/nodes/0/internal",
+          "/nodes/0/name",
+          "/nodes/0/section",
+          "/nodes/0/size",
+          "/nodes/0/symbol_name",
+          "/nodes/0/thunk",
+          "/nodes/0/type"
+        ]
+      }
+    ]
+  },
+  "source_document": {
+    "schema_version": "0.1.0",
+    "seed_id": "seed:fn:004014f2",
+    "anchor_function_id": "fn:004014f2",
+    "graph_version": "0.12.0",
+    "extraction_config": {
+      "caller_depth": 0,
+      "callee_depth": 3,
+      "max_function_nodes": null,
+      "max_evidence_nodes": null,
+      "max_total_nodes": null,
+      "max_edges": null
+    },
+    "function_selection": {
+      "anchor_function_id": "fn:004014f2",
+      "function_ids": [
+        "fn:004014f2"
+      ],
+      "caller_distances": {
+        "fn:004014f2": 0
+      },
+      "callee_distances": {
+        "fn:004014f2": 0
+      }
+    },
+    "nodes": [
+      {
+        "id": "fn:004014f2",
+        "type": "FUNCTION",
+        "address": "004014f2",
+        "external": false,
+        "internal": true,
+        "name": "search_string",
+        "section": ".text",
+        "size": 78,
+        "symbol_name": "search_string",
+        "thunk": false
+      }
+    ],
+    "edges": [],
+    "unresolved_calls": [],
+    "truncation": {
+      "truncated": false,
+      "limits_reached": [],
+      "requested_depth": {
+        "caller_depth": 0,
+        "callee_depth": 3
+      },
+      "effective_depth": {
+        "caller_depth": 0,
+        "callee_depth": 0
+      },
+      "counts": {
+        "function_nodes": 1,
+        "evidence_nodes": 0,
+        "total_nodes": 1,
+        "edges": 0,
+        "unresolved_calls": 0
+      }
+    }
+  },
+  "coverage_ledger": {
+    "entries": [
+      {
+        "source": {
+          "collection": "nodes",
+          "index": 0,
+          "property_paths": [
+            "/nodes/0/address",
+            "/nodes/0/external",
+            "/nodes/0/id",
+            "/nodes/0/internal",
+            "/nodes/0/name",
+            "/nodes/0/section",
+            "/nodes/0/size",
+            "/nodes/0/symbol_name",
+            "/nodes/0/thunk",
+            "/nodes/0/type"
+          ]
+        },
+        "disposition": {
+          "status": "represented",
+          "canonical_ids": [
+            "N0"
+          ]
+        }
+      }
+    ],
+    "source_nodes": 1,
+    "source_edges": 0,
+    "source_unresolved_records": 0,
+    "represented": 1,
+    "excluded": 0
+  },
+  "canonical_digest": "sha256:e7246bb72805653e8710e04deab959fa5b9592b3cef36f9ee4787cb4a01debb8"
+}

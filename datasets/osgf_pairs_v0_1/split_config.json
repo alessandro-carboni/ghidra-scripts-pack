@@ -1,0 +1,15 @@
+{
+  "version": "0.1.0",
+  "policy": "explicit-source-components-v1",
+  "artifact_splits": {
+    "numeric": "discovery_train",
+    "memory": "discovery_train",
+    "system_api": "validation",
+    "text": "held_out_test"
+  },
+  "near_duplicate_groups": [
+    ["sum_array", "copy_buffer"],
+    ["api_length_wrapped", "api_length_plus_one"]
+  ],
+  "rationale": "Assign complete source artifacts and all descendants together. Numeric and memory share byte-sum semantics and form one component. String reductions/search form held-out data; operating-system probes and API counterexamples form validation. Explicit configuration is deterministic; no pair-level randomization or similarity-based grouping."
+}

@@ -202,6 +202,16 @@ fn select_seed_functions_with_limits(
 ) -> Result<SelectionOutcome, String> {
     config.validate()?;
     validate_consolidated_seed(index, seed)?;
+    select_anchor_functions_with_limits(index, &seed.anchor_function_id, config)
+}
+
+fn select_anchor_functions_with_limits(
+    index: &GraphIndexes<'_>,
+    anchor: &str,
+    config: &LocalExtractionConfig,
+) -> Result<SelectionOutcome, String> {
+    config.validate()?;
+    crate::seed_validation::validate_anchor(index, anchor)?;
 
     let function_limit = config.effective_function_limit();
 
@@ -209,14 +219,14 @@ fn select_seed_functions_with_limits(
     // introduce caller->callee or callee->caller turns.
     let mut callers = function_distances(
         index,
-        &seed.anchor_function_id,
+        anchor,
         Direction::Callers,
         config.caller_depth,
         function_limit,
     );
     let mut callees = function_distances(
         index,
-        &seed.anchor_function_id,
+        anchor,
         Direction::Callees,
         config.callee_depth,
         function_limit,
@@ -264,7 +274,7 @@ fn select_seed_functions_with_limits(
 
     Ok(SelectionOutcome {
         selection: FunctionSelection {
-            anchor_function_id: seed.anchor_function_id.clone(),
+            anchor_function_id: anchor.to_string(),
             function_ids,
             caller_distances: callers.distances,
             callee_distances: callees.distances,
@@ -310,6 +320,30 @@ pub fn extract_local_subgraph(
     config: &LocalExtractionConfig,
 ) -> Result<LocalSubgraph, String> {
     let selection_outcome = select_seed_functions_with_limits(index, seed, config)?;
+    extract_selected_subgraph(index, &seed.seed_id, config, selection_outcome)
+}
+
+/// Research-only explicit anchor; shares traversal/evidence semantics with seeded extraction.
+pub fn extract_anchor_subgraph(
+    index: &GraphIndexes<'_>,
+    anchor: &str,
+    config: &LocalExtractionConfig,
+) -> Result<LocalSubgraph, String> {
+    let selection = select_anchor_functions_with_limits(index, anchor, config)?;
+    extract_selected_subgraph(
+        index,
+        &crate::schema::build_consolidated_seed_id(anchor)?,
+        config,
+        selection,
+    )
+}
+
+fn extract_selected_subgraph(
+    index: &GraphIndexes<'_>,
+    seed_id: &str,
+    config: &LocalExtractionConfig,
+    selection_outcome: SelectionOutcome,
+) -> Result<LocalSubgraph, String> {
     let selection = selection_outcome.selection;
     let mut reached_limits = selection_outcome.reached_limits;
 
@@ -462,7 +496,7 @@ pub fn extract_local_subgraph(
     truncation.validate(config)?;
 
     Ok(LocalSubgraph {
-        seed_id: seed.seed_id.clone(),
+        seed_id: seed_id.to_string(),
         source_graph_version: index.graph().model_version().into(),
         config: config.clone(),
         selection,
@@ -539,7 +573,6 @@ fn function_distances(
 }
 
 #[cfg(test)]
-
 mod tests {
 
     use super::*;

@@ -19,10 +19,24 @@ jobs:
 
       - run: pip install ruff pytest
 
-      - run: pip install -e ".[dev]" || true
-
       - run: ruff check .
 
       - run: ruff format --check .
 
-      - run: pytest -q || true
+      - run: pytest -q tests
+
+  canonical-baseline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: rustup component add rustfmt clippy
+      - run: cargo fmt --manifest-path rust_engine/Cargo.toml -- --check
+      - run: cargo test --locked --manifest-path rust_engine/Cargo.toml
+      - run: cargo clippy --locked --manifest-path rust_engine/Cargo.toml --all-targets -- -D warnings
+      - run: cargo build --locked --manifest-path rust_engine/Cargo.toml
+      - run: python scripts/test_canonical_baseline.py --engine rust_engine/target/debug/rust_engine
+      - run: python scripts/test_fingerprint_baseline.py --engine rust_engine/target/debug/rust_engine
+      - run: python scripts/test_similarity_baseline.py --engine rust_engine/target/debug/rust_engine

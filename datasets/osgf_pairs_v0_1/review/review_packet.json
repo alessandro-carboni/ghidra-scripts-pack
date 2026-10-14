@@ -1,0 +1,174 @@
+{
+  "manifest_sha256": "190cd28ef358f66259c0b56a8f19c37c965cf343be40f25bcb3291e89ad6500a",
+  "records": [
+    {
+      "coverage": [
+        "optimization_variants"
+      ],
+      "decision": "pending",
+      "notes": "",
+      "pair_id": "pair:05d513202e5e89e0409ce047",
+      "pair_sha256": "2be5807d1ece0f943649064b1b670e991a672917f0cbfefb3f64713f91bab583",
+      "reason": "",
+      "reviewer": "",
+      "validation_status": "unreviewed"
+    },
+    {
+      "coverage": [
+        "harmless_strand"
+      ],
+      "decision": "pending",
+      "notes": "",
+      "pair_id": "pair:07cc392b51982eae31170a94",
+      "pair_sha256": "144a11b3eb1b4a9efe64fae1735393dd8f242282ddf6e395ccfb39c5a0937ad6",
+      "reason": "",
+      "reviewer": "",
+      "validation_status": "unreviewed"
+    },
+    {
+      "coverage": [
+        "cross_compiler_variants"
+      ],
+      "decision": "pending",
+      "notes": "",
+      "pair_id": "pair:08a67b5f71593b6810caf125",
+      "pair_sha256": "b2906cf66299fa70828870aef24cf50458fb538042adf02d2ea10de4afd8a57e",
+      "reason": "",
+      "reviewer": "",
+      "validation_status": "unreviewed"
+    },
+    {
+      "coverage": [
+        "hard_negatives"
+      ],
+      "decision": "pending",
+      "notes": "",
+      "pair_id": "pair:1107ec8823f5fad30c4b336c",
+      "pair_sha256": "b28d4b5ad6ed726d0d7c48e59c160cb4ff92b7286d6e3d62bd59b6d19b0de3dd",
+      "reason": "",
+      "reviewer": "",
+      "validation_status": "unreviewed"
+    },
+    {
+      "coverage": [
+        "thunk"
+      ],
+      "decision": "pending",
+      "notes": "",
+      "pair_id": "pair:17b587bd05bffd3cf40289b2",
+      "pair_sha256": "56fadf07bc8d3c46eca7e2fb0daea7ea29a9ca80367834cabfad1a23ff662178",
+      "reason": "",
+      "reviewer": "",
+      "validation_status": "unreviewed"
+    },
+    {
+      "coverage": [
+        "dead_branch"
+      ],
+      "decision": "pending",
+      "notes": "",
+      "pair_id": "pair:24e9f59cb1fc34954424c670",
+      "pair_sha256": "ecf38c3118fbfdeb1200e45d23ac584e50e76fc072d20d9143458a8455479333",
+      "reason": "",
+      "reviewer": "",
+      "validation_status": "unreviewed"
+    },
+    {
+      "coverage": [
+        "linear_chain"
+      ],
+      "decision": "pending",
+      "notes": "",
+      "pair_id": "pair:27ef7c0851ab2569d00912be",
+      "pair_sha256": "91e804916aeca54310430cc6a958a6abfb52c26fb8627fb1d14bc331c367ce8e",
+      "reason": "",
+      "reviewer": "",
+      "validation_status": "unreviewed"
+    },
+    {
+      "coverage": [
+        "similar_api_different_structure"
+      ],
+      "decision": "pending",
+      "notes": "",
+      "pair_id": "pair:2bbcd0b314402aa2d3270877",
+      "pair_sha256": "abd12e010ae1a3098ee4dff3fed1def6d2b601b6ae5cf11ba5315cf4b88528db",
+      "reason": "",
+      "reviewer": "",
+      "validation_status": "unreviewed"
+    },
+    {
+      "coverage": [
+        "easy_negatives"
+      ],
+      "decision": "pending",
+      "notes": "",
+      "pair_id": "pair:4f62234f82e7de4579316522",
+      "pair_sha256": "981d6b7214785f3a26d0d6b720eec14e613af0bf9f36ac34fd143ccdbafe0cf9",
+      "reason": "",
+      "reviewer": "",
+      "validation_status": "unreviewed"
+    },
+    {
+      "coverage": [
+        "transparent_wrapper"
+      ],
+      "decision": "pending",
+      "notes": "",
+      "pair_id": "pair:581a97b5a1044b1391d04a24",
+      "pair_sha256": "cca46be9e38fbe2fdfed431f533b3b657bf24c2fc1dfd21ee6ab4f8acc5ae744",
+      "reason": "",
+      "reviewer": "",
+      "validation_status": "unreviewed"
+    },
+    {
+      "coverage": [
+        "similar_constants_different_behavior"
+      ],
+      "decision": "pending",
+      "notes": "",
+      "pair_id": "pair:6034c2910327190dd52ca3b6",
+      "pair_sha256": "2b3f329c68f8d0f11d55dba95277b8dabb390e56f836b3d9fe99ee39144e2aee",
+      "reason": "",
+      "reviewer": "",
+      "validation_status": "unreviewed"
+    },
+    {
+      "coverage": [
+        "function_splitting"
+      ],
+      "decision": "pending",
+      "notes": "",
+      "pair_id": "pair:82f8042842e888a2fa036e1f",
+      "pair_sha256": "b5d86c82071dce81d0b37c1a6082adda931092290115c9989dc8989004f6fe34",
+      "reason": "",
+      "reviewer": "",
+      "validation_status": "unreviewed"
+    },
+    {
+      "coverage": [
+        "benign_lookalike"
+      ],
+      "decision": "pending",
+      "notes": "",
+      "pair_id": "pair:b7cad7998f41a4ac66177bb7",
+      "pair_sha256": "b70d782b93fb17dc2fececeb8ae377d8508ff1b43e3099595d3ab18b6f785e3d",
+      "reason": "",
+      "reviewer": "",
+      "validation_status": "unreviewed"
+    },
+    {
+      "coverage": [
+        "similar_topology_different_evidence"
+      ],
+      "decision": "pending",
+      "notes": "",
+      "pair_id": "pair:c9fdbde98c0b37f8be797d59",
+      "pair_sha256": "8dc4d48e4d89d994c6cb97732da4be9f38a9ed771f3173d374102cc716270d8e",
+      "reason": "",
+      "reviewer": "",
+      "validation_status": "unreviewed"
+    }
+  ],
+  "schema_version": "0.1.0"
+}

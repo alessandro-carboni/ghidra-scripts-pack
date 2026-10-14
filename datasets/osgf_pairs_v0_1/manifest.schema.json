@@ -1,0 +1,147 @@
+{
+  "$id": "urn:osgf:pair-dataset:0.1.0",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "properties": {
+    "builds": {
+      "items": {
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "graphs": {
+      "items": {
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "pairs": {
+      "items": {
+        "properties": {
+          "architecture": {
+            "type": "string"
+          },
+          "equivalence_label": {
+            "enum": [
+              "equivalent",
+              "non_equivalent"
+            ]
+          },
+          "ground_truth": {
+            "required": [
+              "method",
+              "label"
+            ],
+            "type": "object"
+          },
+          "left_build_id": {
+            "type": "string"
+          },
+          "left_graph_id": {
+            "type": "string"
+          },
+          "left_sample_id": {
+            "type": "string"
+          },
+          "notes": {
+            "type": "string"
+          },
+          "pair_category": {
+            "type": "string"
+          },
+          "pair_id": {
+            "type": "string"
+          },
+          "right_build_id": {
+            "type": "string"
+          },
+          "right_graph_id": {
+            "type": "string"
+          },
+          "right_sample_id": {
+            "type": "string"
+          },
+          "source_group_id": {
+            "type": "string"
+          },
+          "split": {
+            "enum": [
+              "discovery_train",
+              "held_out_test",
+              "validation"
+            ]
+          },
+          "transformation_family": {
+            "enum": [
+              "compiler_variation",
+              "dead_branch",
+              "function_splitting",
+              "harmless_strand",
+              "linear_chain",
+              "none",
+              "thunk",
+              "transparent_wrapper"
+            ]
+          },
+          "transformation_parameters": {
+            "type": "object"
+          },
+          "validation_status": {
+            "enum": [
+              "ambiguous",
+              "automatically_grounded",
+              "manually_verified",
+              "rejected",
+              "unreviewed"
+            ]
+          }
+        },
+        "required": [
+          "architecture",
+          "equivalence_label",
+          "ground_truth",
+          "left_build_id",
+          "left_graph_id",
+          "left_sample_id",
+          "notes",
+          "pair_category",
+          "pair_id",
+          "right_build_id",
+          "right_graph_id",
+          "right_sample_id",
+          "source_group_id",
+          "split",
+          "transformation_family",
+          "transformation_parameters",
+          "validation_status"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "routines": {
+      "items": {
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "samples": {
+      "items": {
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "schema_version": {
+      "const": "0.1.0"
+    }
+  },
+  "required": [
+    "schema_version",
+    "samples",
+    "builds",
+    "routines",
+    "graphs",
+    "pairs"
+  ],
+  "title": "OSGF Pair Dataset 0.1.0",
+  "type": "object"
+}
