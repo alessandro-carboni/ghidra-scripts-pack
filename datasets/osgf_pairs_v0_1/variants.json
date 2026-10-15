@@ -3,6 +3,8 @@
     {
       "architecture": "x86",
       "artifact_group": "numeric",
+      "attempt_diagnostics": [],
+      "attempts": 1,
       "behavior": [
         "sum_array__transparent_wrapper 0 0",
         "sum_array__thunk 0 0",
@@ -12301,17 +12303,20 @@
       "flags": [
         "-O0",
         "-Wl,--no-insert-timestamp",
-        "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\samples\\controlled\\source\\numeric_variants.c",
+        "samples/controlled/source/numeric_variants.c",
         "-o",
-        "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\samples\\controlled\\builds\\numeric-variants-gcc-O0\\numeric-variants-gcc-O0.exe"
+        "samples/controlled/builds/numeric-variants-gcc-O0/.staging/attempt-1/numeric-variants-gcc-O0.exe"
       ],
       "optimization": "O0",
       "source_hash": "743f3181ebae33db0c53e54fbb4191b5fa89f574729da974a0ceb134d847368b",
-      "source_path": "samples/controlled/source/numeric_variants.c"
+      "source_path": "samples/controlled/source/numeric_variants.c",
+      "status": "success"
     },
     {
       "architecture": "x86",
       "artifact_group": "text",
+      "attempt_diagnostics": [],
+      "attempts": 1,
       "behavior": [
         "count_digits__transparent_wrapper 0 0",
         "count_digits__thunk 0 0",
@@ -24610,17 +24615,20 @@
       "flags": [
         "-O0",
         "-Wl,--no-insert-timestamp",
-        "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\samples\\controlled\\source\\text_variants.c",
+        "samples/controlled/source/text_variants.c",
         "-o",
-        "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\samples\\controlled\\builds\\text-variants-gcc-O0\\text-variants-gcc-O0.exe"
+        "samples/controlled/builds/text-variants-gcc-O0/.staging/attempt-1/text-variants-gcc-O0.exe"
       ],
       "optimization": "O0",
       "source_hash": "1aa2868656746de4fc53186b0539f56dea740f0ecabb07525e122d9aa0e1fe1d",
-      "source_path": "samples/controlled/source/text_variants.c"
+      "source_path": "samples/controlled/source/text_variants.c",
+      "status": "success"
     },
     {
       "architecture": "x86",
       "artifact_group": "memory",
+      "attempt_diagnostics": [],
+      "attempts": 1,
       "behavior": [
         "copy_buffer__transparent_wrapper 0 0",
         "copy_buffer__thunk 0 0",
@@ -36919,13 +36927,14 @@
       "flags": [
         "-O0",
         "-Wl,--no-insert-timestamp",
-        "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\samples\\controlled\\source\\memory_variants.c",
+        "samples/controlled/source/memory_variants.c",
         "-o",
-        "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\samples\\controlled\\builds\\memory-variants-gcc-O0\\memory-variants-gcc-O0.exe"
+        "samples/controlled/builds/memory-variants-gcc-O0/.staging/attempt-1/memory-variants-gcc-O0.exe"
       ],
       "optimization": "O0",
       "source_hash": "a2e68ebcc4c53e99194c245bf00e9212d5245a105a307091d7bc1d8af5402f0f",
-      "source_path": "samples/controlled/source/memory_variants.c"
+      "source_path": "samples/controlled/source/memory_variants.c",
+      "status": "success"
     }
   ],
   "routines": [

@@ -6,7 +6,8 @@ from itertools import combinations
 import json
 from pathlib import Path
 
-from controlled_corpus import BUILDS, DATA, ROOT, SOURCE, compiler_inventory, digest, execute, pe_architecture, save
+from controlled_build import BuildFailure, build_pe
+from controlled_corpus import BUILDS, DATA, ROOT, SOURCE, compiler_inventory, digest, save
 from dataset_artifacts import analyze, merge_records, register_graph, save_manifest
 from dataset_manifest import validate
 from generate_dataset_pairs import make_pair, statistics
@@ -38,20 +39,32 @@ def build_negatives():
     directory = BUILDS / build_id
     directory.mkdir(parents=True, exist_ok=True)
     output = directory / (build_id + ".exe")
-    flags = ["/nologo", "/Od", "/Brepro", str(source), f"/Fe{output}", "/link", "/INCREMENTAL:NO", "/OPT:NOICF", "kernel32.lib"] if compiler["compiler"] == "msvc" else ["-O0", "-Wl,--no-insert-timestamp", str(source), "-o", str(output)]
-    execute([compiler["path"], *flags], cwd=directory, env=compiler["env"])
-    behavior = execute([str(output)]).splitlines()
-    for row in behavior:
-        name, case, value = row.split()
-        case = int(case)
-        data = bytes((j * 17 + case * 13) % 127 for j in range(case * 7)).split(b"\0")[0]
-        oracle = {"api_length": len(data), "api_length_wrapped": len(data) + 1, "api_length_plus_one": len(data) + 1, "api_compare": int(data == b"AB"), "api_compare_inverted": int(data != b"AB")}[name]
-        if int(value) != oracle:
-            raise ValueError("API negative independent oracle mismatch: " + row)
-    if len(set(behavior)) != 80:
-        raise ValueError("Incomplete API behavior coverage")
-    arch = pe_architecture(output)
-    build = dict(build_id=build_id, compiler=compiler["compiler"], compiler_version=compiler["version"], optimization="O0", architecture=arch, source_path=source.relative_to(ROOT).as_posix(), source_hash=digest(source), build_hash=digest(output), artifact_group="system_api", flags=flags, behavior=behavior)
+
+    def flags_for_output(target):
+        return ["/nologo", "/Od", "/Brepro", str(source), f"/Fe{target}", "/link", "/INCREMENTAL:NO", "/OPT:NOICF", "kernel32.lib"] if compiler["compiler"] == "msvc" else ["-O0", "-Wl,--no-insert-timestamp", str(source), "-o", str(target)]
+
+    def validate_behavior(behavior):
+        seen = set()
+        for row in behavior:
+            name, case, value = row.split()
+            case = int(case)
+            if name not in BODIES or not 0 <= case < 16 or (name, case) in seen:
+                raise ValueError("Unexpected/duplicate API behavior case")
+            seen.add((name, case))
+            data = bytes((j * 17 + case * 13) % 127 for j in range(case * 7)).split(b"\0")[0]
+            oracle = {"api_length": len(data), "api_length_wrapped": len(data) + 1, "api_length_plus_one": len(data) + 1, "api_compare": int(data == b"AB"), "api_compare_inverted": int(data != b"AB")}[name]
+            if int(value) != oracle:
+                raise ValueError("API negative independent oracle mismatch: " + row)
+        if len(seen) != 80:
+            raise ValueError("Incomplete API behavior coverage")
+
+    try:
+        result = build_pe(compiler, build_id, "O0", output, flags_for_output, validate_behavior)
+    except BuildFailure as error:
+        save(DATA / "negative_build_failures.json", [error.record])
+        raise
+    arch = result["architecture"]
+    build = dict(build_id=build_id, compiler=compiler["compiler"], compiler_version=compiler["version"], optimization="O0", source_path=source.relative_to(ROOT).as_posix(), source_hash=digest(source), build_hash=digest(output), artifact_group="system_api", **result)
     sample = dict(sample_id=build_id, build_id=build_id, path=output.relative_to(ROOT).as_posix(), filename=output.name, sha256=digest(output), architecture=arch, origin="controlled_source", provenance="controlled_benign", compiler=compiler["compiler"])
     return dict(samples=[sample], builds=[build], routines=routines)
 

@@ -6,9 +6,13 @@ import json
 import os
 from pathlib import Path
 import shutil
-import struct
 import subprocess
 import time
+
+try:
+    from .controlled_build import BuildFailure, assert_portable_metadata, build_pe, pe_architecture
+except ImportError:
+    from controlled_build import BuildFailure, assert_portable_metadata, build_pe, pe_architecture
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "datasets/osgf_pairs_v0_1"
@@ -46,33 +50,23 @@ def digest(path):
 
 
 def save(path, value):
+    assert_portable_metadata(value)
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(value, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
 
 def execute(command, **kwargs):
-    for attempt in range(10):
+    for attempt in range(3):
         try:
             result = subprocess.run(command, capture_output=True, text=True, timeout=180, check=False, **kwargs)
             break
         except PermissionError:
-            if attempt == 9:
+            if attempt == 2:
                 raise
             time.sleep(1)
     if result.returncode:
         raise RuntimeError(f"command failed: {command}\n{result.stdout}\n{result.stderr}")
     return result.stdout.strip()
-
-
-def pe_architecture(path):
-    data = Path(path).read_bytes()
-    if data[:2] != b"MZ":
-        raise ValueError(f"not PE: {path}")
-    offset = struct.unpack_from("<I", data, 60)[0]
-    if data[offset : offset + 4] != b"PE\0\0":
-        raise ValueError(f"invalid PE signature: {path}")
-    machine = struct.unpack_from("<H", data, offset + 4)[0]
-    return {0x14C: "x86", 0x8664: "x86_64", 0xAA64: "arm64"}.get(machine, f"machine:{machine}")
 
 
 def generate_sources():
@@ -119,6 +113,10 @@ def compiler_inventory():
 
 
 def build_corpus():
+    try:
+        from .validate_controlled_corpus import validate_behavior
+    except ImportError:
+        from validate_controlled_corpus import validate_behavior
     routines = generate_sources()
     compilers, unavailable = compiler_inventory()
     samples, builds, failures = [], [], []
@@ -131,33 +129,33 @@ def build_corpus():
                 directory = BUILDS / build_id
                 directory.mkdir(parents=True, exist_ok=True)
                 output = directory / f"{build_id}.exe"
-                if compiler["compiler"] == "msvc":
-                    flags = ["/nologo", "/Od" if optimization == "O0" else "/O2", "/Brepro", "/W3", "/D_CRT_SECURE_NO_WARNINGS", str(source), f"/Fe{output}", "/link", "/INCREMENTAL:NO", "/OPT:NOICF", "ws2_32.lib", "advapi32.lib"]
-                else:
-                    flags = [f"-{optimization}", "-fno-ipa-icf", "-Wl,--no-insert-timestamp", str(source), "-o", str(output), "-lws2_32", "-ladvapi32"]
+
+                def flags_for_output(target):
+                    if compiler["compiler"] == "msvc":
+                        return ["/nologo", "/Od" if optimization == "O0" else "/O2", "/Brepro", "/W3", "/D_CRT_SECURE_NO_WARNINGS", str(source), f"/Fe{target}", "/link", "/INCREMENTAL:NO", "/OPT:NOICF", "ws2_32.lib", "advapi32.lib"]
+                    flags = [f"-{optimization}", "-fno-ipa-icf", "-Wl,--no-insert-timestamp", str(source), "-o", str(target), "-lws2_32", "-ladvapi32"]
                     if compiler["compiler"] == "clang":
                         flags.remove("-fno-ipa-icf")
+                    return flags
+
                 try:
-                    execute([compiler["path"], *flags], cwd=directory, env=compiler["env"])
-                    observed = execute([str(output)])
-                except (OSError, RuntimeError, subprocess.SubprocessError) as error:
-                    failures.append(dict(build_id=build_id, error=str(error)))
+                    result = build_pe(compiler, build_id, optimization, output, flags_for_output, lambda rows: validate_behavior(group, rows))
+                except BuildFailure as error:
+                    failures.append(error.record)
                     print(f"BUILD FAILED {build_id}: {error}", flush=True)
                     continue
-                (directory / "behavior.txt").write_text(observed + "\n", encoding="utf-8")
+                (directory / "behavior.txt").write_text("\n".join(result["behavior"]) + "\n", encoding="utf-8")
                 build_hash = digest(output)
                 metadata = dict(
                     build_id=build_id,
                     compiler=compiler["compiler"],
                     compiler_version=compiler["version"],
                     optimization=optimization,
-                    architecture=pe_architecture(output),
                     source_path=source.relative_to(ROOT).as_posix(),
                     source_hash=digest(source),
                     build_hash=build_hash,
                     artifact_group=group,
-                    flags=flags,
-                    behavior=observed.splitlines(),
+                    **result,
                 )
                 builds.append(metadata)
                 samples.append(dict(sample_id=build_id, build_id=build_id, path=output.relative_to(ROOT).as_posix(), filename=output.name, sha256=build_hash, architecture=metadata["architecture"], origin="controlled_source", provenance="controlled_benign", compiler=compiler["compiler"]))
@@ -172,7 +170,9 @@ def build_corpus():
         shutil.copy2(original, target)
         if digest(original) != digest(target):
             raise ValueError(f"copy hash mismatch: {filename}")
-        samples.append(dict(sample_id=f"system32-{filename}", build_id=None, path=target.relative_to(ROOT).as_posix(), filename=filename, sha256=digest(target), architecture=pe_architecture(target), origin=str(original), provenance="windows_system32_benign_validation_only", compiler="unknown"))
+        samples.append(
+            dict(sample_id=f"system32-{filename}", build_id=None, path=target.relative_to(ROOT).as_posix(), filename=filename, sha256=digest(target), architecture=pe_architecture(target), origin=f"${{SystemRoot}}/System32/{filename}", provenance="windows_system32_benign_validation_only", compiler="unknown")
+        )
     if len(samples) - len(builds) < 5:
         raise ValueError("Fewer than five trusted System32 executables available")
     catalog = dict(schema_version="0.1.0", routines=routines, builds=builds, samples=samples, unavailable_compilers=unavailable, build_failures=failures, ground_truth_policy="source_contract_and_behavior_only; never OSGF similarity")

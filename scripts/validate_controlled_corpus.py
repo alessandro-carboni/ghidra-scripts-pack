@@ -27,6 +27,25 @@ def expected(name, data):
     return functions[name](data) if name in functions else None
 
 
+def validate_behavior(group, rows):
+    try:
+        from .controlled_corpus import ROUTINES
+    except ImportError:
+        from controlled_corpus import ROUTINES
+    seen = set()
+    for row in rows:
+        name, case, result = row.split()
+        case, result = int(case), int(result)
+        if name not in ROUTINES[group] or not 0 <= case < 16 or (name, case) in seen:
+            raise ValueError("Unexpected/duplicate behavior case")
+        seen.add((name, case))
+        reference = expected(name, [(j * 17 + case * 13) % 127 for j in range(case * 7)])
+        if (reference is not None and result != reference) or (reference is None and result not in (0, 1)):
+            raise ValueError("Independent behavior oracle mismatch: " + row)
+    if len(seen) != 48:
+        raise ValueError("Incomplete baseline behavior cases")
+
+
 def validate(catalog):
     if catalog["schema_version"] != "0.1.0":
         raise ValueError("Unsupported corpus schema")

@@ -3,6 +3,8 @@
     {
       "architecture": "x86",
       "artifact_group": "system_api",
+      "attempt_diagnostics": [],
+      "attempts": 1,
       "behavior": [
         "api_length 0 0",
         "api_length_wrapped 0 1",
@@ -93,8 +95,8 @@
         "/nologo",
         "/Od",
         "/Brepro",
-        "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\samples\\controlled\\source\\negative_api.c",
-        "/FeC:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\samples\\controlled\\builds\\negative-api-msvc-O0\\negative-api-msvc-O0.exe",
+        "samples/controlled/source/negative_api.c",
+        "/Fesamples/controlled/builds/negative-api-msvc-O0/.staging/attempt-1/negative-api-msvc-O0.exe",
         "/link",
         "/INCREMENTAL:NO",
         "/OPT:NOICF",
@@ -102,7 +104,8 @@
       ],
       "optimization": "O0",
       "source_hash": "3764fc24ab9102a6073e2bf61b4d948141b1486a93450768b99f8d1769e90fee",
-      "source_path": "samples/controlled/source/negative_api.c"
+      "source_path": "samples/controlled/source/negative_api.c",
+      "status": "success"
     }
   ],
   "routines": [

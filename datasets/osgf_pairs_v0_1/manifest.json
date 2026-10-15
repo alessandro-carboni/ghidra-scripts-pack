@@ -3,6 +3,8 @@
     {
       "architecture": "x86",
       "artifact_group": "memory",
+      "attempt_diagnostics": [],
+      "attempts": 1,
       "behavior": [
         "copy_buffer 0 0",
         "xor_buffer 0 0",
@@ -61,19 +63,22 @@
         "-O0",
         "-fno-ipa-icf",
         "-Wl,--no-insert-timestamp",
-        "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\samples\\controlled\\source\\memory.c",
+        "samples/controlled/source/memory.c",
         "-o",
-        "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\samples\\controlled\\builds\\memory-gcc-O0\\memory-gcc-O0.exe",
+        "samples/controlled/builds/memory-gcc-O0/.staging/attempt-1/memory-gcc-O0.exe",
         "-lws2_32",
         "-ladvapi32"
       ],
       "optimization": "O0",
       "source_hash": "efb4da1bba3c842cb77875670e4101ca21c7e775d6f578d8501af944455bac0d",
-      "source_path": "samples/controlled/source/memory.c"
+      "source_path": "samples/controlled/source/memory.c",
+      "status": "success"
     },
     {
       "architecture": "x86",
       "artifact_group": "memory",
+      "attempt_diagnostics": [],
+      "attempts": 1,
       "behavior": [
         "copy_buffer 0 0",
         "xor_buffer 0 0",
@@ -132,19 +137,22 @@
         "-O2",
         "-fno-ipa-icf",
         "-Wl,--no-insert-timestamp",
-        "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\samples\\controlled\\source\\memory.c",
+        "samples/controlled/source/memory.c",
         "-o",
-        "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\samples\\controlled\\builds\\memory-gcc-O2\\memory-gcc-O2.exe",
+        "samples/controlled/builds/memory-gcc-O2/.staging/attempt-1/memory-gcc-O2.exe",
         "-lws2_32",
         "-ladvapi32"
       ],
       "optimization": "O2",
       "source_hash": "efb4da1bba3c842cb77875670e4101ca21c7e775d6f578d8501af944455bac0d",
-      "source_path": "samples/controlled/source/memory.c"
+      "source_path": "samples/controlled/source/memory.c",
+      "status": "success"
     },
     {
       "architecture": "x86",
       "artifact_group": "memory",
+      "attempt_diagnostics": [],
+      "attempts": 1,
       "behavior": [
         "copy_buffer 0 0",
         "xor_buffer 0 0",
@@ -203,19 +211,22 @@
         "-O3",
         "-fno-ipa-icf",
         "-Wl,--no-insert-timestamp",
-        "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\samples\\controlled\\source\\memory.c",
+        "samples/controlled/source/memory.c",
         "-o",
-        "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\samples\\controlled\\builds\\memory-gcc-O3\\memory-gcc-O3.exe",
+        "samples/controlled/builds/memory-gcc-O3/.staging/attempt-1/memory-gcc-O3.exe",
         "-lws2_32",
         "-ladvapi32"
       ],
       "optimization": "O3",
       "source_hash": "efb4da1bba3c842cb77875670e4101ca21c7e775d6f578d8501af944455bac0d",
-      "source_path": "samples/controlled/source/memory.c"
+      "source_path": "samples/controlled/source/memory.c",
+      "status": "success"
     },
     {
       "architecture": "x86",
       "artifact_group": "memory",
+      "attempt_diagnostics": [],
+      "attempts": 1,
       "behavior": [
         "copy_buffer 0 0",
         "xor_buffer 0 0",
@@ -276,8 +287,8 @@
         "/Brepro",
         "/W3",
         "/D_CRT_SECURE_NO_WARNINGS",
-        "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\samples\\controlled\\source\\memory.c",
-        "/FeC:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\samples\\controlled\\builds\\memory-msvc-O0\\memory-msvc-O0.exe",
+        "samples/controlled/source/memory.c",
+        "/Fesamples/controlled/builds/memory-msvc-O0/.staging/attempt-1/memory-msvc-O0.exe",
         "/link",
         "/INCREMENTAL:NO",
         "/OPT:NOICF",
@@ -286,11 +297,14 @@
       ],
       "optimization": "O0",
       "source_hash": "efb4da1bba3c842cb77875670e4101ca21c7e775d6f578d8501af944455bac0d",
-      "source_path": "samples/controlled/source/memory.c"
+      "source_path": "samples/controlled/source/memory.c",
+      "status": "success"
     },
     {
       "architecture": "x86",
       "artifact_group": "memory",
+      "attempt_diagnostics": [],
+      "attempts": 1,
       "behavior": [
         "copy_buffer 0 0",
         "xor_buffer 0 0",
@@ -351,8 +365,8 @@
         "/Brepro",
         "/W3",
         "/D_CRT_SECURE_NO_WARNINGS",
-        "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\samples\\controlled\\source\\memory.c",
-        "/FeC:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\samples\\controlled\\builds\\memory-msvc-O2\\memory-msvc-O2.exe",
+        "samples/controlled/source/memory.c",
+        "/Fesamples/controlled/builds/memory-msvc-O2/.staging/attempt-1/memory-msvc-O2.exe",
         "/link",
         "/INCREMENTAL:NO",
         "/OPT:NOICF",
@@ -361,11 +375,14 @@
       ],
       "optimization": "O2",
       "source_hash": "efb4da1bba3c842cb77875670e4101ca21c7e775d6f578d8501af944455bac0d",
-      "source_path": "samples/controlled/source/memory.c"
+      "source_path": "samples/controlled/source/memory.c",
+      "status": "success"
     },
     {
       "architecture": "x86",
       "artifact_group": "memory",
+      "attempt_diagnostics": [],
+      "attempts": 1,
       "behavior": [
         "copy_buffer__transparent_wrapper 0 0",
         "copy_buffer__thunk 0 0",
@@ -12664,17 +12681,20 @@
       "flags": [
         "-O0",
         "-Wl,--no-insert-timestamp",
-        "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\samples\\controlled\\source\\memory_variants.c",
+        "samples/controlled/source/memory_variants.c",
         "-o",
-        "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\samples\\controlled\\builds\\memory-variants-gcc-O0\\memory-variants-gcc-O0.exe"
+        "samples/controlled/builds/memory-variants-gcc-O0/.staging/attempt-1/memory-variants-gcc-O0.exe"
       ],
       "optimization": "O0",
       "source_hash": "a2e68ebcc4c53e99194c245bf00e9212d5245a105a307091d7bc1d8af5402f0f",
-      "source_path": "samples/controlled/source/memory_variants.c"
+      "source_path": "samples/controlled/source/memory_variants.c",
+      "status": "success"
     },
     {
       "architecture": "x86",
       "artifact_group": "system_api",
+      "attempt_diagnostics": [],
+      "attempts": 1,
       "behavior": [
         "api_length 0 0",
         "api_length_wrapped 0 1",
@@ -12765,8 +12785,8 @@
         "/nologo",
         "/Od",
         "/Brepro",
-        "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\samples\\controlled\\source\\negative_api.c",
-        "/FeC:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\samples\\controlled\\builds\\negative-api-msvc-O0\\negative-api-msvc-O0.exe",
+        "samples/controlled/source/negative_api.c",
+        "/Fesamples/controlled/builds/negative-api-msvc-O0/.staging/attempt-1/negative-api-msvc-O0.exe",
         "/link",
         "/INCREMENTAL:NO",
         "/OPT:NOICF",
@@ -12774,11 +12794,14 @@
       ],
       "optimization": "O0",
       "source_hash": "3764fc24ab9102a6073e2bf61b4d948141b1486a93450768b99f8d1769e90fee",
-      "source_path": "samples/controlled/source/negative_api.c"
+      "source_path": "samples/controlled/source/negative_api.c",
+      "status": "success"
     },
     {
       "architecture": "x86",
       "artifact_group": "numeric",
+      "attempt_diagnostics": [],
+      "attempts": 1,
       "behavior": [
         "sum_array 0 0",
         "find_max 0 0",
@@ -12837,19 +12860,22 @@
         "-O0",
         "-fno-ipa-icf",
         "-Wl,--no-insert-timestamp",
-        "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\samples\\controlled\\source\\numeric.c",
+        "samples/controlled/source/numeric.c",
         "-o",
-        "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\samples\\controlled\\builds\\numeric-gcc-O0\\numeric-gcc-O0.exe",
+        "samples/controlled/builds/numeric-gcc-O0/.staging/attempt-1/numeric-gcc-O0.exe",
         "-lws2_32",
         "-ladvapi32"
       ],
       "optimization": "O0",
       "source_hash": "9a3dade718c9998126fdb4ca63b18b37d9044f24c3b8fcf6cbfede434e15ceca",
-      "source_path": "samples/controlled/source/numeric.c"
+      "source_path": "samples/controlled/source/numeric.c",
+      "status": "success"
     },
     {
       "architecture": "x86",
       "artifact_group": "numeric",
+      "attempt_diagnostics": [],
+      "attempts": 1,
       "behavior": [
         "sum_array 0 0",
         "find_max 0 0",
@@ -12908,19 +12934,22 @@
         "-O2",
         "-fno-ipa-icf",
         "-Wl,--no-insert-timestamp",
-        "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\samples\\controlled\\source\\numeric.c",
+        "samples/controlled/source/numeric.c",
         "-o",
-        "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\samples\\controlled\\builds\\numeric-gcc-O2\\numeric-gcc-O2.exe",
+        "samples/controlled/builds/numeric-gcc-O2/.staging/attempt-1/numeric-gcc-O2.exe",
         "-lws2_32",
         "-ladvapi32"
       ],
       "optimization": "O2",
       "source_hash": "9a3dade718c9998126fdb4ca63b18b37d9044f24c3b8fcf6cbfede434e15ceca",
-      "source_path": "samples/controlled/source/numeric.c"
+      "source_path": "samples/controlled/source/numeric.c",
+      "status": "success"
     },
     {
       "architecture": "x86",
       "artifact_group": "numeric",
+      "attempt_diagnostics": [],
+      "attempts": 1,
       "behavior": [
         "sum_array 0 0",
         "find_max 0 0",
@@ -12979,19 +13008,22 @@
         "-O3",
         "-fno-ipa-icf",
         "-Wl,--no-insert-timestamp",
-        "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\samples\\controlled\\source\\numeric.c",
+        "samples/controlled/source/numeric.c",
         "-o",
-        "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\samples\\controlled\\builds\\numeric-gcc-O3\\numeric-gcc-O3.exe",
+        "samples/controlled/builds/numeric-gcc-O3/.staging/attempt-1/numeric-gcc-O3.exe",
         "-lws2_32",
         "-ladvapi32"
       ],
       "optimization": "O3",
       "source_hash": "9a3dade718c9998126fdb4ca63b18b37d9044f24c3b8fcf6cbfede434e15ceca",
-      "source_path": "samples/controlled/source/numeric.c"
+      "source_path": "samples/controlled/source/numeric.c",
+      "status": "success"
     },
     {
       "architecture": "x86",
       "artifact_group": "numeric",
+      "attempt_diagnostics": [],
+      "attempts": 1,
       "behavior": [
         "sum_array 0 0",
         "find_max 0 0",
@@ -13052,8 +13084,8 @@
         "/Brepro",
         "/W3",
         "/D_CRT_SECURE_NO_WARNINGS",
-        "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\samples\\controlled\\source\\numeric.c",
-        "/FeC:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\samples\\controlled\\builds\\numeric-msvc-O0\\numeric-msvc-O0.exe",
+        "samples/controlled/source/numeric.c",
+        "/Fesamples/controlled/builds/numeric-msvc-O0/.staging/attempt-1/numeric-msvc-O0.exe",
         "/link",
         "/INCREMENTAL:NO",
         "/OPT:NOICF",
@@ -13062,11 +13094,14 @@
       ],
       "optimization": "O0",
       "source_hash": "9a3dade718c9998126fdb4ca63b18b37d9044f24c3b8fcf6cbfede434e15ceca",
-      "source_path": "samples/controlled/source/numeric.c"
+      "source_path": "samples/controlled/source/numeric.c",
+      "status": "success"
     },
     {
       "architecture": "x86",
       "artifact_group": "numeric",
+      "attempt_diagnostics": [],
+      "attempts": 1,
       "behavior": [
         "sum_array__transparent_wrapper 0 0",
         "sum_array__thunk 0 0",
@@ -25365,17 +25400,20 @@
       "flags": [
         "-O0",
         "-Wl,--no-insert-timestamp",
-        "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\samples\\controlled\\source\\numeric_variants.c",
+        "samples/controlled/source/numeric_variants.c",
         "-o",
-        "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\samples\\controlled\\builds\\numeric-variants-gcc-O0\\numeric-variants-gcc-O0.exe"
+        "samples/controlled/builds/numeric-variants-gcc-O0/.staging/attempt-1/numeric-variants-gcc-O0.exe"
       ],
       "optimization": "O0",
       "source_hash": "743f3181ebae33db0c53e54fbb4191b5fa89f574729da974a0ceb134d847368b",
-      "source_path": "samples/controlled/source/numeric_variants.c"
+      "source_path": "samples/controlled/source/numeric_variants.c",
+      "status": "success"
     },
     {
       "architecture": "x86",
       "artifact_group": "system_api",
+      "attempt_diagnostics": [],
+      "attempts": 1,
       "behavior": [
         "read_file 0 1",
         "create_socket 0 1",
@@ -25434,19 +25472,22 @@
         "-O0",
         "-fno-ipa-icf",
         "-Wl,--no-insert-timestamp",
-        "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\samples\\controlled\\source\\system_api.c",
+        "samples/controlled/source/system_api.c",
         "-o",
-        "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\samples\\controlled\\builds\\system_api-gcc-O0\\system_api-gcc-O0.exe",
+        "samples/controlled/builds/system_api-gcc-O0/.staging/attempt-1/system_api-gcc-O0.exe",
         "-lws2_32",
         "-ladvapi32"
       ],
       "optimization": "O0",
       "source_hash": "4e6706520e6bcde4281f191eca4ac7bc5bd219b110bc4cfd7c4aeeed9cdfea64",
-      "source_path": "samples/controlled/source/system_api.c"
+      "source_path": "samples/controlled/source/system_api.c",
+      "status": "success"
     },
     {
       "architecture": "x86",
       "artifact_group": "system_api",
+      "attempt_diagnostics": [],
+      "attempts": 1,
       "behavior": [
         "read_file 0 1",
         "create_socket 0 1",
@@ -25505,19 +25546,22 @@
         "-O2",
         "-fno-ipa-icf",
         "-Wl,--no-insert-timestamp",
-        "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\samples\\controlled\\source\\system_api.c",
+        "samples/controlled/source/system_api.c",
         "-o",
-        "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\samples\\controlled\\builds\\system_api-gcc-O2\\system_api-gcc-O2.exe",
+        "samples/controlled/builds/system_api-gcc-O2/.staging/attempt-1/system_api-gcc-O2.exe",
         "-lws2_32",
         "-ladvapi32"
       ],
       "optimization": "O2",
       "source_hash": "4e6706520e6bcde4281f191eca4ac7bc5bd219b110bc4cfd7c4aeeed9cdfea64",
-      "source_path": "samples/controlled/source/system_api.c"
+      "source_path": "samples/controlled/source/system_api.c",
+      "status": "success"
     },
     {
       "architecture": "x86",
       "artifact_group": "system_api",
+      "attempt_diagnostics": [],
+      "attempts": 1,
       "behavior": [
         "read_file 0 1",
         "create_socket 0 1",
@@ -25576,19 +25620,22 @@
         "-O3",
         "-fno-ipa-icf",
         "-Wl,--no-insert-timestamp",
-        "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\samples\\controlled\\source\\system_api.c",
+        "samples/controlled/source/system_api.c",
         "-o",
-        "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\samples\\controlled\\builds\\system_api-gcc-O3\\system_api-gcc-O3.exe",
+        "samples/controlled/builds/system_api-gcc-O3/.staging/attempt-1/system_api-gcc-O3.exe",
         "-lws2_32",
         "-ladvapi32"
       ],
       "optimization": "O3",
       "source_hash": "4e6706520e6bcde4281f191eca4ac7bc5bd219b110bc4cfd7c4aeeed9cdfea64",
-      "source_path": "samples/controlled/source/system_api.c"
+      "source_path": "samples/controlled/source/system_api.c",
+      "status": "success"
     },
     {
       "architecture": "x86",
       "artifact_group": "system_api",
+      "attempt_diagnostics": [],
+      "attempts": 1,
       "behavior": [
         "read_file 0 1",
         "create_socket 0 1",
@@ -25649,8 +25696,8 @@
         "/Brepro",
         "/W3",
         "/D_CRT_SECURE_NO_WARNINGS",
-        "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\samples\\controlled\\source\\system_api.c",
-        "/FeC:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\samples\\controlled\\builds\\system_api-msvc-O0\\system_api-msvc-O0.exe",
+        "samples/controlled/source/system_api.c",
+        "/Fesamples/controlled/builds/system_api-msvc-O0/.staging/attempt-1/system_api-msvc-O0.exe",
         "/link",
         "/INCREMENTAL:NO",
         "/OPT:NOICF",
@@ -25659,11 +25706,14 @@
       ],
       "optimization": "O0",
       "source_hash": "4e6706520e6bcde4281f191eca4ac7bc5bd219b110bc4cfd7c4aeeed9cdfea64",
-      "source_path": "samples/controlled/source/system_api.c"
+      "source_path": "samples/controlled/source/system_api.c",
+      "status": "success"
     },
     {
       "architecture": "x86",
       "artifact_group": "text",
+      "attempt_diagnostics": [],
+      "attempts": 1,
       "behavior": [
         "count_digits 0 0",
         "count_letters 0 0",
@@ -25722,19 +25772,22 @@
         "-O0",
         "-fno-ipa-icf",
         "-Wl,--no-insert-timestamp",
-        "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\samples\\controlled\\source\\text.c",
+        "samples/controlled/source/text.c",
         "-o",
-        "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\samples\\controlled\\builds\\text-gcc-O0\\text-gcc-O0.exe",
+        "samples/controlled/builds/text-gcc-O0/.staging/attempt-1/text-gcc-O0.exe",
         "-lws2_32",
         "-ladvapi32"
       ],
       "optimization": "O0",
       "source_hash": "0e76eb2a24692ebe328520b5916b2fd9ca4e6f23e847760d0c1dc4f1d30cbf3c",
-      "source_path": "samples/controlled/source/text.c"
+      "source_path": "samples/controlled/source/text.c",
+      "status": "success"
     },
     {
       "architecture": "x86",
       "artifact_group": "text",
+      "attempt_diagnostics": [],
+      "attempts": 1,
       "behavior": [
         "count_digits 0 0",
         "count_letters 0 0",
@@ -25793,19 +25846,22 @@
         "-O2",
         "-fno-ipa-icf",
         "-Wl,--no-insert-timestamp",
-        "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\samples\\controlled\\source\\text.c",
+        "samples/controlled/source/text.c",
         "-o",
-        "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\samples\\controlled\\builds\\text-gcc-O2\\text-gcc-O2.exe",
+        "samples/controlled/builds/text-gcc-O2/.staging/attempt-1/text-gcc-O2.exe",
         "-lws2_32",
         "-ladvapi32"
       ],
       "optimization": "O2",
       "source_hash": "0e76eb2a24692ebe328520b5916b2fd9ca4e6f23e847760d0c1dc4f1d30cbf3c",
-      "source_path": "samples/controlled/source/text.c"
+      "source_path": "samples/controlled/source/text.c",
+      "status": "success"
     },
     {
       "architecture": "x86",
       "artifact_group": "text",
+      "attempt_diagnostics": [],
+      "attempts": 1,
       "behavior": [
         "count_digits 0 0",
         "count_letters 0 0",
@@ -25864,19 +25920,22 @@
         "-O3",
         "-fno-ipa-icf",
         "-Wl,--no-insert-timestamp",
-        "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\samples\\controlled\\source\\text.c",
+        "samples/controlled/source/text.c",
         "-o",
-        "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\samples\\controlled\\builds\\text-gcc-O3\\text-gcc-O3.exe",
+        "samples/controlled/builds/text-gcc-O3/.staging/attempt-1/text-gcc-O3.exe",
         "-lws2_32",
         "-ladvapi32"
       ],
       "optimization": "O3",
       "source_hash": "0e76eb2a24692ebe328520b5916b2fd9ca4e6f23e847760d0c1dc4f1d30cbf3c",
-      "source_path": "samples/controlled/source/text.c"
+      "source_path": "samples/controlled/source/text.c",
+      "status": "success"
     },
     {
       "architecture": "x86",
       "artifact_group": "text",
+      "attempt_diagnostics": [],
+      "attempts": 1,
       "behavior": [
         "count_digits 0 0",
         "count_letters 0 0",
@@ -25937,8 +25996,8 @@
         "/Brepro",
         "/W3",
         "/D_CRT_SECURE_NO_WARNINGS",
-        "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\samples\\controlled\\source\\text.c",
-        "/FeC:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\samples\\controlled\\builds\\text-msvc-O0\\text-msvc-O0.exe",
+        "samples/controlled/source/text.c",
+        "/Fesamples/controlled/builds/text-msvc-O0/.staging/attempt-1/text-msvc-O0.exe",
         "/link",
         "/INCREMENTAL:NO",
         "/OPT:NOICF",
@@ -25947,11 +26006,14 @@
       ],
       "optimization": "O0",
       "source_hash": "0e76eb2a24692ebe328520b5916b2fd9ca4e6f23e847760d0c1dc4f1d30cbf3c",
-      "source_path": "samples/controlled/source/text.c"
+      "source_path": "samples/controlled/source/text.c",
+      "status": "success"
     },
     {
       "architecture": "x86",
       "artifact_group": "text",
+      "attempt_diagnostics": [],
+      "attempts": 1,
       "behavior": [
         "count_digits 0 0",
         "count_letters 0 0",
@@ -26012,8 +26074,8 @@
         "/Brepro",
         "/W3",
         "/D_CRT_SECURE_NO_WARNINGS",
-        "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\samples\\controlled\\source\\text.c",
-        "/FeC:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\samples\\controlled\\builds\\text-msvc-O2\\text-msvc-O2.exe",
+        "samples/controlled/source/text.c",
+        "/Fesamples/controlled/builds/text-msvc-O2/.staging/attempt-1/text-msvc-O2.exe",
         "/link",
         "/INCREMENTAL:NO",
         "/OPT:NOICF",
@@ -26022,11 +26084,14 @@
       ],
       "optimization": "O2",
       "source_hash": "0e76eb2a24692ebe328520b5916b2fd9ca4e6f23e847760d0c1dc4f1d30cbf3c",
-      "source_path": "samples/controlled/source/text.c"
+      "source_path": "samples/controlled/source/text.c",
+      "status": "success"
     },
     {
       "architecture": "x86",
       "artifact_group": "text",
+      "attempt_diagnostics": [],
+      "attempts": 1,
       "behavior": [
         "count_digits__transparent_wrapper 0 0",
         "count_digits__thunk 0 0",
@@ -38325,13 +38390,14 @@
       "flags": [
         "-O0",
         "-Wl,--no-insert-timestamp",
-        "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\samples\\controlled\\source\\text_variants.c",
+        "samples/controlled/source/text_variants.c",
         "-o",
-        "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\samples\\controlled\\builds\\text-variants-gcc-O0\\text-variants-gcc-O0.exe"
+        "samples/controlled/builds/text-variants-gcc-O0/.staging/attempt-1/text-variants-gcc-O0.exe"
       ],
       "optimization": "O0",
       "source_hash": "1aa2868656746de4fc53186b0539f56dea740f0ecabb07525e122d9aa0e1fe1d",
-      "source_path": "samples/controlled/source/text_variants.c"
+      "source_path": "samples/controlled/source/text_variants.c",
+      "status": "success"
     }
   ],
   "graphs": [
@@ -46826,7 +46892,7 @@
       "build_id": null,
       "compiler": "unknown",
       "filename": "findstr.exe",
-      "origin": "C:\\WINDOWS\\System32\\findstr.exe",
+      "origin": "${SystemRoot}/System32/findstr.exe",
       "path": "samples/benign_realworld/findstr.exe",
       "provenance": "windows_system32_benign_validation_only",
       "sample_id": "system32-findstr.exe",
@@ -46837,7 +46903,7 @@
       "build_id": null,
       "compiler": "unknown",
       "filename": "hostname.exe",
-      "origin": "C:\\WINDOWS\\System32\\hostname.exe",
+      "origin": "${SystemRoot}/System32/hostname.exe",
       "path": "samples/benign_realworld/hostname.exe",
       "provenance": "windows_system32_benign_validation_only",
       "sample_id": "system32-hostname.exe",
@@ -46848,7 +46914,7 @@
       "build_id": null,
       "compiler": "unknown",
       "filename": "ipconfig.exe",
-      "origin": "C:\\WINDOWS\\System32\\ipconfig.exe",
+      "origin": "${SystemRoot}/System32/ipconfig.exe",
       "path": "samples/benign_realworld/ipconfig.exe",
       "provenance": "windows_system32_benign_validation_only",
       "sample_id": "system32-ipconfig.exe",
@@ -46859,7 +46925,7 @@
       "build_id": null,
       "compiler": "unknown",
       "filename": "ping.exe",
-      "origin": "C:\\WINDOWS\\System32\\ping.exe",
+      "origin": "${SystemRoot}/System32/ping.exe",
       "path": "samples/benign_realworld/ping.exe",
       "provenance": "windows_system32_benign_validation_only",
       "sample_id": "system32-ping.exe",
@@ -46870,7 +46936,7 @@
       "build_id": null,
       "compiler": "unknown",
       "filename": "tasklist.exe",
-      "origin": "C:\\WINDOWS\\System32\\tasklist.exe",
+      "origin": "${SystemRoot}/System32/tasklist.exe",
       "path": "samples/benign_realworld/tasklist.exe",
       "provenance": "windows_system32_benign_validation_only",
       "sample_id": "system32-tasklist.exe",
@@ -46881,7 +46947,7 @@
       "build_id": null,
       "compiler": "unknown",
       "filename": "tracert.exe",
-      "origin": "C:\\WINDOWS\\System32\\tracert.exe",
+      "origin": "${SystemRoot}/System32/tracert.exe",
       "path": "samples/benign_realworld/tracert.exe",
       "provenance": "windows_system32_benign_validation_only",
       "sample_id": "system32-tracert.exe",
@@ -46892,7 +46958,7 @@
       "build_id": null,
       "compiler": "unknown",
       "filename": "where.exe",
-      "origin": "C:\\WINDOWS\\System32\\where.exe",
+      "origin": "${SystemRoot}/System32/where.exe",
       "path": "samples/benign_realworld/where.exe",
       "provenance": "windows_system32_benign_validation_only",
       "sample_id": "system32-where.exe",
@@ -46903,7 +46969,7 @@
       "build_id": null,
       "compiler": "unknown",
       "filename": "whoami.exe",
-      "origin": "C:\\WINDOWS\\System32\\whoami.exe",
+      "origin": "${SystemRoot}/System32/whoami.exe",
       "path": "samples/benign_realworld/whoami.exe",
       "provenance": "windows_system32_benign_validation_only",
       "sample_id": "system32-whoami.exe",

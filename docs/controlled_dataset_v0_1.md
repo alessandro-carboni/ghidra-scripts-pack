@@ -132,3 +132,39 @@ or freeze is missing; `--technical-only` explicitly does not declare Step 8 comp
 
 Frozen Step 5–7 fixtures and golden digests are outside this dataset and unchanged.
 Step 9 and LLM training are not part of this implementation.
+
+## Pre-freeze portability and signal audit
+
+All persisted build flags use repository-relative source/output arguments. Compiler
+identity is name/version; the executable installation path stays local. Failures
+record status, compiler, optimization, phase, bounded attempts and sanitized
+diagnostics. The actual compiler command still uses resolved local paths.
+Metadata serialization rejects repository/user-home path leakage.
+
+Every controlled build compiles in an isolated `.staging/attempt-N` directory.
+Only generated artifacts in that directory are cleaned. A successful compiler exit,
+PE validation and runtime oracle validation must all precede atomic replacement of
+the canonical executable. Output-access/sharing errors receive at most three
+attempts; source errors or missing input libraries fail immediately. A failed build
+is excluded even if an older final executable remains on disk. No lock or system
+protection is bypassed.
+
+```powershell
+python scripts/audit_dataset_graph_signal.py --output datasets/osgf_pairs_v0_1/graph_signal_audit.json
+python scripts/dataset_review.py prepare --refresh-pending
+```
+
+The signal audit reads canonical graphs and never modifies labels, graphs or splits.
+It reports overlapping properties, explicit node/edge counts, category chains and
+per-label/category/family/split pair combinations. `interaction_capable` requires an
+explicit function call followed by typed evidence attached to its callee, matching
+Step 6's existing motif eligibility. It is not a similarity score or a guarantee of
+retention under fingerprint motif limits. Missing visibility counts remain unknown;
+unresolved calls and local truncation are reported separately. Anchor-only graphs
+are valid observations and remain included. An audit stores the exact manifest and
+graph content hashes, without timestamps, for deterministic repeated output.
+
+The complete rebuild also regenerates this audit and the pending review packet.
+`--refresh-pending` refuses any record containing a reviewer, decision or human
+notes. It refreshes hashes only while all decisions remain pending. Neither command
+creates a freeze or supplies human decisions.

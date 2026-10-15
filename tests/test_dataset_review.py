@@ -8,6 +8,20 @@ from scripts.dataset_review import freeze, prepare, validate_decisions
 
 
 class DatasetReviewTests(unittest.TestCase):
+    def test_refresh_pending_preserves_any_human_input(self):
+        with tempfile.TemporaryDirectory() as temp:
+            directory = Path(temp)
+            self.packet(directory)
+            prepare(self.data, directory, refresh_pending=True)
+            path = directory / "review_decisions.json"
+            decisions = json.loads(path.read_text())
+            decisions["records"][0]["notes"] = "Human work in progress"
+            path.write_text(json.dumps(decisions))
+            before = path.read_bytes()
+            with self.assertRaisesRegex(ValueError, "human input"):
+                prepare(self.data, directory, refresh_pending=True)
+            self.assertEqual(path.read_bytes(), before)
+
     @classmethod
     def setUpClass(cls):
         cls.data = json.loads((Path(__file__).resolve().parents[1] / "datasets/osgf_pairs_v0_1/manifest.json").read_text())

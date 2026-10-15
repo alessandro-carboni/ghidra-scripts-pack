@@ -1,0 +1,4784 @@
+{
+  "audit_version": "0.1.0",
+  "definitions": {
+    "anchor_only": "One FUNCTION anchor and no other semantic structure; visibility/unknown observability may coexist.",
+    "counts": "Canonical nodes/edges (not callsite multiplicities); unresolved occurrences also reported separately.",
+    "degraded_observability": "Observed unresolved calls, local truncation, or unavailable visibility counts, as in Step 6/7. Unknown is not zero. No fingerprint motif-budget truncation inferred from canonical input.",
+    "interaction_capable": "Explicit calls_function edge whose callee is source of calls_api/references_string/uses_constant/belongs_to_section (Step 6).",
+    "scope": "Read-only signal audit; categories overlap; no labels, exclusions, similarity or malware inference."
+  },
+  "global_graph_statistics": {
+    "counts": {
+      "calls_api_count": 42,
+      "calls_function_count": 75,
+      "category_chain_count": 4,
+      "category_node_count": 4,
+      "edge_count": 171,
+      "function_node_count": 170,
+      "has_string_category_count": 4,
+      "interaction_support_count": 16,
+      "non_anchor_function_node_count": 75,
+      "references_string_count": 8,
+      "typed_evidence_node_count": 76,
+      "unresolved_call_count": 3,
+      "unresolved_call_occurrences": 3,
+      "uses_constant_count": 22
+    },
+    "evidence_types_graph_counts": {
+      "API": 19,
+      "CONSTANT": 4,
+      "STRING": 8,
+      "STRING_CATEGORY": 4
+    },
+    "graphs": 95,
+    "observability_reasons": {
+      "explicit_dynamic_dispatch_observation_unavailable": 79,
+      "indirect_calls_observation_unavailable": 79,
+      "unresolved_calls_observed": 3,
+      "unresolved_indirect_calls_observation_unavailable": 79,
+      "unresolved_indirect_calls_observed": 3
+    },
+    "properties": {
+      "anchor_only": 37,
+      "degraded_observability": 82,
+      "has_topology": 46,
+      "interaction_capable": 4,
+      "topology_only": 39,
+      "typed_evidence_present": 19
+    }
+  },
+  "global_pair_statistics": {
+    "both_anchor_only": 100,
+    "both_interaction_capable": 1,
+    "both_topology": 22,
+    "both_typed_evidence": 24,
+    "either_degraded": 174,
+    "exactly_one_anchor_only": 40,
+    "pairs": 179
+  },
+  "graphs": [
+    {
+      "anchor_only": true,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 0,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "b61449cc667afad1a0cb536782aba022ffb39bb6e9fa9166d8d96a26f4a0de14",
+      "degraded_observability": true,
+      "edge_count": 0,
+      "effective_depth": {
+        "callee_depth": 0,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 1,
+      "graph_id": "graph:005f37b959319c788ba04d5e",
+      "has_string_category_count": 0,
+      "has_topology": false,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 0,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "discovery_train",
+      "topology_only": false,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": false,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 1,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "5d09e25b287747c185fe09940527d8d85f23b6d707c6fb0a5d4f0e4cbe2e29a6",
+      "degraded_observability": true,
+      "edge_count": 1,
+      "effective_depth": {
+        "callee_depth": 1,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 2,
+      "graph_id": "graph:04c74563049f93f8b2265f64",
+      "has_string_category_count": 0,
+      "has_topology": true,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 1,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "discovery_train",
+      "topology_only": true,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": true,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 0,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "214f1b48446aa5c334e504ce55ddc37aad96d074ed7aca4b9d1f9d8fb6e78a63",
+      "degraded_observability": true,
+      "edge_count": 0,
+      "effective_depth": {
+        "callee_depth": 0,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 1,
+      "graph_id": "graph:096c1889ada24232e623a570",
+      "has_string_category_count": 0,
+      "has_topology": false,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 0,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "discovery_train",
+      "topology_only": false,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": true,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 0,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "784854ac5389d59512fea37833ee4f3101d09d6190189aebb878ece318cdee8b",
+      "degraded_observability": true,
+      "edge_count": 0,
+      "effective_depth": {
+        "callee_depth": 0,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 1,
+      "graph_id": "graph:0f43944f2ceef89946986c19",
+      "has_string_category_count": 0,
+      "has_topology": false,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 0,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "discovery_train",
+      "topology_only": false,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": true,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 0,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "5b7c2b9f00c71cf623a16c22f07392321111217616126188408f44b5c4332f71",
+      "degraded_observability": true,
+      "edge_count": 0,
+      "effective_depth": {
+        "callee_depth": 0,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 1,
+      "graph_id": "graph:121a18174363aaa378da7ea2",
+      "has_string_category_count": 0,
+      "has_topology": false,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 0,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "discovery_train",
+      "topology_only": false,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": false,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 2,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "997280edcafa4ad4ed7d31edcc7e1955722d20cbf43cff799c0b7c6f8a0f1f62",
+      "degraded_observability": true,
+      "edge_count": 2,
+      "effective_depth": {
+        "callee_depth": 1,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 3,
+      "graph_id": "graph:15c76146b9e60ad12b0fd597",
+      "has_string_category_count": 0,
+      "has_topology": true,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 2,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "discovery_train",
+      "topology_only": true,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": true,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 0,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "b61449cc667afad1a0cb536782aba022ffb39bb6e9fa9166d8d96a26f4a0de14",
+      "degraded_observability": true,
+      "edge_count": 0,
+      "effective_depth": {
+        "callee_depth": 0,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 1,
+      "graph_id": "graph:1c8e1fd542f1fb5fb7cd9664",
+      "has_string_category_count": 0,
+      "has_topology": false,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 0,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "discovery_train",
+      "topology_only": false,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": false,
+      "call_category_chain_count": 0,
+      "calls_api_count": 1,
+      "calls_function_count": 0,
+      "category_chain_count": 1,
+      "category_node_count": 1,
+      "content_sha256": "6132a7f5ed4bba6ac3dba8c2e6ff47fc53e59173ba85798248a53dd581b3324a",
+      "degraded_observability": false,
+      "edge_count": 4,
+      "effective_depth": {
+        "callee_depth": 0,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [
+        "API",
+        "STRING",
+        "STRING_CATEGORY"
+      ],
+      "function_node_count": 1,
+      "graph_id": "graph:1fffd8206ff02270366f0ef5",
+      "has_string_category_count": 1,
+      "has_topology": false,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 0,
+      "observability_reasons": [],
+      "references_string_count": 1,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "validation",
+      "topology_only": false,
+      "typed_evidence_node_count": 3,
+      "typed_evidence_present": true,
+      "unknown_observation_fields": [],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": true,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 0,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "b4a67c3c99cb0dd67d2309641bcddbe63671709dbb9322ae26a559ea2f53fd23",
+      "degraded_observability": true,
+      "edge_count": 0,
+      "effective_depth": {
+        "callee_depth": 0,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 1,
+      "graph_id": "graph:21a97d8fd156b951c4e62b3a",
+      "has_string_category_count": 0,
+      "has_topology": false,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 0,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "held_out_test",
+      "topology_only": false,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": false,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 2,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "e8e3dd221b17cfa4d13a7b925c6b46b4fc967f54b1de5eb0b4038021eeffde0a",
+      "degraded_observability": true,
+      "edge_count": 2,
+      "effective_depth": {
+        "callee_depth": 1,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 3,
+      "graph_id": "graph:237deadcc21ed62b5bc482e3",
+      "has_string_category_count": 0,
+      "has_topology": true,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 2,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "held_out_test",
+      "topology_only": true,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": false,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 2,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "dc5564e3d207cfc7dfca2279e76886b3706018fa160c753590e6f7a28edddbac",
+      "degraded_observability": true,
+      "edge_count": 2,
+      "effective_depth": {
+        "callee_depth": 1,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 3,
+      "graph_id": "graph:243215bc6e60814715abfd72",
+      "has_string_category_count": 0,
+      "has_topology": true,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 2,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "discovery_train",
+      "topology_only": true,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": false,
+      "call_category_chain_count": 0,
+      "calls_api_count": 1,
+      "calls_function_count": 0,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "138591b04a99827412e2cd66703ecf8f3ef1058de8a22b80c4151f02a773be07",
+      "degraded_observability": false,
+      "edge_count": 2,
+      "effective_depth": {
+        "callee_depth": 0,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [
+        "API"
+      ],
+      "function_node_count": 1,
+      "graph_id": "graph:24aa2b421f1c2e1a6dd65843",
+      "has_string_category_count": 0,
+      "has_topology": false,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 0,
+      "observability_reasons": [],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "validation",
+      "topology_only": false,
+      "typed_evidence_node_count": 1,
+      "typed_evidence_present": true,
+      "unknown_observation_fields": [],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": false,
+      "call_category_chain_count": 0,
+      "calls_api_count": 2,
+      "calls_function_count": 2,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "d4cc204a0f54810cc8bcdf97667c366448cb5cdbbf5fe0e944cf0592f8cfca75",
+      "degraded_observability": true,
+      "edge_count": 4,
+      "effective_depth": {
+        "callee_depth": 1,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [
+        "API"
+      ],
+      "function_node_count": 3,
+      "graph_id": "graph:29fbb88db0ea0e7a7f5b8b15",
+      "has_string_category_count": 0,
+      "has_topology": true,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 2,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "validation",
+      "topology_only": false,
+      "typed_evidence_node_count": 2,
+      "typed_evidence_present": true,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": false,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 1,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "31ee8ed33d57acec77bf7012f957494808fddfb91c96e0aafad458091a6e5258",
+      "degraded_observability": false,
+      "edge_count": 2,
+      "effective_depth": {
+        "callee_depth": 1,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 2,
+      "graph_id": "graph:2b25b023a94630e282fac938",
+      "has_string_category_count": 0,
+      "has_topology": true,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 1,
+      "observability_reasons": [],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "discovery_train",
+      "topology_only": true,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": false,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 1,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "22798b27f5bd799a1614485c77b73d9d25f1eaf21c84e4010797eb9f964855e8",
+      "degraded_observability": true,
+      "edge_count": 1,
+      "effective_depth": {
+        "callee_depth": 1,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 2,
+      "graph_id": "graph:2c68657be1cd9e1090ed5e7a",
+      "has_string_category_count": 0,
+      "has_topology": true,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 1,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "held_out_test",
+      "topology_only": true,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": false,
+      "call_category_chain_count": 0,
+      "calls_api_count": 2,
+      "calls_function_count": 2,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "ed60c255f76d52af50ba16568898a76b4fa114fd015cfc0012dd0f49f18f6647",
+      "degraded_observability": true,
+      "edge_count": 4,
+      "effective_depth": {
+        "callee_depth": 1,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [
+        "API"
+      ],
+      "function_node_count": 3,
+      "graph_id": "graph:2dda7782156eac3e30947c4b",
+      "has_string_category_count": 0,
+      "has_topology": true,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 2,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "validation",
+      "topology_only": false,
+      "typed_evidence_node_count": 2,
+      "typed_evidence_present": true,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": false,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 2,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "503933a90f3daba27d272a3735eb22fb10c545ed8144efe4b016b7421708e3cc",
+      "degraded_observability": true,
+      "edge_count": 2,
+      "effective_depth": {
+        "callee_depth": 2,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 3,
+      "graph_id": "graph:2f4fadd185e25faca2ce5668",
+      "has_string_category_count": 0,
+      "has_topology": true,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 2,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "discovery_train",
+      "topology_only": true,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": false,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 1,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "7861951261e76a29b09842690f146cee9c93c7cafe90cdcb638b05c6c92723c0",
+      "degraded_observability": true,
+      "edge_count": 1,
+      "effective_depth": {
+        "callee_depth": 1,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 2,
+      "graph_id": "graph:2ffa79977d6385cf4af4ab55",
+      "has_string_category_count": 0,
+      "has_topology": true,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 1,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "held_out_test",
+      "topology_only": true,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": false,
+      "call_category_chain_count": 0,
+      "calls_api_count": 1,
+      "calls_function_count": 0,
+      "category_chain_count": 1,
+      "category_node_count": 1,
+      "content_sha256": "33bd207163e7512ad1e125d2ffe28bf1dfe1bdde84cd7a7761a5b7cfa031e1b3",
+      "degraded_observability": true,
+      "edge_count": 3,
+      "effective_depth": {
+        "callee_depth": 0,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [
+        "API",
+        "STRING",
+        "STRING_CATEGORY"
+      ],
+      "function_node_count": 1,
+      "graph_id": "graph:34f5bb0c70039051d6b6f110",
+      "has_string_category_count": 1,
+      "has_topology": false,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 0,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 1,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "validation",
+      "topology_only": false,
+      "typed_evidence_node_count": 3,
+      "typed_evidence_present": true,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": false,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 3,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "cc2e0db2c4d0289c27c084ed026cd95a8d8f01abf83b717113dd709892836ad2",
+      "degraded_observability": true,
+      "edge_count": 3,
+      "effective_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 4,
+      "graph_id": "graph:36864734454035509f4307fe",
+      "has_string_category_count": 0,
+      "has_topology": true,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 3,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "discovery_train",
+      "topology_only": true,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": false,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 1,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "b5feef14fed744ebd637b89429a4df968396de56604952f30b8e2880137f7389",
+      "degraded_observability": true,
+      "edge_count": 1,
+      "effective_depth": {
+        "callee_depth": 1,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 2,
+      "graph_id": "graph:378d5c42136eb4c6a7689c46",
+      "has_string_category_count": 0,
+      "has_topology": true,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 1,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "discovery_train",
+      "topology_only": true,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": true,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 0,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "57166d9f504b87914e8819804e5f63549a6431427afd7e4ca71e08041d607ed0",
+      "degraded_observability": true,
+      "edge_count": 0,
+      "effective_depth": {
+        "callee_depth": 0,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 1,
+      "graph_id": "graph:37b46dc5bb75466ef888f4c5",
+      "has_string_category_count": 0,
+      "has_topology": false,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 0,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "discovery_train",
+      "topology_only": false,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": false,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 3,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "fa279bef915f5796effecb217c033cb8fd8a2ee2e0ae8fe21b516c5d70802f49",
+      "degraded_observability": true,
+      "edge_count": 3,
+      "effective_depth": {
+        "callee_depth": 2,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 4,
+      "graph_id": "graph:38f908429eb6f3ac91f0d997",
+      "has_string_category_count": 0,
+      "has_topology": true,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 3,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "discovery_train",
+      "topology_only": true,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": true,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 0,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "33c96b4f668214fbaed4a24fa4469a7ea2eb00868aeb69372eb0bf16245614b4",
+      "degraded_observability": true,
+      "edge_count": 0,
+      "effective_depth": {
+        "callee_depth": 0,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 1,
+      "graph_id": "graph:3eb11f01ccb1365c15326fba",
+      "has_string_category_count": 0,
+      "has_topology": false,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 0,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "held_out_test",
+      "topology_only": false,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": false,
+      "call_category_chain_count": 0,
+      "calls_api_count": 1,
+      "calls_function_count": 0,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "6857ec028235859c68233d9724ab6b24649d2386e9465dc9b45d20f39e24b5bb",
+      "degraded_observability": false,
+      "edge_count": 2,
+      "effective_depth": {
+        "callee_depth": 0,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [
+        "API"
+      ],
+      "function_node_count": 1,
+      "graph_id": "graph:41f60446d3b0a0e788a55306",
+      "has_string_category_count": 0,
+      "has_topology": false,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 0,
+      "observability_reasons": [],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "validation",
+      "topology_only": false,
+      "typed_evidence_node_count": 1,
+      "typed_evidence_present": true,
+      "unknown_observation_fields": [],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": true,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 0,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "57166d9f504b87914e8819804e5f63549a6431427afd7e4ca71e08041d607ed0",
+      "degraded_observability": true,
+      "edge_count": 0,
+      "effective_depth": {
+        "callee_depth": 0,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 1,
+      "graph_id": "graph:4e21dba4b7c3d0f2876d3b77",
+      "has_string_category_count": 0,
+      "has_topology": false,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 0,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "discovery_train",
+      "topology_only": false,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": false,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 2,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "dad58a41f887995fcddf8cb82a488265c0be038fb79e90540bb2a8250ba8ca4a",
+      "degraded_observability": true,
+      "edge_count": 2,
+      "effective_depth": {
+        "callee_depth": 1,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 3,
+      "graph_id": "graph:4f75f679cf66c7bff484423e",
+      "has_string_category_count": 0,
+      "has_topology": true,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 2,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "discovery_train",
+      "topology_only": true,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": false,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 1,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "e803cd9a8a9c0bfd2176220c5efed47ff496add1a152e7cfe700bb0c4c499616",
+      "degraded_observability": true,
+      "edge_count": 1,
+      "effective_depth": {
+        "callee_depth": 1,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 2,
+      "graph_id": "graph:504bbbd40aa4f933520094e0",
+      "has_string_category_count": 0,
+      "has_topology": true,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 1,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "discovery_train",
+      "topology_only": true,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": true,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 0,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "eafaf08a2243de19f7fd944b3e6bfa2212482530f7d18551bf3095bd83c1d683",
+      "degraded_observability": true,
+      "edge_count": 0,
+      "effective_depth": {
+        "callee_depth": 0,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 1,
+      "graph_id": "graph:50ddc4bd6c3731e5e16271e7",
+      "has_string_category_count": 0,
+      "has_topology": false,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 0,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "discovery_train",
+      "topology_only": false,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": false,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 2,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "fa1332d0fbda495071b48d1c715513790e74240c06f4f877988f37aa75784fd2",
+      "degraded_observability": true,
+      "edge_count": 2,
+      "effective_depth": {
+        "callee_depth": 2,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 3,
+      "graph_id": "graph:517f730caa0330abd9107dc4",
+      "has_string_category_count": 0,
+      "has_topology": true,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 2,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "held_out_test",
+      "topology_only": true,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": false,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 2,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "68f4467ee4850e3496cd045ba6a45a335b41792aef98caa5dd2bef244f34f7bc",
+      "degraded_observability": true,
+      "edge_count": 2,
+      "effective_depth": {
+        "callee_depth": 1,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 3,
+      "graph_id": "graph:52ead22a8216e2686b0bf26e",
+      "has_string_category_count": 0,
+      "has_topology": true,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 2,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "held_out_test",
+      "topology_only": true,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": false,
+      "call_category_chain_count": 0,
+      "calls_api_count": 2,
+      "calls_function_count": 0,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "6ae278c1288c032d6edb2e107392cd7156fb589e76c36b6229e9487a92166fae",
+      "degraded_observability": true,
+      "edge_count": 10,
+      "effective_depth": {
+        "callee_depth": 0,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [
+        "API",
+        "CONSTANT",
+        "STRING"
+      ],
+      "function_node_count": 1,
+      "graph_id": "graph:53e0f52d9f1e19c79065b71d",
+      "has_string_category_count": 0,
+      "has_topology": false,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 0,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 1,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "validation",
+      "topology_only": false,
+      "typed_evidence_node_count": 10,
+      "typed_evidence_present": true,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 7
+    },
+    {
+      "anchor_only": true,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 0,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "cd817f66789f01c8f60476558f9e4f2d6c870beffec15ed5258b1959c17c5bd3",
+      "degraded_observability": true,
+      "edge_count": 0,
+      "effective_depth": {
+        "callee_depth": 0,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 1,
+      "graph_id": "graph:552803873a2931888fce672d",
+      "has_string_category_count": 0,
+      "has_topology": false,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 0,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "held_out_test",
+      "topology_only": false,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": false,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 1,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "82986bfb8092fa259b6989d2772cb10194757adade3d2a1553a49730a218094c",
+      "degraded_observability": true,
+      "edge_count": 1,
+      "effective_depth": {
+        "callee_depth": 1,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 2,
+      "graph_id": "graph:55ba4ff23bf1c514c2f52530",
+      "has_string_category_count": 0,
+      "has_topology": true,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 1,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "discovery_train",
+      "topology_only": true,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": false,
+      "call_category_chain_count": 0,
+      "calls_api_count": 2,
+      "calls_function_count": 0,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "7921709c2834a6a2b27197543a8d04dd499d018083de5e2095e59770d6c3401a",
+      "degraded_observability": true,
+      "edge_count": 10,
+      "effective_depth": {
+        "callee_depth": 0,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [
+        "API",
+        "CONSTANT",
+        "STRING"
+      ],
+      "function_node_count": 1,
+      "graph_id": "graph:567b76697ebdfe8f29de289f",
+      "has_string_category_count": 0,
+      "has_topology": false,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 0,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 1,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "validation",
+      "topology_only": false,
+      "typed_evidence_node_count": 10,
+      "typed_evidence_present": true,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 7
+    },
+    {
+      "anchor_only": false,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 1,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "06405ee986159dbc1cfddd57b63d61efad69768d9be2725b21bd0bb346c75cc6",
+      "degraded_observability": true,
+      "edge_count": 1,
+      "effective_depth": {
+        "callee_depth": 1,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 2,
+      "graph_id": "graph:57778ae6d02406ee73893da0",
+      "has_string_category_count": 0,
+      "has_topology": true,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 1,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "discovery_train",
+      "topology_only": true,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": false,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 1,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "e13eda807fc36ee7579d464aa0b97fe6be964f4c1fdf9e0451e51a747e4cae0b",
+      "degraded_observability": true,
+      "edge_count": 1,
+      "effective_depth": {
+        "callee_depth": 1,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 2,
+      "graph_id": "graph:5901b05bac7e51b3139e2223",
+      "has_string_category_count": 0,
+      "has_topology": true,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 1,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "held_out_test",
+      "topology_only": true,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": false,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 2,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "19557dd752af732be0576f3787cd504b20bd9f6bf5d4f50c73c10aac086c1240",
+      "degraded_observability": true,
+      "edge_count": 2,
+      "effective_depth": {
+        "callee_depth": 2,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 3,
+      "graph_id": "graph:5923e15a8bf424b0377a309b",
+      "has_string_category_count": 0,
+      "has_topology": true,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 2,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "discovery_train",
+      "topology_only": true,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": true,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 0,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "16cc5e9dd45059674ae6412684ed83eaf8baeb6dcc1641d9ccff3103736826f4",
+      "degraded_observability": true,
+      "edge_count": 0,
+      "effective_depth": {
+        "callee_depth": 0,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 1,
+      "graph_id": "graph:5b3f7f95c182e005704204bf",
+      "has_string_category_count": 0,
+      "has_topology": false,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 0,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "held_out_test",
+      "topology_only": false,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": false,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 1,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "97e970b834d4fa8d36bb2689e370cb55f9f7f8944ba6e0b78b23a517fade0c51",
+      "degraded_observability": false,
+      "edge_count": 2,
+      "effective_depth": {
+        "callee_depth": 1,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 2,
+      "graph_id": "graph:5c2f198d96f175500b13615b",
+      "has_string_category_count": 0,
+      "has_topology": true,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 1,
+      "observability_reasons": [],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "discovery_train",
+      "topology_only": true,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": true,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 0,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "f96bef1897ecf3152c4b16d7aa17faf90cac3b11493cf0028a17c6c52891cb35",
+      "degraded_observability": true,
+      "edge_count": 0,
+      "effective_depth": {
+        "callee_depth": 0,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 1,
+      "graph_id": "graph:61e1fe6a5e7457b33c443c9b",
+      "has_string_category_count": 0,
+      "has_topology": false,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 0,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "discovery_train",
+      "topology_only": false,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": true,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 0,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "c4832085239ae04129d06233184f19f9a356138096be6942d76d55b6edbc8db9",
+      "degraded_observability": true,
+      "edge_count": 0,
+      "effective_depth": {
+        "callee_depth": 0,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 1,
+      "graph_id": "graph:62d8ecf3e09771863ecebb7c",
+      "has_string_category_count": 0,
+      "has_topology": false,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 0,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "held_out_test",
+      "topology_only": false,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": true,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 0,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "da95d58566fa23ce69259b7c78266d163156d6561f0d8299fa3eb13deca2da20",
+      "degraded_observability": true,
+      "edge_count": 0,
+      "effective_depth": {
+        "callee_depth": 0,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 1,
+      "graph_id": "graph:69473d48acf3964897468bc1",
+      "has_string_category_count": 0,
+      "has_topology": false,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 0,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "discovery_train",
+      "topology_only": false,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": true,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 0,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "223d8cd0ef6c8d2ec6039256cf29dec05b5c367e36e8ce11870a8d621b0d061b",
+      "degraded_observability": true,
+      "edge_count": 0,
+      "effective_depth": {
+        "callee_depth": 0,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 1,
+      "graph_id": "graph:6af1521b07a0e6eef1d5b1c9",
+      "has_string_category_count": 0,
+      "has_topology": false,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 0,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "held_out_test",
+      "topology_only": false,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": false,
+      "call_category_chain_count": 0,
+      "calls_api_count": 1,
+      "calls_function_count": 1,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "e84d592f95f9522593b8e1d26d46c18bed39de039d13288a8f3bf73bdf8e7fde",
+      "degraded_observability": false,
+      "edge_count": 3,
+      "effective_depth": {
+        "callee_depth": 1,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [
+        "API"
+      ],
+      "function_node_count": 2,
+      "graph_id": "graph:6e6140063c2c20b2ac93dccf",
+      "has_string_category_count": 0,
+      "has_topology": true,
+      "interaction_capable": true,
+      "interaction_support_count": 1,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 1,
+      "observability_reasons": [],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "validation",
+      "topology_only": false,
+      "typed_evidence_node_count": 1,
+      "typed_evidence_present": true,
+      "unknown_observation_fields": [],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": true,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 0,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "53eda3cdcdd3a85cab60618e8e0ed69a34da306ad601c9f48d2d3c8b3781813c",
+      "degraded_observability": true,
+      "edge_count": 0,
+      "effective_depth": {
+        "callee_depth": 0,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 1,
+      "graph_id": "graph:6f97cc580039993c6d95009d",
+      "has_string_category_count": 0,
+      "has_topology": false,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 0,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "discovery_train",
+      "topology_only": false,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": true,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 0,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "eafaf08a2243de19f7fd944b3e6bfa2212482530f7d18551bf3095bd83c1d683",
+      "degraded_observability": true,
+      "edge_count": 0,
+      "effective_depth": {
+        "callee_depth": 0,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 1,
+      "graph_id": "graph:6fa080bdf54e26cfe51dfced",
+      "has_string_category_count": 0,
+      "has_topology": false,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 0,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "discovery_train",
+      "topology_only": false,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": true,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 0,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "0b7708a92ac26ea8c6b24b87d213c1c928c127b947095b4ae96f5bb97b1e97af",
+      "degraded_observability": true,
+      "edge_count": 0,
+      "effective_depth": {
+        "callee_depth": 0,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 1,
+      "graph_id": "graph:6ff68b280145bdaab2fc192b",
+      "has_string_category_count": 0,
+      "has_topology": false,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 0,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "discovery_train",
+      "topology_only": false,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": false,
+      "call_category_chain_count": 0,
+      "calls_api_count": 2,
+      "calls_function_count": 0,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "00c64910f6bbee5a4b196219f1f351701dca4b82d571ba3854402868a98d0b43",
+      "degraded_observability": false,
+      "edge_count": 6,
+      "effective_depth": {
+        "callee_depth": 0,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [
+        "API",
+        "CONSTANT",
+        "STRING"
+      ],
+      "function_node_count": 1,
+      "graph_id": "graph:7491cea410bfc8bdfdc2a741",
+      "has_string_category_count": 0,
+      "has_topology": false,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 0,
+      "observability_reasons": [],
+      "references_string_count": 1,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "validation",
+      "topology_only": false,
+      "typed_evidence_node_count": 5,
+      "typed_evidence_present": true,
+      "unknown_observation_fields": [],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 2
+    },
+    {
+      "anchor_only": false,
+      "call_category_chain_count": 0,
+      "calls_api_count": 1,
+      "calls_function_count": 0,
+      "category_chain_count": 1,
+      "category_node_count": 1,
+      "content_sha256": "3298e394f648fffa461de4289ae3c2dc36909faa9b891c9ccf0971ffa76ca4b6",
+      "degraded_observability": true,
+      "edge_count": 3,
+      "effective_depth": {
+        "callee_depth": 0,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [
+        "API",
+        "STRING",
+        "STRING_CATEGORY"
+      ],
+      "function_node_count": 1,
+      "graph_id": "graph:752532776a1d6dec643cd040",
+      "has_string_category_count": 1,
+      "has_topology": false,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 0,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 1,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "validation",
+      "topology_only": false,
+      "typed_evidence_node_count": 3,
+      "typed_evidence_present": true,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": true,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 0,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "4d45dfa6443539d4ae9622b7365a6ab760b0da3a8188caccb178aa388b261687",
+      "degraded_observability": true,
+      "edge_count": 0,
+      "effective_depth": {
+        "callee_depth": 0,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 1,
+      "graph_id": "graph:75deaf5260048a68e2ed35f0",
+      "has_string_category_count": 0,
+      "has_topology": false,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 0,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "discovery_train",
+      "topology_only": false,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": true,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 0,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "fc22002cace8b6142a31115404e6b1c0ce8dffa5f3414b43d5ee37c7ae575cb9",
+      "degraded_observability": true,
+      "edge_count": 0,
+      "effective_depth": {
+        "callee_depth": 0,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 1,
+      "graph_id": "graph:76a3e581b253a744b5e4a495",
+      "has_string_category_count": 0,
+      "has_topology": false,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 0,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "held_out_test",
+      "topology_only": false,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": false,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 1,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "3b1ce0b0de0814da5a63c3221f11c716407e25f31c545f32e67494b5c618f012",
+      "degraded_observability": true,
+      "edge_count": 1,
+      "effective_depth": {
+        "callee_depth": 1,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 2,
+      "graph_id": "graph:7d25de7b91733d9103ef50f4",
+      "has_string_category_count": 0,
+      "has_topology": true,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 1,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "held_out_test",
+      "topology_only": true,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": false,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 2,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "8078a72edcd7c7a04395669dda2a51670ecc4fd788469f1ffe7bf94798dd6ba9",
+      "degraded_observability": true,
+      "edge_count": 2,
+      "effective_depth": {
+        "callee_depth": 2,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 3,
+      "graph_id": "graph:7d4ef09bbc7ad88af3f4434c",
+      "has_string_category_count": 0,
+      "has_topology": true,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 2,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "discovery_train",
+      "topology_only": true,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": true,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 0,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "1619e794772abc8927fca78c99a9b3d3f43b612fce5696b9180b610ed47ea902",
+      "degraded_observability": true,
+      "edge_count": 0,
+      "effective_depth": {
+        "callee_depth": 0,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 1,
+      "graph_id": "graph:80c5e52d69eb6096e1c1364b",
+      "has_string_category_count": 0,
+      "has_topology": false,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 0,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "discovery_train",
+      "topology_only": false,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": false,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 1,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "4a8387a1c45f302ebedc8e48948b339c533086f30df69a3e7344e6d3872d7b33",
+      "degraded_observability": true,
+      "edge_count": 1,
+      "effective_depth": {
+        "callee_depth": 1,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 2,
+      "graph_id": "graph:829d9710c33219d542278892",
+      "has_string_category_count": 0,
+      "has_topology": true,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 1,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "discovery_train",
+      "topology_only": true,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": false,
+      "call_category_chain_count": 0,
+      "calls_api_count": 5,
+      "calls_function_count": 4,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "1d7d356d2e7b32e2f6cbe78e955394bc324e630471b0ef0c92204e6d5f3ff03c",
+      "degraded_observability": true,
+      "edge_count": 11,
+      "effective_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [
+        "API"
+      ],
+      "function_node_count": 5,
+      "graph_id": "graph:85c723d9a2dc49689deba0c5",
+      "has_string_category_count": 0,
+      "has_topology": true,
+      "interaction_capable": true,
+      "interaction_support_count": 5,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 4,
+      "observability_reasons": [
+        "unresolved_calls_observed",
+        "unresolved_indirect_calls_observed"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "discovery_train",
+      "topology_only": false,
+      "typed_evidence_node_count": 5,
+      "typed_evidence_present": true,
+      "unknown_observation_fields": [],
+      "unresolved_call_count": 1,
+      "unresolved_call_occurrences": 1,
+      "unresolved_indirect_observed_count": 1,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": false,
+      "call_category_chain_count": 0,
+      "calls_api_count": 1,
+      "calls_function_count": 0,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "5d4ca47576169dbece6130a4fa7c88e79d7707e1d75ee0edad094ba6fca0f0d4",
+      "degraded_observability": false,
+      "edge_count": 2,
+      "effective_depth": {
+        "callee_depth": 0,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [
+        "API"
+      ],
+      "function_node_count": 1,
+      "graph_id": "graph:8a2656f2e0b015b32fff4c59",
+      "has_string_category_count": 0,
+      "has_topology": false,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 0,
+      "observability_reasons": [],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "validation",
+      "topology_only": false,
+      "typed_evidence_node_count": 1,
+      "typed_evidence_present": true,
+      "unknown_observation_fields": [],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": true,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 0,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "f60732a93c4fbec32384eafbed86fada5b4cf367e18a33264f45f2807dbd19d7",
+      "degraded_observability": true,
+      "edge_count": 0,
+      "effective_depth": {
+        "callee_depth": 0,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 1,
+      "graph_id": "graph:8a3b2f2040165f1694ff6dcb",
+      "has_string_category_count": 0,
+      "has_topology": false,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 0,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "held_out_test",
+      "topology_only": false,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": true,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 0,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "da95d58566fa23ce69259b7c78266d163156d6561f0d8299fa3eb13deca2da20",
+      "degraded_observability": true,
+      "edge_count": 0,
+      "effective_depth": {
+        "callee_depth": 0,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 1,
+      "graph_id": "graph:8b6acbd8e421af1550bb8f7c",
+      "has_string_category_count": 0,
+      "has_topology": false,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 0,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "discovery_train",
+      "topology_only": false,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": false,
+      "call_category_chain_count": 0,
+      "calls_api_count": 2,
+      "calls_function_count": 2,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "da8bf83d9ac689e73c9873bdcf6beab62fe35b3ac30559a2d298f7ec36c5c5d8",
+      "degraded_observability": true,
+      "edge_count": 4,
+      "effective_depth": {
+        "callee_depth": 1,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [
+        "API"
+      ],
+      "function_node_count": 3,
+      "graph_id": "graph:90065055620f5f37be5b8e55",
+      "has_string_category_count": 0,
+      "has_topology": true,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 2,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "validation",
+      "topology_only": false,
+      "typed_evidence_node_count": 2,
+      "typed_evidence_present": true,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": false,
+      "call_category_chain_count": 0,
+      "calls_api_count": 9,
+      "calls_function_count": 3,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "c54fd1a937ddfc5655cc9f00f2007d68842f1feb823be5696c42471d106a274c",
+      "degraded_observability": true,
+      "edge_count": 15,
+      "effective_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [
+        "API"
+      ],
+      "function_node_count": 4,
+      "graph_id": "graph:930d80882230aaaf7e94a1a0",
+      "has_string_category_count": 0,
+      "has_topology": true,
+      "interaction_capable": true,
+      "interaction_support_count": 5,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 3,
+      "observability_reasons": [
+        "unresolved_calls_observed",
+        "unresolved_indirect_calls_observed"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "validation",
+      "topology_only": false,
+      "typed_evidence_node_count": 9,
+      "typed_evidence_present": true,
+      "unknown_observation_fields": [],
+      "unresolved_call_count": 1,
+      "unresolved_call_occurrences": 1,
+      "unresolved_indirect_observed_count": 1,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": false,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 1,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "0fcbd9f0eb09677002587b84a36a3de110a9a3f0dd67881db6064fd848bcacc1",
+      "degraded_observability": true,
+      "edge_count": 1,
+      "effective_depth": {
+        "callee_depth": 1,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 2,
+      "graph_id": "graph:9712a09359031c6dacb69978",
+      "has_string_category_count": 0,
+      "has_topology": true,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 1,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "held_out_test",
+      "topology_only": true,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": true,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 0,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "f3c71dec97cb5d0d59d65042218d36bd7b1e28457d998313cc93d5231f1bf6c7",
+      "degraded_observability": true,
+      "edge_count": 0,
+      "effective_depth": {
+        "callee_depth": 0,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 1,
+      "graph_id": "graph:98ca0b8f4eac0fb20fb1c619",
+      "has_string_category_count": 0,
+      "has_topology": false,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 0,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "held_out_test",
+      "topology_only": false,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": false,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 2,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "4cb7462b4e3ffa71407d042ed7536f1b40a2bfb11cb97805278374afeaf59c64",
+      "degraded_observability": true,
+      "edge_count": 2,
+      "effective_depth": {
+        "callee_depth": 2,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 3,
+      "graph_id": "graph:9a15dae9fe9d55164069bf41",
+      "has_string_category_count": 0,
+      "has_topology": true,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 2,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "discovery_train",
+      "topology_only": true,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": true,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 0,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "8c7d1b1b19092e447496f78bbfd7eeaccb160661ab8c80bfd6c17788efb0f19c",
+      "degraded_observability": true,
+      "edge_count": 0,
+      "effective_depth": {
+        "callee_depth": 0,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 1,
+      "graph_id": "graph:9af067718ce840730a433d80",
+      "has_string_category_count": 0,
+      "has_topology": false,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 0,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "discovery_train",
+      "topology_only": false,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": false,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 1,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "b134aa17876f6f910957342da7d080818c0f05278dbd5c7f3c6e15a7d418fb39",
+      "degraded_observability": true,
+      "edge_count": 1,
+      "effective_depth": {
+        "callee_depth": 1,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 2,
+      "graph_id": "graph:9d9e4f54ae5671137c5364d1",
+      "has_string_category_count": 0,
+      "has_topology": true,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 1,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "discovery_train",
+      "topology_only": true,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": true,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 0,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "39e78421adde61fe6733023235b4c61189ace5a49564a66a61cd4d7ccb6e14ba",
+      "degraded_observability": true,
+      "edge_count": 0,
+      "effective_depth": {
+        "callee_depth": 0,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 1,
+      "graph_id": "graph:9f979d065fb55f6a7d87ac15",
+      "has_string_category_count": 0,
+      "has_topology": false,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 0,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "discovery_train",
+      "topology_only": false,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": true,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 0,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "8a5e6206491c3dc4dbe10e50ee613e4c579517045f05e40ebd8ea442647bcb46",
+      "degraded_observability": true,
+      "edge_count": 0,
+      "effective_depth": {
+        "callee_depth": 0,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 1,
+      "graph_id": "graph:9fec8b441f672a26e86f8d9a",
+      "has_string_category_count": 0,
+      "has_topology": false,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 0,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "held_out_test",
+      "topology_only": false,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": true,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 0,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "e8a0769659dfb7b4048e70ec8c8ff5f3a071c4fba529692fa6ed085e8a28b6d4",
+      "degraded_observability": true,
+      "edge_count": 0,
+      "effective_depth": {
+        "callee_depth": 0,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 1,
+      "graph_id": "graph:a8bc9f785acaf159779387d3",
+      "has_string_category_count": 0,
+      "has_topology": false,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 0,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "held_out_test",
+      "topology_only": false,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": false,
+      "call_category_chain_count": 0,
+      "calls_api_count": 2,
+      "calls_function_count": 0,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "fdeb5501821de180613ce7e3d11c5dd73488b16c4271e977bfb260a1e42ed1e6",
+      "degraded_observability": true,
+      "edge_count": 9,
+      "effective_depth": {
+        "callee_depth": 0,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [
+        "API",
+        "CONSTANT",
+        "STRING"
+      ],
+      "function_node_count": 1,
+      "graph_id": "graph:a8ed8022c011c71a8c1104be",
+      "has_string_category_count": 0,
+      "has_topology": false,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 0,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 1,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "validation",
+      "topology_only": false,
+      "typed_evidence_node_count": 9,
+      "typed_evidence_present": true,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 6
+    },
+    {
+      "anchor_only": false,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 1,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "abea3d5ccd59f4aed84526f1ed0dc267cf641fb69cc007393afc3961de688f5f",
+      "degraded_observability": true,
+      "edge_count": 1,
+      "effective_depth": {
+        "callee_depth": 1,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 2,
+      "graph_id": "graph:a9e287ba2cc731664f2ecc38",
+      "has_string_category_count": 0,
+      "has_topology": true,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 1,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "discovery_train",
+      "topology_only": true,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": true,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 0,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "6be933c2202d8f7f2490a623722294a6c5d46f1087017133331547830334d970",
+      "degraded_observability": true,
+      "edge_count": 0,
+      "effective_depth": {
+        "callee_depth": 0,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 1,
+      "graph_id": "graph:ac90555ee5b8f5e1d6455979",
+      "has_string_category_count": 0,
+      "has_topology": false,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 0,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "held_out_test",
+      "topology_only": false,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": false,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 1,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "ea65e1f646a73f69346afedb01edc56f00ac2fc3b3a2a469c38d3abb56a8f3f1",
+      "degraded_observability": true,
+      "edge_count": 1,
+      "effective_depth": {
+        "callee_depth": 1,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 2,
+      "graph_id": "graph:ae48e58a26e0e82dd3d93d57",
+      "has_string_category_count": 0,
+      "has_topology": true,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 1,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "discovery_train",
+      "topology_only": true,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": false,
+      "call_category_chain_count": 0,
+      "calls_api_count": 1,
+      "calls_function_count": 0,
+      "category_chain_count": 1,
+      "category_node_count": 1,
+      "content_sha256": "2e96f06be2d99cdefa6c2db85e4e7cfa2d103d3a451ce038599aea1b345aa61a",
+      "degraded_observability": true,
+      "edge_count": 3,
+      "effective_depth": {
+        "callee_depth": 0,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [
+        "API",
+        "STRING",
+        "STRING_CATEGORY"
+      ],
+      "function_node_count": 1,
+      "graph_id": "graph:b5083d42018b58221e8b5f18",
+      "has_string_category_count": 1,
+      "has_topology": false,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 0,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 1,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "validation",
+      "topology_only": false,
+      "typed_evidence_node_count": 3,
+      "typed_evidence_present": true,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": true,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 0,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "1619e794772abc8927fca78c99a9b3d3f43b612fce5696b9180b610ed47ea902",
+      "degraded_observability": true,
+      "edge_count": 0,
+      "effective_depth": {
+        "callee_depth": 0,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 1,
+      "graph_id": "graph:b73eb2288fb2b140585aba8d",
+      "has_string_category_count": 0,
+      "has_topology": false,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 0,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "discovery_train",
+      "topology_only": false,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": false,
+      "call_category_chain_count": 0,
+      "calls_api_count": 1,
+      "calls_function_count": 0,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "4f0317891fa27477a7ba8573e1ba850ff9560fd4d7dab88b85083c0e3595ba6b",
+      "degraded_observability": false,
+      "edge_count": 2,
+      "effective_depth": {
+        "callee_depth": 0,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [
+        "API"
+      ],
+      "function_node_count": 1,
+      "graph_id": "graph:bee6a52c200d8305d055d26d",
+      "has_string_category_count": 0,
+      "has_topology": false,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 0,
+      "observability_reasons": [],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "validation",
+      "topology_only": false,
+      "typed_evidence_node_count": 1,
+      "typed_evidence_present": true,
+      "unknown_observation_fields": [],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": false,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 1,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "e09c6625618e1301b953ebe5eba92906fa554191da141b85cf868ce984bd6d52",
+      "degraded_observability": true,
+      "edge_count": 1,
+      "effective_depth": {
+        "callee_depth": 1,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 2,
+      "graph_id": "graph:c2ce95fed5a318c82acd9ceb",
+      "has_string_category_count": 0,
+      "has_topology": true,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 1,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "discovery_train",
+      "topology_only": true,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": false,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 2,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "1cfd31eb55c82546ac45228218a2f04a6f0408884e8cc1304224bed764109b31",
+      "degraded_observability": false,
+      "edge_count": 3,
+      "effective_depth": {
+        "callee_depth": 2,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 3,
+      "graph_id": "graph:c38289df09d585f8af3c7bde",
+      "has_string_category_count": 0,
+      "has_topology": true,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 2,
+      "observability_reasons": [],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "discovery_train",
+      "topology_only": true,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": true,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 0,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "b4ef7b091baa794a5460aa97497a29b92c7e45a24a56f8d821216a7e02f92f55",
+      "degraded_observability": true,
+      "edge_count": 0,
+      "effective_depth": {
+        "callee_depth": 0,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 1,
+      "graph_id": "graph:cc626d14f75b8e55bcebbde2",
+      "has_string_category_count": 0,
+      "has_topology": false,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 0,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "discovery_train",
+      "topology_only": false,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": false,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 1,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "e09c6625618e1301b953ebe5eba92906fa554191da141b85cf868ce984bd6d52",
+      "degraded_observability": true,
+      "edge_count": 1,
+      "effective_depth": {
+        "callee_depth": 1,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 2,
+      "graph_id": "graph:d7e7cd037d233de6cebaf4a0",
+      "has_string_category_count": 0,
+      "has_topology": true,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 1,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "discovery_train",
+      "topology_only": true,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": false,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 1,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "3183c6dd667e54fb325fbf065c8d7c7d341a1a54f05fa0e387576f98bde5a07c",
+      "degraded_observability": true,
+      "edge_count": 1,
+      "effective_depth": {
+        "callee_depth": 1,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 2,
+      "graph_id": "graph:d8cc50c30362dda0852d9617",
+      "has_string_category_count": 0,
+      "has_topology": true,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 1,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "held_out_test",
+      "topology_only": true,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": true,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 0,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "10cd0edac018a9111c2517d650a9a60430b7b51e67b20b785a56600ec179016b",
+      "degraded_observability": true,
+      "edge_count": 0,
+      "effective_depth": {
+        "callee_depth": 0,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 1,
+      "graph_id": "graph:dcc363b99ddbe7b018501915",
+      "has_string_category_count": 0,
+      "has_topology": false,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 0,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "held_out_test",
+      "topology_only": false,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": true,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 0,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "8570f6d3468caa4daac9899af1b158315d27f19b0f530e313124ff35a47acdfb",
+      "degraded_observability": true,
+      "edge_count": 0,
+      "effective_depth": {
+        "callee_depth": 0,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 1,
+      "graph_id": "graph:dfeba3e8344fcbf7e924ded4",
+      "has_string_category_count": 0,
+      "has_topology": false,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 0,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "discovery_train",
+      "topology_only": false,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": true,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 0,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "c4832085239ae04129d06233184f19f9a356138096be6942d76d55b6edbc8db9",
+      "degraded_observability": true,
+      "edge_count": 0,
+      "effective_depth": {
+        "callee_depth": 0,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 1,
+      "graph_id": "graph:e0d57ecddd9d68d3acc05d1f",
+      "has_string_category_count": 0,
+      "has_topology": false,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 0,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "held_out_test",
+      "topology_only": false,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": true,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 0,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "ccc5c3e362df359f226f95a8f6ce0341609839be6852067905c6231acbacc578",
+      "degraded_observability": true,
+      "edge_count": 0,
+      "effective_depth": {
+        "callee_depth": 0,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 1,
+      "graph_id": "graph:e4935848a6d0deab8dd9c53d",
+      "has_string_category_count": 0,
+      "has_topology": false,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 0,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "discovery_train",
+      "topology_only": false,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": false,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 1,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "f13243ee800ddc50c43f1fe10ce067e2d848fb0181db72d187aa279bbc9cfae3",
+      "degraded_observability": false,
+      "edge_count": 2,
+      "effective_depth": {
+        "callee_depth": 1,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 2,
+      "graph_id": "graph:e6041fd6d7ec7f766ee96aaf",
+      "has_string_category_count": 0,
+      "has_topology": true,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 1,
+      "observability_reasons": [],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "held_out_test",
+      "topology_only": true,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": false,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 2,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "ec9a5c78a8804b6d6670518853ef496fc5ea717d3186b42d76f11dff90a35934",
+      "degraded_observability": true,
+      "edge_count": 2,
+      "effective_depth": {
+        "callee_depth": 2,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 3,
+      "graph_id": "graph:ea3626680372b0f2b8804a27",
+      "has_string_category_count": 0,
+      "has_topology": true,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 2,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "held_out_test",
+      "topology_only": true,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": false,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 1,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "d364f66d55bc6fb1bc5d83868a207a27cdc410c467237775f186b3163f5e49f5",
+      "degraded_observability": false,
+      "edge_count": 2,
+      "effective_depth": {
+        "callee_depth": 1,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 2,
+      "graph_id": "graph:f31f3cf9fddbd2e7124e8e9b",
+      "has_string_category_count": 0,
+      "has_topology": true,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 1,
+      "observability_reasons": [],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "held_out_test",
+      "topology_only": true,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": false,
+      "call_category_chain_count": 0,
+      "calls_api_count": 5,
+      "calls_function_count": 4,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "1ba52df55142469ae8f961596cdf7c3ea49205ec27462e5071f9accebca09150",
+      "degraded_observability": true,
+      "edge_count": 11,
+      "effective_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [
+        "API"
+      ],
+      "function_node_count": 5,
+      "graph_id": "graph:f7ff29a34cb7913c325851da",
+      "has_string_category_count": 0,
+      "has_topology": true,
+      "interaction_capable": true,
+      "interaction_support_count": 5,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 4,
+      "observability_reasons": [
+        "unresolved_calls_observed",
+        "unresolved_indirect_calls_observed"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "discovery_train",
+      "topology_only": false,
+      "typed_evidence_node_count": 5,
+      "typed_evidence_present": true,
+      "unknown_observation_fields": [],
+      "unresolved_call_count": 1,
+      "unresolved_call_occurrences": 1,
+      "unresolved_indirect_observed_count": 1,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": false,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 1,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "7cdb0439bb78d9c9f8c487b45ef17e6a891503e5e6cf8926325a7a5f09470031",
+      "degraded_observability": false,
+      "edge_count": 2,
+      "effective_depth": {
+        "callee_depth": 1,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 2,
+      "graph_id": "graph:f8cc972bb5784fc0a10ed818",
+      "has_string_category_count": 0,
+      "has_topology": true,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 1,
+      "observability_reasons": [],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "discovery_train",
+      "topology_only": true,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": false,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 2,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "83e431fcdb1793979dd37bebf17f09f6b0a20b92c1698d5633a00da5b319003d",
+      "degraded_observability": true,
+      "edge_count": 2,
+      "effective_depth": {
+        "callee_depth": 2,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 3,
+      "graph_id": "graph:f9094014f4dd9c9e092b5e4a",
+      "has_string_category_count": 0,
+      "has_topology": true,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 2,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "discovery_train",
+      "topology_only": true,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": true,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 0,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "aea3af6ca3b597c79f2e6897293f7f57e7c8870d3236e1e1e57f72a9590ac1a4",
+      "degraded_observability": true,
+      "edge_count": 0,
+      "effective_depth": {
+        "callee_depth": 0,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 1,
+      "graph_id": "graph:fd06f7e41af27e0bfc0a8c2b",
+      "has_string_category_count": 0,
+      "has_topology": false,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 0,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "held_out_test",
+      "topology_only": false,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": false,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 2,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "c50d087bb5bf45a8561d7cf153d64b51e125faf2d65dd1d66c31aca9249c3e94",
+      "degraded_observability": true,
+      "edge_count": 2,
+      "effective_depth": {
+        "callee_depth": 2,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 3,
+      "graph_id": "graph:ff29365fc97845910a1fe503",
+      "has_string_category_count": 0,
+      "has_topology": true,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 2,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "discovery_train",
+      "topology_only": true,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    },
+    {
+      "anchor_only": false,
+      "call_category_chain_count": 0,
+      "calls_api_count": 0,
+      "calls_function_count": 1,
+      "category_chain_count": 0,
+      "category_node_count": 0,
+      "content_sha256": "a58d79a276e336a00f0df0d25df07fb268cd8bf5ffc639c0501f655e71d9d5c4",
+      "degraded_observability": true,
+      "edge_count": 1,
+      "effective_depth": {
+        "callee_depth": 1,
+        "caller_depth": 0
+      },
+      "evidence_types_present": [],
+      "function_node_count": 2,
+      "graph_id": "graph:ffe5373515ca9c3ff7b75f25",
+      "has_string_category_count": 0,
+      "has_topology": true,
+      "interaction_capable": false,
+      "interaction_support_count": 0,
+      "local_graph_truncated": false,
+      "non_anchor_function_node_count": 1,
+      "observability_reasons": [
+        "indirect_calls_observation_unavailable",
+        "unresolved_indirect_calls_observation_unavailable",
+        "explicit_dynamic_dispatch_observation_unavailable"
+      ],
+      "references_string_count": 0,
+      "requested_depth": {
+        "callee_depth": 3,
+        "caller_depth": 0
+      },
+      "split": "discovery_train",
+      "topology_only": true,
+      "typed_evidence_node_count": 0,
+      "typed_evidence_present": false,
+      "unknown_observation_fields": [
+        "indirect_calls",
+        "unresolved_indirect_calls",
+        "explicit_dynamic_dispatch"
+      ],
+      "unresolved_call_count": 0,
+      "unresolved_call_occurrences": 0,
+      "unresolved_indirect_observed_count": 0,
+      "uses_constant_count": 0
+    }
+  ],
+  "manifest_sha256": "2072fbf9de9d3634700fe26ad2dd0600bed6c2d6af1e401c0c3d0413ac302199",
+  "pair_statistics": {
+    "equivalence_label": {
+      "equivalent": {
+        "both_anchor_only": 68,
+        "both_interaction_capable": 1,
+        "both_topology": 22,
+        "both_typed_evidence": 19,
+        "either_degraded": 132,
+        "exactly_one_anchor_only": 30,
+        "pairs": 132
+      },
+      "non_equivalent": {
+        "both_anchor_only": 32,
+        "both_interaction_capable": 0,
+        "both_topology": 0,
+        "both_typed_evidence": 5,
+        "either_degraded": 42,
+        "exactly_one_anchor_only": 10,
+        "pairs": 47
+      }
+    },
+    "negative_category": {
+      "benign_lookalike": {
+        "both_anchor_only": 0,
+        "both_interaction_capable": 0,
+        "both_topology": 0,
+        "both_typed_evidence": 1,
+        "either_degraded": 0,
+        "exactly_one_anchor_only": 0,
+        "pairs": 1
+      },
+      "different_behavior": {
+        "both_anchor_only": 0,
+        "both_interaction_capable": 0,
+        "both_topology": 0,
+        "both_typed_evidence": 1,
+        "either_degraded": 0,
+        "exactly_one_anchor_only": 0,
+        "pairs": 1
+      },
+      "same_binary_different_routine": {
+        "both_anchor_only": 32,
+        "both_interaction_capable": 0,
+        "both_topology": 0,
+        "both_typed_evidence": 0,
+        "either_degraded": 42,
+        "exactly_one_anchor_only": 10,
+        "pairs": 42
+      },
+      "similar_api_different_structure": {
+        "both_anchor_only": 0,
+        "both_interaction_capable": 0,
+        "both_topology": 0,
+        "both_typed_evidence": 1,
+        "either_degraded": 0,
+        "exactly_one_anchor_only": 0,
+        "pairs": 1
+      },
+      "similar_constants_different_behavior": {
+        "both_anchor_only": 0,
+        "both_interaction_capable": 0,
+        "both_topology": 0,
+        "both_typed_evidence": 1,
+        "either_degraded": 0,
+        "exactly_one_anchor_only": 0,
+        "pairs": 1
+      },
+      "similar_topology_different_evidence": {
+        "both_anchor_only": 0,
+        "both_interaction_capable": 0,
+        "both_topology": 0,
+        "both_typed_evidence": 1,
+        "either_degraded": 0,
+        "exactly_one_anchor_only": 0,
+        "pairs": 1
+      }
+    },
+    "pair_category": {
+      "controlled_negative": {
+        "both_anchor_only": 32,
+        "both_interaction_capable": 0,
+        "both_topology": 0,
+        "both_typed_evidence": 5,
+        "either_degraded": 42,
+        "exactly_one_anchor_only": 10,
+        "pairs": 47
+      },
+      "same_source": {
+        "both_anchor_only": 68,
+        "both_interaction_capable": 1,
+        "both_topology": 16,
+        "both_typed_evidence": 19,
+        "either_degraded": 96,
+        "exactly_one_anchor_only": 0,
+        "pairs": 96
+      },
+      "source_transformation": {
+        "both_anchor_only": 0,
+        "both_interaction_capable": 0,
+        "both_topology": 6,
+        "both_typed_evidence": 0,
+        "either_degraded": 36,
+        "exactly_one_anchor_only": 30,
+        "pairs": 36
+      }
+    },
+    "split": {
+      "discovery_train": {
+        "both_anchor_only": 55,
+        "both_interaction_capable": 1,
+        "both_topology": 16,
+        "both_typed_evidence": 1,
+        "either_degraded": 99,
+        "exactly_one_anchor_only": 28,
+        "pairs": 99
+      },
+      "held_out_test": {
+        "both_anchor_only": 45,
+        "both_interaction_capable": 0,
+        "both_topology": 0,
+        "both_typed_evidence": 0,
+        "either_degraded": 57,
+        "exactly_one_anchor_only": 12,
+        "pairs": 57
+      },
+      "validation": {
+        "both_anchor_only": 0,
+        "both_interaction_capable": 0,
+        "both_topology": 6,
+        "both_typed_evidence": 23,
+        "either_degraded": 18,
+        "exactly_one_anchor_only": 0,
+        "pairs": 23
+      }
+    },
+    "transformation_family": {
+      "compiler_variation": {
+        "both_anchor_only": 68,
+        "both_interaction_capable": 1,
+        "both_topology": 16,
+        "both_typed_evidence": 19,
+        "either_degraded": 96,
+        "exactly_one_anchor_only": 0,
+        "pairs": 96
+      },
+      "dead_branch": {
+        "both_anchor_only": 0,
+        "both_interaction_capable": 0,
+        "both_topology": 1,
+        "both_typed_evidence": 0,
+        "either_degraded": 6,
+        "exactly_one_anchor_only": 5,
+        "pairs": 6
+      },
+      "function_splitting": {
+        "both_anchor_only": 0,
+        "both_interaction_capable": 0,
+        "both_topology": 1,
+        "both_typed_evidence": 0,
+        "either_degraded": 6,
+        "exactly_one_anchor_only": 5,
+        "pairs": 6
+      },
+      "harmless_strand": {
+        "both_anchor_only": 0,
+        "both_interaction_capable": 0,
+        "both_topology": 1,
+        "both_typed_evidence": 0,
+        "either_degraded": 6,
+        "exactly_one_anchor_only": 5,
+        "pairs": 6
+      },
+      "linear_chain": {
+        "both_anchor_only": 0,
+        "both_interaction_capable": 0,
+        "both_topology": 1,
+        "both_typed_evidence": 0,
+        "either_degraded": 6,
+        "exactly_one_anchor_only": 5,
+        "pairs": 6
+      },
+      "none": {
+        "both_anchor_only": 32,
+        "both_interaction_capable": 0,
+        "both_topology": 0,
+        "both_typed_evidence": 5,
+        "either_degraded": 42,
+        "exactly_one_anchor_only": 10,
+        "pairs": 47
+      },
+      "thunk": {
+        "both_anchor_only": 0,
+        "both_interaction_capable": 0,
+        "both_topology": 1,
+        "both_typed_evidence": 0,
+        "either_degraded": 6,
+        "exactly_one_anchor_only": 5,
+        "pairs": 6
+      },
+      "transparent_wrapper": {
+        "both_anchor_only": 0,
+        "both_interaction_capable": 0,
+        "both_topology": 1,
+        "both_typed_evidence": 0,
+        "either_degraded": 6,
+        "exactly_one_anchor_only": 5,
+        "pairs": 6
+      }
+    }
+  },
+  "per_split_graph_statistics": {
+    "discovery_train": {
+      "counts": {
+        "calls_api_count": 10,
+        "calls_function_count": 49,
+        "category_chain_count": 0,
+        "category_node_count": 0,
+        "edge_count": 67,
+        "function_node_count": 100,
+        "has_string_category_count": 0,
+        "interaction_support_count": 10,
+        "non_anchor_function_node_count": 49,
+        "references_string_count": 0,
+        "typed_evidence_node_count": 10,
+        "unresolved_call_count": 2,
+        "unresolved_call_occurrences": 2,
+        "uses_constant_count": 0
+      },
+      "evidence_types_graph_counts": {
+        "API": 2
+      },
+      "graphs": 51,
+      "observability_reasons": {
+        "explicit_dynamic_dispatch_observation_unavailable": 45,
+        "indirect_calls_observation_unavailable": 45,
+        "unresolved_calls_observed": 2,
+        "unresolved_indirect_calls_observation_unavailable": 45,
+        "unresolved_indirect_calls_observed": 2
+      },
+      "properties": {
+        "anchor_only": 22,
+        "degraded_observability": 47,
+        "has_topology": 29,
+        "interaction_capable": 2,
+        "topology_only": 27,
+        "typed_evidence_present": 2
+      }
+    },
+    "held_out_test": {
+      "counts": {
+        "calls_api_count": 0,
+        "calls_function_count": 16,
+        "category_chain_count": 0,
+        "category_node_count": 0,
+        "edge_count": 18,
+        "function_node_count": 43,
+        "has_string_category_count": 0,
+        "interaction_support_count": 0,
+        "non_anchor_function_node_count": 16,
+        "references_string_count": 0,
+        "typed_evidence_node_count": 0,
+        "unresolved_call_count": 0,
+        "unresolved_call_occurrences": 0,
+        "uses_constant_count": 0
+      },
+      "evidence_types_graph_counts": {},
+      "graphs": 27,
+      "observability_reasons": {
+        "explicit_dynamic_dispatch_observation_unavailable": 25,
+        "indirect_calls_observation_unavailable": 25,
+        "unresolved_indirect_calls_observation_unavailable": 25
+      },
+      "properties": {
+        "anchor_only": 15,
+        "degraded_observability": 25,
+        "has_topology": 12,
+        "interaction_capable": 0,
+        "topology_only": 12,
+        "typed_evidence_present": 0
+      }
+    },
+    "validation": {
+      "counts": {
+        "calls_api_count": 32,
+        "calls_function_count": 10,
+        "category_chain_count": 4,
+        "category_node_count": 4,
+        "edge_count": 86,
+        "function_node_count": 27,
+        "has_string_category_count": 4,
+        "interaction_support_count": 6,
+        "non_anchor_function_node_count": 10,
+        "references_string_count": 8,
+        "typed_evidence_node_count": 66,
+        "unresolved_call_count": 1,
+        "unresolved_call_occurrences": 1,
+        "uses_constant_count": 22
+      },
+      "evidence_types_graph_counts": {
+        "API": 17,
+        "CONSTANT": 4,
+        "STRING": 8,
+        "STRING_CATEGORY": 4
+      },
+      "graphs": 17,
+      "observability_reasons": {
+        "explicit_dynamic_dispatch_observation_unavailable": 9,
+        "indirect_calls_observation_unavailable": 9,
+        "unresolved_calls_observed": 1,
+        "unresolved_indirect_calls_observation_unavailable": 9,
+        "unresolved_indirect_calls_observed": 1
+      },
+      "properties": {
+        "anchor_only": 0,
+        "degraded_observability": 10,
+        "has_topology": 5,
+        "interaction_capable": 2,
+        "topology_only": 0,
+        "typed_evidence_present": 17
+      }
+    }
+  }
+}

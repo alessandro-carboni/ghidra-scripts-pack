@@ -35,7 +35,13 @@ def select_subset(manifest):
     return selected
 
 
-def prepare(manifest, directory):
+def prepare(manifest, directory, refresh_pending=False):
+    if refresh_pending:
+        for name in ("review_packet.json", "review_decisions.json"):
+            existing = directory / name
+            if existing.exists():
+                previous = json.loads(existing.read_text())
+                require(all(r.get("decision") == "pending" and r.get("validation_status") == "unreviewed" and all(not r.get(key) for key in ("reviewer", "notes", "reason")) for r in previous["records"]), "cannot refresh a review containing human input")
     selected = select_subset(manifest)
     pairs = {p["pair_id"]: p for p in manifest["pairs"]}
     graphs = {g["graph_id"]: g for g in manifest["graphs"]}
@@ -72,7 +78,7 @@ def prepare(manifest, directory):
     directory.mkdir(parents=True, exist_ok=True)
     for name, value in (("review_packet.json", packet), ("review_decisions.json", packet)):
         path = directory / name
-        require(not path.exists(), "review packet already exists; preserve decisions and use a new review directory")
+        require(refresh_pending or not path.exists(), "review packet already exists; preserve decisions and use a new review directory")
         path.write_text(json.dumps(value, indent=2, sort_keys=True) + "\n")
     (directory / "REVIEW.md").write_text("\n".join(lines), encoding="utf-8")
     return len(records)
@@ -128,10 +134,11 @@ if __name__ == "__main__":
     parser.add_argument("--output", type=Path, default=Path("datasets/osgf_pairs_v0_1/freezes/freeze-001.json"))
     parser.add_argument("--supersedes", type=Path)
     parser.add_argument("--reason")
+    parser.add_argument("--refresh-pending", action="store_true", help="Replace only an entirely unreviewed packet after a technical rebuild")
     args = parser.parse_args()
     manifest = json.loads(args.manifest.read_text())
     if args.action == "prepare":
-        print("REVIEW PACKET PREPARED:", prepare(manifest, args.review_dir), "pairs; human decisions pending")
+        print("REVIEW PACKET PREPARED:", prepare(manifest, args.review_dir, args.refresh_pending), "pairs; human decisions pending")
     elif args.action == "check":
         print("REVIEW VERIFIED:", len(validate_decisions(manifest, json.loads((args.review_dir / "review_packet.json").read_text()), json.loads((args.review_dir / "review_decisions.json").read_text()))))
     else:
