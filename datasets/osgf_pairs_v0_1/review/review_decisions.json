@@ -5,169 +5,169 @@
       "coverage": [
         "optimization_variants"
       ],
-      "decision": "pending",
-      "notes": "",
+      "decision": "accept",
+      "notes": "Same xor_buffer source and input contract, compiled with GCC O2 and O3.",
       "pair_id": "pair:05d513202e5e89e0409ce047",
       "pair_sha256": "2be5807d1ece0f943649064b1b670e991a672917f0cbfefb3f64713f91bab583",
-      "reason": "",
-      "reviewer": "",
-      "validation_status": "unreviewed"
+      "reason": "Both binaries implement the same XOR reduction; differing optimization does not change the specified behavior.",
+      "reviewer": "Alessandro Carboni",
+      "validation_status": "manually_verified"
     },
     {
       "coverage": [
         "harmless_strand"
       ],
-      "decision": "pending",
-      "notes": "",
+      "decision": "accept",
+      "notes": "The additional unsigned-arithmetic helper result is discarded; the original XOR routine receives unchanged arguments.",
       "pair_id": "pair:07cc392b51982eae31170a94",
       "pair_sha256": "144a11b3eb1b4a9efe64fae1735393dd8f242282ddf6e395ccfb39c5a0937ad6",
-      "reason": "",
-      "reviewer": "",
-      "validation_status": "unreviewed"
+      "reason": "The added helper has no externally observable effects; 1024 deterministic inputs support source-based equivalence.",
+      "reviewer": "Alessandro Carboni",
+      "validation_status": "manually_verified"
     },
     {
       "coverage": [
         "cross_compiler_variants"
       ],
-      "decision": "pending",
-      "notes": "",
+      "decision": "accept",
+      "notes": "Same read_file source compiled with MSVC O0 and GCC O2; read-only Windows file-attribute probe.",
       "pair_id": "pair:08a67b5f71593b6810caf125",
       "pair_sha256": "b2906cf66299fa70828870aef24cf50458fb538042adf02d2ea10de4afd8a57e",
-      "reason": "",
-      "reviewer": "",
-      "validation_status": "unreviewed"
+      "reason": "The same attribute check is performed, assuming comparable host state; repeated 1 values are not diverse file states.",
+      "reviewer": "Alessandro Carboni",
+      "validation_status": "manually_verified"
     },
     {
       "coverage": [
         "thunk"
       ],
-      "decision": "pending",
-      "notes": "",
+      "decision": "accept",
+      "notes": "The thunk calls interaction_socket_kind once through a fixed function pointer with unchanged arguments.",
       "pair_id": "pair:0df30c682fbf6df950146b14",
       "pair_sha256": "cddfedfa252bb9f4483fab33444f6bdcf3a2a3ffc0c725d76f0b1ef8967a23fd",
-      "reason": "",
-      "reviewer": "",
-      "validation_status": "unreviewed"
+      "reason": "It forwards the result and preserves the single original UDP socket inspection and its side effects, for stable OS conditions.",
+      "reviewer": "Alessandro Carboni",
+      "validation_status": "manually_verified"
     },
     {
       "coverage": [
         "hard_negatives"
       ],
-      "decision": "pending",
-      "notes": "",
+      "decision": "accept",
+      "notes": "Witness bytes [13,30,47,64,81,98,115]: weighted_buffer=2268, copy_buffer=448.",
       "pair_id": "pair:1107ec8823f5fad30c4b336c",
       "pair_sha256": "b28d4b5ad6ed726d0d7c48e59c160cb4ff92b7286d6e3d62bd59b6d19b0de3dd",
-      "reason": "",
-      "reviewer": "",
-      "validation_status": "unreviewed"
+      "reason": "Position-weighted summation differs from ordinary summation; one valid counterexample suffices.",
+      "reviewer": "Alessandro Carboni",
+      "validation_status": "manually_verified"
     },
     {
       "coverage": [
         "transparent_wrapper"
       ],
-      "decision": "pending",
-      "notes": "",
+      "decision": "accept",
+      "notes": "interaction_registry_summary__transparent_wrapper forwards input and return value unchanged; 16 deterministic cases per routine in build.",
       "pair_id": "pair:150a989550f7c4251c21e5de",
       "pair_sha256": "bca90f065fca8758b5619855890dedffc1513e91cd296acce9eac5e6d432fd75",
-      "reason": "",
-      "reviewer": "",
-      "validation_status": "unreviewed"
+      "reason": "Exactly one call to the original routine with no additional registry operations; comparable read-only registry state required.",
+      "reviewer": "Alessandro Carboni",
+      "validation_status": "manually_verified"
     },
     {
       "coverage": [
         "linear_chain"
       ],
-      "decision": "pending",
-      "notes": "",
+      "decision": "accept",
+      "notes": "Two delegation levels forward unmodified inputs and outputs; MSVC O2 may optimize them away.",
       "pair_id": "pair:1e750c46cf950165a7b926c4",
       "pair_sha256": "d5ad74d74062e1e88f88aa1ed07fa05ea5c0c9c6c5005bac00d2908b6f1fb5c8",
-      "reason": "",
-      "reviewer": "",
-      "validation_status": "unreviewed"
+      "reason": "The original registry-summary function is invoked once with unchanged effects under stable read-only registry conditions.",
+      "reviewer": "Alessandro Carboni",
+      "validation_status": "manually_verified"
     },
     {
       "coverage": [
         "dead_branch"
       ],
-      "decision": "pending",
-      "notes": "",
+      "decision": "accept",
+      "notes": "The added branch is taken only if n>255; the dataset contract limits n to 0..255.",
       "pair_id": "pair:24e9f59cb1fc34954424c670",
       "pair_sha256": "ecf38c3118fbfdeb1200e45d23ac584e50e76fc072d20d9143458a8455479333",
-      "reason": "",
-      "reviewer": "",
-      "validation_status": "unreviewed"
+      "reason": "On every admitted input the variant delegates to sum_array; equivalence is contract-relative, not for unrestricted n.",
+      "reviewer": "Alessandro Carboni",
+      "validation_status": "manually_verified"
     },
     {
       "coverage": [
         "similar_api_different_structure"
       ],
-      "decision": "pending",
-      "notes": "",
+      "decision": "accept",
+      "notes": "Empty string witness: api_length_wrapped=1, api_length=0; both use lstrlenA.",
       "pair_id": "pair:2bbcd0b314402aa2d3270877",
       "pair_sha256": "abd12e010ae1a3098ee4dff3fed1def6d2b601b6ae5cf11ba5315cf4b88528db",
-      "reason": "",
-      "reviewer": "",
-      "validation_status": "unreviewed"
+      "reason": "The wrapped variant adds one to the returned length despite sharing API evidence.",
+      "reviewer": "Alessandro Carboni",
+      "validation_status": "manually_verified"
     },
     {
       "coverage": [
         "easy_negatives"
       ],
-      "decision": "pending",
-      "notes": "",
+      "decision": "accept",
+      "notes": "Empty string witness: api_length_plus_one=1, api_compare=0.",
       "pair_id": "pair:4f62234f82e7de4579316522",
       "pair_sha256": "981d6b7214785f3a26d0d6b720eec14e613af0bf9f36ac34fd143ccdbafe0cf9",
-      "reason": "",
-      "reviewer": "",
-      "validation_status": "unreviewed"
+      "reason": "Length plus one and equality to the literal AB are different behaviors and use different Windows APIs.",
+      "reviewer": "Alessandro Carboni",
+      "validation_status": "manually_verified"
     },
     {
       "coverage": [
         "similar_constants_different_behavior"
       ],
-      "decision": "pending",
-      "notes": "",
+      "decision": "accept",
+      "notes": "Empty string witness: api_compare_inverted=1, api_compare=0; same AB literal and lstrcmpA API.",
       "pair_id": "pair:6034c2910327190dd52ca3b6",
       "pair_sha256": "2b3f329c68f8d0f11d55dba95277b8dabb390e56f836b3d9fe99ee39144e2aee",
-      "reason": "",
-      "reviewer": "",
-      "validation_status": "unreviewed"
+      "reason": "Opposite comparisons !=0 and ==0 return complementary boolean values on valid strings.",
+      "reviewer": "Alessandro Carboni",
+      "validation_status": "manually_verified"
     },
     {
       "coverage": [
         "function_splitting"
       ],
-      "decision": "pending",
-      "notes": "",
+      "decision": "accept",
+      "notes": "The transformed routine partitions the same n-byte buffer into disjoint halves and sums their sub-results.",
       "pair_id": "pair:82f8042842e888a2fa036e1f",
       "pair_sha256": "b5d86c82071dce81d0b37c1a6082adda931092290115c9989dc8989004f6fe34",
-      "reason": "",
-      "reviewer": "",
-      "validation_status": "unreviewed"
+      "reason": "Associativity of unsigned addition and identity zero guarantee the same result, including n=0; 1024 inputs tested.",
+      "reviewer": "Alessandro Carboni",
+      "validation_status": "manually_verified"
     },
     {
       "coverage": [
         "benign_lookalike"
       ],
-      "decision": "pending",
-      "notes": "",
+      "decision": "accept",
+      "notes": "Empty string witness: api_length_plus_one=1, api_length=0, despite identical API calls.",
       "pair_id": "pair:b7cad7998f41a4ac66177bb7",
       "pair_sha256": "b70d782b93fb17dc2fececeb8ae377d8508ff1b43e3099595d3ab18b6f785e3d",
-      "reason": "",
-      "reviewer": "",
-      "validation_status": "unreviewed"
+      "reason": "Adding one changes the return value for all valid input strings.",
+      "reviewer": "Alessandro Carboni",
+      "validation_status": "manually_verified"
     },
     {
       "coverage": [
         "similar_topology_different_evidence"
       ],
-      "decision": "pending",
-      "notes": "",
+      "decision": "accept",
+      "notes": "Seven-byte witness [13,30,47,64,81,98,115]: api_length=7, api_compare=0.",
       "pair_id": "pair:c9fdbde98c0b37f8be797d59",
       "pair_sha256": "8dc4d48e4d89d994c6cb97732da4be9f38a9ed771f3173d374102cc716270d8e",
-      "reason": "",
-      "reviewer": "",
-      "validation_status": "unreviewed"
+      "reason": "The single-call topology is similar but lstrlenA measures length while lstrcmpA tests equality with AB.",
+      "reviewer": "Alessandro Carboni",
+      "validation_status": "manually_verified"
     }
   ],
   "schema_version": "0.1.0"
