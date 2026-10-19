@@ -52,7 +52,7 @@ def digest(path):
 def save(path, value):
     assert_portable_metadata(value)
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(value, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    path.write_text(json.dumps(value, indent=2, sort_keys=True) + "\n", encoding="utf-8", newline="\n")
 
 
 def execute(command, **kwargs):
@@ -81,7 +81,7 @@ def generate_sources():
         for name in routines:
             lines.append(f'printf("{name} %u %u\\n",i,{name}(p,i*7));')
         lines.append("} return 0; }")
-        (SOURCE / f"{group}.c").write_text("\n".join(lines) + "\n", encoding="utf-8")
+        (SOURCE / f"{group}.c").write_text("\n".join(lines) + "\n", encoding="utf-8", newline="\r\n")
     return catalog
 
 

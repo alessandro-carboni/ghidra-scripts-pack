@@ -24,10 +24,12 @@ Runtime replay: all 27 controlled builds matched their recorded transcripts. Sou
 
 Review packet: `review/REVIEW.md`. Decisions: `review/review_decisions.json`. The actual decisions remain pending; no human reviewer or approval was fabricated.
 
-Exact manifest SHA-256: `f3aa8f068d24635f1c0f538752d7660e50436fba6cd2024b5f1a1e50a18c7b20`.
+Exact manifest SHA-256: `0758de28ff2b49473b66de1dc90ab7561495eb1f84618114796f81a3be815c42`.
 
 Steps 8.3, 8.4 and 8.5 completed their TODO -> implementation -> test -> DONE -> TODO removal cycle. Step 8.6 and acceptance criteria remain in TODO until the manual review requirement is satisfied. Step 9 has not begun.
 
 Pre-freeze fixes: portable metadata, isolated validated staging builds with bounded retries, deterministic graph-signal audit and refreshed pending review hashes. See `PREFREEZE_FIXES.md`. Both previously failed MSVC O2 configurations remain explicit failures after three compile attempts, each with eight PE-read access attempts; they are not counted as successes.
 
 Final quality fixes: operation-level post-link access retries, separate unknown/observed-incomplete audit fields, three interaction source artifacts and deterministic evaluation strata. Full metrics and failure records: [QUALITY_FIXES.md](QUALITY_FIXES.md). All three splits contain positive and negative interaction-capable material. Five new builds succeeded; the new socket O2 build also remains an explicit access failure. No review/freeze decision is implied.
+
+Pre-review portability correction: current bindings above use explicit UTF-8/LF metadata and CRLF compiled-source checkouts. Dataset contents and compiled provenance are unchanged. See [PREREVIEW_FIXES.md](PREREVIEW_FIXES.md) for the migration, current test results and exact commands; earlier rebuild results above remain historical.

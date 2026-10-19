@@ -50,7 +50,7 @@ def build_interactions():
         artifact = "interaction_" + group
         text, records, registry = source(group)
         path = SOURCE / (artifact + ".c")
-        path.write_text(text, encoding="utf-8")
+        path.write_text(text, encoding="utf-8", newline="\r\n")
         routines.extend(records)
         transformations.extend(registry)
         for optimization in ("O0", "O2"):

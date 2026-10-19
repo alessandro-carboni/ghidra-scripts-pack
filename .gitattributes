@@ -1,0 +1,4 @@
+# Exact compiled source bytes are UTF-8 CRLF; Git blobs use LF, checkout restores CRLF.
+samples/controlled/source/*.c text eol=crlf
+# Dataset serialization and canonical graph bytes are UTF-8 LF on every platform.
+datasets/osgf_pairs_v0_1/** text eol=lf

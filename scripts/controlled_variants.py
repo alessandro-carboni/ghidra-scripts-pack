@@ -65,7 +65,7 @@ def build_variants():
             lines.append(f'printf("{target} %u %u\\n",n*4+s,{target}(p,n));')
         lines.append("} return 0; }")
         source = SOURCE / f"{group}_variants.c"
-        source.write_text("\n".join(lines) + "\n", encoding="utf-8")
+        source.write_text("\n".join(lines) + "\n", encoding="utf-8", newline="\r\n")
         build_id = f"{group}-variants-{compiler['compiler']}-O0"
         directory = BUILDS / build_id
         directory.mkdir(parents=True, exist_ok=True)

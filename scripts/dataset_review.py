@@ -15,6 +15,21 @@ def content_hash(value):
     return hashlib.sha256(json.dumps(value, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
 
 
+def transformation_evidence(pair, graphs, builds):
+    proof = pair["ground_truth"]["transformation"]
+    target = proof["transformed_routine"]
+    side = next(side for side in ("left", "right") if graphs[pair[side + "_graph_id"]]["routine_id"] == target)
+    build = builds[pair[side + "_build_id"]]
+    rows = [row.split() for row in build["behavior"] if row.split()[0] == target]
+    expected = proof.get("test_cases_per_build", proof.get("test_cases"))
+    require(isinstance(expected, int) and expected > 0 and len(rows) == expected and {int(row[1]) for row in rows} == set(range(expected)), "transformation input coverage differs from recorded proof")
+    if "test_cases_per_build" in proof:
+        detail = f"{expected} deterministic cases per routine per build; {build['behavior_input']}. Contract requires stable read-only OS environment across calls/builds; observations and results depend on that environment."
+    else:
+        detail = f"{expected:,} deterministic inputs for the transformed routine, covering lengths 0..{proof['parameters']['max_length']} with four byte patterns."
+    return "Validation: " + detail + " Tests are not exhaustive enumeration of byte strings; the source rationale is necessary."
+
+
 def select_subset(manifest):
     builds = {b["build_id"]: b for b in manifest["builds"]}
     selected = {}
@@ -49,7 +64,7 @@ def prepare(manifest, directory, refresh_pending=False):
     builds = {b["build_id"]: b for b in manifest["builds"]}
     records = []
     lines = [
-        "# Step 8 — Manual ground-truth review",
+        "# Step 8 â€” Manual ground-truth review",
         "",
         "Status: pending human review. Automatic source proofs and runtime checks are supporting evidence, not human decisions.",
         "",
@@ -58,6 +73,9 @@ def prepare(manifest, directory, refresh_pending=False):
         "Contract: unsigned 32-bit result; 0 <= length <= 255; readable bytes followed by NUL. Pure reductions have no externally visible side effects. API negative functions use NUL-terminated input; baseline OS probes are host-state dependent.",
         "",
     ]
+    legacy_outputs = sum(len(b["behavior"]) for b in builds.values() if "-variants-" in b["build_id"])
+    interaction_outputs = sum(len(b["behavior"]) for b in builds.values() if b.get("artifact_group", "").startswith("interaction_"))
+    lines += [f"Separate validation totals: legacy structural variants: {legacy_outputs:,} oracle checks; interaction corpus: {interaction_outputs} outputs across {sum(b.get('artifact_group', '').startswith('interaction_') for b in builds.values())} builds. These totals are not per-pair input counts.", ""]
     for pair_id, coverage in sorted(selected.items()):
         pair = pairs[pair_id]
         records.append(dict(pair_id=pair_id, coverage=coverage, pair_sha256=content_hash(pair), reviewer="", decision="pending", validation_status="unreviewed", notes="", reason=""))
@@ -67,20 +85,23 @@ def prepare(manifest, directory, refresh_pending=False):
             routine = routines[graph["routine_id"]]
             build = builds[pair[side + "_build_id"]]
             lines += [f"- {side}: `{routine['routine_id']}` in `{routine['source_path']}`; {build['compiler']} {build['optimization']}; graph `{graph['graph_id']}`."]
+            lines += [f"  Source contract: `{routine['contract']}`."]
+            if "stable_readonly_environment" in routine["contract"]:
+                lines += ["  Requires stable read-only OS state across calls and builds; file attributes, registry observations and socket results are environment-dependent."]
         truth = pair["ground_truth"]
         lines += ["", "Evidence: " + truth.get("proof", truth.get("evidence", "Same controlled source and body across compiler configurations."))]
         if truth["method"] == "behavior_counterexample":
             lines += [f"Input bytes: `{truth['input_bytes']}` (trailing NUL); results: left={truth['left_result']}, right={truth['right_result']}."]
         if truth["method"] == "source_transformation_proof":
-            lines += ["Validation: 1,024 deterministic inputs covering every admitted length with four byte patterns. These are tests, not exhaustive enumeration of all byte strings; the source rationale is necessary."]
+            lines += [transformation_evidence(pair, graphs, builds)]
         lines += [""]
     packet = dict(schema_version="0.1.0", manifest_sha256=content_hash(manifest), records=records)
     directory.mkdir(parents=True, exist_ok=True)
     for name, value in (("review_packet.json", packet), ("review_decisions.json", packet)):
         path = directory / name
         require(refresh_pending or not path.exists(), "review packet already exists; preserve decisions and use a new review directory")
-        path.write_text(json.dumps(value, indent=2, sort_keys=True) + "\n")
-    (directory / "REVIEW.md").write_text("\n".join(lines), encoding="utf-8")
+        path.write_text(json.dumps(value, indent=2, sort_keys=True) + "\n", encoding="utf-8", newline="\n")
+    (directory / "REVIEW.md").write_text("\n".join(lines), encoding="utf-8", newline="\n")
     return len(records)
 
 
@@ -121,7 +142,7 @@ def freeze(manifest, directory, output, supersedes=None, reason=None):
         parent_hash = None
     result = dict(name="OSGF Equivalent / Non-Equivalent Pair Dataset v0.1", manifest_sha256=content_hash(manifest), records=records, review_packet=packet, supersedes_sha256=parent_hash, revision_reason=reason, manifest_snapshot=manifest)
     output.parent.mkdir(parents=True, exist_ok=True)
-    with output.open("x", encoding="utf-8") as stream:
+    with output.open("x", encoding="utf-8", newline="\n") as stream:
         stream.write(json.dumps(result, indent=2, sort_keys=True) + "\n")
     return result
 

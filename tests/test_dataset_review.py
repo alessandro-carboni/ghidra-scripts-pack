@@ -4,10 +4,35 @@ from pathlib import Path
 import tempfile
 import unittest
 
-from scripts.dataset_review import freeze, prepare, validate_decisions
+from scripts.dataset_review import freeze, prepare, transformation_evidence, validate_decisions
 
 
 class DatasetReviewTests(unittest.TestCase):
+    def test_actual_transformation_evidence_counts_and_contracts(self):
+        graphs = {g["graph_id"]: g for g in self.data["graphs"]}
+        builds = {b["build_id"]: b for b in self.data["builds"]}
+        kinds = set()
+        for pair in self.data["pairs"]:
+            if pair["ground_truth"]["method"] != "source_transformation_proof":
+                continue
+            description = transformation_evidence(pair, graphs, builds)
+            interaction = "test_cases_per_build" in pair["ground_truth"]["transformation"]
+            kinds.add(interaction)
+            if interaction:
+                self.assertIn("16 deterministic cases per routine per build", description)
+                self.assertIn("stable read-only OS environment", description)
+                self.assertNotIn("1,024", description)
+            else:
+                self.assertIn("1,024 deterministic inputs", description)
+                self.assertIn("four byte patterns", description)
+        self.assertEqual(kinds, {False, True})
+        with tempfile.TemporaryDirectory() as temp:
+            prepare(self.data, Path(temp))
+            text = (Path(temp) / "REVIEW.md").read_text(encoding="utf-8")
+            self.assertIn("36,864 oracle checks", text)
+            self.assertIn("400 outputs across 5 builds", text)
+            self.assertIn("bytes_0_255_trailing_nul_and_stable_readonly_environment", text)
+
     def test_refresh_pending_preserves_any_human_input(self):
         with tempfile.TemporaryDirectory() as temp:
             directory = Path(temp)

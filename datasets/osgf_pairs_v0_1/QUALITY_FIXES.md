@@ -103,6 +103,8 @@ The complete rebuild regenerated pairs, splits, holdouts, audit, strata and the 
 
 Exact SHA-256 bindings:
 
-- `manifest.json`: `f3aa8f068d24635f1c0f538752d7660e50436fba6cd2024b5f1a1e50a18c7b20`
-- `graph_signal_audit.json`: `d7843e8bba8c4852445c86959ba4741be7e2f119f3c0c2178e76327bb457866e`
-- `evaluation_strata.json`: `31c71d865e60727bb7976728e761897a2679f3f2cf4045e8296440f4fd07a5f3`
+- `manifest.json`: `0758de28ff2b49473b66de1dc90ab7561495eb1f84618114796f81a3be815c42`
+- `graph_signal_audit.json`: `bd2aecb133d7b1a46dbc4863ea79c1b50b83fb20a3f9b3c23b42bd6284565afd`
+- `evaluation_strata.json`: `10097ce3824168668bacd3f518251504f0963dbe039382efef5c642dc20e0017`
+
+Pre-review portability correction: current bindings above use explicit UTF-8/LF metadata and CRLF compiled-source checkouts. Dataset contents and compiled provenance are unchanged. See [PREREVIEW_FIXES.md](PREREVIEW_FIXES.md) for the migration, current test results and exact commands; earlier rebuild results above remain historical.

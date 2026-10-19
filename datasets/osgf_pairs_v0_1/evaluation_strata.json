@@ -1691,8 +1691,8 @@
       ]
     }
   },
-  "graph_signal_audit_sha256": "d7843e8bba8c4852445c86959ba4741be7e2f119f3c0c2178e76327bb457866e",
-  "manifest_sha256": "f3aa8f068d24635f1c0f538752d7660e50436fba6cd2024b5f1a1e50a18c7b20",
+  "graph_signal_audit_sha256": "bd2aecb133d7b1a46dbc4863ea79c1b50b83fb20a3f9b3c23b42bd6284565afd",
+  "manifest_sha256": "0758de28ff2b49473b66de1dc90ab7561495eb1f84618114796f81a3be815c42",
   "scope": "Descriptive overlapping pair sets only; no scores, exclusions, relabeling or split changes.",
   "strata": {
     "all_pairs": [

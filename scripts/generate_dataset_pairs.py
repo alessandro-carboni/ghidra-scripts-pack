@@ -80,5 +80,5 @@ if __name__ == "__main__":
     manifest["pairs"] = sorted([p for p in manifest["pairs"] if p["pair_category"] != "same_source"] + same_source_pairs(manifest), key=lambda p: p["pair_id"])
     print("GENERATED:", validate(manifest))
     manifest["statistics"] = statistics(manifest)
-    args.manifest.write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    args.manifest.write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8", newline="\n")
     print(json.dumps(manifest["statistics"], indent=2), flush=True)
