@@ -24,7 +24,10 @@ class GraphSignalTests(unittest.TestCase):
     def test_anchor_only_and_unknown_visibility(self):
         result = graph_signal(graph())
         self.assertTrue(result["anchor_only"])
-        self.assertTrue(result["degraded_observability"])
+        self.assertTrue(result["possibly_incomplete_observability"])
+        self.assertTrue(result["observability_unknown"])
+        self.assertFalse(result["observed_incompleteness"])
+        self.assertFalse(result["observability_complete"])
         self.assertEqual(len(result["unknown_observation_fields"]), 3)
 
     def test_topology_only(self):
@@ -44,11 +47,15 @@ class GraphSignalTests(unittest.TestCase):
         document = graph()
         document["nodes"].append(dict(id="V", kind="VISIBILITY_INDICATOR", facts=dict(indirect_calls=2, unresolved_indirect_calls=0, explicit_dynamic_dispatch=1)))
         document["edges"].append(dict(id="EV", kind="contains_indirect_call", source="N0", target="V"))
-        self.assertFalse(graph_signal(document)["degraded_observability"])
+        self.assertFalse(graph_signal(document)["possibly_incomplete_observability"])
+        self.assertTrue(graph_signal(document)["observability_complete"])
         document["unresolved_calls"] = [dict(id="U", caller="N0", facts=dict(occurrences=3))]
         document["local_graph_truncation"]["truncated"] = True
         result = graph_signal(document)
-        self.assertTrue(result["degraded_observability"])
+        self.assertTrue(result["possibly_incomplete_observability"])
+        self.assertTrue(result["observed_incompleteness"])
+        self.assertFalse(result["observability_unknown"])
+        self.assertFalse(result["observability_complete"])
         self.assertEqual(result["unresolved_call_occurrences"], 3)
 
     def test_category_chain_requires_explicit_edges(self):
@@ -59,6 +66,14 @@ class GraphSignalTests(unittest.TestCase):
         self.assertEqual(graph_signal(document)["interaction_support_count"], 2)
         document["edges"].pop()
         self.assertEqual(graph_signal(document)["category_chain_count"], 0)
+
+    def test_unknown_and_observed_incompleteness_can_overlap(self):
+        document = graph()
+        document["unresolved_calls"] = [dict(facts=dict(occurrences=1))]
+        result = graph_signal(document)
+        self.assertTrue(result["observability_unknown"])
+        self.assertTrue(result["observed_incompleteness"])
+        self.assertFalse(result["observability_complete"])
 
     def test_deterministic_and_no_mutation(self):
         document = graph(topology=True, api=True, owner="N1")

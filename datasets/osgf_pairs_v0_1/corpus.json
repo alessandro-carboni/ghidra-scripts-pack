@@ -1,6 +1,176 @@
 {
   "build_failures": [
     {
+      "access_events": [
+        {
+          "access_attempt": 1,
+          "compile_attempt": 1,
+          "diagnostic": "[Errno 13] Permission denied: 'samples/controlled/builds/numeric-msvc-O2/.staging/attempt-1/numeric-msvc-O2.exe'",
+          "phase": "validate_pe",
+          "status": "retry"
+        },
+        {
+          "access_attempt": 2,
+          "compile_attempt": 1,
+          "diagnostic": "[Errno 13] Permission denied: 'samples/controlled/builds/numeric-msvc-O2/.staging/attempt-1/numeric-msvc-O2.exe'",
+          "phase": "validate_pe",
+          "status": "retry"
+        },
+        {
+          "access_attempt": 3,
+          "compile_attempt": 1,
+          "diagnostic": "[Errno 13] Permission denied: 'samples/controlled/builds/numeric-msvc-O2/.staging/attempt-1/numeric-msvc-O2.exe'",
+          "phase": "validate_pe",
+          "status": "retry"
+        },
+        {
+          "access_attempt": 4,
+          "compile_attempt": 1,
+          "diagnostic": "[Errno 13] Permission denied: 'samples/controlled/builds/numeric-msvc-O2/.staging/attempt-1/numeric-msvc-O2.exe'",
+          "phase": "validate_pe",
+          "status": "retry"
+        },
+        {
+          "access_attempt": 5,
+          "compile_attempt": 1,
+          "diagnostic": "[Errno 13] Permission denied: 'samples/controlled/builds/numeric-msvc-O2/.staging/attempt-1/numeric-msvc-O2.exe'",
+          "phase": "validate_pe",
+          "status": "retry"
+        },
+        {
+          "access_attempt": 6,
+          "compile_attempt": 1,
+          "diagnostic": "[Errno 13] Permission denied: 'samples/controlled/builds/numeric-msvc-O2/.staging/attempt-1/numeric-msvc-O2.exe'",
+          "phase": "validate_pe",
+          "status": "retry"
+        },
+        {
+          "access_attempt": 7,
+          "compile_attempt": 1,
+          "diagnostic": "[Errno 13] Permission denied: 'samples/controlled/builds/numeric-msvc-O2/.staging/attempt-1/numeric-msvc-O2.exe'",
+          "phase": "validate_pe",
+          "status": "retry"
+        },
+        {
+          "access_attempt": 8,
+          "compile_attempt": 1,
+          "diagnostic": "[Errno 13] Permission denied: 'samples/controlled/builds/numeric-msvc-O2/.staging/attempt-1/numeric-msvc-O2.exe'",
+          "phase": "validate_pe",
+          "status": "exhausted"
+        },
+        {
+          "access_attempt": 1,
+          "compile_attempt": 2,
+          "diagnostic": "[Errno 13] Permission denied: 'samples/controlled/builds/numeric-msvc-O2/.staging/attempt-2/numeric-msvc-O2.exe'",
+          "phase": "validate_pe",
+          "status": "retry"
+        },
+        {
+          "access_attempt": 2,
+          "compile_attempt": 2,
+          "diagnostic": "[Errno 13] Permission denied: 'samples/controlled/builds/numeric-msvc-O2/.staging/attempt-2/numeric-msvc-O2.exe'",
+          "phase": "validate_pe",
+          "status": "retry"
+        },
+        {
+          "access_attempt": 3,
+          "compile_attempt": 2,
+          "diagnostic": "[Errno 13] Permission denied: 'samples/controlled/builds/numeric-msvc-O2/.staging/attempt-2/numeric-msvc-O2.exe'",
+          "phase": "validate_pe",
+          "status": "retry"
+        },
+        {
+          "access_attempt": 4,
+          "compile_attempt": 2,
+          "diagnostic": "[Errno 13] Permission denied: 'samples/controlled/builds/numeric-msvc-O2/.staging/attempt-2/numeric-msvc-O2.exe'",
+          "phase": "validate_pe",
+          "status": "retry"
+        },
+        {
+          "access_attempt": 5,
+          "compile_attempt": 2,
+          "diagnostic": "[Errno 13] Permission denied: 'samples/controlled/builds/numeric-msvc-O2/.staging/attempt-2/numeric-msvc-O2.exe'",
+          "phase": "validate_pe",
+          "status": "retry"
+        },
+        {
+          "access_attempt": 6,
+          "compile_attempt": 2,
+          "diagnostic": "[Errno 13] Permission denied: 'samples/controlled/builds/numeric-msvc-O2/.staging/attempt-2/numeric-msvc-O2.exe'",
+          "phase": "validate_pe",
+          "status": "retry"
+        },
+        {
+          "access_attempt": 7,
+          "compile_attempt": 2,
+          "diagnostic": "[Errno 13] Permission denied: 'samples/controlled/builds/numeric-msvc-O2/.staging/attempt-2/numeric-msvc-O2.exe'",
+          "phase": "validate_pe",
+          "status": "retry"
+        },
+        {
+          "access_attempt": 8,
+          "compile_attempt": 2,
+          "diagnostic": "[Errno 13] Permission denied: 'samples/controlled/builds/numeric-msvc-O2/.staging/attempt-2/numeric-msvc-O2.exe'",
+          "phase": "validate_pe",
+          "status": "exhausted"
+        },
+        {
+          "access_attempt": 1,
+          "compile_attempt": 3,
+          "diagnostic": "[Errno 13] Permission denied: 'samples/controlled/builds/numeric-msvc-O2/.staging/attempt-3/numeric-msvc-O2.exe'",
+          "phase": "validate_pe",
+          "status": "retry"
+        },
+        {
+          "access_attempt": 2,
+          "compile_attempt": 3,
+          "diagnostic": "[Errno 13] Permission denied: 'samples/controlled/builds/numeric-msvc-O2/.staging/attempt-3/numeric-msvc-O2.exe'",
+          "phase": "validate_pe",
+          "status": "retry"
+        },
+        {
+          "access_attempt": 3,
+          "compile_attempt": 3,
+          "diagnostic": "[Errno 13] Permission denied: 'samples/controlled/builds/numeric-msvc-O2/.staging/attempt-3/numeric-msvc-O2.exe'",
+          "phase": "validate_pe",
+          "status": "retry"
+        },
+        {
+          "access_attempt": 4,
+          "compile_attempt": 3,
+          "diagnostic": "[Errno 13] Permission denied: 'samples/controlled/builds/numeric-msvc-O2/.staging/attempt-3/numeric-msvc-O2.exe'",
+          "phase": "validate_pe",
+          "status": "retry"
+        },
+        {
+          "access_attempt": 5,
+          "compile_attempt": 3,
+          "diagnostic": "[Errno 13] Permission denied: 'samples/controlled/builds/numeric-msvc-O2/.staging/attempt-3/numeric-msvc-O2.exe'",
+          "phase": "validate_pe",
+          "status": "retry"
+        },
+        {
+          "access_attempt": 6,
+          "compile_attempt": 3,
+          "diagnostic": "[Errno 13] Permission denied: 'samples/controlled/builds/numeric-msvc-O2/.staging/attempt-3/numeric-msvc-O2.exe'",
+          "phase": "validate_pe",
+          "status": "retry"
+        },
+        {
+          "access_attempt": 7,
+          "compile_attempt": 3,
+          "diagnostic": "[Errno 13] Permission denied: 'samples/controlled/builds/numeric-msvc-O2/.staging/attempt-3/numeric-msvc-O2.exe'",
+          "phase": "validate_pe",
+          "status": "retry"
+        },
+        {
+          "access_attempt": 8,
+          "compile_attempt": 3,
+          "diagnostic": "[Errno 13] Permission denied: 'samples/controlled/builds/numeric-msvc-O2/.staging/attempt-3/numeric-msvc-O2.exe'",
+          "phase": "validate_pe",
+          "status": "exhausted"
+        }
+      ],
       "attempt_diagnostics": [
         {
           "attempt": 1,
@@ -34,6 +204,176 @@
       "status": "failed"
     },
     {
+      "access_events": [
+        {
+          "access_attempt": 1,
+          "compile_attempt": 1,
+          "diagnostic": "[Errno 13] Permission denied: 'samples/controlled/builds/system_api-msvc-O2/.staging/attempt-1/system_api-msvc-O2.exe'",
+          "phase": "validate_pe",
+          "status": "retry"
+        },
+        {
+          "access_attempt": 2,
+          "compile_attempt": 1,
+          "diagnostic": "[Errno 13] Permission denied: 'samples/controlled/builds/system_api-msvc-O2/.staging/attempt-1/system_api-msvc-O2.exe'",
+          "phase": "validate_pe",
+          "status": "retry"
+        },
+        {
+          "access_attempt": 3,
+          "compile_attempt": 1,
+          "diagnostic": "[Errno 13] Permission denied: 'samples/controlled/builds/system_api-msvc-O2/.staging/attempt-1/system_api-msvc-O2.exe'",
+          "phase": "validate_pe",
+          "status": "retry"
+        },
+        {
+          "access_attempt": 4,
+          "compile_attempt": 1,
+          "diagnostic": "[Errno 13] Permission denied: 'samples/controlled/builds/system_api-msvc-O2/.staging/attempt-1/system_api-msvc-O2.exe'",
+          "phase": "validate_pe",
+          "status": "retry"
+        },
+        {
+          "access_attempt": 5,
+          "compile_attempt": 1,
+          "diagnostic": "[Errno 13] Permission denied: 'samples/controlled/builds/system_api-msvc-O2/.staging/attempt-1/system_api-msvc-O2.exe'",
+          "phase": "validate_pe",
+          "status": "retry"
+        },
+        {
+          "access_attempt": 6,
+          "compile_attempt": 1,
+          "diagnostic": "[Errno 13] Permission denied: 'samples/controlled/builds/system_api-msvc-O2/.staging/attempt-1/system_api-msvc-O2.exe'",
+          "phase": "validate_pe",
+          "status": "retry"
+        },
+        {
+          "access_attempt": 7,
+          "compile_attempt": 1,
+          "diagnostic": "[Errno 13] Permission denied: 'samples/controlled/builds/system_api-msvc-O2/.staging/attempt-1/system_api-msvc-O2.exe'",
+          "phase": "validate_pe",
+          "status": "retry"
+        },
+        {
+          "access_attempt": 8,
+          "compile_attempt": 1,
+          "diagnostic": "[Errno 13] Permission denied: 'samples/controlled/builds/system_api-msvc-O2/.staging/attempt-1/system_api-msvc-O2.exe'",
+          "phase": "validate_pe",
+          "status": "exhausted"
+        },
+        {
+          "access_attempt": 1,
+          "compile_attempt": 2,
+          "diagnostic": "[Errno 13] Permission denied: 'samples/controlled/builds/system_api-msvc-O2/.staging/attempt-2/system_api-msvc-O2.exe'",
+          "phase": "validate_pe",
+          "status": "retry"
+        },
+        {
+          "access_attempt": 2,
+          "compile_attempt": 2,
+          "diagnostic": "[Errno 13] Permission denied: 'samples/controlled/builds/system_api-msvc-O2/.staging/attempt-2/system_api-msvc-O2.exe'",
+          "phase": "validate_pe",
+          "status": "retry"
+        },
+        {
+          "access_attempt": 3,
+          "compile_attempt": 2,
+          "diagnostic": "[Errno 13] Permission denied: 'samples/controlled/builds/system_api-msvc-O2/.staging/attempt-2/system_api-msvc-O2.exe'",
+          "phase": "validate_pe",
+          "status": "retry"
+        },
+        {
+          "access_attempt": 4,
+          "compile_attempt": 2,
+          "diagnostic": "[Errno 13] Permission denied: 'samples/controlled/builds/system_api-msvc-O2/.staging/attempt-2/system_api-msvc-O2.exe'",
+          "phase": "validate_pe",
+          "status": "retry"
+        },
+        {
+          "access_attempt": 5,
+          "compile_attempt": 2,
+          "diagnostic": "[Errno 13] Permission denied: 'samples/controlled/builds/system_api-msvc-O2/.staging/attempt-2/system_api-msvc-O2.exe'",
+          "phase": "validate_pe",
+          "status": "retry"
+        },
+        {
+          "access_attempt": 6,
+          "compile_attempt": 2,
+          "diagnostic": "[Errno 13] Permission denied: 'samples/controlled/builds/system_api-msvc-O2/.staging/attempt-2/system_api-msvc-O2.exe'",
+          "phase": "validate_pe",
+          "status": "retry"
+        },
+        {
+          "access_attempt": 7,
+          "compile_attempt": 2,
+          "diagnostic": "[Errno 13] Permission denied: 'samples/controlled/builds/system_api-msvc-O2/.staging/attempt-2/system_api-msvc-O2.exe'",
+          "phase": "validate_pe",
+          "status": "retry"
+        },
+        {
+          "access_attempt": 8,
+          "compile_attempt": 2,
+          "diagnostic": "[Errno 13] Permission denied: 'samples/controlled/builds/system_api-msvc-O2/.staging/attempt-2/system_api-msvc-O2.exe'",
+          "phase": "validate_pe",
+          "status": "exhausted"
+        },
+        {
+          "access_attempt": 1,
+          "compile_attempt": 3,
+          "diagnostic": "[Errno 13] Permission denied: 'samples/controlled/builds/system_api-msvc-O2/.staging/attempt-3/system_api-msvc-O2.exe'",
+          "phase": "validate_pe",
+          "status": "retry"
+        },
+        {
+          "access_attempt": 2,
+          "compile_attempt": 3,
+          "diagnostic": "[Errno 13] Permission denied: 'samples/controlled/builds/system_api-msvc-O2/.staging/attempt-3/system_api-msvc-O2.exe'",
+          "phase": "validate_pe",
+          "status": "retry"
+        },
+        {
+          "access_attempt": 3,
+          "compile_attempt": 3,
+          "diagnostic": "[Errno 13] Permission denied: 'samples/controlled/builds/system_api-msvc-O2/.staging/attempt-3/system_api-msvc-O2.exe'",
+          "phase": "validate_pe",
+          "status": "retry"
+        },
+        {
+          "access_attempt": 4,
+          "compile_attempt": 3,
+          "diagnostic": "[Errno 13] Permission denied: 'samples/controlled/builds/system_api-msvc-O2/.staging/attempt-3/system_api-msvc-O2.exe'",
+          "phase": "validate_pe",
+          "status": "retry"
+        },
+        {
+          "access_attempt": 5,
+          "compile_attempt": 3,
+          "diagnostic": "[Errno 13] Permission denied: 'samples/controlled/builds/system_api-msvc-O2/.staging/attempt-3/system_api-msvc-O2.exe'",
+          "phase": "validate_pe",
+          "status": "retry"
+        },
+        {
+          "access_attempt": 6,
+          "compile_attempt": 3,
+          "diagnostic": "[Errno 13] Permission denied: 'samples/controlled/builds/system_api-msvc-O2/.staging/attempt-3/system_api-msvc-O2.exe'",
+          "phase": "validate_pe",
+          "status": "retry"
+        },
+        {
+          "access_attempt": 7,
+          "compile_attempt": 3,
+          "diagnostic": "[Errno 13] Permission denied: 'samples/controlled/builds/system_api-msvc-O2/.staging/attempt-3/system_api-msvc-O2.exe'",
+          "phase": "validate_pe",
+          "status": "retry"
+        },
+        {
+          "access_attempt": 8,
+          "compile_attempt": 3,
+          "diagnostic": "[Errno 13] Permission denied: 'samples/controlled/builds/system_api-msvc-O2/.staging/attempt-3/system_api-msvc-O2.exe'",
+          "phase": "validate_pe",
+          "status": "exhausted"
+        }
+      ],
       "attempt_diagnostics": [
         {
           "attempt": 1,
@@ -69,6 +409,7 @@
   ],
   "builds": [
     {
+      "access_events": [],
       "architecture": "x86",
       "artifact_group": "numeric",
       "attempt_diagnostics": [],
@@ -147,6 +488,7 @@
       "status": "success"
     },
     {
+      "access_events": [],
       "architecture": "x86",
       "artifact_group": "text",
       "attempt_diagnostics": [],
@@ -225,6 +567,7 @@
       "status": "success"
     },
     {
+      "access_events": [],
       "architecture": "x86",
       "artifact_group": "memory",
       "attempt_diagnostics": [],
@@ -303,6 +646,7 @@
       "status": "success"
     },
     {
+      "access_events": [],
       "architecture": "x86",
       "artifact_group": "system_api",
       "attempt_diagnostics": [],
@@ -381,6 +725,7 @@
       "status": "success"
     },
     {
+      "access_events": [],
       "architecture": "x86",
       "artifact_group": "text",
       "attempt_diagnostics": [],
@@ -459,6 +804,7 @@
       "status": "success"
     },
     {
+      "access_events": [],
       "architecture": "x86",
       "artifact_group": "memory",
       "attempt_diagnostics": [],
@@ -537,6 +883,7 @@
       "status": "success"
     },
     {
+      "access_events": [],
       "architecture": "x86",
       "artifact_group": "numeric",
       "attempt_diagnostics": [],
@@ -611,6 +958,7 @@
       "status": "success"
     },
     {
+      "access_events": [],
       "architecture": "x86",
       "artifact_group": "text",
       "attempt_diagnostics": [],
@@ -685,6 +1033,7 @@
       "status": "success"
     },
     {
+      "access_events": [],
       "architecture": "x86",
       "artifact_group": "memory",
       "attempt_diagnostics": [],
@@ -759,6 +1108,7 @@
       "status": "success"
     },
     {
+      "access_events": [],
       "architecture": "x86",
       "artifact_group": "system_api",
       "attempt_diagnostics": [],
@@ -833,6 +1183,7 @@
       "status": "success"
     },
     {
+      "access_events": [],
       "architecture": "x86",
       "artifact_group": "numeric",
       "attempt_diagnostics": [],
@@ -907,6 +1258,7 @@
       "status": "success"
     },
     {
+      "access_events": [],
       "architecture": "x86",
       "artifact_group": "text",
       "attempt_diagnostics": [],
@@ -981,6 +1333,7 @@
       "status": "success"
     },
     {
+      "access_events": [],
       "architecture": "x86",
       "artifact_group": "memory",
       "attempt_diagnostics": [],
@@ -1055,6 +1408,7 @@
       "status": "success"
     },
     {
+      "access_events": [],
       "architecture": "x86",
       "artifact_group": "system_api",
       "attempt_diagnostics": [],
@@ -1129,6 +1483,7 @@
       "status": "success"
     },
     {
+      "access_events": [],
       "architecture": "x86",
       "artifact_group": "numeric",
       "attempt_diagnostics": [],
@@ -1203,6 +1558,7 @@
       "status": "success"
     },
     {
+      "access_events": [],
       "architecture": "x86",
       "artifact_group": "text",
       "attempt_diagnostics": [],
@@ -1277,6 +1633,7 @@
       "status": "success"
     },
     {
+      "access_events": [],
       "architecture": "x86",
       "artifact_group": "memory",
       "attempt_diagnostics": [],
@@ -1351,6 +1708,7 @@
       "status": "success"
     },
     {
+      "access_events": [],
       "architecture": "x86",
       "artifact_group": "system_api",
       "attempt_diagnostics": [],

@@ -1,6 +1,7 @@
 {
   "builds": [
     {
+      "access_events": [],
       "architecture": "x86",
       "artifact_group": "system_api",
       "attempt_diagnostics": [],

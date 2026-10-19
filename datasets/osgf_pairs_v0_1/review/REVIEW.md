@@ -34,6 +34,16 @@ Coverage: cross_compiler_variants. Proposed label: **equivalent**. Split: valida
 
 Evidence: Same controlled source artifact and routine body, distinct compiler configuration; build transcripts independently checked.
 
+## pair:0df30c682fbf6df950146b14
+
+Coverage: thunk. Proposed label: **equivalent**. Split: held_out_test.
+
+- left: `interaction_socket_kind` in `samples/controlled/source/interaction_socket_kind.c`; msvc O0; graph `graph:add20e80b7f397b7e5a5a1bf`.
+- right: `interaction_socket_kind__thunk` in `samples/controlled/source/interaction_socket_kind.c`; msvc O0; graph `graph:afbbbd0331774d830f5b1c03`.
+
+Evidence: Fixed delegation invokes the original routine exactly once with identical arguments, return value, API effects and error handling; no additional OS operation.
+Validation: 1,024 deterministic inputs covering every admitted length with four byte patterns. These are tests, not exhaustive enumeration of all byte strings; the source rationale is necessary.
+
 ## pair:1107ec8823f5fad30c4b336c
 
 Coverage: hard_negatives. Proposed label: **non_equivalent**. Split: discovery_train.
@@ -44,14 +54,24 @@ Coverage: hard_negatives. Proposed label: **non_equivalent**. Split: discovery_t
 Evidence: Different pure reductions/search predicates on the identical input; recorded outputs witness non-equivalence.
 Input bytes: `[13, 30, 47, 64, 81, 98, 115]` (trailing NUL); results: left=2268, right=448.
 
-## pair:17b587bd05bffd3cf40289b2
+## pair:150a989550f7c4251c21e5de
 
-Coverage: thunk. Proposed label: **equivalent**. Split: discovery_train.
+Coverage: transparent_wrapper. Proposed label: **equivalent**. Split: validation.
 
-- left: `xor_buffer__thunk` in `samples/controlled/source/memory_variants.c`; gcc O0; graph `graph:5c2f198d96f175500b13615b`.
-- right: `xor_buffer` in `samples/controlled/source/memory.c`; gcc O0; graph `graph:cc626d14f75b8e55bcebbde2`.
+- left: `interaction_registry_summary__transparent_wrapper` in `samples/controlled/source/interaction_registry_summary.c`; msvc O0; graph `graph:515ac6b9562e4c96565cecab`.
+- right: `interaction_registry_summary` in `samples/controlled/source/interaction_registry_summary.c`; msvc O0; graph `graph:e0b39088fd752beb6dbe465f`.
 
-Evidence: Fixed local function pointer targets the original routine; no pointer mutation or alternate target.
+Evidence: Fixed delegation invokes the original routine exactly once with identical arguments, return value, API effects and error handling; no additional OS operation.
+Validation: 1,024 deterministic inputs covering every admitted length with four byte patterns. These are tests, not exhaustive enumeration of all byte strings; the source rationale is necessary.
+
+## pair:1e750c46cf950165a7b926c4
+
+Coverage: linear_chain. Proposed label: **equivalent**. Split: validation.
+
+- left: `interaction_registry_summary` in `samples/controlled/source/interaction_registry_summary.c`; msvc O2; graph `graph:2ecd38be52171c5f62c8c613`.
+- right: `interaction_registry_summary__linear_chain` in `samples/controlled/source/interaction_registry_summary.c`; msvc O2; graph `graph:85fda6135a0812d4e38ef265`.
+
+Evidence: Fixed delegation invokes the original routine exactly once with identical arguments, return value, API effects and error handling; no additional OS operation.
 Validation: 1,024 deterministic inputs covering every admitted length with four byte patterns. These are tests, not exhaustive enumeration of all byte strings; the source rationale is necessary.
 
 ## pair:24e9f59cb1fc34954424c670
@@ -62,16 +82,6 @@ Coverage: dead_branch. Proposed label: **equivalent**. Split: discovery_train.
 - right: `sum_array__dead_branch` in `samples/controlled/source/numeric_variants.c`; gcc O0; graph `graph:ae48e58a26e0e82dd3d93d57`.
 
 Evidence: Branch n>255 is unreachable under the explicit 0<=n<=255 input contract; reachable execution delegates unchanged.
-Validation: 1,024 deterministic inputs covering every admitted length with four byte patterns. These are tests, not exhaustive enumeration of all byte strings; the source rationale is necessary.
-
-## pair:27ef7c0851ab2569d00912be
-
-Coverage: linear_chain. Proposed label: **equivalent**. Split: held_out_test.
-
-- left: `count_digits` in `samples/controlled/source/text.c`; gcc O0; graph `graph:98ca0b8f4eac0fb20fb1c619`.
-- right: `count_digits__linear_chain` in `samples/controlled/source/text_variants.c`; gcc O0; graph `graph:ea3626680372b0f2b8804a27`.
-
-Evidence: Two fixed pure delegation stages preserve arguments, return value and absence of external effects.
 Validation: 1,024 deterministic inputs covering every admitted length with four byte patterns. These are tests, not exhaustive enumeration of all byte strings; the source rationale is necessary.
 
 ## pair:2bbcd0b314402aa2d3270877
@@ -93,16 +103,6 @@ Coverage: easy_negatives. Proposed label: **non_equivalent**. Split: validation.
 
 Evidence: Length plus one versus string equality: different operation, API and string evidence.
 Input bytes: `[]` (trailing NUL); results: left=1, right=0.
-
-## pair:581a97b5a1044b1391d04a24
-
-Coverage: transparent_wrapper. Proposed label: **equivalent**. Split: discovery_train.
-
-- left: `sum_array__transparent_wrapper` in `samples/controlled/source/numeric_variants.c`; gcc O0; graph `graph:57778ae6d02406ee73893da0`.
-- right: `sum_array` in `samples/controlled/source/numeric.c`; gcc O0; graph `graph:6ff68b280145bdaab2fc192b`.
-
-Evidence: Direct delegation with identical arguments and return value; no new observable effects.
-Validation: 1,024 deterministic inputs covering every admitted length with four byte patterns. These are tests, not exhaustive enumeration of all byte strings; the source rationale is necessary.
 
 ## pair:6034c2910327190dd52ca3b6
 

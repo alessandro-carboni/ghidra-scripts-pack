@@ -1,6 +1,7 @@
 {
   "builds": [
     {
+      "access_events": [],
       "architecture": "x86",
       "artifact_group": "numeric",
       "attempt_diagnostics": [],
@@ -12313,6 +12314,7 @@
       "status": "success"
     },
     {
+      "access_events": [],
       "architecture": "x86",
       "artifact_group": "text",
       "attempt_diagnostics": [],
@@ -24625,6 +24627,7 @@
       "status": "success"
     },
     {
+      "access_events": [],
       "architecture": "x86",
       "artifact_group": "memory",
       "attempt_diagnostics": [],

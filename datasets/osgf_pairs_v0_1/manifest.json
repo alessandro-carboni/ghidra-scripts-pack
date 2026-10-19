@@ -1,6 +1,562 @@
 {
   "builds": [
     {
+      "access_events": [],
+      "architecture": "x86",
+      "artifact_group": "interaction_file_metadata",
+      "attempt_diagnostics": [],
+      "attempts": 1,
+      "behavior": [
+        "interaction_file_metadata 0 32",
+        "interaction_file_metadata_flipped 0 33",
+        "interaction_file_metadata__transparent_wrapper 0 32",
+        "interaction_file_metadata__thunk 0 32",
+        "interaction_file_metadata__linear_chain 0 32",
+        "interaction_file_metadata 1 39",
+        "interaction_file_metadata_flipped 1 38",
+        "interaction_file_metadata__transparent_wrapper 1 39",
+        "interaction_file_metadata__thunk 1 39",
+        "interaction_file_metadata__linear_chain 1 39",
+        "interaction_file_metadata 2 46",
+        "interaction_file_metadata_flipped 2 47",
+        "interaction_file_metadata__transparent_wrapper 2 46",
+        "interaction_file_metadata__thunk 2 46",
+        "interaction_file_metadata__linear_chain 2 46",
+        "interaction_file_metadata 3 53",
+        "interaction_file_metadata_flipped 3 52",
+        "interaction_file_metadata__transparent_wrapper 3 53",
+        "interaction_file_metadata__thunk 3 53",
+        "interaction_file_metadata__linear_chain 3 53",
+        "interaction_file_metadata 4 60",
+        "interaction_file_metadata_flipped 4 61",
+        "interaction_file_metadata__transparent_wrapper 4 60",
+        "interaction_file_metadata__thunk 4 60",
+        "interaction_file_metadata__linear_chain 4 60",
+        "interaction_file_metadata 5 67",
+        "interaction_file_metadata_flipped 5 66",
+        "interaction_file_metadata__transparent_wrapper 5 67",
+        "interaction_file_metadata__thunk 5 67",
+        "interaction_file_metadata__linear_chain 5 67",
+        "interaction_file_metadata 6 74",
+        "interaction_file_metadata_flipped 6 75",
+        "interaction_file_metadata__transparent_wrapper 6 74",
+        "interaction_file_metadata__thunk 6 74",
+        "interaction_file_metadata__linear_chain 6 74",
+        "interaction_file_metadata 7 81",
+        "interaction_file_metadata_flipped 7 80",
+        "interaction_file_metadata__transparent_wrapper 7 81",
+        "interaction_file_metadata__thunk 7 81",
+        "interaction_file_metadata__linear_chain 7 81",
+        "interaction_file_metadata 8 88",
+        "interaction_file_metadata_flipped 8 89",
+        "interaction_file_metadata__transparent_wrapper 8 88",
+        "interaction_file_metadata__thunk 8 88",
+        "interaction_file_metadata__linear_chain 8 88",
+        "interaction_file_metadata 9 95",
+        "interaction_file_metadata_flipped 9 94",
+        "interaction_file_metadata__transparent_wrapper 9 95",
+        "interaction_file_metadata__thunk 9 95",
+        "interaction_file_metadata__linear_chain 9 95",
+        "interaction_file_metadata 10 102",
+        "interaction_file_metadata_flipped 10 103",
+        "interaction_file_metadata__transparent_wrapper 10 102",
+        "interaction_file_metadata__thunk 10 102",
+        "interaction_file_metadata__linear_chain 10 102",
+        "interaction_file_metadata 11 109",
+        "interaction_file_metadata_flipped 11 108",
+        "interaction_file_metadata__transparent_wrapper 11 109",
+        "interaction_file_metadata__thunk 11 109",
+        "interaction_file_metadata__linear_chain 11 109",
+        "interaction_file_metadata 12 116",
+        "interaction_file_metadata_flipped 12 117",
+        "interaction_file_metadata__transparent_wrapper 12 116",
+        "interaction_file_metadata__thunk 12 116",
+        "interaction_file_metadata__linear_chain 12 116",
+        "interaction_file_metadata 13 123",
+        "interaction_file_metadata_flipped 13 122",
+        "interaction_file_metadata__transparent_wrapper 13 123",
+        "interaction_file_metadata__thunk 13 123",
+        "interaction_file_metadata__linear_chain 13 123",
+        "interaction_file_metadata 14 130",
+        "interaction_file_metadata_flipped 14 131",
+        "interaction_file_metadata__transparent_wrapper 14 130",
+        "interaction_file_metadata__thunk 14 130",
+        "interaction_file_metadata__linear_chain 14 130",
+        "interaction_file_metadata 15 137",
+        "interaction_file_metadata_flipped 15 136",
+        "interaction_file_metadata__transparent_wrapper 15 137",
+        "interaction_file_metadata__thunk 15 137",
+        "interaction_file_metadata__linear_chain 15 137"
+      ],
+      "behavior_input": "case=0..15; length=case*7; byte[j]=(j*17+case*13)%127; trailing NUL",
+      "build_hash": "e5c0f5ccd474a299be8a4897b409ddff919c0d8f2f0abdf6985040de23225ed2",
+      "build_id": "interaction_file_metadata-msvc-O0",
+      "compiler": "msvc",
+      "compiler_version": "Microsoft (R) C/C++ Optimizing Compiler Version 19.44.35225 for x86",
+      "flags": [
+        "/nologo",
+        "/Od",
+        "/Brepro",
+        "samples/controlled/source/interaction_file_metadata.c",
+        "/Fesamples/controlled/builds/interaction_file_metadata-msvc-O0/.staging/attempt-1/interaction_file_metadata-msvc-O0.exe",
+        "/link",
+        "/INCREMENTAL:NO",
+        "/OPT:NOICF",
+        "ws2_32.lib",
+        "advapi32.lib"
+      ],
+      "independent_environment_observation": 32,
+      "optimization": "O0",
+      "source_hash": "50fa6ff079962c100ed141b5f455ed3ef3e2e55418f7f4c0a39a69de09ef67c0",
+      "source_path": "samples/controlled/source/interaction_file_metadata.c",
+      "status": "success"
+    },
+    {
+      "access_events": [],
+      "architecture": "x86",
+      "artifact_group": "interaction_file_metadata",
+      "attempt_diagnostics": [],
+      "attempts": 1,
+      "behavior": [
+        "interaction_file_metadata 0 32",
+        "interaction_file_metadata_flipped 0 33",
+        "interaction_file_metadata__transparent_wrapper 0 32",
+        "interaction_file_metadata__thunk 0 32",
+        "interaction_file_metadata__linear_chain 0 32",
+        "interaction_file_metadata 1 39",
+        "interaction_file_metadata_flipped 1 38",
+        "interaction_file_metadata__transparent_wrapper 1 39",
+        "interaction_file_metadata__thunk 1 39",
+        "interaction_file_metadata__linear_chain 1 39",
+        "interaction_file_metadata 2 46",
+        "interaction_file_metadata_flipped 2 47",
+        "interaction_file_metadata__transparent_wrapper 2 46",
+        "interaction_file_metadata__thunk 2 46",
+        "interaction_file_metadata__linear_chain 2 46",
+        "interaction_file_metadata 3 53",
+        "interaction_file_metadata_flipped 3 52",
+        "interaction_file_metadata__transparent_wrapper 3 53",
+        "interaction_file_metadata__thunk 3 53",
+        "interaction_file_metadata__linear_chain 3 53",
+        "interaction_file_metadata 4 60",
+        "interaction_file_metadata_flipped 4 61",
+        "interaction_file_metadata__transparent_wrapper 4 60",
+        "interaction_file_metadata__thunk 4 60",
+        "interaction_file_metadata__linear_chain 4 60",
+        "interaction_file_metadata 5 67",
+        "interaction_file_metadata_flipped 5 66",
+        "interaction_file_metadata__transparent_wrapper 5 67",
+        "interaction_file_metadata__thunk 5 67",
+        "interaction_file_metadata__linear_chain 5 67",
+        "interaction_file_metadata 6 74",
+        "interaction_file_metadata_flipped 6 75",
+        "interaction_file_metadata__transparent_wrapper 6 74",
+        "interaction_file_metadata__thunk 6 74",
+        "interaction_file_metadata__linear_chain 6 74",
+        "interaction_file_metadata 7 81",
+        "interaction_file_metadata_flipped 7 80",
+        "interaction_file_metadata__transparent_wrapper 7 81",
+        "interaction_file_metadata__thunk 7 81",
+        "interaction_file_metadata__linear_chain 7 81",
+        "interaction_file_metadata 8 88",
+        "interaction_file_metadata_flipped 8 89",
+        "interaction_file_metadata__transparent_wrapper 8 88",
+        "interaction_file_metadata__thunk 8 88",
+        "interaction_file_metadata__linear_chain 8 88",
+        "interaction_file_metadata 9 95",
+        "interaction_file_metadata_flipped 9 94",
+        "interaction_file_metadata__transparent_wrapper 9 95",
+        "interaction_file_metadata__thunk 9 95",
+        "interaction_file_metadata__linear_chain 9 95",
+        "interaction_file_metadata 10 102",
+        "interaction_file_metadata_flipped 10 103",
+        "interaction_file_metadata__transparent_wrapper 10 102",
+        "interaction_file_metadata__thunk 10 102",
+        "interaction_file_metadata__linear_chain 10 102",
+        "interaction_file_metadata 11 109",
+        "interaction_file_metadata_flipped 11 108",
+        "interaction_file_metadata__transparent_wrapper 11 109",
+        "interaction_file_metadata__thunk 11 109",
+        "interaction_file_metadata__linear_chain 11 109",
+        "interaction_file_metadata 12 116",
+        "interaction_file_metadata_flipped 12 117",
+        "interaction_file_metadata__transparent_wrapper 12 116",
+        "interaction_file_metadata__thunk 12 116",
+        "interaction_file_metadata__linear_chain 12 116",
+        "interaction_file_metadata 13 123",
+        "interaction_file_metadata_flipped 13 122",
+        "interaction_file_metadata__transparent_wrapper 13 123",
+        "interaction_file_metadata__thunk 13 123",
+        "interaction_file_metadata__linear_chain 13 123",
+        "interaction_file_metadata 14 130",
+        "interaction_file_metadata_flipped 14 131",
+        "interaction_file_metadata__transparent_wrapper 14 130",
+        "interaction_file_metadata__thunk 14 130",
+        "interaction_file_metadata__linear_chain 14 130",
+        "interaction_file_metadata 15 137",
+        "interaction_file_metadata_flipped 15 136",
+        "interaction_file_metadata__transparent_wrapper 15 137",
+        "interaction_file_metadata__thunk 15 137",
+        "interaction_file_metadata__linear_chain 15 137"
+      ],
+      "behavior_input": "case=0..15; length=case*7; byte[j]=(j*17+case*13)%127; trailing NUL",
+      "build_hash": "326fdd8e3ecca684b4a654cceed1859e93492c2ea124537fc48d54dd887df39f",
+      "build_id": "interaction_file_metadata-msvc-O2",
+      "compiler": "msvc",
+      "compiler_version": "Microsoft (R) C/C++ Optimizing Compiler Version 19.44.35225 for x86",
+      "flags": [
+        "/nologo",
+        "/O2",
+        "/Brepro",
+        "samples/controlled/source/interaction_file_metadata.c",
+        "/Fesamples/controlled/builds/interaction_file_metadata-msvc-O2/.staging/attempt-1/interaction_file_metadata-msvc-O2.exe",
+        "/link",
+        "/INCREMENTAL:NO",
+        "/OPT:NOICF",
+        "ws2_32.lib",
+        "advapi32.lib"
+      ],
+      "independent_environment_observation": 32,
+      "optimization": "O2",
+      "source_hash": "50fa6ff079962c100ed141b5f455ed3ef3e2e55418f7f4c0a39a69de09ef67c0",
+      "source_path": "samples/controlled/source/interaction_file_metadata.c",
+      "status": "success"
+    },
+    {
+      "access_events": [],
+      "architecture": "x86",
+      "artifact_group": "interaction_registry_summary",
+      "attempt_diagnostics": [],
+      "attempts": 1,
+      "behavior": [
+        "interaction_registry_summary 0 119",
+        "interaction_registry_summary_flipped 0 118",
+        "interaction_registry_summary__transparent_wrapper 0 119",
+        "interaction_registry_summary__thunk 0 119",
+        "interaction_registry_summary__linear_chain 0 119",
+        "interaction_registry_summary 1 118",
+        "interaction_registry_summary_flipped 1 119",
+        "interaction_registry_summary__transparent_wrapper 1 118",
+        "interaction_registry_summary__thunk 1 118",
+        "interaction_registry_summary__linear_chain 1 118",
+        "interaction_registry_summary 2 116",
+        "interaction_registry_summary_flipped 2 117",
+        "interaction_registry_summary__transparent_wrapper 2 116",
+        "interaction_registry_summary__thunk 2 116",
+        "interaction_registry_summary__linear_chain 2 116",
+        "interaction_registry_summary 3 114",
+        "interaction_registry_summary_flipped 3 115",
+        "interaction_registry_summary__transparent_wrapper 3 114",
+        "interaction_registry_summary__thunk 3 114",
+        "interaction_registry_summary__linear_chain 3 114",
+        "interaction_registry_summary 4 113",
+        "interaction_registry_summary_flipped 4 112",
+        "interaction_registry_summary__transparent_wrapper 4 113",
+        "interaction_registry_summary__thunk 4 113",
+        "interaction_registry_summary__linear_chain 4 113",
+        "interaction_registry_summary 5 127",
+        "interaction_registry_summary_flipped 5 126",
+        "interaction_registry_summary__transparent_wrapper 5 127",
+        "interaction_registry_summary__thunk 5 127",
+        "interaction_registry_summary__linear_chain 5 127",
+        "interaction_registry_summary 6 126",
+        "interaction_registry_summary_flipped 6 127",
+        "interaction_registry_summary__transparent_wrapper 6 126",
+        "interaction_registry_summary__thunk 6 126",
+        "interaction_registry_summary__linear_chain 6 126",
+        "interaction_registry_summary 7 126",
+        "interaction_registry_summary_flipped 7 127",
+        "interaction_registry_summary__transparent_wrapper 7 126",
+        "interaction_registry_summary__thunk 7 126",
+        "interaction_registry_summary__linear_chain 7 126",
+        "interaction_registry_summary 8 124",
+        "interaction_registry_summary_flipped 8 125",
+        "interaction_registry_summary__transparent_wrapper 8 124",
+        "interaction_registry_summary__thunk 8 124",
+        "interaction_registry_summary__linear_chain 8 124",
+        "interaction_registry_summary 9 123",
+        "interaction_registry_summary_flipped 9 122",
+        "interaction_registry_summary__transparent_wrapper 9 123",
+        "interaction_registry_summary__thunk 9 123",
+        "interaction_registry_summary__linear_chain 9 123",
+        "interaction_registry_summary 10 121",
+        "interaction_registry_summary_flipped 10 120",
+        "interaction_registry_summary__transparent_wrapper 10 121",
+        "interaction_registry_summary__thunk 10 121",
+        "interaction_registry_summary__linear_chain 10 121",
+        "interaction_registry_summary 11 120",
+        "interaction_registry_summary_flipped 11 121",
+        "interaction_registry_summary__transparent_wrapper 11 120",
+        "interaction_registry_summary__thunk 11 120",
+        "interaction_registry_summary__linear_chain 11 120",
+        "interaction_registry_summary 12 102",
+        "interaction_registry_summary_flipped 12 103",
+        "interaction_registry_summary__transparent_wrapper 12 102",
+        "interaction_registry_summary__thunk 12 102",
+        "interaction_registry_summary__linear_chain 12 102",
+        "interaction_registry_summary 13 101",
+        "interaction_registry_summary_flipped 13 100",
+        "interaction_registry_summary__transparent_wrapper 13 101",
+        "interaction_registry_summary__thunk 13 101",
+        "interaction_registry_summary__linear_chain 13 101",
+        "interaction_registry_summary 14 99",
+        "interaction_registry_summary_flipped 14 98",
+        "interaction_registry_summary__transparent_wrapper 14 99",
+        "interaction_registry_summary__thunk 14 99",
+        "interaction_registry_summary__linear_chain 14 99",
+        "interaction_registry_summary 15 97",
+        "interaction_registry_summary_flipped 15 96",
+        "interaction_registry_summary__transparent_wrapper 15 97",
+        "interaction_registry_summary__thunk 15 97",
+        "interaction_registry_summary__linear_chain 15 97"
+      ],
+      "behavior_input": "case=0..15; length=case*7; byte[j]=(j*17+case*13)%127; trailing NUL",
+      "build_hash": "bd5c233d2ffd1689965c3c98c4f5be23b60a21b28ed1dee280da84461590bf71",
+      "build_id": "interaction_registry_summary-msvc-O0",
+      "compiler": "msvc",
+      "compiler_version": "Microsoft (R) C/C++ Optimizing Compiler Version 19.44.35225 for x86",
+      "flags": [
+        "/nologo",
+        "/Od",
+        "/Brepro",
+        "samples/controlled/source/interaction_registry_summary.c",
+        "/Fesamples/controlled/builds/interaction_registry_summary-msvc-O0/.staging/attempt-1/interaction_registry_summary-msvc-O0.exe",
+        "/link",
+        "/INCREMENTAL:NO",
+        "/OPT:NOICF",
+        "ws2_32.lib",
+        "advapi32.lib"
+      ],
+      "independent_environment_observation": 119,
+      "optimization": "O0",
+      "source_hash": "aa6a5394f581189b84c87b1eb26faac7e1873641477ccc695b54aa4e8fa9a6bc",
+      "source_path": "samples/controlled/source/interaction_registry_summary.c",
+      "status": "success"
+    },
+    {
+      "access_events": [],
+      "architecture": "x86",
+      "artifact_group": "interaction_registry_summary",
+      "attempt_diagnostics": [],
+      "attempts": 1,
+      "behavior": [
+        "interaction_registry_summary 0 119",
+        "interaction_registry_summary_flipped 0 118",
+        "interaction_registry_summary__transparent_wrapper 0 119",
+        "interaction_registry_summary__thunk 0 119",
+        "interaction_registry_summary__linear_chain 0 119",
+        "interaction_registry_summary 1 118",
+        "interaction_registry_summary_flipped 1 119",
+        "interaction_registry_summary__transparent_wrapper 1 118",
+        "interaction_registry_summary__thunk 1 118",
+        "interaction_registry_summary__linear_chain 1 118",
+        "interaction_registry_summary 2 116",
+        "interaction_registry_summary_flipped 2 117",
+        "interaction_registry_summary__transparent_wrapper 2 116",
+        "interaction_registry_summary__thunk 2 116",
+        "interaction_registry_summary__linear_chain 2 116",
+        "interaction_registry_summary 3 114",
+        "interaction_registry_summary_flipped 3 115",
+        "interaction_registry_summary__transparent_wrapper 3 114",
+        "interaction_registry_summary__thunk 3 114",
+        "interaction_registry_summary__linear_chain 3 114",
+        "interaction_registry_summary 4 113",
+        "interaction_registry_summary_flipped 4 112",
+        "interaction_registry_summary__transparent_wrapper 4 113",
+        "interaction_registry_summary__thunk 4 113",
+        "interaction_registry_summary__linear_chain 4 113",
+        "interaction_registry_summary 5 127",
+        "interaction_registry_summary_flipped 5 126",
+        "interaction_registry_summary__transparent_wrapper 5 127",
+        "interaction_registry_summary__thunk 5 127",
+        "interaction_registry_summary__linear_chain 5 127",
+        "interaction_registry_summary 6 126",
+        "interaction_registry_summary_flipped 6 127",
+        "interaction_registry_summary__transparent_wrapper 6 126",
+        "interaction_registry_summary__thunk 6 126",
+        "interaction_registry_summary__linear_chain 6 126",
+        "interaction_registry_summary 7 126",
+        "interaction_registry_summary_flipped 7 127",
+        "interaction_registry_summary__transparent_wrapper 7 126",
+        "interaction_registry_summary__thunk 7 126",
+        "interaction_registry_summary__linear_chain 7 126",
+        "interaction_registry_summary 8 124",
+        "interaction_registry_summary_flipped 8 125",
+        "interaction_registry_summary__transparent_wrapper 8 124",
+        "interaction_registry_summary__thunk 8 124",
+        "interaction_registry_summary__linear_chain 8 124",
+        "interaction_registry_summary 9 123",
+        "interaction_registry_summary_flipped 9 122",
+        "interaction_registry_summary__transparent_wrapper 9 123",
+        "interaction_registry_summary__thunk 9 123",
+        "interaction_registry_summary__linear_chain 9 123",
+        "interaction_registry_summary 10 121",
+        "interaction_registry_summary_flipped 10 120",
+        "interaction_registry_summary__transparent_wrapper 10 121",
+        "interaction_registry_summary__thunk 10 121",
+        "interaction_registry_summary__linear_chain 10 121",
+        "interaction_registry_summary 11 120",
+        "interaction_registry_summary_flipped 11 121",
+        "interaction_registry_summary__transparent_wrapper 11 120",
+        "interaction_registry_summary__thunk 11 120",
+        "interaction_registry_summary__linear_chain 11 120",
+        "interaction_registry_summary 12 102",
+        "interaction_registry_summary_flipped 12 103",
+        "interaction_registry_summary__transparent_wrapper 12 102",
+        "interaction_registry_summary__thunk 12 102",
+        "interaction_registry_summary__linear_chain 12 102",
+        "interaction_registry_summary 13 101",
+        "interaction_registry_summary_flipped 13 100",
+        "interaction_registry_summary__transparent_wrapper 13 101",
+        "interaction_registry_summary__thunk 13 101",
+        "interaction_registry_summary__linear_chain 13 101",
+        "interaction_registry_summary 14 99",
+        "interaction_registry_summary_flipped 14 98",
+        "interaction_registry_summary__transparent_wrapper 14 99",
+        "interaction_registry_summary__thunk 14 99",
+        "interaction_registry_summary__linear_chain 14 99",
+        "interaction_registry_summary 15 97",
+        "interaction_registry_summary_flipped 15 96",
+        "interaction_registry_summary__transparent_wrapper 15 97",
+        "interaction_registry_summary__thunk 15 97",
+        "interaction_registry_summary__linear_chain 15 97"
+      ],
+      "behavior_input": "case=0..15; length=case*7; byte[j]=(j*17+case*13)%127; trailing NUL",
+      "build_hash": "761e3426c69744a9f4b989159ec86bad54fa6c364b639608066610dfecc516b3",
+      "build_id": "interaction_registry_summary-msvc-O2",
+      "compiler": "msvc",
+      "compiler_version": "Microsoft (R) C/C++ Optimizing Compiler Version 19.44.35225 for x86",
+      "flags": [
+        "/nologo",
+        "/O2",
+        "/Brepro",
+        "samples/controlled/source/interaction_registry_summary.c",
+        "/Fesamples/controlled/builds/interaction_registry_summary-msvc-O2/.staging/attempt-1/interaction_registry_summary-msvc-O2.exe",
+        "/link",
+        "/INCREMENTAL:NO",
+        "/OPT:NOICF",
+        "ws2_32.lib",
+        "advapi32.lib"
+      ],
+      "independent_environment_observation": 119,
+      "optimization": "O2",
+      "source_hash": "aa6a5394f581189b84c87b1eb26faac7e1873641477ccc695b54aa4e8fa9a6bc",
+      "source_path": "samples/controlled/source/interaction_registry_summary.c",
+      "status": "success"
+    },
+    {
+      "access_events": [],
+      "architecture": "x86",
+      "artifact_group": "interaction_socket_kind",
+      "attempt_diagnostics": [],
+      "attempts": 1,
+      "behavior": [
+        "interaction_socket_kind 0 2",
+        "interaction_socket_kind_flipped 0 3",
+        "interaction_socket_kind__transparent_wrapper 0 2",
+        "interaction_socket_kind__thunk 0 2",
+        "interaction_socket_kind__linear_chain 0 2",
+        "interaction_socket_kind 1 16",
+        "interaction_socket_kind_flipped 1 17",
+        "interaction_socket_kind__transparent_wrapper 1 16",
+        "interaction_socket_kind__thunk 1 16",
+        "interaction_socket_kind__linear_chain 1 16",
+        "interaction_socket_kind 2 30",
+        "interaction_socket_kind_flipped 2 31",
+        "interaction_socket_kind__transparent_wrapper 2 30",
+        "interaction_socket_kind__thunk 2 30",
+        "interaction_socket_kind__linear_chain 2 30",
+        "interaction_socket_kind 3 44",
+        "interaction_socket_kind_flipped 3 45",
+        "interaction_socket_kind__transparent_wrapper 3 44",
+        "interaction_socket_kind__thunk 3 44",
+        "interaction_socket_kind__linear_chain 3 44",
+        "interaction_socket_kind 4 58",
+        "interaction_socket_kind_flipped 4 59",
+        "interaction_socket_kind__transparent_wrapper 4 58",
+        "interaction_socket_kind__thunk 4 58",
+        "interaction_socket_kind__linear_chain 4 58",
+        "interaction_socket_kind 5 72",
+        "interaction_socket_kind_flipped 5 73",
+        "interaction_socket_kind__transparent_wrapper 5 72",
+        "interaction_socket_kind__thunk 5 72",
+        "interaction_socket_kind__linear_chain 5 72",
+        "interaction_socket_kind 6 86",
+        "interaction_socket_kind_flipped 6 87",
+        "interaction_socket_kind__transparent_wrapper 6 86",
+        "interaction_socket_kind__thunk 6 86",
+        "interaction_socket_kind__linear_chain 6 86",
+        "interaction_socket_kind 7 100",
+        "interaction_socket_kind_flipped 7 101",
+        "interaction_socket_kind__transparent_wrapper 7 100",
+        "interaction_socket_kind__thunk 7 100",
+        "interaction_socket_kind__linear_chain 7 100",
+        "interaction_socket_kind 8 114",
+        "interaction_socket_kind_flipped 8 115",
+        "interaction_socket_kind__transparent_wrapper 8 114",
+        "interaction_socket_kind__thunk 8 114",
+        "interaction_socket_kind__linear_chain 8 114",
+        "interaction_socket_kind 9 128",
+        "interaction_socket_kind_flipped 9 129",
+        "interaction_socket_kind__transparent_wrapper 9 128",
+        "interaction_socket_kind__thunk 9 128",
+        "interaction_socket_kind__linear_chain 9 128",
+        "interaction_socket_kind 10 142",
+        "interaction_socket_kind_flipped 10 143",
+        "interaction_socket_kind__transparent_wrapper 10 142",
+        "interaction_socket_kind__thunk 10 142",
+        "interaction_socket_kind__linear_chain 10 142",
+        "interaction_socket_kind 11 156",
+        "interaction_socket_kind_flipped 11 157",
+        "interaction_socket_kind__transparent_wrapper 11 156",
+        "interaction_socket_kind__thunk 11 156",
+        "interaction_socket_kind__linear_chain 11 156",
+        "interaction_socket_kind 12 170",
+        "interaction_socket_kind_flipped 12 171",
+        "interaction_socket_kind__transparent_wrapper 12 170",
+        "interaction_socket_kind__thunk 12 170",
+        "interaction_socket_kind__linear_chain 12 170",
+        "interaction_socket_kind 13 184",
+        "interaction_socket_kind_flipped 13 185",
+        "interaction_socket_kind__transparent_wrapper 13 184",
+        "interaction_socket_kind__thunk 13 184",
+        "interaction_socket_kind__linear_chain 13 184",
+        "interaction_socket_kind 14 198",
+        "interaction_socket_kind_flipped 14 199",
+        "interaction_socket_kind__transparent_wrapper 14 198",
+        "interaction_socket_kind__thunk 14 198",
+        "interaction_socket_kind__linear_chain 14 198",
+        "interaction_socket_kind 15 212",
+        "interaction_socket_kind_flipped 15 213",
+        "interaction_socket_kind__transparent_wrapper 15 212",
+        "interaction_socket_kind__thunk 15 212",
+        "interaction_socket_kind__linear_chain 15 212"
+      ],
+      "behavior_input": "case=0..15; length=case*7; byte[j]=(j*17+case*13)%127; trailing NUL",
+      "build_hash": "6606cef608c783901e44193e8828326859aaadb879cd752bff1106d8a4d2b299",
+      "build_id": "interaction_socket_kind-msvc-O0",
+      "compiler": "msvc",
+      "compiler_version": "Microsoft (R) C/C++ Optimizing Compiler Version 19.44.35225 for x86",
+      "flags": [
+        "/nologo",
+        "/Od",
+        "/Brepro",
+        "samples/controlled/source/interaction_socket_kind.c",
+        "/Fesamples/controlled/builds/interaction_socket_kind-msvc-O0/.staging/attempt-1/interaction_socket_kind-msvc-O0.exe",
+        "/link",
+        "/INCREMENTAL:NO",
+        "/OPT:NOICF",
+        "ws2_32.lib",
+        "advapi32.lib"
+      ],
+      "independent_environment_observation": 2,
+      "optimization": "O0",
+      "source_hash": "55ac036a4e34604ee36524c567b6cca77e26f6f94e9fe995cf17c6ced97a490f",
+      "source_path": "samples/controlled/source/interaction_socket_kind.c",
+      "status": "success"
+    },
+    {
+      "access_events": [],
       "architecture": "x86",
       "artifact_group": "memory",
       "attempt_diagnostics": [],
@@ -75,6 +631,7 @@
       "status": "success"
     },
     {
+      "access_events": [],
       "architecture": "x86",
       "artifact_group": "memory",
       "attempt_diagnostics": [],
@@ -149,6 +706,7 @@
       "status": "success"
     },
     {
+      "access_events": [],
       "architecture": "x86",
       "artifact_group": "memory",
       "attempt_diagnostics": [],
@@ -223,6 +781,7 @@
       "status": "success"
     },
     {
+      "access_events": [],
       "architecture": "x86",
       "artifact_group": "memory",
       "attempt_diagnostics": [],
@@ -301,6 +860,7 @@
       "status": "success"
     },
     {
+      "access_events": [],
       "architecture": "x86",
       "artifact_group": "memory",
       "attempt_diagnostics": [],
@@ -379,6 +939,7 @@
       "status": "success"
     },
     {
+      "access_events": [],
       "architecture": "x86",
       "artifact_group": "memory",
       "attempt_diagnostics": [],
@@ -12691,6 +13252,7 @@
       "status": "success"
     },
     {
+      "access_events": [],
       "architecture": "x86",
       "artifact_group": "system_api",
       "attempt_diagnostics": [],
@@ -12798,6 +13360,7 @@
       "status": "success"
     },
     {
+      "access_events": [],
       "architecture": "x86",
       "artifact_group": "numeric",
       "attempt_diagnostics": [],
@@ -12872,6 +13435,7 @@
       "status": "success"
     },
     {
+      "access_events": [],
       "architecture": "x86",
       "artifact_group": "numeric",
       "attempt_diagnostics": [],
@@ -12946,6 +13510,7 @@
       "status": "success"
     },
     {
+      "access_events": [],
       "architecture": "x86",
       "artifact_group": "numeric",
       "attempt_diagnostics": [],
@@ -13020,6 +13585,7 @@
       "status": "success"
     },
     {
+      "access_events": [],
       "architecture": "x86",
       "artifact_group": "numeric",
       "attempt_diagnostics": [],
@@ -13098,6 +13664,7 @@
       "status": "success"
     },
     {
+      "access_events": [],
       "architecture": "x86",
       "artifact_group": "numeric",
       "attempt_diagnostics": [],
@@ -25410,6 +25977,7 @@
       "status": "success"
     },
     {
+      "access_events": [],
       "architecture": "x86",
       "artifact_group": "system_api",
       "attempt_diagnostics": [],
@@ -25484,6 +26052,7 @@
       "status": "success"
     },
     {
+      "access_events": [],
       "architecture": "x86",
       "artifact_group": "system_api",
       "attempt_diagnostics": [],
@@ -25558,6 +26127,7 @@
       "status": "success"
     },
     {
+      "access_events": [],
       "architecture": "x86",
       "artifact_group": "system_api",
       "attempt_diagnostics": [],
@@ -25632,6 +26202,7 @@
       "status": "success"
     },
     {
+      "access_events": [],
       "architecture": "x86",
       "artifact_group": "system_api",
       "attempt_diagnostics": [],
@@ -25710,6 +26281,7 @@
       "status": "success"
     },
     {
+      "access_events": [],
       "architecture": "x86",
       "artifact_group": "text",
       "attempt_diagnostics": [],
@@ -25784,6 +26356,7 @@
       "status": "success"
     },
     {
+      "access_events": [],
       "architecture": "x86",
       "artifact_group": "text",
       "attempt_diagnostics": [],
@@ -25858,6 +26431,7 @@
       "status": "success"
     },
     {
+      "access_events": [],
       "architecture": "x86",
       "artifact_group": "text",
       "attempt_diagnostics": [],
@@ -25932,6 +26506,7 @@
       "status": "success"
     },
     {
+      "access_events": [],
       "architecture": "x86",
       "artifact_group": "text",
       "attempt_diagnostics": [],
@@ -26010,6 +26585,7 @@
       "status": "success"
     },
     {
+      "access_events": [],
       "architecture": "x86",
       "artifact_group": "text",
       "attempt_diagnostics": [],
@@ -26088,6 +26664,7 @@
       "status": "success"
     },
     {
+      "access_events": [],
       "architecture": "x86",
       "artifact_group": "text",
       "attempt_diagnostics": [],
@@ -38444,6 +39021,20 @@
       "variant": "original"
     },
     {
+      "anchor_function_id": "fn:004010c0",
+      "canonical_digest": "sha256:91e500ed4f732e8318ff6c6352ee1e5f6f8fca58260f426a24079ee5d8235e31",
+      "graph_id": "graph:0ac2234184f253c207f7adf9",
+      "mapping_provenance": "PE export; identity metadata only",
+      "path": "datasets/osgf_pairs_v0_1/graphs/graph_0ac2234184f253c207f7adf9.json",
+      "routine_id": "interaction_file_metadata__thunk",
+      "sample_id": "interaction_file_metadata-msvc-O0",
+      "sha256": "b64337772e62c5ed0b3b5927dbffc6183e56399a83e50b6b07aa7888fadfcf59",
+      "source_group_id": "interaction_file_metadata",
+      "split": "discovery_train",
+      "typed_graph_sha256": "e07801f87403b127b050bafa9cec7439c5222bbd72abb12ff7539681dfd6df23",
+      "variant": "thunk"
+    },
+    {
       "anchor_function_id": "fn:004014f2",
       "canonical_digest": "sha256:e7246bb72805653e8710e04deab959fa5b9592b3cef36f9ee4787cb4a01debb8",
       "graph_id": "graph:0f43944f2ceef89946986c19",
@@ -38570,6 +39161,20 @@
       "variant": "original"
     },
     {
+      "anchor_function_id": "fn:004011c0",
+      "canonical_digest": "sha256:9b1b47f1f08d2193b861ded50caf33794faf458157b6134a9dce5051ee21f011",
+      "graph_id": "graph:25a50690b481a0ccca163380",
+      "mapping_provenance": "PE export; identity metadata only",
+      "path": "datasets/osgf_pairs_v0_1/graphs/graph_25a50690b481a0ccca163380.json",
+      "routine_id": "interaction_registry_summary__linear_chain",
+      "sample_id": "interaction_registry_summary-msvc-O0",
+      "sha256": "55208ce34e85b644706b5ac35e17e2162c23aac3f2a74dd6b87e3cddd48236dc",
+      "source_group_id": "interaction_registry_summary",
+      "split": "validation",
+      "typed_graph_sha256": "854cca4778c9c6a5adbe6bcbe944b8cea57954e4128f5b578f2cac94c18c3b69",
+      "variant": "linear_chain"
+    },
+    {
       "anchor_function_id": "fn:00401484",
       "canonical_digest": "sha256:5580fc1ac3eca0a38a89af49c5facd8537c4df487ee652cc8955f139e3eb36b9",
       "graph_id": "graph:29fbb88db0ea0e7a7f5b8b15",
@@ -38626,6 +39231,20 @@
       "variant": "original"
     },
     {
+      "anchor_function_id": "fn:00401010",
+      "canonical_digest": "sha256:39048054feb534c7c9d6c9b1592252face1869f9282540a6c0d1b379106f657d",
+      "graph_id": "graph:2ecd38be52171c5f62c8c613",
+      "mapping_provenance": "PE export; identity metadata only",
+      "path": "datasets/osgf_pairs_v0_1/graphs/graph_2ecd38be52171c5f62c8c613.json",
+      "routine_id": "interaction_registry_summary",
+      "sample_id": "interaction_registry_summary-msvc-O2",
+      "sha256": "1beaf554752cbf410c334f040a088231a4aee0077a091fa4b5ad072ae62b4753",
+      "source_group_id": "interaction_registry_summary",
+      "split": "validation",
+      "typed_graph_sha256": "d06cc98721185d05e42eda8d951ab4e9624265b03772a95b1b84c892ed26462a",
+      "variant": "original"
+    },
+    {
       "anchor_function_id": "fn:004014cc",
       "canonical_digest": "sha256:23cdfea2180a4efb19f17df7df055ff8fac7cf6085502b0e896c27942fb2ac5f",
       "graph_id": "graph:2f4fadd185e25faca2ce5668",
@@ -38652,6 +39271,34 @@
       "split": "held_out_test",
       "typed_graph_sha256": "f14e67ae30e212218548482185ee67aec046a6592e124ade560454abe75606cb",
       "variant": "transparent_wrapper"
+    },
+    {
+      "anchor_function_id": "fn:004010e0",
+      "canonical_digest": "sha256:ec80b13eb14aad17b2fd5ece10cee73d496f282483cd48c318d83e1c374041df",
+      "graph_id": "graph:30027370d36e215aa6a0a6e8",
+      "mapping_provenance": "PE export; identity metadata only",
+      "path": "datasets/osgf_pairs_v0_1/graphs/graph_30027370d36e215aa6a0a6e8.json",
+      "routine_id": "interaction_file_metadata__linear_chain",
+      "sample_id": "interaction_file_metadata-msvc-O0",
+      "sha256": "b0744b83b144ca2884162ba3d0c50fe23e0a164c0b3508fc44b68d552e958b4d",
+      "source_group_id": "interaction_file_metadata",
+      "split": "discovery_train",
+      "typed_graph_sha256": "e07801f87403b127b050bafa9cec7439c5222bbd72abb12ff7539681dfd6df23",
+      "variant": "linear_chain"
+    },
+    {
+      "anchor_function_id": "fn:00401030",
+      "canonical_digest": "sha256:07bc5d91e6eb5d6ee35688dd06a59cd2aa7c184d447096f4268933b8ea474375",
+      "graph_id": "graph:309061d57c6a155443d1705f",
+      "mapping_provenance": "PE export; identity metadata only",
+      "path": "datasets/osgf_pairs_v0_1/graphs/graph_309061d57c6a155443d1705f.json",
+      "routine_id": "interaction_file_metadata",
+      "sample_id": "interaction_file_metadata-msvc-O2",
+      "sha256": "f5b9a26e6944b4f4a2659313d378eba7a8246ead54ad8ccac5591f2fda207271",
+      "source_group_id": "interaction_file_metadata",
+      "split": "discovery_train",
+      "typed_graph_sha256": "9e2f19dc59e0990c764a5fd82a113d2399ea8d46f15cef12c5aeafaef305a114",
+      "variant": "original"
     },
     {
       "anchor_function_id": "fn:00401460",
@@ -38724,6 +39371,20 @@
       "variant": "harmless_strand"
     },
     {
+      "anchor_function_id": "fn:004011a0",
+      "canonical_digest": "sha256:d568e9eef2f9c086c908b7fd041963918a902e71de8cf155231ce96eae414f1b",
+      "graph_id": "graph:3e37298d49e5a6c608352478",
+      "mapping_provenance": "PE export; identity metadata only",
+      "path": "datasets/osgf_pairs_v0_1/graphs/graph_3e37298d49e5a6c608352478.json",
+      "routine_id": "interaction_registry_summary__thunk",
+      "sample_id": "interaction_registry_summary-msvc-O0",
+      "sha256": "00e3f33661b636bc420b40079cdc3183d597800d00bc6efca0410df4cf18b140",
+      "source_group_id": "interaction_registry_summary",
+      "split": "validation",
+      "typed_graph_sha256": "854cca4778c9c6a5adbe6bcbe944b8cea57954e4128f5b578f2cac94c18c3b69",
+      "variant": "thunk"
+    },
+    {
       "anchor_function_id": "fn:004014a9",
       "canonical_digest": "sha256:e7246bb72805653e8710e04deab959fa5b9592b3cef36f9ee4787cb4a01debb8",
       "graph_id": "graph:3eb11f01ccb1365c15326fba",
@@ -38749,6 +39410,20 @@
       "source_group_id": "api_length_plus_one",
       "split": "validation",
       "typed_graph_sha256": "cf193ee69473bdf71b4b7279f4a5ccc1dae94b78197939b63337c3b4e669eeeb",
+      "variant": "original"
+    },
+    {
+      "anchor_function_id": "fn:00401060",
+      "canonical_digest": "sha256:07bc5d91e6eb5d6ee35688dd06a59cd2aa7c184d447096f4268933b8ea474375",
+      "graph_id": "graph:4d8a4392750ce8a5b371110a",
+      "mapping_provenance": "PE export; identity metadata only",
+      "path": "datasets/osgf_pairs_v0_1/graphs/graph_4d8a4392750ce8a5b371110a.json",
+      "routine_id": "interaction_file_metadata",
+      "sample_id": "interaction_file_metadata-msvc-O0",
+      "sha256": "32cfc77a19aa3e19fa61f32faa3e198d37f3cbb263a2fcc972d24ae44aa1bd4f",
+      "source_group_id": "interaction_file_metadata",
+      "split": "discovery_train",
+      "typed_graph_sha256": "e07801f87403b127b050bafa9cec7439c5222bbd72abb12ff7539681dfd6df23",
       "variant": "original"
     },
     {
@@ -38808,6 +39483,20 @@
       "variant": "original"
     },
     {
+      "anchor_function_id": "fn:00401180",
+      "canonical_digest": "sha256:b75b70292d97a3a391325ef1ade09d3f547be16ec44eb7fa31a26b7af2f84c88",
+      "graph_id": "graph:515ac6b9562e4c96565cecab",
+      "mapping_provenance": "PE export; identity metadata only",
+      "path": "datasets/osgf_pairs_v0_1/graphs/graph_515ac6b9562e4c96565cecab.json",
+      "routine_id": "interaction_registry_summary__transparent_wrapper",
+      "sample_id": "interaction_registry_summary-msvc-O0",
+      "sha256": "e6cddc0ebf4cafd12d8fff7882c1c9d52328fae45c050270dbdb02446225a79f",
+      "source_group_id": "interaction_registry_summary",
+      "split": "validation",
+      "typed_graph_sha256": "854cca4778c9c6a5adbe6bcbe944b8cea57954e4128f5b578f2cac94c18c3b69",
+      "variant": "transparent_wrapper"
+    },
+    {
       "anchor_function_id": "fn:004016fa",
       "canonical_digest": "sha256:23cdfea2180a4efb19f17df7df055ff8fac7cf6085502b0e896c27942fb2ac5f",
       "graph_id": "graph:517f730caa0330abd9107dc4",
@@ -38822,6 +39511,20 @@
       "variant": "linear_chain"
     },
     {
+      "anchor_function_id": "fn:00401130",
+      "canonical_digest": "sha256:e01e744a5bf02790f4fc92464cfd295374ebc83c2bca0dbc8dc93cc88a0b39f8",
+      "graph_id": "graph:520995874101befd2e469e66",
+      "mapping_provenance": "PE export; identity metadata only",
+      "path": "datasets/osgf_pairs_v0_1/graphs/graph_520995874101befd2e469e66.json",
+      "routine_id": "interaction_socket_kind__transparent_wrapper",
+      "sample_id": "interaction_socket_kind-msvc-O0",
+      "sha256": "e6f08c137c94b6382f255b4878c3ec4f5c05ebb7eade112717537772ece40aec",
+      "source_group_id": "interaction_socket_kind",
+      "split": "held_out_test",
+      "typed_graph_sha256": "768c19ccacd58b36fa3bcdbdf7c0685d52a89d7eed9807fb42260970a7169a05",
+      "variant": "transparent_wrapper"
+    },
+    {
       "anchor_function_id": "fn:004016bb",
       "canonical_digest": "sha256:91bd5e70af602d403b24c30101114e2959f2aeffe30253e0c982c5b392489567",
       "graph_id": "graph:52ead22a8216e2686b0bf26e",
@@ -38834,6 +39537,20 @@
       "split": "held_out_test",
       "typed_graph_sha256": "f14e67ae30e212218548482185ee67aec046a6592e124ade560454abe75606cb",
       "variant": "harmless_strand"
+    },
+    {
+      "anchor_function_id": "fn:00401080",
+      "canonical_digest": "sha256:07bc5d91e6eb5d6ee35688dd06a59cd2aa7c184d447096f4268933b8ea474375",
+      "graph_id": "graph:53a0363f40e1f6b8be7178e5",
+      "mapping_provenance": "PE export; identity metadata only",
+      "path": "datasets/osgf_pairs_v0_1/graphs/graph_53a0363f40e1f6b8be7178e5.json",
+      "routine_id": "interaction_file_metadata_flipped",
+      "sample_id": "interaction_file_metadata-msvc-O0",
+      "sha256": "112946f865859ba894962155017d1b2c15d8f116d57522b63e8cc256bb275825",
+      "source_group_id": "interaction_file_metadata_flipped",
+      "split": "discovery_train",
+      "typed_graph_sha256": "e07801f87403b127b050bafa9cec7439c5222bbd72abb12ff7539681dfd6df23",
+      "variant": "original"
     },
     {
       "anchor_function_id": "fn:00401600",
@@ -38960,6 +39677,20 @@
       "split": "discovery_train",
       "typed_graph_sha256": "3c8aa3a590f44945a4665fe980370064e5e8cea348233fc79de91b1199b2a6c5",
       "variant": "thunk"
+    },
+    {
+      "anchor_function_id": "fn:00401110",
+      "canonical_digest": "sha256:542988c46b4a50a9fb7e8739b5548651ab6a94b77e9cd25251b4581d232b3e75",
+      "graph_id": "graph:5c43de12a567b4ae8eca811b",
+      "mapping_provenance": "PE export; identity metadata only",
+      "path": "datasets/osgf_pairs_v0_1/graphs/graph_5c43de12a567b4ae8eca811b.json",
+      "routine_id": "interaction_registry_summary_flipped",
+      "sample_id": "interaction_registry_summary-msvc-O0",
+      "sha256": "f6da7206758b9297c95fb67f3c4a13f505e0b54f500a2799ddfe371e7c1a6eed",
+      "source_group_id": "interaction_registry_summary_flipped",
+      "split": "validation",
+      "typed_graph_sha256": "854cca4778c9c6a5adbe6bcbe944b8cea57954e4128f5b578f2cac94c18c3b69",
+      "variant": "original"
     },
     {
       "anchor_function_id": "fn:00401090",
@@ -39200,6 +39931,20 @@
       "variant": "original"
     },
     {
+      "anchor_function_id": "fn:00401050",
+      "canonical_digest": "sha256:e7246bb72805653e8710e04deab959fa5b9592b3cef36f9ee4787cb4a01debb8",
+      "graph_id": "graph:85fda6135a0812d4e38ef265",
+      "mapping_provenance": "PE export; identity metadata only",
+      "path": "datasets/osgf_pairs_v0_1/graphs/graph_85fda6135a0812d4e38ef265.json",
+      "routine_id": "interaction_registry_summary__linear_chain",
+      "sample_id": "interaction_registry_summary-msvc-O2",
+      "sha256": "26bb8075f01f34ab4ec2bc3426047fd26a5e708e7c89bc74fbe7e49fb5f94ad7",
+      "source_group_id": "interaction_registry_summary",
+      "split": "validation",
+      "typed_graph_sha256": "d06cc98721185d05e42eda8d951ab4e9624265b03772a95b1b84c892ed26462a",
+      "variant": "linear_chain"
+    },
+    {
       "anchor_function_id": "fn:00401010",
       "canonical_digest": "sha256:72c76cd3d9572821eba440d40bad35aa74b20ae128a3750cd99264c40fe11b2c",
       "graph_id": "graph:8a2656f2e0b015b32fff4c59",
@@ -39240,6 +39985,20 @@
       "split": "discovery_train",
       "typed_graph_sha256": "69850c382375b72eced131f53d73445bb8f4531280872edd6685d095768706a5",
       "variant": "original"
+    },
+    {
+      "anchor_function_id": "fn:00401080",
+      "canonical_digest": "sha256:e7246bb72805653e8710e04deab959fa5b9592b3cef36f9ee4787cb4a01debb8",
+      "graph_id": "graph:8eeda9a9640dbc4034171002",
+      "mapping_provenance": "PE export; identity metadata only",
+      "path": "datasets/osgf_pairs_v0_1/graphs/graph_8eeda9a9640dbc4034171002.json",
+      "routine_id": "interaction_registry_summary__transparent_wrapper",
+      "sample_id": "interaction_registry_summary-msvc-O2",
+      "sha256": "449306598630e56018a757d1ab035d61c3956e042bb37457ff718876104b074c",
+      "source_group_id": "interaction_registry_summary",
+      "split": "validation",
+      "typed_graph_sha256": "d06cc98721185d05e42eda8d951ab4e9624265b03772a95b1b84c892ed26462a",
+      "variant": "transparent_wrapper"
     },
     {
       "anchor_function_id": "fn:00401480",
@@ -39284,6 +40043,20 @@
       "variant": "function_splitting"
     },
     {
+      "anchor_function_id": "fn:00401090",
+      "canonical_digest": "sha256:39048054feb534c7c9d6c9b1592252face1869f9282540a6c0d1b379106f657d",
+      "graph_id": "graph:9740a9efce9d20718538119a",
+      "mapping_provenance": "PE export; identity metadata only",
+      "path": "datasets/osgf_pairs_v0_1/graphs/graph_9740a9efce9d20718538119a.json",
+      "routine_id": "interaction_registry_summary_flipped",
+      "sample_id": "interaction_registry_summary-msvc-O2",
+      "sha256": "18b7945f4119d3c328af246aaafc48c0c08533184e091b5381dd30a1e14affb9",
+      "source_group_id": "interaction_registry_summary_flipped",
+      "split": "validation",
+      "typed_graph_sha256": "d06cc98721185d05e42eda8d951ab4e9624265b03772a95b1b84c892ed26462a",
+      "variant": "original"
+    },
+    {
       "anchor_function_id": "fn:00401460",
       "canonical_digest": "sha256:e7246bb72805653e8710e04deab959fa5b9592b3cef36f9ee4787cb4a01debb8",
       "graph_id": "graph:98ca0b8f4eac0fb20fb1c619",
@@ -39324,6 +40097,20 @@
       "split": "discovery_train",
       "typed_graph_sha256": "b0cf2928f42ffdf88ccea5439fdf4c17344f9de12faa369716075e0463775a54",
       "variant": "original"
+    },
+    {
+      "anchor_function_id": "fn:00401080",
+      "canonical_digest": "sha256:e7246bb72805653e8710e04deab959fa5b9592b3cef36f9ee4787cb4a01debb8",
+      "graph_id": "graph:9c8088dd264553a7e8cfa916",
+      "mapping_provenance": "PE export; identity metadata only",
+      "path": "datasets/osgf_pairs_v0_1/graphs/graph_9c8088dd264553a7e8cfa916.json",
+      "routine_id": "interaction_file_metadata__transparent_wrapper",
+      "sample_id": "interaction_file_metadata-msvc-O2",
+      "sha256": "3799a96a20cbcf3d98935c9177be4815f1d9261e65304422048282c71ada6c5b",
+      "source_group_id": "interaction_file_metadata",
+      "split": "discovery_train",
+      "typed_graph_sha256": "9e2f19dc59e0990c764a5fd82a113d2399ea8d46f15cef12c5aeafaef305a114",
+      "variant": "transparent_wrapper"
     },
     {
       "anchor_function_id": "fn:0040168f",
@@ -39424,6 +40211,20 @@
       "variant": "original"
     },
     {
+      "anchor_function_id": "fn:004010e0",
+      "canonical_digest": "sha256:b78e30e5e3b3514c177f5f9854ac38c8da61a005f52b3709999b58bcaeefbbf8",
+      "graph_id": "graph:add20e80b7f397b7e5a5a1bf",
+      "mapping_provenance": "PE export; identity metadata only",
+      "path": "datasets/osgf_pairs_v0_1/graphs/graph_add20e80b7f397b7e5a5a1bf.json",
+      "routine_id": "interaction_socket_kind",
+      "sample_id": "interaction_socket_kind-msvc-O0",
+      "sha256": "22e742735262a6cf9d143e05ace92bd4f0fa230765bb2f8c0ec978266f26072d",
+      "source_group_id": "interaction_socket_kind",
+      "split": "held_out_test",
+      "typed_graph_sha256": "768c19ccacd58b36fa3bcdbdf7c0685d52a89d7eed9807fb42260970a7169a05",
+      "variant": "original"
+    },
+    {
       "anchor_function_id": "fn:0040152f",
       "canonical_digest": "sha256:1c5dcbc91f54d026be7f695c962dbc9ad6aa072ba6738fc561de8e22a44d1f93",
       "graph_id": "graph:ae48e58a26e0e82dd3d93d57",
@@ -39436,6 +40237,34 @@
       "split": "discovery_train",
       "typed_graph_sha256": "3cbd2826154ac748474120debdeb9eaefac4b3d0fc987446aa9d7b46ffa3954a",
       "variant": "dead_branch"
+    },
+    {
+      "anchor_function_id": "fn:00401150",
+      "canonical_digest": "sha256:816fd48efd4f92b8cdee16b60e6ba397c7e0ef7889bc91e58d67c1ee6f800fd9",
+      "graph_id": "graph:afbbbd0331774d830f5b1c03",
+      "mapping_provenance": "PE export; identity metadata only",
+      "path": "datasets/osgf_pairs_v0_1/graphs/graph_afbbbd0331774d830f5b1c03.json",
+      "routine_id": "interaction_socket_kind__thunk",
+      "sample_id": "interaction_socket_kind-msvc-O0",
+      "sha256": "82770658b2c1097ceaa6d90bf865db950639b7ce51261f968fe02ff1ecc94b8f",
+      "source_group_id": "interaction_socket_kind",
+      "split": "held_out_test",
+      "typed_graph_sha256": "768c19ccacd58b36fa3bcdbdf7c0685d52a89d7eed9807fb42260970a7169a05",
+      "variant": "thunk"
+    },
+    {
+      "anchor_function_id": "fn:00401050",
+      "canonical_digest": "sha256:e7246bb72805653e8710e04deab959fa5b9592b3cef36f9ee4787cb4a01debb8",
+      "graph_id": "graph:b4c3cfcde913713b44eeadcc",
+      "mapping_provenance": "PE export; identity metadata only",
+      "path": "datasets/osgf_pairs_v0_1/graphs/graph_b4c3cfcde913713b44eeadcc.json",
+      "routine_id": "interaction_file_metadata__linear_chain",
+      "sample_id": "interaction_file_metadata-msvc-O2",
+      "sha256": "5f73091b63ddcd57104c7b89052934cf4ed0c32fe57192a356d960184e71477d",
+      "source_group_id": "interaction_file_metadata",
+      "split": "discovery_train",
+      "typed_graph_sha256": "9e2f19dc59e0990c764a5fd82a113d2399ea8d46f15cef12c5aeafaef305a114",
+      "variant": "linear_chain"
     },
     {
       "anchor_function_id": "fn:00401460",
@@ -39508,6 +40337,20 @@
       "variant": "thunk"
     },
     {
+      "anchor_function_id": "fn:00401100",
+      "canonical_digest": "sha256:b78e30e5e3b3514c177f5f9854ac38c8da61a005f52b3709999b58bcaeefbbf8",
+      "graph_id": "graph:ca64de39b4813f7180285e17",
+      "mapping_provenance": "PE export; identity metadata only",
+      "path": "datasets/osgf_pairs_v0_1/graphs/graph_ca64de39b4813f7180285e17.json",
+      "routine_id": "interaction_socket_kind_flipped",
+      "sample_id": "interaction_socket_kind-msvc-O0",
+      "sha256": "7626f177f01b8190edc35a1567b9b7b1cc589ca503e975cbd73c6218a79a3ea9",
+      "source_group_id": "interaction_socket_kind_flipped",
+      "split": "held_out_test",
+      "typed_graph_sha256": "768c19ccacd58b36fa3bcdbdf7c0685d52a89d7eed9807fb42260970a7169a05",
+      "variant": "original"
+    },
+    {
       "anchor_function_id": "fn:004014ba",
       "canonical_digest": "sha256:e7246bb72805653e8710e04deab959fa5b9592b3cef36f9ee4787cb4a01debb8",
       "graph_id": "graph:cc626d14f75b8e55bcebbde2",
@@ -39520,6 +40363,20 @@
       "split": "discovery_train",
       "typed_graph_sha256": "d08f2686bd626672726f1bfa5de9ee3432898cb532e1ba8daf189af15c85885f",
       "variant": "original"
+    },
+    {
+      "anchor_function_id": "fn:00401070",
+      "canonical_digest": "sha256:e7246bb72805653e8710e04deab959fa5b9592b3cef36f9ee4787cb4a01debb8",
+      "graph_id": "graph:ce712c7ca6b775a672395d08",
+      "mapping_provenance": "PE export; identity metadata only",
+      "path": "datasets/osgf_pairs_v0_1/graphs/graph_ce712c7ca6b775a672395d08.json",
+      "routine_id": "interaction_file_metadata__thunk",
+      "sample_id": "interaction_file_metadata-msvc-O2",
+      "sha256": "028798d17f3c7790a2b9149fa30ecd1a23a0da78bccf02020f2b4f1cfd86e1dc",
+      "source_group_id": "interaction_file_metadata",
+      "split": "discovery_train",
+      "typed_graph_sha256": "9e2f19dc59e0990c764a5fd82a113d2399ea8d46f15cef12c5aeafaef305a114",
+      "variant": "thunk"
     },
     {
       "anchor_function_id": "fn:00401460",
@@ -39575,6 +40432,20 @@
       "source_group_id": "sum_array",
       "split": "discovery_train",
       "typed_graph_sha256": "b0cf2928f42ffdf88ccea5439fdf4c17344f9de12faa369716075e0463775a54",
+      "variant": "original"
+    },
+    {
+      "anchor_function_id": "fn:004010a0",
+      "canonical_digest": "sha256:542988c46b4a50a9fb7e8739b5548651ab6a94b77e9cd25251b4581d232b3e75",
+      "graph_id": "graph:e0b39088fd752beb6dbe465f",
+      "mapping_provenance": "PE export; identity metadata only",
+      "path": "datasets/osgf_pairs_v0_1/graphs/graph_e0b39088fd752beb6dbe465f.json",
+      "routine_id": "interaction_registry_summary",
+      "sample_id": "interaction_registry_summary-msvc-O0",
+      "sha256": "1bcfdb2e5805f502456cb49d74333ab2397e3e5c57e8204ae695aad8c41dcba7",
+      "source_group_id": "interaction_registry_summary",
+      "split": "validation",
+      "typed_graph_sha256": "854cca4778c9c6a5adbe6bcbe944b8cea57954e4128f5b578f2cac94c18c3b69",
       "variant": "original"
     },
     {
@@ -39646,6 +40517,62 @@
       "split": "held_out_test",
       "typed_graph_sha256": "f14e67ae30e212218548482185ee67aec046a6592e124ade560454abe75606cb",
       "variant": "thunk"
+    },
+    {
+      "anchor_function_id": "fn:00401170",
+      "canonical_digest": "sha256:04b9b83ac0fa1bd6bf661dd8e30250c4f813b9899ccf103409f635d5a10cdc59",
+      "graph_id": "graph:f4d57933d3cc44b077bfeea4",
+      "mapping_provenance": "PE export; identity metadata only",
+      "path": "datasets/osgf_pairs_v0_1/graphs/graph_f4d57933d3cc44b077bfeea4.json",
+      "routine_id": "interaction_socket_kind__linear_chain",
+      "sample_id": "interaction_socket_kind-msvc-O0",
+      "sha256": "75018a5db9d90824d985ea19562b6ee419ed9ddc629557c5bc1a12234905ffb3",
+      "source_group_id": "interaction_socket_kind",
+      "split": "held_out_test",
+      "typed_graph_sha256": "768c19ccacd58b36fa3bcdbdf7c0685d52a89d7eed9807fb42260970a7169a05",
+      "variant": "linear_chain"
+    },
+    {
+      "anchor_function_id": "fn:00401070",
+      "canonical_digest": "sha256:e7246bb72805653e8710e04deab959fa5b9592b3cef36f9ee4787cb4a01debb8",
+      "graph_id": "graph:f574f35e2709fbdf6b51395b",
+      "mapping_provenance": "PE export; identity metadata only",
+      "path": "datasets/osgf_pairs_v0_1/graphs/graph_f574f35e2709fbdf6b51395b.json",
+      "routine_id": "interaction_registry_summary__thunk",
+      "sample_id": "interaction_registry_summary-msvc-O2",
+      "sha256": "8a04b5b226028bcec06d9eba98a5080936a1a382ce97655859907d97ceed479c",
+      "source_group_id": "interaction_registry_summary",
+      "split": "validation",
+      "typed_graph_sha256": "d06cc98721185d05e42eda8d951ab4e9624265b03772a95b1b84c892ed26462a",
+      "variant": "thunk"
+    },
+    {
+      "anchor_function_id": "fn:004010a0",
+      "canonical_digest": "sha256:50f934eba70a840967db1f0e7e160c2343586f798ebd5523c2dd911db3662652",
+      "graph_id": "graph:f5a1f2f732422492668e782f",
+      "mapping_provenance": "PE export; identity metadata only",
+      "path": "datasets/osgf_pairs_v0_1/graphs/graph_f5a1f2f732422492668e782f.json",
+      "routine_id": "interaction_file_metadata__transparent_wrapper",
+      "sample_id": "interaction_file_metadata-msvc-O0",
+      "sha256": "359592a9a2793092e571832ce73a06a396bac655cefa05575a8b051bb0d80634",
+      "source_group_id": "interaction_file_metadata",
+      "split": "discovery_train",
+      "typed_graph_sha256": "e07801f87403b127b050bafa9cec7439c5222bbd72abb12ff7539681dfd6df23",
+      "variant": "transparent_wrapper"
+    },
+    {
+      "anchor_function_id": "fn:00401090",
+      "canonical_digest": "sha256:07bc5d91e6eb5d6ee35688dd06a59cd2aa7c184d447096f4268933b8ea474375",
+      "graph_id": "graph:f5da6759d9f3b03a1e2a8703",
+      "mapping_provenance": "PE export; identity metadata only",
+      "path": "datasets/osgf_pairs_v0_1/graphs/graph_f5da6759d9f3b03a1e2a8703.json",
+      "routine_id": "interaction_file_metadata_flipped",
+      "sample_id": "interaction_file_metadata-msvc-O2",
+      "sha256": "2ef1f68a957f586e5e1c43e1784d3c102740160a74ea8b6f0b1abc6e1241f4ee",
+      "source_group_id": "interaction_file_metadata_flipped",
+      "split": "discovery_train",
+      "typed_graph_sha256": "9e2f19dc59e0990c764a5fd82a113d2399ea8d46f15cef12c5aeafaef305a114",
+      "variant": "original"
     },
     {
       "anchor_function_id": "fn:00401010",
@@ -39893,6 +40820,51 @@
     },
     {
       "architecture": "x86",
+      "equivalence_label": "equivalent",
+      "ground_truth": {
+        "label": "equivalent",
+        "method": "source_transformation_proof",
+        "proof": "Fixed delegation invokes the original routine exactly once with identical arguments, return value, API effects and error handling; no additional OS operation.",
+        "transformation": {
+          "family": "thunk",
+          "original_routine": "interaction_socket_kind",
+          "parameters": {
+            "environment": "same_readonly_os_state",
+            "max_length": 255
+          },
+          "rationale": "Fixed delegation invokes the original routine exactly once with identical arguments, return value, API effects and error handling; no additional OS operation.",
+          "test_cases_per_build": 16,
+          "transformation_level": "source",
+          "transformed_routine": "interaction_socket_kind__thunk",
+          "validation": "passed",
+          "validation_status": "automatically_grounded",
+          "version": "0.1.0"
+        },
+        "validation": "passed"
+      },
+      "left_build_id": "interaction_socket_kind-msvc-O0",
+      "left_graph_id": "graph:add20e80b7f397b7e5a5a1bf",
+      "left_sample_id": "interaction_socket_kind-msvc-O0",
+      "notes": "Source/artifact component assignment; see split_config.json.",
+      "pair_category": "interaction_transformation",
+      "pair_id": "pair:0df30c682fbf6df950146b14",
+      "right_build_id": "interaction_socket_kind-msvc-O0",
+      "right_graph_id": "graph:afbbbd0331774d830f5b1c03",
+      "right_sample_id": "interaction_socket_kind-msvc-O0",
+      "source_group_id": "interaction_socket_kind",
+      "source_group_ids": [
+        "interaction_socket_kind"
+      ],
+      "split": "held_out_test",
+      "transformation_family": "thunk",
+      "transformation_parameters": {
+        "environment": "same_readonly_os_state",
+        "max_length": 255
+      },
+      "validation_status": "automatically_grounded"
+    },
+    {
+      "architecture": "x86",
       "difficulty": "hard",
       "equivalence_label": "non_equivalent",
       "ground_truth": {
@@ -40118,6 +41090,125 @@
       "difficulty": "hard",
       "equivalence_label": "non_equivalent",
       "ground_truth": {
+        "case": 0,
+        "evidence": "Same read-only helper/API observation and input; the controlled negative toggles result bit zero. Executed outputs witness the difference independently of graph similarity.",
+        "input_bytes": [],
+        "label": "non_equivalent",
+        "left_result": 32,
+        "method": "behavior_counterexample",
+        "right_result": 33
+      },
+      "left_build_id": "interaction_file_metadata-msvc-O0",
+      "left_graph_id": "graph:30027370d36e215aa6a0a6e8",
+      "left_sample_id": "interaction_file_metadata-msvc-O0",
+      "negative_category": "same_evidence_different_behavior",
+      "negative_tags": [
+        "controlled_hard_negative",
+        "interaction_corpus"
+      ],
+      "notes": "Source/artifact component assignment; see split_config.json.",
+      "pair_category": "controlled_negative",
+      "pair_id": "pair:136b74cee68d2206d1eff7bd",
+      "right_build_id": "interaction_file_metadata-msvc-O0",
+      "right_graph_id": "graph:53a0363f40e1f6b8be7178e5",
+      "right_sample_id": "interaction_file_metadata-msvc-O0",
+      "source_group_id": "source-groups:69082db4fc065c8fbf0f2055",
+      "source_group_ids": [
+        "interaction_file_metadata",
+        "interaction_file_metadata_flipped"
+      ],
+      "split": "discovery_train",
+      "transformation_family": "none",
+      "transformation_parameters": {},
+      "validation_status": "automatically_grounded"
+    },
+    {
+      "architecture": "x86",
+      "difficulty": "hard",
+      "equivalence_label": "non_equivalent",
+      "ground_truth": {
+        "case": 0,
+        "evidence": "Same read-only helper/API observation and input; the controlled negative toggles result bit zero. Executed outputs witness the difference independently of graph similarity.",
+        "input_bytes": [],
+        "label": "non_equivalent",
+        "left_result": 2,
+        "method": "behavior_counterexample",
+        "right_result": 3
+      },
+      "left_build_id": "interaction_socket_kind-msvc-O0",
+      "left_graph_id": "graph:520995874101befd2e469e66",
+      "left_sample_id": "interaction_socket_kind-msvc-O0",
+      "negative_category": "same_evidence_different_behavior",
+      "negative_tags": [
+        "controlled_hard_negative",
+        "interaction_corpus"
+      ],
+      "notes": "Source/artifact component assignment; see split_config.json.",
+      "pair_category": "controlled_negative",
+      "pair_id": "pair:140bf804706cbf64f3ec36df",
+      "right_build_id": "interaction_socket_kind-msvc-O0",
+      "right_graph_id": "graph:ca64de39b4813f7180285e17",
+      "right_sample_id": "interaction_socket_kind-msvc-O0",
+      "source_group_id": "source-groups:d9666ee8a11a13a1c477711c",
+      "source_group_ids": [
+        "interaction_socket_kind",
+        "interaction_socket_kind_flipped"
+      ],
+      "split": "held_out_test",
+      "transformation_family": "none",
+      "transformation_parameters": {},
+      "validation_status": "automatically_grounded"
+    },
+    {
+      "architecture": "x86",
+      "equivalence_label": "equivalent",
+      "ground_truth": {
+        "label": "equivalent",
+        "method": "source_transformation_proof",
+        "proof": "Fixed delegation invokes the original routine exactly once with identical arguments, return value, API effects and error handling; no additional OS operation.",
+        "transformation": {
+          "family": "transparent_wrapper",
+          "original_routine": "interaction_registry_summary",
+          "parameters": {
+            "environment": "same_readonly_os_state",
+            "max_length": 255
+          },
+          "rationale": "Fixed delegation invokes the original routine exactly once with identical arguments, return value, API effects and error handling; no additional OS operation.",
+          "test_cases_per_build": 16,
+          "transformation_level": "source",
+          "transformed_routine": "interaction_registry_summary__transparent_wrapper",
+          "validation": "passed",
+          "validation_status": "automatically_grounded",
+          "version": "0.1.0"
+        },
+        "validation": "passed"
+      },
+      "left_build_id": "interaction_registry_summary-msvc-O0",
+      "left_graph_id": "graph:515ac6b9562e4c96565cecab",
+      "left_sample_id": "interaction_registry_summary-msvc-O0",
+      "notes": "Source/artifact component assignment; see split_config.json.",
+      "pair_category": "interaction_transformation",
+      "pair_id": "pair:150a989550f7c4251c21e5de",
+      "right_build_id": "interaction_registry_summary-msvc-O0",
+      "right_graph_id": "graph:e0b39088fd752beb6dbe465f",
+      "right_sample_id": "interaction_registry_summary-msvc-O0",
+      "source_group_id": "interaction_registry_summary",
+      "source_group_ids": [
+        "interaction_registry_summary"
+      ],
+      "split": "validation",
+      "transformation_family": "transparent_wrapper",
+      "transformation_parameters": {
+        "environment": "same_readonly_os_state",
+        "max_length": 255
+      },
+      "validation_status": "automatically_grounded"
+    },
+    {
+      "architecture": "x86",
+      "difficulty": "hard",
+      "equivalence_label": "non_equivalent",
+      "ground_truth": {
         "case": 1,
         "evidence": "Different pure reductions/search predicates on the identical input; recorded outputs witness non-equivalence.",
         "input_bytes": [
@@ -40155,6 +41246,43 @@
         "sum_array"
       ],
       "split": "discovery_train",
+      "transformation_family": "none",
+      "transformation_parameters": {},
+      "validation_status": "automatically_grounded"
+    },
+    {
+      "architecture": "x86",
+      "difficulty": "hard",
+      "equivalence_label": "non_equivalent",
+      "ground_truth": {
+        "case": 0,
+        "evidence": "Same read-only helper/API observation and input; the controlled negative toggles result bit zero. Executed outputs witness the difference independently of graph similarity.",
+        "input_bytes": [],
+        "label": "non_equivalent",
+        "left_result": 3,
+        "method": "behavior_counterexample",
+        "right_result": 2
+      },
+      "left_build_id": "interaction_socket_kind-msvc-O0",
+      "left_graph_id": "graph:ca64de39b4813f7180285e17",
+      "left_sample_id": "interaction_socket_kind-msvc-O0",
+      "negative_category": "same_evidence_different_behavior",
+      "negative_tags": [
+        "controlled_hard_negative",
+        "interaction_corpus"
+      ],
+      "notes": "Source/artifact component assignment; see split_config.json.",
+      "pair_category": "controlled_negative",
+      "pair_id": "pair:155b345bb05f16f48d79d470",
+      "right_build_id": "interaction_socket_kind-msvc-O0",
+      "right_graph_id": "graph:f4d57933d3cc44b077bfeea4",
+      "right_sample_id": "interaction_socket_kind-msvc-O0",
+      "source_group_id": "source-groups:d9666ee8a11a13a1c477711c",
+      "source_group_ids": [
+        "interaction_socket_kind",
+        "interaction_socket_kind_flipped"
+      ],
+      "split": "held_out_test",
       "transformation_family": "none",
       "transformation_parameters": {},
       "validation_status": "automatically_grounded"
@@ -40201,6 +41329,88 @@
       "transformation_parameters": {
         "max_length": 255,
         "unsigned_width": 32
+      },
+      "validation_status": "automatically_grounded"
+    },
+    {
+      "architecture": "x86",
+      "difficulty": "hard",
+      "equivalence_label": "non_equivalent",
+      "ground_truth": {
+        "case": 0,
+        "evidence": "Same read-only helper/API observation and input; the controlled negative toggles result bit zero. Executed outputs witness the difference independently of graph similarity.",
+        "input_bytes": [],
+        "label": "non_equivalent",
+        "left_result": 2,
+        "method": "behavior_counterexample",
+        "right_result": 3
+      },
+      "left_build_id": "interaction_socket_kind-msvc-O0",
+      "left_graph_id": "graph:afbbbd0331774d830f5b1c03",
+      "left_sample_id": "interaction_socket_kind-msvc-O0",
+      "negative_category": "same_evidence_different_behavior",
+      "negative_tags": [
+        "controlled_hard_negative",
+        "interaction_corpus"
+      ],
+      "notes": "Source/artifact component assignment; see split_config.json.",
+      "pair_category": "controlled_negative",
+      "pair_id": "pair:1802656f36ca1f42353510fb",
+      "right_build_id": "interaction_socket_kind-msvc-O0",
+      "right_graph_id": "graph:ca64de39b4813f7180285e17",
+      "right_sample_id": "interaction_socket_kind-msvc-O0",
+      "source_group_id": "source-groups:d9666ee8a11a13a1c477711c",
+      "source_group_ids": [
+        "interaction_socket_kind",
+        "interaction_socket_kind_flipped"
+      ],
+      "split": "held_out_test",
+      "transformation_family": "none",
+      "transformation_parameters": {},
+      "validation_status": "automatically_grounded"
+    },
+    {
+      "architecture": "x86",
+      "equivalence_label": "equivalent",
+      "ground_truth": {
+        "label": "equivalent",
+        "method": "source_transformation_proof",
+        "proof": "Fixed delegation invokes the original routine exactly once with identical arguments, return value, API effects and error handling; no additional OS operation.",
+        "transformation": {
+          "family": "transparent_wrapper",
+          "original_routine": "interaction_file_metadata",
+          "parameters": {
+            "environment": "same_readonly_os_state",
+            "max_length": 255
+          },
+          "rationale": "Fixed delegation invokes the original routine exactly once with identical arguments, return value, API effects and error handling; no additional OS operation.",
+          "test_cases_per_build": 16,
+          "transformation_level": "source",
+          "transformed_routine": "interaction_file_metadata__transparent_wrapper",
+          "validation": "passed",
+          "validation_status": "automatically_grounded",
+          "version": "0.1.0"
+        },
+        "validation": "passed"
+      },
+      "left_build_id": "interaction_file_metadata-msvc-O0",
+      "left_graph_id": "graph:4d8a4392750ce8a5b371110a",
+      "left_sample_id": "interaction_file_metadata-msvc-O0",
+      "notes": "Source/artifact component assignment; see split_config.json.",
+      "pair_category": "interaction_transformation",
+      "pair_id": "pair:184f428eeb29293f04140c9b",
+      "right_build_id": "interaction_file_metadata-msvc-O0",
+      "right_graph_id": "graph:f5a1f2f732422492668e782f",
+      "right_sample_id": "interaction_file_metadata-msvc-O0",
+      "source_group_id": "interaction_file_metadata",
+      "source_group_ids": [
+        "interaction_file_metadata"
+      ],
+      "split": "discovery_train",
+      "transformation_family": "transparent_wrapper",
+      "transformation_parameters": {
+        "environment": "same_readonly_os_state",
+        "max_length": 255
       },
       "validation_status": "automatically_grounded"
     },
@@ -40337,6 +41547,51 @@
       "architecture": "x86",
       "equivalence_label": "equivalent",
       "ground_truth": {
+        "label": "equivalent",
+        "method": "source_transformation_proof",
+        "proof": "Fixed delegation invokes the original routine exactly once with identical arguments, return value, API effects and error handling; no additional OS operation.",
+        "transformation": {
+          "family": "linear_chain",
+          "original_routine": "interaction_registry_summary",
+          "parameters": {
+            "environment": "same_readonly_os_state",
+            "max_length": 255
+          },
+          "rationale": "Fixed delegation invokes the original routine exactly once with identical arguments, return value, API effects and error handling; no additional OS operation.",
+          "test_cases_per_build": 16,
+          "transformation_level": "source",
+          "transformed_routine": "interaction_registry_summary__linear_chain",
+          "validation": "passed",
+          "validation_status": "automatically_grounded",
+          "version": "0.1.0"
+        },
+        "validation": "passed"
+      },
+      "left_build_id": "interaction_registry_summary-msvc-O2",
+      "left_graph_id": "graph:2ecd38be52171c5f62c8c613",
+      "left_sample_id": "interaction_registry_summary-msvc-O2",
+      "notes": "Source/artifact component assignment; see split_config.json.",
+      "pair_category": "interaction_transformation",
+      "pair_id": "pair:1e750c46cf950165a7b926c4",
+      "right_build_id": "interaction_registry_summary-msvc-O2",
+      "right_graph_id": "graph:85fda6135a0812d4e38ef265",
+      "right_sample_id": "interaction_registry_summary-msvc-O2",
+      "source_group_id": "interaction_registry_summary",
+      "source_group_ids": [
+        "interaction_registry_summary"
+      ],
+      "split": "validation",
+      "transformation_family": "linear_chain",
+      "transformation_parameters": {
+        "environment": "same_readonly_os_state",
+        "max_length": 255
+      },
+      "validation_status": "automatically_grounded"
+    },
+    {
+      "architecture": "x86",
+      "equivalence_label": "equivalent",
+      "ground_truth": {
         "evidence": "Same controlled source artifact and routine body, distinct compiler configuration; build transcripts independently checked.",
         "label": "equivalent",
         "method": "same_controlled_source",
@@ -40386,6 +41641,43 @@
       ],
       "split": "validation",
       "transformation_family": "compiler_variation",
+      "transformation_parameters": {},
+      "validation_status": "automatically_grounded"
+    },
+    {
+      "architecture": "x86",
+      "difficulty": "hard",
+      "equivalence_label": "non_equivalent",
+      "ground_truth": {
+        "case": 0,
+        "evidence": "Same read-only helper/API observation and input; the controlled negative toggles result bit zero. Executed outputs witness the difference independently of graph similarity.",
+        "input_bytes": [],
+        "label": "non_equivalent",
+        "left_result": 32,
+        "method": "behavior_counterexample",
+        "right_result": 33
+      },
+      "left_build_id": "interaction_file_metadata-msvc-O2",
+      "left_graph_id": "graph:b4c3cfcde913713b44eeadcc",
+      "left_sample_id": "interaction_file_metadata-msvc-O2",
+      "negative_category": "same_evidence_different_behavior",
+      "negative_tags": [
+        "controlled_hard_negative",
+        "interaction_corpus"
+      ],
+      "notes": "Source/artifact component assignment; see split_config.json.",
+      "pair_category": "controlled_negative",
+      "pair_id": "pair:2307133b47370bddaacf0254",
+      "right_build_id": "interaction_file_metadata-msvc-O2",
+      "right_graph_id": "graph:f5da6759d9f3b03a1e2a8703",
+      "right_sample_id": "interaction_file_metadata-msvc-O2",
+      "source_group_id": "source-groups:69082db4fc065c8fbf0f2055",
+      "source_group_ids": [
+        "interaction_file_metadata",
+        "interaction_file_metadata_flipped"
+      ],
+      "split": "discovery_train",
+      "transformation_family": "none",
       "transformation_parameters": {},
       "validation_status": "automatically_grounded"
     },
@@ -40506,6 +41798,51 @@
       "split": "discovery_train",
       "transformation_family": "compiler_variation",
       "transformation_parameters": {},
+      "validation_status": "automatically_grounded"
+    },
+    {
+      "architecture": "x86",
+      "equivalence_label": "equivalent",
+      "ground_truth": {
+        "label": "equivalent",
+        "method": "source_transformation_proof",
+        "proof": "Fixed delegation invokes the original routine exactly once with identical arguments, return value, API effects and error handling; no additional OS operation.",
+        "transformation": {
+          "family": "linear_chain",
+          "original_routine": "interaction_file_metadata",
+          "parameters": {
+            "environment": "same_readonly_os_state",
+            "max_length": 255
+          },
+          "rationale": "Fixed delegation invokes the original routine exactly once with identical arguments, return value, API effects and error handling; no additional OS operation.",
+          "test_cases_per_build": 16,
+          "transformation_level": "source",
+          "transformed_routine": "interaction_file_metadata__linear_chain",
+          "validation": "passed",
+          "validation_status": "automatically_grounded",
+          "version": "0.1.0"
+        },
+        "validation": "passed"
+      },
+      "left_build_id": "interaction_file_metadata-msvc-O0",
+      "left_graph_id": "graph:30027370d36e215aa6a0a6e8",
+      "left_sample_id": "interaction_file_metadata-msvc-O0",
+      "notes": "Source/artifact component assignment; see split_config.json.",
+      "pair_category": "interaction_transformation",
+      "pair_id": "pair:27025319b496e3881773294e",
+      "right_build_id": "interaction_file_metadata-msvc-O0",
+      "right_graph_id": "graph:4d8a4392750ce8a5b371110a",
+      "right_sample_id": "interaction_file_metadata-msvc-O0",
+      "source_group_id": "interaction_file_metadata",
+      "source_group_ids": [
+        "interaction_file_metadata"
+      ],
+      "split": "discovery_train",
+      "transformation_family": "linear_chain",
+      "transformation_parameters": {
+        "environment": "same_readonly_os_state",
+        "max_length": 255
+      },
       "validation_status": "automatically_grounded"
     },
     {
@@ -40783,6 +42120,34 @@
         "evidence": "Same controlled source artifact and routine body, distinct compiler configuration; build transcripts independently checked.",
         "label": "equivalent",
         "method": "same_controlled_source",
+        "routine_body_sha256": "ce07a1d9bb675626b4e4fa9240970a672dbd8228b5bbe8b036d6728a66eea6ce",
+        "source_hash": "50fa6ff079962c100ed141b5f455ed3ef3e2e55418f7f4c0a39a69de09ef67c0"
+      },
+      "left_build_id": "interaction_file_metadata-msvc-O2",
+      "left_graph_id": "graph:309061d57c6a155443d1705f",
+      "left_sample_id": "interaction_file_metadata-msvc-O2",
+      "notes": "Source/artifact component assignment; see split_config.json.",
+      "pair_category": "same_source",
+      "pair_id": "pair:2f2dd5c888535ce3ed1e5e85",
+      "right_build_id": "interaction_file_metadata-msvc-O0",
+      "right_graph_id": "graph:4d8a4392750ce8a5b371110a",
+      "right_sample_id": "interaction_file_metadata-msvc-O0",
+      "source_group_id": "interaction_file_metadata",
+      "source_group_ids": [
+        "interaction_file_metadata"
+      ],
+      "split": "discovery_train",
+      "transformation_family": "compiler_variation",
+      "transformation_parameters": {},
+      "validation_status": "automatically_grounded"
+    },
+    {
+      "architecture": "x86",
+      "equivalence_label": "equivalent",
+      "ground_truth": {
+        "evidence": "Same controlled source artifact and routine body, distinct compiler configuration; build transcripts independently checked.",
+        "label": "equivalent",
+        "method": "same_controlled_source",
         "routine_body_sha256": "62cd4fc304dcf7800aae41f937509264e5d168a31c4e78bf713adc31b54f9e23",
         "source_hash": "efb4da1bba3c842cb77875670e4101ca21c7e775d6f578d8501af944455bac0d"
       },
@@ -40983,6 +42348,43 @@
       ],
       "split": "discovery_train",
       "transformation_family": "compiler_variation",
+      "transformation_parameters": {},
+      "validation_status": "automatically_grounded"
+    },
+    {
+      "architecture": "x86",
+      "difficulty": "hard",
+      "equivalence_label": "non_equivalent",
+      "ground_truth": {
+        "case": 0,
+        "evidence": "Same read-only helper/API observation and input; the controlled negative toggles result bit zero. Executed outputs witness the difference independently of graph similarity.",
+        "input_bytes": [],
+        "label": "non_equivalent",
+        "left_result": 118,
+        "method": "behavior_counterexample",
+        "right_result": 119
+      },
+      "left_build_id": "interaction_registry_summary-msvc-O2",
+      "left_graph_id": "graph:9740a9efce9d20718538119a",
+      "left_sample_id": "interaction_registry_summary-msvc-O2",
+      "negative_category": "same_evidence_different_behavior",
+      "negative_tags": [
+        "controlled_hard_negative",
+        "interaction_corpus"
+      ],
+      "notes": "Source/artifact component assignment; see split_config.json.",
+      "pair_category": "controlled_negative",
+      "pair_id": "pair:37d30c15011f0938b7eddcd9",
+      "right_build_id": "interaction_registry_summary-msvc-O2",
+      "right_graph_id": "graph:f574f35e2709fbdf6b51395b",
+      "right_sample_id": "interaction_registry_summary-msvc-O2",
+      "source_group_id": "source-groups:597406c26aa65a259edb0aeb",
+      "source_group_ids": [
+        "interaction_registry_summary",
+        "interaction_registry_summary_flipped"
+      ],
+      "split": "validation",
+      "transformation_family": "none",
       "transformation_parameters": {},
       "validation_status": "automatically_grounded"
     },
@@ -41261,6 +42663,43 @@
       "difficulty": "hard",
       "equivalence_label": "non_equivalent",
       "ground_truth": {
+        "case": 0,
+        "evidence": "Same read-only helper/API observation and input; the controlled negative toggles result bit zero. Executed outputs witness the difference independently of graph similarity.",
+        "input_bytes": [],
+        "label": "non_equivalent",
+        "left_result": 118,
+        "method": "behavior_counterexample",
+        "right_result": 119
+      },
+      "left_build_id": "interaction_registry_summary-msvc-O0",
+      "left_graph_id": "graph:5c43de12a567b4ae8eca811b",
+      "left_sample_id": "interaction_registry_summary-msvc-O0",
+      "negative_category": "same_evidence_different_behavior",
+      "negative_tags": [
+        "controlled_hard_negative",
+        "interaction_corpus"
+      ],
+      "notes": "Source/artifact component assignment; see split_config.json.",
+      "pair_category": "controlled_negative",
+      "pair_id": "pair:402fad7d63f3d360d6d1b478",
+      "right_build_id": "interaction_registry_summary-msvc-O0",
+      "right_graph_id": "graph:e0b39088fd752beb6dbe465f",
+      "right_sample_id": "interaction_registry_summary-msvc-O0",
+      "source_group_id": "source-groups:597406c26aa65a259edb0aeb",
+      "source_group_ids": [
+        "interaction_registry_summary",
+        "interaction_registry_summary_flipped"
+      ],
+      "split": "validation",
+      "transformation_family": "none",
+      "transformation_parameters": {},
+      "validation_status": "automatically_grounded"
+    },
+    {
+      "architecture": "x86",
+      "difficulty": "hard",
+      "equivalence_label": "non_equivalent",
+      "ground_truth": {
         "case": 1,
         "evidence": "Different pure reductions/search predicates on the identical input; recorded outputs witness non-equivalence.",
         "input_bytes": [
@@ -41342,6 +42781,43 @@
       "source_group_ids": [
         "weighted_buffer",
         "xor_buffer"
+      ],
+      "split": "discovery_train",
+      "transformation_family": "none",
+      "transformation_parameters": {},
+      "validation_status": "automatically_grounded"
+    },
+    {
+      "architecture": "x86",
+      "difficulty": "hard",
+      "equivalence_label": "non_equivalent",
+      "ground_truth": {
+        "case": 0,
+        "evidence": "Same read-only helper/API observation and input; the controlled negative toggles result bit zero. Executed outputs witness the difference independently of graph similarity.",
+        "input_bytes": [],
+        "label": "non_equivalent",
+        "left_result": 32,
+        "method": "behavior_counterexample",
+        "right_result": 33
+      },
+      "left_build_id": "interaction_file_metadata-msvc-O0",
+      "left_graph_id": "graph:4d8a4392750ce8a5b371110a",
+      "left_sample_id": "interaction_file_metadata-msvc-O0",
+      "negative_category": "same_evidence_different_behavior",
+      "negative_tags": [
+        "controlled_hard_negative",
+        "interaction_corpus"
+      ],
+      "notes": "Source/artifact component assignment; see split_config.json.",
+      "pair_category": "controlled_negative",
+      "pair_id": "pair:42aa6e03876540d6624f72e0",
+      "right_build_id": "interaction_file_metadata-msvc-O0",
+      "right_graph_id": "graph:53a0363f40e1f6b8be7178e5",
+      "right_sample_id": "interaction_file_metadata-msvc-O0",
+      "source_group_id": "source-groups:69082db4fc065c8fbf0f2055",
+      "source_group_ids": [
+        "interaction_file_metadata",
+        "interaction_file_metadata_flipped"
       ],
       "split": "discovery_train",
       "transformation_family": "none",
@@ -41649,6 +43125,43 @@
       ],
       "split": "held_out_test",
       "transformation_family": "compiler_variation",
+      "transformation_parameters": {},
+      "validation_status": "automatically_grounded"
+    },
+    {
+      "architecture": "x86",
+      "difficulty": "hard",
+      "equivalence_label": "non_equivalent",
+      "ground_truth": {
+        "case": 0,
+        "evidence": "Same read-only helper/API observation and input; the controlled negative toggles result bit zero. Executed outputs witness the difference independently of graph similarity.",
+        "input_bytes": [],
+        "label": "non_equivalent",
+        "left_result": 119,
+        "method": "behavior_counterexample",
+        "right_result": 118
+      },
+      "left_build_id": "interaction_registry_summary-msvc-O0",
+      "left_graph_id": "graph:25a50690b481a0ccca163380",
+      "left_sample_id": "interaction_registry_summary-msvc-O0",
+      "negative_category": "same_evidence_different_behavior",
+      "negative_tags": [
+        "controlled_hard_negative",
+        "interaction_corpus"
+      ],
+      "notes": "Source/artifact component assignment; see split_config.json.",
+      "pair_category": "controlled_negative",
+      "pair_id": "pair:530e43f9f0118b11a6a3f882",
+      "right_build_id": "interaction_registry_summary-msvc-O0",
+      "right_graph_id": "graph:5c43de12a567b4ae8eca811b",
+      "right_sample_id": "interaction_registry_summary-msvc-O0",
+      "source_group_id": "source-groups:597406c26aa65a259edb0aeb",
+      "source_group_ids": [
+        "interaction_registry_summary",
+        "interaction_registry_summary_flipped"
+      ],
+      "split": "validation",
+      "transformation_family": "none",
       "transformation_parameters": {},
       "validation_status": "automatically_grounded"
     },
@@ -42207,6 +43720,43 @@
     },
     {
       "architecture": "x86",
+      "difficulty": "hard",
+      "equivalence_label": "non_equivalent",
+      "ground_truth": {
+        "case": 0,
+        "evidence": "Same read-only helper/API observation and input; the controlled negative toggles result bit zero. Executed outputs witness the difference independently of graph similarity.",
+        "input_bytes": [],
+        "label": "non_equivalent",
+        "left_result": 119,
+        "method": "behavior_counterexample",
+        "right_result": 118
+      },
+      "left_build_id": "interaction_registry_summary-msvc-O2",
+      "left_graph_id": "graph:8eeda9a9640dbc4034171002",
+      "left_sample_id": "interaction_registry_summary-msvc-O2",
+      "negative_category": "same_evidence_different_behavior",
+      "negative_tags": [
+        "controlled_hard_negative",
+        "interaction_corpus"
+      ],
+      "notes": "Source/artifact component assignment; see split_config.json.",
+      "pair_category": "controlled_negative",
+      "pair_id": "pair:656cee8a96a3564cba4eee88",
+      "right_build_id": "interaction_registry_summary-msvc-O2",
+      "right_graph_id": "graph:9740a9efce9d20718538119a",
+      "right_sample_id": "interaction_registry_summary-msvc-O2",
+      "source_group_id": "source-groups:597406c26aa65a259edb0aeb",
+      "source_group_ids": [
+        "interaction_registry_summary",
+        "interaction_registry_summary_flipped"
+      ],
+      "split": "validation",
+      "transformation_family": "none",
+      "transformation_parameters": {},
+      "validation_status": "automatically_grounded"
+    },
+    {
+      "architecture": "x86",
       "equivalence_label": "equivalent",
       "ground_truth": {
         "evidence": "Same controlled source artifact and routine body, distinct compiler configuration; build transcripts independently checked.",
@@ -42301,6 +43851,43 @@
       "source_group_ids": [
         "count_matches",
         "find_max"
+      ],
+      "split": "discovery_train",
+      "transformation_family": "none",
+      "transformation_parameters": {},
+      "validation_status": "automatically_grounded"
+    },
+    {
+      "architecture": "x86",
+      "difficulty": "hard",
+      "equivalence_label": "non_equivalent",
+      "ground_truth": {
+        "case": 0,
+        "evidence": "Same read-only helper/API observation and input; the controlled negative toggles result bit zero. Executed outputs witness the difference independently of graph similarity.",
+        "input_bytes": [],
+        "label": "non_equivalent",
+        "left_result": 33,
+        "method": "behavior_counterexample",
+        "right_result": 32
+      },
+      "left_build_id": "interaction_file_metadata-msvc-O0",
+      "left_graph_id": "graph:53a0363f40e1f6b8be7178e5",
+      "left_sample_id": "interaction_file_metadata-msvc-O0",
+      "negative_category": "same_evidence_different_behavior",
+      "negative_tags": [
+        "controlled_hard_negative",
+        "interaction_corpus"
+      ],
+      "notes": "Source/artifact component assignment; see split_config.json.",
+      "pair_category": "controlled_negative",
+      "pair_id": "pair:6a54dda36a5072b69da06a50",
+      "right_build_id": "interaction_file_metadata-msvc-O0",
+      "right_graph_id": "graph:f5a1f2f732422492668e782f",
+      "right_sample_id": "interaction_file_metadata-msvc-O0",
+      "source_group_id": "source-groups:69082db4fc065c8fbf0f2055",
+      "source_group_ids": [
+        "interaction_file_metadata",
+        "interaction_file_metadata_flipped"
       ],
       "split": "discovery_train",
       "transformation_family": "none",
@@ -42692,6 +44279,79 @@
         "evidence": "Same controlled source artifact and routine body, distinct compiler configuration; build transcripts independently checked.",
         "label": "equivalent",
         "method": "same_controlled_source",
+        "routine_body_sha256": "7206ce78896afb7eaa6d235d34bf4bbc74a5166e32012543a715a4082722064c",
+        "source_hash": "aa6a5394f581189b84c87b1eb26faac7e1873641477ccc695b54aa4e8fa9a6bc"
+      },
+      "left_build_id": "interaction_registry_summary-msvc-O2",
+      "left_graph_id": "graph:2ecd38be52171c5f62c8c613",
+      "left_sample_id": "interaction_registry_summary-msvc-O2",
+      "notes": "Source/artifact component assignment; see split_config.json.",
+      "pair_category": "same_source",
+      "pair_id": "pair:7c127ee0fee1dbd0516964c5",
+      "right_build_id": "interaction_registry_summary-msvc-O0",
+      "right_graph_id": "graph:e0b39088fd752beb6dbe465f",
+      "right_sample_id": "interaction_registry_summary-msvc-O0",
+      "source_group_id": "interaction_registry_summary",
+      "source_group_ids": [
+        "interaction_registry_summary"
+      ],
+      "split": "validation",
+      "transformation_family": "compiler_variation",
+      "transformation_parameters": {},
+      "validation_status": "automatically_grounded"
+    },
+    {
+      "architecture": "x86",
+      "equivalence_label": "equivalent",
+      "ground_truth": {
+        "label": "equivalent",
+        "method": "source_transformation_proof",
+        "proof": "Fixed delegation invokes the original routine exactly once with identical arguments, return value, API effects and error handling; no additional OS operation.",
+        "transformation": {
+          "family": "linear_chain",
+          "original_routine": "interaction_file_metadata",
+          "parameters": {
+            "environment": "same_readonly_os_state",
+            "max_length": 255
+          },
+          "rationale": "Fixed delegation invokes the original routine exactly once with identical arguments, return value, API effects and error handling; no additional OS operation.",
+          "test_cases_per_build": 16,
+          "transformation_level": "source",
+          "transformed_routine": "interaction_file_metadata__linear_chain",
+          "validation": "passed",
+          "validation_status": "automatically_grounded",
+          "version": "0.1.0"
+        },
+        "validation": "passed"
+      },
+      "left_build_id": "interaction_file_metadata-msvc-O2",
+      "left_graph_id": "graph:309061d57c6a155443d1705f",
+      "left_sample_id": "interaction_file_metadata-msvc-O2",
+      "notes": "Source/artifact component assignment; see split_config.json.",
+      "pair_category": "interaction_transformation",
+      "pair_id": "pair:7cbb89d649257cba92e6141c",
+      "right_build_id": "interaction_file_metadata-msvc-O2",
+      "right_graph_id": "graph:b4c3cfcde913713b44eeadcc",
+      "right_sample_id": "interaction_file_metadata-msvc-O2",
+      "source_group_id": "interaction_file_metadata",
+      "source_group_ids": [
+        "interaction_file_metadata"
+      ],
+      "split": "discovery_train",
+      "transformation_family": "linear_chain",
+      "transformation_parameters": {
+        "environment": "same_readonly_os_state",
+        "max_length": 255
+      },
+      "validation_status": "automatically_grounded"
+    },
+    {
+      "architecture": "x86",
+      "equivalence_label": "equivalent",
+      "ground_truth": {
+        "evidence": "Same controlled source artifact and routine body, distinct compiler configuration; build transcripts independently checked.",
+        "label": "equivalent",
+        "method": "same_controlled_source",
         "routine_body_sha256": "f10b05ef7cfad74f09e6bfa3bc49b9f48e575351e43645a7d0ef81d4d842b847",
         "source_hash": "efb4da1bba3c842cb77875670e4101ca21c7e775d6f578d8501af944455bac0d"
       },
@@ -42711,6 +44371,51 @@
       "split": "discovery_train",
       "transformation_family": "compiler_variation",
       "transformation_parameters": {},
+      "validation_status": "automatically_grounded"
+    },
+    {
+      "architecture": "x86",
+      "equivalence_label": "equivalent",
+      "ground_truth": {
+        "label": "equivalent",
+        "method": "source_transformation_proof",
+        "proof": "Fixed delegation invokes the original routine exactly once with identical arguments, return value, API effects and error handling; no additional OS operation.",
+        "transformation": {
+          "family": "thunk",
+          "original_routine": "interaction_registry_summary",
+          "parameters": {
+            "environment": "same_readonly_os_state",
+            "max_length": 255
+          },
+          "rationale": "Fixed delegation invokes the original routine exactly once with identical arguments, return value, API effects and error handling; no additional OS operation.",
+          "test_cases_per_build": 16,
+          "transformation_level": "source",
+          "transformed_routine": "interaction_registry_summary__thunk",
+          "validation": "passed",
+          "validation_status": "automatically_grounded",
+          "version": "0.1.0"
+        },
+        "validation": "passed"
+      },
+      "left_build_id": "interaction_registry_summary-msvc-O2",
+      "left_graph_id": "graph:2ecd38be52171c5f62c8c613",
+      "left_sample_id": "interaction_registry_summary-msvc-O2",
+      "notes": "Source/artifact component assignment; see split_config.json.",
+      "pair_category": "interaction_transformation",
+      "pair_id": "pair:803a40f2a145ea896c0d599e",
+      "right_build_id": "interaction_registry_summary-msvc-O2",
+      "right_graph_id": "graph:f574f35e2709fbdf6b51395b",
+      "right_sample_id": "interaction_registry_summary-msvc-O2",
+      "source_group_id": "interaction_registry_summary",
+      "source_group_ids": [
+        "interaction_registry_summary"
+      ],
+      "split": "validation",
+      "transformation_family": "thunk",
+      "transformation_parameters": {
+        "environment": "same_readonly_os_state",
+        "max_length": 255
+      },
       "validation_status": "automatically_grounded"
     },
     {
@@ -42949,6 +44654,43 @@
         "max_length": 255,
         "unsigned_width": 32
       },
+      "validation_status": "automatically_grounded"
+    },
+    {
+      "architecture": "x86",
+      "difficulty": "hard",
+      "equivalence_label": "non_equivalent",
+      "ground_truth": {
+        "case": 0,
+        "evidence": "Same read-only helper/API observation and input; the controlled negative toggles result bit zero. Executed outputs witness the difference independently of graph similarity.",
+        "input_bytes": [],
+        "label": "non_equivalent",
+        "left_result": 32,
+        "method": "behavior_counterexample",
+        "right_result": 33
+      },
+      "left_build_id": "interaction_file_metadata-msvc-O2",
+      "left_graph_id": "graph:9c8088dd264553a7e8cfa916",
+      "left_sample_id": "interaction_file_metadata-msvc-O2",
+      "negative_category": "same_evidence_different_behavior",
+      "negative_tags": [
+        "controlled_hard_negative",
+        "interaction_corpus"
+      ],
+      "notes": "Source/artifact component assignment; see split_config.json.",
+      "pair_category": "controlled_negative",
+      "pair_id": "pair:84e9e21112747dd1a2b337bd",
+      "right_build_id": "interaction_file_metadata-msvc-O2",
+      "right_graph_id": "graph:f5da6759d9f3b03a1e2a8703",
+      "right_sample_id": "interaction_file_metadata-msvc-O2",
+      "source_group_id": "source-groups:69082db4fc065c8fbf0f2055",
+      "source_group_ids": [
+        "interaction_file_metadata",
+        "interaction_file_metadata_flipped"
+      ],
+      "split": "discovery_train",
+      "transformation_family": "none",
+      "transformation_parameters": {},
       "validation_status": "automatically_grounded"
     },
     {
@@ -43380,6 +45122,43 @@
       "difficulty": "hard",
       "equivalence_label": "non_equivalent",
       "ground_truth": {
+        "case": 0,
+        "evidence": "Same read-only helper/API observation and input; the controlled negative toggles result bit zero. Executed outputs witness the difference independently of graph similarity.",
+        "input_bytes": [],
+        "label": "non_equivalent",
+        "left_result": 32,
+        "method": "behavior_counterexample",
+        "right_result": 33
+      },
+      "left_build_id": "interaction_file_metadata-msvc-O2",
+      "left_graph_id": "graph:309061d57c6a155443d1705f",
+      "left_sample_id": "interaction_file_metadata-msvc-O2",
+      "negative_category": "same_evidence_different_behavior",
+      "negative_tags": [
+        "controlled_hard_negative",
+        "interaction_corpus"
+      ],
+      "notes": "Source/artifact component assignment; see split_config.json.",
+      "pair_category": "controlled_negative",
+      "pair_id": "pair:9271de7f4e474c17fbeeda79",
+      "right_build_id": "interaction_file_metadata-msvc-O2",
+      "right_graph_id": "graph:f5da6759d9f3b03a1e2a8703",
+      "right_sample_id": "interaction_file_metadata-msvc-O2",
+      "source_group_id": "source-groups:69082db4fc065c8fbf0f2055",
+      "source_group_ids": [
+        "interaction_file_metadata",
+        "interaction_file_metadata_flipped"
+      ],
+      "split": "discovery_train",
+      "transformation_family": "none",
+      "transformation_parameters": {},
+      "validation_status": "automatically_grounded"
+    },
+    {
+      "architecture": "x86",
+      "difficulty": "hard",
+      "equivalence_label": "non_equivalent",
+      "ground_truth": {
         "case": 1,
         "evidence": "Different pure reductions/search predicates on the identical input; recorded outputs witness non-equivalence.",
         "input_bytes": [
@@ -43417,6 +45196,43 @@
         "search_string"
       ],
       "split": "held_out_test",
+      "transformation_family": "none",
+      "transformation_parameters": {},
+      "validation_status": "automatically_grounded"
+    },
+    {
+      "architecture": "x86",
+      "difficulty": "hard",
+      "equivalence_label": "non_equivalent",
+      "ground_truth": {
+        "case": 0,
+        "evidence": "Same read-only helper/API observation and input; the controlled negative toggles result bit zero. Executed outputs witness the difference independently of graph similarity.",
+        "input_bytes": [],
+        "label": "non_equivalent",
+        "left_result": 32,
+        "method": "behavior_counterexample",
+        "right_result": 33
+      },
+      "left_build_id": "interaction_file_metadata-msvc-O0",
+      "left_graph_id": "graph:0ac2234184f253c207f7adf9",
+      "left_sample_id": "interaction_file_metadata-msvc-O0",
+      "negative_category": "same_evidence_different_behavior",
+      "negative_tags": [
+        "controlled_hard_negative",
+        "interaction_corpus"
+      ],
+      "notes": "Source/artifact component assignment; see split_config.json.",
+      "pair_category": "controlled_negative",
+      "pair_id": "pair:93ed66a1cb36dc5a957a3700",
+      "right_build_id": "interaction_file_metadata-msvc-O0",
+      "right_graph_id": "graph:53a0363f40e1f6b8be7178e5",
+      "right_sample_id": "interaction_file_metadata-msvc-O0",
+      "source_group_id": "source-groups:69082db4fc065c8fbf0f2055",
+      "source_group_ids": [
+        "interaction_file_metadata",
+        "interaction_file_metadata_flipped"
+      ],
+      "split": "discovery_train",
       "transformation_family": "none",
       "transformation_parameters": {},
       "validation_status": "automatically_grounded"
@@ -44024,6 +45840,51 @@
     },
     {
       "architecture": "x86",
+      "equivalence_label": "equivalent",
+      "ground_truth": {
+        "label": "equivalent",
+        "method": "source_transformation_proof",
+        "proof": "Fixed delegation invokes the original routine exactly once with identical arguments, return value, API effects and error handling; no additional OS operation.",
+        "transformation": {
+          "family": "thunk",
+          "original_routine": "interaction_file_metadata",
+          "parameters": {
+            "environment": "same_readonly_os_state",
+            "max_length": 255
+          },
+          "rationale": "Fixed delegation invokes the original routine exactly once with identical arguments, return value, API effects and error handling; no additional OS operation.",
+          "test_cases_per_build": 16,
+          "transformation_level": "source",
+          "transformed_routine": "interaction_file_metadata__thunk",
+          "validation": "passed",
+          "validation_status": "automatically_grounded",
+          "version": "0.1.0"
+        },
+        "validation": "passed"
+      },
+      "left_build_id": "interaction_file_metadata-msvc-O0",
+      "left_graph_id": "graph:0ac2234184f253c207f7adf9",
+      "left_sample_id": "interaction_file_metadata-msvc-O0",
+      "notes": "Source/artifact component assignment; see split_config.json.",
+      "pair_category": "interaction_transformation",
+      "pair_id": "pair:a8f6671cce90d1cac5c8cd3a",
+      "right_build_id": "interaction_file_metadata-msvc-O0",
+      "right_graph_id": "graph:4d8a4392750ce8a5b371110a",
+      "right_sample_id": "interaction_file_metadata-msvc-O0",
+      "source_group_id": "interaction_file_metadata",
+      "source_group_ids": [
+        "interaction_file_metadata"
+      ],
+      "split": "discovery_train",
+      "transformation_family": "thunk",
+      "transformation_parameters": {
+        "environment": "same_readonly_os_state",
+        "max_length": 255
+      },
+      "validation_status": "automatically_grounded"
+    },
+    {
+      "architecture": "x86",
       "difficulty": "hard",
       "equivalence_label": "non_equivalent",
       "ground_truth": {
@@ -44064,6 +45925,43 @@
         "sum_array"
       ],
       "split": "discovery_train",
+      "transformation_family": "none",
+      "transformation_parameters": {},
+      "validation_status": "automatically_grounded"
+    },
+    {
+      "architecture": "x86",
+      "difficulty": "hard",
+      "equivalence_label": "non_equivalent",
+      "ground_truth": {
+        "case": 0,
+        "evidence": "Same read-only helper/API observation and input; the controlled negative toggles result bit zero. Executed outputs witness the difference independently of graph similarity.",
+        "input_bytes": [],
+        "label": "non_equivalent",
+        "left_result": 119,
+        "method": "behavior_counterexample",
+        "right_result": 118
+      },
+      "left_build_id": "interaction_registry_summary-msvc-O2",
+      "left_graph_id": "graph:2ecd38be52171c5f62c8c613",
+      "left_sample_id": "interaction_registry_summary-msvc-O2",
+      "negative_category": "same_evidence_different_behavior",
+      "negative_tags": [
+        "controlled_hard_negative",
+        "interaction_corpus"
+      ],
+      "notes": "Source/artifact component assignment; see split_config.json.",
+      "pair_category": "controlled_negative",
+      "pair_id": "pair:ae39700e2064bb09cee67b12",
+      "right_build_id": "interaction_registry_summary-msvc-O2",
+      "right_graph_id": "graph:9740a9efce9d20718538119a",
+      "right_sample_id": "interaction_registry_summary-msvc-O2",
+      "source_group_id": "source-groups:597406c26aa65a259edb0aeb",
+      "source_group_ids": [
+        "interaction_registry_summary",
+        "interaction_registry_summary_flipped"
+      ],
+      "split": "validation",
       "transformation_family": "none",
       "transformation_parameters": {},
       "validation_status": "automatically_grounded"
@@ -44196,6 +46094,51 @@
       "split": "discovery_train",
       "transformation_family": "none",
       "transformation_parameters": {},
+      "validation_status": "automatically_grounded"
+    },
+    {
+      "architecture": "x86",
+      "equivalence_label": "equivalent",
+      "ground_truth": {
+        "label": "equivalent",
+        "method": "source_transformation_proof",
+        "proof": "Fixed delegation invokes the original routine exactly once with identical arguments, return value, API effects and error handling; no additional OS operation.",
+        "transformation": {
+          "family": "transparent_wrapper",
+          "original_routine": "interaction_registry_summary",
+          "parameters": {
+            "environment": "same_readonly_os_state",
+            "max_length": 255
+          },
+          "rationale": "Fixed delegation invokes the original routine exactly once with identical arguments, return value, API effects and error handling; no additional OS operation.",
+          "test_cases_per_build": 16,
+          "transformation_level": "source",
+          "transformed_routine": "interaction_registry_summary__transparent_wrapper",
+          "validation": "passed",
+          "validation_status": "automatically_grounded",
+          "version": "0.1.0"
+        },
+        "validation": "passed"
+      },
+      "left_build_id": "interaction_registry_summary-msvc-O2",
+      "left_graph_id": "graph:2ecd38be52171c5f62c8c613",
+      "left_sample_id": "interaction_registry_summary-msvc-O2",
+      "notes": "Source/artifact component assignment; see split_config.json.",
+      "pair_category": "interaction_transformation",
+      "pair_id": "pair:b14672652ad1ab9cd57fc4d5",
+      "right_build_id": "interaction_registry_summary-msvc-O2",
+      "right_graph_id": "graph:8eeda9a9640dbc4034171002",
+      "right_sample_id": "interaction_registry_summary-msvc-O2",
+      "source_group_id": "interaction_registry_summary",
+      "source_group_ids": [
+        "interaction_registry_summary"
+      ],
+      "split": "validation",
+      "transformation_family": "transparent_wrapper",
+      "transformation_parameters": {
+        "environment": "same_readonly_os_state",
+        "max_length": 255
+      },
       "validation_status": "automatically_grounded"
     },
     {
@@ -44749,6 +46692,34 @@
       "architecture": "x86",
       "equivalence_label": "equivalent",
       "ground_truth": {
+        "evidence": "Same controlled source artifact and routine body, distinct compiler configuration; build transcripts independently checked.",
+        "label": "equivalent",
+        "method": "same_controlled_source",
+        "routine_body_sha256": "91dbab24d565f7bc4dcd41f797307dd909cb3437c15d3f8a3d613044ce0125a8",
+        "source_hash": "50fa6ff079962c100ed141b5f455ed3ef3e2e55418f7f4c0a39a69de09ef67c0"
+      },
+      "left_build_id": "interaction_file_metadata-msvc-O0",
+      "left_graph_id": "graph:53a0363f40e1f6b8be7178e5",
+      "left_sample_id": "interaction_file_metadata-msvc-O0",
+      "notes": "Source/artifact component assignment; see split_config.json.",
+      "pair_category": "same_source",
+      "pair_id": "pair:c18aadda24362780c35f04b2",
+      "right_build_id": "interaction_file_metadata-msvc-O2",
+      "right_graph_id": "graph:f5da6759d9f3b03a1e2a8703",
+      "right_sample_id": "interaction_file_metadata-msvc-O2",
+      "source_group_id": "interaction_file_metadata_flipped",
+      "source_group_ids": [
+        "interaction_file_metadata_flipped"
+      ],
+      "split": "discovery_train",
+      "transformation_family": "compiler_variation",
+      "transformation_parameters": {},
+      "validation_status": "automatically_grounded"
+    },
+    {
+      "architecture": "x86",
+      "equivalence_label": "equivalent",
+      "ground_truth": {
         "label": "equivalent",
         "method": "source_transformation_proof",
         "proof": "Partition bytes into two disjoint halves; combine associative sum/max/xor reductions with the original identity for empty input.",
@@ -45131,6 +47102,43 @@
     },
     {
       "architecture": "x86",
+      "difficulty": "hard",
+      "equivalence_label": "non_equivalent",
+      "ground_truth": {
+        "case": 0,
+        "evidence": "Same read-only helper/API observation and input; the controlled negative toggles result bit zero. Executed outputs witness the difference independently of graph similarity.",
+        "input_bytes": [],
+        "label": "non_equivalent",
+        "left_result": 119,
+        "method": "behavior_counterexample",
+        "right_result": 118
+      },
+      "left_build_id": "interaction_registry_summary-msvc-O0",
+      "left_graph_id": "graph:3e37298d49e5a6c608352478",
+      "left_sample_id": "interaction_registry_summary-msvc-O0",
+      "negative_category": "same_evidence_different_behavior",
+      "negative_tags": [
+        "controlled_hard_negative",
+        "interaction_corpus"
+      ],
+      "notes": "Source/artifact component assignment; see split_config.json.",
+      "pair_category": "controlled_negative",
+      "pair_id": "pair:cbb708311cabbf9daca00d9e",
+      "right_build_id": "interaction_registry_summary-msvc-O0",
+      "right_graph_id": "graph:5c43de12a567b4ae8eca811b",
+      "right_sample_id": "interaction_registry_summary-msvc-O0",
+      "source_group_id": "source-groups:597406c26aa65a259edb0aeb",
+      "source_group_ids": [
+        "interaction_registry_summary",
+        "interaction_registry_summary_flipped"
+      ],
+      "split": "validation",
+      "transformation_family": "none",
+      "transformation_parameters": {},
+      "validation_status": "automatically_grounded"
+    },
+    {
+      "architecture": "x86",
       "equivalence_label": "equivalent",
       "ground_truth": {
         "label": "equivalent",
@@ -45256,6 +47264,51 @@
       "split": "held_out_test",
       "transformation_family": "compiler_variation",
       "transformation_parameters": {},
+      "validation_status": "automatically_grounded"
+    },
+    {
+      "architecture": "x86",
+      "equivalence_label": "equivalent",
+      "ground_truth": {
+        "label": "equivalent",
+        "method": "source_transformation_proof",
+        "proof": "Fixed delegation invokes the original routine exactly once with identical arguments, return value, API effects and error handling; no additional OS operation.",
+        "transformation": {
+          "family": "thunk",
+          "original_routine": "interaction_registry_summary",
+          "parameters": {
+            "environment": "same_readonly_os_state",
+            "max_length": 255
+          },
+          "rationale": "Fixed delegation invokes the original routine exactly once with identical arguments, return value, API effects and error handling; no additional OS operation.",
+          "test_cases_per_build": 16,
+          "transformation_level": "source",
+          "transformed_routine": "interaction_registry_summary__thunk",
+          "validation": "passed",
+          "validation_status": "automatically_grounded",
+          "version": "0.1.0"
+        },
+        "validation": "passed"
+      },
+      "left_build_id": "interaction_registry_summary-msvc-O0",
+      "left_graph_id": "graph:3e37298d49e5a6c608352478",
+      "left_sample_id": "interaction_registry_summary-msvc-O0",
+      "notes": "Source/artifact component assignment; see split_config.json.",
+      "pair_category": "interaction_transformation",
+      "pair_id": "pair:cef0e30a49415b0a88bd118a",
+      "right_build_id": "interaction_registry_summary-msvc-O0",
+      "right_graph_id": "graph:e0b39088fd752beb6dbe465f",
+      "right_sample_id": "interaction_registry_summary-msvc-O0",
+      "source_group_id": "interaction_registry_summary",
+      "source_group_ids": [
+        "interaction_registry_summary"
+      ],
+      "split": "validation",
+      "transformation_family": "thunk",
+      "transformation_parameters": {
+        "environment": "same_readonly_os_state",
+        "max_length": 255
+      },
       "validation_status": "automatically_grounded"
     },
     {
@@ -45426,6 +47479,51 @@
       "architecture": "x86",
       "equivalence_label": "equivalent",
       "ground_truth": {
+        "label": "equivalent",
+        "method": "source_transformation_proof",
+        "proof": "Fixed delegation invokes the original routine exactly once with identical arguments, return value, API effects and error handling; no additional OS operation.",
+        "transformation": {
+          "family": "thunk",
+          "original_routine": "interaction_file_metadata",
+          "parameters": {
+            "environment": "same_readonly_os_state",
+            "max_length": 255
+          },
+          "rationale": "Fixed delegation invokes the original routine exactly once with identical arguments, return value, API effects and error handling; no additional OS operation.",
+          "test_cases_per_build": 16,
+          "transformation_level": "source",
+          "transformed_routine": "interaction_file_metadata__thunk",
+          "validation": "passed",
+          "validation_status": "automatically_grounded",
+          "version": "0.1.0"
+        },
+        "validation": "passed"
+      },
+      "left_build_id": "interaction_file_metadata-msvc-O2",
+      "left_graph_id": "graph:309061d57c6a155443d1705f",
+      "left_sample_id": "interaction_file_metadata-msvc-O2",
+      "notes": "Source/artifact component assignment; see split_config.json.",
+      "pair_category": "interaction_transformation",
+      "pair_id": "pair:d771517bed193fe2414caeae",
+      "right_build_id": "interaction_file_metadata-msvc-O2",
+      "right_graph_id": "graph:ce712c7ca6b775a672395d08",
+      "right_sample_id": "interaction_file_metadata-msvc-O2",
+      "source_group_id": "interaction_file_metadata",
+      "source_group_ids": [
+        "interaction_file_metadata"
+      ],
+      "split": "discovery_train",
+      "transformation_family": "thunk",
+      "transformation_parameters": {
+        "environment": "same_readonly_os_state",
+        "max_length": 255
+      },
+      "validation_status": "automatically_grounded"
+    },
+    {
+      "architecture": "x86",
+      "equivalence_label": "equivalent",
+      "ground_truth": {
         "evidence": "Same controlled source artifact and routine body, distinct compiler configuration; build transcripts independently checked.",
         "label": "equivalent",
         "method": "same_controlled_source",
@@ -45554,6 +47652,43 @@
     },
     {
       "architecture": "x86",
+      "difficulty": "hard",
+      "equivalence_label": "non_equivalent",
+      "ground_truth": {
+        "case": 0,
+        "evidence": "Same read-only helper/API observation and input; the controlled negative toggles result bit zero. Executed outputs witness the difference independently of graph similarity.",
+        "input_bytes": [],
+        "label": "non_equivalent",
+        "left_result": 32,
+        "method": "behavior_counterexample",
+        "right_result": 33
+      },
+      "left_build_id": "interaction_file_metadata-msvc-O2",
+      "left_graph_id": "graph:ce712c7ca6b775a672395d08",
+      "left_sample_id": "interaction_file_metadata-msvc-O2",
+      "negative_category": "same_evidence_different_behavior",
+      "negative_tags": [
+        "controlled_hard_negative",
+        "interaction_corpus"
+      ],
+      "notes": "Source/artifact component assignment; see split_config.json.",
+      "pair_category": "controlled_negative",
+      "pair_id": "pair:e2eccbcf9d245a2d9c048405",
+      "right_build_id": "interaction_file_metadata-msvc-O2",
+      "right_graph_id": "graph:f5da6759d9f3b03a1e2a8703",
+      "right_sample_id": "interaction_file_metadata-msvc-O2",
+      "source_group_id": "source-groups:69082db4fc065c8fbf0f2055",
+      "source_group_ids": [
+        "interaction_file_metadata",
+        "interaction_file_metadata_flipped"
+      ],
+      "split": "discovery_train",
+      "transformation_family": "none",
+      "transformation_parameters": {},
+      "validation_status": "automatically_grounded"
+    },
+    {
+      "architecture": "x86",
       "equivalence_label": "equivalent",
       "ground_truth": {
         "evidence": "Same controlled source artifact and routine body, distinct compiler configuration; build transcripts independently checked.",
@@ -45576,6 +47711,116 @@
         "count_digits"
       ],
       "split": "held_out_test",
+      "transformation_family": "compiler_variation",
+      "transformation_parameters": {},
+      "validation_status": "automatically_grounded"
+    },
+    {
+      "architecture": "x86",
+      "equivalence_label": "equivalent",
+      "ground_truth": {
+        "label": "equivalent",
+        "method": "source_transformation_proof",
+        "proof": "Fixed delegation invokes the original routine exactly once with identical arguments, return value, API effects and error handling; no additional OS operation.",
+        "transformation": {
+          "family": "transparent_wrapper",
+          "original_routine": "interaction_socket_kind",
+          "parameters": {
+            "environment": "same_readonly_os_state",
+            "max_length": 255
+          },
+          "rationale": "Fixed delegation invokes the original routine exactly once with identical arguments, return value, API effects and error handling; no additional OS operation.",
+          "test_cases_per_build": 16,
+          "transformation_level": "source",
+          "transformed_routine": "interaction_socket_kind__transparent_wrapper",
+          "validation": "passed",
+          "validation_status": "automatically_grounded",
+          "version": "0.1.0"
+        },
+        "validation": "passed"
+      },
+      "left_build_id": "interaction_socket_kind-msvc-O0",
+      "left_graph_id": "graph:520995874101befd2e469e66",
+      "left_sample_id": "interaction_socket_kind-msvc-O0",
+      "notes": "Source/artifact component assignment; see split_config.json.",
+      "pair_category": "interaction_transformation",
+      "pair_id": "pair:e67ea8f414a39e33045749b3",
+      "right_build_id": "interaction_socket_kind-msvc-O0",
+      "right_graph_id": "graph:add20e80b7f397b7e5a5a1bf",
+      "right_sample_id": "interaction_socket_kind-msvc-O0",
+      "source_group_id": "interaction_socket_kind",
+      "source_group_ids": [
+        "interaction_socket_kind"
+      ],
+      "split": "held_out_test",
+      "transformation_family": "transparent_wrapper",
+      "transformation_parameters": {
+        "environment": "same_readonly_os_state",
+        "max_length": 255
+      },
+      "validation_status": "automatically_grounded"
+    },
+    {
+      "architecture": "x86",
+      "difficulty": "hard",
+      "equivalence_label": "non_equivalent",
+      "ground_truth": {
+        "case": 0,
+        "evidence": "Same read-only helper/API observation and input; the controlled negative toggles result bit zero. Executed outputs witness the difference independently of graph similarity.",
+        "input_bytes": [],
+        "label": "non_equivalent",
+        "left_result": 2,
+        "method": "behavior_counterexample",
+        "right_result": 3
+      },
+      "left_build_id": "interaction_socket_kind-msvc-O0",
+      "left_graph_id": "graph:add20e80b7f397b7e5a5a1bf",
+      "left_sample_id": "interaction_socket_kind-msvc-O0",
+      "negative_category": "same_evidence_different_behavior",
+      "negative_tags": [
+        "controlled_hard_negative",
+        "interaction_corpus"
+      ],
+      "notes": "Source/artifact component assignment; see split_config.json.",
+      "pair_category": "controlled_negative",
+      "pair_id": "pair:e8dd76a97a90b66752b4dba9",
+      "right_build_id": "interaction_socket_kind-msvc-O0",
+      "right_graph_id": "graph:ca64de39b4813f7180285e17",
+      "right_sample_id": "interaction_socket_kind-msvc-O0",
+      "source_group_id": "source-groups:d9666ee8a11a13a1c477711c",
+      "source_group_ids": [
+        "interaction_socket_kind",
+        "interaction_socket_kind_flipped"
+      ],
+      "split": "held_out_test",
+      "transformation_family": "none",
+      "transformation_parameters": {},
+      "validation_status": "automatically_grounded"
+    },
+    {
+      "architecture": "x86",
+      "equivalence_label": "equivalent",
+      "ground_truth": {
+        "evidence": "Same controlled source artifact and routine body, distinct compiler configuration; build transcripts independently checked.",
+        "label": "equivalent",
+        "method": "same_controlled_source",
+        "routine_body_sha256": "132c0001ef7d34c27e9071da512059fcfb3a5f8e3aeb559581b145da38231244",
+        "source_hash": "aa6a5394f581189b84c87b1eb26faac7e1873641477ccc695b54aa4e8fa9a6bc"
+      },
+      "left_build_id": "interaction_registry_summary-msvc-O0",
+      "left_graph_id": "graph:5c43de12a567b4ae8eca811b",
+      "left_sample_id": "interaction_registry_summary-msvc-O0",
+      "notes": "Source/artifact component assignment; see split_config.json.",
+      "pair_category": "same_source",
+      "pair_id": "pair:e929ffeb0b44a0e3e6869f84",
+      "right_build_id": "interaction_registry_summary-msvc-O2",
+      "right_graph_id": "graph:9740a9efce9d20718538119a",
+      "right_sample_id": "interaction_registry_summary-msvc-O2",
+      "source_group_id": "interaction_registry_summary_flipped",
+      "source_group_ids": [
+        "interaction_registry_summary_flipped"
+      ],
+      "split": "validation",
       "transformation_family": "compiler_variation",
       "transformation_parameters": {},
       "validation_status": "automatically_grounded"
@@ -45775,6 +48020,51 @@
       "architecture": "x86",
       "equivalence_label": "equivalent",
       "ground_truth": {
+        "label": "equivalent",
+        "method": "source_transformation_proof",
+        "proof": "Fixed delegation invokes the original routine exactly once with identical arguments, return value, API effects and error handling; no additional OS operation.",
+        "transformation": {
+          "family": "linear_chain",
+          "original_routine": "interaction_socket_kind",
+          "parameters": {
+            "environment": "same_readonly_os_state",
+            "max_length": 255
+          },
+          "rationale": "Fixed delegation invokes the original routine exactly once with identical arguments, return value, API effects and error handling; no additional OS operation.",
+          "test_cases_per_build": 16,
+          "transformation_level": "source",
+          "transformed_routine": "interaction_socket_kind__linear_chain",
+          "validation": "passed",
+          "validation_status": "automatically_grounded",
+          "version": "0.1.0"
+        },
+        "validation": "passed"
+      },
+      "left_build_id": "interaction_socket_kind-msvc-O0",
+      "left_graph_id": "graph:add20e80b7f397b7e5a5a1bf",
+      "left_sample_id": "interaction_socket_kind-msvc-O0",
+      "notes": "Source/artifact component assignment; see split_config.json.",
+      "pair_category": "interaction_transformation",
+      "pair_id": "pair:eeb7fd8cc2ea1584059401d1",
+      "right_build_id": "interaction_socket_kind-msvc-O0",
+      "right_graph_id": "graph:f4d57933d3cc44b077bfeea4",
+      "right_sample_id": "interaction_socket_kind-msvc-O0",
+      "source_group_id": "interaction_socket_kind",
+      "source_group_ids": [
+        "interaction_socket_kind"
+      ],
+      "split": "held_out_test",
+      "transformation_family": "linear_chain",
+      "transformation_parameters": {
+        "environment": "same_readonly_os_state",
+        "max_length": 255
+      },
+      "validation_status": "automatically_grounded"
+    },
+    {
+      "architecture": "x86",
+      "equivalence_label": "equivalent",
+      "ground_truth": {
         "evidence": "Same controlled source artifact and routine body, distinct compiler configuration; build transcripts independently checked.",
         "label": "equivalent",
         "method": "same_controlled_source",
@@ -45796,6 +48086,43 @@
       ],
       "split": "discovery_train",
       "transformation_family": "compiler_variation",
+      "transformation_parameters": {},
+      "validation_status": "automatically_grounded"
+    },
+    {
+      "architecture": "x86",
+      "difficulty": "hard",
+      "equivalence_label": "non_equivalent",
+      "ground_truth": {
+        "case": 0,
+        "evidence": "Same read-only helper/API observation and input; the controlled negative toggles result bit zero. Executed outputs witness the difference independently of graph similarity.",
+        "input_bytes": [],
+        "label": "non_equivalent",
+        "left_result": 119,
+        "method": "behavior_counterexample",
+        "right_result": 118
+      },
+      "left_build_id": "interaction_registry_summary-msvc-O2",
+      "left_graph_id": "graph:85fda6135a0812d4e38ef265",
+      "left_sample_id": "interaction_registry_summary-msvc-O2",
+      "negative_category": "same_evidence_different_behavior",
+      "negative_tags": [
+        "controlled_hard_negative",
+        "interaction_corpus"
+      ],
+      "notes": "Source/artifact component assignment; see split_config.json.",
+      "pair_category": "controlled_negative",
+      "pair_id": "pair:eee3b007c089a80b68d35710",
+      "right_build_id": "interaction_registry_summary-msvc-O2",
+      "right_graph_id": "graph:9740a9efce9d20718538119a",
+      "right_sample_id": "interaction_registry_summary-msvc-O2",
+      "source_group_id": "source-groups:597406c26aa65a259edb0aeb",
+      "source_group_ids": [
+        "interaction_registry_summary",
+        "interaction_registry_summary_flipped"
+      ],
+      "split": "validation",
+      "transformation_family": "none",
       "transformation_parameters": {},
       "validation_status": "automatically_grounded"
     },
@@ -45853,6 +48180,51 @@
       "split": "discovery_train",
       "transformation_family": "compiler_variation",
       "transformation_parameters": {},
+      "validation_status": "automatically_grounded"
+    },
+    {
+      "architecture": "x86",
+      "equivalence_label": "equivalent",
+      "ground_truth": {
+        "label": "equivalent",
+        "method": "source_transformation_proof",
+        "proof": "Fixed delegation invokes the original routine exactly once with identical arguments, return value, API effects and error handling; no additional OS operation.",
+        "transformation": {
+          "family": "transparent_wrapper",
+          "original_routine": "interaction_file_metadata",
+          "parameters": {
+            "environment": "same_readonly_os_state",
+            "max_length": 255
+          },
+          "rationale": "Fixed delegation invokes the original routine exactly once with identical arguments, return value, API effects and error handling; no additional OS operation.",
+          "test_cases_per_build": 16,
+          "transformation_level": "source",
+          "transformed_routine": "interaction_file_metadata__transparent_wrapper",
+          "validation": "passed",
+          "validation_status": "automatically_grounded",
+          "version": "0.1.0"
+        },
+        "validation": "passed"
+      },
+      "left_build_id": "interaction_file_metadata-msvc-O2",
+      "left_graph_id": "graph:309061d57c6a155443d1705f",
+      "left_sample_id": "interaction_file_metadata-msvc-O2",
+      "notes": "Source/artifact component assignment; see split_config.json.",
+      "pair_category": "interaction_transformation",
+      "pair_id": "pair:f147a897aea45c5a1fe9ee68",
+      "right_build_id": "interaction_file_metadata-msvc-O2",
+      "right_graph_id": "graph:9c8088dd264553a7e8cfa916",
+      "right_sample_id": "interaction_file_metadata-msvc-O2",
+      "source_group_id": "interaction_file_metadata",
+      "source_group_ids": [
+        "interaction_file_metadata"
+      ],
+      "split": "discovery_train",
+      "transformation_family": "transparent_wrapper",
+      "transformation_parameters": {
+        "environment": "same_readonly_os_state",
+        "max_length": 255
+      },
       "validation_status": "automatically_grounded"
     },
     {
@@ -46090,6 +48462,51 @@
       "ground_truth": {
         "label": "equivalent",
         "method": "source_transformation_proof",
+        "proof": "Fixed delegation invokes the original routine exactly once with identical arguments, return value, API effects and error handling; no additional OS operation.",
+        "transformation": {
+          "family": "linear_chain",
+          "original_routine": "interaction_registry_summary",
+          "parameters": {
+            "environment": "same_readonly_os_state",
+            "max_length": 255
+          },
+          "rationale": "Fixed delegation invokes the original routine exactly once with identical arguments, return value, API effects and error handling; no additional OS operation.",
+          "test_cases_per_build": 16,
+          "transformation_level": "source",
+          "transformed_routine": "interaction_registry_summary__linear_chain",
+          "validation": "passed",
+          "validation_status": "automatically_grounded",
+          "version": "0.1.0"
+        },
+        "validation": "passed"
+      },
+      "left_build_id": "interaction_registry_summary-msvc-O0",
+      "left_graph_id": "graph:25a50690b481a0ccca163380",
+      "left_sample_id": "interaction_registry_summary-msvc-O0",
+      "notes": "Source/artifact component assignment; see split_config.json.",
+      "pair_category": "interaction_transformation",
+      "pair_id": "pair:fa4c75a08d13b26e53c1c990",
+      "right_build_id": "interaction_registry_summary-msvc-O0",
+      "right_graph_id": "graph:e0b39088fd752beb6dbe465f",
+      "right_sample_id": "interaction_registry_summary-msvc-O0",
+      "source_group_id": "interaction_registry_summary",
+      "source_group_ids": [
+        "interaction_registry_summary"
+      ],
+      "split": "validation",
+      "transformation_family": "linear_chain",
+      "transformation_parameters": {
+        "environment": "same_readonly_os_state",
+        "max_length": 255
+      },
+      "validation_status": "automatically_grounded"
+    },
+    {
+      "architecture": "x86",
+      "equivalence_label": "equivalent",
+      "ground_truth": {
+        "label": "equivalent",
+        "method": "source_transformation_proof",
         "proof": "Branch n>255 is unreachable under the explicit 0<=n<=255 input contract; reachable execution delegates unchanged.",
         "transformation": {
           "family": "dead_branch",
@@ -46127,6 +48544,43 @@
         "max_length": 255,
         "unsigned_width": 32
       },
+      "validation_status": "automatically_grounded"
+    },
+    {
+      "architecture": "x86",
+      "difficulty": "hard",
+      "equivalence_label": "non_equivalent",
+      "ground_truth": {
+        "case": 0,
+        "evidence": "Same read-only helper/API observation and input; the controlled negative toggles result bit zero. Executed outputs witness the difference independently of graph similarity.",
+        "input_bytes": [],
+        "label": "non_equivalent",
+        "left_result": 119,
+        "method": "behavior_counterexample",
+        "right_result": 118
+      },
+      "left_build_id": "interaction_registry_summary-msvc-O0",
+      "left_graph_id": "graph:515ac6b9562e4c96565cecab",
+      "left_sample_id": "interaction_registry_summary-msvc-O0",
+      "negative_category": "same_evidence_different_behavior",
+      "negative_tags": [
+        "controlled_hard_negative",
+        "interaction_corpus"
+      ],
+      "notes": "Source/artifact component assignment; see split_config.json.",
+      "pair_category": "controlled_negative",
+      "pair_id": "pair:fbd18e9370f1f69cfaa266b4",
+      "right_build_id": "interaction_registry_summary-msvc-O0",
+      "right_graph_id": "graph:5c43de12a567b4ae8eca811b",
+      "right_sample_id": "interaction_registry_summary-msvc-O0",
+      "source_group_id": "source-groups:597406c26aa65a259edb0aeb",
+      "source_group_ids": [
+        "interaction_registry_summary",
+        "interaction_registry_summary_flipped"
+      ],
+      "split": "validation",
+      "transformation_family": "none",
+      "transformation_parameters": {},
       "validation_status": "automatically_grounded"
     },
     {
@@ -46562,6 +49016,171 @@
       "variant": "transparent_wrapper"
     },
     {
+      "artifact_group": "interaction_file_metadata",
+      "body_sha256": "ce07a1d9bb675626b4e4fa9240970a672dbd8228b5bbe8b036d6728a66eea6ce",
+      "contract": "bytes_0_255_trailing_nul_and_stable_readonly_environment",
+      "description": "File-attribute word plus input length; distinct from the existing boolean file-existence probe.",
+      "provenance": "controlled_interaction_source",
+      "routine_id": "interaction_file_metadata",
+      "source_group_id": "interaction_file_metadata",
+      "source_path": "samples/controlled/source/interaction_file_metadata.c",
+      "variant": "original"
+    },
+    {
+      "artifact_group": "interaction_file_metadata",
+      "body_sha256": "b7a8747ced37faeaaaea49035d58d9fdd93fa1961d0a579a9311e5b840a9e6c0",
+      "contract": "bytes_0_255_trailing_nul_and_stable_readonly_environment",
+      "description": "File-attribute word plus input length; distinct from the existing boolean file-existence probe.",
+      "provenance": "controlled_interaction_source",
+      "routine_id": "interaction_file_metadata__linear_chain",
+      "source_group_id": "interaction_file_metadata",
+      "source_path": "samples/controlled/source/interaction_file_metadata.c",
+      "variant": "linear_chain"
+    },
+    {
+      "artifact_group": "interaction_file_metadata",
+      "body_sha256": "44916667451fe6acd256b579b5df05d25088872a09b3c204c0cb2a6636f3c300",
+      "contract": "bytes_0_255_trailing_nul_and_stable_readonly_environment",
+      "description": "File-attribute word plus input length; distinct from the existing boolean file-existence probe.",
+      "provenance": "controlled_interaction_source",
+      "routine_id": "interaction_file_metadata__thunk",
+      "source_group_id": "interaction_file_metadata",
+      "source_path": "samples/controlled/source/interaction_file_metadata.c",
+      "variant": "thunk"
+    },
+    {
+      "artifact_group": "interaction_file_metadata",
+      "body_sha256": "b2c9a554a92702d524c40abdd71dead8a499200eaff53947aa9b0dbc2a65a09a",
+      "contract": "bytes_0_255_trailing_nul_and_stable_readonly_environment",
+      "description": "File-attribute word plus input length; distinct from the existing boolean file-existence probe.",
+      "provenance": "controlled_interaction_source",
+      "routine_id": "interaction_file_metadata__transparent_wrapper",
+      "source_group_id": "interaction_file_metadata",
+      "source_path": "samples/controlled/source/interaction_file_metadata.c",
+      "variant": "transparent_wrapper"
+    },
+    {
+      "artifact_group": "interaction_file_metadata",
+      "body_sha256": "91dbab24d565f7bc4dcd41f797307dd909cb3437c15d3f8a3d613044ce0125a8",
+      "contract": "bytes_0_255_trailing_nul_and_stable_readonly_environment",
+      "description": "File-attribute word plus input length; distinct from the existing boolean file-existence probe.",
+      "provenance": "controlled_interaction_source",
+      "routine_id": "interaction_file_metadata_flipped",
+      "source_group_id": "interaction_file_metadata_flipped",
+      "source_path": "samples/controlled/source/interaction_file_metadata.c",
+      "variant": "original"
+    },
+    {
+      "artifact_group": "interaction_registry_summary",
+      "body_sha256": "7206ce78896afb7eaa6d235d34bf4bbc74a5166e32012543a715a4082722064c",
+      "contract": "bytes_0_255_trailing_nul_and_stable_readonly_environment",
+      "description": "Read-only registry subkey count XOR uppercase-byte count; distinct from the existing key-open status probe.",
+      "provenance": "controlled_interaction_source",
+      "routine_id": "interaction_registry_summary",
+      "source_group_id": "interaction_registry_summary",
+      "source_path": "samples/controlled/source/interaction_registry_summary.c",
+      "variant": "original"
+    },
+    {
+      "artifact_group": "interaction_registry_summary",
+      "body_sha256": "eca26b06b87a2ae9a17889bfbcce89189fa83c87d2da03c130146eca76bdb27e",
+      "contract": "bytes_0_255_trailing_nul_and_stable_readonly_environment",
+      "description": "Read-only registry subkey count XOR uppercase-byte count; distinct from the existing key-open status probe.",
+      "provenance": "controlled_interaction_source",
+      "routine_id": "interaction_registry_summary__linear_chain",
+      "source_group_id": "interaction_registry_summary",
+      "source_path": "samples/controlled/source/interaction_registry_summary.c",
+      "variant": "linear_chain"
+    },
+    {
+      "artifact_group": "interaction_registry_summary",
+      "body_sha256": "d8816ad8f666d4b861768d8fffe0f82cc43015a1f51e813feb56e00e01484f25",
+      "contract": "bytes_0_255_trailing_nul_and_stable_readonly_environment",
+      "description": "Read-only registry subkey count XOR uppercase-byte count; distinct from the existing key-open status probe.",
+      "provenance": "controlled_interaction_source",
+      "routine_id": "interaction_registry_summary__thunk",
+      "source_group_id": "interaction_registry_summary",
+      "source_path": "samples/controlled/source/interaction_registry_summary.c",
+      "variant": "thunk"
+    },
+    {
+      "artifact_group": "interaction_registry_summary",
+      "body_sha256": "d7625c45a32563601466e8c153c132a915af59b460b6ef85d9eb89899f17e848",
+      "contract": "bytes_0_255_trailing_nul_and_stable_readonly_environment",
+      "description": "Read-only registry subkey count XOR uppercase-byte count; distinct from the existing key-open status probe.",
+      "provenance": "controlled_interaction_source",
+      "routine_id": "interaction_registry_summary__transparent_wrapper",
+      "source_group_id": "interaction_registry_summary",
+      "source_path": "samples/controlled/source/interaction_registry_summary.c",
+      "variant": "transparent_wrapper"
+    },
+    {
+      "artifact_group": "interaction_registry_summary",
+      "body_sha256": "132c0001ef7d34c27e9071da512059fcfb3a5f8e3aeb559581b145da38231244",
+      "contract": "bytes_0_255_trailing_nul_and_stable_readonly_environment",
+      "description": "Read-only registry subkey count XOR uppercase-byte count; distinct from the existing key-open status probe.",
+      "provenance": "controlled_interaction_source",
+      "routine_id": "interaction_registry_summary_flipped",
+      "source_group_id": "interaction_registry_summary_flipped",
+      "source_path": "samples/controlled/source/interaction_registry_summary.c",
+      "variant": "original"
+    },
+    {
+      "artifact_group": "interaction_socket_kind",
+      "body_sha256": "8d648b3c145ce3d43948b4f3f94612adf6199d125d7fb12d9f68f08e77010c5a",
+      "contract": "bytes_0_255_trailing_nul_and_stable_readonly_environment",
+      "description": "Unconnected UDP socket type times input length plus one; no bind/connect/send and distinct from the existing TCP creation-status probe.",
+      "provenance": "controlled_interaction_source",
+      "routine_id": "interaction_socket_kind",
+      "source_group_id": "interaction_socket_kind",
+      "source_path": "samples/controlled/source/interaction_socket_kind.c",
+      "variant": "original"
+    },
+    {
+      "artifact_group": "interaction_socket_kind",
+      "body_sha256": "f9436a835d1091d604f0af79b94eecc010611c0d4f45ab0008a015b3115238e8",
+      "contract": "bytes_0_255_trailing_nul_and_stable_readonly_environment",
+      "description": "Unconnected UDP socket type times input length plus one; no bind/connect/send and distinct from the existing TCP creation-status probe.",
+      "provenance": "controlled_interaction_source",
+      "routine_id": "interaction_socket_kind__linear_chain",
+      "source_group_id": "interaction_socket_kind",
+      "source_path": "samples/controlled/source/interaction_socket_kind.c",
+      "variant": "linear_chain"
+    },
+    {
+      "artifact_group": "interaction_socket_kind",
+      "body_sha256": "3cb852a05ec7d5bda97185a5e00d570747939e1b8c11fc7de017c8bd19e85c91",
+      "contract": "bytes_0_255_trailing_nul_and_stable_readonly_environment",
+      "description": "Unconnected UDP socket type times input length plus one; no bind/connect/send and distinct from the existing TCP creation-status probe.",
+      "provenance": "controlled_interaction_source",
+      "routine_id": "interaction_socket_kind__thunk",
+      "source_group_id": "interaction_socket_kind",
+      "source_path": "samples/controlled/source/interaction_socket_kind.c",
+      "variant": "thunk"
+    },
+    {
+      "artifact_group": "interaction_socket_kind",
+      "body_sha256": "c5187bef90bc011c6d9061e26934c57a9c13551634885f11b1d7dce61e9d4a53",
+      "contract": "bytes_0_255_trailing_nul_and_stable_readonly_environment",
+      "description": "Unconnected UDP socket type times input length plus one; no bind/connect/send and distinct from the existing TCP creation-status probe.",
+      "provenance": "controlled_interaction_source",
+      "routine_id": "interaction_socket_kind__transparent_wrapper",
+      "source_group_id": "interaction_socket_kind",
+      "source_path": "samples/controlled/source/interaction_socket_kind.c",
+      "variant": "transparent_wrapper"
+    },
+    {
+      "artifact_group": "interaction_socket_kind",
+      "body_sha256": "13b0cd3e97dee55d42ade01da112a13a564dbbd876414dddc7d0746e0eabb06a",
+      "contract": "bytes_0_255_trailing_nul_and_stable_readonly_environment",
+      "description": "Unconnected UDP socket type times input length plus one; no bind/connect/send and distinct from the existing TCP creation-status probe.",
+      "provenance": "controlled_interaction_source",
+      "routine_id": "interaction_socket_kind_flipped",
+      "source_group_id": "interaction_socket_kind_flipped",
+      "source_path": "samples/controlled/source/interaction_socket_kind.c",
+      "variant": "original"
+    },
+    {
       "artifact_group": "system_api",
       "body_sha256": "ccf9b5af49abf36bb4e282171f4f67bb73d7f5c0678ac0cccfe73409f624d00b",
       "contract": "bytes_0_255_trailing_nul",
@@ -46755,6 +49374,61 @@
     }
   ],
   "samples": [
+    {
+      "architecture": "x86",
+      "build_id": "interaction_file_metadata-msvc-O0",
+      "compiler": "msvc",
+      "filename": "interaction_file_metadata-msvc-O0.exe",
+      "origin": "controlled_source",
+      "path": "samples/controlled/builds/interaction_file_metadata-msvc-O0/interaction_file_metadata-msvc-O0.exe",
+      "provenance": "controlled_benign",
+      "sample_id": "interaction_file_metadata-msvc-O0",
+      "sha256": "e5c0f5ccd474a299be8a4897b409ddff919c0d8f2f0abdf6985040de23225ed2"
+    },
+    {
+      "architecture": "x86",
+      "build_id": "interaction_file_metadata-msvc-O2",
+      "compiler": "msvc",
+      "filename": "interaction_file_metadata-msvc-O2.exe",
+      "origin": "controlled_source",
+      "path": "samples/controlled/builds/interaction_file_metadata-msvc-O2/interaction_file_metadata-msvc-O2.exe",
+      "provenance": "controlled_benign",
+      "sample_id": "interaction_file_metadata-msvc-O2",
+      "sha256": "326fdd8e3ecca684b4a654cceed1859e93492c2ea124537fc48d54dd887df39f"
+    },
+    {
+      "architecture": "x86",
+      "build_id": "interaction_registry_summary-msvc-O0",
+      "compiler": "msvc",
+      "filename": "interaction_registry_summary-msvc-O0.exe",
+      "origin": "controlled_source",
+      "path": "samples/controlled/builds/interaction_registry_summary-msvc-O0/interaction_registry_summary-msvc-O0.exe",
+      "provenance": "controlled_benign",
+      "sample_id": "interaction_registry_summary-msvc-O0",
+      "sha256": "bd5c233d2ffd1689965c3c98c4f5be23b60a21b28ed1dee280da84461590bf71"
+    },
+    {
+      "architecture": "x86",
+      "build_id": "interaction_registry_summary-msvc-O2",
+      "compiler": "msvc",
+      "filename": "interaction_registry_summary-msvc-O2.exe",
+      "origin": "controlled_source",
+      "path": "samples/controlled/builds/interaction_registry_summary-msvc-O2/interaction_registry_summary-msvc-O2.exe",
+      "provenance": "controlled_benign",
+      "sample_id": "interaction_registry_summary-msvc-O2",
+      "sha256": "761e3426c69744a9f4b989159ec86bad54fa6c364b639608066610dfecc516b3"
+    },
+    {
+      "architecture": "x86",
+      "build_id": "interaction_socket_kind-msvc-O0",
+      "compiler": "msvc",
+      "filename": "interaction_socket_kind-msvc-O0.exe",
+      "origin": "controlled_source",
+      "path": "samples/controlled/builds/interaction_socket_kind-msvc-O0/interaction_socket_kind-msvc-O0.exe",
+      "provenance": "controlled_benign",
+      "sample_id": "interaction_socket_kind-msvc-O0",
+      "sha256": "6606cef608c783901e44193e8828326859aaadb879cd752bff1106d8a4d2b299"
+    },
     {
       "architecture": "x86",
       "build_id": "memory-gcc-O0",
@@ -47090,6 +49764,9 @@
   "split_protocol": {
     "configuration": {
       "artifact_splits": {
+        "interaction_file_metadata": "discovery_train",
+        "interaction_registry_summary": "validation",
+        "interaction_socket_kind": "held_out_test",
         "memory": "discovery_train",
         "numeric": "discovery_train",
         "system_api": "validation",
@@ -47103,69 +49780,87 @@
         [
           "api_length_wrapped",
           "api_length_plus_one"
+        ],
+        [
+          "interaction_file_metadata",
+          "interaction_file_metadata_flipped"
+        ],
+        [
+          "interaction_registry_summary",
+          "interaction_registry_summary_flipped"
+        ],
+        [
+          "interaction_socket_kind",
+          "interaction_socket_kind_flipped"
         ]
       ],
       "policy": "explicit-source-components-v1",
       "rationale": "Assign complete source artifacts and all descendants together. Numeric and memory share byte-sum semantics and form one component. String reductions/search form held-out data; operating-system probes and API counterexamples form validation. Explicit configuration is deterministic; no pair-level randomization or similarity-based grouping.",
       "version": "0.1.0"
     },
-    "configuration_sha256": "9d8ce36f0676544ee0fe17e897e07a60a7e1673ec3117fbb1565c7b1d9f0b6c1"
+    "configuration_sha256": "e813b9bb5d8bc03fb7a950706fe1dc9b7231514ef6913b4936154dd20aafe7fb"
   },
   "split_statistics": {
     "discovery_train": {
       "compiler": {
         "gcc": 8,
-        "msvc": 3
+        "msvc": 5
       },
-      "graphs": 51,
+      "graphs": 61,
       "negative_categories": {
-        "same_binary_different_routine": 27
+        "same_binary_different_routine": 27,
+        "same_evidence_different_behavior": 8
       },
-      "negative_pairs": 27,
+      "negative_pairs": 35,
       "optimization_levels": {
-        "O0": 6,
-        "O2": 3,
+        "O0": 7,
+        "O2": 4,
         "O3": 2
       },
-      "positive_pairs": 72,
+      "positive_pairs": 80,
       "source_groups": [
         "copy_buffer",
         "count_matches",
         "find_max",
+        "interaction_file_metadata",
+        "interaction_file_metadata_flipped",
         "sum_array",
         "weighted_buffer",
         "xor_buffer"
       ],
       "transformation_families": {
-        "compiler_variation": 48,
+        "compiler_variation": 50,
         "dead_branch": 4,
         "function_splitting": 4,
         "harmless_strand": 4,
-        "linear_chain": 4,
-        "none": 27,
-        "thunk": 4,
-        "transparent_wrapper": 4
+        "linear_chain": 6,
+        "none": 35,
+        "thunk": 6,
+        "transparent_wrapper": 6
       }
     },
     "held_out_test": {
       "compiler": {
         "gcc": 4,
-        "msvc": 2
+        "msvc": 3
       },
-      "graphs": 27,
+      "graphs": 32,
       "negative_categories": {
-        "same_binary_different_routine": 15
+        "same_binary_different_routine": 15,
+        "same_evidence_different_behavior": 4
       },
-      "negative_pairs": 15,
+      "negative_pairs": 19,
       "optimization_levels": {
-        "O0": 3,
+        "O0": 4,
         "O2": 2,
         "O3": 1
       },
-      "positive_pairs": 42,
+      "positive_pairs": 45,
       "source_groups": [
         "count_digits",
         "count_letters",
+        "interaction_socket_kind",
+        "interaction_socket_kind_flipped",
         "search_string"
       ],
       "transformation_families": {
@@ -47173,32 +49868,33 @@
         "dead_branch": 2,
         "function_splitting": 2,
         "harmless_strand": 2,
-        "linear_chain": 2,
-        "none": 15,
-        "thunk": 2,
-        "transparent_wrapper": 2
+        "linear_chain": 3,
+        "none": 19,
+        "thunk": 3,
+        "transparent_wrapper": 3
       }
     },
     "validation": {
       "compiler": {
         "gcc": 3,
-        "msvc": 2
+        "msvc": 4
       },
-      "graphs": 17,
+      "graphs": 27,
       "negative_categories": {
         "benign_lookalike": 1,
         "different_behavior": 1,
+        "same_evidence_different_behavior": 8,
         "similar_api_different_structure": 1,
         "similar_constants_different_behavior": 1,
         "similar_topology_different_evidence": 1
       },
-      "negative_pairs": 5,
+      "negative_pairs": 13,
       "optimization_levels": {
-        "O0": 3,
-        "O2": 1,
+        "O0": 4,
+        "O2": 2,
         "O3": 1
       },
-      "positive_pairs": 18,
+      "positive_pairs": 26,
       "source_groups": [
         "api_compare",
         "api_compare_inverted",
@@ -47206,424 +49902,55 @@
         "api_length_plus_one",
         "api_length_wrapped",
         "create_socket",
+        "interaction_registry_summary",
+        "interaction_registry_summary_flipped",
         "read_file",
         "read_registry_value"
       ],
       "transformation_families": {
-        "compiler_variation": 18,
-        "none": 5
+        "compiler_variation": 20,
+        "linear_chain": 2,
+        "none": 13,
+        "thunk": 2,
+        "transparent_wrapper": 2
       }
     }
   },
   "statistics": {
-    "builds": 22,
+    "builds": 27,
     "compiler_coverage": {
       "gcc": 15,
-      "msvc": 7
+      "msvc": 12
     },
     "labels": {
-      "equivalent": 132,
-      "non_equivalent": 47
+      "equivalent": 151,
+      "non_equivalent": 67
     },
     "optimization_coverage": {
-      "O0": 12,
-      "O2": 6,
+      "O0": 15,
+      "O2": 8,
       "O3": 4
     },
     "pair_categories": {
-      "controlled_negative": 47,
-      "same_source": 96,
+      "controlled_negative": 67,
+      "interaction_transformation": 15,
+      "same_source": 100,
       "source_transformation": 36
     },
-    "source_routines": 53
+    "source_routines": 68
   },
   "transformations": [
     {
-      "family": "transparent_wrapper",
-      "original_routine": "sum_array",
-      "parameters": {
-        "max_length": 255,
-        "unsigned_width": 32
-      },
-      "rationale": "Direct delegation with identical arguments and return value; no new observable effects.",
-      "test_cases": 1024,
-      "transformation_level": "source",
-      "transformed_routine": "sum_array__transparent_wrapper",
-      "validation": "passed",
-      "validation_status": "automatically_grounded",
-      "version": "0.1.0"
-    },
-    {
-      "family": "thunk",
-      "original_routine": "sum_array",
-      "parameters": {
-        "max_length": 255,
-        "unsigned_width": 32
-      },
-      "rationale": "Fixed local function pointer targets the original routine; no pointer mutation or alternate target.",
-      "test_cases": 1024,
-      "transformation_level": "source",
-      "transformed_routine": "sum_array__thunk",
-      "validation": "passed",
-      "validation_status": "automatically_grounded",
-      "version": "0.1.0"
-    },
-    {
-      "family": "function_splitting",
-      "original_routine": "sum_array",
-      "parameters": {
-        "max_length": 255,
-        "unsigned_width": 32
-      },
-      "rationale": "Partition bytes into two disjoint halves; combine associative sum/max/xor reductions with the original identity for empty input.",
-      "test_cases": 1024,
-      "transformation_level": "source",
-      "transformed_routine": "sum_array__function_splitting",
-      "validation": "passed",
-      "validation_status": "automatically_grounded",
-      "version": "0.1.0"
-    },
-    {
       "family": "dead_branch",
-      "original_routine": "sum_array",
-      "parameters": {
-        "max_length": 255,
-        "unsigned_width": 32
-      },
-      "rationale": "Branch n>255 is unreachable under the explicit 0<=n<=255 input contract; reachable execution delegates unchanged.",
-      "test_cases": 1024,
-      "transformation_level": "source",
-      "transformed_routine": "sum_array__dead_branch",
-      "validation": "passed",
-      "validation_status": "automatically_grounded",
-      "version": "0.1.0"
-    },
-    {
-      "family": "harmless_strand",
-      "original_routine": "sum_array",
-      "parameters": {
-        "max_length": 255,
-        "unsigned_width": 32
-      },
-      "rationale": "Added pure unsigned-arithmetic helper reads no external state, writes no memory and its result is discarded.",
-      "test_cases": 1024,
-      "transformation_level": "source",
-      "transformed_routine": "sum_array__harmless_strand",
-      "validation": "passed",
-      "validation_status": "automatically_grounded",
-      "version": "0.1.0"
-    },
-    {
-      "family": "linear_chain",
-      "original_routine": "sum_array",
-      "parameters": {
-        "max_length": 255,
-        "unsigned_width": 32
-      },
-      "rationale": "Two fixed pure delegation stages preserve arguments, return value and absence of external effects.",
-      "test_cases": 1024,
-      "transformation_level": "source",
-      "transformed_routine": "sum_array__linear_chain",
-      "validation": "passed",
-      "validation_status": "automatically_grounded",
-      "version": "0.1.0"
-    },
-    {
-      "family": "transparent_wrapper",
-      "original_routine": "find_max",
-      "parameters": {
-        "max_length": 255,
-        "unsigned_width": 32
-      },
-      "rationale": "Direct delegation with identical arguments and return value; no new observable effects.",
-      "test_cases": 1024,
-      "transformation_level": "source",
-      "transformed_routine": "find_max__transparent_wrapper",
-      "validation": "passed",
-      "validation_status": "automatically_grounded",
-      "version": "0.1.0"
-    },
-    {
-      "family": "thunk",
-      "original_routine": "find_max",
-      "parameters": {
-        "max_length": 255,
-        "unsigned_width": 32
-      },
-      "rationale": "Fixed local function pointer targets the original routine; no pointer mutation or alternate target.",
-      "test_cases": 1024,
-      "transformation_level": "source",
-      "transformed_routine": "find_max__thunk",
-      "validation": "passed",
-      "validation_status": "automatically_grounded",
-      "version": "0.1.0"
-    },
-    {
-      "family": "function_splitting",
-      "original_routine": "find_max",
-      "parameters": {
-        "max_length": 255,
-        "unsigned_width": 32
-      },
-      "rationale": "Partition bytes into two disjoint halves; combine associative sum/max/xor reductions with the original identity for empty input.",
-      "test_cases": 1024,
-      "transformation_level": "source",
-      "transformed_routine": "find_max__function_splitting",
-      "validation": "passed",
-      "validation_status": "automatically_grounded",
-      "version": "0.1.0"
-    },
-    {
-      "family": "dead_branch",
-      "original_routine": "find_max",
-      "parameters": {
-        "max_length": 255,
-        "unsigned_width": 32
-      },
-      "rationale": "Branch n>255 is unreachable under the explicit 0<=n<=255 input contract; reachable execution delegates unchanged.",
-      "test_cases": 1024,
-      "transformation_level": "source",
-      "transformed_routine": "find_max__dead_branch",
-      "validation": "passed",
-      "validation_status": "automatically_grounded",
-      "version": "0.1.0"
-    },
-    {
-      "family": "harmless_strand",
-      "original_routine": "find_max",
-      "parameters": {
-        "max_length": 255,
-        "unsigned_width": 32
-      },
-      "rationale": "Added pure unsigned-arithmetic helper reads no external state, writes no memory and its result is discarded.",
-      "test_cases": 1024,
-      "transformation_level": "source",
-      "transformed_routine": "find_max__harmless_strand",
-      "validation": "passed",
-      "validation_status": "automatically_grounded",
-      "version": "0.1.0"
-    },
-    {
-      "family": "linear_chain",
-      "original_routine": "find_max",
-      "parameters": {
-        "max_length": 255,
-        "unsigned_width": 32
-      },
-      "rationale": "Two fixed pure delegation stages preserve arguments, return value and absence of external effects.",
-      "test_cases": 1024,
-      "transformation_level": "source",
-      "transformed_routine": "find_max__linear_chain",
-      "validation": "passed",
-      "validation_status": "automatically_grounded",
-      "version": "0.1.0"
-    },
-    {
-      "family": "transparent_wrapper",
-      "original_routine": "count_digits",
-      "parameters": {
-        "max_length": 255,
-        "unsigned_width": 32
-      },
-      "rationale": "Direct delegation with identical arguments and return value; no new observable effects.",
-      "test_cases": 1024,
-      "transformation_level": "source",
-      "transformed_routine": "count_digits__transparent_wrapper",
-      "validation": "passed",
-      "validation_status": "automatically_grounded",
-      "version": "0.1.0"
-    },
-    {
-      "family": "thunk",
-      "original_routine": "count_digits",
-      "parameters": {
-        "max_length": 255,
-        "unsigned_width": 32
-      },
-      "rationale": "Fixed local function pointer targets the original routine; no pointer mutation or alternate target.",
-      "test_cases": 1024,
-      "transformation_level": "source",
-      "transformed_routine": "count_digits__thunk",
-      "validation": "passed",
-      "validation_status": "automatically_grounded",
-      "version": "0.1.0"
-    },
-    {
-      "family": "function_splitting",
-      "original_routine": "count_digits",
-      "parameters": {
-        "max_length": 255,
-        "unsigned_width": 32
-      },
-      "rationale": "Partition bytes into two disjoint halves; combine associative sum/max/xor reductions with the original identity for empty input.",
-      "test_cases": 1024,
-      "transformation_level": "source",
-      "transformed_routine": "count_digits__function_splitting",
-      "validation": "passed",
-      "validation_status": "automatically_grounded",
-      "version": "0.1.0"
-    },
-    {
-      "family": "dead_branch",
-      "original_routine": "count_digits",
-      "parameters": {
-        "max_length": 255,
-        "unsigned_width": 32
-      },
-      "rationale": "Branch n>255 is unreachable under the explicit 0<=n<=255 input contract; reachable execution delegates unchanged.",
-      "test_cases": 1024,
-      "transformation_level": "source",
-      "transformed_routine": "count_digits__dead_branch",
-      "validation": "passed",
-      "validation_status": "automatically_grounded",
-      "version": "0.1.0"
-    },
-    {
-      "family": "harmless_strand",
-      "original_routine": "count_digits",
-      "parameters": {
-        "max_length": 255,
-        "unsigned_width": 32
-      },
-      "rationale": "Added pure unsigned-arithmetic helper reads no external state, writes no memory and its result is discarded.",
-      "test_cases": 1024,
-      "transformation_level": "source",
-      "transformed_routine": "count_digits__harmless_strand",
-      "validation": "passed",
-      "validation_status": "automatically_grounded",
-      "version": "0.1.0"
-    },
-    {
-      "family": "linear_chain",
-      "original_routine": "count_digits",
-      "parameters": {
-        "max_length": 255,
-        "unsigned_width": 32
-      },
-      "rationale": "Two fixed pure delegation stages preserve arguments, return value and absence of external effects.",
-      "test_cases": 1024,
-      "transformation_level": "source",
-      "transformed_routine": "count_digits__linear_chain",
-      "validation": "passed",
-      "validation_status": "automatically_grounded",
-      "version": "0.1.0"
-    },
-    {
-      "family": "transparent_wrapper",
-      "original_routine": "count_letters",
-      "parameters": {
-        "max_length": 255,
-        "unsigned_width": 32
-      },
-      "rationale": "Direct delegation with identical arguments and return value; no new observable effects.",
-      "test_cases": 1024,
-      "transformation_level": "source",
-      "transformed_routine": "count_letters__transparent_wrapper",
-      "validation": "passed",
-      "validation_status": "automatically_grounded",
-      "version": "0.1.0"
-    },
-    {
-      "family": "thunk",
-      "original_routine": "count_letters",
-      "parameters": {
-        "max_length": 255,
-        "unsigned_width": 32
-      },
-      "rationale": "Fixed local function pointer targets the original routine; no pointer mutation or alternate target.",
-      "test_cases": 1024,
-      "transformation_level": "source",
-      "transformed_routine": "count_letters__thunk",
-      "validation": "passed",
-      "validation_status": "automatically_grounded",
-      "version": "0.1.0"
-    },
-    {
-      "family": "function_splitting",
-      "original_routine": "count_letters",
-      "parameters": {
-        "max_length": 255,
-        "unsigned_width": 32
-      },
-      "rationale": "Partition bytes into two disjoint halves; combine associative sum/max/xor reductions with the original identity for empty input.",
-      "test_cases": 1024,
-      "transformation_level": "source",
-      "transformed_routine": "count_letters__function_splitting",
-      "validation": "passed",
-      "validation_status": "automatically_grounded",
-      "version": "0.1.0"
-    },
-    {
-      "family": "dead_branch",
-      "original_routine": "count_letters",
-      "parameters": {
-        "max_length": 255,
-        "unsigned_width": 32
-      },
-      "rationale": "Branch n>255 is unreachable under the explicit 0<=n<=255 input contract; reachable execution delegates unchanged.",
-      "test_cases": 1024,
-      "transformation_level": "source",
-      "transformed_routine": "count_letters__dead_branch",
-      "validation": "passed",
-      "validation_status": "automatically_grounded",
-      "version": "0.1.0"
-    },
-    {
-      "family": "harmless_strand",
-      "original_routine": "count_letters",
-      "parameters": {
-        "max_length": 255,
-        "unsigned_width": 32
-      },
-      "rationale": "Added pure unsigned-arithmetic helper reads no external state, writes no memory and its result is discarded.",
-      "test_cases": 1024,
-      "transformation_level": "source",
-      "transformed_routine": "count_letters__harmless_strand",
-      "validation": "passed",
-      "validation_status": "automatically_grounded",
-      "version": "0.1.0"
-    },
-    {
-      "family": "linear_chain",
-      "original_routine": "count_letters",
-      "parameters": {
-        "max_length": 255,
-        "unsigned_width": 32
-      },
-      "rationale": "Two fixed pure delegation stages preserve arguments, return value and absence of external effects.",
-      "test_cases": 1024,
-      "transformation_level": "source",
-      "transformed_routine": "count_letters__linear_chain",
-      "validation": "passed",
-      "validation_status": "automatically_grounded",
-      "version": "0.1.0"
-    },
-    {
-      "family": "transparent_wrapper",
       "original_routine": "copy_buffer",
       "parameters": {
         "max_length": 255,
         "unsigned_width": 32
       },
-      "rationale": "Direct delegation with identical arguments and return value; no new observable effects.",
+      "rationale": "Branch n>255 is unreachable under the explicit 0<=n<=255 input contract; reachable execution delegates unchanged.",
       "test_cases": 1024,
       "transformation_level": "source",
-      "transformed_routine": "copy_buffer__transparent_wrapper",
-      "validation": "passed",
-      "validation_status": "automatically_grounded",
-      "version": "0.1.0"
-    },
-    {
-      "family": "thunk",
-      "original_routine": "copy_buffer",
-      "parameters": {
-        "max_length": 255,
-        "unsigned_width": 32
-      },
-      "rationale": "Fixed local function pointer targets the original routine; no pointer mutation or alternate target.",
-      "test_cases": 1024,
-      "transformation_level": "source",
-      "transformed_routine": "copy_buffer__thunk",
+      "transformed_routine": "copy_buffer__dead_branch",
       "validation": "passed",
       "validation_status": "automatically_grounded",
       "version": "0.1.0"
@@ -47639,21 +49966,6 @@
       "test_cases": 1024,
       "transformation_level": "source",
       "transformed_routine": "copy_buffer__function_splitting",
-      "validation": "passed",
-      "validation_status": "automatically_grounded",
-      "version": "0.1.0"
-    },
-    {
-      "family": "dead_branch",
-      "original_routine": "copy_buffer",
-      "parameters": {
-        "max_length": 255,
-        "unsigned_width": 32
-      },
-      "rationale": "Branch n>255 is unreachable under the explicit 0<=n<=255 input contract; reachable execution delegates unchanged.",
-      "test_cases": 1024,
-      "transformation_level": "source",
-      "transformed_routine": "copy_buffer__dead_branch",
       "validation": "passed",
       "validation_status": "automatically_grounded",
       "version": "0.1.0"
@@ -47689,23 +50001,8 @@
       "version": "0.1.0"
     },
     {
-      "family": "transparent_wrapper",
-      "original_routine": "xor_buffer",
-      "parameters": {
-        "max_length": 255,
-        "unsigned_width": 32
-      },
-      "rationale": "Direct delegation with identical arguments and return value; no new observable effects.",
-      "test_cases": 1024,
-      "transformation_level": "source",
-      "transformed_routine": "xor_buffer__transparent_wrapper",
-      "validation": "passed",
-      "validation_status": "automatically_grounded",
-      "version": "0.1.0"
-    },
-    {
       "family": "thunk",
-      "original_routine": "xor_buffer",
+      "original_routine": "copy_buffer",
       "parameters": {
         "max_length": 255,
         "unsigned_width": 32
@@ -47713,14 +50010,44 @@
       "rationale": "Fixed local function pointer targets the original routine; no pointer mutation or alternate target.",
       "test_cases": 1024,
       "transformation_level": "source",
-      "transformed_routine": "xor_buffer__thunk",
+      "transformed_routine": "copy_buffer__thunk",
+      "validation": "passed",
+      "validation_status": "automatically_grounded",
+      "version": "0.1.0"
+    },
+    {
+      "family": "transparent_wrapper",
+      "original_routine": "copy_buffer",
+      "parameters": {
+        "max_length": 255,
+        "unsigned_width": 32
+      },
+      "rationale": "Direct delegation with identical arguments and return value; no new observable effects.",
+      "test_cases": 1024,
+      "transformation_level": "source",
+      "transformed_routine": "copy_buffer__transparent_wrapper",
+      "validation": "passed",
+      "validation_status": "automatically_grounded",
+      "version": "0.1.0"
+    },
+    {
+      "family": "dead_branch",
+      "original_routine": "count_digits",
+      "parameters": {
+        "max_length": 255,
+        "unsigned_width": 32
+      },
+      "rationale": "Branch n>255 is unreachable under the explicit 0<=n<=255 input contract; reachable execution delegates unchanged.",
+      "test_cases": 1024,
+      "transformation_level": "source",
+      "transformed_routine": "count_digits__dead_branch",
       "validation": "passed",
       "validation_status": "automatically_grounded",
       "version": "0.1.0"
     },
     {
       "family": "function_splitting",
-      "original_routine": "xor_buffer",
+      "original_routine": "count_digits",
       "parameters": {
         "max_length": 255,
         "unsigned_width": 32
@@ -47728,7 +50055,472 @@
       "rationale": "Partition bytes into two disjoint halves; combine associative sum/max/xor reductions with the original identity for empty input.",
       "test_cases": 1024,
       "transformation_level": "source",
-      "transformed_routine": "xor_buffer__function_splitting",
+      "transformed_routine": "count_digits__function_splitting",
+      "validation": "passed",
+      "validation_status": "automatically_grounded",
+      "version": "0.1.0"
+    },
+    {
+      "family": "harmless_strand",
+      "original_routine": "count_digits",
+      "parameters": {
+        "max_length": 255,
+        "unsigned_width": 32
+      },
+      "rationale": "Added pure unsigned-arithmetic helper reads no external state, writes no memory and its result is discarded.",
+      "test_cases": 1024,
+      "transformation_level": "source",
+      "transformed_routine": "count_digits__harmless_strand",
+      "validation": "passed",
+      "validation_status": "automatically_grounded",
+      "version": "0.1.0"
+    },
+    {
+      "family": "linear_chain",
+      "original_routine": "count_digits",
+      "parameters": {
+        "max_length": 255,
+        "unsigned_width": 32
+      },
+      "rationale": "Two fixed pure delegation stages preserve arguments, return value and absence of external effects.",
+      "test_cases": 1024,
+      "transformation_level": "source",
+      "transformed_routine": "count_digits__linear_chain",
+      "validation": "passed",
+      "validation_status": "automatically_grounded",
+      "version": "0.1.0"
+    },
+    {
+      "family": "thunk",
+      "original_routine": "count_digits",
+      "parameters": {
+        "max_length": 255,
+        "unsigned_width": 32
+      },
+      "rationale": "Fixed local function pointer targets the original routine; no pointer mutation or alternate target.",
+      "test_cases": 1024,
+      "transformation_level": "source",
+      "transformed_routine": "count_digits__thunk",
+      "validation": "passed",
+      "validation_status": "automatically_grounded",
+      "version": "0.1.0"
+    },
+    {
+      "family": "transparent_wrapper",
+      "original_routine": "count_digits",
+      "parameters": {
+        "max_length": 255,
+        "unsigned_width": 32
+      },
+      "rationale": "Direct delegation with identical arguments and return value; no new observable effects.",
+      "test_cases": 1024,
+      "transformation_level": "source",
+      "transformed_routine": "count_digits__transparent_wrapper",
+      "validation": "passed",
+      "validation_status": "automatically_grounded",
+      "version": "0.1.0"
+    },
+    {
+      "family": "dead_branch",
+      "original_routine": "count_letters",
+      "parameters": {
+        "max_length": 255,
+        "unsigned_width": 32
+      },
+      "rationale": "Branch n>255 is unreachable under the explicit 0<=n<=255 input contract; reachable execution delegates unchanged.",
+      "test_cases": 1024,
+      "transformation_level": "source",
+      "transformed_routine": "count_letters__dead_branch",
+      "validation": "passed",
+      "validation_status": "automatically_grounded",
+      "version": "0.1.0"
+    },
+    {
+      "family": "function_splitting",
+      "original_routine": "count_letters",
+      "parameters": {
+        "max_length": 255,
+        "unsigned_width": 32
+      },
+      "rationale": "Partition bytes into two disjoint halves; combine associative sum/max/xor reductions with the original identity for empty input.",
+      "test_cases": 1024,
+      "transformation_level": "source",
+      "transformed_routine": "count_letters__function_splitting",
+      "validation": "passed",
+      "validation_status": "automatically_grounded",
+      "version": "0.1.0"
+    },
+    {
+      "family": "harmless_strand",
+      "original_routine": "count_letters",
+      "parameters": {
+        "max_length": 255,
+        "unsigned_width": 32
+      },
+      "rationale": "Added pure unsigned-arithmetic helper reads no external state, writes no memory and its result is discarded.",
+      "test_cases": 1024,
+      "transformation_level": "source",
+      "transformed_routine": "count_letters__harmless_strand",
+      "validation": "passed",
+      "validation_status": "automatically_grounded",
+      "version": "0.1.0"
+    },
+    {
+      "family": "linear_chain",
+      "original_routine": "count_letters",
+      "parameters": {
+        "max_length": 255,
+        "unsigned_width": 32
+      },
+      "rationale": "Two fixed pure delegation stages preserve arguments, return value and absence of external effects.",
+      "test_cases": 1024,
+      "transformation_level": "source",
+      "transformed_routine": "count_letters__linear_chain",
+      "validation": "passed",
+      "validation_status": "automatically_grounded",
+      "version": "0.1.0"
+    },
+    {
+      "family": "thunk",
+      "original_routine": "count_letters",
+      "parameters": {
+        "max_length": 255,
+        "unsigned_width": 32
+      },
+      "rationale": "Fixed local function pointer targets the original routine; no pointer mutation or alternate target.",
+      "test_cases": 1024,
+      "transformation_level": "source",
+      "transformed_routine": "count_letters__thunk",
+      "validation": "passed",
+      "validation_status": "automatically_grounded",
+      "version": "0.1.0"
+    },
+    {
+      "family": "transparent_wrapper",
+      "original_routine": "count_letters",
+      "parameters": {
+        "max_length": 255,
+        "unsigned_width": 32
+      },
+      "rationale": "Direct delegation with identical arguments and return value; no new observable effects.",
+      "test_cases": 1024,
+      "transformation_level": "source",
+      "transformed_routine": "count_letters__transparent_wrapper",
+      "validation": "passed",
+      "validation_status": "automatically_grounded",
+      "version": "0.1.0"
+    },
+    {
+      "family": "dead_branch",
+      "original_routine": "find_max",
+      "parameters": {
+        "max_length": 255,
+        "unsigned_width": 32
+      },
+      "rationale": "Branch n>255 is unreachable under the explicit 0<=n<=255 input contract; reachable execution delegates unchanged.",
+      "test_cases": 1024,
+      "transformation_level": "source",
+      "transformed_routine": "find_max__dead_branch",
+      "validation": "passed",
+      "validation_status": "automatically_grounded",
+      "version": "0.1.0"
+    },
+    {
+      "family": "function_splitting",
+      "original_routine": "find_max",
+      "parameters": {
+        "max_length": 255,
+        "unsigned_width": 32
+      },
+      "rationale": "Partition bytes into two disjoint halves; combine associative sum/max/xor reductions with the original identity for empty input.",
+      "test_cases": 1024,
+      "transformation_level": "source",
+      "transformed_routine": "find_max__function_splitting",
+      "validation": "passed",
+      "validation_status": "automatically_grounded",
+      "version": "0.1.0"
+    },
+    {
+      "family": "harmless_strand",
+      "original_routine": "find_max",
+      "parameters": {
+        "max_length": 255,
+        "unsigned_width": 32
+      },
+      "rationale": "Added pure unsigned-arithmetic helper reads no external state, writes no memory and its result is discarded.",
+      "test_cases": 1024,
+      "transformation_level": "source",
+      "transformed_routine": "find_max__harmless_strand",
+      "validation": "passed",
+      "validation_status": "automatically_grounded",
+      "version": "0.1.0"
+    },
+    {
+      "family": "linear_chain",
+      "original_routine": "find_max",
+      "parameters": {
+        "max_length": 255,
+        "unsigned_width": 32
+      },
+      "rationale": "Two fixed pure delegation stages preserve arguments, return value and absence of external effects.",
+      "test_cases": 1024,
+      "transformation_level": "source",
+      "transformed_routine": "find_max__linear_chain",
+      "validation": "passed",
+      "validation_status": "automatically_grounded",
+      "version": "0.1.0"
+    },
+    {
+      "family": "thunk",
+      "original_routine": "find_max",
+      "parameters": {
+        "max_length": 255,
+        "unsigned_width": 32
+      },
+      "rationale": "Fixed local function pointer targets the original routine; no pointer mutation or alternate target.",
+      "test_cases": 1024,
+      "transformation_level": "source",
+      "transformed_routine": "find_max__thunk",
+      "validation": "passed",
+      "validation_status": "automatically_grounded",
+      "version": "0.1.0"
+    },
+    {
+      "family": "transparent_wrapper",
+      "original_routine": "find_max",
+      "parameters": {
+        "max_length": 255,
+        "unsigned_width": 32
+      },
+      "rationale": "Direct delegation with identical arguments and return value; no new observable effects.",
+      "test_cases": 1024,
+      "transformation_level": "source",
+      "transformed_routine": "find_max__transparent_wrapper",
+      "validation": "passed",
+      "validation_status": "automatically_grounded",
+      "version": "0.1.0"
+    },
+    {
+      "family": "linear_chain",
+      "original_routine": "interaction_file_metadata",
+      "parameters": {
+        "environment": "same_readonly_os_state",
+        "max_length": 255
+      },
+      "rationale": "Fixed delegation invokes the original routine exactly once with identical arguments, return value, API effects and error handling; no additional OS operation.",
+      "test_cases_per_build": 16,
+      "transformation_level": "source",
+      "transformed_routine": "interaction_file_metadata__linear_chain",
+      "validation": "passed",
+      "validation_status": "automatically_grounded",
+      "version": "0.1.0"
+    },
+    {
+      "family": "thunk",
+      "original_routine": "interaction_file_metadata",
+      "parameters": {
+        "environment": "same_readonly_os_state",
+        "max_length": 255
+      },
+      "rationale": "Fixed delegation invokes the original routine exactly once with identical arguments, return value, API effects and error handling; no additional OS operation.",
+      "test_cases_per_build": 16,
+      "transformation_level": "source",
+      "transformed_routine": "interaction_file_metadata__thunk",
+      "validation": "passed",
+      "validation_status": "automatically_grounded",
+      "version": "0.1.0"
+    },
+    {
+      "family": "transparent_wrapper",
+      "original_routine": "interaction_file_metadata",
+      "parameters": {
+        "environment": "same_readonly_os_state",
+        "max_length": 255
+      },
+      "rationale": "Fixed delegation invokes the original routine exactly once with identical arguments, return value, API effects and error handling; no additional OS operation.",
+      "test_cases_per_build": 16,
+      "transformation_level": "source",
+      "transformed_routine": "interaction_file_metadata__transparent_wrapper",
+      "validation": "passed",
+      "validation_status": "automatically_grounded",
+      "version": "0.1.0"
+    },
+    {
+      "family": "linear_chain",
+      "original_routine": "interaction_registry_summary",
+      "parameters": {
+        "environment": "same_readonly_os_state",
+        "max_length": 255
+      },
+      "rationale": "Fixed delegation invokes the original routine exactly once with identical arguments, return value, API effects and error handling; no additional OS operation.",
+      "test_cases_per_build": 16,
+      "transformation_level": "source",
+      "transformed_routine": "interaction_registry_summary__linear_chain",
+      "validation": "passed",
+      "validation_status": "automatically_grounded",
+      "version": "0.1.0"
+    },
+    {
+      "family": "thunk",
+      "original_routine": "interaction_registry_summary",
+      "parameters": {
+        "environment": "same_readonly_os_state",
+        "max_length": 255
+      },
+      "rationale": "Fixed delegation invokes the original routine exactly once with identical arguments, return value, API effects and error handling; no additional OS operation.",
+      "test_cases_per_build": 16,
+      "transformation_level": "source",
+      "transformed_routine": "interaction_registry_summary__thunk",
+      "validation": "passed",
+      "validation_status": "automatically_grounded",
+      "version": "0.1.0"
+    },
+    {
+      "family": "transparent_wrapper",
+      "original_routine": "interaction_registry_summary",
+      "parameters": {
+        "environment": "same_readonly_os_state",
+        "max_length": 255
+      },
+      "rationale": "Fixed delegation invokes the original routine exactly once with identical arguments, return value, API effects and error handling; no additional OS operation.",
+      "test_cases_per_build": 16,
+      "transformation_level": "source",
+      "transformed_routine": "interaction_registry_summary__transparent_wrapper",
+      "validation": "passed",
+      "validation_status": "automatically_grounded",
+      "version": "0.1.0"
+    },
+    {
+      "family": "linear_chain",
+      "original_routine": "interaction_socket_kind",
+      "parameters": {
+        "environment": "same_readonly_os_state",
+        "max_length": 255
+      },
+      "rationale": "Fixed delegation invokes the original routine exactly once with identical arguments, return value, API effects and error handling; no additional OS operation.",
+      "test_cases_per_build": 16,
+      "transformation_level": "source",
+      "transformed_routine": "interaction_socket_kind__linear_chain",
+      "validation": "passed",
+      "validation_status": "automatically_grounded",
+      "version": "0.1.0"
+    },
+    {
+      "family": "thunk",
+      "original_routine": "interaction_socket_kind",
+      "parameters": {
+        "environment": "same_readonly_os_state",
+        "max_length": 255
+      },
+      "rationale": "Fixed delegation invokes the original routine exactly once with identical arguments, return value, API effects and error handling; no additional OS operation.",
+      "test_cases_per_build": 16,
+      "transformation_level": "source",
+      "transformed_routine": "interaction_socket_kind__thunk",
+      "validation": "passed",
+      "validation_status": "automatically_grounded",
+      "version": "0.1.0"
+    },
+    {
+      "family": "transparent_wrapper",
+      "original_routine": "interaction_socket_kind",
+      "parameters": {
+        "environment": "same_readonly_os_state",
+        "max_length": 255
+      },
+      "rationale": "Fixed delegation invokes the original routine exactly once with identical arguments, return value, API effects and error handling; no additional OS operation.",
+      "test_cases_per_build": 16,
+      "transformation_level": "source",
+      "transformed_routine": "interaction_socket_kind__transparent_wrapper",
+      "validation": "passed",
+      "validation_status": "automatically_grounded",
+      "version": "0.1.0"
+    },
+    {
+      "family": "dead_branch",
+      "original_routine": "sum_array",
+      "parameters": {
+        "max_length": 255,
+        "unsigned_width": 32
+      },
+      "rationale": "Branch n>255 is unreachable under the explicit 0<=n<=255 input contract; reachable execution delegates unchanged.",
+      "test_cases": 1024,
+      "transformation_level": "source",
+      "transformed_routine": "sum_array__dead_branch",
+      "validation": "passed",
+      "validation_status": "automatically_grounded",
+      "version": "0.1.0"
+    },
+    {
+      "family": "function_splitting",
+      "original_routine": "sum_array",
+      "parameters": {
+        "max_length": 255,
+        "unsigned_width": 32
+      },
+      "rationale": "Partition bytes into two disjoint halves; combine associative sum/max/xor reductions with the original identity for empty input.",
+      "test_cases": 1024,
+      "transformation_level": "source",
+      "transformed_routine": "sum_array__function_splitting",
+      "validation": "passed",
+      "validation_status": "automatically_grounded",
+      "version": "0.1.0"
+    },
+    {
+      "family": "harmless_strand",
+      "original_routine": "sum_array",
+      "parameters": {
+        "max_length": 255,
+        "unsigned_width": 32
+      },
+      "rationale": "Added pure unsigned-arithmetic helper reads no external state, writes no memory and its result is discarded.",
+      "test_cases": 1024,
+      "transformation_level": "source",
+      "transformed_routine": "sum_array__harmless_strand",
+      "validation": "passed",
+      "validation_status": "automatically_grounded",
+      "version": "0.1.0"
+    },
+    {
+      "family": "linear_chain",
+      "original_routine": "sum_array",
+      "parameters": {
+        "max_length": 255,
+        "unsigned_width": 32
+      },
+      "rationale": "Two fixed pure delegation stages preserve arguments, return value and absence of external effects.",
+      "test_cases": 1024,
+      "transformation_level": "source",
+      "transformed_routine": "sum_array__linear_chain",
+      "validation": "passed",
+      "validation_status": "automatically_grounded",
+      "version": "0.1.0"
+    },
+    {
+      "family": "thunk",
+      "original_routine": "sum_array",
+      "parameters": {
+        "max_length": 255,
+        "unsigned_width": 32
+      },
+      "rationale": "Fixed local function pointer targets the original routine; no pointer mutation or alternate target.",
+      "test_cases": 1024,
+      "transformation_level": "source",
+      "transformed_routine": "sum_array__thunk",
+      "validation": "passed",
+      "validation_status": "automatically_grounded",
+      "version": "0.1.0"
+    },
+    {
+      "family": "transparent_wrapper",
+      "original_routine": "sum_array",
+      "parameters": {
+        "max_length": 255,
+        "unsigned_width": 32
+      },
+      "rationale": "Direct delegation with identical arguments and return value; no new observable effects.",
+      "test_cases": 1024,
+      "transformation_level": "source",
+      "transformed_routine": "sum_array__transparent_wrapper",
       "validation": "passed",
       "validation_status": "automatically_grounded",
       "version": "0.1.0"
@@ -47744,6 +50536,21 @@
       "test_cases": 1024,
       "transformation_level": "source",
       "transformed_routine": "xor_buffer__dead_branch",
+      "validation": "passed",
+      "validation_status": "automatically_grounded",
+      "version": "0.1.0"
+    },
+    {
+      "family": "function_splitting",
+      "original_routine": "xor_buffer",
+      "parameters": {
+        "max_length": 255,
+        "unsigned_width": 32
+      },
+      "rationale": "Partition bytes into two disjoint halves; combine associative sum/max/xor reductions with the original identity for empty input.",
+      "test_cases": 1024,
+      "transformation_level": "source",
+      "transformed_routine": "xor_buffer__function_splitting",
       "validation": "passed",
       "validation_status": "automatically_grounded",
       "version": "0.1.0"
@@ -47774,6 +50581,36 @@
       "test_cases": 1024,
       "transformation_level": "source",
       "transformed_routine": "xor_buffer__linear_chain",
+      "validation": "passed",
+      "validation_status": "automatically_grounded",
+      "version": "0.1.0"
+    },
+    {
+      "family": "thunk",
+      "original_routine": "xor_buffer",
+      "parameters": {
+        "max_length": 255,
+        "unsigned_width": 32
+      },
+      "rationale": "Fixed local function pointer targets the original routine; no pointer mutation or alternate target.",
+      "test_cases": 1024,
+      "transformation_level": "source",
+      "transformed_routine": "xor_buffer__thunk",
+      "validation": "passed",
+      "validation_status": "automatically_grounded",
+      "version": "0.1.0"
+    },
+    {
+      "family": "transparent_wrapper",
+      "original_routine": "xor_buffer",
+      "parameters": {
+        "max_length": 255,
+        "unsigned_width": 32
+      },
+      "rationale": "Direct delegation with identical arguments and return value; no new observable effects.",
+      "test_cases": 1024,
+      "transformation_level": "source",
+      "transformed_routine": "xor_buffer__transparent_wrapper",
       "validation": "passed",
       "validation_status": "automatically_grounded",
       "version": "0.1.0"

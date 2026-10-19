@@ -18,7 +18,7 @@ ENDPOINTS = {
     "contains_indirect_call": ("FUNCTION", "VISIBILITY_INDICATOR"),
 }
 EVIDENCE_EDGES = {"calls_api", "references_string", "uses_constant", "belongs_to_section"}
-PROPERTIES = ("anchor_only", "has_topology", "topology_only", "typed_evidence_present", "interaction_capable", "degraded_observability")
+PROPERTIES = ("anchor_only", "has_topology", "topology_only", "typed_evidence_present", "interaction_capable", "observability_unknown", "observed_incompleteness", "observability_complete", "possibly_incomplete_observability", "has_unresolved_calls", "local_graph_truncated")
 COUNTS = (
     "function_node_count",
     "non_anchor_function_node_count",
@@ -74,6 +74,7 @@ def graph_signal(document):
         reasons.append("unresolved_indirect_calls_observed")
     if local["truncated"]:
         reasons.append("local_graph_truncated")
+    incomplete = bool(reasons)
     reasons.extend(key + "_observation_unavailable" for key in unknown)
     semantic_edges = [e for e in edges if e["kind"] != "contains_indirect_call"]
     return dict(
@@ -103,7 +104,11 @@ def graph_signal(document):
         topology_only=bool(kinds["calls_function"]) and not evidence,
         typed_evidence_present=bool(evidence),
         interaction_capable=bool(interactions),
-        degraded_observability=bool(reasons),
+        observability_unknown=bool(unknown),
+        observed_incompleteness=incomplete,
+        observability_complete=not unknown and not incomplete,
+        possibly_incomplete_observability=bool(reasons),
+        has_unresolved_calls=bool(unresolved),
         observability_reasons=reasons,
     )
 
@@ -125,7 +130,13 @@ def pair_signal(left, right):
         both_typed_evidence=left["typed_evidence_present"] and right["typed_evidence_present"],
         both_topology=left["has_topology"] and right["has_topology"],
         both_interaction_capable=left["interaction_capable"] and right["interaction_capable"],
-        either_degraded=left["degraded_observability"] or right["degraded_observability"],
+        either_observability_unknown=left["observability_unknown"] or right["observability_unknown"],
+        both_observability_unknown=left["observability_unknown"] and right["observability_unknown"],
+        either_observed_incomplete=left["observed_incompleteness"] or right["observed_incompleteness"],
+        both_observability_complete=left["observability_complete"] and right["observability_complete"],
+        either_locally_truncated=left["local_graph_truncated"] or right["local_graph_truncated"],
+        either_unresolved_calls=left["has_unresolved_calls"] or right["has_unresolved_calls"],
+        either_possibly_incomplete=left["possibly_incomplete_observability"] or right["possibly_incomplete_observability"],
     )
 
 
@@ -154,21 +165,25 @@ def audit(manifest_path, root=ROOT):
                 groups[pair[field]].append(signal)
 
     def pair_statistics(items):
-        keys = ("both_anchor_only", "exactly_one_anchor_only", "both_typed_evidence", "both_topology", "both_interaction_capable", "either_degraded")
+        keys = tuple(pair_signal({key: False for key in PROPERTIES}, {key: False for key in PROPERTIES}))
         return dict(pairs=len(items), **{key: sum(item[key] for item in items) for key in keys})
 
     result = dict(
-        audit_version="0.1.0",
+        audit_version="0.2.0",
         manifest_sha256=hashlib.sha256(manifest_bytes).hexdigest(),
         definitions=dict(
             counts="Canonical nodes/edges (not callsite multiplicities); unresolved occurrences also reported separately.",
             anchor_only="One FUNCTION anchor and no other semantic structure; visibility/unknown observability may coexist.",
             interaction_capable="Explicit calls_function edge whose callee is source of calls_api/references_string/uses_constant/belongs_to_section (Step 6).",
-            degraded_observability="Observed unresolved calls, local truncation, or unavailable visibility counts, as in Step 6/7. Unknown is not zero. No fingerprint motif-budget truncation inferred from canonical input.",
+            observability_unknown="Required visibility observation absent/null; unknown is never interpreted as zero.",
+            observed_incompleteness="Explicit unresolved records/counts or local graph truncation. Observed indirect/dynamic calls alone do not imply incompleteness.",
+            observability_complete="All required visibility observations available and no observed incompleteness.",
+            possibly_incomplete_observability="Union of unknown and observed incompleteness, retaining existing Step 6/7 conservative reporting. No fingerprint motif-budget truncation inferred from canonical input.",
             scope="Read-only signal audit; categories overlap; no labels, exclusions, similarity or malware inference.",
         ),
         global_graph_statistics=graph_statistics(list(records.values())),
         per_split_graph_statistics={split: graph_statistics([r for r in records.values() if r["split"] == split]) for split in sorted({r["split"] for r in records.values()})},
+        per_label_graph_statistics={label: graph_statistics([records[gid] for gid in sorted({p[side + "_graph_id"] for p in manifest["pairs"] if p["equivalence_label"] == label for side in ("left", "right")})]) for label in sorted({p["equivalence_label"] for p in manifest["pairs"]})},
         global_pair_statistics=pair_statistics(pairs),
         pair_statistics={field: {key: pair_statistics(items) for key, items in sorted(groups.items())} for field, groups in grouped.items()},
         graphs=list(records.values()),

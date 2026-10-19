@@ -23,9 +23,11 @@ def main():
         ["controlled_variants.py", *shared],
         ["validate_structural_variants.py"],
         ["controlled_negatives.py", *shared],
+        ["controlled_interactions.py", *shared],
         ["dataset_splits.py", "datasets/osgf_pairs_v0_1/manifest.json", "--config", "datasets/osgf_pairs_v0_1/split_config.json"],
         ["validate_dataset_acceptance.py", "--technical-only", "--replay"],
         ["audit_dataset_graph_signal.py", "--output", "datasets/osgf_pairs_v0_1/graph_signal_audit.json"],
+        ["generate_evaluation_strata.py"],
         ["dataset_review.py", "prepare", "--refresh-pending"],
     ]
     for script, *arguments in commands:

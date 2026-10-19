@@ -88,6 +88,38 @@ def transient_output_error(error, stage, phase):
     return bool(names_output and re.search(r"lnk1104|lnk1168|permission denied|access is denied|sharing violation", message))
 
 
+def wait_for_access(action, phase, *, sleep=time.sleep, attempts=8, report=None):
+    """Retry only the same filesystem operation; never recompile on an inner retry."""
+    if not 1 <= attempts <= 10:
+        raise ValueError("file-access attempts must be between 1 and 10")
+    for attempt in range(1, attempts + 1):
+        try:
+            result = action()
+            if report and attempt > 1:
+                report(phase, attempt, "recovered", None)
+            return result
+        except OSError as error:
+            if not transient_output_error(error, Path("unused"), phase):
+                raise
+            if report:
+                report(phase, attempt, "retry" if attempt < attempts else "exhausted", error)
+            if attempt == attempts:
+                raise
+            sleep(0.2)
+
+
+def wait_for_readable_pe(stage, *, reader=pe_architecture, **kwargs):
+    return wait_for_access(lambda: reader(stage), "validate_pe", **kwargs)
+
+
+def wait_for_executable_access(stage, *, runner=run, **kwargs):
+    return wait_for_access(lambda: runner([str(stage)]), "execute", **kwargs)
+
+
+def wait_for_publishable_output(stage, final, *, replace=os.replace, **kwargs):
+    return wait_for_access(lambda: replace(stage, final), "publish", **kwargs)
+
+
 def clean_stage(directory, build_directory):
     directory = directory.resolve()
     expected = build_directory.resolve() / ".staging"
@@ -101,17 +133,26 @@ def clean_stage(directory, build_directory):
             path.unlink()
 
 
-def build_pe(compiler, build_id, optimization, final, flags_for_output, validate_behavior, *, root=ROOT, runner=run, replace=os.replace, sleep=time.sleep, attempts=3):
+def build_pe(compiler, build_id, optimization, final, flags_for_output, validate_behavior, *, root=ROOT, runner=run, replace=os.replace, sleep=time.sleep, attempts=3, pe_reader=pe_architecture):
     """Publish only a successful, validated executable; preserve prior output on failure."""
     final = Path(final).resolve()
     build_directory = final.parent
     if not final.is_relative_to(Path(root).resolve()) or not 1 <= attempts <= 3:
         raise ValueError("Invalid controlled build directory/retry limit")
     diagnostics = []
+    access_events = []
     for attempt in range(1, attempts + 1):
         stage_dir = build_directory / ".staging" / f"attempt-{attempt}"
         stage = stage_dir / final.name
         phase = "prepare_output"
+
+        def report_access(operation, access_attempt, status, error):
+            record = dict(compile_attempt=attempt, phase=operation, access_attempt=access_attempt, status=status)
+            if error is not None:
+                record["diagnostic"] = sanitize_text(str(error), root, compiler["path"])
+            access_events.append(record)
+            print(f"BUILD {build_id}: {operation} access {access_attempt}/8 {status}; same staged artifact", flush=True)
+
         try:
             clean_stage(stage_dir, build_directory)
             flags = flags_for_output(stage)
@@ -119,14 +160,14 @@ def build_pe(compiler, build_id, optimization, final, flags_for_output, validate
             phase = "compile"
             runner([compiler["path"], *flags], cwd=stage_dir, env=compiler["env"])
             phase = "validate_pe"
-            architecture = pe_architecture(stage)
+            architecture = wait_for_readable_pe(stage, reader=pe_reader, sleep=sleep, report=report_access)
             phase = "execute"
-            transcript = runner([str(stage)]).splitlines()
+            transcript = wait_for_executable_access(stage, runner=runner, sleep=sleep, report=report_access).splitlines()
             phase = "validate_behavior"
             validate_behavior(transcript)
             phase = "publish"
-            replace(stage, final)
-            return dict(architecture=architecture, behavior=transcript, status="success", attempts=attempt, attempt_diagnostics=diagnostics, flags=portable_flags(flags, root))
+            wait_for_publishable_output(stage, final, replace=replace, sleep=sleep, report=report_access)
+            return dict(architecture=architecture, behavior=transcript, status="success", attempts=attempt, attempt_diagnostics=diagnostics, access_events=access_events, flags=portable_flags(flags, root))
         except (OSError, ValueError, RuntimeError, subprocess.SubprocessError) as error:
             transient = transient_output_error(error, stage, phase)
             diagnostic = sanitize_text(str(error), root, compiler["path"])
@@ -141,6 +182,6 @@ def build_pe(compiler, build_id, optimization, final, flags_for_output, validate
             except OSError:
                 pass  # Locked staging file remains isolated and never counts as success.
             if not transient or attempt == attempts:
-                raise BuildFailure(dict(build_id=build_id, compiler=compiler["compiler"], compiler_version=compiler["version"], optimization=optimization, status="failed", error_kind=type(error).__name__, diagnostic=diagnostic, attempts=attempt, attempt_diagnostics=diagnostics)) from error
+                raise BuildFailure(dict(build_id=build_id, compiler=compiler["compiler"], compiler_version=compiler["version"], optimization=optimization, status="failed", error_kind=type(error).__name__, diagnostic=diagnostic, attempts=attempt, attempt_diagnostics=diagnostics, access_events=access_events)) from error
             sleep(0.25)
     raise AssertionError("bounded build loop exhausted unexpectedly")

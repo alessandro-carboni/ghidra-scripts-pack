@@ -6,7 +6,7 @@ import subprocess
 import tempfile
 import unittest
 
-from scripts.controlled_build import BuildFailure, CommandFailure, assert_portable_metadata, build_pe, clean_stage, portable_flags, sanitize_text
+from scripts.controlled_build import BuildFailure, CommandFailure, assert_portable_metadata, build_pe, clean_stage, pe_architecture, portable_flags, sanitize_text
 
 
 def pe_bytes():
@@ -19,9 +19,55 @@ def pe_bytes():
 
 
 class ControlledBuildTests(unittest.TestCase):
-    def build(self, root, runner, validator=lambda rows: None, replace=os.replace):
+    def build(self, root, runner, validator=lambda rows: None, replace=os.replace, **kwargs):
         compiler = dict(compiler="mock", version="mock 1", path="mock-cc", env={})
-        return build_pe(compiler, "test-O0", "O0", root / "test/test.exe", lambda output: ["-o", str(output)], validator, root=root, runner=runner, replace=replace, sleep=lambda _: None)
+        return build_pe(compiler, "test-O0", "O0", root / "test/test.exe", lambda output: ["-o", str(output)], validator, root=root, runner=runner, replace=replace, sleep=lambda _: None, **kwargs)
+
+    def test_post_link_access_recovers_without_recompilation(self):
+        for failing_phase in ("validate_pe", "execute", "publish"):
+            with self.subTest(phase=failing_phase), tempfile.TemporaryDirectory() as temp:
+                calls = dict(compile=0, validate_pe=0, execute=0, publish=0)
+
+                def maybe_fail(phase):
+                    calls[phase] += 1
+                    if phase == failing_phase and calls[phase] < 3:
+                        raise PermissionError("temporary sharing violation")
+
+                def runner(command, **kwargs):
+                    if command[0] == "mock-cc":
+                        calls["compile"] += 1
+                        Path(command[-1]).write_bytes(pe_bytes())
+                        return ""
+                    maybe_fail("execute")
+                    return "observed 0 1"
+
+                def reader(path):
+                    maybe_fail("validate_pe")
+                    return pe_architecture(path)
+
+                def publish(source, target):
+                    maybe_fail("publish")
+                    os.replace(source, target)
+
+                result = self.build(Path(temp), runner, replace=publish, pe_reader=reader)
+                self.assertEqual(calls["compile"], 1)
+                self.assertEqual(calls[failing_phase], 3)
+                self.assertEqual(result["attempts"], 1)
+                self.assertEqual(result["access_events"][-1]["status"], "recovered")
+
+    def test_invalid_pe_is_not_retried_as_a_lock(self):
+        with tempfile.TemporaryDirectory() as temp:
+            calls = []
+
+            def runner(command, **kwargs):
+                calls.append(command)
+                Path(command[-1]).write_bytes(b"invalid")
+                return ""
+
+            with self.assertRaises(BuildFailure) as raised:
+                self.build(Path(temp), runner)
+            self.assertEqual(len(calls), 1)
+            self.assertEqual(raised.exception.record["access_events"], [])
 
     def test_publish_only_after_validation(self):
         with tempfile.TemporaryDirectory() as temp:

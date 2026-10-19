@@ -10,6 +10,7 @@ from dataset_manifest import require, validate
 from dataset_review import content_hash, validate_decisions
 from dataset_splits import family_holdout, validate_leakage
 from validate_structural_variants import validate as validate_variants
+from interaction_sources import validate_behavior as validate_interaction
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "datasets/osgf_pairs_v0_1"
@@ -29,6 +30,8 @@ def main():
         require(digest(path) == sample["sha256"] and pe_architecture(path) == sample["architecture"], "sample integrity failure")
     for build in builds.values():
         require(digest(ROOT / build["source_path"]) == build["source_hash"], "source integrity failure")
+        if build["artifact_group"].startswith("interaction_"):
+            validate_interaction(build["artifact_group"].removeprefix("interaction_"), build["behavior"], build["independent_environment_observation"])
         if args.replay:
             sample = next(s for s in samples.values() if s["build_id"] == build["build_id"])
             require(execute([str(ROOT / sample["path"])]).splitlines() == build["behavior"], "runtime transcript changed: " + build["build_id"])

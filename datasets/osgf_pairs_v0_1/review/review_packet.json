@@ -1,5 +1,5 @@
 {
-  "manifest_sha256": "51b121bfd1d664e5ca398091b44bd6832c7d1abc4d0559d2591fcd5aeb75dd55",
+  "manifest_sha256": "b264059080c77df16f362d53b9edae4eb294fd72dcd914bbe6dc2fc4e162d227",
   "records": [
     {
       "coverage": [
@@ -39,6 +39,18 @@
     },
     {
       "coverage": [
+        "thunk"
+      ],
+      "decision": "pending",
+      "notes": "",
+      "pair_id": "pair:0df30c682fbf6df950146b14",
+      "pair_sha256": "cddfedfa252bb9f4483fab33444f6bdcf3a2a3ffc0c725d76f0b1ef8967a23fd",
+      "reason": "",
+      "reviewer": "",
+      "validation_status": "unreviewed"
+    },
+    {
+      "coverage": [
         "hard_negatives"
       ],
       "decision": "pending",
@@ -51,12 +63,24 @@
     },
     {
       "coverage": [
-        "thunk"
+        "transparent_wrapper"
       ],
       "decision": "pending",
       "notes": "",
-      "pair_id": "pair:17b587bd05bffd3cf40289b2",
-      "pair_sha256": "56fadf07bc8d3c46eca7e2fb0daea7ea29a9ca80367834cabfad1a23ff662178",
+      "pair_id": "pair:150a989550f7c4251c21e5de",
+      "pair_sha256": "bca90f065fca8758b5619855890dedffc1513e91cd296acce9eac5e6d432fd75",
+      "reason": "",
+      "reviewer": "",
+      "validation_status": "unreviewed"
+    },
+    {
+      "coverage": [
+        "linear_chain"
+      ],
+      "decision": "pending",
+      "notes": "",
+      "pair_id": "pair:1e750c46cf950165a7b926c4",
+      "pair_sha256": "d5ad74d74062e1e88f88aa1ed07fa05ea5c0c9c6c5005bac00d2908b6f1fb5c8",
       "reason": "",
       "reviewer": "",
       "validation_status": "unreviewed"
@@ -69,18 +93,6 @@
       "notes": "",
       "pair_id": "pair:24e9f59cb1fc34954424c670",
       "pair_sha256": "ecf38c3118fbfdeb1200e45d23ac584e50e76fc072d20d9143458a8455479333",
-      "reason": "",
-      "reviewer": "",
-      "validation_status": "unreviewed"
-    },
-    {
-      "coverage": [
-        "linear_chain"
-      ],
-      "decision": "pending",
-      "notes": "",
-      "pair_id": "pair:27ef7c0851ab2569d00912be",
-      "pair_sha256": "91e804916aeca54310430cc6a958a6abfb52c26fb8627fb1d14bc331c367ce8e",
       "reason": "",
       "reviewer": "",
       "validation_status": "unreviewed"
@@ -105,18 +117,6 @@
       "notes": "",
       "pair_id": "pair:4f62234f82e7de4579316522",
       "pair_sha256": "981d6b7214785f3a26d0d6b720eec14e613af0bf9f36ac34fd143ccdbafe0cf9",
-      "reason": "",
-      "reviewer": "",
-      "validation_status": "unreviewed"
-    },
-    {
-      "coverage": [
-        "transparent_wrapper"
-      ],
-      "decision": "pending",
-      "notes": "",
-      "pair_id": "pair:581a97b5a1044b1391d04a24",
-      "pair_sha256": "cca46be9e38fbe2fdfed431f533b3b657bf24c2fc1dfd21ee6ab4f8acc5ae744",
       "reason": "",
       "reviewer": "",
       "validation_status": "unreviewed"
