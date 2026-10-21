@@ -120,6 +120,7 @@ def test_symlink_destination_rejected(isolated):
     root, config = isolated
     parent = root / "datasets/osgf_transformations_v0_1"
     parent.mkdir()
+    junction = False
     try:
         (parent / "runs").symlink_to(root / DATA, target_is_directory=True)
     except OSError:
@@ -128,8 +129,15 @@ def test_symlink_destination_rejected(isolated):
         result = subprocess.run(["cmd", "/d", "/c", "mklink", "/J", str(parent / "runs"), str(root / DATA)], capture_output=True, check=False)
         if result.returncode:
             pytest.skip("neither symlink nor junction creation available")
+        junction = True
     try:
         with pytest.raises(ValueError, match="redirection"):
             generate_run(config, root)
     finally:
-        os.rmdir(parent / "runs")
+        # Windows junctions require rmdir; directory symlinks require unlink on POSIX.
+        if junction:
+            os.rmdir(parent / "runs")
+        else:
+            (parent / "runs").unlink()
+    assert (root / DATA).is_dir()
+    assert not (parent / "runs").exists()
