@@ -150,3 +150,140 @@ Step 9 MSVC/O2/O3 end-to-end matrices were NOT RUN; Clang was unavailable. Hoste
 The real default run has no full family-holdout coverage; unsupported views are explicit. Dead branches and instruction order are not_observable with the frozen graph vocabulary. No optimized_away result was asserted merely from absence. Pure source transformations, finite input-domain coverage, compiler dependence, imperfect Ghidra observability, unresolved mappings and small-corpus limitations remain. No malware, similarity-derived label or LLM is used.
 
 Step 9 infrastructure is ready for review and future Step 10 experiments. No fingerprint robustness evaluation, learned rewrite, training or Step 10 experiment has been implemented. No commit or push performed.
+
+## 2026-10-21 — Post-review fixes, structural-calls-v2
+
+This is new evidence, not a replacement of the historical acceptance above.
+Branch `codex`; reviewed HEAD `9abf2efed073a7279e696453ee7dba5be03d0688`.
+No commit/push, freeze, Step 10 implementation, split or label change.
+
+**FIX 1:** reachability-only checks replaced by required parameter-derived
+caller/callee pairs. Complete wrapper/thunk chains, splitting-helper delegation and
+strand topology require actual resolved `calls_function` evidence. Indirect edges
+remain explicitly indirect; unresolved targets cannot establish a pair. A known
+anchor with insufficient evidence is partial; missing anchor is unknown. Dead
+branch/order remain not observable; no compiler elimination is inferred.
+
+**FIX 2:** one recomputed observation per admitted execution/build. Twelve anchor
+graphs from six builds now give six independent observations. Duplicate or
+contradictory records fail; incomplete pairs remain unknown. JSON/Markdown separate
+transformation observations from graph extraction counts. Both fixes use explicit
+`structural-calls-v2` assessment and versioned report filenames, preserving the
+scientific schema version and all existing graph/source/binary identities.
+
+### Actual real results by build
+
+All builds are GCC 6.3.0 O0, frozen sum_array, seed 9, Ghidra 12.0.4.
+
+| Family | Build ID | v2 observation | Canonical graphs |
+|---|---|---|---:|
+| thunk | build:1c685e1ecafa72a9e416b28b | observed; resolved indirect edge | 2 |
+| function_splitting | build:2e5f629b9a0fcdd32a30b8c8 | observed; direct edges | 2 |
+| harmless_strand | build:401d94d3b19dcce1cbb61bb5 | observed; direct edges | 2 |
+| transparent_wrapper | build:59034e7ea239f30585da7e8f | observed; direct edge | 2 |
+| instruction_reordering | build:93a43c01de6a8d65ef45e4e9 | not_observable | 2 |
+| dead_branch | build:e7bef453500e9b6d4436f922 | not_observable | 2 |
+
+Totals: 6 independent observations, 4 observed, 2 not_observable, 0 partial,
+0 unknown and 0 optimized_away; 6 full typed exports and 12 canonical graphs.
+The real example classifications did not change; the counting unit changed from
+anchor records to builds. Synthetic counterexamples with wrong reachable topology
+now correctly become partial. Each real run has 6,144 independent input cases;
+repeated runs are reproducibility checks, not additional independent experiments.
+
+The isolated current run is retained under `.build-cache/postreview-qr_eyqk5`;
+its fresh full compiler/Ghidra replay is under
+`.build-cache/step9-replays/fresh-_qu5bnk4`. All 11 replay comparisons passed:
+specifications, executions, builds, behaviors, graphs, mappings, scientific run ID,
+artifact hashes, generation.json, splits.json and validation-v2.json. JSON/Markdown
+report reruns were byte-identical. Report hashes:
+
+- report-v2.json: `3e6fe4dd4df48e87f06c6d67262117ecc46ba956cb7ec3d2fc981c46c08363be`
+- report-v2.md: `0bcd8a6966fae17b6c20331a91eae5435e3ceeec19dcee161f852c909a13ba8d`
+
+Compared with the historical run: specifications, executions, build records,
+behavior records, mappings, run ID and every graph field except its explicitly
+versioned observability annotation are identical. Canonical graph/provenance bytes
+and compiled provenance remain unchanged. Historical records are verified under
+their historical contract; current acceptance requires separate v2 revalidation.
+Historical report generation now revalidates read-only and creates separate files.
+The real historical-preservation regression checks all registered artifacts and
+the entire manifest byte-for-byte across repeated reports.
+
+### Validation commands and results
+
+Commands below were executed in PowerShell from the repository root. Every command
+in `.build-cache/step9-postreview-regressions-results.json` returned exit code 0.
+
+```powershell
+python -m ruff check .
+python -m ruff format --check .
+python -m pytest -q tests
+cargo fmt --manifest-path rust_engine/Cargo.toml -- --check
+cargo test --locked --manifest-path rust_engine/Cargo.toml
+cargo clippy --locked --manifest-path rust_engine/Cargo.toml --all-targets -- -D warnings
+cargo build --locked --manifest-path rust_engine/Cargo.toml
+python scripts/test_canonical_baseline.py --engine rust_engine/target/debug/rust_engine.exe
+python scripts/test_fingerprint_baseline.py --engine rust_engine/target/debug/rust_engine.exe
+python scripts/test_similarity_baseline.py --engine rust_engine/target/debug/rust_engine.exe
+python scripts/dataset_review.py check
+python scripts/validate_dataset_acceptance.py
+python scripts/dataset_splits.py datasets/osgf_pairs_v0_1/manifest.json --config datasets/osgf_pairs_v0_1/split_config.json --check
+python scripts/test_similarity_real_canonical.py --engine rust_engine/target/debug/rust_engine.exe --canonical-dir reports/canonical-notepad-step5
+git diff --check
+python -m pytest -q tests/test_transformation_observability.py tests/test_transformation_extraction.py tests/test_transformation_report.py tests/test_transformation_mapping.py tests/test_validate_transformation_harness.py
+python scripts/transformation_harness.py report --run datasets/osgf_transformations_v0_1/runs/run-aba4cd955a9a4166b0e0d6c9 --engine rust_engine/target/debug/rust_engine.exe
+python .build-cache/run-step9-postreview.py
+Get-Content .build-cache/postreview-integrity.py -Raw | python -
+```
+
+The local end-to-end driver copied the exact frozen inventory and exporter to a
+new workspace, then executed generate_run, build_run, extract_run, map_run,
+validate_run, replay_run and report_run twice. It used the actual Ghidra installation
+`C:\Users\aless\Desktop\_\Projects\ghidra_12.0.4_PUBLIC` and the actual debug Rust
+executable. It passed; no synthetic replacement. The maintained `--revalidate` CLI
+provides the same isolated workflow; its additional dispatch branch was added
+after that real driver started and was not separately invoked end-to-end.
+
+PASS: 252 Rust tests; Rust formatting/Clippy/build; canonical acceptance 7,
+fingerprint 11, similarity 20; Step 8 dataset acceptance/review and leakage;
+real Notepad smoke 25/25 graphs, 75 comparable views, 10 warning-bearing graphs,
+all self-comparisons byte-deterministic. Targeted final suite: 105 tests passed
+(61.89s). First full Python pass: 321 tests and 175 subtests (180.72s); the final
+expanded suite is recorded below. Counts overlap and must not be added.
+
+Regressions cover multiple supported chain/partition/strand counts, missing/wrong
+links despite reachable symbols, extra unrelated edges, unresolved/resolved
+indirect calls, absent/ambiguous symbols, incomplete scope, node/edge order,
+one-vs-two graph counting, six-vs-twelve counts, distinct builds of one execution,
+duplicated/contradictory/missing graph records, stale legacy claims, immutable
+historical evidence, and actual canonical/provenance reconstruction.
+
+All 161 frozen baseline files are unchanged. Scientific digest remains
+`095ca81b151cbcf9e58af28ad6bffebd60c2d153d4102ec019462fd7377569b2`.
+No Rust, golden, normalization, similarity, label, split or human-review changes.
+
+NOT RUN: hosted Linux CI, cross-platform Ghidra, expanded MSVC/O2/O3 matrices,
+and Clang integration. These are not required to expand the two fixes and are not
+claimed as passing. Default experiments remain discovery-only; complete family
+holdouts remain unsupported. Finite behavioral oracles and witnessed topology do
+not establish universal semantic equivalence. The infrastructure is ready for
+Step 10 planning after review, within those limitations; Step 10 has not started.
+
+Final expanded Python suite: **324 passed, 175 subtests passed in 180.50s**.
+Final Ruff lint/format (63 files) and git diff --check PASS. Frozen inventory and
+historical-vs-current graph/provenance comparison rechecked after tests: PASS.
+Full final log: `.build-cache/step9-postreview-python-final.log`.
+
+Changed files:
+
+- scripts/transformation_extraction.py: parameter-derived edge witnesses, explicit legacy verification, validated execution/build aggregation.
+- scripts/validate_transformation_harness.py: build-level coverage, versioned validation, read-only revalidation and historical mutation guard.
+- scripts/transformation_report.py: separate graph/build statistics, current-contract acceptance and immutable input-bound v2 reports.
+- scripts/replay_transformation_harness.py: v2 replay comparisons and isolated historical revalidation workflow.
+- tests/test_transformation_observability.py: new structural counterexamples, counting, determinism and legacy-claim regressions.
+- tests/test_transformation_extraction.py: replaced the obsolete reachability-only positive test with the stronger new module; retained actual provenance/extraction tests.
+- tests/test_transformation_report.py: current reporting contract, real immutable historical-artifact regression and validation guard.
+- tests/test_validate_transformation_harness.py: build-level expected counts and v2 replay artifact checks.
+- docs/transformation_harness_v0_1.md: dated criteria/compatibility/workflow addendum.
+- datasets/osgf_transformations_v0_1/ACCEPTANCE.md: this dated evidence and command record.

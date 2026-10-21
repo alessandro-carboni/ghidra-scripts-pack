@@ -8,7 +8,7 @@ import subprocess
 try:
     from .step9_preflight import ROOT, frozen_baseline, safe_path
     from .transformation_build import behavior_record, persist, verify_builds
-    from .transformation_extraction import register_bytes
+    from .transformation_extraction import register_bytes, transformation_observations, OBSERVATION_CONTRACT
     from .transformation_harness import load_run, plan
     from .transformation_mapping import default_engine, validate_mappings
     from .transformation_schema import FAMILIES, VERSION, schema_documents, serialize
@@ -16,7 +16,7 @@ try:
 except ImportError:
     from step9_preflight import ROOT, frozen_baseline, safe_path
     from transformation_build import behavior_record, persist, verify_builds
-    from transformation_extraction import register_bytes
+    from transformation_extraction import register_bytes, transformation_observations, OBSERVATION_CONTRACT
     from transformation_harness import load_run, plan
     from transformation_mapping import default_engine, validate_mappings
     from transformation_schema import FAMILIES, VERSION, schema_documents, serialize
@@ -32,7 +32,8 @@ def check_behavior(record, specification, generated, rows=None):
     return len(expected["tested_cases"])
 
 
-def coverage(bundle):
+def coverage(bundle, root=ROOT):
+    observations = transformation_observations(bundle, root)
     executions = {e["execution_id"]: e for e in bundle["executions"]}
     specifications = {s["transformation_id"]: s for s in bundle["specifications"]}
     result = {}
@@ -51,14 +52,16 @@ def coverage(bundle):
             behavior_mismatches=sum(len(b["mismatch_witnesses"]) for b in behaviors),
             extracted_graphs=sum(g["extraction_status"] == "success" for g in graphs),
             extraction_failures=sum(g["extraction_status"] != "success" for g in graphs),
-            observed_effects={state: sum(g["observability_metadata"]["status"] == state for g in graphs) for state in ("observed", "partially_observed", "optimized_away", "not_observable", "unknown")},
+            observed_effects={state: sum(o["observation"]["status"] == state for o in observations if o["execution_id"] in selected) for state in ("observed", "partially_observed", "optimized_away", "not_observable", "unknown")},
             unsupported_variants=sum(executions[e]["generation_status"] == "unsupported" for e in selected),
         )
     return result
 
 
-def validate_run(run_dir, engine=None, policy=DEFAULT_POLICY, root=ROOT):
+def validate_run(run_dir, engine=None, policy=DEFAULT_POLICY, root=ROOT, publish=True):
     root, run_dir = Path(root).resolve(), Path(run_dir).resolve()
+    if publish and (run_dir / "validation.json").exists():
+        raise ValueError("Historical run: use report for read-only v2 revalidation; original evidence is preserved")
     baseline = json.loads((root / "datasets/osgf_transformations_v0_1/baseline.json").read_bytes())
     if frozen_baseline(root) != baseline:
         raise ValueError("Frozen Step 8 / scientific fixture baseline changed")
@@ -90,6 +93,8 @@ def validate_run(run_dir, engine=None, policy=DEFAULT_POLICY, root=ROOT):
     statistics = validate_mappings(bundle, run_dir, root, engine or default_engine(root))
     splits_path = run_dir / "splits.json"
     if not splits_path.exists():
+        if not publish:
+            raise ValueError("Read-only revalidation requires existing split evidence")
         validate_splits(run_dir, policy, root)
         bundle = load_run(run_dir, root)
         run = bundle["runs"][0]
@@ -104,7 +109,9 @@ def validate_run(run_dir, engine=None, policy=DEFAULT_POLICY, root=ROOT):
         scope="Per-run technical acceptance; repository regression results are recorded separately in ACCEPTANCE.md.",
         frozen_inventory_files=len(baseline["scientific_files"]),
         oracle_replay_cases=tests,
-        coverage=coverage(bundle),
+        observation_contract=OBSERVATION_CONTRACT,
+        transformation_observations=transformation_observations(bundle, root),
+        coverage=coverage(bundle, root),
         mapping_statistics=statistics,
         split_validation="passed",
         family_holdouts=split_report["family_holdouts"],
@@ -112,9 +119,10 @@ def validate_run(run_dir, engine=None, policy=DEFAULT_POLICY, root=ROOT):
         limitations=["Finite pure-byte input contract only.", "No similarity-derived labels, LLM calls, rewrite equivalence or Step 10 evaluation.", "Instruction ordering/dead branch presence is not observable in this graph vocabulary.", "Fresh compiler/Ghidra replay is separate from artifact reconstruction."],
     )
     # The manifest is not hashed into its own derived report. Reports have no timestamps or personal paths.
-    register_bytes(root, run, run_dir / "validation.json", serialize(result))
-    run["statuses"]["validation"] = "passed"
-    persist(run_dir, bundle, root)
+    if publish:
+        register_bytes(root, run, run_dir / "validation-v2.json", serialize(result))
+        run["statuses"]["validation"] = "passed"
+        persist(run_dir, bundle, root)
     print("RUN ACCEPTANCE PASS:", run["run_id"], tests, "independent replay cases;", len(bundle["graphs"]), "verified graphs;", statistics["verified_mappings"], "verified provenance mappings", flush=True)
     return result
 

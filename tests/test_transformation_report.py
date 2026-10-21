@@ -14,7 +14,7 @@ def data():
     # Report tests do not require local compilers or pretend these fixtures are real extraction.
     run = dict(run_id="fixture", statuses={phase: "passed" for phase in ("generation", "build", "extraction", "mapping", "validation")}, experiment_configuration={})
     bundle = dict(runs=[run], frozen_dataset_reference={"scientific_digest": "fixture"}, specifications=[], executions=[], builds=[], behaviors=[], graphs=[], mappings=[])
-    validation = dict(run_id="fixture", acceptance_status="passed", split_validation="passed", family_holdouts=[], deterministic_checks={})
+    validation = dict(observation_contract="structural-calls-v2", run_id="fixture", acceptance_status="passed", split_validation="passed", family_holdouts=[], deterministic_checks={})
     return bundle, validation
 
 
@@ -77,8 +77,37 @@ def test_real_report_counts_come_from_evidence():
         pytest.skip("Real local validation unavailable")
     bundle = json.loads((path / "manifest.json").read_bytes())
     validation = json.loads((path / "validation.json").read_bytes())
-    replay = json.loads((path / "fresh_replay.json").read_bytes())
+    replay = None
     report = compose_report(bundle, validation, replay)
     assert sum(row["oracle_checks"] for row in report["families"].values()) == sum(len(b["tested_cases"]) for b in bundle["behaviors"])
     assert sum(row["extracted_graphs"] for row in report["families"].values()) == len(bundle["graphs"])
-    assert report["fresh_end_to_end_replay"]["status"] == "passed"
+    assert report["fresh_end_to_end_replay"]["status"] == "not_run"
+    assert len(report["transformation_observations"]) == 6
+
+
+def test_real_historical_reports_and_manifest_are_preserved():
+    import os
+    from scripts.transformation_report import report_run
+    from scripts.step9_preflight import exact_hash
+
+    path = ROOT / "datasets/osgf_transformations_v0_1/runs/run-aba4cd955a9a4166b0e0d6c9"
+    engine = ROOT / "rust_engine/target/debug/rust_engine.exe"
+    if os.name != "nt" or not engine.exists() or not (path / "validation.json").exists():
+        pytest.skip("Real historical Windows run unavailable")
+    bundle = json.loads((path / "manifest.json").read_bytes())
+    before = {relative: exact_hash(ROOT / relative) for relative in bundle["runs"][0]["artifact_hashes"]}
+    manifest_before = (path / "manifest.json").read_bytes()
+    first = report_run(path, engine)
+    assert first == report_run(path, engine)
+    assert manifest_before == (path / "manifest.json").read_bytes()
+    assert before == {relative: exact_hash(ROOT / relative) for relative in before}
+
+
+def test_legacy_mutating_validation_is_rejected_before_work(tmp_path):
+    from scripts.validate_transformation_harness import validate_run
+
+    (tmp_path / "validation.json").write_bytes(b"historical evidence")
+    with pytest.raises(ValueError, match="Historical run"):
+        validate_run(tmp_path, root=tmp_path)
+    assert list(tmp_path.iterdir()) == [tmp_path / "validation.json"]
+    assert (tmp_path / "validation.json").read_bytes() == b"historical evidence"

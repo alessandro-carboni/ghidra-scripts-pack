@@ -51,8 +51,8 @@ def test_real_coverage_has_all_six_families_and_explicit_observability():
     result = coverage(bundle)
     assert len(result) == 6
     assert all(row["successful_builds"] == 1 and row["oracle_checks"] == 1024 and row["extracted_graphs"] == 2 for row in result.values())
-    assert result["dead_branch"]["observed_effects"]["not_observable"] == 2
-    assert result["instruction_reordering"]["observed_effects"]["not_observable"] == 2
+    assert result["dead_branch"]["observed_effects"]["not_observable"] == 1
+    assert result["instruction_reordering"]["observed_effects"]["not_observable"] == 1
     assert all(row["observed_effects"]["optimized_away"] == 0 for row in result.values())
     assert bundle == before
 
@@ -63,7 +63,7 @@ def test_fresh_replay_compares_scientific_artifacts_and_rejects_changes(tmp_path
     left, right = tmp_path / "left", tmp_path / "right"
     for directory in (left, right):
         directory.mkdir()
-        for name in ("generation.json", "splits.json", "validation.json"):
+        for name in ("generation.json", "splits.json", "validation-v2.json"):
             (directory / name).write_bytes(b"{}\n")
     bundle = dict(specifications=[], executions=[], builds=[], behaviors=[], graphs=[], mappings=[], runs=[dict(run_id="run", artifact_hashes={"toolchain.json": "a" * 64})])
     assert all(compare_runs(bundle, copy.deepcopy(bundle), left, right).values())
@@ -71,6 +71,6 @@ def test_fresh_replay_compares_scientific_artifacts_and_rejects_changes(tmp_path
     changed["runs"][0]["artifact_hashes"]["toolchain.json"] = "b" * 64
     with pytest.raises(ValueError, match="artifact_hashes"):
         compare_runs(bundle, changed, left, right)
-    (right / "validation.json").write_bytes(b'{"tampered": true}')
-    with pytest.raises(ValueError, match="validation.json"):
+    (right / "validation-v2.json").write_bytes(b'{"tampered": true}')
+    with pytest.raises(ValueError, match="validation-v2.json"):
         compare_runs(bundle, bundle, left, right)

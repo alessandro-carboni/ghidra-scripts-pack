@@ -96,7 +96,7 @@ def register_bytes(root, run, path, raw):
     return relative, digest
 
 
-def observe(document, symbols, generated, family, evidence):
+def legacy_observe(document, symbols, generated, family, evidence):
     """Topology can witness calls/helpers; instruction effects are outside this graph contract."""
     known = {n["id"] for n in document["nodes"] if n["type"] == "FUNCTION"}
     resolved = {name: symbols.get(name, symbols.get("_" + name)) for name in generated["generated_functions"]}
@@ -125,6 +125,140 @@ def observe(document, symbols, generated, family, evidence):
     return dict(status=status, evidence=evidence, limitations=limitations)
 
 
+OBSERVATION_CONTRACT = "structural-calls-v2"
+
+
+def expected_relationships(generated, family, parameters):
+    """Source declarations specify expectations, never evidence of compiler survival."""
+    original, target = generated["original_function"], generated["transformed_function"]
+    if family in ("dead_branch", "instruction_reordering"):
+        return []
+    if family in ("transparent_wrapper", "thunk"):
+        depth = parameters["wrapper_depth" if family == "transparent_wrapper" else "thunk_depth"]
+        chain = [original, *[target + f"_stage_{i}" for i in range(depth - 1)], target]
+        pairs = list(zip(chain[1:], chain[:-1]))
+    elif family == "function_splitting":
+        helpers = [target + f"_partition_{i}" for i in range(parameters["split_count"])]
+        pairs = [(target, helper) for helper in helpers] + [(helper, original) for helper in helpers]
+    elif family == "harmless_strand":
+        pairs = [(target, target + f"_strand_{i}") for i in range(parameters["number_of_strands"])] + [(target, original)]
+    else:
+        raise ValueError("Unsupported observation family")
+    names = {name for pair in pairs for name in pair} - {original}
+    if names != set(generated["generated_functions"]):
+        raise ValueError("Generated identities disagree with structural parameters")
+    return sorted(pairs)
+
+
+def observe(document, symbols, generated, family, evidence, parameters):
+    """Require witnessed caller/callee pairs, not reachability or symbol presence."""
+    limitations = [OBSERVATION_CONTRACT, "Symbols identify controlled generated functions; they do not prove behavioral equivalence."]
+    if family in ("dead_branch", "instruction_reordering"):
+        return dict(status="not_observable", evidence=evidence, limitations=limitations + ["The typed graph does not expose branch guards or instruction order; no optimization conclusion is supported."])
+    pairs = expected_relationships(generated, family, parameters)
+    known = {n["id"] for n in document["nodes"] if n["type"] == "FUNCTION"}
+
+    def resolve(name):
+        ids = {symbols[key] for key in (name, "_" + name) if key in symbols}
+        return next(iter(ids)) if len(ids) == 1 and ids <= known else None
+
+    resolved = {name: resolve(name) for pair in pairs for name in pair}
+    # Distinct generated functions sharing an address cannot establish the declared topology.
+    unique = len(set(resolved.values())) == len(resolved) and None not in resolved.values()
+    witnesses, missing = [], []
+    for caller, callee in pairs:
+        matches = [e for e in document["edges"] if e["type"] == "calls_function" and e["source"] == resolved[caller] and e["target"] == resolved[callee] and e.get("unresolved") is False and e.get("direct") is not e.get("indirect") and type(e.get("indirect")) is bool and type(e.get("direct")) is bool]
+        if matches:
+            witnesses.append(dict(caller=caller, callee=callee, edges=sorted(matches, key=serialize)))
+        else:
+            missing.append(dict(caller=caller, callee=callee))
+    callers = {resolved[a] for a, _ in pairs} - {None}
+    unresolved = sorted([u for u in document.get("unresolved_calls", []) if u.get("caller") in callers], key=serialize)
+    complete = document.get("metadata", {}).get("scope") == "complete_seeded_evidence_graph" and document.get("metadata", {}).get("truncated") is False
+    status = "observed" if not missing and unique and complete and not unresolved else "partially_observed" if resolve(generated["transformed_function"]) else "unknown"
+    detail = dict(required_pairs=[list(pair) for pair in pairs], witnessed=witnesses, missing=missing, unresolved_calls=unresolved, distinct_identities=unique, complete_typed_scope=complete)
+    limitations.append("Structural evidence: " + serialize(detail).decode().strip())
+    limitations.append("Resolved direct and indirect edges establish topology only, not argument, instruction-order or behavioral equivalence. Missing evidence never establishes optimized_away.")
+    return dict(status=status, evidence=evidence, limitations=limitations)
+
+
+def record_observation(document, symbols, generated, specification, evidence, recorded):
+    current = observe(document, symbols, generated, specification["transformation_family"], evidence, specification["parameters"])
+    # Explicit historical contract verification; legacy claims are never used for current counts.
+    expected = current if OBSERVATION_CONTRACT in recorded["limitations"] else legacy_observe(document, symbols, generated, specification["transformation_family"], evidence)
+    if recorded != expected:
+        raise ValueError("Observability claim differs from actual graph evidence")
+    return current
+
+
+def transformation_observations(bundle, root=ROOT):
+    """One independently recomputed observation per admitted execution/build identity."""
+    root = Path(root)
+    builds = {b["build_id"]: b for b in bundle["builds"]}
+    if len(builds) != len(bundle["builds"]):
+        raise ValueError("Duplicate build identity")
+    executions = {e["execution_id"]: e for e in bundle["executions"]}
+    specs = {s["transformation_id"]: s for s in bundle["specifications"]}
+    ids = [g["graph_id"] for g in bundle["graphs"]]
+    if len(ids) != len(set(ids)):
+        raise ValueError("Duplicate graph identity")
+    for graph in bundle["graphs"]:
+        build = builds.get(graph["build_id"])
+        if build is None or graph["execution_id"] != build["execution_id"] or graph["binary_sha256"] != build["binary_sha256"]:
+            raise ValueError("Graph/build identity mismatch")
+    result = []
+    for build_id, build in sorted(builds.items()):
+        if build["build_status"] != "success":
+            continue
+        execution = executions[build["execution_id"]]
+        spec = specs[execution["transformation_id"]]
+        graphs = sorted([g for g in bundle["graphs"] if g["build_id"] == build_id], key=lambda g: g["graph_id"])
+        if len(graphs) > 2:
+            raise ValueError("Duplicate graph role")
+        observations, anchors, sources = [], [], set()
+        for graph in graphs:
+            if graph["extraction_status"] != "success":
+                continue
+            typed = safe_path(root, graph["typed_graph_reference"])
+            if exact_hash(typed) != graph["typed_graph_sha256"]:
+                raise ValueError("Graph hash mismatch")
+            document = validate_export(json.loads(typed.read_bytes()), build["binary_sha256"])
+            symbols_path = typed.with_name("symbols.json")
+            generated_path = typed.parents[2] / "generation.json"
+            inventory = bundle["runs"][0]["artifact_hashes"]
+            for path in (typed, symbols_path, generated_path):
+                if inventory.get(path.relative_to(root).as_posix()) != exact_hash(path):
+                    raise ValueError("Observation input not bound to admitted artifact hash")
+            symbols = json.loads(symbols_path.read_bytes())
+            generated = json.loads(generated_path.read_bytes())[build["execution_id"]]
+            expected_anchors = {select_anchor(document, symbols, generated[role + "_function"]) for role in ("original", "transformed")}
+            if len(expected_anchors) != 2 or graph["anchor_identity"] not in expected_anchors or graph["anchor_identity"] in anchors:
+                raise ValueError("Missing or duplicate graph role/anchor")
+            anchors.append(graph["anchor_identity"])
+            sources.add((graph["typed_graph_reference"], graph["typed_graph_sha256"]))
+            ev = [
+                dict(artifact_id=build_id, artifact_path=graph["typed_graph_reference"], artifact_sha256=graph["typed_graph_sha256"], reference="nodes and calls_function edges"),
+                dict(artifact_id=build_id, artifact_path=symbols_path.relative_to(root).as_posix(), artifact_sha256=exact_hash(symbols_path), reference="controlled PE export identities"),
+            ]
+            observations.append(record_observation(document, symbols, generated, spec, ev, graph["observability_metadata"]))
+        if len(sources) > 1 or any(o != observations[0] for o in observations):
+            raise ValueError("Conflicting transformation observation evidence")
+        complete = len(graphs) == 2 and len(observations) == 2
+        observation = observations[0] if complete else dict(status="unknown", evidence=[], limitations=[OBSERVATION_CONTRACT, "Incomplete canonical graph pair; no complete build observation admitted."])
+        result.append(
+            dict(
+                observation_id=stable_id("observation", [execution["execution_id"], build_id, OBSERVATION_CONTRACT]),
+                execution_id=execution["execution_id"],
+                build_id=build_id,
+                transformation_family=spec["transformation_family"],
+                graph_ids=[g["graph_id"] for g in graphs],
+                complete_graph_pair=complete,
+                observation=observation,
+            )
+        )
+    return result
+
+
 def verify_graphs(bundle, engine, root=ROOT):
     """Recompute from the registered typed source: hashes alone do not prove canonical provenance."""
     for record in bundle["graphs"]:
@@ -145,9 +279,7 @@ def verify_graphs(bundle, engine, root=ROOT):
             dict(artifact_id=record["build_id"], artifact_path=record["typed_graph_reference"], artifact_sha256=record["typed_graph_sha256"], reference="nodes and calls_function edges"),
             dict(artifact_id=record["build_id"], artifact_path=symbols_path.relative_to(root).as_posix(), artifact_sha256=exact_hash(symbols_path), reference="controlled PE export identities"),
         ]
-        expected_observation = observe(document, symbols, generated, specification["transformation_family"], observed_evidence)
-        if record["observability_metadata"] != expected_observation:
-            raise ValueError("Observability claim differs from actual graph evidence")
+        record_observation(document, symbols, generated, specification, observed_evidence, record["observability_metadata"])
         toolchain = json.loads((run_dir / "extraction/toolchain.json").read_bytes())
         if record["ghidra_version"] != toolchain["ghidra_version"] or record["exporter_version"] != toolchain["exporter_sources"]["ghidra_scripts/export_research_graph.py"]:
             raise ValueError("Graph toolchain provenance mismatch")
@@ -261,7 +393,7 @@ def extract_run(run_dir, ghidra_dir, engine, root=ROOT):
                     canonical_digest=canonical["canonical_digest"],
                     truncation_metadata=canonical["local_graph_truncation"],
                     extraction_status="success",
-                    observability_metadata=observe(document, symbols, generated, spec["transformation_family"], evidence),
+                    observability_metadata=observe(document, symbols, generated, spec["transformation_family"], evidence, spec["parameters"]),
                 )
             except ExtractionFailure as error:
                 record.update(extraction_status=error.status, diagnostics=[str(error)])

@@ -369,3 +369,91 @@ git diff --check
 ```
 Limitations: Step 9 MSVC/O2/O3 end-to-end matrices and hosted/non-Windows CI NOT RUN; Clang unavailable. Default real run is discovery-only, so complete family holdouts remain UNSUPPORTED. The current pure-template subset excludes the frozen validation partition's OS/API routines. Dead branch and instruction order are not_observable in the typed graph; no optimized-away case is invented. No global equivalence beyond the stated source/input contract. Unknown/unmatched mappings retained. No Step 10 implemented.
 Resume checkpoint: Step 9.0 through 9.9 are complete and ready for user review. No implementation microstep remains. Final review document: datasets/osgf_transformations_v0_1/ACCEPTANCE.md. Local detailed run report: datasets/osgf_transformations_v0_1/runs/run-aba4cd955a9a4166b0e0d6c9/report.md. Await user review; do not automatically start Step 10 or commit/push.
+
+## 2026-10-21 post-review addendum — structural-calls-v2
+
+This addendum supersedes the observability/counting rules in the historical Step 9
+acceptance below/above; it does not rewrite those historical results. Reviewed
+branch: `codex`, current starting HEAD `9abf2efed073a7279e696453ee7dba5be03d0688`.
+The older HEAD recorded in the initial acceptance is historical, not current.
+
+The old algorithm checked symbol presence and reachability. A reachable helper
+could be connected by the wrong caller. The current `observe()` derives required
+caller/callee pairs from the generator's identities and the specification's actual
+parameters, then requires explicit resolved Ghidra `calls_function` edges for every
+pair. It also requires distinct, unambiguous FUNCTION identities, complete full
+Typed Evidence Graph scope and no unresolved calls from required callers. Canonical
+callee-depth limits are retained; they are not used to infer compiler removal.
+
+| Family | Required structural evidence for `observed` |
+|---|---|
+| transparent_wrapper | For configured depth d: transformed -> stage(d-2) -> ... -> stage0 -> original; d=1 requires transformed -> original |
+| thunk | Same configured-depth chain; direct and resolved indirect edges are distinguished in the stored witnesses; an unknown indirect target is never a verified callee |
+| function_splitting | transformed -> each configured partition helper AND each partition helper -> original |
+| harmless_strand | transformed -> every configured strand helper AND transformed -> original |
+| dead_branch | Always `not_observable`: no branch-guard evidence in this vocabulary |
+| instruction_reordering | Always `not_observable`: no instruction-order evidence in this vocabulary |
+
+Missing edges/helpers, ambiguous or merged identities, unresolved targets and
+incomplete scope never yield `optimized_away`. With a known transformed anchor,
+insufficient structural evidence is `partially_observed`; without it, `unknown`.
+These are topology claims, not proof of argument preservation, exact call frequency,
+order, purity or functional equivalence. Extra unrelated calls do not substitute
+for missing required edges. Witnesses and unresolved observations are serialized
+in deterministic order in the existing evidence/limitations fields; no scientific
+schema, exporter, source generator or canonical contract changed.
+
+Statistics now count exactly one observation per successful `(execution_id,
+build_id)` using a stable contract-qualified observation ID. Distinct compiler
+builds remain distinct observations. Both anchor records retain their own graph
+identity, provenance, extraction status, hashes and truncation metadata in the
+manifest. The report separates `transformation_observations`, `graph_records`,
+`canonical_graph_count` and family extraction counts. Missing/incomplete pairs are
+one `unknown` observation; duplicate identities/roles, incompatible sources or
+contradictory annotations fail. Current counts are recomputed from hash-bound typed
+graphs, symbols and generator metadata, never copied from stored status strings.
+
+### Compatibility and use with historical runs
+
+`legacy_observe()` is only an explicit historical-annotation verifier. It must
+reproduce an old annotation exactly; it cannot authorize a current structural
+claim. Current reports separately recompute `structural-calls-v2`, including when
+both legacy annotations agree on an overstrong claim. A regression demonstrates
+legacy `observed` becoming current `partially_observed` without modifying the old
+records. New extractions include the contract marker in their limitations.
+
+No old manifest, compiled source, binary, canonical graph, mapping, report or
+validation evidence is overwritten. Read-only `report` revalidates and writes
+`report-v2.json`, `report-v2.md`, and `validation-review-v2.json`; the JSON report
+binds the exact input manifest SHA-256. These immutable derived files intentionally
+do not update the input manifest (avoids rewriting historical evidence or creating
+a manifest/report hash cycle). A changed input conflicts with an existing report,
+rather than silently replacing it. Fresh runs register `validation-v2.json` and
+`fresh_replay-v2.json`. Historical validation/replay does not count as a v2 replay.
+Attempting mutating validation on a historical run fails with migration guidance.
+
+To revalidate historical evidence without recompilation, use `report`. To repeat
+compilation and Ghidra and then compare two fresh v2 runs, use `--revalidate`:
+
+```powershell
+$reviewRun = 'datasets/osgf_transformations_v0_1/runs/run-aba4cd955a9a4166b0e0d6c9'
+$reviewEngine = 'rust_engine/target/debug/rust_engine.exe'
+$reviewGhidra = 'C:\Users\aless\Desktop\_\Projects\ghidra_12.0.4_PUBLIC'
+python scripts/transformation_harness.py report --run $reviewRun --engine $reviewEngine
+python scripts/replay_transformation_harness.py --run $reviewRun --ghidra-dir $reviewGhidra --engine $reviewEngine --revalidate
+```
+
+The latter preserves the original directory and prints the newly admitted workspace.
+A clean checkout without an old run can still use the unified `run --fresh-replay`
+command. Scientific run/execution/build/graph IDs remain unchanged for the same
+configuration; the explicit observation/report contract distinguishes assessments.
+See the dated acceptance addendum for actual test commands and outcomes, including
+the isolated real run and fresh replay executed during this review.
+
+Post-review final validation: 324 Python tests + 175 subtests PASS; 105 targeted
+regressions PASS; 252 Rust tests and fmt/Clippy/build PASS; scientific acceptance,
+Step 8 review/acceptance/leakage PASS. Two real GCC/Ghidra v2 runs and all 11 fresh
+replay comparisons PASS. 6 build observations / 12 canonical graphs, with four
+observed families and two not_observable families. All 161 baseline files unchanged.
+See ACCEPTANCE.md's 2026-10-21 addendum for exact commands, local report hashes and
+NOT RUN items. No Step 10, automatic commit or push.

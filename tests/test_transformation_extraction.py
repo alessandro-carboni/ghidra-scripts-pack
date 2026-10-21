@@ -52,16 +52,6 @@ def test_missing_ambiguous_symbol_anchor(symbols, status):
     assert result.value.status == status
 
 
-def test_observation_does_not_infer_optimization_from_absence():
-    generated = dict(generated_functions=["transformed", "helper"], transformed_function="transformed", original_function="original")
-    document = typed()
-    assert extraction.observe(document, {"transformed": "fn:1", "helper": "fn:2"}, generated, "function_splitting", [])["status"] == "observed"
-    assert extraction.observe(document, {"transformed": "fn:1"}, generated, "function_splitting", [])["status"] == "partially_observed"
-    assert extraction.observe(document, {}, generated, "function_splitting", [])["status"] == "unknown"
-    for family in ("dead_branch", "instruction_reordering"):
-        assert extraction.observe(document, {}, generated, family, [])["status"] == "not_observable"
-
-
 @pytest.mark.parametrize("failure,status", [("timeout", "timeout"), ("process", "canonicalization_failed"), ("partial", "corrupted_graph")])
 def test_canonical_timeout_partial_and_corrupt_are_not_valid_graphs(tmp_path, monkeypatch, failure, status):
     output = tmp_path / "canonical.json"
