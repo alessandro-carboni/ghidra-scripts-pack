@@ -2,3 +2,7 @@
 samples/controlled/source/*.c text eol=crlf
 # Dataset serialization and canonical graph bytes are UTF-8 LF on every platform.
 datasets/osgf_pairs_v0_1/** text eol=lf
+
+# Step 9 metadata LF; exact compiled C sources CRLF.
+datasets/osgf_transformations_v0_1/** text eol=lf
+datasets/osgf_transformations_v0_1/**/*.c text eol=crlf

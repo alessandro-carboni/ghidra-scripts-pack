@@ -1,0 +1,178 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "artifact_hashes": {
+      "additionalProperties": {
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+      },
+      "type": "object"
+    },
+    "build_ids": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "execution_ids": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "experiment_configuration": {
+      "type": "object"
+    },
+    "frozen_dataset_reference": {
+      "additionalProperties": false,
+      "properties": {
+        "manifest_file_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "path": {
+          "const": "datasets/osgf_pairs_v0_1/freezes/freeze-001.json"
+        },
+        "scientific_digest": {
+          "const": "095ca81b151cbcf9e58af28ad6bffebd60c2d153d4102ec019462fd7377569b2"
+        }
+      },
+      "required": [
+        "manifest_file_sha256",
+        "path",
+        "scientific_digest"
+      ],
+      "type": "object"
+    },
+    "frozen_manifest_digest": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "generator_version": {
+      "const": "0.1.0"
+    },
+    "graph_ids": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "mapping_ids": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "record_type": {
+      "const": "run"
+    },
+    "report_references": {
+      "items": {
+        "format": "repository-path",
+        "type": "string"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "run_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "0.1.0"
+    },
+    "statuses": {
+      "additionalProperties": false,
+      "properties": {
+        "build": {
+          "enum": [
+            "pending",
+            "passed",
+            "failed",
+            "partial"
+          ],
+          "type": "string"
+        },
+        "extraction": {
+          "enum": [
+            "pending",
+            "passed",
+            "failed",
+            "partial"
+          ],
+          "type": "string"
+        },
+        "generation": {
+          "enum": [
+            "pending",
+            "passed",
+            "failed",
+            "partial"
+          ],
+          "type": "string"
+        },
+        "mapping": {
+          "enum": [
+            "pending",
+            "passed",
+            "failed",
+            "partial"
+          ],
+          "type": "string"
+        },
+        "validation": {
+          "enum": [
+            "pending",
+            "passed",
+            "failed",
+            "blocked"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "build",
+        "extraction",
+        "generation",
+        "mapping",
+        "validation"
+      ],
+      "type": "object"
+    },
+    "transformation_ids": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "type": "array",
+      "uniqueItems": true
+    }
+  },
+  "required": [
+    "artifact_hashes",
+    "build_ids",
+    "execution_ids",
+    "experiment_configuration",
+    "frozen_dataset_reference",
+    "frozen_manifest_digest",
+    "generator_version",
+    "graph_ids",
+    "mapping_ids",
+    "record_type",
+    "report_references",
+    "run_id",
+    "schema_version",
+    "statuses",
+    "transformation_ids"
+  ],
+  "type": "object"
+}
