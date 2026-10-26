@@ -1,0 +1,17 @@
+{
+  "rust_engine/Cargo.lock": "664b16a72714caf975a022345ee1446b9c5ba15d8d159bda9fc0398577dd26cc",
+  "rust_engine/Cargo.toml": "345e5bcc77702cde5f1b2a3e9e344d4fe93684c9c79f3ea6a12c736de6f402f8",
+  "rust_engine/src/canonical.rs": "4ecce92ce96659f67bf24fb12972440282393d767a8404d7f221e5e438d125f3",
+  "rust_engine/src/canonical_order.rs": "4e43c71aa3f127bb23c5a178ea3f17e5a8e6b38e69f15b5dd1e2cd507ec81746",
+  "rust_engine/src/fingerprint.rs": "14345069116647ca08521d3e9bb86d3185bdefef0393dcd164b4dd15e3715b88",
+  "rust_engine/src/fingerprint_motifs.rs": "ef8eea2fcc8ad80bb66ea0a74b7107d4074550183ea630844669ed5fc34bda07",
+  "rust_engine/src/fingerprint_provenance.rs": "9f79d4983b8dd49f4edcaa0f5d5d6613dafb9275e9fc323bf3d61a0d463077c5",
+  "rust_engine/src/graph.rs": "a1ddd814708a9ee1df57545238664d17c88ddb66d58b40d666dac58c213b85f9",
+  "rust_engine/src/graph_indexes.rs": "bdc1c90690da0310d4951839e7f7db20b4596d6b3f4d707b7d9ff10fec50952c",
+  "rust_engine/src/local_subgraph.rs": "516f26b7b5e707c2d63218f192a99d17ef7f4604fff7c8d40f47682fc7dea120",
+  "rust_engine/src/local_subgraph_schema.rs": "d0b6eabec223ab69abcef1b75042da977f83703b178954fce1d5696d49ac82af",
+  "rust_engine/src/schema.rs": "726f926b38e205a48f09eab96835a7397f883bf5af6a8e39ad52244ccbabf4ea",
+  "rust_engine/src/seed_validation.rs": "4871ee2ce9d7c1831e5e0a28288cd0a4a20f9e595cc841012a5cddbf2284ae0a",
+  "rust_engine/src/similarity.rs": "e289b7c52c3f4b57b5b7f02afdc60e9afbfe6a03a8170794e4602d5e77810629",
+  "rust_engine/src/similarity_observability.rs": "e61ea85f7f6f7c7d138f3f8e3361e5f7c73e0064f84871b76cddd569ca70a80e"
+}

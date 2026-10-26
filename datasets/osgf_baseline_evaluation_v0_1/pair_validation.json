@@ -1,0 +1,30 @@
+{
+  "byte_replayed_files": 437,
+  "counts": {
+    "A": {
+      "equivalent": 151,
+      "non_equivalent": 67
+    },
+    "B": {
+      "equivalent": 151,
+      "non_equivalent": 67
+    }
+  },
+  "independent_oracles": 436,
+  "matrix_sha256": "d973a21abd951f4d6ef38d94751869b7e8ad32c57a8a18596db5dbc36eab8296",
+  "paired_component_compatible": 218,
+  "records": 436,
+  "split_counts": {
+    "A": {
+      "discovery_train": 115,
+      "held_out_test": 64,
+      "validation": 39
+    },
+    "B": {
+      "discovery_train": 115,
+      "held_out_test": 64,
+      "validation": 39
+    }
+  },
+  "status": "PASS"
+}
