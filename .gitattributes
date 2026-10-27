@@ -6,3 +6,12 @@ datasets/osgf_pairs_v0_1/** text eol=lf
 # Step 9 metadata LF; exact compiled C sources CRLF.
 datasets/osgf_transformations_v0_1/** text eol=lf
 datasets/osgf_transformations_v0_1/**/*.c text eol=crlf
+
+# These exact CRLF bytes are pinned by the Step 9 inventory and Step 10 protocol.
+# Preserve the frozen bytes on every OS; do not normalize or rebaseline hashes.
+datasets/osgf_pairs_v0_1/PREFREEZE_FIXES.md text eol=crlf
+rust_engine/tests/fixtures/canonical_local_v0_1.json text eol=crlf
+rust_engine/tests/fixtures/canonical_local_v0_1.sha256 text eol=crlf
+rust_engine/tests/fixtures/fingerprint_v0_1_digests.json text eol=crlf
+rust_engine/tests/fixtures/seed_detection.json text eol=crlf
+rust_engine/tests/fixtures/similarity_v0_1_golden.json text eol=crlf
