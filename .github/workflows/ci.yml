@@ -40,3 +40,18 @@ jobs:
       - run: python scripts/test_canonical_baseline.py --engine rust_engine/target/debug/rust_engine
       - run: python scripts/test_fingerprint_baseline.py --engine rust_engine/target/debug/rust_engine
       - run: python scripts/test_similarity_baseline.py --engine rust_engine/target/debug/rust_engine
+
+  operational-baseline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install pytest
+      - run: rustup component add rustfmt clippy
+      - run: cargo fmt --manifest-path rust_engine/operational/Cargo.toml -- --check
+      - run: cargo test --locked --manifest-path rust_engine/operational/Cargo.toml
+      - run: cargo clippy --locked --manifest-path rust_engine/operational/Cargo.toml --all-targets -- -D warnings
+      - run: cargo build --locked --manifest-path rust_engine/operational/Cargo.toml
+      - run: python -m pytest -q tests/test_pcode_evidence.py tests/test_operational_pipeline.py tests/test_operational_evaluation.py

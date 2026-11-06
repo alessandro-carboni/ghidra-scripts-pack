@@ -1,0 +1,10 @@
+{
+  "head": "66bcc9dda267aac29f7ea79a60ff6727a7340ada",
+  "protected_checkpoint_files": 291,
+  "protected_step9_files": 161,
+  "protocol_sha256": "1781909eef01d33eed60a0b9d5804cdcc1ea7e53096efbf9fdb1aff1cd6b3a6b",
+  "status": "PASS",
+  "tracked_modifications": [
+    ".github/workflows/ci.yml"
+  ]
+}

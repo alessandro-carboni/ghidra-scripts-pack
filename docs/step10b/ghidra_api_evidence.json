@@ -1,0 +1,64 @@
+{
+  "version": "12.0.4",
+  "revision": "e40ed13014025f82488b1f8f7bca566894ac376b",
+  "sources": [
+    {
+      "archive": "Ghidra\\Features\\Decompiler\\lib\\Decompiler-src.zip",
+      "source": "ghidra/app/decompiler/DecompileResults.java",
+      "sha256": "89c47001065a1a9be4945cfadb469c3de37b0d69306d1400476ad6e20e4ff8c9",
+      "verified": {
+        "decompileCompleted(": true,
+        "getHighFunction(": true,
+        "isTimedOut(": true,
+        "isCancelled(": true,
+        "getErrorMessage(": true
+      }
+    },
+    {
+      "archive": "Ghidra\\Features\\Decompiler\\lib\\Decompiler-src.zip",
+      "source": "ghidra/app/decompiler/DecompInterface.java",
+      "sha256": "296eb7147ab65f6caed59b97518679659093d925a44819127aa5ae8dcbda878c",
+      "verified": {
+        "openProgram(": true,
+        "decompileFunction(": true,
+        "dispose(": true,
+        "setSimplificationStyle(": true
+      }
+    },
+    {
+      "archive": "Ghidra\\Framework\\SoftwareModeling\\lib\\SoftwareModeling-src.zip",
+      "source": "ghidra/program/model/pcode/PcodeOp.java",
+      "sha256": "91c3b23a6c93a167e2dfc8b63e3c521867388db6d381f6f4288a25a2cbb54f2c",
+      "verified": {
+        "getSeqnum(": true,
+        "getInputs(": true,
+        "getOutput(": true
+      }
+    },
+    {
+      "archive": "Ghidra\\Framework\\SoftwareModeling\\lib\\SoftwareModeling-src.zip",
+      "source": "ghidra/program/model/pcode/PcodeSyntaxTree.java",
+      "sha256": "07747c330f9a5880d10f808811c33fac9393c6db59c9c64798570c38b223f2cc",
+      "verified": {
+        "getPcodeOps(": true
+      }
+    },
+    {
+      "archive": "Ghidra\\Framework\\SoftwareModeling\\lib\\SoftwareModeling-src.zip",
+      "source": "ghidra/program/model/pcode/Varnode.java",
+      "sha256": "90370635200c8ec9e9f8e70139ef00ddd9924ad283536af2245750b6d8fff27d",
+      "verified": {
+        "getDef(": true,
+        "getDescendants(": true
+      }
+    },
+    {
+      "archive": "Ghidra\\Framework\\SoftwareModeling\\lib\\SoftwareModeling-src.zip",
+      "source": "ghidra/program/model/listing/Instruction.java",
+      "sha256": "84c2dc99fba573d3ac6f97bbf9a00f90ca8e6335825334ac624c674e8d404e62",
+      "verified": {
+        "getPcode(": true
+      }
+    }
+  ]
+}

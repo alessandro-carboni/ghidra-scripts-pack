@@ -1,0 +1,268 @@
+{
+  "commands": [
+    [
+      "C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\venv\\Scripts\\python.exe",
+      "-m",
+      "pyghidra.ghidra_launch",
+      "-D",
+      "application.settingsdir=C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\.build-cache\\step10b\\real-variants-1\\settings-numeric-variants-gcc-O0-1",
+      "--install-dir",
+      "C:\\Users\\aless\\Desktop\\_\\Projects\\ghidra_12.0.4_PUBLIC",
+      "ghidra.app.util.headless.AnalyzeHeadless",
+      "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\.build-cache\\step10b\\real-variants-1\\projects",
+      "numeric-variants-gcc-O0-1",
+      "-import",
+      "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\samples\\controlled\\builds\\numeric-variants-gcc-O0\\numeric-variants-gcc-O0.exe",
+      "-scriptPath",
+      "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\ghidra_scripts",
+      "-postScript",
+      "export_pcode_evidence.py",
+      "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\.build-cache\\step10b\\real-variants-1\\numeric-variants-gcc-O0-1-raw",
+      "raw",
+      "sum_array",
+      "sum_array__transparent_wrapper",
+      "sum_array__thunk",
+      "sum_array__function_splitting",
+      "-postScript",
+      "export_pcode_evidence.py",
+      "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\.build-cache\\step10b\\real-variants-1\\numeric-variants-gcc-O0-1-high",
+      "high",
+      "sum_array",
+      "sum_array__transparent_wrapper",
+      "sum_array__thunk",
+      "sum_array__function_splitting"
+    ],
+    [
+      "C:\\Users\\aless\\AppData\\Roaming\\ghidra\\ghidra_12.0.4_PUBLIC\\venv\\Scripts\\python.exe",
+      "-m",
+      "pyghidra.ghidra_launch",
+      "-D",
+      "application.settingsdir=C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\.build-cache\\step10b\\real-variants-1\\settings-numeric-variants-gcc-O0-2",
+      "--install-dir",
+      "C:\\Users\\aless\\Desktop\\_\\Projects\\ghidra_12.0.4_PUBLIC",
+      "ghidra.app.util.headless.AnalyzeHeadless",
+      "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\.build-cache\\step10b\\real-variants-1\\projects",
+      "numeric-variants-gcc-O0-2",
+      "-import",
+      "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\samples\\controlled\\builds\\numeric-variants-gcc-O0\\numeric-variants-gcc-O0.exe",
+      "-scriptPath",
+      "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\ghidra_scripts",
+      "-postScript",
+      "export_pcode_evidence.py",
+      "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\.build-cache\\step10b\\real-variants-1\\numeric-variants-gcc-O0-2-raw",
+      "raw",
+      "sum_array",
+      "sum_array__transparent_wrapper",
+      "sum_array__thunk",
+      "sum_array__function_splitting",
+      "-postScript",
+      "export_pcode_evidence.py",
+      "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\.build-cache\\step10b\\real-variants-1\\numeric-variants-gcc-O0-2-high",
+      "high",
+      "sum_array",
+      "sum_array__transparent_wrapper",
+      "sum_array__thunk",
+      "sum_array__function_splitting"
+    ]
+  ],
+  "implementation_sha256": {
+    "ghidra_scripts/export_pcode_evidence.py": "714478e9cdec504e7a3dfcf8e0cb931c06e52b4bdd4efc4abfe555753a5c3fde",
+    "ghidra_scripts/pcode_extraction.py": "af123ecb9f7df6c071f020cd9ffde1f2742f9352078cf0a51e6943a7ec485b3b",
+    "scripts/pcode_evidence.py": "8949bea9e114f7331cf6823e18829196faf3675b11bdacb5e0b00abd64ad12e2",
+    "scripts/test_pcode_real.py": "24f2327c9899b61b526ae016e61f9146d58c4635c871ff2ddf3ffbca79a9b173"
+  },
+  "limitations": [
+    "Development corpus only; not independent evaluation",
+    "No behavioral equivalence inferred from observed operations",
+    "Runtime includes fresh import and Ghidra startup; peak memory NOT RUN"
+  ],
+  "rows": [
+    {
+      "build": "numeric-variants-gcc-O0",
+      "dependencies": 65,
+      "deterministic": true,
+      "function": "sum_array",
+      "opcodes": [
+        "BRANCH",
+        "CBRANCH",
+        "COPY",
+        "INT_ADD",
+        "INT_AND",
+        "INT_CARRY",
+        "INT_EQUAL",
+        "INT_LESS",
+        "INT_SBORROW",
+        "INT_SCARRY",
+        "INT_SLESS",
+        "INT_SUB",
+        "INT_ZEXT",
+        "LOAD",
+        "POPCOUNT",
+        "RETURN",
+        "STORE"
+      ],
+      "operations": 97,
+      "representation": "raw",
+      "sha256": "232e4167380b4121b8eb3e7a411b67091b38736409789de25ea939cfa53060f4",
+      "unresolved_inputs": 45
+    },
+    {
+      "build": "numeric-variants-gcc-O0",
+      "dependencies": 11,
+      "deterministic": true,
+      "function": "sum_array__transparent_wrapper",
+      "opcodes": [
+        "CALL",
+        "COPY",
+        "INT_ADD",
+        "INT_AND",
+        "INT_EQUAL",
+        "INT_LESS",
+        "INT_SBORROW",
+        "INT_SLESS",
+        "INT_SUB",
+        "LOAD",
+        "POPCOUNT",
+        "RETURN",
+        "STORE"
+      ],
+      "operations": 33,
+      "representation": "raw",
+      "sha256": "db3ddeb603fc98af787f8f4540393f8bc27b5a31a35eab6915dda2947e28f259",
+      "unresolved_inputs": 25
+    },
+    {
+      "build": "numeric-variants-gcc-O0",
+      "dependencies": 16,
+      "deterministic": true,
+      "function": "sum_array__thunk",
+      "opcodes": [
+        "CALLIND",
+        "COPY",
+        "INT_ADD",
+        "INT_AND",
+        "INT_EQUAL",
+        "INT_LESS",
+        "INT_SBORROW",
+        "INT_SLESS",
+        "INT_SUB",
+        "LOAD",
+        "POPCOUNT",
+        "RETURN",
+        "STORE"
+      ],
+      "operations": 40,
+      "representation": "raw",
+      "sha256": "cee7a463071cbf6cd5be2b9789473d159dc68ce656f219ccebe3aa78d63ca252",
+      "unresolved_inputs": 27
+    },
+    {
+      "build": "numeric-variants-gcc-O0",
+      "dependencies": 51,
+      "deterministic": true,
+      "function": "sum_array__function_splitting",
+      "opcodes": [
+        "CALL",
+        "COPY",
+        "INT_ADD",
+        "INT_AND",
+        "INT_CARRY",
+        "INT_EQUAL",
+        "INT_LESS",
+        "INT_NOTEQUAL",
+        "INT_RIGHT",
+        "INT_SBORROW",
+        "INT_SCARRY",
+        "INT_SLESS",
+        "INT_SUB",
+        "LOAD",
+        "POPCOUNT",
+        "RETURN",
+        "STORE"
+      ],
+      "operations": 109,
+      "representation": "raw",
+      "sha256": "54b413dfff71c1b5421567b61cddbcdf058f51c529abc730da74d50620dc5fa5",
+      "unresolved_inputs": 74
+    },
+    {
+      "build": "numeric-variants-gcc-O0",
+      "dependencies": 15,
+      "deterministic": true,
+      "function": "sum_array",
+      "opcodes": [
+        "BRANCH",
+        "CAST",
+        "CBRANCH",
+        "COPY",
+        "INT_ADD",
+        "INT_LESS",
+        "INT_ZEXT",
+        "LOAD",
+        "MULTIEQUAL",
+        "RETURN"
+      ],
+      "operations": 15,
+      "representation": "high",
+      "sha256": "8dc384725d63bc78992b9612ac42bd9dd9c7a87eb53323fd2027335039b79943",
+      "unresolved_inputs": 4
+    },
+    {
+      "build": "numeric-variants-gcc-O0",
+      "dependencies": 0,
+      "deterministic": true,
+      "function": "sum_array__transparent_wrapper",
+      "opcodes": [
+        "CALL",
+        "RETURN"
+      ],
+      "operations": 2,
+      "representation": "high",
+      "sha256": "96a2efa7887f5c93bc906721d20e5fd4de1871e9739a44b516dc18f2955c18e8",
+      "unresolved_inputs": 3
+    },
+    {
+      "build": "numeric-variants-gcc-O0",
+      "dependencies": 0,
+      "deterministic": true,
+      "function": "sum_array__thunk",
+      "opcodes": [
+        "CALL",
+        "RETURN"
+      ],
+      "operations": 2,
+      "representation": "high",
+      "sha256": "b4db237de1065eb4ca29917b518c6083609b5633758d1ec78015f416126be229",
+      "unresolved_inputs": 3
+    },
+    {
+      "build": "numeric-variants-gcc-O0",
+      "dependencies": 8,
+      "deterministic": true,
+      "function": "sum_array__function_splitting",
+      "opcodes": [
+        "CALL",
+        "INT_ADD",
+        "INT_RIGHT",
+        "INT_SUB",
+        "RETURN"
+      ],
+      "operations": 7,
+      "representation": "high",
+      "sha256": "e6e375a58df8857f88469649decc4bc0a9274e9e3cd83efa79414b2d5c7b0ea8",
+      "unresolved_inputs": 6
+    }
+  ],
+  "sample_execution": false,
+  "status": "PASS",
+  "timings": [
+    {
+      "run": "numeric-variants-gcc-O0-1",
+      "seconds": 53.084622299997136
+    },
+    {
+      "run": "numeric-variants-gcc-O0-2",
+      "seconds": 57.88951639999868
+    }
+  ]
+}

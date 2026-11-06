@@ -1,0 +1,7 @@
+{
+  "inventories": {
+    "datasets/osgf_baseline_diagnostics_v0_1/CHECKPOINT.json": 291,
+    "datasets/osgf_transformations_v0_1/baseline.json": 161
+  },
+  "status": "PASS"
+}

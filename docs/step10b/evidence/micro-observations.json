@@ -1,0 +1,133 @@
+{
+  "cases": [
+    "signed_vs_unsigned",
+    "constant_32_vs_33",
+    "memory_load_store",
+    "bitwise_xor",
+    "loop_and_sum_pointer_common_evidence"
+  ],
+  "date": "2026-11-04",
+  "limitations": [
+    "Source equivalence argument for sum_array/sum_pointer; no runtime execution of probe",
+    "Ghidra recovery evidence is not proof of equivalence",
+    "Same installed Ghidra/OS environment; OS export caches and default analysis vary across environments",
+    "Fresh independent final evaluation still required"
+  ],
+  "observed_profiles": {
+    "copy_bytes": {
+      "dependencies": 12,
+      "opcodes": {
+        "BRANCH": 1,
+        "CAST": 2,
+        "CBRANCH": 1,
+        "COPY": 1,
+        "INT_ADD": 3,
+        "INT_LESS": 1,
+        "LOAD": 1,
+        "MULTIEQUAL": 1,
+        "RETURN": 1,
+        "STORE": 1
+      },
+      "operations": 13
+    },
+    "count_33": {
+      "dependencies": 17,
+      "opcodes": {
+        "BRANCH": 1,
+        "CAST": 1,
+        "CBRANCH": 2,
+        "COPY": 3,
+        "INT_ADD": 3,
+        "INT_EQUAL": 1,
+        "INT_LESS": 1,
+        "LOAD": 1,
+        "MULTIEQUAL": 3,
+        "RETURN": 1
+      },
+      "operations": 17
+    },
+    "count_matches": {
+      "dependencies": 17,
+      "opcodes": {
+        "BRANCH": 1,
+        "CAST": 1,
+        "CBRANCH": 2,
+        "COPY": 3,
+        "INT_ADD": 3,
+        "INT_EQUAL": 1,
+        "INT_LESS": 1,
+        "LOAD": 1,
+        "MULTIEQUAL": 3,
+        "RETURN": 1
+      },
+      "operations": 17
+    },
+    "signed_less": {
+      "dependencies": 2,
+      "opcodes": {
+        "COPY": 1,
+        "INT_SLESS": 1,
+        "RETURN": 1
+      },
+      "operations": 3
+    },
+    "sum_array": {
+      "dependencies": 15,
+      "opcodes": {
+        "BRANCH": 1,
+        "CAST": 1,
+        "CBRANCH": 1,
+        "COPY": 3,
+        "INT_ADD": 3,
+        "INT_LESS": 1,
+        "INT_ZEXT": 1,
+        "LOAD": 1,
+        "MULTIEQUAL": 2,
+        "RETURN": 1
+      },
+      "operations": 15
+    },
+    "sum_pointer": {
+      "dependencies": 18,
+      "opcodes": {
+        "BRANCH": 1,
+        "CBRANCH": 1,
+        "COPY": 6,
+        "INT_ADD": 2,
+        "INT_NOTEQUAL": 1,
+        "INT_ZEXT": 1,
+        "LOAD": 1,
+        "MULTIEQUAL": 3,
+        "PTRADD": 1,
+        "RETURN": 1
+      },
+      "operations": 18
+    },
+    "unsigned_less": {
+      "dependencies": 2,
+      "opcodes": {
+        "COPY": 1,
+        "INT_LESS": 1,
+        "RETURN": 1
+      },
+      "operations": 3
+    },
+    "xor_buffer": {
+      "dependencies": 14,
+      "opcodes": {
+        "BRANCH": 1,
+        "CAST": 1,
+        "CBRANCH": 1,
+        "COPY": 3,
+        "INT_ADD": 2,
+        "INT_LESS": 1,
+        "INT_XOR": 1,
+        "LOAD": 1,
+        "MULTIEQUAL": 2,
+        "RETURN": 1
+      },
+      "operations": 14
+    }
+  },
+  "status": "PASS"
+}

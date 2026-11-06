@@ -1,0 +1,15 @@
+{
+  "changed_implementation_files": {
+    "rust_engine/operational/src/main.rs": {
+      "final_sha256": "54857d1da29b3784b3a945d867b53694f95439fc7c06dc3ed6eadc3276dc04e1",
+      "study_sha256": "4a26c635c16f9149eac1098db5ecb5b5da94dc119b5c2a15a27704a9f8e7b545"
+    }
+  },
+  "final_engine_sha256": "8d64a1e68947c8f1e5f580c6b8fb39264c7f1e096645b18d6293ee9376b62431",
+  "legacy_files_modified": false,
+  "original_engine_sha256": "4911886d4c67ca35394ac28d9cbf62b8d3927f09812d5835aef9c0a4acdfc140",
+  "original_results_sha256": "cece35c3e9c742fc891377258764309b0dadc036706229e07155758d51e208a5",
+  "reason": "After scoring, fix resource-root resolution in isolated crate; no semantic module or extraction change. All 279 operational stage outputs replayed byte-identically. Protocol revision 3 and results retained unchanged.",
+  "replay_outputs": 279,
+  "status": "PASS"
+}

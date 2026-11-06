@@ -1,0 +1,140 @@
+{
+  "configuration": {
+    "max_dependencies": 20000,
+    "max_operations": 10000,
+    "override_policy": "instruction-default",
+    "simplification": "decompile",
+    "timeout_seconds": 30
+  },
+  "dependencies": [
+    {
+      "basis": "recovered-ssa",
+      "from": "op:0",
+      "input": 0,
+      "to": "op:2"
+    },
+    {
+      "basis": "recovered-ssa",
+      "from": "op:2",
+      "input": 1,
+      "to": "op:1"
+    }
+  ],
+  "environment": {
+    "analysis_policy": "fresh-headless-default-analysis;decompiler-default-options",
+    "compiler_spec": "windows",
+    "ghidra_revision": "e40ed13014025f82488b1f8f7bca566894ac376b",
+    "ghidra_version": "12.0.4",
+    "language": "x86:LE:32:default"
+  },
+  "function": {
+    "entry": "004015aa",
+    "id": "fn:004015aa",
+    "name": "signed_less"
+  },
+  "observability": {
+    "dependencies_seen": 2,
+    "operations_seen": 3,
+    "reason": "",
+    "state": "complete",
+    "truncated": false,
+    "unresolved_inputs": 2
+  },
+  "operations": [
+    {
+      "id": "op:0",
+      "inputs": [
+        {
+          "kind": "other",
+          "offset": "4",
+          "space": "stack",
+          "width": 4
+        },
+        {
+          "kind": "other",
+          "offset": "8",
+          "space": "stack",
+          "width": 4
+        }
+      ],
+      "opcode": "INT_SLESS",
+      "origin": {
+        "address": "004015b3",
+        "sequence": 19
+      },
+      "output": {
+        "kind": "unique",
+        "offset": "18700",
+        "space": "unique",
+        "width": 1
+      },
+      "semantics": {
+        "family": "predicate",
+        "signedness": "signed"
+      }
+    },
+    {
+      "id": "op:1",
+      "inputs": [
+        {
+          "kind": "constant",
+          "offset": "0",
+          "space": "const",
+          "width": 4
+        },
+        {
+          "kind": "register",
+          "offset": "0",
+          "space": "register",
+          "width": 1
+        }
+      ],
+      "opcode": "RETURN",
+      "origin": {
+        "address": "004015ba",
+        "sequence": 28
+      },
+      "output": null,
+      "semantics": {
+        "family": "control",
+        "signedness": "not_asserted"
+      }
+    },
+    {
+      "id": "op:2",
+      "inputs": [
+        {
+          "kind": "unique",
+          "offset": "18700",
+          "space": "unique",
+          "width": 1
+        }
+      ],
+      "opcode": "COPY",
+      "origin": {
+        "address": "004015ba",
+        "sequence": 31
+      },
+      "output": {
+        "kind": "register",
+        "offset": "0",
+        "space": "register",
+        "width": 1
+      },
+      "semantics": {
+        "family": "transfer",
+        "signedness": "not_asserted"
+      }
+    }
+  ],
+  "representation": "high",
+  "schema_version": "osgf.pcode-evidence/0.1.0",
+  "source": {
+    "binary": "micro-O0.exe",
+    "sha256": "ea95501d986f20dc95f21fbe577183c86de1e0813713e2813d039d45f5bb926d"
+  },
+  "warnings": [
+    "High operations and SSA are decompiler-recovered associations",
+    "No memory alias or function argument/return ABI inference"
+  ]
+}

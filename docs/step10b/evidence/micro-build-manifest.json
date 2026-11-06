@@ -1,0 +1,17 @@
+{
+  "builds": [
+    {
+      "build_id": "micro-O0",
+      "artifact_group": "numeric",
+      "build_hash": "ea95501d986f20dc95f21fbe577183c86de1e0813713e2813d039d45f5bb926d",
+      "source_path": "tests/fixtures/pcode_evidence_v0_1/micro_operations.c",
+      "source_hash": "9916ae442dc6cc460dcf3b6231c11edf21e16ef3dd85abd9ae5218469be396a2",
+      "compiler": "GCC 6.3.0",
+      "flags": [
+        "-O0",
+        "-fno-inline",
+        "-Wl,--no-insert-timestamp"
+      ]
+    }
+  ]
+}

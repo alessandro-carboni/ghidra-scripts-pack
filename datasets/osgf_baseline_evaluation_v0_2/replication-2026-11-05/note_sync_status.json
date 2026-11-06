@@ -1,0 +1,7 @@
+{
+  "experiment_status": "PASS",
+  "note": "C:\\Users\\aless\\Desktop\\_\\Universit\u00e0\\Sapienza\\DONE TESI.md",
+  "obsidian_sync_status": "BLOCKED",
+  "reason": "Two direct-write permission reviews timed out before execution. Windows computer-use initialization failed with OS error 3; alternate app access permission review also timed out. No report appended.",
+  "report": "datasets/osgf_baseline_evaluation_v0_2/replication-2026-11-05/REPORT.md"
+}

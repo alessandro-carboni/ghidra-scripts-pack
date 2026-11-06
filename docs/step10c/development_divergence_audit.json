@@ -1,0 +1,25 @@
+{
+  "scope": "Previously observed 27 routines/81 pairs: DEVELOPMENT diagnostic, not unseen evaluation",
+  "ablations": [
+    {
+      "diagnostic": "current_exact",
+      "positive_mean": 0.04402811407369227,
+      "negative_mean": 0.04315865470846695,
+      "negative_score_one": 0
+    },
+    {
+      "diagnostic": "erase_storage_slots_UNSAFE_not_production",
+      "positive_mean": 0.16858245835467628,
+      "negative_mean": 0.14675410231300184,
+      "negative_score_one": 0
+    }
+  ],
+  "counts": {
+    "operations": 516,
+    "copy_operations": 79,
+    "inputs": 900,
+    "unresolved_nonconstant_inputs": 132,
+    "linked_inputs": 536,
+    "linked_register_inputs": 291
+  }
+}

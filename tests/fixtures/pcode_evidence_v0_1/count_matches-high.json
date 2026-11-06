@@ -1,0 +1,639 @@
+{
+  "configuration": {
+    "max_dependencies": 20000,
+    "max_operations": 10000,
+    "override_policy": "instruction-default",
+    "simplification": "decompile",
+    "timeout_seconds": 30
+  },
+  "dependencies": [
+    {
+      "basis": "recovered-ssa",
+      "from": "op:0",
+      "input": 0,
+      "to": "op:12"
+    },
+    {
+      "basis": "recovered-ssa",
+      "from": "op:1",
+      "input": 0,
+      "to": "op:11"
+    },
+    {
+      "basis": "recovered-ssa",
+      "from": "op:10",
+      "input": 1,
+      "to": "op:12"
+    },
+    {
+      "basis": "recovered-ssa",
+      "from": "op:11",
+      "input": 0,
+      "to": "op:13"
+    },
+    {
+      "basis": "recovered-ssa",
+      "from": "op:11",
+      "input": 0,
+      "to": "op:3"
+    },
+    {
+      "basis": "recovered-ssa",
+      "from": "op:11",
+      "input": 0,
+      "to": "op:9"
+    },
+    {
+      "basis": "recovered-ssa",
+      "from": "op:12",
+      "input": 0,
+      "to": "op:10"
+    },
+    {
+      "basis": "recovered-ssa",
+      "from": "op:12",
+      "input": 0,
+      "to": "op:15"
+    },
+    {
+      "basis": "recovered-ssa",
+      "from": "op:12",
+      "input": 0,
+      "to": "op:8"
+    },
+    {
+      "basis": "recovered-ssa",
+      "from": "op:13",
+      "input": 1,
+      "to": "op:14"
+    },
+    {
+      "basis": "recovered-ssa",
+      "from": "op:15",
+      "input": 1,
+      "to": "op:16"
+    },
+    {
+      "basis": "recovered-ssa",
+      "from": "op:3",
+      "input": 0,
+      "to": "op:4"
+    },
+    {
+      "basis": "recovered-ssa",
+      "from": "op:4",
+      "input": 1,
+      "to": "op:5"
+    },
+    {
+      "basis": "recovered-ssa",
+      "from": "op:5",
+      "input": 0,
+      "to": "op:6"
+    },
+    {
+      "basis": "recovered-ssa",
+      "from": "op:6",
+      "input": 1,
+      "to": "op:7"
+    },
+    {
+      "basis": "recovered-ssa",
+      "from": "op:8",
+      "input": 1,
+      "to": "op:10"
+    },
+    {
+      "basis": "recovered-ssa",
+      "from": "op:9",
+      "input": 1,
+      "to": "op:11"
+    }
+  ],
+  "environment": {
+    "analysis_policy": "fresh-headless-default-analysis;decompiler-default-options",
+    "compiler_spec": "windows",
+    "ghidra_revision": "e40ed13014025f82488b1f8f7bca566894ac376b",
+    "ghidra_version": "12.0.4",
+    "language": "x86:LE:32:default"
+  },
+  "function": {
+    "entry": "004014e3",
+    "id": "fn:004014e3",
+    "name": "count_matches"
+  },
+  "observability": {
+    "dependencies_seen": 17,
+    "operations_seen": 17,
+    "reason": "",
+    "state": "complete",
+    "truncated": false,
+    "unresolved_inputs": 5
+  },
+  "operations": [
+    {
+      "id": "op:0",
+      "inputs": [
+        {
+          "kind": "constant",
+          "offset": "0",
+          "space": "const",
+          "width": 4
+        }
+      ],
+      "opcode": "COPY",
+      "origin": {
+        "address": "004014e9",
+        "sequence": 15
+      },
+      "output": {
+        "kind": "other",
+        "offset": "fffffffffffffff8",
+        "space": "stack",
+        "width": 4
+      },
+      "semantics": {
+        "family": "transfer",
+        "signedness": "not_asserted"
+      }
+    },
+    {
+      "id": "op:1",
+      "inputs": [
+        {
+          "kind": "constant",
+          "offset": "0",
+          "space": "const",
+          "width": 4
+        }
+      ],
+      "opcode": "COPY",
+      "origin": {
+        "address": "004014f0",
+        "sequence": 18
+      },
+      "output": {
+        "kind": "other",
+        "offset": "fffffffffffffff4",
+        "space": "stack",
+        "width": 4
+      },
+      "semantics": {
+        "family": "transfer",
+        "signedness": "not_asserted"
+      }
+    },
+    {
+      "id": "op:2",
+      "inputs": [
+        {
+          "kind": "memory",
+          "offset": "401510",
+          "space": "ram",
+          "width": 1
+        }
+      ],
+      "opcode": "BRANCH",
+      "origin": {
+        "address": "004014f7",
+        "sequence": 19
+      },
+      "output": null,
+      "semantics": {
+        "family": "control",
+        "signedness": "not_asserted"
+      }
+    },
+    {
+      "id": "op:3",
+      "inputs": [
+        {
+          "kind": "other",
+          "offset": "fffffffffffffff4",
+          "space": "stack",
+          "width": 4
+        },
+        {
+          "kind": "other",
+          "offset": "4",
+          "space": "stack",
+          "width": 4
+        }
+      ],
+      "opcode": "INT_ADD",
+      "origin": {
+        "address": "004014ff",
+        "sequence": 53
+      },
+      "output": {
+        "kind": "unique",
+        "offset": "10000006",
+        "space": "unique",
+        "width": 4
+      },
+      "semantics": {
+        "family": "arithmetic",
+        "signedness": "not_asserted"
+      }
+    },
+    {
+      "id": "op:4",
+      "inputs": [
+        {
+          "kind": "unique",
+          "offset": "10000006",
+          "space": "unique",
+          "width": 4
+        }
+      ],
+      "opcode": "CAST",
+      "origin": {
+        "address": "004014ff",
+        "sequence": 149
+      },
+      "output": {
+        "kind": "register",
+        "offset": "0",
+        "space": "register",
+        "width": 4
+      },
+      "semantics": {
+        "family": "transfer",
+        "signedness": "not_asserted"
+      }
+    },
+    {
+      "id": "op:5",
+      "inputs": [
+        {
+          "kind": "constant",
+          "offset": "1a1",
+          "space": "const",
+          "width": 4
+        },
+        {
+          "kind": "register",
+          "offset": "0",
+          "space": "register",
+          "width": 4
+        }
+      ],
+      "opcode": "LOAD",
+      "origin": {
+        "address": "00401501",
+        "sequence": 60
+      },
+      "output": {
+        "kind": "unique",
+        "offset": "17000",
+        "space": "unique",
+        "width": 1
+      },
+      "semantics": {
+        "family": "memory",
+        "signedness": "not_asserted"
+      }
+    },
+    {
+      "id": "op:6",
+      "inputs": [
+        {
+          "kind": "unique",
+          "offset": "17000",
+          "space": "unique",
+          "width": 1
+        },
+        {
+          "kind": "constant",
+          "offset": "20",
+          "space": "const",
+          "width": 1
+        }
+      ],
+      "opcode": "INT_EQUAL",
+      "origin": {
+        "address": "00401504",
+        "sequence": 66
+      },
+      "output": {
+        "kind": "register",
+        "offset": "206",
+        "space": "register",
+        "width": 1
+      },
+      "semantics": {
+        "family": "predicate",
+        "signedness": "not_asserted"
+      }
+    },
+    {
+      "id": "op:7",
+      "inputs": [
+        {
+          "kind": "memory",
+          "offset": "40150c",
+          "space": "ram",
+          "width": 1
+        },
+        {
+          "kind": "register",
+          "offset": "206",
+          "space": "register",
+          "width": 1
+        }
+      ],
+      "opcode": "CBRANCH",
+      "origin": {
+        "address": "00401506",
+        "sequence": 72
+      },
+      "output": null,
+      "semantics": {
+        "family": "control",
+        "signedness": "not_asserted"
+      }
+    },
+    {
+      "id": "op:8",
+      "inputs": [
+        {
+          "kind": "other",
+          "offset": "fffffffffffffff8",
+          "space": "stack",
+          "width": 4
+        },
+        {
+          "kind": "constant",
+          "offset": "1",
+          "space": "const",
+          "width": 4
+        }
+      ],
+      "opcode": "INT_ADD",
+      "origin": {
+        "address": "00401508",
+        "sequence": 79
+      },
+      "output": {
+        "kind": "unique",
+        "offset": "a300",
+        "space": "unique",
+        "width": 4
+      },
+      "semantics": {
+        "family": "arithmetic",
+        "signedness": "not_asserted"
+      }
+    },
+    {
+      "id": "op:9",
+      "inputs": [
+        {
+          "kind": "other",
+          "offset": "fffffffffffffff4",
+          "space": "stack",
+          "width": 4
+        },
+        {
+          "kind": "constant",
+          "offset": "1",
+          "space": "const",
+          "width": 4
+        }
+      ],
+      "opcode": "INT_ADD",
+      "origin": {
+        "address": "0040150c",
+        "sequence": 96
+      },
+      "output": {
+        "kind": "unique",
+        "offset": "a300",
+        "space": "unique",
+        "width": 4
+      },
+      "semantics": {
+        "family": "arithmetic",
+        "signedness": "not_asserted"
+      }
+    },
+    {
+      "id": "op:10",
+      "inputs": [
+        {
+          "kind": "other",
+          "offset": "fffffffffffffff8",
+          "space": "stack",
+          "width": 4
+        },
+        {
+          "kind": "unique",
+          "offset": "a300",
+          "space": "unique",
+          "width": 4
+        }
+      ],
+      "opcode": "MULTIEQUAL",
+      "origin": {
+        "address": "0040150c",
+        "sequence": 146
+      },
+      "output": {
+        "kind": "other",
+        "offset": "fffffffffffffff8",
+        "space": "stack",
+        "width": 4
+      },
+      "semantics": {
+        "family": "analysis",
+        "signedness": "not_asserted"
+      }
+    },
+    {
+      "id": "op:11",
+      "inputs": [
+        {
+          "kind": "other",
+          "offset": "fffffffffffffff4",
+          "space": "stack",
+          "width": 4
+        },
+        {
+          "kind": "unique",
+          "offset": "a300",
+          "space": "unique",
+          "width": 4
+        }
+      ],
+      "opcode": "MULTIEQUAL",
+      "origin": {
+        "address": "00401510",
+        "sequence": 145
+      },
+      "output": {
+        "kind": "other",
+        "offset": "fffffffffffffff4",
+        "space": "stack",
+        "width": 4
+      },
+      "semantics": {
+        "family": "analysis",
+        "signedness": "not_asserted"
+      }
+    },
+    {
+      "id": "op:12",
+      "inputs": [
+        {
+          "kind": "other",
+          "offset": "fffffffffffffff8",
+          "space": "stack",
+          "width": 4
+        },
+        {
+          "kind": "other",
+          "offset": "fffffffffffffff8",
+          "space": "stack",
+          "width": 4
+        }
+      ],
+      "opcode": "MULTIEQUAL",
+      "origin": {
+        "address": "00401510",
+        "sequence": 147
+      },
+      "output": {
+        "kind": "other",
+        "offset": "fffffffffffffff8",
+        "space": "stack",
+        "width": 4
+      },
+      "semantics": {
+        "family": "analysis",
+        "signedness": "not_asserted"
+      }
+    },
+    {
+      "id": "op:13",
+      "inputs": [
+        {
+          "kind": "other",
+          "offset": "fffffffffffffff4",
+          "space": "stack",
+          "width": 4
+        },
+        {
+          "kind": "other",
+          "offset": "8",
+          "space": "stack",
+          "width": 4
+        }
+      ],
+      "opcode": "INT_LESS",
+      "origin": {
+        "address": "00401513",
+        "sequence": 26
+      },
+      "output": {
+        "kind": "register",
+        "offset": "200",
+        "space": "register",
+        "width": 1
+      },
+      "semantics": {
+        "family": "predicate",
+        "signedness": "unsigned"
+      }
+    },
+    {
+      "id": "op:14",
+      "inputs": [
+        {
+          "kind": "memory",
+          "offset": "4014f9",
+          "space": "ram",
+          "width": 1
+        },
+        {
+          "kind": "register",
+          "offset": "200",
+          "space": "register",
+          "width": 1
+        }
+      ],
+      "opcode": "CBRANCH",
+      "origin": {
+        "address": "00401516",
+        "sequence": 35
+      },
+      "output": null,
+      "semantics": {
+        "family": "control",
+        "signedness": "not_asserted"
+      }
+    },
+    {
+      "id": "op:15",
+      "inputs": [
+        {
+          "kind": "other",
+          "offset": "fffffffffffffff8",
+          "space": "stack",
+          "width": 4
+        }
+      ],
+      "opcode": "COPY",
+      "origin": {
+        "address": "00401518",
+        "sequence": 38
+      },
+      "output": {
+        "kind": "register",
+        "offset": "0",
+        "space": "register",
+        "width": 4
+      },
+      "semantics": {
+        "family": "transfer",
+        "signedness": "not_asserted"
+      }
+    },
+    {
+      "id": "op:16",
+      "inputs": [
+        {
+          "kind": "constant",
+          "offset": "0",
+          "space": "const",
+          "width": 4
+        },
+        {
+          "kind": "register",
+          "offset": "0",
+          "space": "register",
+          "width": 4
+        }
+      ],
+      "opcode": "RETURN",
+      "origin": {
+        "address": "0040151c",
+        "sequence": 44
+      },
+      "output": null,
+      "semantics": {
+        "family": "control",
+        "signedness": "not_asserted"
+      }
+    }
+  ],
+  "representation": "high",
+  "schema_version": "osgf.pcode-evidence/0.1.0",
+  "source": {
+    "binary": "numeric-gcc-O0.exe",
+    "sha256": "641ffca9e881fd802f6cab4d80d2efb4352a869e01d1bbb1da081b138409503a"
+  },
+  "warnings": [
+    "High operations and SSA are decompiler-recovered associations",
+    "No memory alias or function argument/return ABI inference"
+  ]
+}

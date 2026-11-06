@@ -1,0 +1,71 @@
+{
+  "origin": "Real Ghidra 12.0.4 static extraction; two fresh imports and settings directories; numeric-gcc-O0 frozen compiled bytes; sample NOT executed",
+  "records": [
+    {
+      "function": {
+        "entry": "00401460",
+        "id": "fn:00401460",
+        "name": "sum_array"
+      },
+      "path": "sum_array-raw.json",
+      "representation": "raw",
+      "sha256": "e2ee19dab99b28c729de7a551cce68237a38e549b215e9a3129802343373a0d5",
+      "source_binary_sha256": "641ffca9e881fd802f6cab4d80d2efb4352a869e01d1bbb1da081b138409503a"
+    },
+    {
+      "function": {
+        "entry": "00401498",
+        "id": "fn:00401498",
+        "name": "find_max"
+      },
+      "path": "find_max-raw.json",
+      "representation": "raw",
+      "sha256": "400904c19d9e68997bee0598002707fef63939f60bf44f1a0260444f7397eedd",
+      "source_binary_sha256": "641ffca9e881fd802f6cab4d80d2efb4352a869e01d1bbb1da081b138409503a"
+    },
+    {
+      "function": {
+        "entry": "004014e3",
+        "id": "fn:004014e3",
+        "name": "count_matches"
+      },
+      "path": "count_matches-raw.json",
+      "representation": "raw",
+      "sha256": "df731f917ae371f48534d4089294404cb0e3fdaeb30db21ac09d81ba917eb738",
+      "source_binary_sha256": "641ffca9e881fd802f6cab4d80d2efb4352a869e01d1bbb1da081b138409503a"
+    },
+    {
+      "function": {
+        "entry": "00401460",
+        "id": "fn:00401460",
+        "name": "sum_array"
+      },
+      "path": "sum_array-high.json",
+      "representation": "high",
+      "sha256": "8449e3d70c34267aeac66c19a4b0545b80d000f7cd58ed215e193292421b0d7d",
+      "source_binary_sha256": "641ffca9e881fd802f6cab4d80d2efb4352a869e01d1bbb1da081b138409503a"
+    },
+    {
+      "function": {
+        "entry": "00401498",
+        "id": "fn:00401498",
+        "name": "find_max"
+      },
+      "path": "find_max-high.json",
+      "representation": "high",
+      "sha256": "d972fc5c9135363b3948f2dc6030839d6cf64c17db0d173e30bb9297e15d54c7",
+      "source_binary_sha256": "641ffca9e881fd802f6cab4d80d2efb4352a869e01d1bbb1da081b138409503a"
+    },
+    {
+      "function": {
+        "entry": "004014e3",
+        "id": "fn:004014e3",
+        "name": "count_matches"
+      },
+      "path": "count_matches-high.json",
+      "representation": "high",
+      "sha256": "3b2ee77d917da14b1154405ae72f4c67373bbe80648eb19c7c915aba7f64a89a",
+      "source_binary_sha256": "641ffca9e881fd802f6cab4d80d2efb4352a869e01d1bbb1da081b138409503a"
+    }
+  ]
+}

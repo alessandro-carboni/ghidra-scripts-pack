@@ -1,0 +1,53 @@
+{
+  "recording": "Commands and outcomes observed in tool outputs of the 2026-11-04 continuation; earlier failure receipt retained separately",
+  "checks": [
+    {
+      "command": "cargo test --locked --manifest-path rust_engine/operational/Cargo.toml",
+      "status": "PASS",
+      "exit_code": 0,
+      "result": "258 passed; supersedes earlier 104 resource-path failures"
+    },
+    {
+      "command": "cargo clippy --locked --manifest-path rust_engine/operational/Cargo.toml --all-targets -- -D warnings",
+      "status": "PASS",
+      "exit_code": 0
+    },
+    {
+      "command": "cargo build --locked --manifest-path rust_engine/operational/Cargo.toml",
+      "status": "PASS",
+      "exit_code": 0
+    },
+    {
+      "command": "cargo build --locked --manifest-path rust_engine/Cargo.toml",
+      "status": "PASS",
+      "exit_code": 0
+    },
+    {
+      "command": "python -m pytest -q tests/test_operational_pipeline.py tests/test_operational_evaluation.py tests/test_pcode_evidence.py",
+      "status": "PASS",
+      "exit_code": 0,
+      "result": "48 passed in 3.40s after resource fix"
+    },
+    {
+      "command": "cargo fmt --manifest-path rust_engine/operational/Cargo.toml -- --check",
+      "status": "PASS",
+      "exit_code": 0
+    },
+    {
+      "command": "python -m ruff check .",
+      "status": "PASS",
+      "exit_code": 0
+    },
+    {
+      "command": "python -m ruff format --check .",
+      "status": "PASS",
+      "exit_code": 0,
+      "result": "100 files already formatted"
+    },
+    {
+      "command": "git diff --check",
+      "status": "PASS",
+      "exit_code": 0
+    }
+  ]
+}
