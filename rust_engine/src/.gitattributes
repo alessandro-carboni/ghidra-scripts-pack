@@ -1,0 +1,2 @@
+# Exact byte protocol for the additive value-flow module only.
+value_flow.rs text eol=lf

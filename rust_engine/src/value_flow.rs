@@ -17,6 +17,7 @@ pub struct ValueFingerprint {
     pub source: OperationalFingerprint,
     pub features: Vec<Feature>,
     pub contracted_copies: BTreeMap<String, String>,
+    pub copy_barriers: BTreeMap<String, String>,
     pub paths_truncated: bool,
     pub semantic_digest: String,
 }
@@ -40,7 +41,7 @@ fn temporary(v: &Operand) -> bool {
 }
 
 type Links<'a> = BTreeMap<(&'a str, usize), &'a str>;
-fn redirects(doc: &Evidence) -> BTreeMap<String, String> {
+fn redirects(doc: &Evidence) -> (BTreeMap<String, String>, BTreeMap<String, String>) {
     let ops: BTreeMap<_, _> = doc.operations.iter().map(|o| (o.id.as_str(), o)).collect();
     let links: Links<'_> = doc
         .dependencies
@@ -58,12 +59,15 @@ fn redirects(doc: &Evidence) -> BTreeMap<String, String> {
         (temporary(out) && temporary(&op.inputs[0]) && out.width == op.inputs[0].width)
             .then(|| producer.to_string())
     };
-    ops.keys()
+    let mut barriers = BTreeMap::new();
+    let redirects = ops
+        .keys()
         .map(|&id| {
             let mut current = id.to_string();
             let mut visited = BTreeSet::new();
             for _ in 0..COPY_HOPS {
                 if !visited.insert(current.clone()) {
+                    barriers.insert(id.to_string(), "copy_cycle_retained".into());
                     return (id.to_string(), id.to_string());
                 }
                 match next(&current) {
@@ -72,9 +76,11 @@ fn redirects(doc: &Evidence) -> BTreeMap<String, String> {
                 }
             }
             // Cycles or over-budget chains stay unchanged, never guessed equivalent.
+            barriers.insert(id.to_string(), "copy_hop_budget_retained".into());
             (id.to_string(), id.to_string())
         })
-        .collect()
+        .collect();
+    (redirects, barriers)
 }
 
 impl ValueFingerprint {
@@ -83,6 +89,7 @@ impl ValueFingerprint {
         let canonical = &source.source_canonical;
         let mut grouped: BTreeMap<String, (Value, Vec<Vec<String>>)> = BTreeMap::new();
         let mut contracted_copies = BTreeMap::new();
+        let mut copy_barriers = BTreeMap::new();
         let mut path_count = 0;
         let mut paths_truncated = false;
         let mut add = |descriptor: Value, occurrence: Vec<String>| {
@@ -108,7 +115,10 @@ impl ValueFingerprint {
                 .iter()
                 .map(|o| (o.id.as_str(), o))
                 .collect();
-            let redirects = redirects(doc);
+            let (redirects, barriers) = redirects(doc);
+            for (id, reason) in barriers {
+                copy_barriers.insert(original_ops[id.as_str()].into(), reason);
+            }
             for (copy, target) in &redirects {
                 if copy != target {
                     contracted_copies.insert(
@@ -236,6 +246,7 @@ impl ValueFingerprint {
             source: source.clone(),
             features,
             contracted_copies,
+            copy_barriers,
             paths_truncated,
             semantic_digest,
         })
@@ -278,10 +289,13 @@ pub fn compare(q: &ValueFingerprint, r: &ValueFingerprint) -> Result<Value, Stri
     };
     Ok(
         json!({"schema_version":"osgf.value-flow-similarity/0.1.0","baseline":old,
+        "query_semantic_digest":q.semantic_digest,"reference_semantic_digest":r.semantic_digest,
         "normalized":{"set_similarity":set,"multiset_similarity":multiset,"matched_distinct_features":matched,
           "query_features":q.features.len(),"reference_features":r.features.len(),
           "query_contracted_copies":q.contracted_copies.len(),"reference_contracted_copies":r.contracted_copies.len(),
           "paths_truncated":q.paths_truncated||r.paths_truncated,
+          "comparison_complete":old["operational"]["comparison_complete"]==true&&!q.paths_truncated&&!r.paths_truncated,
+          "query_copy_barriers":q.copy_barriers,"reference_copy_barriers":r.copy_barriers,
           "observability":"Inherits baseline source support; incomplete evidence is not semantic absence; bounded colors may collide"},
         "exact_normalized_mean":{"set_similarity":mean(old["operational"]["set_similarity"].as_f64(),set),"multiset_similarity":mean(old["operational"]["multiset_similarity"].as_f64(),multiset)},
         "decision":null,"policy":"Fixed two-round High SSA view, no recovered-parameter or alias equivalence claim; mean requires both views comparable"}),

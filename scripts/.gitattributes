@@ -1,0 +1,4 @@
+# Additive value-flow experiment tools; existing scripts are unchanged.
+evaluate_value_flow.py text eol=lf
+run_value_flow_study.py text eol=lf
+build_value_flow_corpus.py text eol=lf
