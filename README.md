@@ -1,5 +1,11 @@
 # Ghidra Malware Triage Framework
 
+## OSGF research direction
+
+The OSGF research path centers on **observable seed → local interprocedural subgraph → deterministic canonicalization → graph fingerprint → continuous similarity and retrieval**. P-code is separately reported supporting evidence. Similarity is neither a malware probability nor proof of equivalent execution. The existing triage application described below is preserved.
+
+The new graph-first path is opt-in: see [architecture audit](docs/graph-first/ARCHITECTURE_AUDIT.md), [commands and versioned contracts](docs/graph-first/CONTRACT.md), and [scientific status](docs/graph-first/SCIENTIFIC_COMPARISON.md). Frozen v0.1 and all operational research baselines remain available. No new default algorithm or LLM component has been introduced. The new independent evaluation is incomplete; technical test success is not a claim of improved similarity performance.
+
 A modular automated static-analysis framework for malware triage built around **Ghidra**, **Go**, **Rust**, and an optional **local AI-assisted analysis layer**.
 
 <p align="center">

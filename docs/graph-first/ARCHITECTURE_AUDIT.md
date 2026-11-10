@@ -1,0 +1,24 @@
+# Architectural realignment audit — 2026-11-10
+
+Read-only source audit completed before implementation. Branch codex, clean HEAD 736a0406ca163b1d0c0325127f69d4ee998dea47, exactly the reviewed revision. Historical operational experiments remain research assets. No default change is authorized or needed.
+
+| Component | Current role / inspected files | Intended role | Additive change | Risk |
+|---|---|---|---|---|
+| Extraction | ghidra_scripts/export_report.py, export_research_graph.py: TypedGraph 0.12.0 and provenance-only symbol map | Preserve observations | Reuse unchanged | Extraction/optimization can remove observations |
+| Seeds | rust_engine/src/seed_detection.rs, seed_rules.rs, seed_validation.rs; rules/seed_rules.json: six trigger detectors, consolidated function anchors, validated evidence | Primary anchors | Reuse export-local-subgraphs command, not research-anchor injection | Missing seeds remain ineligible |
+| Local context | local_subgraph.rs, local_subgraph_schema.rs, runtime_subgraph_export.rs: independent caller/callee BFS; default depths 1/2 | Comparison region | Wrap existing exporter with explicit fixed budgets | Boundary changes and unresolved calls affect reachability |
+| Canonicalization | canonical.rs, canonical_order.rs: role/distance, normalized evidence, provenance/coverage ledger | Conservative scientific representation | Reuse canonicalize-local-subgraph unchanged | Function identities intentionally abstracted |
+| Fingerprint | fingerprint.rs, fingerprint_motifs.rs, fingerprint_provenance.rs: topology, typed evidence, one-call-to-evidence motifs | Core descriptor baseline | New opt-in relational co-observation view | May be boundary-sensitive; measure ablation |
+| Similarity | similarity.rs, similarity_observability.rs: per-view set/multiset Jaccard, optional equal-view mean | Continuous interpretable scores | Preserve baseline; new independently versioned envelope | Generic topology can still equal one |
+| Operational | runtime_operational.rs, operational_similarity.rs, value_flow.rs, multilevel_flow.rs; semantic_flow.py | Optional evidence | Reuse existing comparison, keep score separate | Compiler churn; unavailable is not disagreement |
+| Retrieval | evaluation_galleries.py, evaluate_operational_baseline.py and experimental runners | Automatic seed-to-reference search | Add explicit graph-first orchestration with deterministic exhaustive ranking and bounded optional refinement | Candidate loss must be counted |
+
+The CLI already exports automatically detected seed contexts and canonicalizes/fingerprints/compares them. It does not expose one end-to-end reference search contract. Earlier docs calling the CLI a placeholder are stale for these explicit commands. The enrichment default remains separate. Existing research-anchor/operational study paths commonly use known symbol identities and depth zero; they cannot establish automatic-seed coverage.
+
+Identified information loss: v0.1 retains function-role marginals, directed calls and callee evidence, but not the joint association of two distinct observations on the SAME function or paired observations on BOTH ends of a call. Two sibling callees with the same role/distance can exchange evidence memberships while preserving all three bags. A bounded co-observation descriptor can distinguish this controlled collision without incidental names/addresses. This is a specific hypothesis, not justification for longer motifs or more operational layers.
+
+No graph descriptor can recover unobserved computation from an anchor-only graph. Historical generic-topology collisions must remain visible and qualified as weak support; do not force their scores lower or claim that the new descriptor solves them. Historical FAILURE_CATALOG and ROOT_CAUSE_MATRIX provide immutable per-pair provenance for the 39 identical negative descriptor multisets (32 topology-only) discussed in the review. A new collision diagnostic will retain each applicable pair and its actual observed-view support.
+
+Smallest compatible additions: scripts/graph_first.py (strict source-bound graph envelope, comparison and automatic-seed search), scripts/graph_first_evaluation.py (independent metrics/conditions), scripts/run_graph_first_study.py (registration and controlled study), tests/test_graph_first.py, docs/graph-first/* and a new experimental dataset. No Rust algorithm change, no existing schema replacement, no new dependencies. Optional Ghidra orchestration reuses current exporters. LLM proposals remain future work, must be independently verified within explicit assumptions, and cannot alter scores directly.
+
+Technical acceptance and scientific utility will be reported separately. New graph-first, operational-only, fixed combined and bounded graph-first refinement conditions must be registered before fresh heldout evaluation. Primary interpretation remains numerical similarity, not a malware probability or equivalence proof.

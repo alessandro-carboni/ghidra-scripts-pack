@@ -8,3 +8,9 @@ semantic_flow.py text eol=lf
 audit_semantic_layers.py text eol=lf
 run_semantic_benchmark.py text eol=lf
 create_semantic_benchmark.py text eol=lf
+
+# Additive graph-first research protocol; exact method bytes portable across checkouts.
+graph_first.py text eol=lf
+graph_first_evaluation.py text eol=lf
+run_graph_first_study.py text eol=lf
+create_graph_first_study.py text eol=lf

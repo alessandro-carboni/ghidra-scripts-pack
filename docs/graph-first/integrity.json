@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "unchanged_tracked_files": 1200,
+  "intentional_changes": [
+    ".github/workflows/ci.yml",
+    "README.md",
+    "scripts/.gitattributes"
+  ],
+  "protected_counts": {
+    "preserved_inventory": 291,
+    "scientific_files": 161
+  },
+  "registered_method_and_amendments": "PASS",
+  "quarantined_build": "buffer_low_nibble_xor-msvc-O0",
+  "benchmark_status": "BLOCKED before complete independent evaluation"
+}
