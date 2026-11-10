@@ -1,0 +1,76 @@
+[
+  {
+    "command": [
+      "python",
+      "scripts/validate_dataset_portability.py"
+    ],
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "python",
+      "scripts/test_canonical_baseline.py",
+      "--engine",
+      "rust_engine/target/debug/rust_engine.exe"
+    ],
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "python",
+      "scripts/test_fingerprint_baseline.py",
+      "--engine",
+      "rust_engine/target/debug/rust_engine.exe"
+    ],
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "python",
+      "scripts/test_similarity_baseline.py",
+      "--engine",
+      "rust_engine/target/debug/rust_engine.exe"
+    ],
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "python",
+      "scripts/test_similarity_real_canonical.py",
+      "--engine",
+      "rust_engine/target/debug/rust_engine.exe",
+      "--canonical-dir",
+      "reports/canonical-notepad-step5"
+    ],
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "python",
+      "-m",
+      "ruff",
+      "check",
+      "."
+    ],
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "python",
+      "-m",
+      "ruff",
+      "format",
+      "--check",
+      "."
+    ],
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "exit_code": 0
+  }
+]

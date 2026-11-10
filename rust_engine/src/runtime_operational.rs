@@ -6,7 +6,7 @@ use crate::operational_schema::{ensure, Evidence};
 use serde::{de::DeserializeOwned, Serialize};
 use std::{fs, io::Write};
 
-pub const USAGE:&str="operational-bind <typed.json> <one-layer-evidence-dir> <new-graph.json> | operational-local <graph.json> <anchor-id> <config.json> <new-local.json> | operational-canonical <local.json> <new-canonical.json> | operational-fingerprint <canonical.json> <feature-config.json> <new-fingerprint.json> | operational-compare <query-fingerprint.json> <reference-fingerprint.json> <new-result.json>";
+pub const USAGE:&str="multilevel-fingerprint <operational-fingerprint.json> <new-fingerprint.json> | multilevel-compare <query.json> <reference.json> <new-result.json> | value-fingerprint <operational-fingerprint.json> <new-fingerprint.json> | value-compare <query.json> <reference.json> <new-result.json> | operational-bind <typed.json> <one-layer-evidence-dir> <new-graph.json> | operational-local <graph.json> <anchor-id> <config.json> <new-local.json> | operational-canonical <local.json> <new-canonical.json> | operational-fingerprint <canonical.json> <feature-config.json> <new-fingerprint.json> | operational-compare <query-fingerprint.json> <reference-fingerprint.json> <new-result.json>";
 fn load<T: DeserializeOwned>(path: &str) -> Result<T, String> {
     serde_json::from_slice(&fs::read(path).map_err(|e| e.to_string())?).map_err(|e| e.to_string())
 }
@@ -22,6 +22,18 @@ fn write<T: Serialize>(path: &str, value: &T) -> Result<(), String> {
 }
 pub fn run(args: &[String]) -> Result<(), String> {
     match args.first().map(String::as_str) {
+        Some("multilevel-fingerprint") if args.len() == 3 => {
+            let source: OperationalFingerprint = load(&args[1])?;
+            write(
+                &args[2],
+                &crate::multilevel_flow::MultilevelFingerprint::from_source(&source)?,
+            )?;
+        }
+        Some("multilevel-compare") if args.len() == 4 => {
+            let q: crate::multilevel_flow::MultilevelFingerprint = load(&args[1])?;
+            let r: crate::multilevel_flow::MultilevelFingerprint = load(&args[2])?;
+            write(&args[3], &crate::multilevel_flow::compare(&q, &r)?)?;
+        }
         Some("value-fingerprint") if args.len() == 3 => {
             let source: OperationalFingerprint = load(&args[1])?;
             write(

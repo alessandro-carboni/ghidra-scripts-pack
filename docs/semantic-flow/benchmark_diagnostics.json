@@ -1,0 +1,92 @@
+{
+  "policy": "Post-run descriptive only; no threshold or method changes",
+  "conditions": {
+    "algebra": {
+      "same_implementation": {
+        "positive_pairs": 18,
+        "tp": 8
+      },
+      "different_equivalent_implementation": {
+        "positive_pairs": 12,
+        "tp": 0
+      }
+    },
+    "combined": {
+      "same_implementation": {
+        "positive_pairs": 18,
+        "tp": 6
+      },
+      "different_equivalent_implementation": {
+        "positive_pairs": 12,
+        "tp": 0
+      }
+    },
+    "effects": {
+      "same_implementation": {
+        "positive_pairs": 18,
+        "tp": 8
+      },
+      "different_equivalent_implementation": {
+        "positive_pairs": 12,
+        "tp": 0
+      }
+    },
+    "exact": {
+      "same_implementation": {
+        "positive_pairs": 18,
+        "tp": 0
+      },
+      "different_equivalent_implementation": {
+        "positive_pairs": 12,
+        "tp": 0
+      }
+    },
+    "families": {
+      "same_implementation": {
+        "positive_pairs": 18,
+        "tp": 12
+      },
+      "different_equivalent_implementation": {
+        "positive_pairs": 12,
+        "tp": 0
+      }
+    },
+    "multilevel": {
+      "same_implementation": {
+        "positive_pairs": 18,
+        "tp": 6
+      },
+      "different_equivalent_implementation": {
+        "positive_pairs": 12,
+        "tp": 0
+      }
+    },
+    "parameters": {
+      "same_implementation": {
+        "positive_pairs": 18,
+        "tp": 7
+      },
+      "different_equivalent_implementation": {
+        "positive_pairs": 12,
+        "tp": 0
+      }
+    },
+    "physical": {
+      "same_implementation": {
+        "positive_pairs": 18,
+        "tp": 7
+      },
+      "different_equivalent_implementation": {
+        "positive_pairs": 12,
+        "tp": 0
+      }
+    }
+  },
+  "cases_with_barriers": {
+    "physical": 15,
+    "parameters": 15,
+    "effects": 15,
+    "algebra": 15,
+    "families": 0
+  }
+}

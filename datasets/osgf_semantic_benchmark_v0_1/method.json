@@ -1,0 +1,33 @@
+{
+  "combined_weights": {
+    "algebra": 0.5,
+    "multilevel": 0.5
+  },
+  "conditions": [
+    "exact",
+    "multilevel",
+    "physical",
+    "parameters",
+    "effects",
+    "algebra",
+    "families",
+    "combined"
+  ],
+  "engine_sha256": "dd92ced1c1895bdc954e40ec54cf8986718b18f859682429a27e3502700b5bd5",
+  "implementation": {
+    "ghidra_scripts/export_recovered_evidence.py": "92d4ea423ce92e275d2eec727c2220b903141a63d8c3d8ede41f9e59dc196fde",
+    "ghidra_scripts/export_research_graph.py": "1a3da11090bfdaa34971c0f06689274ead060bafe9736b8deb5b49566d8da7e5",
+    "ghidra_scripts/pcode_extraction.py": "af123ecb9f7df6c071f020cd9ffde1f2742f9352078cf0a51e6943a7ec485b3b",
+    "ghidra_scripts/recovered_extraction.py": "5924f1a80692f4f6104fa4cf99a9c14bac61360005746db48eda0524f55d4f4e",
+    "scripts/evaluate_operational_baseline.py": "941399cd79fd7ad0373d80dd3e0f12d6b31a3263a2eaa7d20b6c1ddd1597ab24",
+    "scripts/evaluate_value_flow.py": "383e3a556e95b7c871e8c0c647de70ebf3e479ee28e5c744fbb3d222a280df99",
+    "scripts/pcode_evidence.py": "8949bea9e114f7331cf6823e18829196faf3675b11bdacb5e0b00abd64ad12e2",
+    "scripts/recovered_evidence.py": "aaafae1d5cc6372715e447157128a5c8363fcf92a5f3417d7502ef277f8a2b4b",
+    "scripts/run_semantic_benchmark.py": "ba97fbdcc2dd220946d23c61c10984f00c3cc5e693f06511601a0e8f94abf6b3",
+    "scripts/semantic_flow.py": "1c5e9c3a55532ca5773f820ca48f81a08e9f02f8a8dab0425fc2edf06e23c0c5"
+  },
+  "max_discovery_fpr": 0.05,
+  "policy": "New source families authored after method lock; internal prospective study, not external blinded validation; no test-driven tuning",
+  "primary": "combined",
+  "schema_version": "osgf.semantic-study/0.1.0"
+}

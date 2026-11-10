@@ -54,4 +54,4 @@ jobs:
       - run: cargo test --locked --manifest-path rust_engine/operational/Cargo.toml
       - run: cargo clippy --locked --manifest-path rust_engine/operational/Cargo.toml --all-targets -- -D warnings
       - run: cargo build --locked --manifest-path rust_engine/operational/Cargo.toml
-      - run: python -m pytest -q tests/test_pcode_evidence.py tests/test_operational_pipeline.py tests/test_operational_evaluation.py tests/test_value_flow.py
+      - run: python -m pytest -q tests/test_pcode_evidence.py tests/test_operational_pipeline.py tests/test_operational_evaluation.py tests/test_value_flow.py tests/test_multilevel_flow.py

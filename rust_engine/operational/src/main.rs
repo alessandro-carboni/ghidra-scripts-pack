@@ -37,6 +37,8 @@ mod local_subgraph_schema;
 #[cfg(test)]
 #[path = "../../src/local_subgraph_tests.rs"]
 mod local_subgraph_tests;
+#[path = "../../src/multilevel_flow.rs"]
+mod multilevel_flow;
 #[path = "../../src/operational_context.rs"]
 mod operational_context;
 #[path = "../../src/operational_features.rs"]

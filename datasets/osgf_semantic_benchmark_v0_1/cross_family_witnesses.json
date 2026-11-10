@@ -1,0 +1,175 @@
+{
+  "manifest_sha256": "7eb17127b60ddb82f9f79fca6dd0fa04204fbd347ce05bd85dbfd47e52e9e746",
+  "policy": "Independent source-contract arithmetic counterexamples; no similarity-based labels, no compiled target execution",
+  "status": "PASS",
+  "witnesses": [
+    {
+      "inputs": [
+        0,
+        1,
+        0
+      ],
+      "left_class": "subject",
+      "left_family": "unsigned_distance",
+      "left_output": 1,
+      "right_class": "subject",
+      "right_family": "gray_encoding",
+      "right_output": 0,
+      "split": "discovery"
+    },
+    {
+      "inputs": [
+        0,
+        0,
+        0
+      ],
+      "left_class": "subject",
+      "left_family": "unsigned_distance",
+      "left_output": 0,
+      "right_class": "foil",
+      "right_family": "gray_encoding",
+      "right_output": 1,
+      "split": "discovery"
+    },
+    {
+      "inputs": [
+        0,
+        0,
+        0
+      ],
+      "left_class": "foil",
+      "left_family": "unsigned_distance",
+      "left_output": 1,
+      "right_class": "subject",
+      "right_family": "gray_encoding",
+      "right_output": 0,
+      "split": "discovery"
+    },
+    {
+      "inputs": [
+        0,
+        1,
+        0
+      ],
+      "left_class": "foil",
+      "left_family": "unsigned_distance",
+      "left_output": 0,
+      "right_class": "foil",
+      "right_family": "gray_encoding",
+      "right_output": 1,
+      "split": "discovery"
+    },
+    {
+      "inputs": [
+        0,
+        1,
+        1
+      ],
+      "left_class": "subject",
+      "left_family": "median_three",
+      "left_output": 1,
+      "right_class": "subject",
+      "right_family": "byte_reversal",
+      "right_output": 0,
+      "split": "validation"
+    },
+    {
+      "inputs": [
+        0,
+        0,
+        0
+      ],
+      "left_class": "subject",
+      "left_family": "median_three",
+      "left_output": 0,
+      "right_class": "foil",
+      "right_family": "byte_reversal",
+      "right_output": 1,
+      "split": "validation"
+    },
+    {
+      "inputs": [
+        0,
+        0,
+        0
+      ],
+      "left_class": "foil",
+      "left_family": "median_three",
+      "left_output": 1,
+      "right_class": "subject",
+      "right_family": "byte_reversal",
+      "right_output": 0,
+      "split": "validation"
+    },
+    {
+      "inputs": [
+        0,
+        1,
+        1
+      ],
+      "left_class": "foil",
+      "left_family": "median_three",
+      "left_output": 0,
+      "right_class": "foil",
+      "right_family": "byte_reversal",
+      "right_output": 1,
+      "split": "validation"
+    },
+    {
+      "inputs": [
+        0,
+        1,
+        0
+      ],
+      "left_class": "subject",
+      "left_family": "morton_interleave",
+      "left_output": 2,
+      "right_class": "subject",
+      "right_family": "unsigned_average",
+      "right_output": 0,
+      "split": "heldout"
+    },
+    {
+      "inputs": [
+        0,
+        0,
+        0
+      ],
+      "left_class": "subject",
+      "left_family": "morton_interleave",
+      "left_output": 0,
+      "right_class": "foil",
+      "right_family": "unsigned_average",
+      "right_output": 1,
+      "split": "heldout"
+    },
+    {
+      "inputs": [
+        0,
+        0,
+        0
+      ],
+      "left_class": "foil",
+      "left_family": "morton_interleave",
+      "left_output": 1,
+      "right_class": "subject",
+      "right_family": "unsigned_average",
+      "right_output": 0,
+      "split": "heldout"
+    },
+    {
+      "inputs": [
+        0,
+        1,
+        0
+      ],
+      "left_class": "foil",
+      "left_family": "morton_interleave",
+      "left_output": 3,
+      "right_class": "foil",
+      "right_family": "unsigned_average",
+      "right_output": 1,
+      "split": "heldout"
+    }
+  ]
+}

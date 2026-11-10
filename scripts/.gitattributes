@@ -2,3 +2,9 @@
 evaluate_value_flow.py text eol=lf
 run_value_flow_study.py text eol=lf
 build_value_flow_corpus.py text eol=lf
+evaluate_multilevel_flow.py text eol=lf
+recovered_evidence.py text eol=lf
+semantic_flow.py text eol=lf
+audit_semantic_layers.py text eol=lf
+run_semantic_benchmark.py text eol=lf
+create_semantic_benchmark.py text eol=lf

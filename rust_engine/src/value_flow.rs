@@ -85,6 +85,12 @@ fn redirects(doc: &Evidence) -> (BTreeMap<String, String>, BTreeMap<String, Stri
 
 impl ValueFingerprint {
     pub fn from_source(source: &OperationalFingerprint) -> Result<Self, String> {
+        Self::at_depth(source, ROUNDS)
+    }
+
+    // Shared builder for the separate multilevel schema. Public v0.1 stays at depth two.
+    pub(crate) fn at_depth(source: &OperationalFingerprint, depth: usize) -> Result<Self, String> {
+        ensure(depth <= ROUNDS, "unsupported producer depth")?;
         source.validate()?;
         let canonical = &source.source_canonical;
         let mut grouped: BTreeMap<String, (Value, Vec<Vec<String>>)> = BTreeMap::new();
@@ -169,13 +175,13 @@ impl ValueFingerprint {
                 .values()
                 .map(|op| Ok((op.id.clone(), digest(&descriptor(op, None))?)))
                 .collect::<Result<_, String>>()?;
-            for _ in 0..ROUNDS - 1 {
+            for _ in 0..depth.saturating_sub(1) {
                 colors = ops
                     .values()
                     .map(|op| Ok((op.id.clone(), digest(&descriptor(op, Some(&colors)))?)))
                     .collect::<Result<_, String>>()?;
             }
-            let final_patterns: BTreeMap<_, _> = ops.values().map(|op| (op.id.as_str(), json!({"context":patterns[original_ops[op.id.as_str()]].context,"operation":descriptor(op, Some(&colors))}))).collect();
+            let final_patterns: BTreeMap<_, _> = ops.values().map(|op| (op.id.as_str(), json!({"context":patterns[original_ops[op.id.as_str()]].context,"operation":descriptor(op, (depth > 0).then_some(&colors))}))).collect();
             for (&id, pattern) in &final_patterns {
                 add(
                     json!({"family":"operation","pattern":pattern}),
@@ -239,7 +245,7 @@ impl ValueFingerprint {
             .map(|f| json!({"descriptor":f.descriptor,"count":f.count}))
             .collect();
         let semantic_digest = digest(
-            &json!({"schema":VERSION,"rounds":ROUNDS,"copy_hops":COPY_HOPS,"max_two_edge_paths":source.configuration.max_two_edge_paths,"features":science}),
+            &json!({"schema":VERSION,"rounds":depth,"copy_hops":COPY_HOPS,"max_two_edge_paths":source.configuration.max_two_edge_paths,"features":science}),
         )?;
         Ok(Self {
             schema_version: VERSION.into(),
