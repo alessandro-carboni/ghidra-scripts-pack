@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "starting_head": "ff4e097351d0b64e0f9f03bede98d0d5db7c41fe",
+  "tracked_unchanged": 1230,
+  "intentional_infrastructure_changes": [
+    ".github/workflows/ci.yml",
+    "scripts/.gitattributes"
+  ],
+  "protected_inventory_counts": {
+    "preserved_inventory": 291,
+    "scientific_files": 161
+  },
+  "scope": "chapters 0-6 only: microsteps 0 and 1; no old algorithm/result/protocol changes"
+}

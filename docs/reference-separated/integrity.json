@@ -1,0 +1,9 @@
+{
+  "checked": 1242,
+  "changed": [
+    ".github/workflows/ci.yml",
+    "scripts/.gitattributes"
+  ],
+  "unexpected": [],
+  "prior_pilot_artifacts_unchanged": 30
+}
