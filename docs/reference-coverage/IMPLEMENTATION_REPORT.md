@@ -88,25 +88,27 @@ Full-suite log: `.build-cache/reference-coverage-full-pytest.log`. Legacy regres
 
 ```python
 import sys
-sys.path.insert(0,'.')
+
+sys.path.insert(0, ".")
 from scripts import graph_first as g
 from scripts import reference_coverage as rc
 from pathlib import Path
-import hashlib,json
-engine=Path('rust_engine/target/debug/rust_engine.exe')
-files=sorted(Path('reports/canonical-notepad-step5').glob('seed_fn_*.json'))
-assert files,'Real canonical dataset unavailable or empty'
-rows=[]
-for p in files:
- canonical=g.load(p); fp=g.fingerprint(canonical['source_document'],engine)
- result=rc.compare(fp,fp,engine)
- assert g.encoded(result)==g.encoded(rc.compare(fp,fp,engine))
- for collection in [result['reference_coverage'],*result['evidence_value_coverage']['per_family'].values(),*result['relation_aware_coverage']['per_view'].values()]:
-  assert collection['set']==(1.0 if collection['reference_distinct'] else None)
-  assert collection['multiset']==(1.0 if collection['reference_occurrences'] else None)
- rows.append(dict(file=p.as_posix(),source_sha256=hashlib.sha256(p.read_bytes()).hexdigest(),result_sha256=hashlib.sha256(g.encoded(result)).hexdigest(),base_reference_values=result['reference_coverage']['reference_distinct'],warnings=len(result['evidence_support']['warnings']),deterministic=True))
- print('PASS',p.name,'base values',rows[-1]['base_reference_values'],'deterministic=yes',flush=True)
-Path('docs/reference-coverage/NOTEPAD_SMOKE.json').write_text(json.dumps(dict(status='PASS',graphs=len(rows),purpose='Real-data integration/self-comparison; not retrieval accuracy or malware validation',rows=rows),indent=2)+'\n',encoding='utf-8')
-print('SUMMARY',len(rows),'/',len(files),'PASS',flush=True)
+import hashlib, json
 
+engine = Path("rust_engine/target/debug/rust_engine.exe")
+files = sorted(Path("reports/canonical-notepad-step5").glob("seed_fn_*.json"))
+assert files, "Real canonical dataset unavailable or empty"
+rows = []
+for p in files:
+    canonical = g.load(p)
+    fp = g.fingerprint(canonical["source_document"], engine)
+    result = rc.compare(fp, fp, engine)
+    assert g.encoded(result) == g.encoded(rc.compare(fp, fp, engine))
+    for collection in [result["reference_coverage"], *result["evidence_value_coverage"]["per_family"].values(), *result["relation_aware_coverage"]["per_view"].values()]:
+        assert collection["set"] == (1.0 if collection["reference_distinct"] else None)
+        assert collection["multiset"] == (1.0 if collection["reference_occurrences"] else None)
+    rows.append(dict(file=p.as_posix(), source_sha256=hashlib.sha256(p.read_bytes()).hexdigest(), result_sha256=hashlib.sha256(g.encoded(result)).hexdigest(), base_reference_values=result["reference_coverage"]["reference_distinct"], warnings=len(result["evidence_support"]["warnings"]), deterministic=True))
+    print("PASS", p.name, "base values", rows[-1]["base_reference_values"], "deterministic=yes", flush=True)
+Path("docs/reference-coverage/NOTEPAD_SMOKE.json").write_text(json.dumps(dict(status="PASS", graphs=len(rows), purpose="Real-data integration/self-comparison; not retrieval accuracy or malware validation", rows=rows), indent=2) + "\n", encoding="utf-8")
+print("SUMMARY", len(rows), "/", len(files), "PASS", flush=True)
 ```
