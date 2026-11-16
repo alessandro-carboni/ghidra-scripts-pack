@@ -1,0 +1,1251 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "behaviors": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "behavior_id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "build_id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "input_contract": {
+            "additionalProperties": false,
+            "properties": {
+              "kind": {
+                "enum": [
+                  "pure_bytes",
+                  "stable_os_bytes"
+                ],
+                "type": "string"
+              },
+              "max_length": {
+                "const": 255
+              },
+              "min_length": {
+                "const": 0
+              },
+              "preconditions": {
+                "items": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "type": "array",
+                "uniqueItems": true
+              },
+              "result_bits": {
+                "const": 32
+              },
+              "trailing_nul": {
+                "const": true
+              }
+            },
+            "required": [
+              "kind",
+              "max_length",
+              "min_length",
+              "preconditions",
+              "result_bits",
+              "trailing_nul"
+            ],
+            "type": "object"
+          },
+          "limitations": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "mismatch_witnesses": {
+            "items": {
+              "type": "object"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "oracle_version": {
+            "const": "0.1.0"
+          },
+          "original_outputs_digest": {
+            "anyOf": [
+              {
+                "pattern": "^[0-9a-f]{64}$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "original_routine": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "output_comparison": {
+            "enum": [
+              "equal",
+              "different",
+              "unknown"
+            ],
+            "type": "string"
+          },
+          "proof_reference": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "record_type": {
+            "const": "behavior"
+          },
+          "schema_version": {
+            "const": "0.1.0"
+          },
+          "side_effect_observations": {
+            "additionalProperties": false,
+            "properties": {
+              "evidence": {
+                "items": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "type": "array",
+                "uniqueItems": true
+              },
+              "status": {
+                "enum": [
+                  "source_proven_pure",
+                  "observed",
+                  "unknown"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "evidence",
+              "status"
+            ],
+            "type": "object"
+          },
+          "tested_cases": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "case_id": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "input_bytes": {
+                  "items": {
+                    "maximum": 255,
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "type": "array"
+                },
+                "oracle_result": {
+                  "anyOf": [
+                    {
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "original_result": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "transformed_result": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "case_id",
+                "input_bytes",
+                "oracle_result",
+                "original_result",
+                "transformed_result"
+              ],
+              "type": "object"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "transformed_outputs_digest": {
+            "anyOf": [
+              {
+                "pattern": "^[0-9a-f]{64}$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "transformed_routine": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "validation_status": {
+            "enum": [
+              "pending",
+              "passed",
+              "failed",
+              "unsupported"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "behavior_id",
+          "build_id",
+          "input_contract",
+          "limitations",
+          "mismatch_witnesses",
+          "oracle_version",
+          "original_outputs_digest",
+          "original_routine",
+          "output_comparison",
+          "proof_reference",
+          "record_type",
+          "schema_version",
+          "side_effect_observations",
+          "tested_cases",
+          "transformed_outputs_digest",
+          "transformed_routine",
+          "validation_status"
+        ],
+        "type": "object"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "builds": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "architecture": {
+            "anyOf": [
+              {
+                "enum": [
+                  "x86",
+                  "x86_64",
+                  "arm64"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "attempt_count": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "binary_artifact_reference": {
+            "anyOf": [
+              {
+                "format": "repository-path",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "binary_sha256": {
+            "anyOf": [
+              {
+                "pattern": "^[0-9a-f]{64}$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "build_diagnostics": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "build_id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "build_status": {
+            "enum": [
+              "planned",
+              "success",
+              "unsupported",
+              "unavailable",
+              "compile_failed",
+              "validation_failed",
+              "artifact_access_failed"
+            ],
+            "type": "string"
+          },
+          "compiler": {
+            "enum": [
+              "gcc",
+              "msvc",
+              "clang"
+            ],
+            "type": "string"
+          },
+          "compiler_flags": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "compiler_version": {
+            "anyOf": [
+              {
+                "minLength": 1,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "execution_id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "optimization": {
+            "enum": [
+              "O0",
+              "O2",
+              "O3"
+            ],
+            "type": "string"
+          },
+          "record_type": {
+            "const": "build"
+          },
+          "schema_version": {
+            "const": "0.1.0"
+          },
+          "source_sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          }
+        },
+        "required": [
+          "architecture",
+          "attempt_count",
+          "binary_artifact_reference",
+          "binary_sha256",
+          "build_diagnostics",
+          "build_id",
+          "build_status",
+          "compiler",
+          "compiler_flags",
+          "compiler_version",
+          "execution_id",
+          "optimization",
+          "record_type",
+          "schema_version",
+          "source_sha256"
+        ],
+        "type": "object"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "executions": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "applied_parameters": {
+            "anyOf": [
+              {
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "execution_id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "generated_source_path": {
+            "anyOf": [
+              {
+                "format": "repository-path",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "generated_source_sha256": {
+            "anyOf": [
+              {
+                "pattern": "^[0-9a-f]{64}$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "generation_diagnostics": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "generation_status": {
+            "enum": [
+              "planned",
+              "generated",
+              "rejected",
+              "unsupported",
+              "failed"
+            ],
+            "type": "string"
+          },
+          "original_source_sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "record_type": {
+            "const": "execution"
+          },
+          "requested_parameters": {
+            "type": "object"
+          },
+          "schema_version": {
+            "const": "0.1.0"
+          },
+          "transformation_id": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "applied_parameters",
+          "execution_id",
+          "generated_source_path",
+          "generated_source_sha256",
+          "generation_diagnostics",
+          "generation_status",
+          "original_source_sha256",
+          "record_type",
+          "requested_parameters",
+          "schema_version",
+          "transformation_id"
+        ],
+        "type": "object"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "frozen_dataset_reference": {
+      "additionalProperties": false,
+      "properties": {
+        "manifest_file_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "path": {
+          "const": "datasets/osgf_pairs_v0_1/freezes/freeze-001.json"
+        },
+        "scientific_digest": {
+          "const": "095ca81b151cbcf9e58af28ad6bffebd60c2d153d4102ec019462fd7377569b2"
+        }
+      },
+      "required": [
+        "manifest_file_sha256",
+        "path",
+        "scientific_digest"
+      ],
+      "type": "object"
+    },
+    "graphs": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "anchor_identity": {
+            "anyOf": [
+              {
+                "minLength": 1,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "binary_sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "build_id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "canonical_digest": {
+            "anyOf": [
+              {
+                "pattern": "^sha256:[0-9a-f]{64}$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "canonical_graph_reference": {
+            "anyOf": [
+              {
+                "format": "repository-path",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "canonical_graph_sha256": {
+            "anyOf": [
+              {
+                "pattern": "^[0-9a-f]{64}$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "diagnostics": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "execution_id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "exporter_version": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "extraction_configuration": {
+            "additionalProperties": false,
+            "properties": {
+              "callee_depth": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "caller_depth": {
+                "minimum": 0,
+                "type": "integer"
+              }
+            },
+            "required": [
+              "callee_depth",
+              "caller_depth"
+            ],
+            "type": "object"
+          },
+          "extraction_status": {
+            "enum": [
+              "pending",
+              "success",
+              "missing_symbol",
+              "missing_anchor",
+              "invalid_exporter_output",
+              "incomplete_analysis",
+              "unsupported_architecture",
+              "timeout",
+              "corrupted_graph",
+              "canonicalization_failed",
+              "unavailable"
+            ],
+            "type": "string"
+          },
+          "ghidra_version": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "graph_id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "observability_metadata": {
+            "additionalProperties": false,
+            "properties": {
+              "evidence": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "artifact_id": {
+                      "minLength": 1,
+                      "type": "string"
+                    },
+                    "artifact_path": {
+                      "format": "repository-path",
+                      "type": "string"
+                    },
+                    "artifact_sha256": {
+                      "pattern": "^[0-9a-f]{64}$",
+                      "type": "string"
+                    },
+                    "reference": {
+                      "minLength": 1,
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "artifact_id",
+                    "artifact_path",
+                    "artifact_sha256",
+                    "reference"
+                  ],
+                  "type": "object"
+                },
+                "type": "array",
+                "uniqueItems": true
+              },
+              "limitations": {
+                "items": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "type": "array",
+                "uniqueItems": true
+              },
+              "status": {
+                "enum": [
+                  "observed",
+                  "partially_observed",
+                  "optimized_away",
+                  "not_observable",
+                  "unknown"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "evidence",
+              "limitations",
+              "status"
+            ],
+            "type": "object"
+          },
+          "record_type": {
+            "const": "graph"
+          },
+          "schema_version": {
+            "const": "0.1.0"
+          },
+          "truncation_metadata": {
+            "anyOf": [
+              {
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "typed_graph_reference": {
+            "anyOf": [
+              {
+                "format": "repository-path",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "typed_graph_sha256": {
+            "anyOf": [
+              {
+                "pattern": "^[0-9a-f]{64}$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "anchor_identity",
+          "binary_sha256",
+          "build_id",
+          "canonical_digest",
+          "canonical_graph_reference",
+          "canonical_graph_sha256",
+          "diagnostics",
+          "execution_id",
+          "exporter_version",
+          "extraction_configuration",
+          "extraction_status",
+          "ghidra_version",
+          "graph_id",
+          "observability_metadata",
+          "record_type",
+          "schema_version",
+          "truncation_metadata",
+          "typed_graph_reference",
+          "typed_graph_sha256"
+        ],
+        "type": "object"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "mappings": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "execution_id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "expected_mapping": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "limitations": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "mapping_id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "mapping_kind": {
+            "enum": [
+              "one_to_one",
+              "one_to_many",
+              "many_to_one",
+              "unmatched",
+              "unknown",
+              "ambiguous"
+            ],
+            "type": "string"
+          },
+          "mapping_level": {
+            "enum": [
+              "source",
+              "generated_function",
+              "binary_function",
+              "typed_graph",
+              "canonical_subgraph"
+            ],
+            "type": "string"
+          },
+          "observation_completeness": {
+            "enum": [
+              "complete",
+              "incomplete",
+              "unknown"
+            ],
+            "type": "string"
+          },
+          "observed_mapping": {
+            "anyOf": [
+              {
+                "minLength": 1,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "original_element_references": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "record_type": {
+            "const": "mapping"
+          },
+          "schema_version": {
+            "const": "0.1.0"
+          },
+          "supporting_evidence": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "artifact_id": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "artifact_path": {
+                  "format": "repository-path",
+                  "type": "string"
+                },
+                "artifact_sha256": {
+                  "pattern": "^[0-9a-f]{64}$",
+                  "type": "string"
+                },
+                "reference": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "artifact_id",
+                "artifact_path",
+                "artifact_sha256",
+                "reference"
+              ],
+              "type": "object"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "transformation_id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "transformed_element_references": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "validation_status": {
+            "enum": [
+              "expected",
+              "verified",
+              "unmatched",
+              "unknown",
+              "ambiguous",
+              "rejected"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "execution_id",
+          "expected_mapping",
+          "limitations",
+          "mapping_id",
+          "mapping_kind",
+          "mapping_level",
+          "observation_completeness",
+          "observed_mapping",
+          "original_element_references",
+          "record_type",
+          "schema_version",
+          "supporting_evidence",
+          "transformation_id",
+          "transformed_element_references",
+          "validation_status"
+        ],
+        "type": "object"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "runs": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "artifact_hashes": {
+            "additionalProperties": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "build_ids": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "execution_ids": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "experiment_configuration": {
+            "type": "object"
+          },
+          "frozen_dataset_reference": {
+            "additionalProperties": false,
+            "properties": {
+              "manifest_file_sha256": {
+                "pattern": "^[0-9a-f]{64}$",
+                "type": "string"
+              },
+              "path": {
+                "const": "datasets/osgf_pairs_v0_1/freezes/freeze-001.json"
+              },
+              "scientific_digest": {
+                "const": "095ca81b151cbcf9e58af28ad6bffebd60c2d153d4102ec019462fd7377569b2"
+              }
+            },
+            "required": [
+              "manifest_file_sha256",
+              "path",
+              "scientific_digest"
+            ],
+            "type": "object"
+          },
+          "frozen_manifest_digest": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "generator_version": {
+            "const": "0.1.0"
+          },
+          "graph_ids": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "mapping_ids": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "record_type": {
+            "const": "run"
+          },
+          "report_references": {
+            "items": {
+              "format": "repository-path",
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "run_id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "schema_version": {
+            "const": "0.1.0"
+          },
+          "statuses": {
+            "additionalProperties": false,
+            "properties": {
+              "build": {
+                "enum": [
+                  "pending",
+                  "passed",
+                  "failed",
+                  "partial"
+                ],
+                "type": "string"
+              },
+              "extraction": {
+                "enum": [
+                  "pending",
+                  "passed",
+                  "failed",
+                  "partial"
+                ],
+                "type": "string"
+              },
+              "generation": {
+                "enum": [
+                  "pending",
+                  "passed",
+                  "failed",
+                  "partial"
+                ],
+                "type": "string"
+              },
+              "mapping": {
+                "enum": [
+                  "pending",
+                  "passed",
+                  "failed",
+                  "partial"
+                ],
+                "type": "string"
+              },
+              "validation": {
+                "enum": [
+                  "pending",
+                  "passed",
+                  "failed",
+                  "blocked"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "build",
+              "extraction",
+              "generation",
+              "mapping",
+              "validation"
+            ],
+            "type": "object"
+          },
+          "transformation_ids": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          }
+        },
+        "required": [
+          "artifact_hashes",
+          "build_ids",
+          "execution_ids",
+          "experiment_configuration",
+          "frozen_dataset_reference",
+          "frozen_manifest_digest",
+          "generator_version",
+          "graph_ids",
+          "mapping_ids",
+          "record_type",
+          "report_references",
+          "run_id",
+          "schema_version",
+          "statuses",
+          "transformation_ids"
+        ],
+        "type": "object"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "schema_version": {
+      "const": "0.1.0"
+    },
+    "specifications": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "deterministic_seed": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "equivalence_rationale": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "expected_equivalence": {
+            "additionalProperties": false,
+            "properties": {
+              "claim": {
+                "enum": [
+                  "equivalent_under_contract",
+                  "unknown",
+                  "not_applicable"
+                ],
+                "type": "string"
+              },
+              "scope": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "verified": {
+                "const": false
+              }
+            },
+            "required": [
+              "claim",
+              "scope",
+              "verified"
+            ],
+            "type": "object"
+          },
+          "expected_graph_effects": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "expected_source_effects": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "generator_version": {
+            "const": "0.1.0"
+          },
+          "input_contract": {
+            "additionalProperties": false,
+            "properties": {
+              "kind": {
+                "enum": [
+                  "pure_bytes",
+                  "stable_os_bytes"
+                ],
+                "type": "string"
+              },
+              "max_length": {
+                "const": 255
+              },
+              "min_length": {
+                "const": 0
+              },
+              "preconditions": {
+                "items": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "type": "array",
+                "uniqueItems": true
+              },
+              "result_bits": {
+                "const": 32
+              },
+              "trailing_nul": {
+                "const": true
+              }
+            },
+            "required": [
+              "kind",
+              "max_length",
+              "min_length",
+              "preconditions",
+              "result_bits",
+              "trailing_nul"
+            ],
+            "type": "object"
+          },
+          "parameters": {
+            "type": "object"
+          },
+          "preconditions": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "record_type": {
+            "const": "specification"
+          },
+          "schema_version": {
+            "const": "0.1.0"
+          },
+          "source_artifact": {
+            "format": "repository-path",
+            "type": "string"
+          },
+          "source_group_id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "source_routine_id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "source_sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "transformation_family": {
+            "enum": [
+              "transparent_wrapper",
+              "thunk",
+              "function_splitting",
+              "dead_branch",
+              "harmless_strand",
+              "instruction_reordering"
+            ],
+            "type": "string"
+          },
+          "transformation_id": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "deterministic_seed",
+          "equivalence_rationale",
+          "expected_equivalence",
+          "expected_graph_effects",
+          "expected_source_effects",
+          "generator_version",
+          "input_contract",
+          "parameters",
+          "preconditions",
+          "record_type",
+          "schema_version",
+          "source_artifact",
+          "source_group_id",
+          "source_routine_id",
+          "source_sha256",
+          "transformation_family",
+          "transformation_id"
+        ],
+        "type": "object"
+      },
+      "type": "array",
+      "uniqueItems": true
+    }
+  },
+  "required": [
+    "behaviors",
+    "builds",
+    "executions",
+    "frozen_dataset_reference",
+    "graphs",
+    "mappings",
+    "runs",
+    "schema_version",
+    "specifications"
+  ],
+  "type": "object"
+}

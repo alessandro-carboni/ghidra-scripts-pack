@@ -1,0 +1,18 @@
+{
+  "date": "2026-11-10",
+  "method_files": 10,
+  "source_files": 6,
+  "binary_files": 18,
+  "result_sha256": "4b3a5744eddd3a3e38386efd994aa19790343baf9f8488ad0082460d3e02605e",
+  "preserved_inventory": {
+    "count": 291,
+    "status": "PASS"
+  },
+  "scientific_files": {
+    "count": 161,
+    "status": "PASS"
+  },
+  "status": "PASS",
+  "rechecked_rust_byte_pairs": 405,
+  "semantic_reruns": "405 PASS recorded by runner; not recomputed in final check"
+}

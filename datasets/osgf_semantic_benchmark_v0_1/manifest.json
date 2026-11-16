@@ -1,0 +1,635 @@
+{
+  "builds": [
+    {
+      "compile": {
+        "command": [
+          "C:\\MinGW\\bin\\gcc.EXE",
+          "-O0",
+          "-fno-inline",
+          "-fno-ipa-icf",
+          "-Wl,--no-insert-timestamp",
+          "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_semantic_benchmark_v0_1\\sources\\unsigned_distance.c",
+          "-o",
+          "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_semantic_benchmark_v0_1\\runtime\\builds\\unsigned_distance-gcc-O0\\unsigned_distance-gcc-O0.exe"
+        ],
+        "log": "datasets\\osgf_semantic_benchmark_v0_1\\runtime\\builds\\unsigned_distance-gcc-O0\\compile.log",
+        "memory_scope": "Direct child process only; excludes subprocess tree",
+        "peak_working_set_bytes": 8867840,
+        "seconds": 1.348845300031826
+      },
+      "compiler": "gcc",
+      "compiler_version": "gcc.exe (MinGW.org GCC-6.3.0-1) 6.3.0",
+      "family": "unsigned_distance",
+      "id": "unsigned_distance-gcc-O0",
+      "optimization": "O0",
+      "path": "datasets/osgf_semantic_benchmark_v0_1/runtime/builds/unsigned_distance-gcc-O0/unsigned_distance-gcc-O0.exe",
+      "sha256": "0e4e2760f058e3d9337f25422aa7935605afcda10d095019167c8ffd10032aa7",
+      "source_sha256": "3525b67837b1a4bc42941d357ef1fd4f6b6cfeef1b9af17a8512523a0781d741",
+      "split": "discovery"
+    },
+    {
+      "compile": {
+        "command": [
+          "C:\\MinGW\\bin\\gcc.EXE",
+          "-O2",
+          "-fno-inline",
+          "-fno-ipa-icf",
+          "-Wl,--no-insert-timestamp",
+          "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_semantic_benchmark_v0_1\\sources\\unsigned_distance.c",
+          "-o",
+          "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_semantic_benchmark_v0_1\\runtime\\builds\\unsigned_distance-gcc-O2\\unsigned_distance-gcc-O2.exe"
+        ],
+        "log": "datasets\\osgf_semantic_benchmark_v0_1\\runtime\\builds\\unsigned_distance-gcc-O2\\compile.log",
+        "memory_scope": "Direct child process only; excludes subprocess tree",
+        "peak_working_set_bytes": 8843264,
+        "seconds": 1.0510062000248581
+      },
+      "compiler": "gcc",
+      "compiler_version": "gcc.exe (MinGW.org GCC-6.3.0-1) 6.3.0",
+      "family": "unsigned_distance",
+      "id": "unsigned_distance-gcc-O2",
+      "optimization": "O2",
+      "path": "datasets/osgf_semantic_benchmark_v0_1/runtime/builds/unsigned_distance-gcc-O2/unsigned_distance-gcc-O2.exe",
+      "sha256": "42fb9e7ff1066e6884aa977b2d21034db4a35be6588ddae39de21b57fdd2713a",
+      "source_sha256": "3525b67837b1a4bc42941d357ef1fd4f6b6cfeef1b9af17a8512523a0781d741",
+      "split": "discovery"
+    },
+    {
+      "compile": {
+        "command": [
+          "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX86\\x86\\cl.exe",
+          "/nologo",
+          "/Od",
+          "/Brepro",
+          "/W3",
+          "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_semantic_benchmark_v0_1\\sources\\unsigned_distance.c",
+          "/FoC:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_semantic_benchmark_v0_1\\runtime\\builds\\unsigned_distance-msvc-O0\\unsigned_distance-msvc-O0.obj",
+          "/FeC:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_semantic_benchmark_v0_1\\runtime\\builds\\unsigned_distance-msvc-O0\\unsigned_distance-msvc-O0.exe",
+          "/link",
+          "/INCREMENTAL:NO",
+          "/OPT:NOICF",
+          "/IMPLIB:C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_semantic_benchmark_v0_1\\runtime\\builds\\unsigned_distance-msvc-O0\\unsigned_distance-msvc-O0.lib"
+        ],
+        "log": "datasets\\osgf_semantic_benchmark_v0_1\\runtime\\builds\\unsigned_distance-msvc-O0\\compile.log",
+        "memory_scope": "Direct child process only; excludes subprocess tree",
+        "peak_working_set_bytes": 18796544,
+        "seconds": 2.693552299984731
+      },
+      "compiler": "msvc",
+      "compiler_version": "Microsoft (R) C/C++ Optimizing Compiler Version 19.44.35225 for x86",
+      "family": "unsigned_distance",
+      "id": "unsigned_distance-msvc-O0",
+      "optimization": "O0",
+      "path": "datasets/osgf_semantic_benchmark_v0_1/runtime/builds/unsigned_distance-msvc-O0/unsigned_distance-msvc-O0.exe",
+      "sha256": "7d2ab288408ad728f1ddadc92505933c913aeaa6ec8556a9815e40e834d1fbd9",
+      "source_sha256": "3525b67837b1a4bc42941d357ef1fd4f6b6cfeef1b9af17a8512523a0781d741",
+      "split": "discovery"
+    },
+    {
+      "compile": {
+        "command": [
+          "C:\\MinGW\\bin\\gcc.EXE",
+          "-O0",
+          "-fno-inline",
+          "-fno-ipa-icf",
+          "-Wl,--no-insert-timestamp",
+          "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_semantic_benchmark_v0_1\\sources\\gray_encoding.c",
+          "-o",
+          "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_semantic_benchmark_v0_1\\runtime\\builds\\gray_encoding-gcc-O0\\gray_encoding-gcc-O0.exe"
+        ],
+        "log": "datasets\\osgf_semantic_benchmark_v0_1\\runtime\\builds\\gray_encoding-gcc-O0\\compile.log",
+        "memory_scope": "Direct child process only; excludes subprocess tree",
+        "peak_working_set_bytes": 8835072,
+        "seconds": 0.9755846000043675
+      },
+      "compiler": "gcc",
+      "compiler_version": "gcc.exe (MinGW.org GCC-6.3.0-1) 6.3.0",
+      "family": "gray_encoding",
+      "id": "gray_encoding-gcc-O0",
+      "optimization": "O0",
+      "path": "datasets/osgf_semantic_benchmark_v0_1/runtime/builds/gray_encoding-gcc-O0/gray_encoding-gcc-O0.exe",
+      "sha256": "5402d0718cb3d5213c48e8cecfccc53145d6ba70dc3322a4f2a40b61ec112cde",
+      "source_sha256": "84af5bd8c7abd04dfc64833710a5dee5c21d1690a291fb5874a84ef0a0d838b6",
+      "split": "discovery"
+    },
+    {
+      "compile": {
+        "command": [
+          "C:\\MinGW\\bin\\gcc.EXE",
+          "-O2",
+          "-fno-inline",
+          "-fno-ipa-icf",
+          "-Wl,--no-insert-timestamp",
+          "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_semantic_benchmark_v0_1\\sources\\gray_encoding.c",
+          "-o",
+          "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_semantic_benchmark_v0_1\\runtime\\builds\\gray_encoding-gcc-O2\\gray_encoding-gcc-O2.exe"
+        ],
+        "log": "datasets\\osgf_semantic_benchmark_v0_1\\runtime\\builds\\gray_encoding-gcc-O2\\compile.log",
+        "memory_scope": "Direct child process only; excludes subprocess tree",
+        "peak_working_set_bytes": 8830976,
+        "seconds": 1.0220966000342742
+      },
+      "compiler": "gcc",
+      "compiler_version": "gcc.exe (MinGW.org GCC-6.3.0-1) 6.3.0",
+      "family": "gray_encoding",
+      "id": "gray_encoding-gcc-O2",
+      "optimization": "O2",
+      "path": "datasets/osgf_semantic_benchmark_v0_1/runtime/builds/gray_encoding-gcc-O2/gray_encoding-gcc-O2.exe",
+      "sha256": "4f752f032b33c0422c7d0bdf018f3c12a037ff57a93efe6d51ddcf1523a01a9b",
+      "source_sha256": "84af5bd8c7abd04dfc64833710a5dee5c21d1690a291fb5874a84ef0a0d838b6",
+      "split": "discovery"
+    },
+    {
+      "compile": {
+        "command": [
+          "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX86\\x86\\cl.exe",
+          "/nologo",
+          "/Od",
+          "/Brepro",
+          "/W3",
+          "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_semantic_benchmark_v0_1\\sources\\gray_encoding.c",
+          "/FoC:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_semantic_benchmark_v0_1\\runtime\\builds\\gray_encoding-msvc-O0\\gray_encoding-msvc-O0.obj",
+          "/FeC:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_semantic_benchmark_v0_1\\runtime\\builds\\gray_encoding-msvc-O0\\gray_encoding-msvc-O0.exe",
+          "/link",
+          "/INCREMENTAL:NO",
+          "/OPT:NOICF",
+          "/IMPLIB:C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_semantic_benchmark_v0_1\\runtime\\builds\\gray_encoding-msvc-O0\\gray_encoding-msvc-O0.lib"
+        ],
+        "log": "datasets\\osgf_semantic_benchmark_v0_1\\runtime\\builds\\gray_encoding-msvc-O0\\compile.log",
+        "memory_scope": "Direct child process only; excludes subprocess tree",
+        "peak_working_set_bytes": 18771968,
+        "seconds": 0.7842035000212491
+      },
+      "compiler": "msvc",
+      "compiler_version": "Microsoft (R) C/C++ Optimizing Compiler Version 19.44.35225 for x86",
+      "family": "gray_encoding",
+      "id": "gray_encoding-msvc-O0",
+      "optimization": "O0",
+      "path": "datasets/osgf_semantic_benchmark_v0_1/runtime/builds/gray_encoding-msvc-O0/gray_encoding-msvc-O0.exe",
+      "sha256": "b346f0f94ab8d18153a20adc47bfb3efbed105057255297f52240b7bf4344858",
+      "source_sha256": "84af5bd8c7abd04dfc64833710a5dee5c21d1690a291fb5874a84ef0a0d838b6",
+      "split": "discovery"
+    },
+    {
+      "compile": {
+        "command": [
+          "C:\\MinGW\\bin\\gcc.EXE",
+          "-O0",
+          "-fno-inline",
+          "-fno-ipa-icf",
+          "-Wl,--no-insert-timestamp",
+          "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_semantic_benchmark_v0_1\\sources\\median_three.c",
+          "-o",
+          "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_semantic_benchmark_v0_1\\runtime\\builds\\median_three-gcc-O0\\median_three-gcc-O0.exe"
+        ],
+        "log": "datasets\\osgf_semantic_benchmark_v0_1\\runtime\\builds\\median_three-gcc-O0\\compile.log",
+        "memory_scope": "Direct child process only; excludes subprocess tree",
+        "peak_working_set_bytes": 8826880,
+        "seconds": 0.9966829000040889
+      },
+      "compiler": "gcc",
+      "compiler_version": "gcc.exe (MinGW.org GCC-6.3.0-1) 6.3.0",
+      "family": "median_three",
+      "id": "median_three-gcc-O0",
+      "optimization": "O0",
+      "path": "datasets/osgf_semantic_benchmark_v0_1/runtime/builds/median_three-gcc-O0/median_three-gcc-O0.exe",
+      "sha256": "2b3cebe61f517043a555c9af520ad8d6dee9a7a929a6c7babc654dd0d34899fc",
+      "source_sha256": "4bdcdf9b4c54ef73d8049b24e68d88bbc77c696c247c80634999bbb94f0f20c9",
+      "split": "validation"
+    },
+    {
+      "compile": {
+        "command": [
+          "C:\\MinGW\\bin\\gcc.EXE",
+          "-O2",
+          "-fno-inline",
+          "-fno-ipa-icf",
+          "-Wl,--no-insert-timestamp",
+          "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_semantic_benchmark_v0_1\\sources\\median_three.c",
+          "-o",
+          "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_semantic_benchmark_v0_1\\runtime\\builds\\median_three-gcc-O2\\median_three-gcc-O2.exe"
+        ],
+        "log": "datasets\\osgf_semantic_benchmark_v0_1\\runtime\\builds\\median_three-gcc-O2\\compile.log",
+        "memory_scope": "Direct child process only; excludes subprocess tree",
+        "peak_working_set_bytes": 8839168,
+        "seconds": 0.9952565999701619
+      },
+      "compiler": "gcc",
+      "compiler_version": "gcc.exe (MinGW.org GCC-6.3.0-1) 6.3.0",
+      "family": "median_three",
+      "id": "median_three-gcc-O2",
+      "optimization": "O2",
+      "path": "datasets/osgf_semantic_benchmark_v0_1/runtime/builds/median_three-gcc-O2/median_three-gcc-O2.exe",
+      "sha256": "b2e2d6be2e0f4a6eb7dd4ab98bc3af63f3a525347ca510233f93f5d0555e4ad0",
+      "source_sha256": "4bdcdf9b4c54ef73d8049b24e68d88bbc77c696c247c80634999bbb94f0f20c9",
+      "split": "validation"
+    },
+    {
+      "compile": {
+        "command": [
+          "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX86\\x86\\cl.exe",
+          "/nologo",
+          "/Od",
+          "/Brepro",
+          "/W3",
+          "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_semantic_benchmark_v0_1\\sources\\median_three.c",
+          "/FoC:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_semantic_benchmark_v0_1\\runtime\\builds\\median_three-msvc-O0\\median_three-msvc-O0.obj",
+          "/FeC:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_semantic_benchmark_v0_1\\runtime\\builds\\median_three-msvc-O0\\median_three-msvc-O0.exe",
+          "/link",
+          "/INCREMENTAL:NO",
+          "/OPT:NOICF",
+          "/IMPLIB:C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_semantic_benchmark_v0_1\\runtime\\builds\\median_three-msvc-O0\\median_three-msvc-O0.lib"
+        ],
+        "log": "datasets\\osgf_semantic_benchmark_v0_1\\runtime\\builds\\median_three-msvc-O0\\compile.log",
+        "memory_scope": "Direct child process only; excludes subprocess tree",
+        "peak_working_set_bytes": 18821120,
+        "seconds": 0.7823445999529213
+      },
+      "compiler": "msvc",
+      "compiler_version": "Microsoft (R) C/C++ Optimizing Compiler Version 19.44.35225 for x86",
+      "family": "median_three",
+      "id": "median_three-msvc-O0",
+      "optimization": "O0",
+      "path": "datasets/osgf_semantic_benchmark_v0_1/runtime/builds/median_three-msvc-O0/median_three-msvc-O0.exe",
+      "sha256": "f2a6251e9c259af1ea8269e86d67771a5e0d3aaa2824c2137844e66aaf3397a6",
+      "source_sha256": "4bdcdf9b4c54ef73d8049b24e68d88bbc77c696c247c80634999bbb94f0f20c9",
+      "split": "validation"
+    },
+    {
+      "compile": {
+        "command": [
+          "C:\\MinGW\\bin\\gcc.EXE",
+          "-O0",
+          "-fno-inline",
+          "-fno-ipa-icf",
+          "-Wl,--no-insert-timestamp",
+          "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_semantic_benchmark_v0_1\\sources\\byte_reversal.c",
+          "-o",
+          "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_semantic_benchmark_v0_1\\runtime\\builds\\byte_reversal-gcc-O0\\byte_reversal-gcc-O0.exe"
+        ],
+        "log": "datasets\\osgf_semantic_benchmark_v0_1\\runtime\\builds\\byte_reversal-gcc-O0\\compile.log",
+        "memory_scope": "Direct child process only; excludes subprocess tree",
+        "peak_working_set_bytes": 8839168,
+        "seconds": 0.9602136999601498
+      },
+      "compiler": "gcc",
+      "compiler_version": "gcc.exe (MinGW.org GCC-6.3.0-1) 6.3.0",
+      "family": "byte_reversal",
+      "id": "byte_reversal-gcc-O0",
+      "optimization": "O0",
+      "path": "datasets/osgf_semantic_benchmark_v0_1/runtime/builds/byte_reversal-gcc-O0/byte_reversal-gcc-O0.exe",
+      "sha256": "7a5d830d93553238db2f01ac7d359e46466888f33ef13c79845cfb23abf39323",
+      "source_sha256": "83a2d64f37811aac6e59bcdf700a1d1263bc9872b8d5becc666aeb1dd3304552",
+      "split": "validation"
+    },
+    {
+      "compile": {
+        "command": [
+          "C:\\MinGW\\bin\\gcc.EXE",
+          "-O2",
+          "-fno-inline",
+          "-fno-ipa-icf",
+          "-Wl,--no-insert-timestamp",
+          "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_semantic_benchmark_v0_1\\sources\\byte_reversal.c",
+          "-o",
+          "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_semantic_benchmark_v0_1\\runtime\\builds\\byte_reversal-gcc-O2\\byte_reversal-gcc-O2.exe"
+        ],
+        "log": "datasets\\osgf_semantic_benchmark_v0_1\\runtime\\builds\\byte_reversal-gcc-O2\\compile.log",
+        "memory_scope": "Direct child process only; excludes subprocess tree",
+        "peak_working_set_bytes": 8843264,
+        "seconds": 0.9568079999880865
+      },
+      "compiler": "gcc",
+      "compiler_version": "gcc.exe (MinGW.org GCC-6.3.0-1) 6.3.0",
+      "family": "byte_reversal",
+      "id": "byte_reversal-gcc-O2",
+      "optimization": "O2",
+      "path": "datasets/osgf_semantic_benchmark_v0_1/runtime/builds/byte_reversal-gcc-O2/byte_reversal-gcc-O2.exe",
+      "sha256": "15b7b38504f1a23409fe49ac363732f8c2e30b4087e47ad13eb1a15dcce42583",
+      "source_sha256": "83a2d64f37811aac6e59bcdf700a1d1263bc9872b8d5becc666aeb1dd3304552",
+      "split": "validation"
+    },
+    {
+      "compile": {
+        "command": [
+          "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX86\\x86\\cl.exe",
+          "/nologo",
+          "/Od",
+          "/Brepro",
+          "/W3",
+          "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_semantic_benchmark_v0_1\\sources\\byte_reversal.c",
+          "/FoC:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_semantic_benchmark_v0_1\\runtime\\builds\\byte_reversal-msvc-O0\\byte_reversal-msvc-O0.obj",
+          "/FeC:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_semantic_benchmark_v0_1\\runtime\\builds\\byte_reversal-msvc-O0\\byte_reversal-msvc-O0.exe",
+          "/link",
+          "/INCREMENTAL:NO",
+          "/OPT:NOICF",
+          "/IMPLIB:C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_semantic_benchmark_v0_1\\runtime\\builds\\byte_reversal-msvc-O0\\byte_reversal-msvc-O0.lib"
+        ],
+        "log": "datasets\\osgf_semantic_benchmark_v0_1\\runtime\\builds\\byte_reversal-msvc-O0\\compile.log",
+        "memory_scope": "Direct child process only; excludes subprocess tree",
+        "peak_working_set_bytes": 18804736,
+        "seconds": 0.7880678999936208
+      },
+      "compiler": "msvc",
+      "compiler_version": "Microsoft (R) C/C++ Optimizing Compiler Version 19.44.35225 for x86",
+      "family": "byte_reversal",
+      "id": "byte_reversal-msvc-O0",
+      "optimization": "O0",
+      "path": "datasets/osgf_semantic_benchmark_v0_1/runtime/builds/byte_reversal-msvc-O0/byte_reversal-msvc-O0.exe",
+      "sha256": "5eaa296d13f3fb6c1afc980377528feee37b9d033c3ccab8063df0d96686dcfd",
+      "source_sha256": "83a2d64f37811aac6e59bcdf700a1d1263bc9872b8d5becc666aeb1dd3304552",
+      "split": "validation"
+    },
+    {
+      "compile": {
+        "command": [
+          "C:\\MinGW\\bin\\gcc.EXE",
+          "-O0",
+          "-fno-inline",
+          "-fno-ipa-icf",
+          "-Wl,--no-insert-timestamp",
+          "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_semantic_benchmark_v0_1\\sources\\morton_interleave.c",
+          "-o",
+          "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_semantic_benchmark_v0_1\\runtime\\builds\\morton_interleave-gcc-O0\\morton_interleave-gcc-O0.exe"
+        ],
+        "log": "datasets\\osgf_semantic_benchmark_v0_1\\runtime\\builds\\morton_interleave-gcc-O0\\compile.log",
+        "memory_scope": "Direct child process only; excludes subprocess tree",
+        "peak_working_set_bytes": 8839168,
+        "seconds": 1.0313294999068603
+      },
+      "compiler": "gcc",
+      "compiler_version": "gcc.exe (MinGW.org GCC-6.3.0-1) 6.3.0",
+      "family": "morton_interleave",
+      "id": "morton_interleave-gcc-O0",
+      "optimization": "O0",
+      "path": "datasets/osgf_semantic_benchmark_v0_1/runtime/builds/morton_interleave-gcc-O0/morton_interleave-gcc-O0.exe",
+      "sha256": "48d6d27119739eef25ceab470c78faec54c07895303a7505937ac96c71c2f900",
+      "source_sha256": "fa03464dc468e47b527475be85927d71b3b1dcd966c21366f60de7d0503fc90d",
+      "split": "heldout"
+    },
+    {
+      "compile": {
+        "command": [
+          "C:\\MinGW\\bin\\gcc.EXE",
+          "-O2",
+          "-fno-inline",
+          "-fno-ipa-icf",
+          "-Wl,--no-insert-timestamp",
+          "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_semantic_benchmark_v0_1\\sources\\morton_interleave.c",
+          "-o",
+          "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_semantic_benchmark_v0_1\\runtime\\builds\\morton_interleave-gcc-O2\\morton_interleave-gcc-O2.exe"
+        ],
+        "log": "datasets\\osgf_semantic_benchmark_v0_1\\runtime\\builds\\morton_interleave-gcc-O2\\compile.log",
+        "memory_scope": "Direct child process only; excludes subprocess tree",
+        "peak_working_set_bytes": 8847360,
+        "seconds": 1.009029700071551
+      },
+      "compiler": "gcc",
+      "compiler_version": "gcc.exe (MinGW.org GCC-6.3.0-1) 6.3.0",
+      "family": "morton_interleave",
+      "id": "morton_interleave-gcc-O2",
+      "optimization": "O2",
+      "path": "datasets/osgf_semantic_benchmark_v0_1/runtime/builds/morton_interleave-gcc-O2/morton_interleave-gcc-O2.exe",
+      "sha256": "d83ecb5cfd644baf9ba8e11661fff7f0d66f262a77366d20356232ae465d6d31",
+      "source_sha256": "fa03464dc468e47b527475be85927d71b3b1dcd966c21366f60de7d0503fc90d",
+      "split": "heldout"
+    },
+    {
+      "compile": {
+        "command": [
+          "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX86\\x86\\cl.exe",
+          "/nologo",
+          "/Od",
+          "/Brepro",
+          "/W3",
+          "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_semantic_benchmark_v0_1\\sources\\morton_interleave.c",
+          "/FoC:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_semantic_benchmark_v0_1\\runtime\\builds\\morton_interleave-msvc-O0\\morton_interleave-msvc-O0.obj",
+          "/FeC:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_semantic_benchmark_v0_1\\runtime\\builds\\morton_interleave-msvc-O0\\morton_interleave-msvc-O0.exe",
+          "/link",
+          "/INCREMENTAL:NO",
+          "/OPT:NOICF",
+          "/IMPLIB:C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_semantic_benchmark_v0_1\\runtime\\builds\\morton_interleave-msvc-O0\\morton_interleave-msvc-O0.lib"
+        ],
+        "log": "datasets\\osgf_semantic_benchmark_v0_1\\runtime\\builds\\morton_interleave-msvc-O0\\compile.log",
+        "memory_scope": "Direct child process only; excludes subprocess tree",
+        "peak_working_set_bytes": 18829312,
+        "seconds": 0.7993228000123054
+      },
+      "compiler": "msvc",
+      "compiler_version": "Microsoft (R) C/C++ Optimizing Compiler Version 19.44.35225 for x86",
+      "family": "morton_interleave",
+      "id": "morton_interleave-msvc-O0",
+      "optimization": "O0",
+      "path": "datasets/osgf_semantic_benchmark_v0_1/runtime/builds/morton_interleave-msvc-O0/morton_interleave-msvc-O0.exe",
+      "sha256": "f35cf2c9da8d844eb2956658a84c3d9122b0b7b9f47600d6e706586d0e4d04e1",
+      "source_sha256": "fa03464dc468e47b527475be85927d71b3b1dcd966c21366f60de7d0503fc90d",
+      "split": "heldout"
+    },
+    {
+      "compile": {
+        "command": [
+          "C:\\MinGW\\bin\\gcc.EXE",
+          "-O0",
+          "-fno-inline",
+          "-fno-ipa-icf",
+          "-Wl,--no-insert-timestamp",
+          "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_semantic_benchmark_v0_1\\sources\\unsigned_average.c",
+          "-o",
+          "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_semantic_benchmark_v0_1\\runtime\\builds\\unsigned_average-gcc-O0\\unsigned_average-gcc-O0.exe"
+        ],
+        "log": "datasets\\osgf_semantic_benchmark_v0_1\\runtime\\builds\\unsigned_average-gcc-O0\\compile.log",
+        "memory_scope": "Direct child process only; excludes subprocess tree",
+        "peak_working_set_bytes": 8839168,
+        "seconds": 0.9725529999705032
+      },
+      "compiler": "gcc",
+      "compiler_version": "gcc.exe (MinGW.org GCC-6.3.0-1) 6.3.0",
+      "family": "unsigned_average",
+      "id": "unsigned_average-gcc-O0",
+      "optimization": "O0",
+      "path": "datasets/osgf_semantic_benchmark_v0_1/runtime/builds/unsigned_average-gcc-O0/unsigned_average-gcc-O0.exe",
+      "sha256": "b189617486d1e3dbb5496747bf192b7e463965383b407e741112402edc875473",
+      "source_sha256": "22e7dd7c6bc896217f893fea734f6fb24797bc3433735923474eb60a860ed478",
+      "split": "heldout"
+    },
+    {
+      "compile": {
+        "command": [
+          "C:\\MinGW\\bin\\gcc.EXE",
+          "-O2",
+          "-fno-inline",
+          "-fno-ipa-icf",
+          "-Wl,--no-insert-timestamp",
+          "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_semantic_benchmark_v0_1\\sources\\unsigned_average.c",
+          "-o",
+          "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_semantic_benchmark_v0_1\\runtime\\builds\\unsigned_average-gcc-O2\\unsigned_average-gcc-O2.exe"
+        ],
+        "log": "datasets\\osgf_semantic_benchmark_v0_1\\runtime\\builds\\unsigned_average-gcc-O2\\compile.log",
+        "memory_scope": "Direct child process only; excludes subprocess tree",
+        "peak_working_set_bytes": 8839168,
+        "seconds": 0.975051200017333
+      },
+      "compiler": "gcc",
+      "compiler_version": "gcc.exe (MinGW.org GCC-6.3.0-1) 6.3.0",
+      "family": "unsigned_average",
+      "id": "unsigned_average-gcc-O2",
+      "optimization": "O2",
+      "path": "datasets/osgf_semantic_benchmark_v0_1/runtime/builds/unsigned_average-gcc-O2/unsigned_average-gcc-O2.exe",
+      "sha256": "b3f1bd7d0ec223bfa9cc7a4560f81338df76ac50ecc029413004eb3feac782e1",
+      "source_sha256": "22e7dd7c6bc896217f893fea734f6fb24797bc3433735923474eb60a860ed478",
+      "split": "heldout"
+    },
+    {
+      "compile": {
+        "command": [
+          "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX86\\x86\\cl.exe",
+          "/nologo",
+          "/Od",
+          "/Brepro",
+          "/W3",
+          "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_semantic_benchmark_v0_1\\sources\\unsigned_average.c",
+          "/FoC:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_semantic_benchmark_v0_1\\runtime\\builds\\unsigned_average-msvc-O0\\unsigned_average-msvc-O0.obj",
+          "/FeC:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_semantic_benchmark_v0_1\\runtime\\builds\\unsigned_average-msvc-O0\\unsigned_average-msvc-O0.exe",
+          "/link",
+          "/INCREMENTAL:NO",
+          "/OPT:NOICF",
+          "/IMPLIB:C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_semantic_benchmark_v0_1\\runtime\\builds\\unsigned_average-msvc-O0\\unsigned_average-msvc-O0.lib"
+        ],
+        "log": "datasets\\osgf_semantic_benchmark_v0_1\\runtime\\builds\\unsigned_average-msvc-O0\\compile.log",
+        "memory_scope": "Direct child process only; excludes subprocess tree",
+        "peak_working_set_bytes": 18702336,
+        "seconds": 0.809628100018017
+      },
+      "compiler": "msvc",
+      "compiler_version": "Microsoft (R) C/C++ Optimizing Compiler Version 19.44.35225 for x86",
+      "family": "unsigned_average",
+      "id": "unsigned_average-msvc-O0",
+      "optimization": "O0",
+      "path": "datasets/osgf_semantic_benchmark_v0_1/runtime/builds/unsigned_average-msvc-O0/unsigned_average-msvc-O0.exe",
+      "sha256": "674f94463cb5627ae6c386b23e329b947c5e87bbf43341d49cf7c868f335daaa",
+      "source_sha256": "22e7dd7c6bc896217f893fea734f6fb24797bc3433735923474eb60a860ed478",
+      "split": "heldout"
+    }
+  ],
+  "generator_sha256": "2802ad5ffbaf61b5dcb2a6e1e8e85c437275acae1db4d6c3f436b0e0bda4b307",
+  "independence": "New source behavior families authored after generic method lock; internal prospective benchmark, not externally blinded",
+  "method_sha256": "b17a175d9c289b22a8ac906aeca01c36f46e9af82e0e848a901d2d802587d486",
+  "oracle_seed": 20261109,
+  "schema_version": "osgf.semantic-benchmark/0.1.0",
+  "sources": [
+    {
+      "contract": "all unsigned32 x/y/z; no environmental input; foil=result XOR 1",
+      "family": "unsigned_distance",
+      "negative_witness": {
+        "foil": 1,
+        "inputs": [
+          0,
+          0,
+          0
+        ],
+        "subject": 0
+      },
+      "oracle_cases": 1051,
+      "oracle_outputs_sha256": "703c5c837f02342c8563585cbcd7ac6df88a35e8f669af36479a86d80a503874",
+      "path": "datasets/osgf_semantic_benchmark_v0_1/sources/unsigned_distance.c",
+      "sha256": "3525b67837b1a4bc42941d357ef1fd4f6b6cfeef1b9af17a8512523a0781d741",
+      "source_proof": "Ordering selects max-min, in [0,2^32-1].",
+      "split": "discovery"
+    },
+    {
+      "contract": "all unsigned32 x/y/z; no environmental input; foil=result XOR 1",
+      "family": "gray_encoding",
+      "negative_witness": {
+        "foil": 1,
+        "inputs": [
+          0,
+          0,
+          0
+        ],
+        "subject": 0
+      },
+      "oracle_cases": 1051,
+      "oracle_outputs_sha256": "ada58b67e5ba3c3a77ca14d88ab43543432bfd430f547dab3a3a13afeb58cef5",
+      "path": "datasets/osgf_semantic_benchmark_v0_1/sources/gray_encoding.c",
+      "sha256": "84af5bd8c7abd04dfc64833710a5dee5c21d1690a291fb5874a84ef0a0d838b6",
+      "source_proof": "Each output bit is input bit i xor bit i+1; bit32 is zero.",
+      "split": "discovery"
+    },
+    {
+      "contract": "all unsigned32 x/y/z; no environmental input; foil=result XOR 1",
+      "family": "median_three",
+      "negative_witness": {
+        "foil": 1,
+        "inputs": [
+          0,
+          0,
+          0
+        ],
+        "subject": 0
+      },
+      "oracle_cases": 1051,
+      "oracle_outputs_sha256": "1d530f350379f2133258f39b8eeff97732e3c887b297e153a669d7cf3f2bf104",
+      "path": "datasets/osgf_semantic_benchmark_v0_1/sources/median_three.c",
+      "sha256": "4bdcdf9b4c54ef73d8049b24e68d88bbc77c696c247c80634999bbb94f0f20c9",
+      "source_proof": "Three compare-exchanges sort; nested inequalities select middle order statistic including ties.",
+      "split": "validation"
+    },
+    {
+      "contract": "all unsigned32 x/y/z; no environmental input; foil=result XOR 1",
+      "family": "byte_reversal",
+      "negative_witness": {
+        "foil": 1,
+        "inputs": [
+          0,
+          0,
+          0
+        ],
+        "subject": 0
+      },
+      "oracle_cases": 1051,
+      "oracle_outputs_sha256": "8037c14c4b44140ce8e0859ae97159de85119069d0c677cd86cc8a7188ff4287",
+      "path": "datasets/osgf_semantic_benchmark_v0_1/sources/byte_reversal.c",
+      "sha256": "83a2d64f37811aac6e59bcdf700a1d1263bc9872b8d5becc666aeb1dd3304552",
+      "source_proof": "Disjoint byte masks map byte i to position 3-i; iterative assembly gives same permutation.",
+      "split": "validation"
+    },
+    {
+      "contract": "all unsigned32 x/y/z; no environmental input; foil=result XOR 1",
+      "family": "morton_interleave",
+      "negative_witness": {
+        "foil": 1,
+        "inputs": [
+          0,
+          0,
+          0
+        ],
+        "subject": 0
+      },
+      "oracle_cases": 1051,
+      "oracle_outputs_sha256": "0519265d37bf5fc91b7e77f81021580854c9d02d3934a60ac3b4cee90841959c",
+      "path": "datasets/osgf_semantic_benchmark_v0_1/sources/morton_interleave.c",
+      "sha256": "fa03464dc468e47b527475be85927d71b3b1dcd966c21366f60de7d0503fc90d",
+      "source_proof": "Successive disjoint masks spread low16 bits into even positions; y occupies odd positions. Higher input bits are ignored.",
+      "split": "heldout"
+    },
+    {
+      "contract": "all unsigned32 x/y/z; no environmental input; foil=result XOR 1",
+      "family": "unsigned_average",
+      "negative_witness": {
+        "foil": 1,
+        "inputs": [
+          0,
+          0,
+          0
+        ],
+        "subject": 0
+      },
+      "oracle_cases": 1051,
+      "oracle_outputs_sha256": "e5edde259f12e2b898c6825844107e7fdd7583c581103eb9c51bf84ae959178e",
+      "path": "datasets/osgf_semantic_benchmark_v0_1/sources/unsigned_average.c",
+      "sha256": "22e7dd7c6bc896217f893fea734f6fb24797bc3433735923474eb60a860ed478",
+      "source_proof": "x+y=2*(x&y)+(x^y); quotient/remainder decomposition also yields floor((x+y)/2) without 32-bit overflow.",
+      "split": "heldout"
+    }
+  ]
+}

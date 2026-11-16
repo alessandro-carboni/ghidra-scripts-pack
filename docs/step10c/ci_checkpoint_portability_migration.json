@@ -1,0 +1,36 @@
+{
+  "date": "2026-11-09",
+  "reason": "Six administrative/documentation files migrate to canonical LF. Four already had LF checkout rules; two had unreproducible mixed line endings. Source bytes, compiled provenance and scientific fixture hashes are unchanged. Remaining protected files have explicit checkout attributes matching their existing hashes.",
+  "migrations": [
+    {
+      "path": "datasets/osgf_baseline_evaluation_v0_1/.gitattributes",
+      "previous_crlf_sha256": "ba3d4e0a92188305f7cb5ff36e521d8e5df81a0cf5bc64028d9c86834e5096c0",
+      "canonical_lf_sha256": "a79691a93b46e49ce460c26ef22afcc03d6eca1e63bf2edbc20e96159510f6c9"
+    },
+    {
+      "path": "datasets/osgf_baseline_evaluation_v0_1/.gitignore",
+      "previous_crlf_sha256": "14beb3b621c96e0ef17809ffcf933db5180389905e93d86496644c51f479b90c",
+      "canonical_lf_sha256": "ff4c4d6b43493f9d6a300044a131089bdbbe3b270e0fae6720f87000550aa3b5"
+    },
+    {
+      "path": "datasets/osgf_baseline_evaluation_v0_1/VALIDATION.md",
+      "previous_crlf_sha256": "0b151e895134ec6180b275c3f09d3056105556c17612231a2159e0c85e41b70a",
+      "canonical_lf_sha256": "8306b86b3e14a58b5ad5b56a79d85e5b817756641fac9e06b3b1b4d3a634cfaa"
+    },
+    {
+      "path": "datasets/osgf_transformations_v0_1/ACCEPTANCE.md",
+      "previous_crlf_sha256": "cc353446364361cf8501d7f6780d1a609f386346b3514f45fb87d192949742bd",
+      "canonical_lf_sha256": "a9f3c47afa6107ce51585a04bb73c54fc30ca6e2f38e92c59bcd02c0cc8c877f"
+    },
+    {
+      "path": "docs/baseline_evaluation_v0_1.md",
+      "previous_mixed_eol_sha256": "52f1420a1500a8164a256c8913f718cbee48911eb6f988741188e43222bfef86",
+      "canonical_lf_sha256": "7c0b3847460b9e28c6dc5f82f42b3aac2ddfc67bd94085139d1d5d7236a27845"
+    },
+    {
+      "path": "docs/transformation_harness_v0_1.md",
+      "previous_mixed_eol_sha256": "86acfe95d718d1898064b33f60214a907e31c29ba8e4da668b22917c313056a8",
+      "canonical_lf_sha256": "fd20dfaa21493b23130ec1ce1d546285a94920f5d04c0e198f50df0030bcd503"
+    }
+  ]
+}

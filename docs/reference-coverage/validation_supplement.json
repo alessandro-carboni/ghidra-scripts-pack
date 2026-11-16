@@ -1,0 +1,42 @@
+[
+  {
+    "command": "python -m pytest -q tests/test_reference_coverage.py",
+    "exit_code": 0,
+    "result": "18 passed in 9.60 s"
+  },
+  {
+    "command": "python -m pytest -q tests",
+    "exit_code": 0,
+    "result": "624 passed, 175 subtests passed in 258.22 s"
+  },
+  {
+    "command": "python .build-cache/reference-coverage-notepad-smoke.py",
+    "exit_code": 0,
+    "result": "25/25 deterministic real canonical self-comparisons"
+  },
+  {
+    "command": "python -m ruff check .",
+    "exit_code": 0
+  },
+  {
+    "command": "python -m ruff format --check .",
+    "exit_code": 0,
+    "result": "123 files already formatted"
+  },
+  {
+    "command": "git diff --check",
+    "exit_code": 0
+  },
+  {
+    "log": ".build-cache\\reference-coverage-full-pytest.log",
+    "sha256": "545fd2044d8b65a9aaa7546e534353dc690104d8d00a242bdc45b8c83e492848"
+  },
+  {
+    "log": ".build-cache\\reference-coverage-regressions.log",
+    "sha256": "e185271293b49ada51f6e956134b5213ecca6f95ab21749749c3775acadb0f5e"
+  },
+  {
+    "log": ".build-cache\\reference-coverage-notepad-smoke.log",
+    "sha256": "98980da92083ba16fddf14e6e55a8973a52a701cca1a06dc75d2c93d7ad9e54c"
+  }
+]

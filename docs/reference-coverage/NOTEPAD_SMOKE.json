@@ -1,0 +1,207 @@
+{
+  "status": "PASS",
+  "graphs": 25,
+  "purpose": "Real-data integration/self-comparison; not retrieval accuracy or malware validation",
+  "rows": [
+    {
+      "file": "reports/canonical-notepad-step5/seed_fn_140002100.json",
+      "source_sha256": "51a74ace15250e66915166dec085d0c8e342ba1103f12ccc80a4ed08f85e0886",
+      "result_sha256": "bf4c236a5ee1b36394f8109ce1b60666e12f5f3ac2923a8213bdf631e6a72ac3",
+      "base_reference_values": 23,
+      "warnings": 4,
+      "deterministic": true
+    },
+    {
+      "file": "reports/canonical-notepad-step5/seed_fn_1400033ac.json",
+      "source_sha256": "0e4567a3c5d70af0db1d4b185389d6b48b9d80ecde0cb3839bc59c845697b387",
+      "result_sha256": "8ee40b87ceb45cd64a900e93f65a34f5a9bd566cd69ace19f249f578e5de0e29",
+      "base_reference_values": 20,
+      "warnings": 4,
+      "deterministic": true
+    },
+    {
+      "file": "reports/canonical-notepad-step5/seed_fn_140003624.json",
+      "source_sha256": "7b4c9b4daa82ad4c7b747ba49d2ef4d7cbd45fc602e85d2487c4846e6844254c",
+      "result_sha256": "99d9601da3439231e1cbb496960a15957de1782f46ec71452270c613cad4c5c6",
+      "base_reference_values": 21,
+      "warnings": 4,
+      "deterministic": true
+    },
+    {
+      "file": "reports/canonical-notepad-step5/seed_fn_140005f6c.json",
+      "source_sha256": "6276d9b398ff9d7a335dc5b73fba146310ebe4c8fcf0d00833dd5f3f96750f46",
+      "result_sha256": "26561d837ddb9c299486bcbfce327809cfe0b6fe451305f316900d32fa27c7ac",
+      "base_reference_values": 20,
+      "warnings": 4,
+      "deterministic": true
+    },
+    {
+      "file": "reports/canonical-notepad-step5/seed_fn_140006300.json",
+      "source_sha256": "911f1e676ce6f59c6f0e6f06e2d7a1da0d83301f2f28ac4204da710728333af5",
+      "result_sha256": "208e4d930e6c75e091256f0bad3c6effe86d646932d45d2aca785f0000f85bfc",
+      "base_reference_values": 5,
+      "warnings": 0,
+      "deterministic": true
+    },
+    {
+      "file": "reports/canonical-notepad-step5/seed_fn_140006634.json",
+      "source_sha256": "601fca06b6f64c4888141532a750e0b5ca66d89f1ef980b145b7b8e4da1f5a4f",
+      "result_sha256": "cf736366b68444e8807bab747f539982f241fe1504de0fad85a7f0d6f5a25b02",
+      "base_reference_values": 18,
+      "warnings": 0,
+      "deterministic": true
+    },
+    {
+      "file": "reports/canonical-notepad-step5/seed_fn_140007d20.json",
+      "source_sha256": "fab977f9f5e55102646d5b44d506339ae49db550ef6425af2aa3867724f19bf0",
+      "result_sha256": "47205d2547915415d6847192ab50b33a6faff24893a06424a98378456480acea",
+      "base_reference_values": 5,
+      "warnings": 0,
+      "deterministic": true
+    },
+    {
+      "file": "reports/canonical-notepad-step5/seed_fn_140007da0.json",
+      "source_sha256": "aec4840dcf649d539051cfa8db4740ba3c0ebc9de7a7c15dbc3aaf05aba473c5",
+      "result_sha256": "a6776fbea49eba9051f239a297d7085ce17ba464543487ebd697ce9bd18774d8",
+      "base_reference_values": 5,
+      "warnings": 0,
+      "deterministic": true
+    },
+    {
+      "file": "reports/canonical-notepad-step5/seed_fn_140008514.json",
+      "source_sha256": "90f8723a157aecf400aefd3126830a7d67dd2ad30424895e82b914438cb22420",
+      "result_sha256": "2e37a7c2adf5d41ffb7e480edfeee49d6d5530d2d972b71bb949830cb2160809",
+      "base_reference_values": 7,
+      "warnings": 0,
+      "deterministic": true
+    },
+    {
+      "file": "reports/canonical-notepad-step5/seed_fn_140008bb8.json",
+      "source_sha256": "0b7231cf6022ed6989642f3f0ac10e2eaf74de71154f1ffe9a71c984038c44c9",
+      "result_sha256": "98dc1da65b8012acf77542564a6fc3118fa61a0f82b605178d71a64358821c65",
+      "base_reference_values": 11,
+      "warnings": 0,
+      "deterministic": true
+    },
+    {
+      "file": "reports/canonical-notepad-step5/seed_fn_140008d40.json",
+      "source_sha256": "f405af7e114e99d4e126bd048699de0a8dfc0822bc67c73b940549d40a37dac0",
+      "result_sha256": "55db9b762db1e453257acc8df56a28f8a53ffe555a9b34bec92b93e2af78fdb6",
+      "base_reference_values": 27,
+      "warnings": 0,
+      "deterministic": true
+    },
+    {
+      "file": "reports/canonical-notepad-step5/seed_fn_140008f80.json",
+      "source_sha256": "35b6022b9bf23abbc74e49fe036faf9dede7b15d34035de37c09df0489b9e6dd",
+      "result_sha256": "d8343ab83a102a96db2b6749a9315c235c3adaffd00654bcc7531dba7895b769",
+      "base_reference_values": 5,
+      "warnings": 0,
+      "deterministic": true
+    },
+    {
+      "file": "reports/canonical-notepad-step5/seed_fn_140009798.json",
+      "source_sha256": "8438f7721aa16563a6e04657289d2c09550110aaf82ff71cbfbd30c1c048f376",
+      "result_sha256": "5fb8fa1717cbef0f7696a0ddd60ca82436a7b1ffbc90ec6f400aafbf35ff4590",
+      "base_reference_values": 6,
+      "warnings": 4,
+      "deterministic": true
+    },
+    {
+      "file": "reports/canonical-notepad-step5/seed_fn_140009910.json",
+      "source_sha256": "3df2cde69f17efdad6af7e1d8c46024c3c22c277be8f4f8def0b563c3d52498b",
+      "result_sha256": "d1ff416f644298c8cf94c7eb29e55046bbc4671691732655e9c60eac4e076aa3",
+      "base_reference_values": 5,
+      "warnings": 0,
+      "deterministic": true
+    },
+    {
+      "file": "reports/canonical-notepad-step5/seed_fn_1400099b4.json",
+      "source_sha256": "3da14a922f39105c08e28ad282f3082c369c5f594c6670503d20161e3d2ea0bc",
+      "result_sha256": "36a703a5990429265915729cd27a7272497cdf548317dabbba961770debd2f76",
+      "base_reference_values": 8,
+      "warnings": 0,
+      "deterministic": true
+    },
+    {
+      "file": "reports/canonical-notepad-step5/seed_fn_140009a5c.json",
+      "source_sha256": "5b48c6d94368b998560c451f0dcb2ce94a2596206432fa87caff0da8bdbab7e2",
+      "result_sha256": "7ab22769d7fc149bc522f83bbf63f04ff8947b4c0cc79393fb6c810abf1bc565",
+      "base_reference_values": 8,
+      "warnings": 0,
+      "deterministic": true
+    },
+    {
+      "file": "reports/canonical-notepad-step5/seed_fn_14000da7c.json",
+      "source_sha256": "e5d2e816ea1b29e9c316580f72d425d3aa07c4a5d97abdb5c5ee229ac2051b69",
+      "result_sha256": "9a5b81d9e7d5fa2ed7d0e213a6877bb5c76cbb127cbb459fc09718b0208fc3df",
+      "base_reference_values": 173,
+      "warnings": 4,
+      "deterministic": true
+    },
+    {
+      "file": "reports/canonical-notepad-step5/seed_fn_140012a2c.json",
+      "source_sha256": "9613ab1ec966bb46193e605f22308f6c1596d9ccc26d004efe5256f5d6c83956",
+      "result_sha256": "1e229f12ee40dc7d8b3c4ab411f2a028d36027f8a46839a2813629960a695903",
+      "base_reference_values": 112,
+      "warnings": 4,
+      "deterministic": true
+    },
+    {
+      "file": "reports/canonical-notepad-step5/seed_fn_140013154.json",
+      "source_sha256": "947eb04add43808df148aeccefdad0a6999e7988076116c3bd6dec54b882e813",
+      "result_sha256": "d126a060c879f0d3fa313d55bd222bc2de8705d7bd0cc6fc11b4fb1c5e45e083",
+      "base_reference_values": 206,
+      "warnings": 4,
+      "deterministic": true
+    },
+    {
+      "file": "reports/canonical-notepad-step5/seed_fn_14001ea18.json",
+      "source_sha256": "320cfd85ebff677993acda24916da7843894fbbd2e67fede0770140a4783e309",
+      "result_sha256": "7eb8cbe0b5c27f5ca34b1a5740b30b5e29566a346ebdd400dcc4d83f55022276",
+      "base_reference_values": 51,
+      "warnings": 0,
+      "deterministic": true
+    },
+    {
+      "file": "reports/canonical-notepad-step5/seed_fn_14001eb80.json",
+      "source_sha256": "4a0df6edfb4a3340f0259248664bb6f0f5622645d362884115bbe451412a0740",
+      "result_sha256": "54b3bca6c2c7f0f2a804cb62072ee6b65b35f7739d6145ba0b1d8ce534b57578",
+      "base_reference_values": 37,
+      "warnings": 0,
+      "deterministic": true
+    },
+    {
+      "file": "reports/canonical-notepad-step5/seed_fn_14001ebb8.json",
+      "source_sha256": "fe1c63fbf6eb1462b0de81ed26ae059cec7a90c2df2aa15b597adef757b41743",
+      "result_sha256": "d2a2ceb61657a3c464f970424f7c18d03e2015744329afd43542baa8041dc74d",
+      "base_reference_values": 38,
+      "warnings": 0,
+      "deterministic": true
+    },
+    {
+      "file": "reports/canonical-notepad-step5/seed_fn_140021020.json",
+      "source_sha256": "fb4fd3c0168fb4fff2dbe4318b8e74fcd9a8d3551e5eb70c30b6c94cc7facc86",
+      "result_sha256": "c1f36eac4de574336d605d7757a3f99ccbedc6639c2f2854a279cba910f63627",
+      "base_reference_values": 6,
+      "warnings": 0,
+      "deterministic": true
+    },
+    {
+      "file": "reports/canonical-notepad-step5/seed_fn_1400225a4.json",
+      "source_sha256": "8d2ec70fe9926940d6353e26142d8cc8d256978ed93c58b0b8027e0885c658ba",
+      "result_sha256": "072be4344c9039e1a8ea37eb168663d8d241a7a2e95c8ee360c4b8c7045915a4",
+      "base_reference_values": 100,
+      "warnings": 4,
+      "deterministic": true
+    },
+    {
+      "file": "reports/canonical-notepad-step5/seed_fn_1400229e8.json",
+      "source_sha256": "0e18ebfbc4966577a0dffee9fd4ea35786adc4245c21a7ef1a15e69a25f1d663",
+      "result_sha256": "1d6d7206d0cc7d308915d5c77cb65f8714227006c4addcae464b58a635b18af9",
+      "base_reference_values": 66,
+      "warnings": 4,
+      "deterministic": true
+    }
+  ]
+}

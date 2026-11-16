@@ -1,0 +1,877 @@
+{
+  "scope": "Independent Python mathematical witnesses checked against authored C and stored real Ghidra graphs; no new binary execution",
+  "witnesses": [
+    {
+      "independently_recomputed_outputs": [
+        448,
+        0
+      ],
+      "input_bytes": [
+        13,
+        30,
+        47,
+        64,
+        81,
+        98,
+        115
+      ],
+      "pair_id": "pair:1111ce3850555321293ef20a",
+      "routines": [
+        "sum_array",
+        "count_matches"
+      ],
+      "score": 1.0,
+      "sources": [
+        {
+          "path": "samples/controlled/source/numeric.c",
+          "sha256": "9a3dade718c9998126fdb4ca63b18b37d9044f24c3b8fcf6cbfede434e15ceca"
+        },
+        {
+          "path": "samples/controlled/source/numeric.c",
+          "sha256": "9a3dade718c9998126fdb4ca63b18b37d9044f24c3b8fcf6cbfede434e15ceca"
+        }
+      ]
+    },
+    {
+      "independently_recomputed_outputs": [
+        115,
+        0
+      ],
+      "input_bytes": [
+        13,
+        30,
+        47,
+        64,
+        81,
+        98,
+        115
+      ],
+      "pair_id": "pair:11da606b1cea94fb33958b0b",
+      "routines": [
+        "find_max",
+        "count_matches"
+      ],
+      "score": 1.0,
+      "sources": [
+        {
+          "path": "samples/controlled/source/numeric.c",
+          "sha256": "9a3dade718c9998126fdb4ca63b18b37d9044f24c3b8fcf6cbfede434e15ceca"
+        },
+        {
+          "path": "samples/controlled/source/numeric.c",
+          "sha256": "9a3dade718c9998126fdb4ca63b18b37d9044f24c3b8fcf6cbfede434e15ceca"
+        }
+      ]
+    },
+    {
+      "independently_recomputed_outputs": [
+        0,
+        448
+      ],
+      "input_bytes": [
+        13,
+        30,
+        47,
+        64,
+        81,
+        98,
+        115
+      ],
+      "pair_id": "pair:1510de987f48e7682a0c2e5b",
+      "routines": [
+        "count_matches",
+        "sum_array"
+      ],
+      "score": 1.0,
+      "sources": [
+        {
+          "path": "samples/controlled/source/numeric.c",
+          "sha256": "9a3dade718c9998126fdb4ca63b18b37d9044f24c3b8fcf6cbfede434e15ceca"
+        },
+        {
+          "path": "samples/controlled/source/numeric.c",
+          "sha256": "9a3dade718c9998126fdb4ca63b18b37d9044f24c3b8fcf6cbfede434e15ceca"
+        }
+      ]
+    },
+    {
+      "independently_recomputed_outputs": [
+        0,
+        1
+      ],
+      "input_bytes": [
+        13,
+        30,
+        47,
+        64,
+        81,
+        98,
+        115
+      ],
+      "pair_id": "pair:25d0069a84bb89c4392ce742",
+      "routines": [
+        "search_string",
+        "count_letters"
+      ],
+      "score": 1.0,
+      "sources": [
+        {
+          "path": "samples/controlled/source/text.c",
+          "sha256": "0e76eb2a24692ebe328520b5916b2fd9ca4e6f23e847760d0c1dc4f1d30cbf3c"
+        },
+        {
+          "path": "samples/controlled/source/text.c",
+          "sha256": "0e76eb2a24692ebe328520b5916b2fd9ca4e6f23e847760d0c1dc4f1d30cbf3c"
+        }
+      ]
+    },
+    {
+      "independently_recomputed_outputs": [
+        0,
+        1
+      ],
+      "input_bytes": [
+        13,
+        30,
+        47,
+        64,
+        81,
+        98,
+        115
+      ],
+      "pair_id": "pair:2cc388e58e5248b47a12eb29",
+      "routines": [
+        "count_digits",
+        "count_letters"
+      ],
+      "score": 1.0,
+      "sources": [
+        {
+          "path": "samples/controlled/source/text.c",
+          "sha256": "0e76eb2a24692ebe328520b5916b2fd9ca4e6f23e847760d0c1dc4f1d30cbf3c"
+        },
+        {
+          "path": "samples/controlled/source/text.c",
+          "sha256": "0e76eb2a24692ebe328520b5916b2fd9ca4e6f23e847760d0c1dc4f1d30cbf3c"
+        }
+      ]
+    },
+    {
+      "independently_recomputed_outputs": [
+        0,
+        1
+      ],
+      "input_bytes": [
+        26,
+        43,
+        60,
+        77,
+        94,
+        111,
+        1,
+        18,
+        35,
+        52,
+        69,
+        86,
+        103,
+        120
+      ],
+      "pair_id": "pair:33be25c74a3ad6552268f035",
+      "routines": [
+        "search_string",
+        "count_digits"
+      ],
+      "score": 1.0,
+      "sources": [
+        {
+          "path": "samples/controlled/source/text.c",
+          "sha256": "0e76eb2a24692ebe328520b5916b2fd9ca4e6f23e847760d0c1dc4f1d30cbf3c"
+        },
+        {
+          "path": "samples/controlled/source/text.c",
+          "sha256": "0e76eb2a24692ebe328520b5916b2fd9ca4e6f23e847760d0c1dc4f1d30cbf3c"
+        }
+      ]
+    },
+    {
+      "independently_recomputed_outputs": [
+        0,
+        1
+      ],
+      "input_bytes": [
+        13,
+        30,
+        47,
+        64,
+        81,
+        98,
+        115
+      ],
+      "pair_id": "pair:47a6247def9e4070e95e245f",
+      "routines": [
+        "count_digits",
+        "count_letters"
+      ],
+      "score": 1.0,
+      "sources": [
+        {
+          "path": "samples/controlled/source/text.c",
+          "sha256": "0e76eb2a24692ebe328520b5916b2fd9ca4e6f23e847760d0c1dc4f1d30cbf3c"
+        },
+        {
+          "path": "samples/controlled/source/text.c",
+          "sha256": "0e76eb2a24692ebe328520b5916b2fd9ca4e6f23e847760d0c1dc4f1d30cbf3c"
+        }
+      ]
+    },
+    {
+      "independently_recomputed_outputs": [
+        1,
+        0
+      ],
+      "input_bytes": [
+        26,
+        43,
+        60,
+        77,
+        94,
+        111,
+        1,
+        18,
+        35,
+        52,
+        69,
+        86,
+        103,
+        120
+      ],
+      "pair_id": "pair:4c2e6570520697fb152a0b77",
+      "routines": [
+        "count_digits",
+        "search_string"
+      ],
+      "score": 1.0,
+      "sources": [
+        {
+          "path": "samples/controlled/source/text.c",
+          "sha256": "0e76eb2a24692ebe328520b5916b2fd9ca4e6f23e847760d0c1dc4f1d30cbf3c"
+        },
+        {
+          "path": "samples/controlled/source/text.c",
+          "sha256": "0e76eb2a24692ebe328520b5916b2fd9ca4e6f23e847760d0c1dc4f1d30cbf3c"
+        }
+      ]
+    },
+    {
+      "independently_recomputed_outputs": [
+        1,
+        0
+      ],
+      "input_bytes": [
+        13,
+        30,
+        47,
+        64,
+        81,
+        98,
+        115
+      ],
+      "pair_id": "pair:5ead5b63f6124774cf925af8",
+      "routines": [
+        "count_letters",
+        "count_digits"
+      ],
+      "score": 1.0,
+      "sources": [
+        {
+          "path": "samples/controlled/source/text.c",
+          "sha256": "0e76eb2a24692ebe328520b5916b2fd9ca4e6f23e847760d0c1dc4f1d30cbf3c"
+        },
+        {
+          "path": "samples/controlled/source/text.c",
+          "sha256": "0e76eb2a24692ebe328520b5916b2fd9ca4e6f23e847760d0c1dc4f1d30cbf3c"
+        }
+      ]
+    },
+    {
+      "independently_recomputed_outputs": [
+        0,
+        115
+      ],
+      "input_bytes": [
+        13,
+        30,
+        47,
+        64,
+        81,
+        98,
+        115
+      ],
+      "pair_id": "pair:6a3fa93fa9acd3054b04e7f6",
+      "routines": [
+        "count_matches",
+        "find_max"
+      ],
+      "score": 1.0,
+      "sources": [
+        {
+          "path": "samples/controlled/source/numeric.c",
+          "sha256": "9a3dade718c9998126fdb4ca63b18b37d9044f24c3b8fcf6cbfede434e15ceca"
+        },
+        {
+          "path": "samples/controlled/source/numeric.c",
+          "sha256": "9a3dade718c9998126fdb4ca63b18b37d9044f24c3b8fcf6cbfede434e15ceca"
+        }
+      ]
+    },
+    {
+      "independently_recomputed_outputs": [
+        115,
+        448
+      ],
+      "input_bytes": [
+        13,
+        30,
+        47,
+        64,
+        81,
+        98,
+        115
+      ],
+      "pair_id": "pair:70a109571bc0060d86f2be1a",
+      "routines": [
+        "find_max",
+        "sum_array"
+      ],
+      "score": 1.0,
+      "sources": [
+        {
+          "path": "samples/controlled/source/numeric.c",
+          "sha256": "9a3dade718c9998126fdb4ca63b18b37d9044f24c3b8fcf6cbfede434e15ceca"
+        },
+        {
+          "path": "samples/controlled/source/numeric.c",
+          "sha256": "9a3dade718c9998126fdb4ca63b18b37d9044f24c3b8fcf6cbfede434e15ceca"
+        }
+      ]
+    },
+    {
+      "independently_recomputed_outputs": [
+        0,
+        1
+      ],
+      "input_bytes": [
+        13,
+        30,
+        47,
+        64,
+        81,
+        98,
+        115
+      ],
+      "pair_id": "pair:84076927700ef6fb3e60e122",
+      "routines": [
+        "search_string",
+        "count_letters"
+      ],
+      "score": 1.0,
+      "sources": [
+        {
+          "path": "samples/controlled/source/text.c",
+          "sha256": "0e76eb2a24692ebe328520b5916b2fd9ca4e6f23e847760d0c1dc4f1d30cbf3c"
+        },
+        {
+          "path": "samples/controlled/source/text.c",
+          "sha256": "0e76eb2a24692ebe328520b5916b2fd9ca4e6f23e847760d0c1dc4f1d30cbf3c"
+        }
+      ]
+    },
+    {
+      "independently_recomputed_outputs": [
+        0,
+        448
+      ],
+      "input_bytes": [
+        13,
+        30,
+        47,
+        64,
+        81,
+        98,
+        115
+      ],
+      "pair_id": "pair:8438d263ab495402c7066f15",
+      "routines": [
+        "count_matches",
+        "sum_array"
+      ],
+      "score": 1.0,
+      "sources": [
+        {
+          "path": "samples/controlled/source/numeric.c",
+          "sha256": "9a3dade718c9998126fdb4ca63b18b37d9044f24c3b8fcf6cbfede434e15ceca"
+        },
+        {
+          "path": "samples/controlled/source/numeric.c",
+          "sha256": "9a3dade718c9998126fdb4ca63b18b37d9044f24c3b8fcf6cbfede434e15ceca"
+        }
+      ]
+    },
+    {
+      "independently_recomputed_outputs": [
+        1,
+        0
+      ],
+      "input_bytes": [
+        13,
+        30,
+        47,
+        64,
+        81,
+        98,
+        115
+      ],
+      "pair_id": "pair:88493d6662486c1a791f7d3a",
+      "routines": [
+        "count_letters",
+        "search_string"
+      ],
+      "score": 1.0,
+      "sources": [
+        {
+          "path": "samples/controlled/source/text.c",
+          "sha256": "0e76eb2a24692ebe328520b5916b2fd9ca4e6f23e847760d0c1dc4f1d30cbf3c"
+        },
+        {
+          "path": "samples/controlled/source/text.c",
+          "sha256": "0e76eb2a24692ebe328520b5916b2fd9ca4e6f23e847760d0c1dc4f1d30cbf3c"
+        }
+      ]
+    },
+    {
+      "independently_recomputed_outputs": [
+        448,
+        115
+      ],
+      "input_bytes": [
+        13,
+        30,
+        47,
+        64,
+        81,
+        98,
+        115
+      ],
+      "pair_id": "pair:8c41a435f6247616a2142a4d",
+      "routines": [
+        "sum_array",
+        "find_max"
+      ],
+      "score": 1.0,
+      "sources": [
+        {
+          "path": "samples/controlled/source/numeric.c",
+          "sha256": "9a3dade718c9998126fdb4ca63b18b37d9044f24c3b8fcf6cbfede434e15ceca"
+        },
+        {
+          "path": "samples/controlled/source/numeric.c",
+          "sha256": "9a3dade718c9998126fdb4ca63b18b37d9044f24c3b8fcf6cbfede434e15ceca"
+        }
+      ]
+    },
+    {
+      "independently_recomputed_outputs": [
+        1,
+        0
+      ],
+      "input_bytes": [
+        13,
+        30,
+        47,
+        64,
+        81,
+        98,
+        115
+      ],
+      "pair_id": "pair:931ccd409796cefddac8f5e5",
+      "routines": [
+        "count_letters",
+        "search_string"
+      ],
+      "score": 1.0,
+      "sources": [
+        {
+          "path": "samples/controlled/source/text.c",
+          "sha256": "0e76eb2a24692ebe328520b5916b2fd9ca4e6f23e847760d0c1dc4f1d30cbf3c"
+        },
+        {
+          "path": "samples/controlled/source/text.c",
+          "sha256": "0e76eb2a24692ebe328520b5916b2fd9ca4e6f23e847760d0c1dc4f1d30cbf3c"
+        }
+      ]
+    },
+    {
+      "independently_recomputed_outputs": [
+        115,
+        0
+      ],
+      "input_bytes": [
+        13,
+        30,
+        47,
+        64,
+        81,
+        98,
+        115
+      ],
+      "pair_id": "pair:99e517d1c72d068fcd38f09f",
+      "routines": [
+        "find_max",
+        "count_matches"
+      ],
+      "score": 1.0,
+      "sources": [
+        {
+          "path": "samples/controlled/source/numeric.c",
+          "sha256": "9a3dade718c9998126fdb4ca63b18b37d9044f24c3b8fcf6cbfede434e15ceca"
+        },
+        {
+          "path": "samples/controlled/source/numeric.c",
+          "sha256": "9a3dade718c9998126fdb4ca63b18b37d9044f24c3b8fcf6cbfede434e15ceca"
+        }
+      ]
+    },
+    {
+      "independently_recomputed_outputs": [
+        1,
+        0
+      ],
+      "input_bytes": [
+        13,
+        30,
+        47,
+        64,
+        81,
+        98,
+        115
+      ],
+      "pair_id": "pair:9e65b41a858f7818e3e031d3",
+      "routines": [
+        "count_letters",
+        "count_digits"
+      ],
+      "score": 1.0,
+      "sources": [
+        {
+          "path": "samples/controlled/source/text.c",
+          "sha256": "0e76eb2a24692ebe328520b5916b2fd9ca4e6f23e847760d0c1dc4f1d30cbf3c"
+        },
+        {
+          "path": "samples/controlled/source/text.c",
+          "sha256": "0e76eb2a24692ebe328520b5916b2fd9ca4e6f23e847760d0c1dc4f1d30cbf3c"
+        }
+      ]
+    },
+    {
+      "independently_recomputed_outputs": [
+        1,
+        0
+      ],
+      "input_bytes": [
+        26,
+        43,
+        60,
+        77,
+        94,
+        111,
+        1,
+        18,
+        35,
+        52,
+        69,
+        86,
+        103,
+        120
+      ],
+      "pair_id": "pair:9ec975e1e89d86a4d5843ebc",
+      "routines": [
+        "count_digits",
+        "search_string"
+      ],
+      "score": 1.0,
+      "sources": [
+        {
+          "path": "samples/controlled/source/text.c",
+          "sha256": "0e76eb2a24692ebe328520b5916b2fd9ca4e6f23e847760d0c1dc4f1d30cbf3c"
+        },
+        {
+          "path": "samples/controlled/source/text.c",
+          "sha256": "0e76eb2a24692ebe328520b5916b2fd9ca4e6f23e847760d0c1dc4f1d30cbf3c"
+        }
+      ]
+    },
+    {
+      "independently_recomputed_outputs": [
+        1,
+        0
+      ],
+      "input_bytes": [
+        13,
+        30,
+        47,
+        64,
+        81,
+        98,
+        115
+      ],
+      "pair_id": "pair:a3952b623421860cf5b55b59",
+      "routines": [
+        "count_letters",
+        "search_string"
+      ],
+      "score": 1.0,
+      "sources": [
+        {
+          "path": "samples/controlled/source/text.c",
+          "sha256": "0e76eb2a24692ebe328520b5916b2fd9ca4e6f23e847760d0c1dc4f1d30cbf3c"
+        },
+        {
+          "path": "samples/controlled/source/text.c",
+          "sha256": "0e76eb2a24692ebe328520b5916b2fd9ca4e6f23e847760d0c1dc4f1d30cbf3c"
+        }
+      ]
+    },
+    {
+      "independently_recomputed_outputs": [
+        0,
+        448
+      ],
+      "input_bytes": [
+        13,
+        30,
+        47,
+        64,
+        81,
+        98,
+        115
+      ],
+      "pair_id": "pair:aac615bde55862ecdf74bdaf",
+      "routines": [
+        "count_matches",
+        "sum_array"
+      ],
+      "score": 1.0,
+      "sources": [
+        {
+          "path": "samples/controlled/source/numeric.c",
+          "sha256": "9a3dade718c9998126fdb4ca63b18b37d9044f24c3b8fcf6cbfede434e15ceca"
+        },
+        {
+          "path": "samples/controlled/source/numeric.c",
+          "sha256": "9a3dade718c9998126fdb4ca63b18b37d9044f24c3b8fcf6cbfede434e15ceca"
+        }
+      ]
+    },
+    {
+      "independently_recomputed_outputs": [
+        115,
+        448
+      ],
+      "input_bytes": [
+        13,
+        30,
+        47,
+        64,
+        81,
+        98,
+        115
+      ],
+      "pair_id": "pair:b41e252b9cd1717acfc08da7",
+      "routines": [
+        "find_max",
+        "sum_array"
+      ],
+      "score": 1.0,
+      "sources": [
+        {
+          "path": "samples/controlled/source/numeric.c",
+          "sha256": "9a3dade718c9998126fdb4ca63b18b37d9044f24c3b8fcf6cbfede434e15ceca"
+        },
+        {
+          "path": "samples/controlled/source/numeric.c",
+          "sha256": "9a3dade718c9998126fdb4ca63b18b37d9044f24c3b8fcf6cbfede434e15ceca"
+        }
+      ]
+    },
+    {
+      "independently_recomputed_outputs": [
+        1,
+        0
+      ],
+      "input_bytes": [
+        26,
+        43,
+        60,
+        77,
+        94,
+        111,
+        1,
+        18,
+        35,
+        52,
+        69,
+        86,
+        103,
+        120
+      ],
+      "pair_id": "pair:b6478bc66b8f823abb5033ce",
+      "routines": [
+        "count_digits",
+        "search_string"
+      ],
+      "score": 1.0,
+      "sources": [
+        {
+          "path": "samples/controlled/source/text.c",
+          "sha256": "0e76eb2a24692ebe328520b5916b2fd9ca4e6f23e847760d0c1dc4f1d30cbf3c"
+        },
+        {
+          "path": "samples/controlled/source/text.c",
+          "sha256": "0e76eb2a24692ebe328520b5916b2fd9ca4e6f23e847760d0c1dc4f1d30cbf3c"
+        }
+      ]
+    },
+    {
+      "independently_recomputed_outputs": [
+        115,
+        448
+      ],
+      "input_bytes": [
+        13,
+        30,
+        47,
+        64,
+        81,
+        98,
+        115
+      ],
+      "pair_id": "pair:c4f84e0a7d65c6f6bcda068d",
+      "routines": [
+        "find_max",
+        "sum_array"
+      ],
+      "score": 1.0,
+      "sources": [
+        {
+          "path": "samples/controlled/source/numeric.c",
+          "sha256": "9a3dade718c9998126fdb4ca63b18b37d9044f24c3b8fcf6cbfede434e15ceca"
+        },
+        {
+          "path": "samples/controlled/source/numeric.c",
+          "sha256": "9a3dade718c9998126fdb4ca63b18b37d9044f24c3b8fcf6cbfede434e15ceca"
+        }
+      ]
+    },
+    {
+      "independently_recomputed_outputs": [
+        1,
+        0
+      ],
+      "input_bytes": [
+        13,
+        30,
+        47,
+        64,
+        81,
+        98,
+        115
+      ],
+      "pair_id": "pair:c68d12df7a49496d56a744b6",
+      "routines": [
+        "count_letters",
+        "count_digits"
+      ],
+      "score": 1.0,
+      "sources": [
+        {
+          "path": "samples/controlled/source/text.c",
+          "sha256": "0e76eb2a24692ebe328520b5916b2fd9ca4e6f23e847760d0c1dc4f1d30cbf3c"
+        },
+        {
+          "path": "samples/controlled/source/text.c",
+          "sha256": "0e76eb2a24692ebe328520b5916b2fd9ca4e6f23e847760d0c1dc4f1d30cbf3c"
+        }
+      ]
+    },
+    {
+      "independently_recomputed_outputs": [
+        115,
+        0
+      ],
+      "input_bytes": [
+        13,
+        30,
+        47,
+        64,
+        81,
+        98,
+        115
+      ],
+      "pair_id": "pair:d1359cf7d5907a3d5fd73ec4",
+      "routines": [
+        "find_max",
+        "count_matches"
+      ],
+      "score": 1.0,
+      "sources": [
+        {
+          "path": "samples/controlled/source/numeric.c",
+          "sha256": "9a3dade718c9998126fdb4ca63b18b37d9044f24c3b8fcf6cbfede434e15ceca"
+        },
+        {
+          "path": "samples/controlled/source/numeric.c",
+          "sha256": "9a3dade718c9998126fdb4ca63b18b37d9044f24c3b8fcf6cbfede434e15ceca"
+        }
+      ]
+    },
+    {
+      "independently_recomputed_outputs": [
+        1,
+        0
+      ],
+      "input_bytes": [
+        26,
+        43,
+        60,
+        77,
+        94,
+        111,
+        1,
+        18,
+        35,
+        52,
+        69,
+        86,
+        103,
+        120
+      ],
+      "pair_id": "pair:f7f33a504c424e91e6f29e9a",
+      "routines": [
+        "count_digits",
+        "search_string"
+      ],
+      "score": 1.0,
+      "sources": [
+        {
+          "path": "samples/controlled/source/text.c",
+          "sha256": "0e76eb2a24692ebe328520b5916b2fd9ca4e6f23e847760d0c1dc4f1d30cbf3c"
+        },
+        {
+          "path": "samples/controlled/source/text.c",
+          "sha256": "0e76eb2a24692ebe328520b5916b2fd9ca4e6f23e847760d0c1dc4f1d30cbf3c"
+        }
+      ]
+    }
+  ]
+}

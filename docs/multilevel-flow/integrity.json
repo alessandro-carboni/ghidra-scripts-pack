@@ -1,0 +1,14 @@
+{
+  "preserved_inventory": {
+    "files": 291,
+    "status": "PASS",
+    "inventory_sha256": "9d4e0773ad76f5b40719af9684c687d488c7d5283c0884b4b299ef3595eab2fd"
+  },
+  "scientific_files": {
+    "files": 161,
+    "status": "PASS",
+    "inventory_sha256": "28ba9f15f3b9d1217eb42da57b54a9714b3fadddc98e0756ad4f7845b649be89"
+  },
+  "value_method_and_inputs": "PASS",
+  "operational_method_and_inputs": "PASS"
+}

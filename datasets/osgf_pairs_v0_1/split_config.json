@@ -5,11 +5,17 @@
     "numeric": "discovery_train",
     "memory": "discovery_train",
     "system_api": "validation",
-    "text": "held_out_test"
+    "text": "held_out_test",
+    "interaction_file_metadata": "discovery_train",
+    "interaction_registry_summary": "validation",
+    "interaction_socket_kind": "held_out_test"
   },
   "near_duplicate_groups": [
     ["sum_array", "copy_buffer"],
-    ["api_length_wrapped", "api_length_plus_one"]
+    ["api_length_wrapped", "api_length_plus_one"],
+    ["interaction_file_metadata", "interaction_file_metadata_flipped"],
+    ["interaction_registry_summary", "interaction_registry_summary_flipped"],
+    ["interaction_socket_kind", "interaction_socket_kind_flipped"]
   ],
   "rationale": "Assign complete source artifacts and all descendants together. Numeric and memory share byte-sum semantics and form one component. String reductions/search form held-out data; operating-system probes and API counterexamples form validation. Explicit configuration is deterministic; no pair-level randomization or similarity-based grouping."
 }

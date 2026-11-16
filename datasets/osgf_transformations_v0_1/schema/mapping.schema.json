@@ -1,0 +1,153 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "execution_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "expected_mapping": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "limitations": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "mapping_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "mapping_kind": {
+      "enum": [
+        "one_to_one",
+        "one_to_many",
+        "many_to_one",
+        "unmatched",
+        "unknown",
+        "ambiguous"
+      ],
+      "type": "string"
+    },
+    "mapping_level": {
+      "enum": [
+        "source",
+        "generated_function",
+        "binary_function",
+        "typed_graph",
+        "canonical_subgraph"
+      ],
+      "type": "string"
+    },
+    "observation_completeness": {
+      "enum": [
+        "complete",
+        "incomplete",
+        "unknown"
+      ],
+      "type": "string"
+    },
+    "observed_mapping": {
+      "anyOf": [
+        {
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "original_element_references": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "record_type": {
+      "const": "mapping"
+    },
+    "schema_version": {
+      "const": "0.1.0"
+    },
+    "supporting_evidence": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "artifact_id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "artifact_path": {
+            "format": "repository-path",
+            "type": "string"
+          },
+          "artifact_sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "reference": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "artifact_id",
+          "artifact_path",
+          "artifact_sha256",
+          "reference"
+        ],
+        "type": "object"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "transformation_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "transformed_element_references": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "validation_status": {
+      "enum": [
+        "expected",
+        "verified",
+        "unmatched",
+        "unknown",
+        "ambiguous",
+        "rejected"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "execution_id",
+    "expected_mapping",
+    "limitations",
+    "mapping_id",
+    "mapping_kind",
+    "mapping_level",
+    "observation_completeness",
+    "observed_mapping",
+    "original_element_references",
+    "record_type",
+    "schema_version",
+    "supporting_evidence",
+    "transformation_id",
+    "transformed_element_references",
+    "validation_status"
+  ],
+  "type": "object"
+}

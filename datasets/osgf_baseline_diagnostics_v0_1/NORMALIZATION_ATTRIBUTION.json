@@ -1,0 +1,115 @@
+[
+  {
+    "changed_graph_ids_by_view": {
+      "interaction_motif": [
+        "graph:0ac2234184f253c207f7adf9",
+        "graph:25a50690b481a0ccca163380",
+        "graph:2ecd38be52171c5f62c8c613",
+        "graph:30027370d36e215aa6a0a6e8",
+        "graph:309061d57c6a155443d1705f",
+        "graph:3e37298d49e5a6c608352478",
+        "graph:4d8a4392750ce8a5b371110a",
+        "graph:515ac6b9562e4c96565cecab",
+        "graph:520995874101befd2e469e66",
+        "graph:53a0363f40e1f6b8be7178e5",
+        "graph:5c43de12a567b4ae8eca811b",
+        "graph:6e6140063c2c20b2ac93dccf",
+        "graph:85c723d9a2dc49689deba0c5",
+        "graph:930d80882230aaaf7e94a1a0",
+        "graph:9740a9efce9d20718538119a",
+        "graph:add20e80b7f397b7e5a5a1bf",
+        "graph:afbbbd0331774d830f5b1c03",
+        "graph:ca64de39b4813f7180285e17",
+        "graph:e0b39088fd752beb6dbe465f",
+        "graph:f4d57933d3cc44b077bfeea4",
+        "graph:f5a1f2f732422492668e782f",
+        "graph:f5da6759d9f3b03a1e2a8703",
+        "graph:f7ff29a34cb7913c325851da"
+      ],
+      "rooted_topology": [],
+      "typed_evidence": [
+        "graph:0ac2234184f253c207f7adf9",
+        "graph:1fffd8206ff02270366f0ef5",
+        "graph:24aa2b421f1c2e1a6dd65843",
+        "graph:25a50690b481a0ccca163380",
+        "graph:29fbb88db0ea0e7a7f5b8b15",
+        "graph:2dda7782156eac3e30947c4b",
+        "graph:2ecd38be52171c5f62c8c613",
+        "graph:30027370d36e215aa6a0a6e8",
+        "graph:309061d57c6a155443d1705f",
+        "graph:34f5bb0c70039051d6b6f110",
+        "graph:3e37298d49e5a6c608352478",
+        "graph:41f60446d3b0a0e788a55306",
+        "graph:4d8a4392750ce8a5b371110a",
+        "graph:515ac6b9562e4c96565cecab",
+        "graph:520995874101befd2e469e66",
+        "graph:53a0363f40e1f6b8be7178e5",
+        "graph:53e0f52d9f1e19c79065b71d",
+        "graph:567b76697ebdfe8f29de289f",
+        "graph:5c43de12a567b4ae8eca811b",
+        "graph:6e6140063c2c20b2ac93dccf",
+        "graph:7491cea410bfc8bdfdc2a741",
+        "graph:752532776a1d6dec643cd040",
+        "graph:85c723d9a2dc49689deba0c5",
+        "graph:8a2656f2e0b015b32fff4c59",
+        "graph:90065055620f5f37be5b8e55",
+        "graph:930d80882230aaaf7e94a1a0",
+        "graph:9740a9efce9d20718538119a",
+        "graph:a8ed8022c011c71a8c1104be",
+        "graph:add20e80b7f397b7e5a5a1bf",
+        "graph:afbbbd0331774d830f5b1c03",
+        "graph:b5083d42018b58221e8b5f18",
+        "graph:bee6a52c200d8305d055d26d",
+        "graph:ca64de39b4813f7180285e17",
+        "graph:e0b39088fd752beb6dbe465f",
+        "graph:f4d57933d3cc44b077bfeea4",
+        "graph:f5a1f2f732422492668e782f",
+        "graph:f5da6759d9f3b03a1e2a8703",
+        "graph:f7ff29a34cb7913c325851da"
+      ]
+    },
+    "evidence_type": "API",
+    "interpretation": "Direct evidence-type descriptor accounting, not an isolated causal ablation of individual normalization subrules",
+    "overlap_changed_pairs": []
+  },
+  {
+    "changed_graph_ids_by_view": {
+      "interaction_motif": [
+        "graph:25a50690b481a0ccca163380",
+        "graph:2ecd38be52171c5f62c8c613",
+        "graph:3e37298d49e5a6c608352478",
+        "graph:515ac6b9562e4c96565cecab",
+        "graph:5c43de12a567b4ae8eca811b",
+        "graph:9740a9efce9d20718538119a",
+        "graph:e0b39088fd752beb6dbe465f"
+      ],
+      "rooted_topology": [],
+      "typed_evidence": [
+        "graph:25a50690b481a0ccca163380",
+        "graph:2ecd38be52171c5f62c8c613",
+        "graph:3e37298d49e5a6c608352478",
+        "graph:515ac6b9562e4c96565cecab",
+        "graph:53e0f52d9f1e19c79065b71d",
+        "graph:567b76697ebdfe8f29de289f",
+        "graph:5c43de12a567b4ae8eca811b",
+        "graph:7491cea410bfc8bdfdc2a741",
+        "graph:9740a9efce9d20718538119a",
+        "graph:a8ed8022c011c71a8c1104be",
+        "graph:e0b39088fd752beb6dbe465f"
+      ]
+    },
+    "evidence_type": "CONSTANT",
+    "interpretation": "Direct evidence-type descriptor accounting, not an isolated causal ablation of individual normalization subrules",
+    "overlap_changed_pairs": []
+  },
+  {
+    "changed_graph_ids_by_view": {
+      "interaction_motif": [],
+      "rooted_topology": [],
+      "typed_evidence": []
+    },
+    "evidence_type": "SECTION",
+    "interpretation": "Direct evidence-type descriptor accounting, not an isolated causal ablation of individual normalization subrules",
+    "overlap_changed_pairs": []
+  }
+]

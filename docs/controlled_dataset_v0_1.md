@@ -132,3 +132,109 @@ or freeze is missing; `--technical-only` explicitly does not declare Step 8 comp
 
 Frozen Step 5–7 fixtures and golden digests are outside this dataset and unchanged.
 Step 9 and LLM training are not part of this implementation.
+
+## Pre-freeze portability and signal audit
+
+All persisted build flags use repository-relative source/output arguments. Compiler
+identity is name/version; the executable installation path stays local. Failures
+record status, compiler, optimization, phase, bounded attempts and sanitized
+diagnostics. The actual compiler command still uses resolved local paths.
+Metadata serialization rejects repository/user-home path leakage.
+
+Every controlled build compiles in an isolated `.staging/attempt-N` directory.
+Only generated artifacts in that directory are cleaned. A successful compiler exit,
+PE validation and runtime oracle validation must all precede atomic replacement of
+the canonical executable. Output-access/sharing errors receive at most three
+compile attempts; after compiler success, each PE-read, execution and publish
+operation first retries the same artifact up to eight times, with 200 ms backoff.
+Only access/sharing errors qualify; invalid PE and behavioral failures do not.
+Source errors or missing input libraries fail immediately. A failed build
+is excluded even if an older final executable remains on disk. No lock or system
+protection is bypassed.
+
+```powershell
+python scripts/audit_dataset_graph_signal.py --output datasets/osgf_pairs_v0_1/graph_signal_audit.json
+python scripts/generate_evaluation_strata.py
+python scripts/dataset_review.py prepare --refresh-pending
+```
+
+The signal audit reads canonical graphs and never modifies labels, graphs or splits.
+It reports overlapping properties, explicit node/edge counts, category chains and
+per-label/category/family/split pair combinations. `interaction_capable` requires an
+explicit function call followed by typed evidence attached to its callee, matching
+Step 6's existing motif eligibility. It is not a similarity score or a guarantee of
+retention under fingerprint motif limits. Missing visibility counts remain unknown;
+unresolved calls and local truncation are reported separately. Anchor-only graphs
+are valid observations and remain included. An audit stores the exact manifest and
+graph content hashes, without timestamps, for deterministic repeated output.
+
+Audit v0.2 distinguishes `observability_unknown` (missing/null visibility),
+`observed_incompleteness` (actual unresolved records/counts or truncation), and
+`observability_complete` (required observations present, no incompleteness).
+Unknown and observed incompleteness may overlap. Their union is explicitly named
+`possibly_incomplete_observability`; it does not imply an observed defect.
+Pair statistics separately expose either/both unknown, either incomplete, both
+complete, unresolved calls and local truncation. No scientific semantics changed.
+
+`evaluation_strata.json` stores sorted overlapping pair-ID sets globally and by
+split and label. It binds the exact manifest and audit SHA-256. Anchor-only pairs
+remain in the primary dataset; the complement describes at least one non-anchor
+signal. Evidence, topology, interaction and observability strata are descriptive,
+never a score-based selection or a change to labels, splits or graph content.
+
+The complete rebuild also regenerates this audit, evaluation strata and pending review packet.
+`--refresh-pending` refuses any record containing a reviewer, decision or human
+notes. It refreshes hashes only while all decisions remain pending. Neither command
+creates a freeze or supplies human decisions.
+
+## Interaction corpus extension
+
+Three predeclared source artifacts add independent benign behavior to the three
+splits: file-attribute word plus input length (discovery), read-only registry subkey
+count XOR uppercase-byte count (validation), and unconnected UDP socket type times
+input length plus one (held-out). These differ from the earlier boolean OS probes
+and pure reductions. Registry access is read-only; socket code never binds,
+connects or sends. Every anchor calls a noinline internal helper; Ghidra observes
+the compiled binary and may retain different structure at O0 and O2.
+
+Each artifact contains a base routine, a result-bit-flipped hard negative and
+three fixed delegations (wrapper, thunk, linear chain). All descendants and the
+negative stay together, including explicit near-duplicate declarations. Positive
+proofs preserve arguments, one original invocation, effects and result. Negative
+labels require unequal executed outputs on the same input. Independent Python OS
+queries plus arithmetic oracles validate 80 outputs per successful build. The
+contract includes stable read-only OS state; changed environment observations
+across builds reject cross-build labels, and later transcript replay detects drift.
+Sixteen inputs supplement the source proof; they are not exhaustive byte testing.
+
+The designs are selected for semantic-view coverage, never similarity. Existing
+sparse graphs/pairs remain. Source-component and family holdout checks still apply;
+signal coverage is measured after real extraction and reported per split and label.
+
+## Exact-byte portability protocol (pre-review)
+
+`.gitattributes` is part of the dataset reproduction contract. Controlled `.c`
+sources are UTF-8 without BOM, CRLF in every checkout and every generator, including
+on non-Windows hosts (`text eol=crlf`, explicit Python `newline="\r\n"`). Their
+`source_hash` remains SHA-256 of the actual bytes supplied to the compiler. Git's
+internal LF blobs are not the compiled source bytes. Use a Git checkout honoring
+attributes; raw blob/archive extraction is not a substitute for that checkout.
+Do not normalize a source before checking its recorded compiled-byte hash.
+
+Dataset JSON and canonical graphs are UTF-8 without BOM, LF in both the repository
+and checkout (`text eol=lf`). Python metadata writers explicitly request LF; the
+canonical exporter and audit/strata writers already emit LF bytes. All SHA-256
+checks remain exact-byte checks. `body_sha256` and the review packet's existing
+`content_hash` identify logical body/JSON content under their separate serialization
+contracts; they must not be mistaken for source-file or manifest-file hashes.
+
+The pre-review migration changed the manifest's checkout serialization from CRLF
+to LF and refreshed audit/strata byte bindings. Parsed manifest content, source
+hashes, binaries, canonical graphs, IDs, labels, splits and review decisions did
+not change. No recompilation was needed because source bytes were preserved.
+`validate_dataset_portability.py --clean-checkouts` checks the actual versioned
+catalogs and graphs plus new checkouts with both autocrlf settings, using a temporary
+index for uncommitted candidate changes and preserving the real index and HEAD.
+The clean checkouts contain no local binaries; they validate source/graph/metadata
+integrity, not runtime replay. See the pre-review report for separately executed
+local replay and scientific regressions.

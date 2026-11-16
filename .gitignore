@@ -22,3 +22,7 @@ __pycache__/
 !samples/controlled/
 samples/controlled/*
 !samples/controlled/source/
+
+# Step 9 runs are complete local evidence bundles (including verified PE outputs).
+# Version configuration, schemas and acceptance evidence; regenerate runs on a fresh checkout.
+datasets/osgf_transformations_v0_1/runs/

@@ -1,0 +1,314 @@
+{
+  "builds": [
+    {
+      "compile": {
+        "command": [
+          "C:\\MinGW\\bin\\gcc.EXE",
+          "-O0",
+          "-fno-inline",
+          "-fno-ipa-icf",
+          "-Wl,--no-insert-timestamp",
+          "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_value_flow_evaluation_v0_1\\sources\\weighted_position.c",
+          "-o",
+          "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_value_flow_evaluation_v0_1\\runtime\\builds\\weighted_position-gcc-O0\\weighted_position-gcc-O0.exe"
+        ],
+        "log": "datasets\\osgf_value_flow_evaluation_v0_1\\runtime\\builds\\weighted_position-gcc-O0\\compile.log",
+        "memory_scope": "Direct child process only; excludes subprocess tree",
+        "peak_working_set_bytes": 8343552,
+        "seconds": 0.29259820003062487
+      },
+      "compiler": "gcc",
+      "compiler_version": "gcc.exe (MinGW.org GCC-6.3.0-1) 6.3.0",
+      "family": "weighted_position",
+      "id": "weighted_position-gcc-O0",
+      "optimization": "O0",
+      "path": "datasets/osgf_value_flow_evaluation_v0_1/runtime/builds/weighted_position-gcc-O0/weighted_position-gcc-O0.exe",
+      "sha256": "862a35d65114acdd105eaa8ba6df16b4ac674b551544d27d63566957ae6cef6e",
+      "source_sha256": "1a86cf60f500ba1787d7ef95f668f0b1c52a2bded8532006c35d2d5e5e390d59",
+      "split": "discovery"
+    },
+    {
+      "compile": {
+        "command": [
+          "C:\\MinGW\\bin\\gcc.EXE",
+          "-O2",
+          "-fno-inline",
+          "-fno-ipa-icf",
+          "-Wl,--no-insert-timestamp",
+          "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_value_flow_evaluation_v0_1\\sources\\weighted_position.c",
+          "-o",
+          "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_value_flow_evaluation_v0_1\\runtime\\builds\\weighted_position-gcc-O2\\weighted_position-gcc-O2.exe"
+        ],
+        "log": "datasets\\osgf_value_flow_evaluation_v0_1\\runtime\\builds\\weighted_position-gcc-O2\\compile.log",
+        "memory_scope": "Direct child process only; excludes subprocess tree",
+        "peak_working_set_bytes": 8343552,
+        "seconds": 0.23203760001342744
+      },
+      "compiler": "gcc",
+      "compiler_version": "gcc.exe (MinGW.org GCC-6.3.0-1) 6.3.0",
+      "family": "weighted_position",
+      "id": "weighted_position-gcc-O2",
+      "optimization": "O2",
+      "path": "datasets/osgf_value_flow_evaluation_v0_1/runtime/builds/weighted_position-gcc-O2/weighted_position-gcc-O2.exe",
+      "sha256": "9a2d34cd5236f8460b6ad0e59f4fe6e971bfb96041813f7289307e1b1cb9ea3c",
+      "source_sha256": "1a86cf60f500ba1787d7ef95f668f0b1c52a2bded8532006c35d2d5e5e390d59",
+      "split": "discovery"
+    },
+    {
+      "compile": {
+        "command": [
+          "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX86\\x86\\cl.exe",
+          "/nologo",
+          "/Od",
+          "/Brepro",
+          "/W3",
+          "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_value_flow_evaluation_v0_1\\sources\\weighted_position.c",
+          "/FoC:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_value_flow_evaluation_v0_1\\runtime\\builds\\weighted_position-msvc-O0\\weighted_position-msvc-O0.obj",
+          "/FeC:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_value_flow_evaluation_v0_1\\runtime\\builds\\weighted_position-msvc-O0\\weighted_position-msvc-O0.exe",
+          "/link",
+          "/INCREMENTAL:NO",
+          "/OPT:NOICF",
+          "/IMPLIB:C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_value_flow_evaluation_v0_1\\runtime\\builds\\weighted_position-msvc-O0\\weighted_position-msvc-O0.lib"
+        ],
+        "log": "datasets\\osgf_value_flow_evaluation_v0_1\\runtime\\builds\\weighted_position-msvc-O0\\compile.log",
+        "memory_scope": "Direct child process only; excludes subprocess tree",
+        "peak_working_set_bytes": 18391040,
+        "seconds": 0.5818372999783605
+      },
+      "compiler": "msvc",
+      "compiler_version": "Microsoft (R) C/C++ Optimizing Compiler Version 19.44.35225 for x86",
+      "family": "weighted_position",
+      "id": "weighted_position-msvc-O0",
+      "optimization": "O0",
+      "path": "datasets/osgf_value_flow_evaluation_v0_1/runtime/builds/weighted_position-msvc-O0/weighted_position-msvc-O0.exe",
+      "sha256": "fdd32418463c2c07a29612ecc8d0bb0e7585a04434d493a77c16b0e920c3b757",
+      "source_sha256": "1a86cf60f500ba1787d7ef95f668f0b1c52a2bded8532006c35d2d5e5e390d59",
+      "split": "discovery"
+    },
+    {
+      "compile": {
+        "command": [
+          "C:\\MinGW\\bin\\gcc.EXE",
+          "-O0",
+          "-fno-inline",
+          "-fno-ipa-icf",
+          "-Wl,--no-insert-timestamp",
+          "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_value_flow_evaluation_v0_1\\sources\\byte_population.c",
+          "-o",
+          "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_value_flow_evaluation_v0_1\\runtime\\builds\\byte_population-gcc-O0\\byte_population-gcc-O0.exe"
+        ],
+        "log": "datasets\\osgf_value_flow_evaluation_v0_1\\runtime\\builds\\byte_population-gcc-O0\\compile.log",
+        "memory_scope": "Direct child process only; excludes subprocess tree",
+        "peak_working_set_bytes": 8323072,
+        "seconds": 0.2694954000180587
+      },
+      "compiler": "gcc",
+      "compiler_version": "gcc.exe (MinGW.org GCC-6.3.0-1) 6.3.0",
+      "family": "byte_population",
+      "id": "byte_population-gcc-O0",
+      "optimization": "O0",
+      "path": "datasets/osgf_value_flow_evaluation_v0_1/runtime/builds/byte_population-gcc-O0/byte_population-gcc-O0.exe",
+      "sha256": "1d69f04e959ce5e751949ff0031604a2bd9f92e957556c94116022bbd95cc3c4",
+      "source_sha256": "8fc8cd8edc185b0f2b2e7c55351122c01c00e5c80a986f7d9499fbf82dc1d9c2",
+      "split": "validation"
+    },
+    {
+      "compile": {
+        "command": [
+          "C:\\MinGW\\bin\\gcc.EXE",
+          "-O2",
+          "-fno-inline",
+          "-fno-ipa-icf",
+          "-Wl,--no-insert-timestamp",
+          "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_value_flow_evaluation_v0_1\\sources\\byte_population.c",
+          "-o",
+          "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_value_flow_evaluation_v0_1\\runtime\\builds\\byte_population-gcc-O2\\byte_population-gcc-O2.exe"
+        ],
+        "log": "datasets\\osgf_value_flow_evaluation_v0_1\\runtime\\builds\\byte_population-gcc-O2\\compile.log",
+        "memory_scope": "Direct child process only; excludes subprocess tree",
+        "peak_working_set_bytes": 8331264,
+        "seconds": 0.2625006000744179
+      },
+      "compiler": "gcc",
+      "compiler_version": "gcc.exe (MinGW.org GCC-6.3.0-1) 6.3.0",
+      "family": "byte_population",
+      "id": "byte_population-gcc-O2",
+      "optimization": "O2",
+      "path": "datasets/osgf_value_flow_evaluation_v0_1/runtime/builds/byte_population-gcc-O2/byte_population-gcc-O2.exe",
+      "sha256": "b02cf42c2ba0febbe092c5541b62748da1c3905615f11a551d70cbd1aef4ec67",
+      "source_sha256": "8fc8cd8edc185b0f2b2e7c55351122c01c00e5c80a986f7d9499fbf82dc1d9c2",
+      "split": "validation"
+    },
+    {
+      "compile": {
+        "command": [
+          "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX86\\x86\\cl.exe",
+          "/nologo",
+          "/Od",
+          "/Brepro",
+          "/W3",
+          "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_value_flow_evaluation_v0_1\\sources\\byte_population.c",
+          "/FoC:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_value_flow_evaluation_v0_1\\runtime\\builds\\byte_population-msvc-O0\\byte_population-msvc-O0.obj",
+          "/FeC:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_value_flow_evaluation_v0_1\\runtime\\builds\\byte_population-msvc-O0\\byte_population-msvc-O0.exe",
+          "/link",
+          "/INCREMENTAL:NO",
+          "/OPT:NOICF",
+          "/IMPLIB:C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_value_flow_evaluation_v0_1\\runtime\\builds\\byte_population-msvc-O0\\byte_population-msvc-O0.lib"
+        ],
+        "log": "datasets\\osgf_value_flow_evaluation_v0_1\\runtime\\builds\\byte_population-msvc-O0\\compile.log",
+        "memory_scope": "Direct child process only; excludes subprocess tree",
+        "peak_working_set_bytes": 18374656,
+        "seconds": 0.23990699998103082
+      },
+      "compiler": "msvc",
+      "compiler_version": "Microsoft (R) C/C++ Optimizing Compiler Version 19.44.35225 for x86",
+      "family": "byte_population",
+      "id": "byte_population-msvc-O0",
+      "optimization": "O0",
+      "path": "datasets/osgf_value_flow_evaluation_v0_1/runtime/builds/byte_population-msvc-O0/byte_population-msvc-O0.exe",
+      "sha256": "0e642f55b109fcc66136dc31def3a289858781fcd780113f6190de98b55ef9d0",
+      "source_sha256": "8fc8cd8edc185b0f2b2e7c55351122c01c00e5c80a986f7d9499fbf82dc1d9c2",
+      "split": "validation"
+    },
+    {
+      "compile": {
+        "command": [
+          "C:\\MinGW\\bin\\gcc.EXE",
+          "-O0",
+          "-fno-inline",
+          "-fno-ipa-icf",
+          "-Wl,--no-insert-timestamp",
+          "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_value_flow_evaluation_v0_1\\sources\\saturated_accumulation.c",
+          "-o",
+          "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_value_flow_evaluation_v0_1\\runtime\\builds\\saturated_accumulation-gcc-O0\\saturated_accumulation-gcc-O0.exe"
+        ],
+        "log": "datasets\\osgf_value_flow_evaluation_v0_1\\runtime\\builds\\saturated_accumulation-gcc-O0\\compile.log",
+        "memory_scope": "Direct child process only; excludes subprocess tree",
+        "peak_working_set_bytes": 8335360,
+        "seconds": 0.2537875999696553
+      },
+      "compiler": "gcc",
+      "compiler_version": "gcc.exe (MinGW.org GCC-6.3.0-1) 6.3.0",
+      "family": "saturated_accumulation",
+      "id": "saturated_accumulation-gcc-O0",
+      "optimization": "O0",
+      "path": "datasets/osgf_value_flow_evaluation_v0_1/runtime/builds/saturated_accumulation-gcc-O0/saturated_accumulation-gcc-O0.exe",
+      "sha256": "f6a5853c3335bd2a2d59815fb1f4520f57f076aef8d1bd15eccdde7de5cd3cb9",
+      "source_sha256": "81443dbe10198c057b17be79079e5e59570d3a9f5c17fc2047945252cfb33777",
+      "split": "heldout"
+    },
+    {
+      "compile": {
+        "command": [
+          "C:\\MinGW\\bin\\gcc.EXE",
+          "-O2",
+          "-fno-inline",
+          "-fno-ipa-icf",
+          "-Wl,--no-insert-timestamp",
+          "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_value_flow_evaluation_v0_1\\sources\\saturated_accumulation.c",
+          "-o",
+          "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_value_flow_evaluation_v0_1\\runtime\\builds\\saturated_accumulation-gcc-O2\\saturated_accumulation-gcc-O2.exe"
+        ],
+        "log": "datasets\\osgf_value_flow_evaluation_v0_1\\runtime\\builds\\saturated_accumulation-gcc-O2\\compile.log",
+        "memory_scope": "Direct child process only; excludes subprocess tree",
+        "peak_working_set_bytes": 8335360,
+        "seconds": 0.24330239999108016
+      },
+      "compiler": "gcc",
+      "compiler_version": "gcc.exe (MinGW.org GCC-6.3.0-1) 6.3.0",
+      "family": "saturated_accumulation",
+      "id": "saturated_accumulation-gcc-O2",
+      "optimization": "O2",
+      "path": "datasets/osgf_value_flow_evaluation_v0_1/runtime/builds/saturated_accumulation-gcc-O2/saturated_accumulation-gcc-O2.exe",
+      "sha256": "3c97cb383104a095550a4257e9996502533dcf112d2818f1912e8672382a1206",
+      "source_sha256": "81443dbe10198c057b17be79079e5e59570d3a9f5c17fc2047945252cfb33777",
+      "split": "heldout"
+    },
+    {
+      "compile": {
+        "command": [
+          "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX86\\x86\\cl.exe",
+          "/nologo",
+          "/Od",
+          "/Brepro",
+          "/W3",
+          "C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_value_flow_evaluation_v0_1\\sources\\saturated_accumulation.c",
+          "/FoC:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_value_flow_evaluation_v0_1\\runtime\\builds\\saturated_accumulation-msvc-O0\\saturated_accumulation-msvc-O0.obj",
+          "/FeC:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_value_flow_evaluation_v0_1\\runtime\\builds\\saturated_accumulation-msvc-O0\\saturated_accumulation-msvc-O0.exe",
+          "/link",
+          "/INCREMENTAL:NO",
+          "/OPT:NOICF",
+          "/IMPLIB:C:\\Users\\aless\\Desktop\\ghidra-scripts-pack\\datasets\\osgf_value_flow_evaluation_v0_1\\runtime\\builds\\saturated_accumulation-msvc-O0\\saturated_accumulation-msvc-O0.lib"
+        ],
+        "log": "datasets\\osgf_value_flow_evaluation_v0_1\\runtime\\builds\\saturated_accumulation-msvc-O0\\compile.log",
+        "memory_scope": "Direct child process only; excludes subprocess tree",
+        "peak_working_set_bytes": 18411520,
+        "seconds": 0.23881180002354085
+      },
+      "compiler": "msvc",
+      "compiler_version": "Microsoft (R) C/C++ Optimizing Compiler Version 19.44.35225 for x86",
+      "family": "saturated_accumulation",
+      "id": "saturated_accumulation-msvc-O0",
+      "optimization": "O0",
+      "path": "datasets/osgf_value_flow_evaluation_v0_1/runtime/builds/saturated_accumulation-msvc-O0/saturated_accumulation-msvc-O0.exe",
+      "sha256": "a97e454e876432d0b7b31ba1715727badb2dc08c7917b5916b71001efa47e9e3",
+      "source_sha256": "81443dbe10198c057b17be79079e5e59570d3a9f5c17fc2047945252cfb33777",
+      "split": "heldout"
+    }
+  ],
+  "labels_defined_before_scoring": true,
+  "negative_witnesses": [
+    {
+      "family": "weighted_position",
+      "foil": 2,
+      "input": [
+        1
+      ],
+      "subject": 1
+    },
+    {
+      "family": "byte_population",
+      "foil": 0,
+      "input": [
+        128
+      ],
+      "subject": 1
+    },
+    {
+      "family": "saturated_accumulation",
+      "foil": 254,
+      "input": [
+        255
+      ],
+      "subject": 255
+    }
+  ],
+  "oracle_checks": {
+    "arrays_per_family": 106,
+    "scope": "Independent Python arithmetic witnesses, not compiled-program execution or exhaustive equivalence proof",
+    "seed": 610,
+    "status": "PASS"
+  },
+  "schema_version": "0.1.0",
+  "source_proofs": "Source comments: exact finite unsigned arithmetic under valid byte array and n<=1024; 32-bit unsigned compile-time requirement. Targets not executed.",
+  "sources": [
+    {
+      "family": "weighted_position",
+      "path": "datasets/osgf_value_flow_evaluation_v0_1/sources/weighted_position.c",
+      "sha256": "1a86cf60f500ba1787d7ef95f668f0b1c52a2bded8532006c35d2d5e5e390d59",
+      "split": "discovery"
+    },
+    {
+      "family": "byte_population",
+      "path": "datasets/osgf_value_flow_evaluation_v0_1/sources/byte_population.c",
+      "sha256": "8fc8cd8edc185b0f2b2e7c55351122c01c00e5c80a986f7d9499fbf82dc1d9c2",
+      "split": "validation"
+    },
+    {
+      "family": "saturated_accumulation",
+      "path": "datasets/osgf_value_flow_evaluation_v0_1/sources/saturated_accumulation.c",
+      "sha256": "81443dbe10198c057b17be79079e5e59570d3a9f5c17fc2047945252cfb33777",
+      "split": "heldout"
+    }
+  ]
+}

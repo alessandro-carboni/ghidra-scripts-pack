@@ -1,0 +1,162 @@
+[
+  {
+    "command": [
+      "python",
+      "-m",
+      "pytest",
+      "-q",
+      "tests"
+    ],
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "python",
+      "-m",
+      "ruff",
+      "check",
+      "."
+    ],
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "python",
+      "-m",
+      "ruff",
+      "format",
+      "--check",
+      "."
+    ],
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "cargo",
+      "fmt",
+      "--manifest-path",
+      "rust_engine/Cargo.toml",
+      "--",
+      "--check"
+    ],
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "cargo",
+      "test",
+      "--locked",
+      "--manifest-path",
+      "rust_engine/Cargo.toml"
+    ],
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "cargo",
+      "clippy",
+      "--locked",
+      "--manifest-path",
+      "rust_engine/Cargo.toml",
+      "--all-targets",
+      "--",
+      "-D",
+      "warnings"
+    ],
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "cargo",
+      "fmt",
+      "--manifest-path",
+      "rust_engine/operational/Cargo.toml",
+      "--",
+      "--check"
+    ],
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "cargo",
+      "test",
+      "--locked",
+      "--manifest-path",
+      "rust_engine/operational/Cargo.toml"
+    ],
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "cargo",
+      "clippy",
+      "--locked",
+      "--manifest-path",
+      "rust_engine/operational/Cargo.toml",
+      "--all-targets",
+      "--",
+      "-D",
+      "warnings"
+    ],
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "python",
+      "scripts/test_canonical_baseline.py",
+      "--engine",
+      "rust_engine/target/debug/rust_engine.exe"
+    ],
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "python",
+      "scripts/test_fingerprint_baseline.py",
+      "--engine",
+      "rust_engine/target/debug/rust_engine.exe"
+    ],
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "python",
+      "scripts/test_similarity_baseline.py",
+      "--engine",
+      "rust_engine/target/debug/rust_engine.exe"
+    ],
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "python",
+      "scripts/test_similarity_real_canonical.py",
+      "--engine",
+      "rust_engine/target/debug/rust_engine.exe",
+      "--canonical-dir",
+      "reports/canonical-notepad-step5"
+    ],
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "python",
+      "scripts/verify_operational_replay.py",
+      "--engine",
+      "rust_engine/operational/target/debug/osgf_operational.exe",
+      "--results",
+      "datasets/osgf_baseline_evaluation_v0_2/results.json",
+      "--output",
+      ".build-cache/multilevel-legacy-replay-20261109"
+    ],
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "exit_code": 0
+  }
+]

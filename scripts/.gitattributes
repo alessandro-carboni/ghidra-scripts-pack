@@ -1,0 +1,24 @@
+# Additive value-flow experiment tools; existing scripts are unchanged.
+evaluate_value_flow.py text eol=lf
+run_value_flow_study.py text eol=lf
+build_value_flow_corpus.py text eol=lf
+evaluate_multilevel_flow.py text eol=lf
+recovered_evidence.py text eol=lf
+semantic_flow.py text eol=lf
+audit_semantic_layers.py text eol=lf
+run_semantic_benchmark.py text eol=lf
+create_semantic_benchmark.py text eol=lf
+
+# Additive graph-first research protocol; exact method bytes portable across checkouts.
+graph_first.py text eol=lf
+graph_first_evaluation.py text eol=lf
+run_graph_first_study.py text eol=lf
+create_graph_first_study.py text eol=lf
+reference_coverage.py text eol=lf
+reference_library.py text eol=lf
+reference_benchmark.py text eol=lf
+run_reference_controlled.py text eol=lf
+reference_corpus_sources.py text eol=lf
+run_reference_corpus.py text eol=lf
+reference_diagnostics.py text eol=lf
+import_stub_recovery.py text eol=lf

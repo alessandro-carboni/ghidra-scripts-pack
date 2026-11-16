@@ -107,7 +107,7 @@ if __name__ == "__main__":
     config = json.loads(args.config.read_text())
     if not args.check:
         apply_splits(manifest, config)
-        args.manifest.write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n")
+        args.manifest.write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8", newline="\n")
         holdouts = [family_holdout(manifest, f) for f in sorted(FAMILIES - {"none", "compiler_variation"})]
-        args.manifest.with_name("family_holdouts.json").write_text(json.dumps(holdouts, indent=2, sort_keys=True) + "\n")
+        args.manifest.with_name("family_holdouts.json").write_text(json.dumps(holdouts, indent=2, sort_keys=True) + "\n", encoding="utf-8", newline="\n")
     print("LEAKAGE CHECK PASS:", json.dumps(validate_leakage(manifest, config), indent=2), flush=True)

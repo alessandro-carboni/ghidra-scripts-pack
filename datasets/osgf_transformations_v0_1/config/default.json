@@ -1,0 +1,110 @@
+{
+  "compiler_matrix": [
+    {
+      "compiler": "gcc",
+      "optimization": "O0"
+    }
+  ],
+  "execution_limits": {
+    "max_builds": 120,
+    "max_variants": 24,
+    "timeout_seconds": 600
+  },
+  "frozen_dataset_reference": {
+    "manifest_file_sha256": "0758de28ff2b49473b66de1dc90ab7561495eb1f84618114796f81a3be815c42",
+    "path": "datasets/osgf_pairs_v0_1/freezes/freeze-001.json",
+    "scientific_digest": "095ca81b151cbcf9e58af28ad6bffebd60c2d153d4102ec019462fd7377569b2"
+  },
+  "input_contract": {
+    "kind": "pure_bytes",
+    "max_length": 255,
+    "min_length": 0,
+    "preconditions": [
+      "Readable nonvolatile buffer; no concurrent mutation; no externally observable effects."
+    ],
+    "result_bits": 32,
+    "trailing_nul": true
+  },
+  "output_policy": {
+    "existing": "verify",
+    "root": "datasets/osgf_transformations_v0_1/runs"
+  },
+  "schema_version": "0.1.0",
+  "selected_source_routines": [
+    "sum_array"
+  ],
+  "transformations": [
+    {
+      "deterministic_seed": 9,
+      "family": "transparent_wrapper",
+      "parameters": {
+        "delegation": "direct",
+        "naming_policy": "stable_hash",
+        "preservation_hint": "noinline",
+        "wrapper_depth": 1
+      }
+    },
+    {
+      "deterministic_seed": 9,
+      "family": "thunk",
+      "parameters": {
+        "delegation": "fixed_pointer",
+        "naming_policy": "stable_hash",
+        "preservation_hint": "noinline",
+        "thunk_depth": 1
+      }
+    },
+    {
+      "deterministic_seed": 9,
+      "family": "function_splitting",
+      "parameters": {
+        "combine_operator": "routine_reduction",
+        "empty_input_policy": "zero",
+        "naming_policy": "stable_hash",
+        "partition_strategy": "balanced_contiguous",
+        "preservation_hint": "noinline",
+        "split_count": 2
+      }
+    },
+    {
+      "deterministic_seed": 9,
+      "family": "dead_branch",
+      "parameters": {
+        "dead_branch_payload": "constant_return",
+        "guard_expression": "n > 255",
+        "insertion_point": "entry",
+        "naming_policy": "stable_hash",
+        "payload_value": 123,
+        "preservation_hint": "noinline",
+        "unreachable_condition": "contract_max_255"
+      }
+    },
+    {
+      "deterministic_seed": 9,
+      "family": "harmless_strand",
+      "parameters": {
+        "data_dependency": "input_length",
+        "insertion_point": "before_delegate",
+        "naming_policy": "stable_hash",
+        "number_of_strands": 1,
+        "preservation_hint": "noinline",
+        "pure_operation_family": "unsigned_mix"
+      }
+    },
+    {
+      "deterministic_seed": 9,
+      "family": "instruction_reordering",
+      "parameters": {
+        "aliasing": "read_only_buffer",
+        "naming_policy": "stable_hash",
+        "operation_family": "independent_partition_reductions",
+        "order": [
+          "right",
+          "left"
+        ],
+        "preservation_hint": "noinline",
+        "side_effects": "none"
+      }
+    }
+  ]
+}

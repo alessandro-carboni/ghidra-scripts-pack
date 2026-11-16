@@ -1,0 +1,30 @@
+{
+  "files": {
+    "datasets/osgf_baseline_diagnostics_v0_1/.gitattributes": "ba3d4e0a92188305f7cb5ff36e521d8e5df81a0cf5bc64028d9c86834e5096c0",
+    "datasets/osgf_baseline_diagnostics_v0_1/.gitignore": "1379b79d4e006e25bd0209354055491ae4fd777183958a4d367288fd467724aa",
+    "datasets/osgf_baseline_diagnostics_v0_1/CASE_STUDIES.md": "4ad7f8c310a103d39a1edb4af1fdb7c945353b532d6be37c69ec5e4bc1082e09",
+    "datasets/osgf_baseline_diagnostics_v0_1/CHECKPOINT.json": "b4ac6a69d5340deaf4d3c4664fa18a3ad9914d4b92916cadfe891c9e02d304ac",
+    "datasets/osgf_baseline_diagnostics_v0_1/CLASSIFICATION_FAILURES.json": "d43f5af0b71a2ef5b7fe5a9026e1966e4a6968ebcbd87cf59d85a511b20feaa7",
+    "datasets/osgf_baseline_diagnostics_v0_1/FAILURE_CATALOG.json": "0d3905de1abd4ed57d3877bc2c27a84c1e1a81140b7cf512126a610c2ea44970",
+    "datasets/osgf_baseline_diagnostics_v0_1/FEATURE_DIAGNOSTICS.json": "ac094f531e9b772727d759b41cb0ba9e54626daa20371cb0f2e8d04ff6d85149",
+    "datasets/osgf_baseline_diagnostics_v0_1/METHOD.md": "5df5df37c9b231f3811c081e6fdfd29ef7dd90031f367bc2b114a17b8e7a19d8",
+    "datasets/osgf_baseline_diagnostics_v0_1/MICRO_GRAPH_EXPERIMENTS.json": "2ab185d1ec7a384d8e1ab7335d342d9d5821dc0cd0f5ec13f73e02a25208bd49",
+    "datasets/osgf_baseline_diagnostics_v0_1/NORMALIZATION_ATTRIBUTION.json": "ac6aa5b9124fa36193b9cf9a73171c6b85e88241be2e64a0174cba34954630a8",
+    "datasets/osgf_baseline_diagnostics_v0_1/NORMALIZATION_OPPORTUNITIES.json": "4d8db8b38a5c87cad9c75bad5a84059f0339253d9a4ef260bc4cf8ebcf93f5f4",
+    "datasets/osgf_baseline_diagnostics_v0_1/REMEDIATION_PLAN.md": "037c632b183990afae5b9cab9c308e71d6edd2005b43920015c60438828525b8",
+    "datasets/osgf_baseline_diagnostics_v0_1/RESUME.md": "04e944fb6fe6e92580e4f12a00c1c9773cbd60423802f1d04acfc4f11166a015",
+    "datasets/osgf_baseline_diagnostics_v0_1/RETRIEVAL_BIAS.json": "773e5758302efcc4add5444bb6ff19abde8cf06ff5193c5417140f5cda8172d1",
+    "datasets/osgf_baseline_diagnostics_v0_1/ROOT_CAUSE_AUDIT.md": "7325e468a69f5c215b85575df6b7d01635a28df6cbd37f70ce72bf1af375cc78",
+    "datasets/osgf_baseline_diagnostics_v0_1/ROOT_CAUSE_MATRIX.json": "50dd375cf8bf81707e1cd5fbc3d969f37c94190b7fbf498eee06cfc804e94ffe",
+    "datasets/osgf_baseline_diagnostics_v0_1/SOURCE_WITNESSES.json": "f12091474239c325c21e86a17ca75b0e15a88a12ecd939180b61b793406bcf40",
+    "datasets/osgf_baseline_diagnostics_v0_1/STEP9_SUPPLEMENT.json": "bfc76764569836a950b4754ca37ab2df07884c245e6c9b594f18daedf9a664f3",
+    "datasets/osgf_baseline_diagnostics_v0_1/SUPPLEMENTARY_METRICS.json": "435b1592a7d112428a35ab59c430d3c8471274cdda120516f30d0fe80af3bc44",
+    "datasets/osgf_baseline_diagnostics_v0_1/VALIDATION.md": "92c34ef762d5cdd877ab9835c7e06438792d130e2a8595350a41bbdffa22c09f",
+    "scripts/diagnose_baseline_core.py": "0f9bdf01f594c11f4e48d7fb7e857d8f0c179711e4a7723bb94ef3fad60efa9c",
+    "scripts/diagnose_baseline_experiments.py": "469ff365bc9e834fc0cbd583b81eda4f40034758a267cdb7537d6791daa732b4",
+    "scripts/diagnose_baseline_report.py": "108598ae8bc8d395749379d1a3cc3e857efd475fb70b592e0c622f3960a9cc1f",
+    "tests/test_diagnose_baseline_core.py": "2616cf3f974b9248cf5952e6f7a370e9fb2c27b38d9045f31674a3e25583b103"
+  },
+  "head": "66bcc9dda267aac29f7ea79a60ff6727a7340ada",
+  "preserved_files": 291
+}

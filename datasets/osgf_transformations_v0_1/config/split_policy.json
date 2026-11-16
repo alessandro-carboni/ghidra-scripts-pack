@@ -1,0 +1,13 @@
+{
+  "family_holdouts": [
+    "transparent_wrapper",
+    "thunk",
+    "function_splitting",
+    "dead_branch",
+    "harmless_strand",
+    "instruction_reordering"
+  ],
+  "held_out_usage": "evaluation_only_no_parameter_selection",
+  "policy": "frozen-component-inheritance-v1",
+  "schema_version": "0.1.0"
+}

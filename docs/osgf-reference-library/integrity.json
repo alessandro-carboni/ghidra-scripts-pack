@@ -1,0 +1,12 @@
+{
+  "checked": 1242,
+  "changed": [
+    ".github/workflows/ci.yml",
+    "scripts/.gitattributes"
+  ],
+  "allowed_changes": [
+    ".github/workflows/ci.yml",
+    "scripts/.gitattributes"
+  ],
+  "unexpected": []
+}

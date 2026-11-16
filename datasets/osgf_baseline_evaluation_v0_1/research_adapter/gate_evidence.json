@@ -1,0 +1,34 @@
+{
+  "code_and_method_utf8_lf_sha256": {
+    "datasets/osgf_baseline_evaluation_v0_1/research_adapter/METHOD.md": "e3000a9d6efda7335fe96f7afd37a7682f26ede6674e7c8dab064b2ecd300d07",
+    "datasets/osgf_baseline_evaluation_v0_1/research_adapter/main.rs": "c7292cf8848ae4f4e79d86c802127e8b0d1f4493f67d577944355b65b4db215f",
+    "datasets/osgf_baseline_evaluation_v0_1/research_adapter/source_inventory.json": "67910f28b0e549809ea384d0b988f14a2c869780528221056080643e4f52b81a",
+    "scripts/evaluation_adapter.py": "1cf666d4f3220bdba2a35ae892ddd3fea43aec610c33b4f7d82ec5edf25e3d58",
+    "tests/test_evaluation_adapter.py": "72b16b91e0efbbcdb5c93465da227be361d3cf73a3a8bd2bb3f970301354f83d"
+  },
+  "design_version": "0.1.0",
+  "executed": {
+    "canonical_acceptance": 7,
+    "fingerprint_acceptance": 11,
+    "focused_adapter_tests": 25,
+    "full_python_tests": 376,
+    "notepad_regression_graphs": 25,
+    "protected_files": 161,
+    "python_subtests": 175,
+    "rust_tests": 252,
+    "similarity_acceptance": 20
+  },
+  "known_test_history": [
+    "Initial synthetic fixture setup: 3 failed, then corrected; final 25 passed",
+    "Full driver had format-check exit 1; corrected formatting and reran Ruff check/format successfully; no test failure hidden"
+  ],
+  "not_run": [
+    "hosted CI/Linux",
+    "Step10 full-corpus A/B materialization and scores",
+    "Step10.3-10.10",
+    "new Ghidra extraction or fresh Step9 replay"
+  ],
+  "protocol_sha256": "35a4d37ba175e1316e4f2bd179179da5da28e2c534bfb7a1fa1005ddabb040eb",
+  "scope": "Synthetic A/B comparability only; Notepad is frozen-engine regression, not research corpus evaluation",
+  "status": "pending_human_comparability_approval"
+}

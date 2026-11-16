@@ -1,0 +1,8 @@
+{
+  "cross_run_identical_fingerprints": 27,
+  "cross_run_identical_pair_records": true,
+  "repeated_comparisons": 81,
+  "repeated_fingerprints": 27,
+  "results_sha256": "201dcec47969930cafa68261902382e8d112c802591f1eeeb0a05733550c628f",
+  "status": "PASS"
+}

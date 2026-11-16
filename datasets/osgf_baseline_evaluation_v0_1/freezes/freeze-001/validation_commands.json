@@ -1,0 +1,82 @@
+[
+  {
+    "command": "python -m ruff check .",
+    "exit_code": 0,
+    "status": "PASS"
+  },
+  {
+    "command": "python -m ruff format --check .",
+    "exit_code": 0,
+    "status": "PASS"
+  },
+  {
+    "command": "python -m pytest -q tests",
+    "exit_code": 0,
+    "status": "PASS"
+  },
+  {
+    "command": "cargo fmt --manifest-path rust_engine/Cargo.toml -- --check",
+    "exit_code": 0,
+    "status": "PASS"
+  },
+  {
+    "command": "cargo test --locked --manifest-path rust_engine/Cargo.toml",
+    "exit_code": 0,
+    "status": "PASS"
+  },
+  {
+    "command": "cargo clippy --locked --manifest-path rust_engine/Cargo.toml --all-targets -- -D warnings",
+    "exit_code": 0,
+    "status": "PASS"
+  },
+  {
+    "command": "cargo build --locked --manifest-path rust_engine/Cargo.toml",
+    "exit_code": 0,
+    "status": "PASS"
+  },
+  {
+    "command": "python scripts/test_canonical_baseline.py --engine rust_engine/target/debug/rust_engine.exe",
+    "exit_code": 0,
+    "status": "PASS"
+  },
+  {
+    "command": "python scripts/test_fingerprint_baseline.py --engine rust_engine/target/debug/rust_engine.exe",
+    "exit_code": 0,
+    "status": "PASS"
+  },
+  {
+    "command": "python scripts/test_similarity_baseline.py --engine rust_engine/target/debug/rust_engine.exe",
+    "exit_code": 0,
+    "status": "PASS"
+  },
+  {
+    "command": "python scripts/dataset_review.py check",
+    "exit_code": 0,
+    "status": "PASS"
+  },
+  {
+    "command": "python scripts/validate_dataset_acceptance.py",
+    "exit_code": 0,
+    "status": "PASS"
+  },
+  {
+    "command": "python scripts/dataset_splits.py datasets/osgf_pairs_v0_1/manifest.json --config datasets/osgf_pairs_v0_1/split_config.json --check",
+    "exit_code": 0,
+    "status": "PASS"
+  },
+  {
+    "command": "python scripts/test_similarity_real_canonical.py --engine rust_engine/target/debug/rust_engine.exe --canonical-dir reports/canonical-notepad-step5",
+    "exit_code": 0,
+    "status": "PASS"
+  },
+  {
+    "command": "python scripts/step9_preflight.py --baseline datasets/osgf_transformations_v0_1/baseline.json",
+    "exit_code": 0,
+    "status": "PASS"
+  },
+  {
+    "command": "git diff --check",
+    "exit_code": 0,
+    "status": "PASS"
+  }
+]
